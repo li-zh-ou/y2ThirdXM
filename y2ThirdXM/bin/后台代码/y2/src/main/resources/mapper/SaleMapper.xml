@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.SaleMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Sale" >
+    <id column="SaleNo" property="saleno" jdbcType="VARCHAR" />
+    <result column="SaleType" property="saletype" jdbcType="VARCHAR" />
+    <result column="GoodsId" property="goodsid" jdbcType="INTEGER" />
+    <result column="GoodsNumber" property="goodsnumber" jdbcType="INTEGER" />
+    <result column="SaleTime" property="saletime" jdbcType="TIMESTAMP" />
+    <result column="KaiDan" property="kaidan" jdbcType="VARCHAR" />
+    <result column="KeHuNo" property="kehuno" jdbcType="VARCHAR" />
+    <result column="JieSuan" property="jiesuan" jdbcType="VARCHAR" />
+    <result column="HuiYuanNo" property="huiyuanno" jdbcType="VARCHAR" />
+    <result column="JieSuanType" property="jiesuantype" jdbcType="VARCHAR" />
+    <result column="JieSuanTime" property="jiesuantime" jdbcType="TIMESTAMP" />
+    <result column="money" property="money" jdbcType="DOUBLE" />
+    <result column="YouHui" property="youhui" jdbcType="VARCHAR" />
+    <result column="YouHuiType" property="youhuitype" jdbcType="VARCHAR" />
+    <result column="bei1" property="bei1" jdbcType="VARCHAR" />
+    <result column="bei2" property="bei2" jdbcType="VARCHAR" />
+    <result column="bei3" property="bei3" jdbcType="VARCHAR" />
+    <result column="bei4" property="bei4" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    SaleNo, SaleType, GoodsId, GoodsNumber, SaleTime, KaiDan, KeHuNo, JieSuan, HuiYuanNo, 
+    JieSuanType, JieSuanTime, money, YouHui, YouHuiType, bei1, bei2, bei3, bei4
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.SaleExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sale
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sale
+    where SaleNo = #{saleno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sale
+    where SaleNo = #{saleno,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.SaleExample" >
+    delete from sale
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.Sale" >
+    insert into sale (SaleNo, SaleType, GoodsId, 
+      GoodsNumber, SaleTime, KaiDan, 
+      KeHuNo, JieSuan, HuiYuanNo, 
+      JieSuanType, JieSuanTime, money, 
+      YouHui, YouHuiType, bei1, 
+      bei2, bei3, bei4)
+    values (#{saleno,jdbcType=VARCHAR}, #{saletype,jdbcType=VARCHAR}, #{goodsid,jdbcType=INTEGER}, 
+      #{goodsnumber,jdbcType=INTEGER}, #{saletime,jdbcType=TIMESTAMP}, #{kaidan,jdbcType=VARCHAR}, 
+      #{kehuno,jdbcType=VARCHAR}, #{jiesuan,jdbcType=VARCHAR}, #{huiyuanno,jdbcType=VARCHAR}, 
+      #{jiesuantype,jdbcType=VARCHAR}, #{jiesuantime,jdbcType=TIMESTAMP}, #{money,jdbcType=DOUBLE}, 
+      #{youhui,jdbcType=VARCHAR}, #{youhuitype,jdbcType=VARCHAR}, #{bei1,jdbcType=VARCHAR}, 
+      #{bei2,jdbcType=VARCHAR}, #{bei3,jdbcType=VARCHAR}, #{bei4,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Sale" >
+    insert into sale
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="saleno != null" >
+        SaleNo,
+      </if>
+      <if test="saletype != null" >
+        SaleType,
+      </if>
+      <if test="goodsid != null" >
+        GoodsId,
+      </if>
+      <if test="goodsnumber != null" >
+        GoodsNumber,
+      </if>
+      <if test="saletime != null" >
+        SaleTime,
+      </if>
+      <if test="kaidan != null" >
+        KaiDan,
+      </if>
+      <if test="kehuno != null" >
+        KeHuNo,
+      </if>
+      <if test="jiesuan != null" >
+        JieSuan,
+      </if>
+      <if test="huiyuanno != null" >
+        HuiYuanNo,
+      </if>
+      <if test="jiesuantype != null" >
+        JieSuanType,
+      </if>
+      <if test="jiesuantime != null" >
+        JieSuanTime,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+      <if test="youhui != null" >
+        YouHui,
+      </if>
+      <if test="youhuitype != null" >
+        YouHuiType,
+      </if>
+      <if test="bei1 != null" >
+        bei1,
+      </if>
+      <if test="bei2 != null" >
+        bei2,
+      </if>
+      <if test="bei3 != null" >
+        bei3,
+      </if>
+      <if test="bei4 != null" >
+        bei4,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="saleno != null" >
+        #{saleno,jdbcType=VARCHAR},
+      </if>
+      <if test="saletype != null" >
+        #{saletype,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsid != null" >
+        #{goodsid,jdbcType=INTEGER},
+      </if>
+      <if test="goodsnumber != null" >
+        #{goodsnumber,jdbcType=INTEGER},
+      </if>
+      <if test="saletime != null" >
+        #{saletime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="kaidan != null" >
+        #{kaidan,jdbcType=VARCHAR},
+      </if>
+      <if test="kehuno != null" >
+        #{kehuno,jdbcType=VARCHAR},
+      </if>
+      <if test="jiesuan != null" >
+        #{jiesuan,jdbcType=VARCHAR},
+      </if>
+      <if test="huiyuanno != null" >
+        #{huiyuanno,jdbcType=VARCHAR},
+      </if>
+      <if test="jiesuantype != null" >
+        #{jiesuantype,jdbcType=VARCHAR},
+      </if>
+      <if test="jiesuantime != null" >
+        #{jiesuantime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="youhui != null" >
+        #{youhui,jdbcType=VARCHAR},
+      </if>
+      <if test="youhuitype != null" >
+        #{youhuitype,jdbcType=VARCHAR},
+      </if>
+      <if test="bei1 != null" >
+        #{bei1,jdbcType=VARCHAR},
+      </if>
+      <if test="bei2 != null" >
+        #{bei2,jdbcType=VARCHAR},
+      </if>
+      <if test="bei3 != null" >
+        #{bei3,jdbcType=VARCHAR},
+      </if>
+      <if test="bei4 != null" >
+        #{bei4,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.SaleExample" resultType="java.lang.Integer" >
+    select count(*) from sale
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sale
+    <set >
+      <if test="record.saleno != null" >
+        SaleNo = #{record.saleno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.saletype != null" >
+        SaleType = #{record.saletype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsid != null" >
+        GoodsId = #{record.goodsid,jdbcType=INTEGER},
+      </if>
+      <if test="record.goodsnumber != null" >
+        GoodsNumber = #{record.goodsnumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.saletime != null" >
+        SaleTime = #{record.saletime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.kaidan != null" >
+        KaiDan = #{record.kaidan,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kehuno != null" >
+        KeHuNo = #{record.kehuno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jiesuan != null" >
+        JieSuan = #{record.jiesuan,jdbcType=VARCHAR},
+      </if>
+      <if test="record.huiyuanno != null" >
+        HuiYuanNo = #{record.huiyuanno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jiesuantype != null" >
+        JieSuanType = #{record.jiesuantype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jiesuantime != null" >
+        JieSuanTime = #{record.jiesuantime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.money != null" >
+        money = #{record.money,jdbcType=DOUBLE},
+      </if>
+      <if test="record.youhui != null" >
+        YouHui = #{record.youhui,jdbcType=VARCHAR},
+      </if>
+      <if test="record.youhuitype != null" >
+        YouHuiType = #{record.youhuitype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei1 != null" >
+        bei1 = #{record.bei1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei2 != null" >
+        bei2 = #{record.bei2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei3 != null" >
+        bei3 = #{record.bei3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei4 != null" >
+        bei4 = #{record.bei4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sale
+    set SaleNo = #{record.saleno,jdbcType=VARCHAR},
+      SaleType = #{record.saletype,jdbcType=VARCHAR},
+      GoodsId = #{record.goodsid,jdbcType=INTEGER},
+      GoodsNumber = #{record.goodsnumber,jdbcType=INTEGER},
+      SaleTime = #{record.saletime,jdbcType=TIMESTAMP},
+      KaiDan = #{record.kaidan,jdbcType=VARCHAR},
+      KeHuNo = #{record.kehuno,jdbcType=VARCHAR},
+      JieSuan = #{record.jiesuan,jdbcType=VARCHAR},
+      HuiYuanNo = #{record.huiyuanno,jdbcType=VARCHAR},
+      JieSuanType = #{record.jiesuantype,jdbcType=VARCHAR},
+      JieSuanTime = #{record.jiesuantime,jdbcType=TIMESTAMP},
+      money = #{record.money,jdbcType=DOUBLE},
+      YouHui = #{record.youhui,jdbcType=VARCHAR},
+      YouHuiType = #{record.youhuitype,jdbcType=VARCHAR},
+      bei1 = #{record.bei1,jdbcType=VARCHAR},
+      bei2 = #{record.bei2,jdbcType=VARCHAR},
+      bei3 = #{record.bei3,jdbcType=VARCHAR},
+      bei4 = #{record.bei4,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.Sale" >
+    update sale
+    <set >
+      <if test="saletype != null" >
+        SaleType = #{saletype,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsid != null" >
+        GoodsId = #{goodsid,jdbcType=INTEGER},
+      </if>
+      <if test="goodsnumber != null" >
+        GoodsNumber = #{goodsnumber,jdbcType=INTEGER},
+      </if>
+      <if test="saletime != null" >
+        SaleTime = #{saletime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="kaidan != null" >
+        KaiDan = #{kaidan,jdbcType=VARCHAR},
+      </if>
+      <if test="kehuno != null" >
+        KeHuNo = #{kehuno,jdbcType=VARCHAR},
+      </if>
+      <if test="jiesuan != null" >
+        JieSuan = #{jiesuan,jdbcType=VARCHAR},
+      </if>
+      <if test="huiyuanno != null" >
+        HuiYuanNo = #{huiyuanno,jdbcType=VARCHAR},
+      </if>
+      <if test="jiesuantype != null" >
+        JieSuanType = #{jiesuantype,jdbcType=VARCHAR},
+      </if>
+      <if test="jiesuantime != null" >
+        JieSuanTime = #{jiesuantime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="youhui != null" >
+        YouHui = #{youhui,jdbcType=VARCHAR},
+      </if>
+      <if test="youhuitype != null" >
+        YouHuiType = #{youhuitype,jdbcType=VARCHAR},
+      </if>
+      <if test="bei1 != null" >
+        bei1 = #{bei1,jdbcType=VARCHAR},
+      </if>
+      <if test="bei2 != null" >
+        bei2 = #{bei2,jdbcType=VARCHAR},
+      </if>
+      <if test="bei3 != null" >
+        bei3 = #{bei3,jdbcType=VARCHAR},
+      </if>
+      <if test="bei4 != null" >
+        bei4 = #{bei4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SaleNo = #{saleno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.Sale" >
+    update sale
+    set SaleType = #{saletype,jdbcType=VARCHAR},
+      GoodsId = #{goodsid,jdbcType=INTEGER},
+      GoodsNumber = #{goodsnumber,jdbcType=INTEGER},
+      SaleTime = #{saletime,jdbcType=TIMESTAMP},
+      KaiDan = #{kaidan,jdbcType=VARCHAR},
+      KeHuNo = #{kehuno,jdbcType=VARCHAR},
+      JieSuan = #{jiesuan,jdbcType=VARCHAR},
+      HuiYuanNo = #{huiyuanno,jdbcType=VARCHAR},
+      JieSuanType = #{jiesuantype,jdbcType=VARCHAR},
+      JieSuanTime = #{jiesuantime,jdbcType=TIMESTAMP},
+      money = #{money,jdbcType=DOUBLE},
+      YouHui = #{youhui,jdbcType=VARCHAR},
+      YouHuiType = #{youhuitype,jdbcType=VARCHAR},
+      bei1 = #{bei1,jdbcType=VARCHAR},
+      bei2 = #{bei2,jdbcType=VARCHAR},
+      bei3 = #{bei3,jdbcType=VARCHAR},
+      bei4 = #{bei4,jdbcType=VARCHAR}
+    where SaleNo = #{saleno,jdbcType=VARCHAR}
+  </update>
+</mapper>

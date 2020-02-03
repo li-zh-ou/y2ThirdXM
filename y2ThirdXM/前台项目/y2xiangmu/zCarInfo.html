@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>车辆资料</title>
+		<link rel="stylesheet" href="layui/css/layui.css"/>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+		<style type="text/css">
+			.to{
+				height: 50px;	
+			}
+			.zuo{
+				margin-left: 10px;
+			}
+			.cha{
+				margin-top: 8px;
+			}
+			h3{
+				margin-top: 10px;
+			}
+			.dian{
+				margin-right: 10px;
+				display: inline;	
+			}
+			.tiao{
+				margin-bottom: 10px;
+			}
+			.dao{
+				margin-top: 10px;
+			}
+			.dao a{
+				margin-left: 10px;
+				font-size: 27;
+				text-decoration: none;
+			}
+			th{
+				background-color: #0D94FF;
+			}
+			.yi{
+				height: 300px;
+				border: 1px solid #080808;
+			}
+			.row1{
+				background-color: #E9E7E7;
+			}
+			td{
+				background-color: #fff;
+			}
+			.dian{
+				color: #9D9D9D;
+				
+			}
+			.sha{
+				margin-top: 10px;
+			}
+			.xinxi,.weixiu{
+				height: 190px;
+			}
+			#ctx{
+				width: 1349px;
+			}
+			.ass{
+				width: 1349px;
+			}
+			.gao{
+				
+			}
+			.chezliao{
+				box-shadow: 2px 2px 10px #909090;
+				background-color: #fff;
+				width:950px;
+				height:500px;
+				position: fixed;
+				left:14%;
+				top: 6%;
+			}
+			.context2{
+				width: 920px;
+				height: 430px;
+				margin-left:16px ;
+				margin-top: -5px;
+				background-color: #E8E8E8;
+			}
+			.tan{
+				margin: 5px;
+				border-bottom: 1px solid #EEEEEE;
+			}
+			.chepai{
+				box-shadow: 2px 2px 10px #909090;
+				background-color: #fff;
+				width: 330px;
+				height: 330px;
+				position: fixed;
+				left:35%;
+				top: 20%;
+			}
+			.tan1{
+				padding: 5px;
+				border-bottom: 1px solid #EEEEEE;
+			}
+			.color1{
+				background-color: rgb(247, 255, 255);
+			}
+			.toto1{
+				font-size: 20px;
+				font-weight: bolder;
+			}
+			.bao1{
+				margin-top:-5px;
+				margin-left: 620px;
+			}
+			.guan2{
+				font-size: 35px;
+			}
+			.bao3{
+				margin-left: 740px;
+			}
+			.guan5{
+				font-size: 30px;
+			}
+			.ho{
+				color:red;
+			}
+			.shang p{
+				margin-top: 15px;
+				color: #21bece;
+			}
+			.shang input{
+				color: black;
+			}
+			.shang{
+				margin-top: 10px;
+				padding-top: 10px;
+				padding-left:10px;
+			}
+			.context2 p{
+				margin-top: 25px;
+			}
+			.guan,.guan1{
+				font-size: 35px;
+			}
+			.toto{
+				font-size: 20px;
+				font-weight: bolder;
+			}
+			.pinpai{
+				box-shadow: 2px 2px 10px #909090;
+				background-color: #fff;
+				width: 800px;
+				height:500px;
+				position: fixed;
+				left:20%;
+				top: 5%;
+			}
+			.so{
+				margin-left: 5px;
+				font-size: 12px;
+				width: 250px;
+				height: 30px;
+			}
+			.pinpai .row{
+				padding-top: 10px;
+			}
+			.as table:nth-of-type(1){
+				margin-left: -16px;
+			}
+			.as div:nth-of-type(1){
+				margin-left: 16px;
+				background-color: #fff;
+				width: 320px;
+			}
+			.as div:nth-of-type(2){
+				margin-left: 18px;
+				background-color: #fff;
+			}
+			.jl{
+				margin-left: 16px;
+				margin-top: -10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="ctx" class="container-fluid">
+			<div class="row to" style="background-color: rgb(247, 255, 255);">
+				<div class="col-sm-2">
+					<h3>车资料</h3>
+				</div>
+				<div class="col-lg-offset-5 col-sm-5 cha">
+					<input size="32" placeholder="匹配驾驶员姓名/简码/手机/车牌号"/>
+					<button class="btn btn-primary zuo">搜索</button>
+					<button class="btn btn-danger zuo">关闭</button>
+				</div>
+			</div>
+			<div class="row row1">
+				<div class="row" style="padding-left: 40px;padding-top: 15px;">
+					<div>
+						<p>车牌号：<input type="text" size="15" style="height: 35px;">&nbsp;车架号：<input type="text" style="height: 35px;"></p>
+					</div>
+				</div>
+				<div class="row ass" style="margin-top:-15px ;">
+					<div class="col-lg-offset-7 col-sm-5">
+						<p class="dao"><a class="bian">增加</a><a class="zi">修改</a><a>删除</a><a>查询</a><a>保养</a><a>导出</a><a>字段设置</a></p>
+					</div>
+				</div>
+				<div class="yi">
+					<table class="table table-bordered table-hover">
+						<tr>
+							<th>客户编码</th>
+							<th>客户名称</th>
+							<th>详细地址</th>
+							<th>联系人</th>
+							<th>手机</th>
+							<th>客户生日</th>
+							<th>客户类别</th>
+							<th>会员卡号</th>
+							<th>入会日期</th>
+							<th>会员到期</th>
+							<th>备注</th>
+						</tr>	
+						<tr>
+							<td>客户编码</td>
+							<td>客户名称</td>
+							<td>详细地址</td>
+							<td>联系人</td>
+							<td>手机</td>
+							<td>客户生日</td>
+							<td>客户类别</td>
+							<td>会员卡号</td>
+							<td>入会日期</td>
+							<td>会员到期</td>
+							<td>备注</td>
+						</tr>
+						<tr>
+							<td>客户编码</td>
+							<td>客户名称</td>
+							<td>详细地址</td>
+							<td>联系人</td>
+							<td>手机</td>
+							<td>客户生日</td>
+							<td>客户类别</td>
+							<td>会员卡号</td>
+							<td>入会日期</td>
+							<td>会员到期</td>
+							<td>备注</td>
+						</tr>
+						<tr>
+							<td>客户编码</td>
+							<td>客户名称</td>
+							<td>详细地址</td>
+							<td>联系人</td>
+							<td>手机</td>
+							<td>客户生日</td>
+							<td>客户类别</td>
+							<td>会员卡号</td>
+							<td>入会日期</td>
+							<td>会员到期</td>
+							<td>备注</td>
+						</tr>
+						<tr>
+							<td>客户编码</td>
+							<td>客户名称</td>
+							<td>详细地址</td>
+							<td>联系人</td>
+							<td>手机</td>
+							<td>客户生日</td>
+							<td>客户类别</td>
+							<td>会员卡号</td>
+							<td>入会日期</td>
+							<td>会员到期</td>
+							<td>备注</td>
+						</tr>
+						<tr>
+							<td>客户编码</td>
+							<td>客户名称</td>
+							<td>详细地址</td>
+							<td>联系人</td>
+							<td>手机</td>
+							<td>客户生日</td>
+							<td>客户类别</td>
+							<td>会员卡号</td>
+							<td>入会日期</td>
+							<td>会员到期</td>
+							<td>备注</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="tiao">
+				<div class="sha">
+					<div class="dian diyi">客户信息</div>
+					<div class="dian">历史维修</div>
+				</div>
+			</div>
+			<div class="row gao">
+				<div class="xinxi">
+					<table class="table table-bordered table-hover">
+						<tr>
+							<th>车牌号码</th>
+							<th>车牌品牌</th>
+							<th>车牌型号</th>
+							<th>驾驶员</th>
+							<th>驾驶员电话</th>
+							<th>出生日期</th>
+							<th>车辆归属</th>
+							<th>驾证到期</th>
+							<th>驾证到期</th>
+							<th>驾证到期</th>
+						</tr>
+						<tr>
+							<td>车牌号码</td>
+							<td>车牌品牌</td>
+							<td>车牌型号</td>
+							<td>驾驶员</td>
+							<td>驾驶员电话</td>
+							<td>出生日期</td>
+							<td>车辆归属</td>
+							<td>驾证到期</td>
+							<td>驾证到期</td>
+							<td>驾证到期</td>
+						</tr>
+					</table>
+				</div>
+				<div class="weixiu">
+					<table class="table table-bordered table-hover">
+						<tr>
+							<th>车牌号码</th>
+							<th>车牌品牌</th>
+							<th>车牌型号</th>
+							<th>驾驶员</th>
+							<th>驾驶员电话</th>
+							<th>出生日期</th>
+							<th>车辆归属</th>
+							<th>驾证到期</th>
+						</tr>
+						<tr>
+							<td>车牌号码</td>
+							<td>车牌品牌</td>
+							<td>车牌型号</td>
+							<td>驾驶员</td>
+							<td>驾驶员电话</td>
+							<td>出生日期</td>
+							<td>车辆归属</td>
+							<td>驾证到期</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="row">
+				<p class="di">共18条记录 第一页 共一页</p>
+			</div>
+			<div class="row chezliao">
+				<div>
+					<div class="">
+					<div class="tan1 color1"><span class="toto1">车辆资料编辑</span><button class="btn btn-group bao3">保存</button><span class="close guan5">×</span></div>
+				</div>
+					<div class="context2">
+						<div class="shang">
+							<p>
+								<span><span class="ho">* </span>车牌号码：</span><select class="chehao" style="width: 150px;height: 25px;"></select>
+								<span><span class="ho">* </span>车牌品牌：</span><select class="chepin" style="width: 150px;height: 25px;"></select>
+								<span><span class="ho">* </span>车辆型号：</span><input type="text" size="15"/>
+								<span><span class="ho">* </span>驾驶员：</span><input type="text" size="15"/>
+							</p>
+							<p>
+								<span><span class="ho">* </span>驾驶员电话：</span></span><input type="text" size="15"/>
+								<span>出生日期：</span><input type="date"/>
+								<span><span class="ho">* </span>车辆归属：<select style="width: 150px;height: 25px;"></select></span>
+								<span>驾证到期：</span><input type="date"/>
+							</p>
+							<p>
+								<span>车架号：</span><input type="text" size="15"/>
+								<span>发动机号：</span><input type="text" size="15"/>
+								<span>车辆年款：</span><input type="text" size="10"/>
+								<span>里程：<input type="text" size="15"> </span>
+							</p>
+							<p>
+								<span><span class="ho">* </span>发动机品牌：<select style="width: 230px;height: 25px;"></select></span>
+								<span>载重：<input type="text" size="15"> </span>
+								<span>购买日期：</span><input type="date"/>
+							</p>
+							<p>
+								<span>上牌日期：</span><input type="date"/>
+								<span>车检到期：</span><input type="date"/>
+								<span>燃油别类：<select style="width: 150px;height: 25px;"></select></span>
+								<span>车系：</span><input type="text" size="15"/>
+							</p>
+							<p>
+								<span><span class="ho">保险：</span>交强险保险公司</span><select style="width: 150px;height: 25px;"></select>
+								<span>交强险到期：</span><input type="date" />&nbsp;<input type="radio" />在我投保车
+							</p>
+							<p>
+								<span>商业险保险公司</span><input type="date" />
+								<span>商业险到期：</span><input type="date" />
+							</p>
+							<p>
+								<span>下次保养里程：</span><input type="text" size="15"/>
+								<span>下次保养日期：</span><input type="date"/>
+								<span>客户名称：</span><input type="text" size="15"/>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row chepai">
+				<div>
+					<div class="tan"><span class="toto">车牌号</span><span class="close guan1">×</span></div>
+				</div>
+			</div>
+			<div class="row pinpai" style="background-color:#E9E7E7 ;">
+				<div class="">
+					<div class="tan1 color1"><span class="toto1">品牌车型</span><button class="btn btn-group bao1">选择</button><span class="close guan2">×</span></div>
+				</div>
+				<div class="row">
+					<div class="col-sm-5">
+						<input class="so" size="28" placeholder="匹配 品牌编码/品牌名称/首字母"/>
+						<button class="btn btn-danger">搜索</button>
+					</div>
+					<div class="col-sm-7">
+						<input class="so" size="32" placeholder="匹配 车型编码/车型名称"/>
+						<button class="btn btn-danger zuo">搜索</button>
+					</div>
+				</div>
+				<div class="row as">
+					<div class="col-sm-5">
+						<table class="table table-bordered table-hover">
+							<tr>
+								<th>编码</th>
+								<th>品牌名称</th>
+								<th>首字母</th>
+							</tr>
+							<tr>
+								<td>409</td>
+								<td>大众</td>
+								<td>D</td>
+							</tr>
+						</table>
+					</div>
+					<div class="col-sm-7" style="width: 460px; overflow:auto;">
+						<table class="table table-bordered table-hover" style="width: 1000px;">
+							<tr>
+								<th>车型ID</th>
+								<th>车型名称</th>
+								<th>参考价格</th>
+								<th>车辆年款</th>
+								<th>车辆年款</th>
+								<th>车辆年款</th>
+								<th>车辆年款</th>
+								<th>车辆年款</th>
+								<th>车辆年款</th>
+								<th>车辆年款</th>
+								<th>车辆年款</th>
+								<th>车辆年款</th>
+							</tr>
+							<tr>
+								<td>409</td>
+								<td>大众</td>
+								<td>D</td>
+								<td>D</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="row">
+					<p class="jl">记录条数：</p>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="layui/layui.js" ></script>
+		<script type="text/javascript" src="js/jquery-1.8.3.js" ></script>
+		<script type="text/javascript">
+			$(".weixiu").hide();
+			$(".zeng").hide();
+			$(".chepai").hide();
+			$(".pinpai").hide();
+			$(".kehu").hide();
+			$(".chezliao").hide();
+			$(".diyi").css("border-bottom","5px solid #0000FF");
+			$(".dian").click(function(){
+				$(".dian").css("border-bottom","0px solid #0000FF")
+				$(this).css("border-bottom","5px solid #0000FF");
+				if($(this).html()=="客户信息"){
+					$(".xinxi").show();
+					$(".weixiu").hide();
+				}else if($(this).html()=="历史维修"){
+					$(".xinxi").hide();
+					$(".weixiu").show();
+				}
+			})
+			$(".bian").click(function(){
+				$(".chezliao").show();
+			})
+			$(".guan5").click(function(){
+				$(".chezliao").hide();
+			})
+			$(".chehao").click(function(){
+				$(".chepai").show();
+			})
+			$(".guan1").click(function(){
+				$(".chepai").hide();
+			})
+			$(".chepin").click(function(){
+				$(".pinpai").show();
+			})
+			$(".guan2").click(function(){
+				$(".pinpai").hide();
+			})
+		</script>
+	</body>
+</html>

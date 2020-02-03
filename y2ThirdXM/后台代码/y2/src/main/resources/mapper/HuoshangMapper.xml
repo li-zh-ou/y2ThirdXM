@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.HuoshangMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Huoshang" >
+    <id column="HuoShangNo" property="huoshangno" jdbcType="VARCHAR" />
+    <result column="ShangName" property="shangname" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="JingYin" property="jingyin" jdbcType="VARCHAR" />
+    <result column="WangZhi" property="wangzhi" jdbcType="VARCHAR" />
+    <result column="KaiHu" property="kaihu" jdbcType="VARCHAR" />
+    <result column="YinHangCard" property="yinhangcard" jdbcType="VARCHAR" />
+    <result column="GoodsNo" property="goodsno" jdbcType="VARCHAR" />
+    <result column="FuKuan" property="fukuan" jdbcType="VARCHAR" />
+    <result column="ShangGraden" property="shanggraden" jdbcType="VARCHAR" />
+    <result column="JingYinType" property="jingyintype" jdbcType="VARCHAR" />
+    <result column="ShangType" property="shangtype" jdbcType="VARCHAR" />
+    <result column="LianXi" property="lianxi" jdbcType="VARCHAR" />
+    <result column="DianHua" property="dianhua" jdbcType="VARCHAR" />
+    <result column="ShouJi" property="shouji" jdbcType="VARCHAR" />
+    <result column="Email" property="email" jdbcType="VARCHAR" />
+    <result column="ZhangQi" property="zhangqi" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="bei1" property="bei1" jdbcType="VARCHAR" />
+    <result column="bei2" property="bei2" jdbcType="VARCHAR" />
+    <result column="bei3" property="bei3" jdbcType="VARCHAR" />
+    <result column="bei4" property="bei4" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    HuoShangNo, ShangName, address, JingYin, WangZhi, KaiHu, YinHangCard, GoodsNo, FuKuan, 
+    ShangGraden, JingYinType, ShangType, LianXi, DianHua, ShouJi, Email, ZhangQi, remark, 
+    bei1, bei2, bei3, bei4
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.HuoshangExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from huoshang
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from huoshang
+    where HuoShangNo = #{huoshangno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from huoshang
+    where HuoShangNo = #{huoshangno,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.HuoshangExample" >
+    delete from huoshang
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.Huoshang" >
+    insert into huoshang (HuoShangNo, ShangName, address, 
+      JingYin, WangZhi, KaiHu, 
+      YinHangCard, GoodsNo, FuKuan, 
+      ShangGraden, JingYinType, ShangType, 
+      LianXi, DianHua, ShouJi, 
+      Email, ZhangQi, remark, 
+      bei1, bei2, bei3, bei4
+      )
+    values (#{huoshangno,jdbcType=VARCHAR}, #{shangname,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{jingyin,jdbcType=VARCHAR}, #{wangzhi,jdbcType=VARCHAR}, #{kaihu,jdbcType=VARCHAR}, 
+      #{yinhangcard,jdbcType=VARCHAR}, #{goodsno,jdbcType=VARCHAR}, #{fukuan,jdbcType=VARCHAR}, 
+      #{shanggraden,jdbcType=VARCHAR}, #{jingyintype,jdbcType=VARCHAR}, #{shangtype,jdbcType=VARCHAR}, 
+      #{lianxi,jdbcType=VARCHAR}, #{dianhua,jdbcType=VARCHAR}, #{shouji,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{zhangqi,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, 
+      #{bei1,jdbcType=VARCHAR}, #{bei2,jdbcType=VARCHAR}, #{bei3,jdbcType=VARCHAR}, #{bei4,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Huoshang" >
+    insert into huoshang
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="huoshangno != null" >
+        HuoShangNo,
+      </if>
+      <if test="shangname != null" >
+        ShangName,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="jingyin != null" >
+        JingYin,
+      </if>
+      <if test="wangzhi != null" >
+        WangZhi,
+      </if>
+      <if test="kaihu != null" >
+        KaiHu,
+      </if>
+      <if test="yinhangcard != null" >
+        YinHangCard,
+      </if>
+      <if test="goodsno != null" >
+        GoodsNo,
+      </if>
+      <if test="fukuan != null" >
+        FuKuan,
+      </if>
+      <if test="shanggraden != null" >
+        ShangGraden,
+      </if>
+      <if test="jingyintype != null" >
+        JingYinType,
+      </if>
+      <if test="shangtype != null" >
+        ShangType,
+      </if>
+      <if test="lianxi != null" >
+        LianXi,
+      </if>
+      <if test="dianhua != null" >
+        DianHua,
+      </if>
+      <if test="shouji != null" >
+        ShouJi,
+      </if>
+      <if test="email != null" >
+        Email,
+      </if>
+      <if test="zhangqi != null" >
+        ZhangQi,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="bei1 != null" >
+        bei1,
+      </if>
+      <if test="bei2 != null" >
+        bei2,
+      </if>
+      <if test="bei3 != null" >
+        bei3,
+      </if>
+      <if test="bei4 != null" >
+        bei4,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="huoshangno != null" >
+        #{huoshangno,jdbcType=VARCHAR},
+      </if>
+      <if test="shangname != null" >
+        #{shangname,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="jingyin != null" >
+        #{jingyin,jdbcType=VARCHAR},
+      </if>
+      <if test="wangzhi != null" >
+        #{wangzhi,jdbcType=VARCHAR},
+      </if>
+      <if test="kaihu != null" >
+        #{kaihu,jdbcType=VARCHAR},
+      </if>
+      <if test="yinhangcard != null" >
+        #{yinhangcard,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsno != null" >
+        #{goodsno,jdbcType=VARCHAR},
+      </if>
+      <if test="fukuan != null" >
+        #{fukuan,jdbcType=VARCHAR},
+      </if>
+      <if test="shanggraden != null" >
+        #{shanggraden,jdbcType=VARCHAR},
+      </if>
+      <if test="jingyintype != null" >
+        #{jingyintype,jdbcType=VARCHAR},
+      </if>
+      <if test="shangtype != null" >
+        #{shangtype,jdbcType=VARCHAR},
+      </if>
+      <if test="lianxi != null" >
+        #{lianxi,jdbcType=VARCHAR},
+      </if>
+      <if test="dianhua != null" >
+        #{dianhua,jdbcType=VARCHAR},
+      </if>
+      <if test="shouji != null" >
+        #{shouji,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="zhangqi != null" >
+        #{zhangqi,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="bei1 != null" >
+        #{bei1,jdbcType=VARCHAR},
+      </if>
+      <if test="bei2 != null" >
+        #{bei2,jdbcType=VARCHAR},
+      </if>
+      <if test="bei3 != null" >
+        #{bei3,jdbcType=VARCHAR},
+      </if>
+      <if test="bei4 != null" >
+        #{bei4,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.HuoshangExample" resultType="java.lang.Integer" >
+    select count(*) from huoshang
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update huoshang
+    <set >
+      <if test="record.huoshangno != null" >
+        HuoShangNo = #{record.huoshangno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shangname != null" >
+        ShangName = #{record.shangname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null" >
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jingyin != null" >
+        JingYin = #{record.jingyin,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wangzhi != null" >
+        WangZhi = #{record.wangzhi,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kaihu != null" >
+        KaiHu = #{record.kaihu,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yinhangcard != null" >
+        YinHangCard = #{record.yinhangcard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsno != null" >
+        GoodsNo = #{record.goodsno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fukuan != null" >
+        FuKuan = #{record.fukuan,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shanggraden != null" >
+        ShangGraden = #{record.shanggraden,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jingyintype != null" >
+        JingYinType = #{record.jingyintype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shangtype != null" >
+        ShangType = #{record.shangtype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lianxi != null" >
+        LianXi = #{record.lianxi,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dianhua != null" >
+        DianHua = #{record.dianhua,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shouji != null" >
+        ShouJi = #{record.shouji,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null" >
+        Email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zhangqi != null" >
+        ZhangQi = #{record.zhangqi,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei1 != null" >
+        bei1 = #{record.bei1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei2 != null" >
+        bei2 = #{record.bei2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei3 != null" >
+        bei3 = #{record.bei3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei4 != null" >
+        bei4 = #{record.bei4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update huoshang
+    set HuoShangNo = #{record.huoshangno,jdbcType=VARCHAR},
+      ShangName = #{record.shangname,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
+      JingYin = #{record.jingyin,jdbcType=VARCHAR},
+      WangZhi = #{record.wangzhi,jdbcType=VARCHAR},
+      KaiHu = #{record.kaihu,jdbcType=VARCHAR},
+      YinHangCard = #{record.yinhangcard,jdbcType=VARCHAR},
+      GoodsNo = #{record.goodsno,jdbcType=VARCHAR},
+      FuKuan = #{record.fukuan,jdbcType=VARCHAR},
+      ShangGraden = #{record.shanggraden,jdbcType=VARCHAR},
+      JingYinType = #{record.jingyintype,jdbcType=VARCHAR},
+      ShangType = #{record.shangtype,jdbcType=VARCHAR},
+      LianXi = #{record.lianxi,jdbcType=VARCHAR},
+      DianHua = #{record.dianhua,jdbcType=VARCHAR},
+      ShouJi = #{record.shouji,jdbcType=VARCHAR},
+      Email = #{record.email,jdbcType=VARCHAR},
+      ZhangQi = #{record.zhangqi,jdbcType=TIMESTAMP},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      bei1 = #{record.bei1,jdbcType=VARCHAR},
+      bei2 = #{record.bei2,jdbcType=VARCHAR},
+      bei3 = #{record.bei3,jdbcType=VARCHAR},
+      bei4 = #{record.bei4,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.Huoshang" >
+    update huoshang
+    <set >
+      <if test="shangname != null" >
+        ShangName = #{shangname,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="jingyin != null" >
+        JingYin = #{jingyin,jdbcType=VARCHAR},
+      </if>
+      <if test="wangzhi != null" >
+        WangZhi = #{wangzhi,jdbcType=VARCHAR},
+      </if>
+      <if test="kaihu != null" >
+        KaiHu = #{kaihu,jdbcType=VARCHAR},
+      </if>
+      <if test="yinhangcard != null" >
+        YinHangCard = #{yinhangcard,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsno != null" >
+        GoodsNo = #{goodsno,jdbcType=VARCHAR},
+      </if>
+      <if test="fukuan != null" >
+        FuKuan = #{fukuan,jdbcType=VARCHAR},
+      </if>
+      <if test="shanggraden != null" >
+        ShangGraden = #{shanggraden,jdbcType=VARCHAR},
+      </if>
+      <if test="jingyintype != null" >
+        JingYinType = #{jingyintype,jdbcType=VARCHAR},
+      </if>
+      <if test="shangtype != null" >
+        ShangType = #{shangtype,jdbcType=VARCHAR},
+      </if>
+      <if test="lianxi != null" >
+        LianXi = #{lianxi,jdbcType=VARCHAR},
+      </if>
+      <if test="dianhua != null" >
+        DianHua = #{dianhua,jdbcType=VARCHAR},
+      </if>
+      <if test="shouji != null" >
+        ShouJi = #{shouji,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        Email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="zhangqi != null" >
+        ZhangQi = #{zhangqi,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="bei1 != null" >
+        bei1 = #{bei1,jdbcType=VARCHAR},
+      </if>
+      <if test="bei2 != null" >
+        bei2 = #{bei2,jdbcType=VARCHAR},
+      </if>
+      <if test="bei3 != null" >
+        bei3 = #{bei3,jdbcType=VARCHAR},
+      </if>
+      <if test="bei4 != null" >
+        bei4 = #{bei4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where HuoShangNo = #{huoshangno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.Huoshang" >
+    update huoshang
+    set ShangName = #{shangname,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      JingYin = #{jingyin,jdbcType=VARCHAR},
+      WangZhi = #{wangzhi,jdbcType=VARCHAR},
+      KaiHu = #{kaihu,jdbcType=VARCHAR},
+      YinHangCard = #{yinhangcard,jdbcType=VARCHAR},
+      GoodsNo = #{goodsno,jdbcType=VARCHAR},
+      FuKuan = #{fukuan,jdbcType=VARCHAR},
+      ShangGraden = #{shanggraden,jdbcType=VARCHAR},
+      JingYinType = #{jingyintype,jdbcType=VARCHAR},
+      ShangType = #{shangtype,jdbcType=VARCHAR},
+      LianXi = #{lianxi,jdbcType=VARCHAR},
+      DianHua = #{dianhua,jdbcType=VARCHAR},
+      ShouJi = #{shouji,jdbcType=VARCHAR},
+      Email = #{email,jdbcType=VARCHAR},
+      ZhangQi = #{zhangqi,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      bei1 = #{bei1,jdbcType=VARCHAR},
+      bei2 = #{bei2,jdbcType=VARCHAR},
+      bei3 = #{bei3,jdbcType=VARCHAR},
+      bei4 = #{bei4,jdbcType=VARCHAR}
+    where HuoShangNo = #{huoshangno,jdbcType=VARCHAR}
+  </update>
+</mapper>

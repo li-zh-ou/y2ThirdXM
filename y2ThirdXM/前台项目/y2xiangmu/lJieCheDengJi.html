@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>接车登记</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+	</head>
+	<body>
+			<div id="header" class="row col-xs-12" style="border-bottom: 0.6px solid;">
+				<h3 class="col-xs-7" style="margin-left: 30px;">接车登记</h3>
+				<p class="col-xs-4" style="padding-top: 15px;">
+					<input type="text" class="col-xs-7" placeholder="匹配车牌号/车架号/手机" style="padding: 5px 0;"/>
+					<button type="button" class="btn btn-success col-xs-2" style="margin-left: 20px;">保存</button>
+					<button type="button" class="btn btn-success" style="margin-left: 20px;widows: 11%;">关闭</button>
+				</p>
+			</div>
+			<p class="col-xs-12 row" style="text-align: right;font-size: 16px; height: 30px; line-height: 30px;">
+				<a>维修接车</a>
+				<a>救援接单</a>
+				<a>关注公众号</a>
+			</p>
+			<div class="row" style="margin-left: 40px;">
+				<div class="col-xs-12">
+					<p>车牌号：<span></span></p>
+				</div>
+				<div class="col-xs-3" style="border-top: solid 1px;">
+					<h5 style="color: #337AB7;">车主信息</h5>
+					<p>姓名：<span></span></p>
+					<p>驾驶员：<span></span></p>
+				</div>
+				<div class="col-xs-3" style="border-top: solid 1px;margin-left: 30px;">
+					<h5 style="color: #337AB7;">车辆信息：</h5>
+					<p>品牌：<span></span></p>
+					<p>发动机：<span></span></p>
+					<p>保养日期：<span></span></p>
+				</div>
+				<div class="col-xs-2" style="margin-left: 30px;color: red;">
+					<p>积分：<span>0</span>分&nbsp;</p>
+					<p>地址：<span></span></p>
+					<p>储值卡余额：<span>0.00</span>元&nbsp;</p>
+					<p>挂账余额：<span>0.00</span>元&nbsp;</p>
+					<p>定金余额：<span>0.00</span>元&nbsp;</p>
+				</div>
+			</div>
+			<ul class="row" style="list-style: none;font-size: 16px;margin: 15px 0px;">
+				<li class="col-xs-1" onclick="danji(this)" style="border-top: 3px solid white;"><a href="javascript:void">作业中车辆</a></li>
+				<li class="col-xs-1" onclick="danji(this)" style="border-top: 3px solid white;"><a href="javascript:void">维修历史</a></li>
+				<li class="col-xs-1" onclick="danji(this)" style="border-top: 3px solid white;"><a href="javascript:void">维修项目</a></li>
+				<li class="col-xs-1" onclick="danji(this)" style="border-top: 3px solid white;"><a href="javascript:void">领料情况</a></li>
+				<li class="col-xs-1" onclick="danji(this)" style="border-top: 3px solid white;"><a href="javascript:void">历史回访</a></li>
+			</ul>
+			
+			<div class="row">
+			<table class="table table-hover table-bordered text-center ">
+					<thead>
+						<tr>
+							<th class="text-center">单据状态</th>
+							<th class="text-center">业务类型</th>
+							<th class="text-center">客户名称</th>
+							<th class="text-center">车牌号</th>
+							<th class="text-center">手机</th>
+							<th class="text-center">会员卡号</th>
+							<th class="text-center">维修单号</th>
+							<th class="text-center">单据类型</th>
+							<th class="text-center">开单时间</th>
+							<th class="text-center">预计完工</th>
+							<th class="text-center">完工时间</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="text-center">华为荣耀p1000</td>
+							<td class="text-center">手机</td>
+							<td class="text-center">0.1</td>
+							<td class="text-center">99999</td>
+							<td class="text-center">99999</td>
+							<td class="text-center">99999</td>
+							<td class="text-center">手机</td>
+							<td class="text-center">0.1</td>
+							<td class="text-center">99999</td>
+							<td class="text-center">99999</td>
+							<td class="text-center">99999</td>
+						</tr>
+					</tbody>
+			</table>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/jquery-3.4.1.min .js" ></script>
+	<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+	<script type="text/javascript">
+		function danji(item){
+			item.style.borderTop="3px solid black";
+			for(var i=0; i<$(item).siblings().length;i++){
+				$(item).siblings()[i].style.borderTop="3px solid white";
+			}
+		}
+	</script>
+</html>

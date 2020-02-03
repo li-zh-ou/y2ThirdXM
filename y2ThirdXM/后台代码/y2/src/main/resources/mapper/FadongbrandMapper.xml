@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.FadongbrandMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Fadongbrand" >
+    <id column="FaBankId" property="fabankid" jdbcType="INTEGER" />
+    <result column="FaName" property="faname" jdbcType="VARCHAR" />
+    <result column="FaNumber" property="fanumber" jdbcType="VARCHAR" />
+    <result column="bei1" property="bei1" jdbcType="VARCHAR" />
+    <result column="bei2" property="bei2" jdbcType="VARCHAR" />
+    <result column="bei3" property="bei3" jdbcType="VARCHAR" />
+    <result column="bei4" property="bei4" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    FaBankId, FaName, FaNumber, bei1, bei2, bei3, bei4
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.FadongbrandExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from fadongbrand
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from fadongbrand
+    where FaBankId = #{fabankid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from fadongbrand
+    where FaBankId = #{fabankid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.FadongbrandExample" >
+    delete from fadongbrand
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.Fadongbrand" >
+    insert into fadongbrand (FaBankId, FaName, FaNumber, 
+      bei1, bei2, bei3, bei4
+      )
+    values (#{fabankid,jdbcType=INTEGER}, #{faname,jdbcType=VARCHAR}, #{fanumber,jdbcType=VARCHAR}, 
+      #{bei1,jdbcType=VARCHAR}, #{bei2,jdbcType=VARCHAR}, #{bei3,jdbcType=VARCHAR}, #{bei4,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Fadongbrand" >
+    insert into fadongbrand
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fabankid != null" >
+        FaBankId,
+      </if>
+      <if test="faname != null" >
+        FaName,
+      </if>
+      <if test="fanumber != null" >
+        FaNumber,
+      </if>
+      <if test="bei1 != null" >
+        bei1,
+      </if>
+      <if test="bei2 != null" >
+        bei2,
+      </if>
+      <if test="bei3 != null" >
+        bei3,
+      </if>
+      <if test="bei4 != null" >
+        bei4,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fabankid != null" >
+        #{fabankid,jdbcType=INTEGER},
+      </if>
+      <if test="faname != null" >
+        #{faname,jdbcType=VARCHAR},
+      </if>
+      <if test="fanumber != null" >
+        #{fanumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bei1 != null" >
+        #{bei1,jdbcType=VARCHAR},
+      </if>
+      <if test="bei2 != null" >
+        #{bei2,jdbcType=VARCHAR},
+      </if>
+      <if test="bei3 != null" >
+        #{bei3,jdbcType=VARCHAR},
+      </if>
+      <if test="bei4 != null" >
+        #{bei4,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.FadongbrandExample" resultType="java.lang.Integer" >
+    select count(*) from fadongbrand
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update fadongbrand
+    <set >
+      <if test="record.fabankid != null" >
+        FaBankId = #{record.fabankid,jdbcType=INTEGER},
+      </if>
+      <if test="record.faname != null" >
+        FaName = #{record.faname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fanumber != null" >
+        FaNumber = #{record.fanumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei1 != null" >
+        bei1 = #{record.bei1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei2 != null" >
+        bei2 = #{record.bei2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei3 != null" >
+        bei3 = #{record.bei3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei4 != null" >
+        bei4 = #{record.bei4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update fadongbrand
+    set FaBankId = #{record.fabankid,jdbcType=INTEGER},
+      FaName = #{record.faname,jdbcType=VARCHAR},
+      FaNumber = #{record.fanumber,jdbcType=VARCHAR},
+      bei1 = #{record.bei1,jdbcType=VARCHAR},
+      bei2 = #{record.bei2,jdbcType=VARCHAR},
+      bei3 = #{record.bei3,jdbcType=VARCHAR},
+      bei4 = #{record.bei4,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.Fadongbrand" >
+    update fadongbrand
+    <set >
+      <if test="faname != null" >
+        FaName = #{faname,jdbcType=VARCHAR},
+      </if>
+      <if test="fanumber != null" >
+        FaNumber = #{fanumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bei1 != null" >
+        bei1 = #{bei1,jdbcType=VARCHAR},
+      </if>
+      <if test="bei2 != null" >
+        bei2 = #{bei2,jdbcType=VARCHAR},
+      </if>
+      <if test="bei3 != null" >
+        bei3 = #{bei3,jdbcType=VARCHAR},
+      </if>
+      <if test="bei4 != null" >
+        bei4 = #{bei4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where FaBankId = #{fabankid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.Fadongbrand" >
+    update fadongbrand
+    set FaName = #{faname,jdbcType=VARCHAR},
+      FaNumber = #{fanumber,jdbcType=VARCHAR},
+      bei1 = #{bei1,jdbcType=VARCHAR},
+      bei2 = #{bei2,jdbcType=VARCHAR},
+      bei3 = #{bei3,jdbcType=VARCHAR},
+      bei4 = #{bei4,jdbcType=VARCHAR}
+    where FaBankId = #{fabankid,jdbcType=INTEGER}
+  </update>
+</mapper>

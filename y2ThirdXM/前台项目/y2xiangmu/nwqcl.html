@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			
+			#gwdiv{
+				border: 0px solid red;
+				
+			}
+			#gwdiv1{
+				border: 0px solid red;
+				background-color: honeydew;
+			}
+			#gwdiv1 li{
+				list-style: none;
+				display: inline-block;
+			}
+			#gwdiv2{
+				border: 0px solid red;
+			}
+			#gwdiv2 li{
+				list-style: none;
+				display: inline-block;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container-fluid" id="gwdiv">
+			<div id="gwdiv1">
+				<ul>
+					<li><h3>外勤车辆</h3></li>
+					<li style="float: right;"><button type="button" class="btn btn-default">关闭</button></li>
+				</ul>
+			</div>
+			<div id="gwdiv2"> 
+				<ul style="float: right;">
+					<li><span class="glyphicon glyphicon-align-justify"></span>增加</li>
+					<li><span class="glyphicon glyphicon-remove-circle"></span>删除</li>
+					<li><span class="glyphicon glyphicon-folder-open"></span>保存</li>
+				</ul>
+				<br />
+				<br />
+				<ul>
+					<li>车牌号<input type="text"></li>
+					<li>品牌<input type="text"></li>
+					<li>车型<input type="text"></li>
+					<li>当前里程<input type="text"></li>
+					<li>班组<input type="text" disabled="true"></li>
+				</ul>
+			</div>
+			<div>
+				<table class="table table-bordered" style="width: 800px;">
+					<thead>
+						<tr>
+							<th>车牌号</th>
+							<th>品牌</th>
+							<th>车型</th>
+							<th>当前里程</th>
+							<th>归属班组</th>
+							
+						</tr>			
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>配件经理</td>
+							<td>23123</td>
+							<td>1900</td>
+							<td>机修1组</td>
+							
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.KehuMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Kehu" >
+    <id column="kehuid" property="kehuid" jdbcType="INTEGER" />
+    <result column="KeHuNo" property="kehuno" jdbcType="VARCHAR" />
+    <result column="KeHuName" property="kehuname" jdbcType="VARCHAR" />
+    <result column="KeHuAddress" property="kehuaddress" jdbcType="VARCHAR" />
+    <result column="ZhuAddress" property="zhuaddress" jdbcType="VARCHAR" />
+    <result column="KeHuBirthday" property="kehubirthday" jdbcType="DATE" />
+    <result column="KeHuType" property="kehutype" jdbcType="VARCHAR" />
+    <result column="KeHuLianXi" property="kehulianxi" jdbcType="VARCHAR" />
+    <result column="KeHuPhone" property="kehuphone" jdbcType="VARCHAR" />
+    <result column="ZhangQi" property="zhangqi" jdbcType="TIMESTAMP" />
+    <result column="GuaZhang" property="guazhang" jdbcType="DOUBLE" />
+    <result column="eDu" property="edu" jdbcType="DOUBLE" />
+    <result column="DinJin" property="dinjin" jdbcType="DOUBLE" />
+    <result column="GuWen" property="guwen" jdbcType="VARCHAR" />
+    <result column="GuWenPhone" property="guwenphone" jdbcType="VARCHAR" />
+    <result column="ChePai" property="chepai" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="JiFen" property="jifen" jdbcType="INTEGER" />
+    <result column="ZhuPhone" property="zhuphone" jdbcType="VARCHAR" />
+    <result column="bank" property="bank" jdbcType="VARCHAR" />
+    <result column="bankcard" property="bankcard" jdbcType="VARCHAR" />
+    <result column="bei1" property="bei1" jdbcType="VARCHAR" />
+    <result column="bei2" property="bei2" jdbcType="VARCHAR" />
+    <result column="bei3" property="bei3" jdbcType="VARCHAR" />
+    <result column="bei4" property="bei4" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    kehuid, KeHuNo, KeHuName, KeHuAddress, ZhuAddress, KeHuBirthday, KeHuType, KeHuLianXi, 
+    KeHuPhone, ZhangQi, GuaZhang, eDu, DinJin, GuWen, GuWenPhone, ChePai, remark, JiFen, 
+    ZhuPhone, bank, bankcard, bei1, bei2, bei3, bei4
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.KehuExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from kehu
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from kehu
+    where kehuid = #{kehuid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from kehu
+    where kehuid = #{kehuid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.KehuExample" >
+    delete from kehu
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.Kehu" >
+    insert into kehu (kehuid, KeHuNo, KeHuName, 
+      KeHuAddress, ZhuAddress, KeHuBirthday, 
+      KeHuType, KeHuLianXi, KeHuPhone, 
+      ZhangQi, GuaZhang, eDu, 
+      DinJin, GuWen, GuWenPhone, 
+      ChePai, remark, JiFen, 
+      ZhuPhone, bank, bankcard, 
+      bei1, bei2, bei3, bei4
+      )
+    values (#{kehuid,jdbcType=INTEGER}, #{kehuno,jdbcType=VARCHAR}, #{kehuname,jdbcType=VARCHAR}, 
+      #{kehuaddress,jdbcType=VARCHAR}, #{zhuaddress,jdbcType=VARCHAR}, #{kehubirthday,jdbcType=DATE}, 
+      #{kehutype,jdbcType=VARCHAR}, #{kehulianxi,jdbcType=VARCHAR}, #{kehuphone,jdbcType=VARCHAR}, 
+      #{zhangqi,jdbcType=TIMESTAMP}, #{guazhang,jdbcType=DOUBLE}, #{edu,jdbcType=DOUBLE}, 
+      #{dinjin,jdbcType=DOUBLE}, #{guwen,jdbcType=VARCHAR}, #{guwenphone,jdbcType=VARCHAR}, 
+      #{chepai,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{jifen,jdbcType=INTEGER}, 
+      #{zhuphone,jdbcType=VARCHAR}, #{bank,jdbcType=VARCHAR}, #{bankcard,jdbcType=VARCHAR}, 
+      #{bei1,jdbcType=VARCHAR}, #{bei2,jdbcType=VARCHAR}, #{bei3,jdbcType=VARCHAR}, #{bei4,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Kehu" >
+    insert into kehu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="kehuid != null" >
+        kehuid,
+      </if>
+      <if test="kehuno != null" >
+        KeHuNo,
+      </if>
+      <if test="kehuname != null" >
+        KeHuName,
+      </if>
+      <if test="kehuaddress != null" >
+        KeHuAddress,
+      </if>
+      <if test="zhuaddress != null" >
+        ZhuAddress,
+      </if>
+      <if test="kehubirthday != null" >
+        KeHuBirthday,
+      </if>
+      <if test="kehutype != null" >
+        KeHuType,
+      </if>
+      <if test="kehulianxi != null" >
+        KeHuLianXi,
+      </if>
+      <if test="kehuphone != null" >
+        KeHuPhone,
+      </if>
+      <if test="zhangqi != null" >
+        ZhangQi,
+      </if>
+      <if test="guazhang != null" >
+        GuaZhang,
+      </if>
+      <if test="edu != null" >
+        eDu,
+      </if>
+      <if test="dinjin != null" >
+        DinJin,
+      </if>
+      <if test="guwen != null" >
+        GuWen,
+      </if>
+      <if test="guwenphone != null" >
+        GuWenPhone,
+      </if>
+      <if test="chepai != null" >
+        ChePai,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="jifen != null" >
+        JiFen,
+      </if>
+      <if test="zhuphone != null" >
+        ZhuPhone,
+      </if>
+      <if test="bank != null" >
+        bank,
+      </if>
+      <if test="bankcard != null" >
+        bankcard,
+      </if>
+      <if test="bei1 != null" >
+        bei1,
+      </if>
+      <if test="bei2 != null" >
+        bei2,
+      </if>
+      <if test="bei3 != null" >
+        bei3,
+      </if>
+      <if test="bei4 != null" >
+        bei4,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="kehuid != null" >
+        #{kehuid,jdbcType=INTEGER},
+      </if>
+      <if test="kehuno != null" >
+        #{kehuno,jdbcType=VARCHAR},
+      </if>
+      <if test="kehuname != null" >
+        #{kehuname,jdbcType=VARCHAR},
+      </if>
+      <if test="kehuaddress != null" >
+        #{kehuaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="zhuaddress != null" >
+        #{zhuaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="kehubirthday != null" >
+        #{kehubirthday,jdbcType=DATE},
+      </if>
+      <if test="kehutype != null" >
+        #{kehutype,jdbcType=VARCHAR},
+      </if>
+      <if test="kehulianxi != null" >
+        #{kehulianxi,jdbcType=VARCHAR},
+      </if>
+      <if test="kehuphone != null" >
+        #{kehuphone,jdbcType=VARCHAR},
+      </if>
+      <if test="zhangqi != null" >
+        #{zhangqi,jdbcType=TIMESTAMP},
+      </if>
+      <if test="guazhang != null" >
+        #{guazhang,jdbcType=DOUBLE},
+      </if>
+      <if test="edu != null" >
+        #{edu,jdbcType=DOUBLE},
+      </if>
+      <if test="dinjin != null" >
+        #{dinjin,jdbcType=DOUBLE},
+      </if>
+      <if test="guwen != null" >
+        #{guwen,jdbcType=VARCHAR},
+      </if>
+      <if test="guwenphone != null" >
+        #{guwenphone,jdbcType=VARCHAR},
+      </if>
+      <if test="chepai != null" >
+        #{chepai,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="jifen != null" >
+        #{jifen,jdbcType=INTEGER},
+      </if>
+      <if test="zhuphone != null" >
+        #{zhuphone,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null" >
+        #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="bankcard != null" >
+        #{bankcard,jdbcType=VARCHAR},
+      </if>
+      <if test="bei1 != null" >
+        #{bei1,jdbcType=VARCHAR},
+      </if>
+      <if test="bei2 != null" >
+        #{bei2,jdbcType=VARCHAR},
+      </if>
+      <if test="bei3 != null" >
+        #{bei3,jdbcType=VARCHAR},
+      </if>
+      <if test="bei4 != null" >
+        #{bei4,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.KehuExample" resultType="java.lang.Integer" >
+    select count(*) from kehu
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update kehu
+    <set >
+      <if test="record.kehuid != null" >
+        kehuid = #{record.kehuid,jdbcType=INTEGER},
+      </if>
+      <if test="record.kehuno != null" >
+        KeHuNo = #{record.kehuno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kehuname != null" >
+        KeHuName = #{record.kehuname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kehuaddress != null" >
+        KeHuAddress = #{record.kehuaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zhuaddress != null" >
+        ZhuAddress = #{record.zhuaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kehubirthday != null" >
+        KeHuBirthday = #{record.kehubirthday,jdbcType=DATE},
+      </if>
+      <if test="record.kehutype != null" >
+        KeHuType = #{record.kehutype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kehulianxi != null" >
+        KeHuLianXi = #{record.kehulianxi,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kehuphone != null" >
+        KeHuPhone = #{record.kehuphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zhangqi != null" >
+        ZhangQi = #{record.zhangqi,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.guazhang != null" >
+        GuaZhang = #{record.guazhang,jdbcType=DOUBLE},
+      </if>
+      <if test="record.edu != null" >
+        eDu = #{record.edu,jdbcType=DOUBLE},
+      </if>
+      <if test="record.dinjin != null" >
+        DinJin = #{record.dinjin,jdbcType=DOUBLE},
+      </if>
+      <if test="record.guwen != null" >
+        GuWen = #{record.guwen,jdbcType=VARCHAR},
+      </if>
+      <if test="record.guwenphone != null" >
+        GuWenPhone = #{record.guwenphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.chepai != null" >
+        ChePai = #{record.chepai,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jifen != null" >
+        JiFen = #{record.jifen,jdbcType=INTEGER},
+      </if>
+      <if test="record.zhuphone != null" >
+        ZhuPhone = #{record.zhuphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bank != null" >
+        bank = #{record.bank,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bankcard != null" >
+        bankcard = #{record.bankcard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei1 != null" >
+        bei1 = #{record.bei1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei2 != null" >
+        bei2 = #{record.bei2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei3 != null" >
+        bei3 = #{record.bei3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei4 != null" >
+        bei4 = #{record.bei4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update kehu
+    set kehuid = #{record.kehuid,jdbcType=INTEGER},
+      KeHuNo = #{record.kehuno,jdbcType=VARCHAR},
+      KeHuName = #{record.kehuname,jdbcType=VARCHAR},
+      KeHuAddress = #{record.kehuaddress,jdbcType=VARCHAR},
+      ZhuAddress = #{record.zhuaddress,jdbcType=VARCHAR},
+      KeHuBirthday = #{record.kehubirthday,jdbcType=DATE},
+      KeHuType = #{record.kehutype,jdbcType=VARCHAR},
+      KeHuLianXi = #{record.kehulianxi,jdbcType=VARCHAR},
+      KeHuPhone = #{record.kehuphone,jdbcType=VARCHAR},
+      ZhangQi = #{record.zhangqi,jdbcType=TIMESTAMP},
+      GuaZhang = #{record.guazhang,jdbcType=DOUBLE},
+      eDu = #{record.edu,jdbcType=DOUBLE},
+      DinJin = #{record.dinjin,jdbcType=DOUBLE},
+      GuWen = #{record.guwen,jdbcType=VARCHAR},
+      GuWenPhone = #{record.guwenphone,jdbcType=VARCHAR},
+      ChePai = #{record.chepai,jdbcType=VARCHAR},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      JiFen = #{record.jifen,jdbcType=INTEGER},
+      ZhuPhone = #{record.zhuphone,jdbcType=VARCHAR},
+      bank = #{record.bank,jdbcType=VARCHAR},
+      bankcard = #{record.bankcard,jdbcType=VARCHAR},
+      bei1 = #{record.bei1,jdbcType=VARCHAR},
+      bei2 = #{record.bei2,jdbcType=VARCHAR},
+      bei3 = #{record.bei3,jdbcType=VARCHAR},
+      bei4 = #{record.bei4,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.Kehu" >
+    update kehu
+    <set >
+      <if test="kehuno != null" >
+        KeHuNo = #{kehuno,jdbcType=VARCHAR},
+      </if>
+      <if test="kehuname != null" >
+        KeHuName = #{kehuname,jdbcType=VARCHAR},
+      </if>
+      <if test="kehuaddress != null" >
+        KeHuAddress = #{kehuaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="zhuaddress != null" >
+        ZhuAddress = #{zhuaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="kehubirthday != null" >
+        KeHuBirthday = #{kehubirthday,jdbcType=DATE},
+      </if>
+      <if test="kehutype != null" >
+        KeHuType = #{kehutype,jdbcType=VARCHAR},
+      </if>
+      <if test="kehulianxi != null" >
+        KeHuLianXi = #{kehulianxi,jdbcType=VARCHAR},
+      </if>
+      <if test="kehuphone != null" >
+        KeHuPhone = #{kehuphone,jdbcType=VARCHAR},
+      </if>
+      <if test="zhangqi != null" >
+        ZhangQi = #{zhangqi,jdbcType=TIMESTAMP},
+      </if>
+      <if test="guazhang != null" >
+        GuaZhang = #{guazhang,jdbcType=DOUBLE},
+      </if>
+      <if test="edu != null" >
+        eDu = #{edu,jdbcType=DOUBLE},
+      </if>
+      <if test="dinjin != null" >
+        DinJin = #{dinjin,jdbcType=DOUBLE},
+      </if>
+      <if test="guwen != null" >
+        GuWen = #{guwen,jdbcType=VARCHAR},
+      </if>
+      <if test="guwenphone != null" >
+        GuWenPhone = #{guwenphone,jdbcType=VARCHAR},
+      </if>
+      <if test="chepai != null" >
+        ChePai = #{chepai,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="jifen != null" >
+        JiFen = #{jifen,jdbcType=INTEGER},
+      </if>
+      <if test="zhuphone != null" >
+        ZhuPhone = #{zhuphone,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null" >
+        bank = #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="bankcard != null" >
+        bankcard = #{bankcard,jdbcType=VARCHAR},
+      </if>
+      <if test="bei1 != null" >
+        bei1 = #{bei1,jdbcType=VARCHAR},
+      </if>
+      <if test="bei2 != null" >
+        bei2 = #{bei2,jdbcType=VARCHAR},
+      </if>
+      <if test="bei3 != null" >
+        bei3 = #{bei3,jdbcType=VARCHAR},
+      </if>
+      <if test="bei4 != null" >
+        bei4 = #{bei4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where kehuid = #{kehuid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.Kehu" >
+    update kehu
+    set KeHuNo = #{kehuno,jdbcType=VARCHAR},
+      KeHuName = #{kehuname,jdbcType=VARCHAR},
+      KeHuAddress = #{kehuaddress,jdbcType=VARCHAR},
+      ZhuAddress = #{zhuaddress,jdbcType=VARCHAR},
+      KeHuBirthday = #{kehubirthday,jdbcType=DATE},
+      KeHuType = #{kehutype,jdbcType=VARCHAR},
+      KeHuLianXi = #{kehulianxi,jdbcType=VARCHAR},
+      KeHuPhone = #{kehuphone,jdbcType=VARCHAR},
+      ZhangQi = #{zhangqi,jdbcType=TIMESTAMP},
+      GuaZhang = #{guazhang,jdbcType=DOUBLE},
+      eDu = #{edu,jdbcType=DOUBLE},
+      DinJin = #{dinjin,jdbcType=DOUBLE},
+      GuWen = #{guwen,jdbcType=VARCHAR},
+      GuWenPhone = #{guwenphone,jdbcType=VARCHAR},
+      ChePai = #{chepai,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      JiFen = #{jifen,jdbcType=INTEGER},
+      ZhuPhone = #{zhuphone,jdbcType=VARCHAR},
+      bank = #{bank,jdbcType=VARCHAR},
+      bankcard = #{bankcard,jdbcType=VARCHAR},
+      bei1 = #{bei1,jdbcType=VARCHAR},
+      bei2 = #{bei2,jdbcType=VARCHAR},
+      bei3 = #{bei3,jdbcType=VARCHAR},
+      bei4 = #{bei4,jdbcType=VARCHAR}
+    where kehuid = #{kehuid,jdbcType=INTEGER}
+  </update>
+</mapper>

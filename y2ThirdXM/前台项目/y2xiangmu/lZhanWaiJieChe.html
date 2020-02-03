@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>站外接车</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+	</head>
+	<body>
+		<div class="row" style="border-bottom: solid 1px silver;">
+			<h3 class="col-xs-offset-1 col-xs-3">站外接车单</h3>
+			<p class="col-xs-3" style="height: 50px; line-height: 50px;">进行中</p>
+			<p class="col-xs-4" style="text-align: right; padding-right: 40px;"><button class="btn btn-success" style="margin: 14px 0 0 10px;width: 20%;">保存</button><button type="button" class="btn btn-success" style="margin: 14px 0 0 10px;">关闭</button></p>
+		</div>
+		<div class="row" style="font-size: 16px;border-bottom: solid 1px blue;">
+			<p class="col-xs-10" style="padding-left: 40px;">单号：<strong><span>88888888</span></strong></p>
+			<p class="col-xs-2"><strong><a href="#stock" data-toggle="modal">竣工检验</a>&nbsp;&nbsp;<a>委托书</a>&nbsp;&nbsp;<a>照片</a></strong></p>
+		</div>
+		<div class="row" style="margin-top: 20px;">
+			<div class="row col-xs-10">
+				<p class="col-xs-3">
+					<label>*车牌号码</label>
+					<input type="text"/>
+				</p>
+				<p class="col-xs-3">
+					<label>车辆型号</label>
+					<input type="text"/>
+				</p>
+				<p class="col-xs-3">
+					<label>车辆品牌</label>
+					<input type="text"/>
+				</p>
+				<p class="col-xs-3">
+					<label>发动机品牌</label>
+					<input type="text"/>
+				</p>
+<!--    *******************华丽分割线********************   -->
+				<p class="col-xs-3">
+					<label>车主名称</label>
+					<input type="text"/>
+				</p>
+				<p class="col-xs-3">
+					<label>驾驶员&nbsp;&nbsp;</label>
+					<input type="text"/>
+				</p>
+				<p class="col-xs-3">
+					<label>手机号码</label>
+					<input type="text"/>
+				</p>
+				<p class="col-xs-3">
+					<label>服务顾问</label>
+					<select  style="width: 174px;padding: 3px 0px;">
+						<option>无</option>
+					</select>
+				</p>
+<!--    *******************华丽分割线********************   -->
+				<p class="col-xs-3">
+					<label>业务类别</label>
+					<select  style="width: 174px;padding: 3px 0px;">
+						<option>无</option>
+					</select>
+				</p>
+				<p class="col-xs-3">
+					<label>施工班次</label>
+					<select  style="width: 174px;padding: 3px 0px;">
+						<option>无</option>
+					</select>
+				</p>
+				<p class="col-xs-3" style="height: 30px;">
+					<label>当前里程</label>
+					<input type="text"/>
+				</p>
+				<p class="col-xs-3" style="height: 30px;">
+					<label>派工时间</label>
+					<input type="text"/>
+				</p>
+<!--    *******************华丽分割线********************   -->				
+				<p class="col-xs-3">
+					<label>结算方式</label>
+					<select  style="width: 174px;padding: 3px 0px;">
+						<option>现结</option>
+					</select>
+				</p>
+				<p class="col-xs-3">
+					<label>赔款公司</label>
+					<select  style="width: 174px;padding: 3px 0px;">
+						<option>无</option>
+					</select>
+				</p>
+				<p class="col-xs-6" style="height: 30px;">
+					<label>派工班组</label>
+					<input type="text"/>
+					<select  style="width: 174px;padding: 3px 0px;">
+						<option>无</option>
+					</select>
+				</p>
+				
+<!--    *******************华丽分割线********************   -->				
+				<p class="col-xs-3">
+					<label>出发时间</label>
+					<input type="text"/>
+				</p>
+				<p class="col-xs-3">
+					<label>出发地址</label>
+					<input type="text"/>
+				</p>
+				<p class="col-xs-3">
+					<label>驾驶车辆</label>
+					<input type="text"/>
+				</p>
+				<p class="col-xs-3">
+					<label>行驶里程</label>
+					<input type="text"/>
+				</p>
+				<!--    *******************华丽分割线********************   -->
+				<p class="col-xs-3">
+					<label>施工时间</label>
+					<input type="text"/>
+				</p>
+				<p class="col-xs-3">
+					<label>救援地址</label>
+					<input type="text"/>
+				</p>
+				<p class="col-xs-3">
+				</p>
+				<p class="col-xs-3">
+					<label>完工时间</label>
+					<input type="text"/>
+				</p>
+<!--    *******************华丽分割线********************   -->
+				<p class="col-xs-3">
+					<label>预估金额</label>
+					<input type="text"/>
+				</p>
+				<p class="col-xs-9">
+					<label>维修备注</label>
+					<input type="text" size="50px"/>
+				</p>
+<!--    *******************华丽分割线********************   -->
+				<p class="col-xs-2" style="margin: 0 0 0 20px;text-align: center;height: 46px;line-height: 46px;border: 1px solid;font-size: 16px;">
+					<strong>保修陈述</strong>
+				</p>
+				<textarea cols="120">
+					
+				</textarea>
+<!--    *******************华丽分割线********************   -->
+			</div>
+		</div>
+		<div>
+			<ul class="row" style="list-style: none;font-size: 16px;margin: 15px 0px;">
+				<li class="col-xs-1" onclick="danji(this)" style="border-top: 3px solid white;">维修项目</li>
+				<li class="col-xs-1" onclick="danji(this)" style="border-top: 3px solid white;">领料情况</li>
+				<li class="col-xs-1" onclick="danji(this)" style="border-top: 3px solid white;">附加项目</li>
+				<li class="col-xs-1" onclick="danji(this)" style="border-top: 3px solid white;">结算信息</li>
+			</ul>
+		</div>
+		
+		<div class="row">
+			<table class="table table-hover table-bordered text-center" style="overflow: scroll; width: 1250px;">
+					<thead>
+						<tr>
+							<th class="text-center">选择</th>
+							<th class="text-center">项目编码</th>
+							<th class="text-center">项目名称</th>
+							<th class="text-center">数量</th>
+							<th class="text-center">价类</th>
+							<th class="text-center">优惠前价</th>
+							<th class="text-center">优惠后价</th>
+							<th class="text-center">优惠后金额</th>
+							<th class="text-center">故障描述</th>
+							<th class="text-center">故障原因</th>
+							<th class="text-center">机修班组</th>
+							<th class="text-center">作业人员</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="text-center"><input type="checkbox"></td>
+							<td class="text-center">华为荣耀p1000</td>
+							<td class="text-center">手机</td>
+							<td class="text-center">0.1</td>
+							<td class="text-center">99999</td>
+							<td class="text-center">99999</td>
+							<td class="text-center">99999</td>
+							<td class="text-center">手机</td>
+							<td class="text-center">0.1</td>
+							<td class="text-center">99999</td>
+							<td class="text-center">99999</td>
+							<td class="text-center">99999</td>
+						</tr>
+					</tbody>
+				</table>
+		</div>
+		<!-- 竣工检验  -  模态框 -->
+		<div class="modal" tabindex="-1" role="dialog" id="stock">
+		  	<div class="modal-dialog" role="document">
+		    	<div class="modal-content">
+		      		<div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
+				        <div class="row">
+				        	<h3 class="modal-title col-xs-9">竣工检修</h3>
+				        	<button type="button" class="btn btn-success col-xs-2">保存</button>
+				        </div>
+		      		</div>
+			      	<div class="modal-body row" style="font-size: 17px;">
+			      		<div class="col-xs-6">
+				      		<p><input type="radio" name="isok"><label>合格完工</label></p>
+				      		<p><label>预计完工时间</label><input type="datetime-local" style="width: 160px;"/></p>
+				      		<p><label>实际完工时间</label><input type="datetime-local" style="width: 160px;"/></p>
+				      		<p><label>误工原因&nbsp;&nbsp;</label><input type="text" style="width: 180px;"/></p>
+				      		<p><label>质检员</label>
+				      			<select name="" style="width: 173px; padding: 3px 0;">
+				      				<option value="">0000</option>
+				      			</select></p>
+				      		</p>
+				      		<p><label>责任人</label>
+				      			<select name="" style="width: 173px; padding: 3px 0;">
+				      				<option value="">0000</option>
+				      			</select></p>
+				      		<p><label>处罚金额</label><input type="text" style="width: 160px;"></p>
+			      		</div>
+			      		<div class="col-xs-6">
+			      			<p><input type="radio" name="isok"><label>不合格返工</label>&nbsp;&nbsp;&nbsp;已返工<span>0</span>次</p>
+			      			<p><label>返工原因</label><input type="text" style="width: 160px;"></p>
+			      			<p><label>责任人：</label><input type="text" style="width: 160px;"></p>
+			      			<p><label>处罚金额</label><input type="text" style="width: 160px;"></p>
+			      		</div>
+			      	</div>
+		    	</div><!-- /.modal-content -->
+		  	</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+		
+	</body>
+	<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
+	<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+	<script type="text/javascript">
+		function danji(item){
+			item.style.borderTop="3px solid black";
+			for(var i=0; i<$(item).siblings().length;i++){
+				$(item).siblings()[i].style.borderTop="3px solid white";
+			}
+		}
+	</script>
+</html>

@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.WaiqingcarMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Waiqingcar" >
+    <id column="ChePai" property="chepai" jdbcType="VARCHAR" />
+    <result column="CarBank" property="carbank" jdbcType="VARCHAR" />
+    <result column="CheXing" property="chexing" jdbcType="VARCHAR" />
+    <result column="NowLi" property="nowli" jdbcType="VARCHAR" />
+    <result column="BanId" property="banid" jdbcType="INTEGER" />
+    <result column="bei1" property="bei1" jdbcType="VARCHAR" />
+    <result column="bei2" property="bei2" jdbcType="VARCHAR" />
+    <result column="bei3" property="bei3" jdbcType="VARCHAR" />
+    <result column="bei4" property="bei4" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ChePai, CarBank, CheXing, NowLi, BanId, bei1, bei2, bei3, bei4
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.WaiqingcarExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from waiqingcar
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from waiqingcar
+    where ChePai = #{chepai,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from waiqingcar
+    where ChePai = #{chepai,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.WaiqingcarExample" >
+    delete from waiqingcar
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.Waiqingcar" >
+    insert into waiqingcar (ChePai, CarBank, CheXing, 
+      NowLi, BanId, bei1, 
+      bei2, bei3, bei4)
+    values (#{chepai,jdbcType=VARCHAR}, #{carbank,jdbcType=VARCHAR}, #{chexing,jdbcType=VARCHAR}, 
+      #{nowli,jdbcType=VARCHAR}, #{banid,jdbcType=INTEGER}, #{bei1,jdbcType=VARCHAR}, 
+      #{bei2,jdbcType=VARCHAR}, #{bei3,jdbcType=VARCHAR}, #{bei4,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Waiqingcar" >
+    insert into waiqingcar
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="chepai != null" >
+        ChePai,
+      </if>
+      <if test="carbank != null" >
+        CarBank,
+      </if>
+      <if test="chexing != null" >
+        CheXing,
+      </if>
+      <if test="nowli != null" >
+        NowLi,
+      </if>
+      <if test="banid != null" >
+        BanId,
+      </if>
+      <if test="bei1 != null" >
+        bei1,
+      </if>
+      <if test="bei2 != null" >
+        bei2,
+      </if>
+      <if test="bei3 != null" >
+        bei3,
+      </if>
+      <if test="bei4 != null" >
+        bei4,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="chepai != null" >
+        #{chepai,jdbcType=VARCHAR},
+      </if>
+      <if test="carbank != null" >
+        #{carbank,jdbcType=VARCHAR},
+      </if>
+      <if test="chexing != null" >
+        #{chexing,jdbcType=VARCHAR},
+      </if>
+      <if test="nowli != null" >
+        #{nowli,jdbcType=VARCHAR},
+      </if>
+      <if test="banid != null" >
+        #{banid,jdbcType=INTEGER},
+      </if>
+      <if test="bei1 != null" >
+        #{bei1,jdbcType=VARCHAR},
+      </if>
+      <if test="bei2 != null" >
+        #{bei2,jdbcType=VARCHAR},
+      </if>
+      <if test="bei3 != null" >
+        #{bei3,jdbcType=VARCHAR},
+      </if>
+      <if test="bei4 != null" >
+        #{bei4,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.WaiqingcarExample" resultType="java.lang.Integer" >
+    select count(*) from waiqingcar
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update waiqingcar
+    <set >
+      <if test="record.chepai != null" >
+        ChePai = #{record.chepai,jdbcType=VARCHAR},
+      </if>
+      <if test="record.carbank != null" >
+        CarBank = #{record.carbank,jdbcType=VARCHAR},
+      </if>
+      <if test="record.chexing != null" >
+        CheXing = #{record.chexing,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nowli != null" >
+        NowLi = #{record.nowli,jdbcType=VARCHAR},
+      </if>
+      <if test="record.banid != null" >
+        BanId = #{record.banid,jdbcType=INTEGER},
+      </if>
+      <if test="record.bei1 != null" >
+        bei1 = #{record.bei1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei2 != null" >
+        bei2 = #{record.bei2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei3 != null" >
+        bei3 = #{record.bei3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei4 != null" >
+        bei4 = #{record.bei4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update waiqingcar
+    set ChePai = #{record.chepai,jdbcType=VARCHAR},
+      CarBank = #{record.carbank,jdbcType=VARCHAR},
+      CheXing = #{record.chexing,jdbcType=VARCHAR},
+      NowLi = #{record.nowli,jdbcType=VARCHAR},
+      BanId = #{record.banid,jdbcType=INTEGER},
+      bei1 = #{record.bei1,jdbcType=VARCHAR},
+      bei2 = #{record.bei2,jdbcType=VARCHAR},
+      bei3 = #{record.bei3,jdbcType=VARCHAR},
+      bei4 = #{record.bei4,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.Waiqingcar" >
+    update waiqingcar
+    <set >
+      <if test="carbank != null" >
+        CarBank = #{carbank,jdbcType=VARCHAR},
+      </if>
+      <if test="chexing != null" >
+        CheXing = #{chexing,jdbcType=VARCHAR},
+      </if>
+      <if test="nowli != null" >
+        NowLi = #{nowli,jdbcType=VARCHAR},
+      </if>
+      <if test="banid != null" >
+        BanId = #{banid,jdbcType=INTEGER},
+      </if>
+      <if test="bei1 != null" >
+        bei1 = #{bei1,jdbcType=VARCHAR},
+      </if>
+      <if test="bei2 != null" >
+        bei2 = #{bei2,jdbcType=VARCHAR},
+      </if>
+      <if test="bei3 != null" >
+        bei3 = #{bei3,jdbcType=VARCHAR},
+      </if>
+      <if test="bei4 != null" >
+        bei4 = #{bei4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ChePai = #{chepai,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.Waiqingcar" >
+    update waiqingcar
+    set CarBank = #{carbank,jdbcType=VARCHAR},
+      CheXing = #{chexing,jdbcType=VARCHAR},
+      NowLi = #{nowli,jdbcType=VARCHAR},
+      BanId = #{banid,jdbcType=INTEGER},
+      bei1 = #{bei1,jdbcType=VARCHAR},
+      bei2 = #{bei2,jdbcType=VARCHAR},
+      bei3 = #{bei3,jdbcType=VARCHAR},
+      bei4 = #{bei4,jdbcType=VARCHAR}
+    where ChePai = #{chepai,jdbcType=VARCHAR}
+  </update>
+</mapper>

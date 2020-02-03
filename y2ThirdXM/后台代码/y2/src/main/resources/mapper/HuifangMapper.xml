@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.HuifangMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Huifang" >
+    <id column="huifangid" property="huifangid" jdbcType="INTEGER" />
+    <result column="chepai" property="chepai" jdbcType="VARCHAR" />
+    <result column="hfNeiRon" property="hfneiron" jdbcType="VARCHAR" />
+    <result column="hfdate" property="hfdate" jdbcType="TIMESTAMP" />
+    <result column="hfXiaoGuo" property="hfxiaoguo" jdbcType="VARCHAR" />
+    <result column="no" property="no" jdbcType="VARCHAR" />
+    <result column="hfGuWen" property="hfguwen" jdbcType="VARCHAR" />
+    <result column="shuoming" property="shuoming" jdbcType="VARCHAR" />
+    <result column="bei1" property="bei1" jdbcType="VARCHAR" />
+    <result column="bei2" property="bei2" jdbcType="VARCHAR" />
+    <result column="bei3" property="bei3" jdbcType="VARCHAR" />
+    <result column="bei4" property="bei4" jdbcType="VARCHAR" />
+    <result column="bei5" property="bei5" jdbcType="VARCHAR" />
+    <result column="bei6" property="bei6" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    huifangid, chepai, hfNeiRon, hfdate, hfXiaoGuo, no, hfGuWen, shuoming, bei1, bei2, 
+    bei3, bei4, bei5, bei6
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.HuifangExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from huifang
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from huifang
+    where huifangid = #{huifangid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from huifang
+    where huifangid = #{huifangid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.HuifangExample" >
+    delete from huifang
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.Huifang" >
+    insert into huifang (huifangid, chepai, hfNeiRon, 
+      hfdate, hfXiaoGuo, no, 
+      hfGuWen, shuoming, bei1, 
+      bei2, bei3, bei4, bei5, 
+      bei6)
+    values (#{huifangid,jdbcType=INTEGER}, #{chepai,jdbcType=VARCHAR}, #{hfneiron,jdbcType=VARCHAR}, 
+      #{hfdate,jdbcType=TIMESTAMP}, #{hfxiaoguo,jdbcType=VARCHAR}, #{no,jdbcType=VARCHAR}, 
+      #{hfguwen,jdbcType=VARCHAR}, #{shuoming,jdbcType=VARCHAR}, #{bei1,jdbcType=VARCHAR}, 
+      #{bei2,jdbcType=VARCHAR}, #{bei3,jdbcType=VARCHAR}, #{bei4,jdbcType=VARCHAR}, #{bei5,jdbcType=VARCHAR}, 
+      #{bei6,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Huifang" >
+    insert into huifang
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="huifangid != null" >
+        huifangid,
+      </if>
+      <if test="chepai != null" >
+        chepai,
+      </if>
+      <if test="hfneiron != null" >
+        hfNeiRon,
+      </if>
+      <if test="hfdate != null" >
+        hfdate,
+      </if>
+      <if test="hfxiaoguo != null" >
+        hfXiaoGuo,
+      </if>
+      <if test="no != null" >
+        no,
+      </if>
+      <if test="hfguwen != null" >
+        hfGuWen,
+      </if>
+      <if test="shuoming != null" >
+        shuoming,
+      </if>
+      <if test="bei1 != null" >
+        bei1,
+      </if>
+      <if test="bei2 != null" >
+        bei2,
+      </if>
+      <if test="bei3 != null" >
+        bei3,
+      </if>
+      <if test="bei4 != null" >
+        bei4,
+      </if>
+      <if test="bei5 != null" >
+        bei5,
+      </if>
+      <if test="bei6 != null" >
+        bei6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="huifangid != null" >
+        #{huifangid,jdbcType=INTEGER},
+      </if>
+      <if test="chepai != null" >
+        #{chepai,jdbcType=VARCHAR},
+      </if>
+      <if test="hfneiron != null" >
+        #{hfneiron,jdbcType=VARCHAR},
+      </if>
+      <if test="hfdate != null" >
+        #{hfdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hfxiaoguo != null" >
+        #{hfxiaoguo,jdbcType=VARCHAR},
+      </if>
+      <if test="no != null" >
+        #{no,jdbcType=VARCHAR},
+      </if>
+      <if test="hfguwen != null" >
+        #{hfguwen,jdbcType=VARCHAR},
+      </if>
+      <if test="shuoming != null" >
+        #{shuoming,jdbcType=VARCHAR},
+      </if>
+      <if test="bei1 != null" >
+        #{bei1,jdbcType=VARCHAR},
+      </if>
+      <if test="bei2 != null" >
+        #{bei2,jdbcType=VARCHAR},
+      </if>
+      <if test="bei3 != null" >
+        #{bei3,jdbcType=VARCHAR},
+      </if>
+      <if test="bei4 != null" >
+        #{bei4,jdbcType=VARCHAR},
+      </if>
+      <if test="bei5 != null" >
+        #{bei5,jdbcType=VARCHAR},
+      </if>
+      <if test="bei6 != null" >
+        #{bei6,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.HuifangExample" resultType="java.lang.Integer" >
+    select count(*) from huifang
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update huifang
+    <set >
+      <if test="record.huifangid != null" >
+        huifangid = #{record.huifangid,jdbcType=INTEGER},
+      </if>
+      <if test="record.chepai != null" >
+        chepai = #{record.chepai,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hfneiron != null" >
+        hfNeiRon = #{record.hfneiron,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hfdate != null" >
+        hfdate = #{record.hfdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.hfxiaoguo != null" >
+        hfXiaoGuo = #{record.hfxiaoguo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.no != null" >
+        no = #{record.no,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hfguwen != null" >
+        hfGuWen = #{record.hfguwen,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shuoming != null" >
+        shuoming = #{record.shuoming,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei1 != null" >
+        bei1 = #{record.bei1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei2 != null" >
+        bei2 = #{record.bei2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei3 != null" >
+        bei3 = #{record.bei3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei4 != null" >
+        bei4 = #{record.bei4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei5 != null" >
+        bei5 = #{record.bei5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei6 != null" >
+        bei6 = #{record.bei6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update huifang
+    set huifangid = #{record.huifangid,jdbcType=INTEGER},
+      chepai = #{record.chepai,jdbcType=VARCHAR},
+      hfNeiRon = #{record.hfneiron,jdbcType=VARCHAR},
+      hfdate = #{record.hfdate,jdbcType=TIMESTAMP},
+      hfXiaoGuo = #{record.hfxiaoguo,jdbcType=VARCHAR},
+      no = #{record.no,jdbcType=VARCHAR},
+      hfGuWen = #{record.hfguwen,jdbcType=VARCHAR},
+      shuoming = #{record.shuoming,jdbcType=VARCHAR},
+      bei1 = #{record.bei1,jdbcType=VARCHAR},
+      bei2 = #{record.bei2,jdbcType=VARCHAR},
+      bei3 = #{record.bei3,jdbcType=VARCHAR},
+      bei4 = #{record.bei4,jdbcType=VARCHAR},
+      bei5 = #{record.bei5,jdbcType=VARCHAR},
+      bei6 = #{record.bei6,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.Huifang" >
+    update huifang
+    <set >
+      <if test="chepai != null" >
+        chepai = #{chepai,jdbcType=VARCHAR},
+      </if>
+      <if test="hfneiron != null" >
+        hfNeiRon = #{hfneiron,jdbcType=VARCHAR},
+      </if>
+      <if test="hfdate != null" >
+        hfdate = #{hfdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hfxiaoguo != null" >
+        hfXiaoGuo = #{hfxiaoguo,jdbcType=VARCHAR},
+      </if>
+      <if test="no != null" >
+        no = #{no,jdbcType=VARCHAR},
+      </if>
+      <if test="hfguwen != null" >
+        hfGuWen = #{hfguwen,jdbcType=VARCHAR},
+      </if>
+      <if test="shuoming != null" >
+        shuoming = #{shuoming,jdbcType=VARCHAR},
+      </if>
+      <if test="bei1 != null" >
+        bei1 = #{bei1,jdbcType=VARCHAR},
+      </if>
+      <if test="bei2 != null" >
+        bei2 = #{bei2,jdbcType=VARCHAR},
+      </if>
+      <if test="bei3 != null" >
+        bei3 = #{bei3,jdbcType=VARCHAR},
+      </if>
+      <if test="bei4 != null" >
+        bei4 = #{bei4,jdbcType=VARCHAR},
+      </if>
+      <if test="bei5 != null" >
+        bei5 = #{bei5,jdbcType=VARCHAR},
+      </if>
+      <if test="bei6 != null" >
+        bei6 = #{bei6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where huifangid = #{huifangid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.Huifang" >
+    update huifang
+    set chepai = #{chepai,jdbcType=VARCHAR},
+      hfNeiRon = #{hfneiron,jdbcType=VARCHAR},
+      hfdate = #{hfdate,jdbcType=TIMESTAMP},
+      hfXiaoGuo = #{hfxiaoguo,jdbcType=VARCHAR},
+      no = #{no,jdbcType=VARCHAR},
+      hfGuWen = #{hfguwen,jdbcType=VARCHAR},
+      shuoming = #{shuoming,jdbcType=VARCHAR},
+      bei1 = #{bei1,jdbcType=VARCHAR},
+      bei2 = #{bei2,jdbcType=VARCHAR},
+      bei3 = #{bei3,jdbcType=VARCHAR},
+      bei4 = #{bei4,jdbcType=VARCHAR},
+      bei5 = #{bei5,jdbcType=VARCHAR},
+      bei6 = #{bei6,jdbcType=VARCHAR}
+    where huifangid = #{huifangid,jdbcType=INTEGER}
+  </update>
+</mapper>

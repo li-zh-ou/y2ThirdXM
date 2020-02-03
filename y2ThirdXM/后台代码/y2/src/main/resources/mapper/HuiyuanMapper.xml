@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.HuiyuanMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Huiyuan" >
+    <id column="HuiYuanNo" property="huiyuanno" jdbcType="VARCHAR" />
+    <result column="KeHuNo" property="kehuno" jdbcType="VARCHAR" />
+    <result column="HuiYuanName" property="huiyuanname" jdbcType="VARCHAR" />
+    <result column="HuiYuanMoney" property="huiyuanmoney" jdbcType="DOUBLE" />
+    <result column="xiaofei" property="xiaofei" jdbcType="DOUBLE" />
+    <result column="RuHuiTime" property="ruhuitime" jdbcType="TIMESTAMP" />
+    <result column="DaoQiTime" property="daoqitime" jdbcType="TIMESTAMP" />
+    <result column="HuiYuanGraden" property="huiyuangraden" jdbcType="VARCHAR" />
+    <result column="YouHui" property="youhui" jdbcType="VARCHAR" />
+    <result column="JiFen" property="jifen" jdbcType="INTEGER" />
+    <result column="bei1" property="bei1" jdbcType="VARCHAR" />
+    <result column="bei2" property="bei2" jdbcType="VARCHAR" />
+    <result column="bei3" property="bei3" jdbcType="VARCHAR" />
+    <result column="bei4" property="bei4" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    HuiYuanNo, KeHuNo, HuiYuanName, HuiYuanMoney, xiaofei, RuHuiTime, DaoQiTime, HuiYuanGraden, 
+    YouHui, JiFen, bei1, bei2, bei3, bei4
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.HuiyuanExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from huiyuan
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from huiyuan
+    where HuiYuanNo = #{huiyuanno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from huiyuan
+    where HuiYuanNo = #{huiyuanno,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.HuiyuanExample" >
+    delete from huiyuan
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.Huiyuan" >
+    insert into huiyuan (HuiYuanNo, KeHuNo, HuiYuanName, 
+      HuiYuanMoney, xiaofei, RuHuiTime, 
+      DaoQiTime, HuiYuanGraden, YouHui, 
+      JiFen, bei1, bei2, 
+      bei3, bei4)
+    values (#{huiyuanno,jdbcType=VARCHAR}, #{kehuno,jdbcType=VARCHAR}, #{huiyuanname,jdbcType=VARCHAR}, 
+      #{huiyuanmoney,jdbcType=DOUBLE}, #{xiaofei,jdbcType=DOUBLE}, #{ruhuitime,jdbcType=TIMESTAMP}, 
+      #{daoqitime,jdbcType=TIMESTAMP}, #{huiyuangraden,jdbcType=VARCHAR}, #{youhui,jdbcType=VARCHAR}, 
+      #{jifen,jdbcType=INTEGER}, #{bei1,jdbcType=VARCHAR}, #{bei2,jdbcType=VARCHAR}, 
+      #{bei3,jdbcType=VARCHAR}, #{bei4,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Huiyuan" >
+    insert into huiyuan
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="huiyuanno != null" >
+        HuiYuanNo,
+      </if>
+      <if test="kehuno != null" >
+        KeHuNo,
+      </if>
+      <if test="huiyuanname != null" >
+        HuiYuanName,
+      </if>
+      <if test="huiyuanmoney != null" >
+        HuiYuanMoney,
+      </if>
+      <if test="xiaofei != null" >
+        xiaofei,
+      </if>
+      <if test="ruhuitime != null" >
+        RuHuiTime,
+      </if>
+      <if test="daoqitime != null" >
+        DaoQiTime,
+      </if>
+      <if test="huiyuangraden != null" >
+        HuiYuanGraden,
+      </if>
+      <if test="youhui != null" >
+        YouHui,
+      </if>
+      <if test="jifen != null" >
+        JiFen,
+      </if>
+      <if test="bei1 != null" >
+        bei1,
+      </if>
+      <if test="bei2 != null" >
+        bei2,
+      </if>
+      <if test="bei3 != null" >
+        bei3,
+      </if>
+      <if test="bei4 != null" >
+        bei4,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="huiyuanno != null" >
+        #{huiyuanno,jdbcType=VARCHAR},
+      </if>
+      <if test="kehuno != null" >
+        #{kehuno,jdbcType=VARCHAR},
+      </if>
+      <if test="huiyuanname != null" >
+        #{huiyuanname,jdbcType=VARCHAR},
+      </if>
+      <if test="huiyuanmoney != null" >
+        #{huiyuanmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="xiaofei != null" >
+        #{xiaofei,jdbcType=DOUBLE},
+      </if>
+      <if test="ruhuitime != null" >
+        #{ruhuitime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="daoqitime != null" >
+        #{daoqitime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="huiyuangraden != null" >
+        #{huiyuangraden,jdbcType=VARCHAR},
+      </if>
+      <if test="youhui != null" >
+        #{youhui,jdbcType=VARCHAR},
+      </if>
+      <if test="jifen != null" >
+        #{jifen,jdbcType=INTEGER},
+      </if>
+      <if test="bei1 != null" >
+        #{bei1,jdbcType=VARCHAR},
+      </if>
+      <if test="bei2 != null" >
+        #{bei2,jdbcType=VARCHAR},
+      </if>
+      <if test="bei3 != null" >
+        #{bei3,jdbcType=VARCHAR},
+      </if>
+      <if test="bei4 != null" >
+        #{bei4,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.HuiyuanExample" resultType="java.lang.Integer" >
+    select count(*) from huiyuan
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update huiyuan
+    <set >
+      <if test="record.huiyuanno != null" >
+        HuiYuanNo = #{record.huiyuanno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kehuno != null" >
+        KeHuNo = #{record.kehuno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.huiyuanname != null" >
+        HuiYuanName = #{record.huiyuanname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.huiyuanmoney != null" >
+        HuiYuanMoney = #{record.huiyuanmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.xiaofei != null" >
+        xiaofei = #{record.xiaofei,jdbcType=DOUBLE},
+      </if>
+      <if test="record.ruhuitime != null" >
+        RuHuiTime = #{record.ruhuitime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.daoqitime != null" >
+        DaoQiTime = #{record.daoqitime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.huiyuangraden != null" >
+        HuiYuanGraden = #{record.huiyuangraden,jdbcType=VARCHAR},
+      </if>
+      <if test="record.youhui != null" >
+        YouHui = #{record.youhui,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jifen != null" >
+        JiFen = #{record.jifen,jdbcType=INTEGER},
+      </if>
+      <if test="record.bei1 != null" >
+        bei1 = #{record.bei1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei2 != null" >
+        bei2 = #{record.bei2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei3 != null" >
+        bei3 = #{record.bei3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei4 != null" >
+        bei4 = #{record.bei4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update huiyuan
+    set HuiYuanNo = #{record.huiyuanno,jdbcType=VARCHAR},
+      KeHuNo = #{record.kehuno,jdbcType=VARCHAR},
+      HuiYuanName = #{record.huiyuanname,jdbcType=VARCHAR},
+      HuiYuanMoney = #{record.huiyuanmoney,jdbcType=DOUBLE},
+      xiaofei = #{record.xiaofei,jdbcType=DOUBLE},
+      RuHuiTime = #{record.ruhuitime,jdbcType=TIMESTAMP},
+      DaoQiTime = #{record.daoqitime,jdbcType=TIMESTAMP},
+      HuiYuanGraden = #{record.huiyuangraden,jdbcType=VARCHAR},
+      YouHui = #{record.youhui,jdbcType=VARCHAR},
+      JiFen = #{record.jifen,jdbcType=INTEGER},
+      bei1 = #{record.bei1,jdbcType=VARCHAR},
+      bei2 = #{record.bei2,jdbcType=VARCHAR},
+      bei3 = #{record.bei3,jdbcType=VARCHAR},
+      bei4 = #{record.bei4,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.Huiyuan" >
+    update huiyuan
+    <set >
+      <if test="kehuno != null" >
+        KeHuNo = #{kehuno,jdbcType=VARCHAR},
+      </if>
+      <if test="huiyuanname != null" >
+        HuiYuanName = #{huiyuanname,jdbcType=VARCHAR},
+      </if>
+      <if test="huiyuanmoney != null" >
+        HuiYuanMoney = #{huiyuanmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="xiaofei != null" >
+        xiaofei = #{xiaofei,jdbcType=DOUBLE},
+      </if>
+      <if test="ruhuitime != null" >
+        RuHuiTime = #{ruhuitime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="daoqitime != null" >
+        DaoQiTime = #{daoqitime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="huiyuangraden != null" >
+        HuiYuanGraden = #{huiyuangraden,jdbcType=VARCHAR},
+      </if>
+      <if test="youhui != null" >
+        YouHui = #{youhui,jdbcType=VARCHAR},
+      </if>
+      <if test="jifen != null" >
+        JiFen = #{jifen,jdbcType=INTEGER},
+      </if>
+      <if test="bei1 != null" >
+        bei1 = #{bei1,jdbcType=VARCHAR},
+      </if>
+      <if test="bei2 != null" >
+        bei2 = #{bei2,jdbcType=VARCHAR},
+      </if>
+      <if test="bei3 != null" >
+        bei3 = #{bei3,jdbcType=VARCHAR},
+      </if>
+      <if test="bei4 != null" >
+        bei4 = #{bei4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where HuiYuanNo = #{huiyuanno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.Huiyuan" >
+    update huiyuan
+    set KeHuNo = #{kehuno,jdbcType=VARCHAR},
+      HuiYuanName = #{huiyuanname,jdbcType=VARCHAR},
+      HuiYuanMoney = #{huiyuanmoney,jdbcType=DOUBLE},
+      xiaofei = #{xiaofei,jdbcType=DOUBLE},
+      RuHuiTime = #{ruhuitime,jdbcType=TIMESTAMP},
+      DaoQiTime = #{daoqitime,jdbcType=TIMESTAMP},
+      HuiYuanGraden = #{huiyuangraden,jdbcType=VARCHAR},
+      YouHui = #{youhui,jdbcType=VARCHAR},
+      JiFen = #{jifen,jdbcType=INTEGER},
+      bei1 = #{bei1,jdbcType=VARCHAR},
+      bei2 = #{bei2,jdbcType=VARCHAR},
+      bei3 = #{bei3,jdbcType=VARCHAR},
+      bei4 = #{bei4,jdbcType=VARCHAR}
+    where HuiYuanNo = #{huiyuanno,jdbcType=VARCHAR}
+  </update>
+</mapper>

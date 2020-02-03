@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.JigongMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Jigong" >
+    <id column="JiGongNo" property="jigongno" jdbcType="VARCHAR" />
+    <result column="jiGongXing" property="jigongxing" jdbcType="INTEGER" />
+    <result column="BanId" property="banid" jdbcType="INTEGER" />
+    <result column="WeiXiuType" property="weixiutype" jdbcType="VARCHAR" />
+    <result column="WeiXiuBank" property="weixiubank" jdbcType="VARCHAR" />
+    <result column="JiGongName" property="jigongname" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="CHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="login" property="login" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="wx" property="wx" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="DATE" />
+    <result column="idCard" property="idcard" jdbcType="VARCHAR" />
+    <result column="HuKouAddress" property="hukouaddress" jdbcType="VARCHAR" />
+    <result column="Bank" property="bank" jdbcType="VARCHAR" />
+    <result column="BankCard" property="bankcard" jdbcType="VARCHAR" />
+    <result column="isZuZhang" property="iszuzhang" jdbcType="INTEGER" />
+    <result column="bei1" property="bei1" jdbcType="VARCHAR" />
+    <result column="bei2" property="bei2" jdbcType="VARCHAR" />
+    <result column="bei3" property="bei3" jdbcType="VARCHAR" />
+    <result column="bei4" property="bei4" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    JiGongNo, jiGongXing, BanId, WeiXiuType, WeiXiuBank, JiGongName, sex, phone, login, 
+    address, wx, birthday, idCard, HuKouAddress, Bank, BankCard, isZuZhang, bei1, bei2, 
+    bei3, bei4
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.JigongExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from jigong
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from jigong
+    where JiGongNo = #{jigongno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from jigong
+    where JiGongNo = #{jigongno,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.JigongExample" >
+    delete from jigong
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.Jigong" >
+    insert into jigong (JiGongNo, jiGongXing, BanId, 
+      WeiXiuType, WeiXiuBank, JiGongName, 
+      sex, phone, login, address, 
+      wx, birthday, idCard, 
+      HuKouAddress, Bank, BankCard, 
+      isZuZhang, bei1, bei2, 
+      bei3, bei4)
+    values (#{jigongno,jdbcType=VARCHAR}, #{jigongxing,jdbcType=INTEGER}, #{banid,jdbcType=INTEGER}, 
+      #{weixiutype,jdbcType=VARCHAR}, #{weixiubank,jdbcType=VARCHAR}, #{jigongname,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=CHAR}, #{phone,jdbcType=VARCHAR}, #{login,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{wx,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, #{idcard,jdbcType=VARCHAR}, 
+      #{hukouaddress,jdbcType=VARCHAR}, #{bank,jdbcType=VARCHAR}, #{bankcard,jdbcType=VARCHAR}, 
+      #{iszuzhang,jdbcType=INTEGER}, #{bei1,jdbcType=VARCHAR}, #{bei2,jdbcType=VARCHAR}, 
+      #{bei3,jdbcType=VARCHAR}, #{bei4,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Jigong" >
+    insert into jigong
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="jigongno != null" >
+        JiGongNo,
+      </if>
+      <if test="jigongxing != null" >
+        jiGongXing,
+      </if>
+      <if test="banid != null" >
+        BanId,
+      </if>
+      <if test="weixiutype != null" >
+        WeiXiuType,
+      </if>
+      <if test="weixiubank != null" >
+        WeiXiuBank,
+      </if>
+      <if test="jigongname != null" >
+        JiGongName,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="login != null" >
+        login,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="wx != null" >
+        wx,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="idcard != null" >
+        idCard,
+      </if>
+      <if test="hukouaddress != null" >
+        HuKouAddress,
+      </if>
+      <if test="bank != null" >
+        Bank,
+      </if>
+      <if test="bankcard != null" >
+        BankCard,
+      </if>
+      <if test="iszuzhang != null" >
+        isZuZhang,
+      </if>
+      <if test="bei1 != null" >
+        bei1,
+      </if>
+      <if test="bei2 != null" >
+        bei2,
+      </if>
+      <if test="bei3 != null" >
+        bei3,
+      </if>
+      <if test="bei4 != null" >
+        bei4,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="jigongno != null" >
+        #{jigongno,jdbcType=VARCHAR},
+      </if>
+      <if test="jigongxing != null" >
+        #{jigongxing,jdbcType=INTEGER},
+      </if>
+      <if test="banid != null" >
+        #{banid,jdbcType=INTEGER},
+      </if>
+      <if test="weixiutype != null" >
+        #{weixiutype,jdbcType=VARCHAR},
+      </if>
+      <if test="weixiubank != null" >
+        #{weixiubank,jdbcType=VARCHAR},
+      </if>
+      <if test="jigongname != null" >
+        #{jigongname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=CHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="login != null" >
+        #{login,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="wx != null" >
+        #{wx,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="idcard != null" >
+        #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="hukouaddress != null" >
+        #{hukouaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null" >
+        #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="bankcard != null" >
+        #{bankcard,jdbcType=VARCHAR},
+      </if>
+      <if test="iszuzhang != null" >
+        #{iszuzhang,jdbcType=INTEGER},
+      </if>
+      <if test="bei1 != null" >
+        #{bei1,jdbcType=VARCHAR},
+      </if>
+      <if test="bei2 != null" >
+        #{bei2,jdbcType=VARCHAR},
+      </if>
+      <if test="bei3 != null" >
+        #{bei3,jdbcType=VARCHAR},
+      </if>
+      <if test="bei4 != null" >
+        #{bei4,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.JigongExample" resultType="java.lang.Integer" >
+    select count(*) from jigong
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update jigong
+    <set >
+      <if test="record.jigongno != null" >
+        JiGongNo = #{record.jigongno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jigongxing != null" >
+        jiGongXing = #{record.jigongxing,jdbcType=INTEGER},
+      </if>
+      <if test="record.banid != null" >
+        BanId = #{record.banid,jdbcType=INTEGER},
+      </if>
+      <if test="record.weixiutype != null" >
+        WeiXiuType = #{record.weixiutype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.weixiubank != null" >
+        WeiXiuBank = #{record.weixiubank,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jigongname != null" >
+        JiGongName = #{record.jigongname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null" >
+        sex = #{record.sex,jdbcType=CHAR},
+      </if>
+      <if test="record.phone != null" >
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.login != null" >
+        login = #{record.login,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null" >
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wx != null" >
+        wx = #{record.wx,jdbcType=VARCHAR},
+      </if>
+      <if test="record.birthday != null" >
+        birthday = #{record.birthday,jdbcType=DATE},
+      </if>
+      <if test="record.idcard != null" >
+        idCard = #{record.idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hukouaddress != null" >
+        HuKouAddress = #{record.hukouaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bank != null" >
+        Bank = #{record.bank,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bankcard != null" >
+        BankCard = #{record.bankcard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.iszuzhang != null" >
+        isZuZhang = #{record.iszuzhang,jdbcType=INTEGER},
+      </if>
+      <if test="record.bei1 != null" >
+        bei1 = #{record.bei1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei2 != null" >
+        bei2 = #{record.bei2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei3 != null" >
+        bei3 = #{record.bei3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei4 != null" >
+        bei4 = #{record.bei4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update jigong
+    set JiGongNo = #{record.jigongno,jdbcType=VARCHAR},
+      jiGongXing = #{record.jigongxing,jdbcType=INTEGER},
+      BanId = #{record.banid,jdbcType=INTEGER},
+      WeiXiuType = #{record.weixiutype,jdbcType=VARCHAR},
+      WeiXiuBank = #{record.weixiubank,jdbcType=VARCHAR},
+      JiGongName = #{record.jigongname,jdbcType=VARCHAR},
+      sex = #{record.sex,jdbcType=CHAR},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      login = #{record.login,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
+      wx = #{record.wx,jdbcType=VARCHAR},
+      birthday = #{record.birthday,jdbcType=DATE},
+      idCard = #{record.idcard,jdbcType=VARCHAR},
+      HuKouAddress = #{record.hukouaddress,jdbcType=VARCHAR},
+      Bank = #{record.bank,jdbcType=VARCHAR},
+      BankCard = #{record.bankcard,jdbcType=VARCHAR},
+      isZuZhang = #{record.iszuzhang,jdbcType=INTEGER},
+      bei1 = #{record.bei1,jdbcType=VARCHAR},
+      bei2 = #{record.bei2,jdbcType=VARCHAR},
+      bei3 = #{record.bei3,jdbcType=VARCHAR},
+      bei4 = #{record.bei4,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.Jigong" >
+    update jigong
+    <set >
+      <if test="jigongxing != null" >
+        jiGongXing = #{jigongxing,jdbcType=INTEGER},
+      </if>
+      <if test="banid != null" >
+        BanId = #{banid,jdbcType=INTEGER},
+      </if>
+      <if test="weixiutype != null" >
+        WeiXiuType = #{weixiutype,jdbcType=VARCHAR},
+      </if>
+      <if test="weixiubank != null" >
+        WeiXiuBank = #{weixiubank,jdbcType=VARCHAR},
+      </if>
+      <if test="jigongname != null" >
+        JiGongName = #{jigongname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=CHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="login != null" >
+        login = #{login,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="wx != null" >
+        wx = #{wx,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="idcard != null" >
+        idCard = #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="hukouaddress != null" >
+        HuKouAddress = #{hukouaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null" >
+        Bank = #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="bankcard != null" >
+        BankCard = #{bankcard,jdbcType=VARCHAR},
+      </if>
+      <if test="iszuzhang != null" >
+        isZuZhang = #{iszuzhang,jdbcType=INTEGER},
+      </if>
+      <if test="bei1 != null" >
+        bei1 = #{bei1,jdbcType=VARCHAR},
+      </if>
+      <if test="bei2 != null" >
+        bei2 = #{bei2,jdbcType=VARCHAR},
+      </if>
+      <if test="bei3 != null" >
+        bei3 = #{bei3,jdbcType=VARCHAR},
+      </if>
+      <if test="bei4 != null" >
+        bei4 = #{bei4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where JiGongNo = #{jigongno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.Jigong" >
+    update jigong
+    set jiGongXing = #{jigongxing,jdbcType=INTEGER},
+      BanId = #{banid,jdbcType=INTEGER},
+      WeiXiuType = #{weixiutype,jdbcType=VARCHAR},
+      WeiXiuBank = #{weixiubank,jdbcType=VARCHAR},
+      JiGongName = #{jigongname,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=CHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      login = #{login,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      wx = #{wx,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      idCard = #{idcard,jdbcType=VARCHAR},
+      HuKouAddress = #{hukouaddress,jdbcType=VARCHAR},
+      Bank = #{bank,jdbcType=VARCHAR},
+      BankCard = #{bankcard,jdbcType=VARCHAR},
+      isZuZhang = #{iszuzhang,jdbcType=INTEGER},
+      bei1 = #{bei1,jdbcType=VARCHAR},
+      bei2 = #{bei2,jdbcType=VARCHAR},
+      bei3 = #{bei3,jdbcType=VARCHAR},
+      bei4 = #{bei4,jdbcType=VARCHAR}
+    where JiGongNo = #{jigongno,jdbcType=VARCHAR}
+  </update>
+</mapper>

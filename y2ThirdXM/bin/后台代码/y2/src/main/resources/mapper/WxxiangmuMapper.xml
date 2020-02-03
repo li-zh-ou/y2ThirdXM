@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.WxxiangmuMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Wxxiangmu" >
+    <id column="XiangMuNo" property="xiangmuno" jdbcType="VARCHAR" />
+    <result column="XiangMuName" property="xiangmuname" jdbcType="VARCHAR" />
+    <result column="XingMuType" property="xingmutype" jdbcType="VARCHAR" />
+    <result column="ShouJiaAn" property="shoujiaan" jdbcType="VARCHAR" />
+    <result column="ShouRuid" property="shouruid" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="VIPprice" property="vipprice" jdbcType="DOUBLE" />
+    <result column="huiPrice" property="huiprice" jdbcType="DOUBLE" />
+    <result column="xiePrice" property="xieprice" jdbcType="DOUBLE" />
+    <result column="bei1" property="bei1" jdbcType="VARCHAR" />
+    <result column="bei2" property="bei2" jdbcType="VARCHAR" />
+    <result column="bei3" property="bei3" jdbcType="VARCHAR" />
+    <result column="bei4" property="bei4" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    XiangMuNo, XiangMuName, XingMuType, ShouJiaAn, ShouRuid, price, VIPprice, huiPrice, 
+    xiePrice, bei1, bei2, bei3, bei4
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.WxxiangmuExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from wxxiangmu
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wxxiangmu
+    where XiangMuNo = #{xiangmuno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wxxiangmu
+    where XiangMuNo = #{xiangmuno,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.WxxiangmuExample" >
+    delete from wxxiangmu
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.Wxxiangmu" >
+    insert into wxxiangmu (XiangMuNo, XiangMuName, XingMuType, 
+      ShouJiaAn, ShouRuid, price, 
+      VIPprice, huiPrice, xiePrice, 
+      bei1, bei2, bei3, bei4
+      )
+    values (#{xiangmuno,jdbcType=VARCHAR}, #{xiangmuname,jdbcType=VARCHAR}, #{xingmutype,jdbcType=VARCHAR}, 
+      #{shoujiaan,jdbcType=VARCHAR}, #{shouruid,jdbcType=INTEGER}, #{price,jdbcType=DOUBLE}, 
+      #{vipprice,jdbcType=DOUBLE}, #{huiprice,jdbcType=DOUBLE}, #{xieprice,jdbcType=DOUBLE}, 
+      #{bei1,jdbcType=VARCHAR}, #{bei2,jdbcType=VARCHAR}, #{bei3,jdbcType=VARCHAR}, #{bei4,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Wxxiangmu" >
+    insert into wxxiangmu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="xiangmuno != null" >
+        XiangMuNo,
+      </if>
+      <if test="xiangmuname != null" >
+        XiangMuName,
+      </if>
+      <if test="xingmutype != null" >
+        XingMuType,
+      </if>
+      <if test="shoujiaan != null" >
+        ShouJiaAn,
+      </if>
+      <if test="shouruid != null" >
+        ShouRuid,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="vipprice != null" >
+        VIPprice,
+      </if>
+      <if test="huiprice != null" >
+        huiPrice,
+      </if>
+      <if test="xieprice != null" >
+        xiePrice,
+      </if>
+      <if test="bei1 != null" >
+        bei1,
+      </if>
+      <if test="bei2 != null" >
+        bei2,
+      </if>
+      <if test="bei3 != null" >
+        bei3,
+      </if>
+      <if test="bei4 != null" >
+        bei4,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="xiangmuno != null" >
+        #{xiangmuno,jdbcType=VARCHAR},
+      </if>
+      <if test="xiangmuname != null" >
+        #{xiangmuname,jdbcType=VARCHAR},
+      </if>
+      <if test="xingmutype != null" >
+        #{xingmutype,jdbcType=VARCHAR},
+      </if>
+      <if test="shoujiaan != null" >
+        #{shoujiaan,jdbcType=VARCHAR},
+      </if>
+      <if test="shouruid != null" >
+        #{shouruid,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="vipprice != null" >
+        #{vipprice,jdbcType=DOUBLE},
+      </if>
+      <if test="huiprice != null" >
+        #{huiprice,jdbcType=DOUBLE},
+      </if>
+      <if test="xieprice != null" >
+        #{xieprice,jdbcType=DOUBLE},
+      </if>
+      <if test="bei1 != null" >
+        #{bei1,jdbcType=VARCHAR},
+      </if>
+      <if test="bei2 != null" >
+        #{bei2,jdbcType=VARCHAR},
+      </if>
+      <if test="bei3 != null" >
+        #{bei3,jdbcType=VARCHAR},
+      </if>
+      <if test="bei4 != null" >
+        #{bei4,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.WxxiangmuExample" resultType="java.lang.Integer" >
+    select count(*) from wxxiangmu
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update wxxiangmu
+    <set >
+      <if test="record.xiangmuno != null" >
+        XiangMuNo = #{record.xiangmuno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xiangmuname != null" >
+        XiangMuName = #{record.xiangmuname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xingmutype != null" >
+        XingMuType = #{record.xingmutype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shoujiaan != null" >
+        ShouJiaAn = #{record.shoujiaan,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shouruid != null" >
+        ShouRuid = #{record.shouruid,jdbcType=INTEGER},
+      </if>
+      <if test="record.price != null" >
+        price = #{record.price,jdbcType=DOUBLE},
+      </if>
+      <if test="record.vipprice != null" >
+        VIPprice = #{record.vipprice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.huiprice != null" >
+        huiPrice = #{record.huiprice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.xieprice != null" >
+        xiePrice = #{record.xieprice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.bei1 != null" >
+        bei1 = #{record.bei1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei2 != null" >
+        bei2 = #{record.bei2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei3 != null" >
+        bei3 = #{record.bei3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei4 != null" >
+        bei4 = #{record.bei4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update wxxiangmu
+    set XiangMuNo = #{record.xiangmuno,jdbcType=VARCHAR},
+      XiangMuName = #{record.xiangmuname,jdbcType=VARCHAR},
+      XingMuType = #{record.xingmutype,jdbcType=VARCHAR},
+      ShouJiaAn = #{record.shoujiaan,jdbcType=VARCHAR},
+      ShouRuid = #{record.shouruid,jdbcType=INTEGER},
+      price = #{record.price,jdbcType=DOUBLE},
+      VIPprice = #{record.vipprice,jdbcType=DOUBLE},
+      huiPrice = #{record.huiprice,jdbcType=DOUBLE},
+      xiePrice = #{record.xieprice,jdbcType=DOUBLE},
+      bei1 = #{record.bei1,jdbcType=VARCHAR},
+      bei2 = #{record.bei2,jdbcType=VARCHAR},
+      bei3 = #{record.bei3,jdbcType=VARCHAR},
+      bei4 = #{record.bei4,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.Wxxiangmu" >
+    update wxxiangmu
+    <set >
+      <if test="xiangmuname != null" >
+        XiangMuName = #{xiangmuname,jdbcType=VARCHAR},
+      </if>
+      <if test="xingmutype != null" >
+        XingMuType = #{xingmutype,jdbcType=VARCHAR},
+      </if>
+      <if test="shoujiaan != null" >
+        ShouJiaAn = #{shoujiaan,jdbcType=VARCHAR},
+      </if>
+      <if test="shouruid != null" >
+        ShouRuid = #{shouruid,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="vipprice != null" >
+        VIPprice = #{vipprice,jdbcType=DOUBLE},
+      </if>
+      <if test="huiprice != null" >
+        huiPrice = #{huiprice,jdbcType=DOUBLE},
+      </if>
+      <if test="xieprice != null" >
+        xiePrice = #{xieprice,jdbcType=DOUBLE},
+      </if>
+      <if test="bei1 != null" >
+        bei1 = #{bei1,jdbcType=VARCHAR},
+      </if>
+      <if test="bei2 != null" >
+        bei2 = #{bei2,jdbcType=VARCHAR},
+      </if>
+      <if test="bei3 != null" >
+        bei3 = #{bei3,jdbcType=VARCHAR},
+      </if>
+      <if test="bei4 != null" >
+        bei4 = #{bei4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where XiangMuNo = #{xiangmuno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.Wxxiangmu" >
+    update wxxiangmu
+    set XiangMuName = #{xiangmuname,jdbcType=VARCHAR},
+      XingMuType = #{xingmutype,jdbcType=VARCHAR},
+      ShouJiaAn = #{shoujiaan,jdbcType=VARCHAR},
+      ShouRuid = #{shouruid,jdbcType=INTEGER},
+      price = #{price,jdbcType=DOUBLE},
+      VIPprice = #{vipprice,jdbcType=DOUBLE},
+      huiPrice = #{huiprice,jdbcType=DOUBLE},
+      xiePrice = #{xieprice,jdbcType=DOUBLE},
+      bei1 = #{bei1,jdbcType=VARCHAR},
+      bei2 = #{bei2,jdbcType=VARCHAR},
+      bei3 = #{bei3,jdbcType=VARCHAR},
+      bei4 = #{bei4,jdbcType=VARCHAR}
+    where XiangMuNo = #{xiangmuno,jdbcType=VARCHAR}
+  </update>
+</mapper>

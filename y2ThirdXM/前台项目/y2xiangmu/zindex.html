@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <title>卡修管理系统</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <link href="assets/css/dpl-min.css" rel="stylesheet" type="text/css" />
+  <link href="assets/css/bui-min.css" rel="stylesheet" type="text/css" />
+   <link href="assets/css/main-min.css" rel="stylesheet" type="text/css" />
+ </head>
+ <body>
+
+  <div class="header">
+    
+      <div class="dl-title">
+        <a href="http://sc.chinaz.com" title="文档库地址" target="_blank"><!-- 仅仅为了提供文档的快速入口，项目中请删除链接 -->
+          <span class="lp-title-port">卡修</span><span class="dl-title-text">管理系统</span>
+        </a>
+      </div>
+
+    <div class="dl-log">欢迎您，<span class="dl-log-user">**.**@alibaba-inc.com</span><a href="###" title="退出系统" class="dl-log-quit">[退出]</a><a href="http://http://sc.chinaz.com/" title="文档库" class="dl-log-quit">文档库</a>
+    </div>
+  </div>
+   <div class="content">
+    <div class="dl-main-nav">
+      <div class="dl-inform"><div class="dl-inform-title">贴心小秘书<s class="dl-inform-icon dl-up"></s></div></div>
+      <ul id="J_Nav"  class="nav-list ks-clear">
+        <li class="nav-item dl-selected"><div class="nav-item-inner nav-home">前台</div></li>
+        <li class="nav-item"><div class="nav-item-inner nav-order">维修</div></li>
+        <li class="nav-item"><div class="nav-item-inner nav-inventory">客服</div></li>
+        <li class="nav-item"><div class="nav-item-inner nav-supplier">数据</div></li>
+        <li class="nav-item"><div class="nav-item-inner nav-marketing">人事</div></li>
+         <li class="nav-item"><div class="nav-item-inner nav-marketing">系统</div></li>
+      </ul>
+    </div>
+    <ul id="J_NavContent" class="dl-tab-conten">
+
+    </ul>
+   </div>
+  <script type="text/javascript" src="assets/js/jquery-1.8.1.min.js"></script>
+  <script type="text/javascript" src="assets/js/bui.js"></script>
+  <script type="text/javascript" src="assets/js/config.js"></script>
+  <script>
+    BUI.use('common/main',function(){
+      var config = [{
+          id:'menu', 
+          homePage : 'code',
+          menu:[{
+              text:'首页内容',
+              items:[
+                {id:'code',text:'首页',href:'zShouye.html',closeable : false},
+              ]
+            },{
+              text:'前台结算',
+              items:[
+                
+              ]
+            }]
+          },{
+            id:'form',
+            menu:[{
+                text:'首页内容',
+                items:[
+                  {id:'code',text:'首页',href:'zShouye.html',closeable : false},
+                ]
+              },{
+                text:'维修救援',
+                items:[
+                  {id:'success',text:'维修接车',href:'lJieCheDengJi.html'},
+                  {id:'fail',text:'竣工检验',href:'lJunGongJianXiu.html'}
+                
+                ]
+              }]
+          },{
+            id:'search',
+            menu:[{
+                text:'首页内容',
+                items:[
+                 {id:'code',text:'首页',href:'zShouye.html',closeable : false},
+                ]
+              },{
+                text : '客户档案',
+                items : [
+                  {id : 'tab',text : '客户资料',href : 'zKehu.html'},
+                  {id : 'example',text : '车辆资料',href : 'zCarInfo.html'}
+                ]
+              }]
+          },{
+            id:'detail',
+            menu:[{
+                text:'首页内容',
+                items:[
+                  {id:'code',text:'首页',href:'zShouye.html',closeable : false},
+                ]
+              },{
+                text:'主数据',
+                items:[
+                  {id:'code',text:'发动机品牌',href:'pEngine_brand.html'},
+                  {id:'code1',text:'维修项目',href:'pMaintenance_item.html'},
+                  {id:'example',text:'商品资料',href:'pCommodity_information.html'},
+                  {id:'introduce',text:'供货单位',href:'pSupply_unit.html'}
+                ]
+              }]
+          },{
+            id : 'chart',
+            menu : [{
+              text : '首页内容',
+              items:[
+              	  {id:'code',text:'首页',href:'zShouye.html',closeable : false},
+              ]
+            },{
+              text : '员工资料',
+              items:[
+                  {id:'line',text:'组织结构',href:'nzzjg.html'},
+                  {id:'area',text:'岗位定义',href:'ngwdy.html'},    
+              ]
+            },{
+              text : '技工管理',
+              items:[
+                  {id:'column',text:'技工星级',href:'njgxj.html'},
+                  {id:'pie',text:'班组技工',href:'nbanzu.html'}, 
+                  {id:'radar',text:'外勤车辆',href:'nwqcl.html'}   
+              ]
+            }]
+          },{
+            id:'main',
+            menu:[{
+                text:'首页内容',
+                items:[
+                  {id:'code',text:'首页',href:'zShouye.html',closeable : false},
+                ]
+              },{
+                text:'权限控制',
+                items:[
+                  {id:'introduce',text:'角色权限控制',href:'zJuese.html'},
+                ]
+              }]
+          }];
+      new PageUtil.MainPage({
+        modulesConfig : config
+      });
+    });
+  </script>
+</body>
+</html>

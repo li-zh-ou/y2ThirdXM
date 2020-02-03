@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html style="height: 100%; width: 99%;">
+	<head>
+		<meta charset="UTF-8">
+		<title>供货单位</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/bootstrapStyle/bootstrapStyle.css"/>
+	</head>
+	<body style="height: 100%;">
+		<div class="">
+			<!--  myModal1这个1-4是新增5-8修改9-10查询11联系人12字段设置
+            	作者：offline
+            	时间：2019-12-31
+            	描述：头部
+            -->
+			<header>
+				<div class="row nav-tabs bg-success">
+					<div class="col-md-8" style="border:none;min-height: 70px;">
+						<h3 class="text-nowrap text-justify" style="margin-left: 3%;">供货单位</h3>
+					</div>
+					<div class="col-md-4">
+						<div class="input-group" style="margin-top: 5%;">
+					      <input type="text" class="form-control" placeholder="匹配名称/联系人/简码/手机+号实现双条件查询" style="width: 100%;">
+					      <span class="input-group-btn">
+					        <button class="btn btn-default" type="button">搜索</button>
+					      </span>
+					      <span class="input-group-btn">
+					        <button class="btn btn-default" type="button">关闭</button>
+					      </span>
+					    </div>
+					</div>
+				</div>
+			</header>
+			<!--
+            	作者：offline
+            	时间：2019-12-31
+            	描述：独立区域中间
+            -->
+			<section style="" style="height: 100%;">
+				<div class="" style="height: 100%;">
+					<div class="">
+						<nav class="navbar navbar-default" style="margin-bottom: 0px;>
+						  <div class="container-fluid">
+						    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						      <ul class="nav navbar-nav navbar-right" id="wxxm_tu_1">
+						        <li><a href="#"><span class="glyphicon glyphicon-tasks" aria-hidden="true" data-toggle="modal" data-target="#myModal1">增加</a></span></li>
+						        <li><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true" data-toggle="modal" data-target="#myModal5">修改</a></span></li>
+						        <li><a href="#"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true">删除</a></span></li>
+						        <li><a href="#"><span class="glyphicon glyphicon-th" aria-hidden="true" data-toggle="modal" data-target="#myModal9">查询</a></span></li>
+						        <li><a href="#"><span class="glyphicon glyphicon-folder-open " aria-hidden="true">导出</a></span></li>
+						        <li><a href="#"><span class="glyphicon glyphicon-level-up" aria-hidden="true">照片</a></span></li>
+						        <li><a href="#"><span class="glyphicon glyphicon-level-up" aria-hidden="true" data-toggle="modal" data-target="#myModal11">联系人</a></span></li>
+						        <li><a href="#"><span class="glyphicon glyphicon-level-up" aria-hidden="true" data-toggle="modal" data-target="#myModal12">字段设置</a></span></li>
+						      </ul>
+						    </div>
+						  </div>
+						</nav>
+						
+						<!--
+                        	作者：offline
+                        	时间：2020-01-04
+                        	描述：模态框
+                        -->
+                        	<!--增加-->
+								<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+								  <div class="modal-dialog" role="document">
+								    <div class="modal-content" style="width: 100%;">
+								      <div class="modal-header">
+								        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								        <h4 class="modal-title" id="myModalLabel">供货单位编辑</h4>
+								      </div>
+								      <div class="modal-body"style="width: 100%;">
+								        	<table class="table table-hover">
+								        		<tr>
+								        			<th>
+								        				广商代码<input type="text" class="form-control" disabled placeholder="询" style="width: 100%;">
+								        			</th>
+								        			<th>
+								        				广商名称<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        			</th>
+								        			<th>
+								        				地址<input type="text" class="form-control" placeholder="询" style="width: 160%;">
+								        			</th>
+								        		</tr>
+								        		<tr>
+								        			<th>
+								        				经营情况<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        			</th>
+								        			<th>
+								        				网址<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        			</th>
+								        			<th>
+								        				开户行<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        			</th>
+								        		</tr>
+								        		<tr>
+								        			<th>
+								        				银行账号<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        			</th>
+								        			<th>
+								        				付款方式
+								        				<form class="form-inline" style="width: 130%;">
+															  <div class="form-group">
+															    <label class="sr-only" for="exampleInputAmount">Amount</label>
+															    <div class="input-group">
+															      <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+																	 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
+																	 	<div class="dropdown">
+																		  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
+																		    <span class="caret"></span>
+																		  </button>
+																		  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+																		    <li><a href="#">Acd</a></li>
+																		  </ul>
+																		</div>
+																	 </div>
+															      <div class="input-group-addon">
+															      	<button data-toggle="modal" data-target="#myModal2">a</button>
+															      	
+															      		<!--
+                                                                          	作者：offline
+                                                                          	时间：2020-01-06
+                                                                          	描述：模态框
+                                                                          -->
+                                                                          	<!--付款方式里-->
+                                                                          	<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+																				<div class="modal-dialog" role="document">
+																				    <div class="modal-content">
+																				        <div class="modal-header">
+																				        	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+																				        	<h4 class="modal-title">选择内容设置</h4>
+																				      	</div>
+																				      	<div class="modal-body">
+																				        	<table class="table table-hover">
+																				        		<tr style="background-color: #66AFE9;">
+																				        			<th>&nbsp;</th>
+																				        			<th>序号</th>
+																				        			<th>订单付款方式</th>
+																				        		</tr>
+																				        		<tr>
+																				        			<th>&nbsp;</th>
+																				        			<th>1</th>
+																				        			<th>按月结算方式</th>
+																				        		</tr>
+																				        		<tr>
+																				        			<th>&nbsp;</th>
+																				        			<th>2</th>
+																				        			<th>货到付款</th>
+																				        		</tr>
+																				        	</table>
+																				      	</div>
+																				    	<div class="modal-footer">
+																				        	<button type="button" class="btn btn-primary">修改</button>
+																				        	<button type="button" class="btn btn-primary">保存</button>
+																				    	</div>
+																				    </div>
+																				</div>
+																			</div>
+															      </div>
+															    </div>
+															  </div>
+														</form>
+								        			</th>
+								        			<th>
+								        				广商等级
+								        				<form class="form-inline" style="width: 130%; margin-left: 20%;">
+															  <div class="form-group">
+															    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+															    <div class="input-group">
+															      <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+																	 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
+																	 	<div class="dropdown">
+																		  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
+																		    <span class="caret"></span>
+																		  </button>
+																		  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+																		    <li><a href="#">Acd</a></li>
+																		  </ul>
+																		</div>
+																	 </div>
+															      <div class="input-group-addon">
+															      	<button data-toggle="modal" data-target="#myModal3">a</button>
+															      		<!--广商等级-->
+															      			<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+																				<div class="modal-dialog" role="document">
+																				    <div class="modal-content">
+																				        <div class="modal-header">
+																				        	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+																				        	<h4 class="modal-title">选择内容设置</h4>
+																				      	</div>
+																				      	<div class="modal-body">
+																				        	<table class="table table-hover">
+																				        		<tr style="background-color: #66AFE9;">
+																				        			<th>&nbsp;</th>
+																				        			<th>序号</th>
+																				        			<th>广商等级</th>
+																				        		</tr>
+																				        		<tr>
+																				        			<th>&nbsp;</th>
+																				        			<th>1</th>
+																				        			<th>A</th>
+																				        		</tr>
+																				        		<tr>
+																				        			<th>&nbsp;</th>
+																				        			<th>2</th>
+																				        			<th>B</th>
+																				        		</tr>
+																				        		<tr>
+																				        			<th>&nbsp;</th>
+																				        			<th>3</th>
+																				        			<th>C</th>
+																				        		</tr>
+																				        	</table>
+																				      	</div>
+																				    	<div class="modal-footer">
+																				        	<button type="button" class="btn btn-primary">选择</button>
+																				    	</div>
+																				    </div>
+																				</div>
+																			</div>
+															      </div>
+															    </div>
+															  </div>
+														</form>
+								        			</th>
+								        		</tr>
+								        		<tr>
+								        			<th>
+								        				经营品牌<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        			</th>
+								        			<th>
+								        				广商类别
+								        				<form class="form-inline" style="width: 300%;">
+															  <div class="form-group">
+															    <label class="sr-only" for="exampleInputAmount">Amount</label>
+															    <div class="input-group">
+															      <input type="text" class="form-control" placeholder="Amount">
+																	<div class="input-group-addon">
+															      		<button data-toggle="modal" data-target="#myModal4">a</button>
+															      		<!--广告类别-->
+															      			<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+																			  	<div class="modal-dialog" role="document">
+																			    	<div class="modal-content">
+																			      		<div class="modal-header">
+																			        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+																			        		<h4 class="modal-title" id="myModalLabel">广商分类选择</h4>
+																			      		</div>
+																			      		<div class="modal-body">
+																			        		<ul id="treeDemo1" class="ztree"></ul>
+																			      		</div>
+																			      		<div class="modal-footer">
+																			        		<button type="button" class="btn btn-primary">选择</button>
+																			      		</div>
+																			    	</div>
+																			  	</div>
+																			</div>
+															      	</div>
+															    </div>
+															  </div>
+														</form>
+								        			</th>
+								        		</tr>
+								        		<tr>
+								        			<th>
+								        				联系人<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        			</th>
+								        			<th>
+								        				电话<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        			</th>
+								        			<th>
+								        				手机<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        			</th>
+								        			<th>
+								        				Email1<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        			</th>
+								        		</tr>
+								        		<tr>
+								        			<th>
+								        				账期(天)<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        			</th>
+								        			<th>
+								        				备注<input type="text" class="form-control" placeholder="询" style="width: 260%;">
+								        			</th>
+								        		</tr>
+								        	</table>
+								      </div>
+								      <div class="modal-footer">
+								        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+								        <button type="button" class="btn btn-primary">保存</button>
+								      </div>
+								    </div>
+								  </div>
+								</div>
+								
+							<!--修改-->
+							<div class="modal fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+								  <div class="modal-dialog" role="document">
+								    <div class="modal-content" style="width: 100%;">
+								      <div class="modal-header">
+								        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								        <h4 class="modal-title" id="myModalLabel">供货单位编辑</h4>
+								      </div>
+								      <div class="modal-body"style="width: 100%;">
+								        	<table class="table table-hover">
+								        		<tr>
+								        			<th>
+								        				广商代码<input type="text" class="form-control" disabled placeholder="询" style="width: 100%;">
+								        			</th>
+								        			<th>
+								        				广商名称<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        			</th>
+								        			<th>
+								        				地址<input type="text" class="form-control" placeholder="询" style="width: 160%;">
+								        			</th>
+								        		</tr>
+								        		<tr>
+								        			<th>
+								        				经营情况<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        			</th>
+								        			<th>
+								        				网址<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        			</th>
+								        			<th>
+								        				开户行<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        			</th>
+								        		</tr>
+								        		<tr>
+								        			<th>
+								        				银行账号<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        			</th>
+								        			<th>
+								        				付款方式
+								        				<form class="form-inline" style="width: 130%;">
+															  <div class="form-group">
+															    <label class="sr-only" for="exampleInputAmount">Amount</label>
+															    <div class="input-group">
+															      <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+																	 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
+																	 	<div class="dropdown">
+																		  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
+																		    <span class="caret"></span>
+																		  </button>
+																		  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+																		    <li><a href="#">Acd</a></li>
+																		  </ul>
+																		</div>
+																	 </div>
+															      <div class="input-group-addon">
+															      	<button data-toggle="modal" data-target="#myModal6">a</button>
+															      	
+															      		<!--
+                                                                          	作者：offline
+                                                                          	时间：2020-01-06
+                                                                          	描述：模态框
+                                                                          -->
+                                                                          	<!--付款方式里-->
+                                                                          	<div class="modal fade" id="myModal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+																				<div class="modal-dialog" role="document">
+																				    <div class="modal-content">
+																				        <div class="modal-header">
+																				        	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+																				        	<h4 class="modal-title">选择内容设置</h4>
+																				      	</div>
+																				      	<div class="modal-body">
+																				        	<table class="table table-hover">
+																				        		<tr style="background-color: #66AFE9;">
+																				        			<th>&nbsp;</th>
+																				        			<th>序号</th>
+																				        			<th>订单付款方式</th>
+																				        		</tr>
+																				        		<tr>
+																				        			<th>&nbsp;</th>
+																				        			<th>1</th>
+																				        			<th>按月结算方式</th>
+																				        		</tr>
+																				        		<tr>
+																				        			<th>&nbsp;</th>
+																				        			<th>2</th>
+																				        			<th>货到付款</th>
+																				        		</tr>
+																				        	</table>
+																				      	</div>
+																				    	<div class="modal-footer">
+																				        	<button type="button" class="btn btn-primary">修改</button>
+																				        	<button type="button" class="btn btn-primary">保存</button>
+																				    	</div>
+																				    </div>
+																				</div>
+																			</div>
+															      </div>
+															    </div>
+															  </div>
+														</form>
+								        			</th>
+								        			<th>
+								        				广商等级
+								        				<form class="form-inline" style="width: 130%; margin-left: 20%;">
+															  <div class="form-group">
+															    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+															    <div class="input-group">
+															      <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+																	 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
+																	 	<div class="dropdown">
+																		  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
+																		    <span class="caret"></span>
+																		  </button>
+																		  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+																		    <li><a href="#">Acd</a></li>
+																		  </ul>
+																		</div>
+																	 </div>
+															      <div class="input-group-addon">
+															      	<button data-toggle="modal" data-target="#myModal7">a</button>
+															      		<!--广商等级-->
+															      			<div class="modal fade" id="myModal7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+																				<div class="modal-dialog" role="document">
+																				    <div class="modal-content">
+																				        <div class="modal-header">
+																				        	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+																				        	<h4 class="modal-title">选择内容设置</h4>
+																				      	</div>
+																				      	<div class="modal-body">
+																				        	<table class="table table-hover">
+																				        		<tr style="background-color: #66AFE9;">
+																				        			<th>&nbsp;</th>
+																				        			<th>序号</th>
+																				        			<th>广商等级</th>
+																				        		</tr>
+																				        		<tr>
+																				        			<th>&nbsp;</th>
+																				        			<th>1</th>
+																				        			<th>A</th>
+																				        		</tr>
+																				        		<tr>
+																				        			<th>&nbsp;</th>
+																				        			<th>2</th>
+																				        			<th>B</th>
+																				        		</tr>
+																				        		<tr>
+																				        			<th>&nbsp;</th>
+																				        			<th>3</th>
+																				        			<th>C</th>
+																				        		</tr>
+																				        	</table>
+																				      	</div>
+																				    	<div class="modal-footer">
+																				        	<button type="button" class="btn btn-primary">选择</button>
+																				    	</div>
+																				    </div>
+																				</div>
+																			</div>
+															      </div>
+															    </div>
+															  </div>
+														</form>
+								        			</th>
+								        		</tr>
+								        		<tr>
+								        			<th>
+								        				经营品牌<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        			</th>
+								        			<th>
+								        				广商类别
+								        				<form class="form-inline" style="width: 300%;">
+															  <div class="form-group">
+															    <label class="sr-only" for="exampleInputAmount">Amount</label>
+															    <div class="input-group">
+															      <input type="text" class="form-control" placeholder="Amount">
+																	<div class="input-group-addon">
+															      		<button data-toggle="modal" data-target="#myModal8">a</button>
+															      		
+															      		<!--广告类别-->
+															      			<div class="modal fade" id="myModal8" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+																			  	<div class="modal-dialog" role="document">
+																			    	<div class="modal-content">
+																			      		<div class="modal-header">
+																			        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+																			        		<h4 class="modal-title" id="myModalLabel">广商分类选择</h4>
+																			      		</div>
+																			      		<div class="modal-body">
+																			        		<ul id="treeDemo2" class="ztree"></ul>
+																			      		</div>
+																			      		<div class="modal-footer">
+																			        		<button type="button" class="btn btn-primary">选择</button>
+																			      		</div>
+																			    	</div>
+																			  	</div>
+																			</div>
+															      	</div>
+															    </div>
+															  </div>
+														</form>
+								        			</th>
+								        		</tr>
+								        		<tr>
+								        			<th>
+								        				联系人<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        			</th>
+								        			<th>
+								        				电话<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        			</th>
+								        			<th>
+								        				手机<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        			</th>
+								        			<th>
+								        				Email1<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        			</th>
+								        		</tr>
+								        		<tr>
+								        			<th>
+								        				账期(天)<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        			</th>
+								        			<th>
+								        				备注<input type="text" class="form-control" placeholder="询" style="width: 260%;">
+								        			</th>
+								        		</tr>
+								        	</table>
+								      </div>
+								      <div class="modal-footer">
+								        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+								        <button type="button" class="btn btn-primary">保存</button>
+								      </div>
+								    </div>
+								  </div>
+							</div>
+							
+							<!--查询-->
+								<div class="modal fade" id="myModal9" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+								  	<div class="modal-dialog" role="document">
+								    	<div class="modal-content">
+								      		<div class="modal-header">
+								        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								        		<h4 class="modal-title" id="myModalLabel">供货单位查询</h4>
+								      		</div>
+								      		<div class="modal-body">
+								        		<table class="table table-hover">
+								        			<tr>
+								        				<th>
+								        					广商代码<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        				</th>
+								        				<th>
+								        					广商名称<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        				</th>
+								        			</tr>
+								        			<tr>
+								        				<th>
+								        					地址<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        				</th>
+								        				<th>
+								        					付款方式
+								        					<form class="form-inline">
+															  <div class="form-group">
+															    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+															    <div class="input-group">
+															      <input type="text" class="form-control" placeholder="Amount">
+																	 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
+																	 	<div class="dropdown">
+																		  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
+																		    
+																		    <span class="caret"></span>
+																		  </button>
+																		  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+																		    <li><a href="#">Acd</a></li>
+																		  </ul>
+																		</div>
+																	 </div>
+															    </div>
+															  </div>
+															</form>
+								        				</th>
+								        			</tr>
+								        			<tr>
+								        				<th>
+								        					广商等级
+								        						<form class="form-inline">
+																  <div class="form-group">
+																    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+																    <div class="input-group">
+																      <input type="text" class="form-control" placeholder="Amount">
+																		 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
+																		 	<div class="dropdown">
+																			  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
+																			    
+																			    <span class="caret"></span>
+																			  </button>
+																			  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+																			    <li><a href="#">Acd</a></li>
+																			  </ul>
+																			</div>
+																		 </div>
+																    </div>
+																  </div>
+																</form>
+								        				</th>
+								        				<th>
+								        					经营品牌<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        				</th>
+								        			</tr>
+								        			<tr>
+								        				<th>
+								        					广商类别
+								        						<form class="form-inline">
+																  	<div class="form-group">
+																    	<label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+																    	<div class="input-group">
+																      		<input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+																      		<div class="input-group-addon">
+																      			<button data-toggle="modal" data-target="#myModal10">a</button>
+																      			
+																      				<!--查询里广商类别-->
+																      					<div class="modal fade" id="myModal10" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+																						  	<div class="modal-dialog" role="document">
+																						    	<div class="modal-content">
+																						      		<div class="modal-header">
+																						        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+																						        		<h4 class="modal-title" id="myModalLabel">广商分类选择</h4>
+																						      		</div>
+																						      		<div class="modal-body">
+																						        		<ul id="treeDemo3" class="ztree"></ul>
+																						      		</div>
+																						      		<div class="modal-footer">
+																						        		<button type="button" class="btn btn-primary">选择</button>
+																						      		</div>
+																						    	</div>
+																						  	</div>
+																						</div>
+																      		</div>
+																    	</div>
+																  	</div>
+																</form>
+								        				</th>
+								        				<th>
+								        					联系人<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        				</th>
+								        			</tr>
+								        			<tr>
+								        				<th>
+								        					电话<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        				</th>
+								        				<th>
+								        					手机<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        				</th>
+								        			</tr>
+								        			<tr>
+								        				<th>
+								        					经营情况<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        				</th>
+								        				<th>
+								        					备注<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        				</th>
+								        			</tr>
+								        		</table>
+								      		</div>
+								      		<div class="modal-footer">
+								        		<button type="button" class="btn btn-primary">查询</button>
+								      		</div>
+								    	</div>
+								  	</div>
+								</div>
+								
+							<!--联系人-->
+								<div class="modal fade" id="myModal11" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+								  	<div class="modal-dialog" role="document">
+								    	<div class="modal-content">
+								      		<div class="modal-header">
+								        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								        		<h4 class="modal-title" id="myModalLabel">默默联系人</h4>
+								      		</div>
+								      		<div class="modal-body">
+								        		<nav class="navbar navbar-default">
+												  <div class="container-fluid">
+												    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+												      <ul class="nav navbar-nav navbar-right">
+												        <li><a href="#"><span class="glyphicon glyphicon-align-right" aria-hidden="true"></span>增加</a></li>
+												        <li><a href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>删除</a></li>
+												        <li><a href="#"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存</a></li>
+												      </ul>
+												      <table class="table table-hover">
+												      	<tr>
+												      		<th>联系人<input type="text" class="form-control" placeholder="询" style="width: 100%;"></th>
+												      		<th>手机<input type="text" class="form-control" placeholder="询" style="width: 100%;"></th>
+												      		<th>职位<input type="text" class="form-control" placeholder="询" style="width: 100%;"></th>
+												      	</tr>
+												      	<tr>
+												      		<th>电话<input type="text" class="form-control" placeholder="询" style="width: 100%;"></th>
+												      		<th>Email<input type="text" class="form-control" placeholder="询" style="width: 100%;"></th>
+												      	</tr>
+												      </table>
+												    </div>
+												  </div>
+												</nav>
+												<div class="" style="height: 200px; overflow-y: scroll;">
+													<table class="table table-hover">
+														<tr style="background-color: #31B0D5;">
+															<th>&nbsp;</th>
+															<th>联系人</th>
+															<th>职位</th>
+															<th>手机</th>
+															<th>电话</th>
+															<th>Emali</th>
+														</tr>
+														<tr>
+															<th>&nbsp;</th>
+															<th>联系人</th>
+															<th>职位</th>
+															<th>手机</th>
+															<th>电话</th>
+															<th>Emali</th>
+														</tr>
+													</table>
+												</div>
+								      		</div>
+								      		<div class="modal-footer">
+								        		<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+								      		</div>
+								    	</div>
+								  	</div>
+								</div>
+								
+								<!--字段设置-->
+								<div class="modal fade" id="myModal12" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+								  	<div class="modal-dialog" role="document">
+								    	<div class="modal-content">
+								      		<div class="modal-header">
+								        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								        		<h4 class="modal-title">字段设置</h4>
+								      		</div>
+								      		<div class="modal-body">
+								       			<nav class="navbar navbar-default">
+												  	<div class="container-fluid">
+												    	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+												      		<ul class="nav navbar-nav navbar-right">
+												        		<li><a href="#">全部选择</a></li>
+												        		<li><a href="#">全部取消</a></li>
+												      		</ul>
+												    	</div>
+												    	<div class="" style="height: 200px; overflow-y: scroll;">
+															<table class="table table-hover">
+																<tr style="background-color: #31B0D5;">
+																	<th>&nbsp;</th>
+																	<th><input type="checkbox"></th>
+																	<th>联系人</th>
+																	<th>职位</th>
+																	<th>手机</th>
+																	<th>电话</th>
+																	<th>Emali</th>
+																</tr>
+																<tr>
+																	<th>&nbsp;</th>
+																	<th><input type="checkbox"></th>
+																	<th>联系人</th>
+																	<th>职位</th>
+																	<th>手机</th>
+																	<th>电话</th>
+																	<th>Emali</th>
+																</tr>
+															</table>
+														</div>
+												  	</div>
+												</nav>
+								      		</div>
+								      		<div class="modal-footer">
+								        		<button type="button" class="btn btn-primary">确定</button>
+								      		</div>
+								    	</div>
+								  	</div>
+								</div>
+								
+					</div>
+					<div class="row" style="height: 100%;">
+						<div class="col-md-2" style="border: 1px solid #080808;">
+							<ul id="treeDemo" class="ztree"></ul>
+						</div>
+						<div class="col-md-10" style="height: 100%;">
+							<div class="" style="height: 300px; background-color: #FFFFFF; overflow-y: scroll;">
+								<table border="1" class="table">
+									<tr style="background-color: #269ABC;">
+										<td width="4%">&nbsp;</td>
+										<td>1</td>
+										<td>1</td>
+										<td>1</td>
+										<td>1</td>
+										<td>1</td>
+										<td>1</td>
+										<td>1</td>
+										<td>1</td>
+										<td>1</td>
+									</tr>
+									<tr>
+										<td width="4%">&nbsp;</td>
+										<td>1</td>
+										<td>1</td>
+										<td>1</td>
+										<td>1</td>
+										<td>1</td>
+										<td>1</td>
+										<td>1</td>
+										<td>1</td>
+										<td>1</td>
+									</tr>
+								</table>
+							</div>
+							<div class="">
+								<div class="panel panel-default">
+								  	<div class="panel-heading">
+								  		联系人
+								  	</div>
+								  	<div class="" style="overflow-y: scroll; height: 120px;">
+								  		<table class="table" border="1">
+										    <tr style="background-color: #269ABC;">
+										    	<td width="4%">&nbsp;</td>
+										    	<td>联系人</td>
+										    	<td>职位</td>
+										    	<td>手机</td>
+										    	<td>电话</td>
+										    	<td>Email</td>
+										    </tr>
+										    <tr>
+										    	<td width="4%">&nbsp;</td>
+										    	<td>联系人</td>
+										    	<td>职位</td>
+										    	<td>手机</td>
+										    	<td>电话</td>
+										    	<td>Email</td>
+										    </tr>
+										    <tr>
+										    	<td width="4%">&nbsp;</td>
+										    	<td>联系人</td>
+										    	<td>职位</td>
+										    	<td>手机</td>
+										    	<td>电话</td>
+										    	<td>Email</td>
+										    </tr>
+										    <tr>
+										    	<td width="4%">&nbsp;</td>
+										    	<td>联系人</td>
+										    	<td>职位</td>
+										    	<td>手机</td>
+										    	<td>电话</td>
+										    	<td>Email</td>
+										    </tr>
+										    <tr>
+										    	<td width="4%">&nbsp;</td>
+										    	<td>联系人</td>
+										    	<td>职位</td>
+										    	<td>手机</td>
+										    	<td>电话</td>
+										    	<td>Email</td>
+										    </tr>
+										    <tr>
+										    	<td width="4%">&nbsp;</td>
+										    	<td>联系人</td>
+										    	<td>职位</td>
+										    	<td>手机</td>
+										    	<td>电话</td>
+										    	<td>Email</td>
+										    </tr>
+										    <tr>
+										    	<td width="4%">&nbsp;</td>
+										    	<td>联系人</td>
+										    	<td>职位</td>
+										    	<td>手机</td>
+										    	<td>电话</td>
+										    	<td>Email</td>
+										    </tr>
+										    <tr>
+										    	<td width="4%">&nbsp;</td>
+										    	<td>联系人</td>
+										    	<td>职位</td>
+										    	<td>手机</td>
+										    	<td>电话</td>
+										    	<td>Email</td>
+										    </tr>
+										</table>
+								  	</div>
+								</div>
+							</div>
+						</div>
+					</div>	
+				</div>	
+			</section>
+			<!--
+            	作者：offline
+            	时间：2019-12-31
+            	描述：导航
+            -->
+			<nav>
+				
+				
+				
+			</nav>
+			<!--
+            	作者：offline
+            	时间：2019-12-31
+            	描述：底部
+            -->
+            <foote>
+            	
+            </foote>
+            <!--
+            	作者：offline
+            	时间：2019-12-31
+            	描述：相关内容
+            -->
+            <aside>
+            	
+            </aside>
+            <!--
+            	作者：offline
+            	时间：2019-12-31
+            	描述：独立文章
+            -->
+            <article>
+            	
+            </article>
+		</div>
+				
+		<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/vue.js"></script>
+		<script type="text/javascript" src="js/jquery.ztree.core.js"></script>
+		<script type="text/javascript">
+			
+			//treeDemo是最前页面1是增加里的2是修改里的3是查询里的
+			
+			var setting = {
+				check: {
+					
+					enable: true
+				},
+				data: {
+					simpleData: {
+						enable: true
+					}
+				},
+				edit: {
+					enable: true
+				}
+			};
+			//数据结构，从后台查询数据进行赋值就可使用
+			var zNodes =[
+				{id:1, pId:0, name:"[core]", open:true},
+			{id:101, pId:1, name:"最简单的树"},
+			{id:10101, pId:101, name:"最简单的树"},
+			{id:1010101, pId:10101, name:"最简单的树"},
+			{id:101010101, pId:1010101, name:"最简单的"},
+			{id:102, pId:1, name:"最简单的树"},
+			{id:103, pId:1, name:"不显示 连接线"},
+			{id:104, pId:1, name:"不显示 节点 图标"},
+			{id:108, pId:1, name:"异步加载 节点数据"},
+			{id:109, pId:1, name:"用 zTree"},
+			{id:110, pId:1, name:"用 zTree "},
+			{id:111, pId:1, name:"单击 节点 控制"},
+			{id:112, pId:1, name:"展开 /"},
+			{id:113, pId:1, name:"根据 参数 查找 节点"},
+			{id:114, pId:1, name:"其他 鼠标 事件监听"},
+			
+			{id:2, pId:0, name:"[excheck] ", open:false},
+			{id:201, pId:2, name:"Checkbox 勾选操作"},
+			{id:206, pId:2, name:"Checkbox"},
+			{id:207, pId:2, name:"Checkbox"},
+			{id:208, pId:2, name:"Checkbox"},
+			{id:202, pId:2, name:"Checkbox 勾选统计"},
+			{id:203, pId:2, name:"用 zTree"},
+			{id:204, pId:2, name:"Radio 勾选操作"},
+			{id:209, pId:2, name:"Radio"},
+			{id:210, pId:2, name:"Radio "},
+			{id:211, pId:2, name:"Radio"},
+			{id:205, pId:2, name:"用 zTre"},
+		
+			];
+		
+			$(document).ready(function(){
+				$.fn.zTree.init($("#treeDemo"), setting, zNodes);
+			});
+			
+			//新增里面的树形
+			var setting = {
+				check: {
+					
+					enable: true
+				},
+				data: {
+					simpleData: {
+						enable: true
+					}
+				},
+				edit: {
+					enable: true
+				}
+			};
+			//数据结构，从后台查询数据进行赋值就可使用
+			var zNodes =[
+				{id:1, pId:0, name:"[core]", open:true},
+			{id:101, pId:1, name:"最简单的树"},
+			{id:10101, pId:101, name:"最简单的树"},
+			{id:1010101, pId:10101, name:"最简单的树"},
+			{id:101010101, pId:1010101, name:"最简单的"},
+			{id:102, pId:1, name:"最简单的树"},
+			{id:103, pId:1, name:"不显示 连接线"},
+			{id:104, pId:1, name:"不显示 节点 图标"},
+			{id:108, pId:1, name:"异步加载 节点数据"},
+			{id:109, pId:1, name:"用 zTree"},
+			{id:110, pId:1, name:"用 zTree "},
+			{id:111, pId:1, name:"单击 节点 控制"},
+			{id:112, pId:1, name:"展开 /"},
+			{id:113, pId:1, name:"根据 参数 查找 节点"},
+			{id:114, pId:1, name:"其他 鼠标 事件监听"},
+			
+			{id:2, pId:0, name:"[excheck] ", open:false},
+			{id:201, pId:2, name:"Checkbox 勾选操作"},
+			{id:206, pId:2, name:"Checkbox"},
+			{id:207, pId:2, name:"Checkbox"},
+			{id:208, pId:2, name:"Checkbox"},
+			{id:202, pId:2, name:"Checkbox 勾选统计"},
+			{id:203, pId:2, name:"用 zTree"},
+			{id:204, pId:2, name:"Radio 勾选操作"},
+			{id:209, pId:2, name:"Radio"},
+			{id:210, pId:2, name:"Radio "},
+			{id:211, pId:2, name:"Radio"},
+			{id:205, pId:2, name:"用 zTre"},
+		
+			];
+		
+			$(document).ready(function(){
+				$.fn.zTree.init($("#treeDemo1"), setting, zNodes);
+			});
+			
+			//修改里的
+			var setting = {
+				check: {
+					
+					enable: true
+				},
+				data: {
+					simpleData: {
+						enable: true
+					}
+				},
+				edit: {
+					enable: true
+				}
+			};
+			//数据结构，从后台查询数据进行赋值就可使用
+			var zNodes =[
+				{id:1, pId:0, name:"[core]", open:true},
+			{id:101, pId:1, name:"最简单的树"},
+			{id:10101, pId:101, name:"最简单的树"},
+			{id:1010101, pId:10101, name:"最简单的树"},
+			{id:101010101, pId:1010101, name:"最简单的"},
+			{id:102, pId:1, name:"最简单的树"},
+			{id:103, pId:1, name:"不显示 连接线"},
+			{id:104, pId:1, name:"不显示 节点 图标"},
+			{id:108, pId:1, name:"异步加载 节点数据"},
+			{id:109, pId:1, name:"用 zTree"},
+			{id:110, pId:1, name:"用 zTree "},
+			{id:111, pId:1, name:"单击 节点 控制"},
+			{id:112, pId:1, name:"展开 /"},
+			{id:113, pId:1, name:"根据 参数 查找 节点"},
+			{id:114, pId:1, name:"其他 鼠标 事件监听"},
+			
+			{id:2, pId:0, name:"[excheck] ", open:false},
+			{id:201, pId:2, name:"Checkbox 勾选操作"},
+			{id:206, pId:2, name:"Checkbox"},
+			{id:207, pId:2, name:"Checkbox"},
+			{id:208, pId:2, name:"Checkbox"},
+			{id:202, pId:2, name:"Checkbox 勾选统计"},
+			{id:203, pId:2, name:"用 zTree"},
+			{id:204, pId:2, name:"Radio 勾选操作"},
+			{id:209, pId:2, name:"Radio"},
+			{id:210, pId:2, name:"Radio "},
+			{id:211, pId:2, name:"Radio"},
+			{id:205, pId:2, name:"用 zTre"},
+		
+			];
+		
+			$(document).ready(function(){
+				$.fn.zTree.init($("#treeDemo2"), setting, zNodes);
+			});
+			
+//			查询里的
+var zNodes =[
+				{id:1, pId:0, name:"[core]", open:true},
+			{id:101, pId:1, name:"最简单的树"},
+			{id:10101, pId:101, name:"最简单的树"},
+			{id:1010101, pId:10101, name:"最简单的树"},
+			{id:101010101, pId:1010101, name:"最简单的"},
+			{id:102, pId:1, name:"最简单的树"},
+			{id:103, pId:1, name:"不显示 连接线"},
+			{id:104, pId:1, name:"不显示 节点 图标"},
+			{id:108, pId:1, name:"异步加载 节点数据"},
+			{id:109, pId:1, name:"用 zTree"},
+			{id:110, pId:1, name:"用 zTree "},
+			{id:111, pId:1, name:"单击 节点 控制"},
+			{id:112, pId:1, name:"展开 /"},
+			{id:113, pId:1, name:"根据 参数 查找 节点"},
+			{id:114, pId:1, name:"其他 鼠标 事件监听"},
+			
+			{id:2, pId:0, name:"[excheck] ", open:false},
+			{id:201, pId:2, name:"Checkbox 勾选操作"},
+			{id:206, pId:2, name:"Checkbox"},
+			{id:207, pId:2, name:"Checkbox"},
+			{id:208, pId:2, name:"Checkbox"},
+			{id:202, pId:2, name:"Checkbox 勾选统计"},
+			{id:203, pId:2, name:"用 zTree"},
+			{id:204, pId:2, name:"Radio 勾选操作"},
+			{id:209, pId:2, name:"Radio"},
+			{id:210, pId:2, name:"Radio "},
+			{id:211, pId:2, name:"Radio"},
+			{id:205, pId:2, name:"用 zTre"},
+		
+			];
+		
+			$(document).ready(function(){
+				$.fn.zTree.init($("#treeDemo3"), setting, zNodes);
+			});
+		</script>
+	</body>
+</html>

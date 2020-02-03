@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>结算中心</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+	</head>
+	<body>
+		<div class="row">
+			<h3 class="col-xs-9" style="margin-left: 20px;">结算中心</h3>
+			<p class="row col-xs-2" style="padding-top: 15px;">
+				<button class="btn btn-success" style="width: 50%;margin-right: 10px;">查询</button>
+				<button class="btn btn-default">关闭</button>
+			</p>
+		</div>
+		<div style="padding: 0 15px;">
+			<p style="height: 30px;border-bottom: 1px solid blue;"></p>
+		</div>
+		<div class="row" style="padding: 0 15px;">
+			<div class="col-xs-10">
+				<label>开单日期</label><input type="date"/><input type="date"/>&nbsp;&nbsp;&nbsp;
+				<label>销售单号</label><input type="text"/>&nbsp;&nbsp;&nbsp;
+				<label>结算状态</label>
+				<select style="padding: 3px 0;width: 100px;">
+					<option>已结算</option>
+					<option>未结算</option>
+				</select>&nbsp;&nbsp;&nbsp;
+				<label>车牌号</label><input type="text"/>&nbsp;&nbsp;&nbsp;
+				<br />
+				<label>客户名称</label>
+				<select style="padding: 3px 0;width: 140px;">
+					<option>请选择</option>
+				</select>&nbsp;&nbsp;&nbsp;
+				<label>服务顾问</label>
+				<select style="padding: 3px 0;width: 140px;">
+					<option>请选择</option>
+				</select>&nbsp;&nbsp;&nbsp;
+				<label>业务类型</label>
+				<select style="padding: 3px 0;width: 140px;">
+					<option>请选择</option>
+				</select>&nbsp;&nbsp;&nbsp;
+				<label>单据状态</label>
+				<select style="padding: 3px 0;width: 140px;">
+					<option>已完工</option>
+					<option>未完工</option>
+				</select>&nbsp;&nbsp;&nbsp;
+				<label>备注</label><input type="text"/>
+			</div>
+		</div>
+		
+		<p style="text-align: right;font-size: 18px;">
+			<a href="javascript:void(0)" style="margin-right: 20px;">收银</a>
+			<a href="javascript:void(0)" style="margin-right: 20px;">打开单据</a>
+			<a href="javascript:void(0)" style="margin-right: 20px;">导出</a>
+		</p>
+		<div>
+			<table class="table table-hover table-bordered text-center ">
+					<thead>
+						<tr>
+							<th class="text-center">单据状态</th>
+							<th class="text-center">业务类型</th>
+							<th class="text-center">客户名称</th>
+							<th class="text-center">车牌号</th>
+							<th class="text-center">手机</th>
+							<th class="text-center">会员卡号</th>
+							<th class="text-center">维修单号</th>
+							<th class="text-center">单据类型</th>
+							<th class="text-center">开单时间</th>
+							<th class="text-center">预计完工</th>
+							<th class="text-center">完工时间</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="text-center">华为荣耀p1000</td>
+							<td class="text-center">手机</td>
+							<td class="text-center">0.1</td>
+							<td class="text-center">99999</td>
+							<td class="text-center">99999</td>
+							<td class="text-center">99999</td>
+							<td class="text-center">手机</td>
+							<td class="text-center">0.1</td>
+							<td class="text-center">99999</td>
+							<td class="text-center">99999</td>
+							<td class="text-center">99999</td>
+						</tr>
+					</tbody>
+			</table>
+		</div>
+		
+		
+		
+		
+	</body>
+	<script type="text/javascript" src="js/jquery-3.4.1.min .js" ></script>
+	<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+	<script type="text/javascript">
+		
+	</script>
+</html>

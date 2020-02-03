@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.KehuxiaofeiMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Kehuxiaofei" >
+    <id column="xiaoid" property="xiaoid" jdbcType="INTEGER" />
+    <result column="dantype" property="dantype" jdbcType="VARCHAR" />
+    <result column="xsdanhao" property="xsdanhao" jdbcType="VARCHAR" />
+    <result column="chepai" property="chepai" jdbcType="VARCHAR" />
+    <result column="wxyewu" property="wxyewu" jdbcType="VARCHAR" />
+    <result column="jincdate" property="jincdate" jdbcType="DATE" />
+    <result column="overdate" property="overdate" jdbcType="DATE" />
+    <result column="jiesdate" property="jiesdate" jdbcType="DATE" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="KeHuNo" property="kehuno" jdbcType="VARCHAR" />
+    <result column="bei1" property="bei1" jdbcType="VARCHAR" />
+    <result column="bei2" property="bei2" jdbcType="VARCHAR" />
+    <result column="bei3" property="bei3" jdbcType="VARCHAR" />
+    <result column="bei4" property="bei4" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    xiaoid, dantype, xsdanhao, chepai, wxyewu, jincdate, overdate, jiesdate, price, KeHuNo, 
+    bei1, bei2, bei3, bei4
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.KehuxiaofeiExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from kehuxiaofei
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from kehuxiaofei
+    where xiaoid = #{xiaoid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from kehuxiaofei
+    where xiaoid = #{xiaoid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.KehuxiaofeiExample" >
+    delete from kehuxiaofei
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.Kehuxiaofei" >
+    insert into kehuxiaofei (xiaoid, dantype, xsdanhao, 
+      chepai, wxyewu, jincdate, 
+      overdate, jiesdate, price, 
+      KeHuNo, bei1, bei2, 
+      bei3, bei4)
+    values (#{xiaoid,jdbcType=INTEGER}, #{dantype,jdbcType=VARCHAR}, #{xsdanhao,jdbcType=VARCHAR}, 
+      #{chepai,jdbcType=VARCHAR}, #{wxyewu,jdbcType=VARCHAR}, #{jincdate,jdbcType=DATE}, 
+      #{overdate,jdbcType=DATE}, #{jiesdate,jdbcType=DATE}, #{price,jdbcType=DOUBLE}, 
+      #{kehuno,jdbcType=VARCHAR}, #{bei1,jdbcType=VARCHAR}, #{bei2,jdbcType=VARCHAR}, 
+      #{bei3,jdbcType=VARCHAR}, #{bei4,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Kehuxiaofei" >
+    insert into kehuxiaofei
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="xiaoid != null" >
+        xiaoid,
+      </if>
+      <if test="dantype != null" >
+        dantype,
+      </if>
+      <if test="xsdanhao != null" >
+        xsdanhao,
+      </if>
+      <if test="chepai != null" >
+        chepai,
+      </if>
+      <if test="wxyewu != null" >
+        wxyewu,
+      </if>
+      <if test="jincdate != null" >
+        jincdate,
+      </if>
+      <if test="overdate != null" >
+        overdate,
+      </if>
+      <if test="jiesdate != null" >
+        jiesdate,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="kehuno != null" >
+        KeHuNo,
+      </if>
+      <if test="bei1 != null" >
+        bei1,
+      </if>
+      <if test="bei2 != null" >
+        bei2,
+      </if>
+      <if test="bei3 != null" >
+        bei3,
+      </if>
+      <if test="bei4 != null" >
+        bei4,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="xiaoid != null" >
+        #{xiaoid,jdbcType=INTEGER},
+      </if>
+      <if test="dantype != null" >
+        #{dantype,jdbcType=VARCHAR},
+      </if>
+      <if test="xsdanhao != null" >
+        #{xsdanhao,jdbcType=VARCHAR},
+      </if>
+      <if test="chepai != null" >
+        #{chepai,jdbcType=VARCHAR},
+      </if>
+      <if test="wxyewu != null" >
+        #{wxyewu,jdbcType=VARCHAR},
+      </if>
+      <if test="jincdate != null" >
+        #{jincdate,jdbcType=DATE},
+      </if>
+      <if test="overdate != null" >
+        #{overdate,jdbcType=DATE},
+      </if>
+      <if test="jiesdate != null" >
+        #{jiesdate,jdbcType=DATE},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="kehuno != null" >
+        #{kehuno,jdbcType=VARCHAR},
+      </if>
+      <if test="bei1 != null" >
+        #{bei1,jdbcType=VARCHAR},
+      </if>
+      <if test="bei2 != null" >
+        #{bei2,jdbcType=VARCHAR},
+      </if>
+      <if test="bei3 != null" >
+        #{bei3,jdbcType=VARCHAR},
+      </if>
+      <if test="bei4 != null" >
+        #{bei4,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.KehuxiaofeiExample" resultType="java.lang.Integer" >
+    select count(*) from kehuxiaofei
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update kehuxiaofei
+    <set >
+      <if test="record.xiaoid != null" >
+        xiaoid = #{record.xiaoid,jdbcType=INTEGER},
+      </if>
+      <if test="record.dantype != null" >
+        dantype = #{record.dantype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xsdanhao != null" >
+        xsdanhao = #{record.xsdanhao,jdbcType=VARCHAR},
+      </if>
+      <if test="record.chepai != null" >
+        chepai = #{record.chepai,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wxyewu != null" >
+        wxyewu = #{record.wxyewu,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jincdate != null" >
+        jincdate = #{record.jincdate,jdbcType=DATE},
+      </if>
+      <if test="record.overdate != null" >
+        overdate = #{record.overdate,jdbcType=DATE},
+      </if>
+      <if test="record.jiesdate != null" >
+        jiesdate = #{record.jiesdate,jdbcType=DATE},
+      </if>
+      <if test="record.price != null" >
+        price = #{record.price,jdbcType=DOUBLE},
+      </if>
+      <if test="record.kehuno != null" >
+        KeHuNo = #{record.kehuno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei1 != null" >
+        bei1 = #{record.bei1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei2 != null" >
+        bei2 = #{record.bei2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei3 != null" >
+        bei3 = #{record.bei3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei4 != null" >
+        bei4 = #{record.bei4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update kehuxiaofei
+    set xiaoid = #{record.xiaoid,jdbcType=INTEGER},
+      dantype = #{record.dantype,jdbcType=VARCHAR},
+      xsdanhao = #{record.xsdanhao,jdbcType=VARCHAR},
+      chepai = #{record.chepai,jdbcType=VARCHAR},
+      wxyewu = #{record.wxyewu,jdbcType=VARCHAR},
+      jincdate = #{record.jincdate,jdbcType=DATE},
+      overdate = #{record.overdate,jdbcType=DATE},
+      jiesdate = #{record.jiesdate,jdbcType=DATE},
+      price = #{record.price,jdbcType=DOUBLE},
+      KeHuNo = #{record.kehuno,jdbcType=VARCHAR},
+      bei1 = #{record.bei1,jdbcType=VARCHAR},
+      bei2 = #{record.bei2,jdbcType=VARCHAR},
+      bei3 = #{record.bei3,jdbcType=VARCHAR},
+      bei4 = #{record.bei4,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.Kehuxiaofei" >
+    update kehuxiaofei
+    <set >
+      <if test="dantype != null" >
+        dantype = #{dantype,jdbcType=VARCHAR},
+      </if>
+      <if test="xsdanhao != null" >
+        xsdanhao = #{xsdanhao,jdbcType=VARCHAR},
+      </if>
+      <if test="chepai != null" >
+        chepai = #{chepai,jdbcType=VARCHAR},
+      </if>
+      <if test="wxyewu != null" >
+        wxyewu = #{wxyewu,jdbcType=VARCHAR},
+      </if>
+      <if test="jincdate != null" >
+        jincdate = #{jincdate,jdbcType=DATE},
+      </if>
+      <if test="overdate != null" >
+        overdate = #{overdate,jdbcType=DATE},
+      </if>
+      <if test="jiesdate != null" >
+        jiesdate = #{jiesdate,jdbcType=DATE},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="kehuno != null" >
+        KeHuNo = #{kehuno,jdbcType=VARCHAR},
+      </if>
+      <if test="bei1 != null" >
+        bei1 = #{bei1,jdbcType=VARCHAR},
+      </if>
+      <if test="bei2 != null" >
+        bei2 = #{bei2,jdbcType=VARCHAR},
+      </if>
+      <if test="bei3 != null" >
+        bei3 = #{bei3,jdbcType=VARCHAR},
+      </if>
+      <if test="bei4 != null" >
+        bei4 = #{bei4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where xiaoid = #{xiaoid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.Kehuxiaofei" >
+    update kehuxiaofei
+    set dantype = #{dantype,jdbcType=VARCHAR},
+      xsdanhao = #{xsdanhao,jdbcType=VARCHAR},
+      chepai = #{chepai,jdbcType=VARCHAR},
+      wxyewu = #{wxyewu,jdbcType=VARCHAR},
+      jincdate = #{jincdate,jdbcType=DATE},
+      overdate = #{overdate,jdbcType=DATE},
+      jiesdate = #{jiesdate,jdbcType=DATE},
+      price = #{price,jdbcType=DOUBLE},
+      KeHuNo = #{kehuno,jdbcType=VARCHAR},
+      bei1 = #{bei1,jdbcType=VARCHAR},
+      bei2 = #{bei2,jdbcType=VARCHAR},
+      bei3 = #{bei3,jdbcType=VARCHAR},
+      bei4 = #{bei4,jdbcType=VARCHAR}
+    where xiaoid = #{xiaoid,jdbcType=INTEGER}
+  </update>
+</mapper>

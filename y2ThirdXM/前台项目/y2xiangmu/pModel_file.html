@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+	<head>
+		<meta charset="utf-8" />
+		<title>车型档案</title>
+	</head>
+	<style type="text/css">
+		#img_wjj_2 td h4{
+			margin-left: 20px;
+		}
+		#img_wjj_1 td h4{
+			margin-left: 20px;
+		}
+		a:hover{
+			text-decoration: none;
+		}
+	</style>
+	<body style="height: 100%;">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+		<div style="width: 100%;height: 100%;">
+			<!--
+            	作者：offline
+            	时间：2019-12-31
+            	描述：头部
+            -->
+			<header>
+				<div class="row nav-tabs bg-success" style="margin-right:0px; margin-left:0px;">
+					<div class="col-md-11">
+						<h3 class="text-nowrap" style="margin-top: 10px; margin-left: 6px;">品牌车型</h3>
+					</div>
+					<div class="col-md-1">
+						<a class="btn btn-default" href="#" style="margin-top: 5px; background-color: #999999; color: #FFFFFF;">关闭</a>
+					</div>
+				</div>
+			</header>
+			<!--
+            	作者：offline
+            	时间：2019-12-31
+            	描述：独立区域中间
+            -->
+			<section style="height: 92%;">
+				<div class="row" style="height: 100%;">
+					<div class="col-md-4" style="height: 100%; background-color: #fcf8e3; border:1px solid #269ABC">
+						<div class="bg-warning" style="border: 1px solid #262626; padding-bottom: 6px;">
+							<table>
+								<tr id="img_wjj_1">
+									<td><h4><a href="#"><sapn  class="glyphicon glyphicon-align-right" data-toggle="modal" data-target="#myModal1"></span>增加品牌</a></h4></td>
+									<td><h4><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true" data-toggle="modal" data-target="#myModal2">修改</span></a></h4></td>
+									<td><h4><a href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true">删除</span></a></h4></td>
+								</tr>
+							</table>
+							<input type="text" name="" placeholder="匹配 品牌编码/品牌名称"/ style="width: 230px; height: 33px;"class="btn btn-default">
+							<button type="button" class="btn btn-warning" style="margin-left: 10px;">搜索</button>
+						</div>
+						<div class="">
+							<table border="1" class="table" style="background-color: #FFFFFF;">
+								<tr class="bg-primary">
+									<td class="text-center">&nbsp;</td>
+									<td class="text-center">编码</td>
+									<td class="text-center">品牌名称</td>
+									<td class="text-center">首字母</td>
+								</tr>
+								<tr>
+									<td style="background-color: #999999;">&nbsp;</td>
+									<td class="text-center">409</td>
+									<td class="text-center">大众</td>
+									<td class="text-center">D</td>
+								</tr>
+								<tr>
+									<td style="background-color: #999999;">&nbsp;</td>
+									<td class="text-center">500</td>
+									<td class="text-center">中国重庆</td>
+									<td class="text-center">A</td>
+								</tr>
+								<tr>
+									<td style="background-color: #999999;">&nbsp;</td>
+									<td class="text-center">500</td>
+									<td class="text-center">中国重庆</td>
+									<td class="text-center">A</td>
+								</tr>
+							</table>
+						</div>
+						
+						<!--
+                        	作者：offline
+                        	时间：2020-01-01
+                        	描述：模态框
+                        -->
+                        	<!--增加品牌-->
+							<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+							  	<div class="modal-dialog" role="document">
+							    	<div class="modal-content" style="width: 60%; margin-left: 20%;">
+							      		<div class="modal-header">
+							        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							        		<h4 class="modal-title">品牌定义</h4>
+							      		</div>
+							      		<div class="modal-body">
+							        		<ul>
+												<li>品牌定义<input type="password" placeholder="P" style="margin-left: 10%; width: 50%; border-radius: 3px 3px 3px 3px;"></li>
+												<li>品牌名称<input type="password" placeholder="P" style="margin-left: 10%; width: 50%; border-radius: 3px 3px 3px 3px;"></li>
+												<li>&nbsp;&nbsp;&nbsp;首字母<input type="password" placeholder="P" style="margin-left: 10%; width: 50%; border-radius: 3px 3px 3px 3px;"></li>
+											</ul>
+							      		</div>
+							      		<div class="modal-footer">
+							        		<button type="button" class="btn btn-primary">保存</button>
+							      		</div>
+							    	</div>
+							  	</div>
+							</div>
+							
+							<!--修改-->
+							<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+							  	<div class="modal-dialog" role="document">
+							    	<div class="modal-content" style="width: 60%; margin-left: 20%;">
+							      		<div class="modal-header">
+							        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							        		<h4 class="modal-title">品牌定义</h4>
+							      		</div>
+							      		<div class="modal-body">
+							        		<ul>
+												<li>品牌定义<input type="password" placeholder="P" style="margin-left: 10%; width: 50%; border-radius: 3px 3px 3px 3px;"></li>
+												<li>品牌名称<input type="password" placeholder="P" style="margin-left: 10%; width: 50%; border-radius: 3px 3px 3px 3px;"></li>
+												<li>&nbsp;&nbsp;&nbsp;首字母<input type="password" placeholder="P" style="margin-left: 10%; width: 50%; border-radius: 3px 3px 3px 3px;"></li>
+											</ul>
+							      		</div>
+							      		<div class="modal-footer">
+							        		<button type="button" class="btn btn-primary">保存</button>
+							      		</div>
+							    	</div>
+							  	</div>
+							</div>
+					</div>
+					<!--二-->
+					<div class="col-md-8" style="border:1px solid #2E6DA4; background-color: #fcf8e3; height: 100%; margin-left: -15px;">
+						<div class="bg-warning" style="border: 1px solid #262626; padding-bottom: 6px; margin-left: -16px;">
+							<table>
+								<tr id="img_wjj_2">
+									<td><h4><a href="#"><span class="glyphicon glyphicon-align-right" data-toggle="modal" data-target="#myModal3">增加车型</span></a></h4></td>
+									<td><h4><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true" data-toggle="modal" data-target="#myModal5">修改</span></a></h4></td>
+									<td><h4><a href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true">删除</span></a></h4></td>
+									<td><h4><a href="#"><span class="glyphicon glyphicon-picture" aria-hidden="true" data-toggle="modal" data-target="#myModal1">照片</span></a></h4></td>
+								</tr>
+							</table>
+							<input type="text" name="" placeholder="匹配/车型编码/车型名称"/ style="width: 230px; height: 33px;"class="btn btn-default">
+							<button type="button" class="btn btn-warning" style="margin-left: 10px;">搜索</button>
+						</div>
+						<div class="" style="margin-left: -15px;">
+							<table border="1" class="table" style="background-color: #FFFFFF;">
+								<tr class="bg-primary">
+									<td class="text-center" style="width: 45px; height: 37px;">&nbsp;</td>
+									<td class="text-center">APP展示</td>
+									<td class="text-center">车型ID</td>
+									<td class="text-center" style="width: 90px;">车型名称</td>
+									<td class="text-center">发动机品牌</td>
+									<td class="text-center">参考价格</td>
+									<td class="text-center">车辆年款</td>
+									<td class="text-center">功率</td>
+									<td class="text-center">进口国产</td>
+									<td class="text-center">燃油标号</td>
+									<td class="text-center">载重</td>
+								</tr>
+								<tr>
+									<td style="background-color: #999999;">&nbsp;</td>
+									<td class="text-center"><input type="checkbox" /></td>
+									<td class="text-center">大众</td>
+									<td class="text-center">D</td>
+									<td class="text-center">409</td>
+									<td class="text-center">大众</td>
+									<td class="text-center">D</td>
+									<td class="text-center">409</td>
+									<td class="text-center">大众</td>
+									<td class="text-center">D</td>
+									<td class="text-center">409</td>
+								</tr>
+							</table>
+						</div>
+						
+						<!--
+                        	作者：offline
+                        	时间：2020-01-01
+                        	描述：模态框
+                        -->
+                        	<!--增加车型-->
+							<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+							  <div class="modal-dialog" role="document">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							        <h4 class="modal-title" id="myModalLabel">车型定义</h4>
+							      </div>
+							      <div class="modal-body">
+							      	<table class="table table-hover">
+							      		<tr>
+							      			<th>车辆品牌<input type="password" placeholder="P" style="width: 80%; border-radius: 3px 3px 3px 3px;"></th>
+							      		</tr>
+							      		<tr>
+							      			<th>车型ID<input type="password" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
+							      			<th>车型名称<input type="password" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
+							      		</tr>
+							      		<tr>
+							      			<th>
+							      				进口国产<form class="form-inline">
+												  <div class="form-group">
+												    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+												    <div class="input-group">
+												      <input type="text" class="form-control" placeholder="Amount">
+														 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
+														 	<div class="dropdown">
+															  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
+															    
+															    <span class="caret"></span>
+															  </button>
+															  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+															    <li><a href="#">Action</a></li>
+															  </ul>
+															</div>
+														 </div>
+												      <div class="input-group-addon">
+												      	<button data-toggle="modal" data-target="#myModal4">a</button>
+												      		
+												      		<!--进口国产-->
+												      		<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+															  	<div class="modal-dialog" role="document">
+															    	<div class="modal-content">
+															      		<div class="modal-header">
+															        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+															        		<h4 class="modal-title" id="myModalLabel">选择内容设置</h4>
+															      		</div>
+															      		<div class="modal-body">
+															        		<nav class="navbar navbar-default">
+																			  	<div class="container-fluid">
+																			    	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+																			      		<ul class="nav navbar-nav navbar-right">
+																			        		<li><a href="#">修改</a></li>
+																			        		<li><a href="#">保存</a></li>
+																			      		</ul>
+																			    	</div>
+																			    	<div class="" style="height: 200px; overflow-y: scroll;">
+																						<table class="table table-hover">
+																							<tr style="background-color: #31B0D5;">
+																								<th>&nbsp;</th>
+																								<th>序号</th>
+																								<th>进口国产</th>
+																							</tr>
+																							<tr>
+																								<th>&nbsp;</th>
+																								<th>1</th>
+																								<th>国产</th>
+																							</tr>
+																							<tr>
+																								<th>&nbsp;</th>
+																								<th>2</th>
+																								<th>进口</th>
+																							</tr>
+																							<tr>
+																								<th>&nbsp;</th>
+																								<th>3</th>
+																								<th>合资</th>
+																							</tr>
+																						</table>
+																					</div>
+																			  	</div>
+																			</nav>
+															      		</div>
+															      		<div class="modal-footer">
+															        		<button type="button" class="btn btn-primary">选择</button>
+															      		</div>
+															    	</div>
+															  	</div>
+															</div>
+												      </div>
+												    </div>
+												  </div>
+												</form>
+							      			</th>
+							      			<th>参考价格<input type="password" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
+							      		</tr>
+							      		<tr>
+							      			<th>车辆年款<input type="password" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
+							      			<th>功率<input type="password" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
+							      		</tr>
+							      		<tr>
+							      			<th>燃油标号<input type="password" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
+							      			<th>载重<input type="password" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
+							      		</tr>
+							      		<tr>
+							      			<th>
+							      				发动机品牌
+							      				<form class="form-inline">
+												  <div class="form-group">
+												    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+												    <div class="input-group">
+												      <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+														 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
+														 	<div class="dropdown">
+															  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
+															    
+															    <span class="caret"></span>
+															  </button>
+															  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+															    <li><a href="#">Acd</a></li>
+															  </ul>
+															</div>
+														 </div>
+												    </div>
+												  </div>
+												</form>
+							      			</th>
+							      		</tr>
+							      	</table>
+							      </div>
+							      <div class="modal-footer">
+							        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+							        <button type="button" class="btn btn-primary">保存</button>
+							      </div>
+							    </div>
+							  </div>
+							</div>
+							
+							<!--修改-->
+							<div class="modal fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+							  <div class="modal-dialog" role="document">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							        <h4 class="modal-title" id="myModalLabel">车型定义</h4>
+							      </div>
+							      <div class="modal-body">
+							      	<table class="table table-hover">
+							      		<tr>
+							      			<th>车辆品牌<input type="password" placeholder="P" style="width: 80%; border-radius: 3px 3px 3px 3px;"></th>
+							      		</tr>
+							      		<tr>
+							      			<th>车型ID<input type="password" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
+							      			<th>车型名称<input type="password" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
+							      		</tr>
+							      		<tr>
+							      			<th>
+							      				进口国产<form class="form-inline">
+												  <div class="form-group">
+												    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+												    <div class="input-group">
+												      <input type="text" class="form-control" placeholder="Amount">
+														 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
+														 	<div class="dropdown">
+															  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
+															    
+															    <span class="caret"></span>
+															  </button>
+															  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+															    <li><a href="#">Action</a></li>
+															  </ul>
+															</div>
+														 </div>
+												      <div class="input-group-addon">
+												      	<button data-toggle="modal" data-target="#myModal6">a</button>
+												      		
+												      		<!--进口国产-->
+												      		<div class="modal fade" id="myModal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+															  	<div class="modal-dialog" role="document">
+															    	<div class="modal-content">
+															      		<div class="modal-header">
+															        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+															        		<h4 class="modal-title" id="myModalLabel">选择内容设置</h4>
+															      		</div>
+															      		<div class="modal-body">
+															        		<nav class="navbar navbar-default">
+																			  	<div class="container-fluid">
+																			    	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+																			      		<ul class="nav navbar-nav navbar-right">
+																			        		<li><a href="#">修改</a></li>
+																			        		<li><a href="#">保存</a></li>
+																			      		</ul>
+																			    	</div>
+																			    	<div class="" style="height: 200px; overflow-y: scroll;">
+																						<table class="table table-hover">
+																							<tr style="background-color: #31B0D5;">
+																								<th>&nbsp;</th>
+																								<th>序号</th>
+																								<th>进口国产</th>
+																							</tr>
+																							<tr>
+																								<th>&nbsp;</th>
+																								<th>1</th>
+																								<th>国产</th>
+																							</tr>
+																							<tr>
+																								<th>&nbsp;</th>
+																								<th>2</th>
+																								<th>进口</th>
+																							</tr>
+																							<tr>
+																								<th>&nbsp;</th>
+																								<th>3</th>
+																								<th>合资</th>
+																							</tr>
+																						</table>
+																					</div>
+																			  	</div>
+																			</nav>
+															      		</div>
+															      		<div class="modal-footer">
+															        		<button type="button" class="btn btn-primary">选择</button>
+															      		</div>
+															    	</div>
+															  	</div>
+															</div>
+												      </div>
+												    </div>
+												  </div>
+												</form>
+							      			</th>
+							      			<th>参考价格<input type="password" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
+							      		</tr>
+							      		<tr>
+							      			<th>车辆年款<input type="password" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
+							      			<th>功率<input type="password" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
+							      		</tr>
+							      		<tr>
+							      			<th>燃油标号<input type="password" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
+							      			<th>载重<input type="password" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
+							      		</tr>
+							      		<tr>
+							      			<th>
+							      				发动机品牌
+							      				<form class="form-inline">
+												  <div class="form-group">
+												    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+												    <div class="input-group">
+												      <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+														 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
+														 	<div class="dropdown">
+															  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
+															    
+															    <span class="caret"></span>
+															  </button>
+															  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+															    <li><a href="#">Acd</a></li>
+															  </ul>
+															</div>
+														 </div>
+												    </div>
+												  </div>
+												</form>
+							      			</th>
+							      		</tr>
+							      	</table>
+							      </div>
+							      <div class="modal-footer">
+							        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+							        <button type="button" class="btn btn-primary">保存</button>
+							      </div>
+							    </div>
+							  </div>
+							</div>
+							
+							<!--照片-->
+							<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+							  <div class="modal-dialog" role="document">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							        <h4 class="modal-title" id="myModalLabel">车型照片</h4>
+							        <button type="button" class="btn btn-success">保存</button>
+							      </div>
+							      <div class="modal-body">
+							        	<p>车型照片</p>
+							        	<span>指定照片</span>
+							        	
+							      </div>
+							      <div class="modal-footer">
+							        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							        <button type="button" class="btn btn-primary">Save changes</button>
+							      </div>
+							    </div>
+							  </div>
+							</div>
+					</div>
+				</div>
+			</section>
+			<!--
+            	作者：offline
+            	时间：2019-12-31
+            	描述：导航
+            -->
+			<nav>
+				
+				
+				
+			</nav>
+			<!--
+            	作者：offline
+            	时间：2019-12-31
+            	描述：底部
+            -->
+            <foote>
+            	
+            </foote>
+            <!--
+            	作者：offline
+            	时间：2019-12-31
+            	描述：相关内容
+            -->
+            <aside>
+            	
+            </aside>
+            <!--
+            	作者：offline
+            	时间：2019-12-31
+            	描述：独立文章
+            -->
+            <article>
+            	
+            </article>
+		</div>
+		<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/vue.js"></script>
+		<script type="text/javascript">
+			
+		</script>
+	</body>
+</html>

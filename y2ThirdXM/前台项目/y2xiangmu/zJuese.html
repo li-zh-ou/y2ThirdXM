@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>角色权限控制</title>
+		<link rel="stylesheet" href="layui/css/layui.css"/>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+		<style type="text/css">
+			.to{
+				height: 50px;	
+			}
+			.zuo{
+				margin-left: 10px;
+			}
+			.cha{
+				margin-top: 8px;
+			}
+			h3{
+				margin-top: 10px;
+			}
+			.dian{
+				margin-right: 10px;
+				display: inline;	
+			}
+			.tiao{
+				margin-bottom: 10px;
+			}
+			.dao{
+				margin-top: 10px;
+			}
+			.dao a{
+				margin-left: 10px;
+				font-size: 27;
+				text-decoration: none;
+			}
+			.xuan{
+				background-color: #EEEEEE;
+				padding-top: 20px;
+				padding-bottom: 20px;
+			}
+			.lian a{
+				text-decoration: none;
+				color:#9D9D9D;
+				margin-left: 15px;
+			}
+			.dingyi{
+				box-shadow: 2px 2px 10px #909090;
+				background-color: #fff;
+				width: 500px;
+				height: 600px;
+				position: fixed;
+				left:35%;
+				top:5%;
+			}
+			.tan{
+				padding: 5px;
+				border-bottom: 1px solid #EEEEEE;
+				background-color: rgb(247, 255, 255);
+			}
+			.toto{
+				font-size: 20px;
+				font-weight: bolder;
+			}
+			.xiao{
+				margin-left: 350px;
+			}
+			.bei{
+				height:555px;
+				background-color: #E8E9EE;
+			}
+			.jie{
+				margin-left: 330px;
+				padding: 10px;
+			}
+			.jie a{
+				text-decoration: none;
+				margin-left: 10px;
+				color:#9D9D9D;
+			}
+			.xie{
+				padding: 10px;
+				color:#21bece ;
+			}
+			.ge{
+				height: 420px;
+				background-color: #fff;
+			}
+			th{
+				background-color: #0D94FF;
+			}
+			.di{
+				margin-top: 10px;
+				margin-left: 2px;
+				color: #9D9D9D;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="ctx" class="container-fluid">
+			<div class="row to" style="background-color: rgb(247, 255, 255);">
+				<div class="col-sm-2">
+					<h3>角色权限控制</h3>
+				</div>
+				<div class="col-lg-offset-7 col-sm-3 cha">
+					<input type="radio" />同步员工权限
+					<button class="btn btn-primary zuo">搜索</button>
+					<button class="btn btn-danger zuo">关闭</button>
+				</div>
+			</div>
+			<div class="row xuan">
+				<div class="col-lg-3">
+					角色名称 <select style="width: 150px;height: 25px;"></select>
+				</div>
+				<div class="col-lg-offset-6 col-sm-3 lian">
+					<a>全部选择</a><a>全部取消</a><a class="jusedin">角色定义</a>
+				</div>
+			</div>
+			<div class="tiao">
+				<div class="sha">
+					<div class="dian diyi">模块权限</div>
+					<div class="dian">单据权限</div>
+					<div class="dian">数据权限</div>
+					<div class="dian">仓库开单</div>
+				</div>
+			</div>
+			<div class="mokuai">
+				123
+			</div>
+			<div class="danju">
+				456
+			</div>
+			<div class="shuj">
+				789
+			</div>
+			<div class="canku">
+				000
+			</div>
+			<div class="row dingyi">
+				<div>
+					<div class="tan"><span class="toto">角色定义</span><button class="btn btn-danger xiao">取消</button></div>
+				</div>
+				<div class="bei">
+					<div class="jie">
+						<a>增加</a><a>删除</a><a>保存</a>
+					</div>
+					<div class="xie">
+						<p>角色代码 <input type="text" size="15"/>&nbsp;&nbsp;&nbsp;角色名称 <input type="text" size="15"/></p>
+					</div>
+					<div class="ge">
+						<table class="table table-bordered">
+							<tr>
+								<th>角色编码</th>
+								<th>角色名称</th>
+							</tr>
+						</table>
+					</div>
+					<div>
+						<p class="di">合计：<span>1</span>记录</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="layui/layui.js" ></script>
+		<script type="text/javascript" src="js/jquery-1.8.3.js" ></script>
+		<script type="text/javascript">
+			$(".weixiu").hide();
+			$(".zeng").hide();
+			$(".dingyi").hide();
+			$(".danju").hide();
+			$(".shuj").hide();
+			$(".canku").hide();
+			$(".diyi").css("border-top","5px solid #0000FF").css("color","#21bece");
+			$(".dian").click(function(){
+				$(".dian").css("border-top","0px solid #0000FF").css("color","#000000");
+				$(this).css("border-top","5px solid #0000FF").css("color","#21bece");
+				if($(this).html()=="模块权限"){
+					$(".mokuai").show();
+					$(".danju").hide();
+					$(".shuj").hide();
+					$(".canku").hide();
+				}else if($(this).html()=="单据权限"){
+					$(".mokuai").hide();
+					$(".danju").show();
+					$(".shuj").hide();
+					$(".canku").hide();
+				}else if($(this).html()=="数据权限"){
+					$(".mokuai").hide();
+					$(".danju").hide();
+					$(".shuj").show();
+					$(".canku").hide();
+				}else if($(this).html()=="仓库开单"){
+					$(".mokuai").hide();
+					$(".danju").hide();
+					$(".shuj").hide();
+					$(".canku").show();
+				}
+				
+			})
+			$(".chepin").click(function(){
+				$(".pinpai").show();
+			})
+			$(".guan2").click(function(){
+				$(".pinpai").hide();
+			})
+			$(".xiao").click(function(){
+				$(".dingyi").hide();
+			})
+			$(".jusedin").click(function(){
+				$(".dingyi").show();
+			})
+		</script>
+	</body>
+</html>

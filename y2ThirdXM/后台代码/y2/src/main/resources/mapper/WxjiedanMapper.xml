@@ -1,0 +1,732 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.WxjiedanMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Wxjiedan" >
+    <id column="wxDanNo" property="wxdanno" jdbcType="VARCHAR" />
+    <result column="wxDanType" property="wxdantype" jdbcType="VARCHAR" />
+    <result column="wxType" property="wxtype" jdbcType="VARCHAR" />
+    <result column="DanJuStatu" property="danjustatu" jdbcType="VARCHAR" />
+    <result column="Kaidantime" property="kaidantime" jdbcType="TIMESTAMP" />
+    <result column="KeHunNo" property="kehunno" jdbcType="VARCHAR" />
+    <result column="ChePai" property="chepai" jdbcType="VARCHAR" />
+    <result column="CarBankId" property="carbankid" jdbcType="INTEGER" />
+    <result column="CarXingHao" property="carxinghao" jdbcType="VARCHAR" />
+    <result column="CheJiaXingHao" property="chejiaxinghao" jdbcType="VARCHAR" />
+    <result column="FaNumber" property="fanumber" jdbcType="VARCHAR" />
+    <result column="FaBankId" property="fabankid" jdbcType="INTEGER" />
+    <result column="GuWen" property="guwen" jdbcType="VARCHAR" />
+    <result column="CheZhu" property="chezhu" jdbcType="VARCHAR" />
+    <result column="SiJiName" property="sijiname" jdbcType="VARCHAR" />
+    <result column="LianPhone" property="lianphone" jdbcType="VARCHAR" />
+    <result column="JinChanLi" property="jinchanli" jdbcType="INTEGER" />
+    <result column="JinChanYou" property="jinchanyou" jdbcType="INTEGER" />
+    <result column="prevLi" property="prevli" jdbcType="INTEGER" />
+    <result column="prevTime" property="prevtime" jdbcType="TIMESTAMP" />
+    <result column="JinChanTime" property="jinchantime" jdbcType="TIMESTAMP" />
+    <result column="YeWuType" property="yewutype" jdbcType="VARCHAR" />
+    <result column="ShiGong" property="shigong" jdbcType="VARCHAR" />
+    <result column="JieChe" property="jieche" jdbcType="VARCHAR" />
+    <result column="YuJiTime" property="yujitime" jdbcType="TIMESTAMP" />
+    <result column="WanGongTime" property="wangongtime" jdbcType="TIMESTAMP" />
+    <result column="JieSuanType" property="jiesuantype" jdbcType="VARCHAR" />
+    <result column="jieSuantime" property="jiesuantime" jdbcType="TIMESTAMP" />
+    <result column="jieSuanmoney" property="jiesuanmoney" jdbcType="DOUBLE" />
+    <result column="PeiKuan" property="peikuan" jdbcType="VARCHAR" />
+    <result column="Money" property="money" jdbcType="DOUBLE" />
+    <result column="saleNo" property="saleno" jdbcType="VARCHAR" />
+    <result column="BaoXiu" property="baoxiu" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="bei1" property="bei1" jdbcType="VARCHAR" />
+    <result column="bei2" property="bei2" jdbcType="VARCHAR" />
+    <result column="bei3" property="bei3" jdbcType="VARCHAR" />
+    <result column="bei4" property="bei4" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    wxDanNo, wxDanType, wxType, DanJuStatu, Kaidantime, KeHunNo, ChePai, CarBankId, CarXingHao, 
+    CheJiaXingHao, FaNumber, FaBankId, GuWen, CheZhu, SiJiName, LianPhone, JinChanLi, 
+    JinChanYou, prevLi, prevTime, JinChanTime, YeWuType, ShiGong, JieChe, YuJiTime, WanGongTime, 
+    JieSuanType, jieSuantime, jieSuanmoney, PeiKuan, Money, saleNo, BaoXiu, remark, bei1, 
+    bei2, bei3, bei4
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.WxjiedanExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from wxjiedan
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wxjiedan
+    where wxDanNo = #{wxdanno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wxjiedan
+    where wxDanNo = #{wxdanno,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.WxjiedanExample" >
+    delete from wxjiedan
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.Wxjiedan" >
+    insert into wxjiedan (wxDanNo, wxDanType, wxType, 
+      DanJuStatu, Kaidantime, KeHunNo, 
+      ChePai, CarBankId, CarXingHao, 
+      CheJiaXingHao, FaNumber, FaBankId, 
+      GuWen, CheZhu, SiJiName, 
+      LianPhone, JinChanLi, JinChanYou, 
+      prevLi, prevTime, JinChanTime, 
+      YeWuType, ShiGong, JieChe, 
+      YuJiTime, WanGongTime, JieSuanType, 
+      jieSuantime, jieSuanmoney, PeiKuan, 
+      Money, saleNo, BaoXiu, 
+      remark, bei1, bei2, 
+      bei3, bei4)
+    values (#{wxdanno,jdbcType=VARCHAR}, #{wxdantype,jdbcType=VARCHAR}, #{wxtype,jdbcType=VARCHAR}, 
+      #{danjustatu,jdbcType=VARCHAR}, #{kaidantime,jdbcType=TIMESTAMP}, #{kehunno,jdbcType=VARCHAR}, 
+      #{chepai,jdbcType=VARCHAR}, #{carbankid,jdbcType=INTEGER}, #{carxinghao,jdbcType=VARCHAR}, 
+      #{chejiaxinghao,jdbcType=VARCHAR}, #{fanumber,jdbcType=VARCHAR}, #{fabankid,jdbcType=INTEGER}, 
+      #{guwen,jdbcType=VARCHAR}, #{chezhu,jdbcType=VARCHAR}, #{sijiname,jdbcType=VARCHAR}, 
+      #{lianphone,jdbcType=VARCHAR}, #{jinchanli,jdbcType=INTEGER}, #{jinchanyou,jdbcType=INTEGER}, 
+      #{prevli,jdbcType=INTEGER}, #{prevtime,jdbcType=TIMESTAMP}, #{jinchantime,jdbcType=TIMESTAMP}, 
+      #{yewutype,jdbcType=VARCHAR}, #{shigong,jdbcType=VARCHAR}, #{jieche,jdbcType=VARCHAR}, 
+      #{yujitime,jdbcType=TIMESTAMP}, #{wangongtime,jdbcType=TIMESTAMP}, #{jiesuantype,jdbcType=VARCHAR}, 
+      #{jiesuantime,jdbcType=TIMESTAMP}, #{jiesuanmoney,jdbcType=DOUBLE}, #{peikuan,jdbcType=VARCHAR}, 
+      #{money,jdbcType=DOUBLE}, #{saleno,jdbcType=VARCHAR}, #{baoxiu,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{bei1,jdbcType=VARCHAR}, #{bei2,jdbcType=VARCHAR}, 
+      #{bei3,jdbcType=VARCHAR}, #{bei4,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Wxjiedan" >
+    insert into wxjiedan
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="wxdanno != null" >
+        wxDanNo,
+      </if>
+      <if test="wxdantype != null" >
+        wxDanType,
+      </if>
+      <if test="wxtype != null" >
+        wxType,
+      </if>
+      <if test="danjustatu != null" >
+        DanJuStatu,
+      </if>
+      <if test="kaidantime != null" >
+        Kaidantime,
+      </if>
+      <if test="kehunno != null" >
+        KeHunNo,
+      </if>
+      <if test="chepai != null" >
+        ChePai,
+      </if>
+      <if test="carbankid != null" >
+        CarBankId,
+      </if>
+      <if test="carxinghao != null" >
+        CarXingHao,
+      </if>
+      <if test="chejiaxinghao != null" >
+        CheJiaXingHao,
+      </if>
+      <if test="fanumber != null" >
+        FaNumber,
+      </if>
+      <if test="fabankid != null" >
+        FaBankId,
+      </if>
+      <if test="guwen != null" >
+        GuWen,
+      </if>
+      <if test="chezhu != null" >
+        CheZhu,
+      </if>
+      <if test="sijiname != null" >
+        SiJiName,
+      </if>
+      <if test="lianphone != null" >
+        LianPhone,
+      </if>
+      <if test="jinchanli != null" >
+        JinChanLi,
+      </if>
+      <if test="jinchanyou != null" >
+        JinChanYou,
+      </if>
+      <if test="prevli != null" >
+        prevLi,
+      </if>
+      <if test="prevtime != null" >
+        prevTime,
+      </if>
+      <if test="jinchantime != null" >
+        JinChanTime,
+      </if>
+      <if test="yewutype != null" >
+        YeWuType,
+      </if>
+      <if test="shigong != null" >
+        ShiGong,
+      </if>
+      <if test="jieche != null" >
+        JieChe,
+      </if>
+      <if test="yujitime != null" >
+        YuJiTime,
+      </if>
+      <if test="wangongtime != null" >
+        WanGongTime,
+      </if>
+      <if test="jiesuantype != null" >
+        JieSuanType,
+      </if>
+      <if test="jiesuantime != null" >
+        jieSuantime,
+      </if>
+      <if test="jiesuanmoney != null" >
+        jieSuanmoney,
+      </if>
+      <if test="peikuan != null" >
+        PeiKuan,
+      </if>
+      <if test="money != null" >
+        Money,
+      </if>
+      <if test="saleno != null" >
+        saleNo,
+      </if>
+      <if test="baoxiu != null" >
+        BaoXiu,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="bei1 != null" >
+        bei1,
+      </if>
+      <if test="bei2 != null" >
+        bei2,
+      </if>
+      <if test="bei3 != null" >
+        bei3,
+      </if>
+      <if test="bei4 != null" >
+        bei4,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="wxdanno != null" >
+        #{wxdanno,jdbcType=VARCHAR},
+      </if>
+      <if test="wxdantype != null" >
+        #{wxdantype,jdbcType=VARCHAR},
+      </if>
+      <if test="wxtype != null" >
+        #{wxtype,jdbcType=VARCHAR},
+      </if>
+      <if test="danjustatu != null" >
+        #{danjustatu,jdbcType=VARCHAR},
+      </if>
+      <if test="kaidantime != null" >
+        #{kaidantime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="kehunno != null" >
+        #{kehunno,jdbcType=VARCHAR},
+      </if>
+      <if test="chepai != null" >
+        #{chepai,jdbcType=VARCHAR},
+      </if>
+      <if test="carbankid != null" >
+        #{carbankid,jdbcType=INTEGER},
+      </if>
+      <if test="carxinghao != null" >
+        #{carxinghao,jdbcType=VARCHAR},
+      </if>
+      <if test="chejiaxinghao != null" >
+        #{chejiaxinghao,jdbcType=VARCHAR},
+      </if>
+      <if test="fanumber != null" >
+        #{fanumber,jdbcType=VARCHAR},
+      </if>
+      <if test="fabankid != null" >
+        #{fabankid,jdbcType=INTEGER},
+      </if>
+      <if test="guwen != null" >
+        #{guwen,jdbcType=VARCHAR},
+      </if>
+      <if test="chezhu != null" >
+        #{chezhu,jdbcType=VARCHAR},
+      </if>
+      <if test="sijiname != null" >
+        #{sijiname,jdbcType=VARCHAR},
+      </if>
+      <if test="lianphone != null" >
+        #{lianphone,jdbcType=VARCHAR},
+      </if>
+      <if test="jinchanli != null" >
+        #{jinchanli,jdbcType=INTEGER},
+      </if>
+      <if test="jinchanyou != null" >
+        #{jinchanyou,jdbcType=INTEGER},
+      </if>
+      <if test="prevli != null" >
+        #{prevli,jdbcType=INTEGER},
+      </if>
+      <if test="prevtime != null" >
+        #{prevtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jinchantime != null" >
+        #{jinchantime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="yewutype != null" >
+        #{yewutype,jdbcType=VARCHAR},
+      </if>
+      <if test="shigong != null" >
+        #{shigong,jdbcType=VARCHAR},
+      </if>
+      <if test="jieche != null" >
+        #{jieche,jdbcType=VARCHAR},
+      </if>
+      <if test="yujitime != null" >
+        #{yujitime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wangongtime != null" >
+        #{wangongtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jiesuantype != null" >
+        #{jiesuantype,jdbcType=VARCHAR},
+      </if>
+      <if test="jiesuantime != null" >
+        #{jiesuantime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jiesuanmoney != null" >
+        #{jiesuanmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="peikuan != null" >
+        #{peikuan,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="saleno != null" >
+        #{saleno,jdbcType=VARCHAR},
+      </if>
+      <if test="baoxiu != null" >
+        #{baoxiu,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="bei1 != null" >
+        #{bei1,jdbcType=VARCHAR},
+      </if>
+      <if test="bei2 != null" >
+        #{bei2,jdbcType=VARCHAR},
+      </if>
+      <if test="bei3 != null" >
+        #{bei3,jdbcType=VARCHAR},
+      </if>
+      <if test="bei4 != null" >
+        #{bei4,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.WxjiedanExample" resultType="java.lang.Integer" >
+    select count(*) from wxjiedan
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update wxjiedan
+    <set >
+      <if test="record.wxdanno != null" >
+        wxDanNo = #{record.wxdanno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wxdantype != null" >
+        wxDanType = #{record.wxdantype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wxtype != null" >
+        wxType = #{record.wxtype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.danjustatu != null" >
+        DanJuStatu = #{record.danjustatu,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kaidantime != null" >
+        Kaidantime = #{record.kaidantime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.kehunno != null" >
+        KeHunNo = #{record.kehunno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.chepai != null" >
+        ChePai = #{record.chepai,jdbcType=VARCHAR},
+      </if>
+      <if test="record.carbankid != null" >
+        CarBankId = #{record.carbankid,jdbcType=INTEGER},
+      </if>
+      <if test="record.carxinghao != null" >
+        CarXingHao = #{record.carxinghao,jdbcType=VARCHAR},
+      </if>
+      <if test="record.chejiaxinghao != null" >
+        CheJiaXingHao = #{record.chejiaxinghao,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fanumber != null" >
+        FaNumber = #{record.fanumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fabankid != null" >
+        FaBankId = #{record.fabankid,jdbcType=INTEGER},
+      </if>
+      <if test="record.guwen != null" >
+        GuWen = #{record.guwen,jdbcType=VARCHAR},
+      </if>
+      <if test="record.chezhu != null" >
+        CheZhu = #{record.chezhu,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sijiname != null" >
+        SiJiName = #{record.sijiname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lianphone != null" >
+        LianPhone = #{record.lianphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jinchanli != null" >
+        JinChanLi = #{record.jinchanli,jdbcType=INTEGER},
+      </if>
+      <if test="record.jinchanyou != null" >
+        JinChanYou = #{record.jinchanyou,jdbcType=INTEGER},
+      </if>
+      <if test="record.prevli != null" >
+        prevLi = #{record.prevli,jdbcType=INTEGER},
+      </if>
+      <if test="record.prevtime != null" >
+        prevTime = #{record.prevtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.jinchantime != null" >
+        JinChanTime = #{record.jinchantime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.yewutype != null" >
+        YeWuType = #{record.yewutype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shigong != null" >
+        ShiGong = #{record.shigong,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jieche != null" >
+        JieChe = #{record.jieche,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yujitime != null" >
+        YuJiTime = #{record.yujitime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.wangongtime != null" >
+        WanGongTime = #{record.wangongtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.jiesuantype != null" >
+        JieSuanType = #{record.jiesuantype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jiesuantime != null" >
+        jieSuantime = #{record.jiesuantime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.jiesuanmoney != null" >
+        jieSuanmoney = #{record.jiesuanmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.peikuan != null" >
+        PeiKuan = #{record.peikuan,jdbcType=VARCHAR},
+      </if>
+      <if test="record.money != null" >
+        Money = #{record.money,jdbcType=DOUBLE},
+      </if>
+      <if test="record.saleno != null" >
+        saleNo = #{record.saleno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.baoxiu != null" >
+        BaoXiu = #{record.baoxiu,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei1 != null" >
+        bei1 = #{record.bei1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei2 != null" >
+        bei2 = #{record.bei2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei3 != null" >
+        bei3 = #{record.bei3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei4 != null" >
+        bei4 = #{record.bei4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update wxjiedan
+    set wxDanNo = #{record.wxdanno,jdbcType=VARCHAR},
+      wxDanType = #{record.wxdantype,jdbcType=VARCHAR},
+      wxType = #{record.wxtype,jdbcType=VARCHAR},
+      DanJuStatu = #{record.danjustatu,jdbcType=VARCHAR},
+      Kaidantime = #{record.kaidantime,jdbcType=TIMESTAMP},
+      KeHunNo = #{record.kehunno,jdbcType=VARCHAR},
+      ChePai = #{record.chepai,jdbcType=VARCHAR},
+      CarBankId = #{record.carbankid,jdbcType=INTEGER},
+      CarXingHao = #{record.carxinghao,jdbcType=VARCHAR},
+      CheJiaXingHao = #{record.chejiaxinghao,jdbcType=VARCHAR},
+      FaNumber = #{record.fanumber,jdbcType=VARCHAR},
+      FaBankId = #{record.fabankid,jdbcType=INTEGER},
+      GuWen = #{record.guwen,jdbcType=VARCHAR},
+      CheZhu = #{record.chezhu,jdbcType=VARCHAR},
+      SiJiName = #{record.sijiname,jdbcType=VARCHAR},
+      LianPhone = #{record.lianphone,jdbcType=VARCHAR},
+      JinChanLi = #{record.jinchanli,jdbcType=INTEGER},
+      JinChanYou = #{record.jinchanyou,jdbcType=INTEGER},
+      prevLi = #{record.prevli,jdbcType=INTEGER},
+      prevTime = #{record.prevtime,jdbcType=TIMESTAMP},
+      JinChanTime = #{record.jinchantime,jdbcType=TIMESTAMP},
+      YeWuType = #{record.yewutype,jdbcType=VARCHAR},
+      ShiGong = #{record.shigong,jdbcType=VARCHAR},
+      JieChe = #{record.jieche,jdbcType=VARCHAR},
+      YuJiTime = #{record.yujitime,jdbcType=TIMESTAMP},
+      WanGongTime = #{record.wangongtime,jdbcType=TIMESTAMP},
+      JieSuanType = #{record.jiesuantype,jdbcType=VARCHAR},
+      jieSuantime = #{record.jiesuantime,jdbcType=TIMESTAMP},
+      jieSuanmoney = #{record.jiesuanmoney,jdbcType=DOUBLE},
+      PeiKuan = #{record.peikuan,jdbcType=VARCHAR},
+      Money = #{record.money,jdbcType=DOUBLE},
+      saleNo = #{record.saleno,jdbcType=VARCHAR},
+      BaoXiu = #{record.baoxiu,jdbcType=VARCHAR},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      bei1 = #{record.bei1,jdbcType=VARCHAR},
+      bei2 = #{record.bei2,jdbcType=VARCHAR},
+      bei3 = #{record.bei3,jdbcType=VARCHAR},
+      bei4 = #{record.bei4,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.Wxjiedan" >
+    update wxjiedan
+    <set >
+      <if test="wxdantype != null" >
+        wxDanType = #{wxdantype,jdbcType=VARCHAR},
+      </if>
+      <if test="wxtype != null" >
+        wxType = #{wxtype,jdbcType=VARCHAR},
+      </if>
+      <if test="danjustatu != null" >
+        DanJuStatu = #{danjustatu,jdbcType=VARCHAR},
+      </if>
+      <if test="kaidantime != null" >
+        Kaidantime = #{kaidantime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="kehunno != null" >
+        KeHunNo = #{kehunno,jdbcType=VARCHAR},
+      </if>
+      <if test="chepai != null" >
+        ChePai = #{chepai,jdbcType=VARCHAR},
+      </if>
+      <if test="carbankid != null" >
+        CarBankId = #{carbankid,jdbcType=INTEGER},
+      </if>
+      <if test="carxinghao != null" >
+        CarXingHao = #{carxinghao,jdbcType=VARCHAR},
+      </if>
+      <if test="chejiaxinghao != null" >
+        CheJiaXingHao = #{chejiaxinghao,jdbcType=VARCHAR},
+      </if>
+      <if test="fanumber != null" >
+        FaNumber = #{fanumber,jdbcType=VARCHAR},
+      </if>
+      <if test="fabankid != null" >
+        FaBankId = #{fabankid,jdbcType=INTEGER},
+      </if>
+      <if test="guwen != null" >
+        GuWen = #{guwen,jdbcType=VARCHAR},
+      </if>
+      <if test="chezhu != null" >
+        CheZhu = #{chezhu,jdbcType=VARCHAR},
+      </if>
+      <if test="sijiname != null" >
+        SiJiName = #{sijiname,jdbcType=VARCHAR},
+      </if>
+      <if test="lianphone != null" >
+        LianPhone = #{lianphone,jdbcType=VARCHAR},
+      </if>
+      <if test="jinchanli != null" >
+        JinChanLi = #{jinchanli,jdbcType=INTEGER},
+      </if>
+      <if test="jinchanyou != null" >
+        JinChanYou = #{jinchanyou,jdbcType=INTEGER},
+      </if>
+      <if test="prevli != null" >
+        prevLi = #{prevli,jdbcType=INTEGER},
+      </if>
+      <if test="prevtime != null" >
+        prevTime = #{prevtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jinchantime != null" >
+        JinChanTime = #{jinchantime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="yewutype != null" >
+        YeWuType = #{yewutype,jdbcType=VARCHAR},
+      </if>
+      <if test="shigong != null" >
+        ShiGong = #{shigong,jdbcType=VARCHAR},
+      </if>
+      <if test="jieche != null" >
+        JieChe = #{jieche,jdbcType=VARCHAR},
+      </if>
+      <if test="yujitime != null" >
+        YuJiTime = #{yujitime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wangongtime != null" >
+        WanGongTime = #{wangongtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jiesuantype != null" >
+        JieSuanType = #{jiesuantype,jdbcType=VARCHAR},
+      </if>
+      <if test="jiesuantime != null" >
+        jieSuantime = #{jiesuantime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jiesuanmoney != null" >
+        jieSuanmoney = #{jiesuanmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="peikuan != null" >
+        PeiKuan = #{peikuan,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        Money = #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="saleno != null" >
+        saleNo = #{saleno,jdbcType=VARCHAR},
+      </if>
+      <if test="baoxiu != null" >
+        BaoXiu = #{baoxiu,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="bei1 != null" >
+        bei1 = #{bei1,jdbcType=VARCHAR},
+      </if>
+      <if test="bei2 != null" >
+        bei2 = #{bei2,jdbcType=VARCHAR},
+      </if>
+      <if test="bei3 != null" >
+        bei3 = #{bei3,jdbcType=VARCHAR},
+      </if>
+      <if test="bei4 != null" >
+        bei4 = #{bei4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where wxDanNo = #{wxdanno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.Wxjiedan" >
+    update wxjiedan
+    set wxDanType = #{wxdantype,jdbcType=VARCHAR},
+      wxType = #{wxtype,jdbcType=VARCHAR},
+      DanJuStatu = #{danjustatu,jdbcType=VARCHAR},
+      Kaidantime = #{kaidantime,jdbcType=TIMESTAMP},
+      KeHunNo = #{kehunno,jdbcType=VARCHAR},
+      ChePai = #{chepai,jdbcType=VARCHAR},
+      CarBankId = #{carbankid,jdbcType=INTEGER},
+      CarXingHao = #{carxinghao,jdbcType=VARCHAR},
+      CheJiaXingHao = #{chejiaxinghao,jdbcType=VARCHAR},
+      FaNumber = #{fanumber,jdbcType=VARCHAR},
+      FaBankId = #{fabankid,jdbcType=INTEGER},
+      GuWen = #{guwen,jdbcType=VARCHAR},
+      CheZhu = #{chezhu,jdbcType=VARCHAR},
+      SiJiName = #{sijiname,jdbcType=VARCHAR},
+      LianPhone = #{lianphone,jdbcType=VARCHAR},
+      JinChanLi = #{jinchanli,jdbcType=INTEGER},
+      JinChanYou = #{jinchanyou,jdbcType=INTEGER},
+      prevLi = #{prevli,jdbcType=INTEGER},
+      prevTime = #{prevtime,jdbcType=TIMESTAMP},
+      JinChanTime = #{jinchantime,jdbcType=TIMESTAMP},
+      YeWuType = #{yewutype,jdbcType=VARCHAR},
+      ShiGong = #{shigong,jdbcType=VARCHAR},
+      JieChe = #{jieche,jdbcType=VARCHAR},
+      YuJiTime = #{yujitime,jdbcType=TIMESTAMP},
+      WanGongTime = #{wangongtime,jdbcType=TIMESTAMP},
+      JieSuanType = #{jiesuantype,jdbcType=VARCHAR},
+      jieSuantime = #{jiesuantime,jdbcType=TIMESTAMP},
+      jieSuanmoney = #{jiesuanmoney,jdbcType=DOUBLE},
+      PeiKuan = #{peikuan,jdbcType=VARCHAR},
+      Money = #{money,jdbcType=DOUBLE},
+      saleNo = #{saleno,jdbcType=VARCHAR},
+      BaoXiu = #{baoxiu,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      bei1 = #{bei1,jdbcType=VARCHAR},
+      bei2 = #{bei2,jdbcType=VARCHAR},
+      bei3 = #{bei3,jdbcType=VARCHAR},
+      bei4 = #{bei4,jdbcType=VARCHAR}
+    where wxDanNo = #{wxdanno,jdbcType=VARCHAR}
+  </update>
+</mapper>

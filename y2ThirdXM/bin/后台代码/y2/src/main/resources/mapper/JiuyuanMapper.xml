@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.JiuyuanMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Jiuyuan" >
+    <result column="jyDanNo" property="jydanno" jdbcType="VARCHAR" />
+    <result column="jyChepai" property="jychepai" jdbcType="VARCHAR" />
+    <result column="jyGuwen" property="jyguwen" jdbcType="VARCHAR" />
+    <result column="jyYeWuType" property="jyyewutype" jdbcType="VARCHAR" />
+    <result column="jyShiGong" property="jyshigong" jdbcType="VARCHAR" />
+    <result column="nowLicheng" property="nowlicheng" jdbcType="DOUBLE" />
+    <result column="Paigongtime" property="paigongtime" jdbcType="TIMESTAMP" />
+    <result column="PaigongBanzu" property="paigongbanzu" jdbcType="INTEGER" />
+    <result column="ChuFaTime" property="chufatime" jdbcType="TIMESTAMP" />
+    <result column="ChuFaAddress" property="chufaaddress" jdbcType="VARCHAR" />
+    <result column="JiaShiCar" property="jiashicar" jdbcType="VARCHAR" />
+    <result column="jyLiChen" property="jylichen" jdbcType="DOUBLE" />
+    <result column="jyEndAddress" property="jyendaddress" jdbcType="VARCHAR" />
+    <result column="jyEndTime" property="jyendtime" jdbcType="TIMESTAMP" />
+    <result column="WanGongTime" property="wangongtime" jdbcType="TIMESTAMP" />
+    <result column="Yugumoney" property="yugumoney" jdbcType="DOUBLE" />
+    <result column="tureMoney" property="turemoney" jdbcType="DOUBLE" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="jyChengShu" property="jychengshu" jdbcType="VARCHAR" />
+    <result column="bei1" property="bei1" jdbcType="VARCHAR" />
+    <result column="bei2" property="bei2" jdbcType="VARCHAR" />
+    <result column="bei3" property="bei3" jdbcType="VARCHAR" />
+    <result column="bei4" property="bei4" jdbcType="VARCHAR" />
+    <result column="bei5" property="bei5" jdbcType="VARCHAR" />
+    <result column="bei6" property="bei6" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    jyDanNo, jyChepai, jyGuwen, jyYeWuType, jyShiGong, nowLicheng, Paigongtime, PaigongBanzu, 
+    ChuFaTime, ChuFaAddress, JiaShiCar, jyLiChen, jyEndAddress, jyEndTime, WanGongTime, 
+    Yugumoney, tureMoney, remark, jyChengShu, bei1, bei2, bei3, bei4, bei5, bei6
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.JiuyuanExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from jiuyuan
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.accp.domain.JiuyuanExample" >
+    delete from jiuyuan
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.Jiuyuan" >
+    insert into jiuyuan (jyDanNo, jyChepai, jyGuwen, 
+      jyYeWuType, jyShiGong, nowLicheng, 
+      Paigongtime, PaigongBanzu, ChuFaTime, 
+      ChuFaAddress, JiaShiCar, jyLiChen, 
+      jyEndAddress, jyEndTime, WanGongTime, 
+      Yugumoney, tureMoney, remark, 
+      jyChengShu, bei1, bei2, 
+      bei3, bei4, bei5, bei6
+      )
+    values (#{jydanno,jdbcType=VARCHAR}, #{jychepai,jdbcType=VARCHAR}, #{jyguwen,jdbcType=VARCHAR}, 
+      #{jyyewutype,jdbcType=VARCHAR}, #{jyshigong,jdbcType=VARCHAR}, #{nowlicheng,jdbcType=DOUBLE}, 
+      #{paigongtime,jdbcType=TIMESTAMP}, #{paigongbanzu,jdbcType=INTEGER}, #{chufatime,jdbcType=TIMESTAMP}, 
+      #{chufaaddress,jdbcType=VARCHAR}, #{jiashicar,jdbcType=VARCHAR}, #{jylichen,jdbcType=DOUBLE}, 
+      #{jyendaddress,jdbcType=VARCHAR}, #{jyendtime,jdbcType=TIMESTAMP}, #{wangongtime,jdbcType=TIMESTAMP}, 
+      #{yugumoney,jdbcType=DOUBLE}, #{turemoney,jdbcType=DOUBLE}, #{remark,jdbcType=VARCHAR}, 
+      #{jychengshu,jdbcType=VARCHAR}, #{bei1,jdbcType=VARCHAR}, #{bei2,jdbcType=VARCHAR}, 
+      #{bei3,jdbcType=VARCHAR}, #{bei4,jdbcType=VARCHAR}, #{bei5,jdbcType=VARCHAR}, #{bei6,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Jiuyuan" >
+    insert into jiuyuan
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="jydanno != null" >
+        jyDanNo,
+      </if>
+      <if test="jychepai != null" >
+        jyChepai,
+      </if>
+      <if test="jyguwen != null" >
+        jyGuwen,
+      </if>
+      <if test="jyyewutype != null" >
+        jyYeWuType,
+      </if>
+      <if test="jyshigong != null" >
+        jyShiGong,
+      </if>
+      <if test="nowlicheng != null" >
+        nowLicheng,
+      </if>
+      <if test="paigongtime != null" >
+        Paigongtime,
+      </if>
+      <if test="paigongbanzu != null" >
+        PaigongBanzu,
+      </if>
+      <if test="chufatime != null" >
+        ChuFaTime,
+      </if>
+      <if test="chufaaddress != null" >
+        ChuFaAddress,
+      </if>
+      <if test="jiashicar != null" >
+        JiaShiCar,
+      </if>
+      <if test="jylichen != null" >
+        jyLiChen,
+      </if>
+      <if test="jyendaddress != null" >
+        jyEndAddress,
+      </if>
+      <if test="jyendtime != null" >
+        jyEndTime,
+      </if>
+      <if test="wangongtime != null" >
+        WanGongTime,
+      </if>
+      <if test="yugumoney != null" >
+        Yugumoney,
+      </if>
+      <if test="turemoney != null" >
+        tureMoney,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="jychengshu != null" >
+        jyChengShu,
+      </if>
+      <if test="bei1 != null" >
+        bei1,
+      </if>
+      <if test="bei2 != null" >
+        bei2,
+      </if>
+      <if test="bei3 != null" >
+        bei3,
+      </if>
+      <if test="bei4 != null" >
+        bei4,
+      </if>
+      <if test="bei5 != null" >
+        bei5,
+      </if>
+      <if test="bei6 != null" >
+        bei6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="jydanno != null" >
+        #{jydanno,jdbcType=VARCHAR},
+      </if>
+      <if test="jychepai != null" >
+        #{jychepai,jdbcType=VARCHAR},
+      </if>
+      <if test="jyguwen != null" >
+        #{jyguwen,jdbcType=VARCHAR},
+      </if>
+      <if test="jyyewutype != null" >
+        #{jyyewutype,jdbcType=VARCHAR},
+      </if>
+      <if test="jyshigong != null" >
+        #{jyshigong,jdbcType=VARCHAR},
+      </if>
+      <if test="nowlicheng != null" >
+        #{nowlicheng,jdbcType=DOUBLE},
+      </if>
+      <if test="paigongtime != null" >
+        #{paigongtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paigongbanzu != null" >
+        #{paigongbanzu,jdbcType=INTEGER},
+      </if>
+      <if test="chufatime != null" >
+        #{chufatime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chufaaddress != null" >
+        #{chufaaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="jiashicar != null" >
+        #{jiashicar,jdbcType=VARCHAR},
+      </if>
+      <if test="jylichen != null" >
+        #{jylichen,jdbcType=DOUBLE},
+      </if>
+      <if test="jyendaddress != null" >
+        #{jyendaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="jyendtime != null" >
+        #{jyendtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wangongtime != null" >
+        #{wangongtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="yugumoney != null" >
+        #{yugumoney,jdbcType=DOUBLE},
+      </if>
+      <if test="turemoney != null" >
+        #{turemoney,jdbcType=DOUBLE},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="jychengshu != null" >
+        #{jychengshu,jdbcType=VARCHAR},
+      </if>
+      <if test="bei1 != null" >
+        #{bei1,jdbcType=VARCHAR},
+      </if>
+      <if test="bei2 != null" >
+        #{bei2,jdbcType=VARCHAR},
+      </if>
+      <if test="bei3 != null" >
+        #{bei3,jdbcType=VARCHAR},
+      </if>
+      <if test="bei4 != null" >
+        #{bei4,jdbcType=VARCHAR},
+      </if>
+      <if test="bei5 != null" >
+        #{bei5,jdbcType=VARCHAR},
+      </if>
+      <if test="bei6 != null" >
+        #{bei6,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.JiuyuanExample" resultType="java.lang.Integer" >
+    select count(*) from jiuyuan
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update jiuyuan
+    <set >
+      <if test="record.jydanno != null" >
+        jyDanNo = #{record.jydanno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jychepai != null" >
+        jyChepai = #{record.jychepai,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jyguwen != null" >
+        jyGuwen = #{record.jyguwen,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jyyewutype != null" >
+        jyYeWuType = #{record.jyyewutype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jyshigong != null" >
+        jyShiGong = #{record.jyshigong,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nowlicheng != null" >
+        nowLicheng = #{record.nowlicheng,jdbcType=DOUBLE},
+      </if>
+      <if test="record.paigongtime != null" >
+        Paigongtime = #{record.paigongtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.paigongbanzu != null" >
+        PaigongBanzu = #{record.paigongbanzu,jdbcType=INTEGER},
+      </if>
+      <if test="record.chufatime != null" >
+        ChuFaTime = #{record.chufatime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.chufaaddress != null" >
+        ChuFaAddress = #{record.chufaaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jiashicar != null" >
+        JiaShiCar = #{record.jiashicar,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jylichen != null" >
+        jyLiChen = #{record.jylichen,jdbcType=DOUBLE},
+      </if>
+      <if test="record.jyendaddress != null" >
+        jyEndAddress = #{record.jyendaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jyendtime != null" >
+        jyEndTime = #{record.jyendtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.wangongtime != null" >
+        WanGongTime = #{record.wangongtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.yugumoney != null" >
+        Yugumoney = #{record.yugumoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.turemoney != null" >
+        tureMoney = #{record.turemoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jychengshu != null" >
+        jyChengShu = #{record.jychengshu,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei1 != null" >
+        bei1 = #{record.bei1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei2 != null" >
+        bei2 = #{record.bei2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei3 != null" >
+        bei3 = #{record.bei3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei4 != null" >
+        bei4 = #{record.bei4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei5 != null" >
+        bei5 = #{record.bei5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei6 != null" >
+        bei6 = #{record.bei6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update jiuyuan
+    set jyDanNo = #{record.jydanno,jdbcType=VARCHAR},
+      jyChepai = #{record.jychepai,jdbcType=VARCHAR},
+      jyGuwen = #{record.jyguwen,jdbcType=VARCHAR},
+      jyYeWuType = #{record.jyyewutype,jdbcType=VARCHAR},
+      jyShiGong = #{record.jyshigong,jdbcType=VARCHAR},
+      nowLicheng = #{record.nowlicheng,jdbcType=DOUBLE},
+      Paigongtime = #{record.paigongtime,jdbcType=TIMESTAMP},
+      PaigongBanzu = #{record.paigongbanzu,jdbcType=INTEGER},
+      ChuFaTime = #{record.chufatime,jdbcType=TIMESTAMP},
+      ChuFaAddress = #{record.chufaaddress,jdbcType=VARCHAR},
+      JiaShiCar = #{record.jiashicar,jdbcType=VARCHAR},
+      jyLiChen = #{record.jylichen,jdbcType=DOUBLE},
+      jyEndAddress = #{record.jyendaddress,jdbcType=VARCHAR},
+      jyEndTime = #{record.jyendtime,jdbcType=TIMESTAMP},
+      WanGongTime = #{record.wangongtime,jdbcType=TIMESTAMP},
+      Yugumoney = #{record.yugumoney,jdbcType=DOUBLE},
+      tureMoney = #{record.turemoney,jdbcType=DOUBLE},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      jyChengShu = #{record.jychengshu,jdbcType=VARCHAR},
+      bei1 = #{record.bei1,jdbcType=VARCHAR},
+      bei2 = #{record.bei2,jdbcType=VARCHAR},
+      bei3 = #{record.bei3,jdbcType=VARCHAR},
+      bei4 = #{record.bei4,jdbcType=VARCHAR},
+      bei5 = #{record.bei5,jdbcType=VARCHAR},
+      bei6 = #{record.bei6,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

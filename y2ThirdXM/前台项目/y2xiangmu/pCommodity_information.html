@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html style="height: 100%; width: 100%; border: 3px solid #FFFF00;">
+	<head>
+		<meta charset="UTF-8">
+		<title>商品资料</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+	</head>
+	<body style="height: 88%; background-color: #EBCCCC;">
+			<div class="" style="height: 100%;">
+				<!--myModal1-8增加9-16修改
+	            	作者：offline
+	            	时间：2019-12-31
+	            	描述：头部
+	            -->
+				<header>
+					<div class="row nav-tabs bg-success" style="margin-right:0px; margin-left:0px;">
+						<div class="col-md-9" style="border:none;min-height: 70px;">
+							<h3 class="text-nowrap text-justify" style="margin-left: 3%;">商品资料</h3>
+						</div>
+						<div class="col-md-3">
+							<div class="input-group" style="margin-top: 5%;">
+						      <input type="text" class="form-control" placeholder="名称" style="width: 100%;">
+						      <span class="input-group-btn">
+						        <button class="btn btn-default" type="button">搜索</button>
+						      </span>
+						      <span class="input-group-btn">
+						        <button class="btn btn-default" type="button">关闭</button>
+						      </span>
+						    </div>
+						</div>
+					</div>
+				</header>
+				<!--
+	            	作者：offline
+	            	时间：2019-12-31
+	            	描述：独立区域中间 overflow-x:"scroll"
+	            -->
+				<section style="height: 100%;">
+					<div class="" style="height: 100%;">
+						<nav class="navbar navbar-default" style="margin-bottom: 0px; height: 100%;">
+						  	<div class="container-fluid" style="height: 100%;">
+						    	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="margin-bottom: 1%;">
+						      		<ul class="nav nav-tabs">
+									  <li role="presentation" class=""><a href="#"><span class="glyphicon glyphicon-align-right" aria-hidden="true" data-toggle="modal" data-target="#myModal1">增加</span></a></li>
+									  <li role="presentation"><a href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true">修改</span></a></li>
+									  <li role="presentation"><a href="#"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true">删除</span></a></li>
+									  <li role="presentation"><a href="#"><span class="glyphicon glyphicon-eye-open" aria-hidden="true">查询</span></a></li>
+									  <li role="presentation"><a href="#"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true">下页</span></a></li>
+									  <li role="presentation"><a href="#"><span class="glyphicon glyphicon-share" aria-hidden="true">导出</span></a></li>
+									  <li role="presentation"><a href="#"><span class="glyphicon glyphicon-picture" aria-hidden="true">照片</span></a></li>
+									  <li role="presentation"><a href="#"><span class="glyphicon glyphicon-indent-right " aria-hidden="true">条码</span></a></li>
+									  <li role="presentation"><a href="#"><span class="glyphicon glyphicon-comment" aria-hidden="true">套件商品</span></a></li>
+									  <li role="presentation"><a href="#"><span class="glyphicon glyphicon-calendar" aria-hidden="true">分类字段</span></a></li>
+									  <li role="presentation"><a href="#"><span class="glyphicon glyphicon-fullscreen" aria-hidden="true">字段设置</span></a></li>
+									</ul>
+						    	</div>
+						    	<div class="" style="height: 90%; overflow-y: scroll;">
+						    		<table border="1" class="table table-hover" background-color: #000000;">
+						    			<tr style="background-color: #46B8DA;">
+						    				<th width="3%">&nbsp;</th>
+						    				<th>登记门店</th>
+						    				<th>照片名</th>
+						    				<th>商品编码</th>
+						    				<th>商品名称</th>
+						    				<th>商品品牌</th>
+						    				<th>适用车型</th>
+						    				<th>数量单位</th>
+						    				<th>商品大类</th>
+						    				<th>商品中类</th>
+						    				<th>商品小类</th>
+						    			</tr>
+						    			<tr>
+						    				<th>&nbsp;</th>
+						    				<th>asdsad</th>
+						    				<th>asdsad</th>
+						    				<th>asdsad</th>
+						    				<th>asdsad</th>
+						    				<th>asdsad</th>
+						    				<th>asdsad</th>
+						    				<th>asdsad</th>
+						    				<th>asdsad</th>
+						    				<th>asdsad</th>
+						    				<th>asdsad</th>
+						    			</tr>
+						    		</table>
+						    	</div>
+						  	</div>
+						</nav>
+						
+						<!--
+                        	作者：offline
+                        	时间：2020-01-06
+                        	描述：模态框
+                        -->
+                        
+                        	<!--增加-->
+                        		<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+								  <div class="modal-dialog" role="document" style="width: 80%;">
+								    <div class="modal-content">
+								      <div class="modal-header">
+								        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								        <h4 class="modal-title">商品资料编辑<input type="checkbox" style="margin-left:30%;">停用</h4>
+								      </div>
+								      <div class="modal-body">
+								        <table class="table table-hover" style="background-color: #D4D4D4;">
+								        	<tr>
+								        		<th>商品编码<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        		<th>商品名称<input type="text" class="form-control" placeholder="询" style="width: 100%;"></th>
+								        		<th>
+								        			商品品牌
+								        				<form class="form-inline">
+														  <div class="form-group">
+														    <label class="sr-only" for="exampleInputAmount">Amou</label>
+														    <div class="input-group">
+														      <input type="text" class="form-control" placeholder="Amoun">
+																 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
+																 	<div class="dropdown">
+																	  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
+																	    
+																	    <span class="caret"></span>
+																	  </button>
+																	  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+																	    <li><a href="#">Acd</a></li>
+																	  </ul>
+																	</div>
+																 </div>
+														      <div class="input-group-addon">
+														      	<button data-toggle="modal" data-target="#myModal2">a</button>
+														      		
+														      		<!--商品品牌-->
+														      			<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">asdsd</h4>
+      </div>
+      <div class="modal-body">
+        dfghjkl
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Closeasdsad</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+														      </div>
+														    </div>
+														  </div>
+														</form>
+														
+								        		</th>
+								        	</tr>
+								        	<tr>
+								        		<th>适用车型<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        		<th>
+								        			数量单位
+								        				<form class="form-inline">
+														  <div class="form-group">
+														    <label class="sr-only" for="exampleInputAmount">Amou</label>
+														    <div class="input-group">
+														      <input type="text" class="form-control" placeholder="Amoun">
+																 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
+																 	<div class="dropdown">
+																	  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
+																	    <span class="caret"></span>
+																	  </button>
+																	  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+																	    <li><a href="#">Acd</a></li>
+																	  </ul>
+																	</div>
+																 </div>
+														      <div class="input-group-addon"><button>a</button></div>
+														    </div>
+														  </div>
+														</form>
+								        		</th>
+								        		<th>
+								        			商品大类
+								        				<form class="form-inline">
+														  <div class="form-group">
+														    <label class="sr-only" for="exampleInputAmount">Amou</label>
+														    <div class="input-group">
+														    	<div class="input-group-addon" style="padding:0px 0px 0px 0px">
+																 	<div class="dropdown">
+																	  <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
+																	  	&nbsp;
+																	  </button>
+																	</div>
+																 </div>
+														      <input type="text" class="form-control" placeholder="Amoun">
+																 
+														      <div class="input-group-addon"><button>a</button></div>
+														    </div>
+														  </div>
+														</form>
+								        		</th>
+								        	</tr>
+								        	<tr>
+								        		<th>
+								        			收入分类
+								        				<form class="form-inline">
+														  <div class="form-group">
+														    <label class="sr-only" for="exampleInputAmount">Amou</label>
+														    <div class="input-group">
+														      <input type="text" class="form-control" placeholder="Amoun">
+																 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
+																 	<div class="dropdown">
+																	  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
+																	    <span class="caret"></span>
+																	  </button>
+																	  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+																	    <li><a href="#">Acd</a></li>
+																	  </ul>
+																	</div>
+																 </div>
+														      <div class="input-group-addon"><button>a</button></div>
+														    </div>
+														  </div>
+														</form>
+								        		</th>
+								        		<th>
+								        			原厂副厂
+								        				<form class="form-inline">
+														  <div class="form-group">
+														    <label class="sr-only" for="exampleInputAmount">Amou</label>
+														    <div class="input-group">
+														      <input type="text" class="form-control" placeholder="Amoun">
+																 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
+																 	<div class="dropdown">
+																	  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
+																	    <span class="caret"></span>
+																	  </button>
+																	  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+																	    <li><a href="#">Acd</a></li>
+																	  </ul>
+																	</div>
+																 </div>
+														      <div class="input-group-addon"><button>a</button></div>
+														    </div>
+														  </div>
+														</form>
+								        		</th>
+								        		<th>
+								        			商品等级
+								        				<form class="form-inline">
+														  <div class="form-group">
+														    <label class="sr-only" for="exampleInputAmount">Amou</label>
+														    <div class="input-group">
+														      <input type="text" class="form-control" placeholder="Amoun">
+																 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
+																 	<div class="dropdown">
+																	  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
+																	    <span class="caret"></span>
+																	  </button>
+																	  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+																	    <li><a href="#">Acd</a></li>
+																	  </ul>
+																	</div>
+																 </div>
+														      <div class="input-group-addon"><button>a</button></div>
+														    </div>
+														  </div>
+														</form>
+								        		</th>
+								        		<th>
+								        			商品产地
+								        				<form class="form-inline">
+														  <div class="form-group">
+														    <label class="sr-only" for="exampleInputAmount">Amou</label>
+														    <div class="input-group">
+														      <input type="text" class="form-control" placeholder="Amoun">
+																 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
+																 	<div class="dropdown">
+																	  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
+																	    <span class="caret"></span>
+																	  </button>
+																	  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+																	    <li><a href="#">Acd</a></li>
+																	  </ul>
+																	</div>
+																 </div>
+														      <div class="input-group-addon"><button>a</button></div>
+														    </div>
+														  </div>
+														</form>
+								        		</th>
+								        	</tr>
+								        	<tr>
+								        		<th>
+								        			厂商名称
+								        				<form class="form-inline">
+														  <div class="form-group">
+														    <label class="sr-only" for="exampleInputAmount">Amou</label>
+														    <div class="input-group">
+														      <input type="text" class="form-control" placeholder="Amoun">
+																 <div class="input-group-addon" style="padding:0px 0px 0px 0px;">
+																 	<div class="dropdown">
+																 		<input type="text" disabled style="width:90px;"/>
+																	</div>
+																 </div>
+														      <div class="input-group-addon"><button>a</button></div>
+														    </div>
+														  </div>
+														</form>
+								        		</th>
+								        		<th>原厂编码<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        		<th>条形码<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        	</tr>
+								        	<tr>
+								        		<th>包装规格<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        		<th>体积A<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        		<th>毛重<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        		<th>净重<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        	</tr>
+								        	<tr>
+								        		<th>进货价<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        		<th>
+								        			售价按
+								        				<form class="form-inline">
+														  <div class="form-group">
+														    <label class="sr-only" for="exampleInputAmount">Amou</label>
+														    <div class="input-group">
+														      <input type="text" class="form-control" placeholder="Amoun">
+																 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
+																 	<div class="dropdown">
+																	  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
+																	    <span class="caret"></span>
+																	  </button>
+																	  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+																	    <li><a href="#">Acd</a></li>
+																	  </ul>
+																	</div>
+																 </div>
+														    </div>
+														  </div>
+														</form>
+								        		</th>
+								        		<th>加价率<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        	</tr>
+								        	<tr>
+								        		<th>互换码<input type="text" class="form-control" placeholder="询" style="width: 300%;"></th>
+								        	</tr>
+								        	<tr>
+								        		<th>标准价<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        		<th>会员价<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        		<th>VIP价<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        		<th>协议价<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        	</tr>
+								        	<tr>
+								        		<th>索赔价<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        		<th>保险价<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        	</tr>
+								        </table>
+								      </div>
+								      <div class="modal-footer">
+								        <button type="button" class="btn btn-primary">保存</button>
+								      </div>
+								    </div>
+								  </div>
+								</div>
+					</div>
+				</section>
+				<!--
+	            	作者：offline
+	            	时间：2019-12-31
+	            	描述：导航
+	            -->
+				<nav>
+					
+					
+					
+				</nav>
+				<!--
+	            	作者：offline
+	            	时间：2019-12-31
+	            	描述：底部
+	            -->
+	            <foote>
+	            	
+	            </foote>
+	            <!--
+	            	作者：offline
+	            	时间：2019-12-31
+	            	描述：相关内容
+	            -->
+	            <aside>
+	            	
+	            </aside>
+	            <!--
+	            	作者：offline
+	            	时间：2019-12-31
+	            	描述：独立文章
+	            -->
+	            <article>
+	            	
+	            </article>
+			</div>
+		<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/vue.js"></script>
+	</body>
+</html>
