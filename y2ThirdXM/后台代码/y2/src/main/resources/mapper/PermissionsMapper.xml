@@ -13,6 +13,12 @@
     <result column="bei3" property="bei3" jdbcType="VARCHAR" />
     <result column="bei4" property="bei4" jdbcType="VARCHAR" />
   </resultMap>
+  <select id="findByZhiwuId" resultMap="BaseResultMap">
+	  SELECT p.* FROM permissions p INNER JOIN
+			roles_perms rp ON p.pid = rp.pid INNER JOIN
+			zhiwu ur ON rp.zid = ur.`ZhiWuId`
+			WHERE ur.`ZhiWuId` = #{ZhiwuId}
+  </select>
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
