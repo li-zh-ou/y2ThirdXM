@@ -25,7 +25,7 @@ public class PermInterceptor implements HandlerInterceptor {
 //		List<Permissions> perms = service.findByUid(user.getId());
 //		String path = request.getRequestURI();
 //		boolean bol = perms.stream().anyMatch(item->item.getPath()!=null && item.getPath().indexOf(path)!=-1);
-		return false;
+		return true;
 	}
 	
 }

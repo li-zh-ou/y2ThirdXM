@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="fonts/font_4aigx4do0lb/iconfont.css" />
+		<link rel="stylesheet" href="css/bootstrapStyle/bootstrapStyle.css" type="text/css">
+		<style>
+			
+			#tbss{
+				padding: 1em 2em;
+				display: flex;
+			}
+			#dhl a{
+				font-size: 15px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<!--离职打开模态框-->
+		<div class="modal fade" tabindex="-1" role="dialog" id="lzdkmtk">
+			<div class="modal-dialog" role="document" style="width:800px;">
+				<div class="modal-content">
+					<div class="modal-header" id="dhl">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<div class="col-md-6"></div>
+							<div>
+								<button type="button" class="btn btn-success" style="vertical-align: middle; width: 150px;">保存</button>&nbsp;&nbsp;&nbsp;
+								<span class="iconfont" style="vertical-align: middle">&#xe613;</span><a href="#" style="vertical-align: middle">打印</a>&nbsp;&nbsp;&nbsp;
+								<span class="iconfont" style="vertical-align: middle">&#xe613;</span><a href="#" style="vertical-align: middle">实名认证</a>
+							</div>
+					</div>
+					<div class="row modal-body">
+						<p>
+							*员工编号:<input type="text" readonly ="readonly" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							*员工姓名:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							*性别:
+								<select style="vertical-align: middle">
+									<option value="1">男</option>
+									<option value="2">女</option>
+								</select>
+						</p>
+						
+						<p>
+							*所在门店:<input type="text" readonly ="readonly" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							*所在部门:
+									<select style="vertical-align: middle">
+										<option value="1">管理</option>
+										<option value="2">财务</option>
+										<option value="3">股东</option>
+									</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</p>
+						
+						<p>
+							登录账号:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							岗位:
+								<select style="vertical-align: middle">
+									<option value="1">展厅经理</option>
+									<option value="2">销售顾问</option>
+									<option value="3">DCC主管</option>
+								</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							身体状况:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</p>
+						
+						<p>
+							身高:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							籍贯:
+								<select style="vertical-align: middle">
+									<option value="1">北京</option>
+									<option value="2">湖南</option>
+									<option value="3">上海</option>
+									<option value="3">深圳</option>
+								</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							民族:
+								<select style="vertical-align: middle">
+									<option value="1">汉</option>
+									<option value="2">满</option>
+									<option value="3">蒙</option>
+								</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</p>
+						
+						<p>
+							婚姻状况:
+									<select style="vertical-align: middle">
+										<option value="1">未婚</option>
+										<option value="2">已婚</option>
+									</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							学历:
+								<select style="vertical-align: middle">
+									<option value="1">汉</option>
+									<option value="2">满</option>
+									<option value="3">蒙</option>
+								</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							毕业学校:
+									<select style="vertical-align: middle">
+										<option value="1">北京大学</option>
+										<option value="2">清华</option>
+									</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</p>
+						
+						<p>
+							专业:
+								<select style="vertical-align: middle">
+									<option value="1">计算机软件</option>
+									<option value="2">网络工程</option>
+								</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							专业资格:
+									<select style="vertical-align: middle">
+										<option value="1">初级工程师</option>
+										<option value="2">中级工程师</option>
+										<option value="3">高级工程师</option>
+									</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							*属性:
+								<select style="vertical-align: middle">
+									<option value="1">不考勤计薪</option>
+									<option value="2">计考勤不计薪</option>
+									<option value="3">不考勤不计薪</option>
+								</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							学位:
+								<select style="vertical-align: middle">
+									<option value="1">本科</option>
+									<option value="2">硕士</option>
+									<option value="3">博士</option>
+								</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</p>
+						
+						<p>
+							编制:
+								<select style="vertical-align: middle">
+									<option value="1">劳务派遣</option>
+									<option value="2">劳务外包</option>
+									<option value="3">正式员工</option>
+								</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							身份证号	:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							户口地址:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</p>
+						
+						<p>
+							现住地址:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							联系电话:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							手机:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</p>
+						
+						<p>
+							EMail:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							开户银行:
+									<select style="vertical-align: middle">
+										<option value="1">建设银行</option>
+										<option value="2">中国银行</option>
+										<option value="3">交通银行</option>
+									</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							银行账号:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</p>
+						
+						<p>
+							紧急联系人:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							联系电话:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							入职日期:<input type="date" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</p>
+						
+						<p>
+							试用日期:<input type="date" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							出生日期:<input type="date" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							合同开始:<input type="date" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</p>
+						
+						<p>
+							合同结束:<input type="date" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							卡自编号:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							卡内编号:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</p>
+						
+						<p>
+							推荐人:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							整单折扣权%<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							工时折扣权%<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</p>
+						
+						<p>
+							商品折扣权%<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							减免权<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</p>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!--离职查询模态框-->
+				<div class="modal fade" tabindex="-1" role="dialog" id="lzcxmtk">
+			<div class="modal-dialog" role="document" style="width:800px;">
+				<div class="modal-content">
+					<div class="modal-header" id="dhl">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<div class="col-md-9"></div>
+							<div>
+								<button type="button" class="btn btn-success" style="vertical-align: middle; width: 150px;">保存</button>&nbsp;&nbsp;&nbsp;
+							</div>
+					</div>
+					<div class="row modal-body">
+						<p>
+							员工编号:<input type="text" readonly ="readonly" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							员工姓名:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							性别:
+								<select style="vertical-align: middle">
+									<option value="1">男</option>
+									<option value="2">女</option>
+								</select>
+						</p>
+						
+						<p>
+							岗位:
+								<select style="vertical-align: middle">
+									<option value="1">展厅经理</option>
+									<option value="2">销售顾问</option>
+									<option value="3">DCC主管</option>
+								</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							所在部门:
+									<select style="vertical-align: middle">
+										<option value="1">管理</option>
+										<option value="2">财务</option>
+										<option value="3">股东</option>
+									</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</p>
+						
+						<p>
+							身体状况:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							身高:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							籍贯:
+								<select style="vertical-align: middle">
+									<option value="1">北京</option>
+									<option value="2">湖南</option>
+									<option value="3">上海</option>
+									<option value="3">深圳</option>
+								</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</p>
+						
+						<p>
+							民族:
+								<select style="vertical-align: middle">
+									<option value="1">汉</option>
+									<option value="2">满</option>
+									<option value="3">蒙</option>
+								</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							婚姻状况:
+									<select style="vertical-align: middle">
+										<option value="1">未婚</option>
+										<option value="2">已婚</option>
+									</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							学历:
+								<select style="vertical-align: middle">
+									<option value="1">汉</option>
+									<option value="2">满</option>
+									<option value="3">蒙</option>
+								</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</p>
+						
+						<p>
+							
+							毕业学校:
+									<select style="vertical-align: middle">
+										<option value="1">北京大学</option>
+										<option value="2">清华</option>
+									</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							专业:
+								<select style="vertical-align: middle">
+									<option value="1">计算机软件</option>
+									<option value="2">网络工程</option>
+								</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							专业资格:
+									<select style="vertical-align: middle">
+										<option value="1">初级工程师</option>
+										<option value="2">中级工程师</option>
+										<option value="3">高级工程师</option>
+									</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</p>
+						
+						<p>
+							生日:<input type="date" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							学位:
+								<select style="vertical-align: middle">
+									<option value="1">本科</option>
+									<option value="2">硕士</option>
+									<option value="3">博士</option>
+								</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							编制:
+								<select style="vertical-align: middle">
+									<option value="1">劳务派遣</option>
+									<option value="2">劳务外包</option>
+									<option value="3">正式员工</option>
+								</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</p>
+						
+						<p>
+							身份证号	:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							入职日期 从 :<input type="date" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							至:<input type="date" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</p>
+						
+						<p>
+							试用到期 从:<input type="date" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							至:<input type="date" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							属性:
+								<select style="vertical-align: middle">
+									<option value="1">不考勤计薪</option>
+									<option value="2">计考勤不计薪</option>
+									<option value="3">不考勤不计薪</option>
+								</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</p>
+						
+						<p>
+							合同开始 从:<input type="date" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							至:<input type="date" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</p>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!--离职模态框-->
+			<div class="modal fade" tabindex="-1" role="dialog" id="lzmtk">
+			<div class="modal-dialog" role="document" style="width:550px;">
+				<div class="modal-content">
+					<div class="modal-header" id="dhl">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<div class="col-md-7">
+							<h4>离职登记</h4>
+						</div>
+							<div>
+								<button type="button" class="btn btn-success" style="vertical-align: middle; width: 150px;">保存</button>&nbsp;&nbsp;&nbsp;
+							</div>
+					</div>
+					<div class="row modal-body">
+						
+						<p>
+							员工姓名:<input type="text" style="vertical-align: middle " readonly ="readonly"/>
+							<button type="button" class="btn btn-success" style="vertical-align: middle; width: 80px;" data-toggle="modal" data-target="#xzyg">选择员工</button>
+							离职日期:<input type="date" style="vertical-align: middle"/>
+						</p>
+						<p>
+							离职原因:<input type="text" style="vertical-align: middle; width: 475px;"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</p>
+					</div>
+					<div style=" border: 1px solid #E6E6E6; margin-top:-35px;">
+						
+						<table class="table table-hover table-bordered" style="overflow:scroll;">
+					 
+							<tr>
+								<td>领用日期</td>
+								<td>员工编号</td>
+								<td>员工姓名</td>
+								<td>类别编号</td>
+								<td>类别名称</td>
+								<td>名称描述</td>
+								<td>单位</td>
+								<td>领用数量</td>
+								<td>归还数量</td>
+								<td>未还数量</td>
+								<td>备注</td>
+								
+							</tr>
+							
+							<tr>
+								<td>领用日期</td>
+								<td>员工编号</td>
+								<td>员工姓名</td>
+								<td>类别编号</td>
+								<td>类别名称</td>
+								<td>名称描述</td>
+								<td>单位</td>
+								<td>领用数量</td>
+								<td>归还数量</td>
+								<td>未还数量</td>
+								<td>备注</td>
+							</tr>
+						
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!--选择员工-->
+			<div class="modal fade" tabindex="-1" role="dialog" id="xzyg">
+			<div class="modal-dialog" role="document" style="width:550px;">
+				<div class="modal-content">
+					<div class="modal-header" id="dhl">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<div class="col-md-7">
+							<h4>离职登记</h4>
+						</div>
+							<div>
+								<button type="button" class="btn btn-success" style="vertical-align: middle; width: 150px;">保存</button>&nbsp;&nbsp;&nbsp;
+							</div>
+					</div>
+					<div class="row modal-body">
+						
+						<p>
+							<select style="vertical-align: middle; width: 548px; height: 35px;">
+										<option value="1">管理</option>
+										<option value="2">财务</option>
+										<option value="3">股东</option>
+							</select>
+						</p>
+						<span>所有</span>
+					</div>
+					<div style=" border: 1px solid #E6E6E6; ">
+						
+						<table class="table table-hover table-bordered">
+					 
+							<tr>
+								<td>选择</td>
+								<td>部门名称</td>
+								<td>工号</td>
+								<td>姓名</td>
+							</tr>
+							
+							<tr>
+								<td><input type="checkbox"></td>
+								<td>部门名称</td>
+								<td>工号</td>
+								<td>姓名</td>
+							</tr>
+						
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		<div class="container-fluid" >
+			<div class="row" style="border: 1px solid #E6E6E6;">
+				<h3 class="col-md-2">离职登记</h3>
+				<div class="col-md-7"></div>
+				<div class="col-md-3" id="tbss">
+					<input class="form-control input-sm" type="text" style="margin-top: 2px;" />&nbsp;&nbsp;&nbsp;
+					<button type="button" class="btn btn-warning" style="width: 150px;">搜索</button>&nbsp;&nbsp;&nbsp;
+					<button type="button" class="btn btn-default">关闭</button>
+				</div>
+			</div>
+			
+			<div id="dhl">
+				<div class="col-md-9"></div>
+				<ol class="breadcrumb col-md-3">
+				  <li><span class="iconfont" style="vertical-align: middle">&#xe614;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#lzmtk">离职</a></li>
+				  <li><span class="iconfont" style="vertical-align: middle">&#xe6b6;</span><a href="#" style="vertical-align: middle">回滚</a></li>
+				  <li><span class="iconfont" style="vertical-align: middle">&#xe62c;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#lzdkmtk">打开</a></li>
+				  <li><span class="iconfont" style="vertical-align: middle">&#xe613;</span><a href="#" style="vertical-align: middle">删除</a></li>
+				  <li><span class="iconfont" style="vertical-align: middle">&#xe78a;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#lzcxmtk">查询</a></li>
+				  <li><span class="iconfont" style="vertical-align: middle">&#xe6a5;</span><a href="#" style="vertical-align: middle">导出</a></li>
+				</ol>
+			</div>
+			
+			<div class="row">
+				
+				<div class="row" id="tbss" style=" border: 1px solid #E6E6E6;height:780px;">
+					
+				<table class="table table-hover table-bordered" style="width:800px;">
+					 
+						<tr>
+							<td>部门</td>
+							<td>员工编号</td>
+							<td>姓名</td>
+							<td>性别</td>
+							<td>职位</td>
+							<td>离职日期</td>
+							<td>离职原因</td>
+						</tr>
+						
+						<tr>
+							<td>部门</td>
+							<td>员工编号</td>
+							<td>姓名</td>
+							<td>性别</td>
+							<td>职位</td>
+							<td>离职日期</td>
+							<td>离职原因</td>
+						</tr>
+						
+				</table>
+
+			</div>
+			
+		</div>
+		
+<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript">
+
+</script>
+		
+	</body>
+</html>

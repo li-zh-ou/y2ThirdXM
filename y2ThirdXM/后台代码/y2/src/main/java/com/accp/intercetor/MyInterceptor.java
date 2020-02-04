@@ -31,7 +31,7 @@ public class MyInterceptor implements HandlerInterceptor {
 //		if(user!=null) {
 //			return true;
 //		}
-		return false;
+		return true;
 	}
 
 }

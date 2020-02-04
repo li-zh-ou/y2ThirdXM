@@ -34,22 +34,22 @@ public class MyWebMvcConfig extends WebMvcConfigurationSupport {
 	@Override
 	protected void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/**").addResourceLocations("classpath:/static/")
-				.addResourceLocations("file:/Users/tangyong/images/");
+				.addResourceLocations("file:/d");
 		super.addResourceHandlers(registry);
 	}
 	
 	//重写此方法后会覆盖原有的默认消息转换器，所以需要的其它转换器
 	//都需要重写构建
-	@Override
-	protected void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-		//普通字符串转码
-		StringHttpMessageConverter shc = new StringHttpMessageConverter(StandardCharsets.UTF_8);
-		converters.add(shc);
-		//json格式转换器
-		MappingJackson2HttpMessageConverter jackson = new MappingJackson2HttpMessageConverter();
-		converters.add(jackson);
-		super.configureMessageConverters(converters);
-	}
+//	@Override
+//	protected void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+//		//普通字符串转码
+//		StringHttpMessageConverter shc = new StringHttpMessageConverter(StandardCharsets.UTF_8);
+//		converters.add(shc);
+//		//json格式转换器
+//		MappingJackson2HttpMessageConverter jackson = new MappingJackson2HttpMessageConverter();
+//		converters.add(jackson);
+//		super.configureMessageConverters(converters);
+//	}
 
 	@Override
 	protected void addCorsMappings(CorsRegistry registry) {
@@ -59,7 +59,7 @@ public class MyWebMvcConfig extends WebMvcConfigurationSupport {
 
 	@Override
 	protected void addInterceptors(InterceptorRegistry registry) {
-		//registry.addInterceptor(new MyInterceptor()).addPathPatterns("/**");
+		registry.addInterceptor(new MyInterceptor()).addPathPatterns("/**");
 		//registry.addInterceptor(perm).addPathPatterns("/**").excludePathPatterns("/loginin");
 		super.addInterceptors(registry);
 	}
