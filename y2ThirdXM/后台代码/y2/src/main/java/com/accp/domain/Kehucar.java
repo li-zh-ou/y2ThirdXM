@@ -2,6 +2,10 @@ package com.accp.domain;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Kehucar {
     private String chepai;
 
@@ -15,10 +19,14 @@ public class Kehucar {
 
     private String sijiphone;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
     private Date sijibirthday;
 
     private String guishu;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
     private Date jiazhao;
 
     private String chejia;
@@ -31,10 +39,16 @@ public class Kehucar {
 
     private Integer zaizhong;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
     private Date goumaidate;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
     private Date shanpaidate;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
     private Date chejian;
 
     private String ranyou;
@@ -52,6 +66,46 @@ public class Kehucar {
     private String bei3;
 
     private String bei4;
+    
+    private String carbankname;
+    
+    private String firstwork;
+    
+    private String faname;
+    
+    public String getCarbankname() {
+		return carbankname;
+	}
+
+	public void setCarbankname(String carbankname) {
+		this.carbankname = carbankname;
+	}
+
+	public String getFirstwork() {
+		return firstwork;
+	}
+
+	public void setFirstwork(String firstwork) {
+		this.firstwork = firstwork;
+	}
+
+	public String getFaname() {
+		return faname;
+	}
+
+	public void setFaname(String faname) {
+		this.faname = faname;
+	}
+
+	public String getFanumber() {
+		return fanumber;
+	}
+
+	public void setFanumber(String fanumber) {
+		this.fanumber = fanumber;
+	}
+
+	private String fanumber;
 
     public String getChepai() {
         return chepai;

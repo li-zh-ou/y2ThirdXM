@@ -28,6 +28,20 @@
     <result column="bei3" property="bei3" jdbcType="VARCHAR" />
     <result column="bei4" property="bei4" jdbcType="VARCHAR" />
   </resultMap>
+   <resultMap type="com.accp.domain.Kehucar" id="BaseResultMapSales" extends="BaseResultMap">
+   			<result column="carbankname" property="carbankname" />
+		  	<result column="firstwork" property="firstwork" />
+		    <result column="faname" property="faname" />
+		    <result column="fanumber" property="fanumber" />
+  </resultMap>
+  
+  <select id="findkehucar" resultMap="BaseResultMapSales">
+	  SELECT * FROM kehucar 
+		INNER JOIN carbrand ON kehucar.`CarBankId`=carbrand.`CarBankId`
+		INNER JOIN fadongbrand ON fadongbrand.`FaBankId`=kehucar.`FaBankId` 
+		WHERE kehucar.`KeHuNo`=#{kehuno}
+  </select>
+  
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >

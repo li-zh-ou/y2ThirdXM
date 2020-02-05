@@ -6,6 +6,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface KehuMapper {
+	List<Kehu> findkehu();
+	
     int countByExample(KehuExample example);
 
     int deleteByExample(KehuExample example);
