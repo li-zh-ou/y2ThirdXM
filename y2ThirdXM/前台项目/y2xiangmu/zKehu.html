@@ -572,7 +572,7 @@
 			<div class="row kehu">
 				<div>
 					<div class="">
-					<div class="tan1 color1"><span class="toto1">客户编辑</span><button class="btn btn-group bao2">选择</button><span class="close guan4">×</span></div>
+					<div class="tan1 color1"><span class="toto1">客户编辑</span><button @click="addkehu" class="btn btn-group bao2">保存</button><span class="close guan4">×</span></div>
 				</div>
 					<div class="context1">
 						<div class="shang">
@@ -598,20 +598,20 @@
 								<span>区：<select style="width: 150px;height: 25px;"></select></span>
 							</p>
 							<p>
-								<span>备注：</span><input type="text" size="100"/>
+								<span>备注：</span><input v-model="xinkehu.remark" type="text" size="100"/>
 							</p>
 							<p>
 								<span>纳税人识别号：</span><input type="text" size="15"/>
-								<span>注册电话：</span><input type="text" size="15"/>
-								<span>开户银行：</span><input type="text" size="15"/>
+								<span>注册电话：</span><input v-model="xinkehu.zhuphone" type="text" size="15"/>
+								<span>开户银行：</span><input v-model="xinkehu.bank" type="text" size="15"/>
 							</p>
 							<p>
-								<span>银行账号：</span><input type="text" size="15"/>
-								<span>注册地址：</span><input type="text" size="50"/>
+								<span>银行账号：</span><input v-model="xinkehu.bankcard" type="text" size="15"/>
+								<span>注册地址：</span><input v-model="xinkehu.zhuaddress" type="text" size="50"/>
 							</p>
 							<p>
-								<span>其它一：</span><input type="text" size="15"/>
-								<span>其它二：</span><input type="text" size="15"/>
+								<span>其它一：</span><input v-model="xinkehu.bei1" type="text" size="15"/>
+								<span>其它二：</span><input v-model="xinkehu.bei2" type="text" size="15"/>
 								<span>其它三：</span><input type="text" size="15"/>	
 								<span>其它四：</span><input type="text" size="15"/>
 							</p>
@@ -720,6 +720,8 @@
 //								vm.kehucar=response;
 //							}
 //						});
+					},addkehu:function(){
+						console.log(vm.xinkehu);
 					}
 				}
 			});
