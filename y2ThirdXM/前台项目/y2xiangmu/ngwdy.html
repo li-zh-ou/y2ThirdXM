@@ -19,7 +19,7 @@
 		</style>
 	</head>
 	<body>
-		<div class="container-fluid" >
+		<div class="container-fluid" id="ctx">
 			<div class="row" style="border: 1px solid #E6E6E6;">
 				<h3 class="col-md-2">岗位定义</h3>
 				<div class="col-md-9"></div>
@@ -31,12 +31,12 @@
 			<div id="dhl" class="row">
 				<div class="col-md-10">
 					<p style="margin-top:25px;">
-						岗位编码:<input type="text"/>&nbsp;&nbsp;&nbsp;
-						岗位名称:<input type="text"/>
+						岗位编码:<input type="text" v-model="gangwei.gangweiid"/>&nbsp;&nbsp;&nbsp;
+						岗位名称:<input type="text" v-model="gangwei.gangweiname"/>
 					</p>
 				</div>
 				<ol class="breadcrumb col-md-2">
-				  <li><span class="iconfont" style="vertical-align: middle">&#xe62c;</span><a href="#" style="vertical-align: middle">增加</a></li>
+				  <li><span class="iconfont" style="vertical-align: middle">&#xe62c;</span><a href="#" style="vertical-align: middle" @click="insert">增加</a></li>
 				  <li><span class="iconfont" style="vertical-align: middle">&#xe612;</span><a href="#" style="vertical-align: middle">修改</a></li>
 				  <li><span class="iconfont" style="vertical-align: middle">&#xe614;</span><a href="#" style="vertical-align: middle">删除</a></li>
 				  <li><span class="iconfont" style="vertical-align: middle">&#xe6a5;</span><a href="#" style="vertical-align: middle">导出</a></li>
@@ -54,10 +54,10 @@
 							<td>岗位名称</td>
 						</tr>
 						
-						<tr>
-							<td><input type="checkbox"></td>
-							<td>1111111</td>
-							<td>1111111</td>
+						<tr v-for="item in gwdy">
+							<td><input type="checkbox" v-bind:id="item.gangweiid"></td>
+							<td>{{item.gangweiid}}</td>
+							<td>{{item.gangweiname}}</td>
 						</tr>
 						
 				</table>
@@ -66,10 +66,58 @@
 			
 		</div>
 		
-<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
+
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/vue.js"></script>
-
+<script type="text/javascript" src="js/my.js"></script>
+<script type="text/javascript">
 	
-	</body>
+	var vm = new Vue({
+		el: "#ctx",
+		data() {
+			return {
+				gwdy: {},
+				gangwei:{}
+			}
+		},
+		methods: {
+			insert:function(){//新增岗位
+				var that=this;
+				$.ajax({
+					url:data.ip +"ncq/insertgw",
+					type:"post",
+					data:this.gangwei,
+					dataType:"text",
+					success:function(result){
+						console.log(result);
+					},error:function(result){
+						console.log(result);
+					}
+				});
+			}	
+		}
+	});
+	
+	//加载初始数据
+	loading();
+	//获取集合
+	function loading() {
+		$.ajax({
+			url: data.ip +"ncq/querygw",
+			type: "get",
+			dataType: "json",
+			success: function(result) {
+				vm.gwdy = result;
+				console.log(result);
+			},
+			error: function(result) {
+				console.log(result);
+			}
+		});
+	}
+	
+</script>
+</body>
 </html>
