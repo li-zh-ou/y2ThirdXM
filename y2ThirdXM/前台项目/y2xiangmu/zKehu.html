@@ -43,9 +43,6 @@
 			.row1{
 				background-color: #E9E7E7;
 			}
-			td{
-				background-color: #fff;
-			}
 			.dian{
 				color: #9D9D9D;
 				
@@ -231,6 +228,7 @@
 			.context2 p{
 				margin-top: 25px;
 			}
+			
 		</style>
 	</head>
 	<body>
@@ -270,9 +268,9 @@
 						<span class="you1">收起</span>
 					</div>
 				</div>
-				<div class="yi">
-					<table class="table table-bordered table-hover">
-						<tr>
+				<div class="yi" style=" overflow:auto;">
+					<table  class="table table-bordered table-hover" style="width: 2200px;">
+						<tr class="asss">
 							<th>客户编码</th>
 							<th>客户名称</th>
 							<th>详细地址</th>
@@ -284,71 +282,45 @@
 							<th>入会日期</th>
 							<th>会员到期</th>
 							<th>备注</th>
+							<th>建档日期</th>
+							<th>服务顾问</th>
+							<th>顾问电话</th>
+							<th>账期(天)</th>
+							<th>挂账额度</th>
+							<th>累计积分</th>
+							<th>订金余额</th>
+							<th>注册电话</th>
+							<th>开户银行</th>
+							<th>银行账号</th>
+							<th>注册地址</th>
+							<th>其他一</th>
+							<th>其他二</th>
 						</tr>	
-						<tr>
-							<td>客户编码</td>
-							<td>客户名称</td>
-							<td>详细地址</td>
-							<td>联系人</td>
-							<td>手机</td>
-							<td>客户生日</td>
-							<td>客户类别</td>
-							<td>会员卡号</td>
-							<td>入会日期</td>
-							<td>会员到期</td>
-							<td>备注</td>
-						</tr>
-						<tr>
-							<td>客户编码</td>
-							<td>客户名称</td>
-							<td>详细地址</td>
-							<td>联系人</td>
-							<td>手机</td>
-							<td>客户生日</td>
-							<td>客户类别</td>
-							<td>会员卡号</td>
-							<td>入会日期</td>
-							<td>会员到期</td>
-							<td>备注</td>
-						</tr>
-						<tr>
-							<td>客户编码</td>
-							<td>客户名称</td>
-							<td>详细地址</td>
-							<td>联系人</td>
-							<td>手机</td>
-							<td>客户生日</td>
-							<td>客户类别</td>
-							<td>会员卡号</td>
-							<td>入会日期</td>
-							<td>会员到期</td>
-							<td>备注</td>
-						</tr>
-						<tr>
-							<td>客户编码</td>
-							<td>客户名称</td>
-							<td>详细地址</td>
-							<td>联系人</td>
-							<td>手机</td>
-							<td>客户生日</td>
-							<td>客户类别</td>
-							<td>会员卡号</td>
-							<td>入会日期</td>
-							<td>会员到期</td>
-							<td>备注</td>
-						</tr>
-						<tr>
-							<td>客户编码</td>
-							<td>客户名称</td>
-							<td>详细地址</td>
-							<td>联系人</td>
-							<td>手机</td>
-							<td>客户生日</td>
-							<td>客户类别</td>
-							<td>会员卡号</td>
-							<td>入会日期</td>
-							<td>会员到期</td>
-							<td>备注</td>
+						<tr v-for="item in kehu" @click="test">
+							<td>{{item.kehuno}}</td>
+							<td>{{item.kehuname}}</td>
+							<td>{{item.kehuaddress}}</td>
+							<td>{{item.kehulianxi}}</td>
+							<td>{{item.kehuphone}}</td>
+							<td>{{item.kehubirthday}}</td>
+							<td>{{item.kehutype}}</td>
+							<td>{{item.huiyuanno}}</td>
+							<td>{{item.ruhuitime}}</td>
+							<td>{{item.daoqitime}}</td>
+							<td>{{item.remark}}</td>
+							<td>{{item.bei1}}</td>
+							<td>{{item.guwen}}</td>
+							<td>{{item.guwenphone}}</td>
+							<td>{{item.zhangqi}}</td>
+							<td>{{item.edu}}</td>
+							<td>{{item.jifen}}</td>
+							<td>{{item.dinjin}}</td>
+							<td>{{item.zhuphone}}</td>
+							<td>{{item.bank}}</td>
+							<td>{{item.bankcard}}</td>
+							<td>{{item.zhuaddress}}</td>
+							<td>{{item.bei2}}</td>
+							<td>{{item.bei3}}</td>
 						</tr>
 					</table>
 				</div>
@@ -362,8 +334,8 @@
 				
 			</div>
 			<div class="row">
-				<div class="xinxi">
-					<table class="table table-bordered table-hover">
+				<div class="xinxi" style=" overflow:auto;">
+					<table class="table table-bordered table-hover" style="width: 2200px;">
 						<tr>
 							<th>车牌号码</th>
 							<th>车牌品牌</th>
@@ -373,20 +345,42 @@
 							<th>出生日期</th>
 							<th>车辆归属</th>
 							<th>驾证到期</th>
-							<th>驾证到期</th>
-							<th>驾证到期</th>
+							<th>车架号</th>
+							<th>发动机号</th>
+							<th>发动机品牌号</th>
+							<th>车辆年款</th>
+							<th>里程</th>
+							<th>载重</th>
+							<th>购买日期</th>
+							<th>上牌日期</th>
+							<th>车险到期</th>
+							<th>在我投保车</th>
+							<th>燃油类别</th>
+							<th>下次保养里程</th>
+							<th>下次保养日期</th>
 						</tr>
-						<tr>
-							<td>车牌号码</td>
-							<td>车牌品牌</td>
-							<td>车牌型号</td>
-							<td>驾驶员</td>
-							<td>驾驶员电话</td>
-							<td>出生日期</td>
-							<td>车辆归属</td>
-							<td>驾证到期</td>
-							<td>驾证到期</td>
-							<td>驾证到期</td>
+						<tr v-for="item in kehucar" @click="car">
+							<td>{{item.chepai}}</td>
+							<td>{{item.carbankname}}</td>
+							<td>{{item.xinghao}}</td>
+							<td>{{item.sijiname}}</td>
+							<td>{{item.sijiphone}}</td>
+							<td>{{item.sijibirthday}}</td>
+							<td>{{item.guishu}}</td>
+							<td>{{item.jiazhao}}</td>
+							<td>{{item.chejia}}</td>
+							<td>{{item.fanumber}}</td>
+							<td>{{item.faname}}</td>
+							<td>{{item.niankuan}}</td>
+							<td>{{item.licheng}}</td>
+							<td>{{item.zaizhong}}</td>
+							<td>{{item.goumaidate}}</td>
+							<td>{{item.shangpaidate}}</td>
+							<td>{{item.chejian}}</td>
+							<td>{{item.bei1}}</td>
+							<td>{{item.ranyou}}</td>
+							<td>{{item.nextbaoxian}}</td>
+							<td>{{item.nextbaoxiandate}}</td>
 						</tr>
 					</table>
 				</div>
@@ -583,20 +577,20 @@
 					<div class="context1">
 						<div class="shang">
 							<p>
-								<span><span class="ho">* </span>客户编码：</span><input type="text" size="15"/>
-								<span><span class="ho">* </span>客户名称：</span><input type="text" size="15"/>
-								<span>联系人：</span><input type="text" size="15"/>
-								<span><span class="ho">* </span>手机：</span><input type="text" size="15"/>
+								<span><span class="ho">* </span>客户编码：</span><input v-model="xinkehu.kehuno" type="text" size="15"/>
+								<span><span class="ho">* </span>客户名称：</span><input v-model="xinkehu.kehuname" type="text" size="15"/>
+								<span>联系人：</span><input type="text" v-model="xinkehu.kehulianxi" size="15"/>
+								<span><span class="ho">* </span>手机：</span><input type="text" v-model="xinkehu.kehuphone" size="15"/>
 							</p>
 							<p>
-								<span>客户地址：</span><input type="text" size="50"/>
-								<span>客户生日：</span><input type="date"/>
+								<span>客户地址：</span><input v-model="xinkehu.kehuaddress" type="text" size="50"/>
+								<span>客户生日：</span><input v-model="xinkehu.kehubirthday" type="date"/>
 							</p>
 							<p>
-								<span>账期(天)：</span><input type="text" size="5"/>
-								<span>挂账额度：</span><input type="text" size="10"/>
-								<span>专属顾问：<select style="width: 150px;height: 25px;"></select></span>
-								<span>顾问电话：<input type="text"></span>
+								<span>账期(天)：</span><input v-model="xinkehu.zhangqi" type="text" size="5"/>
+								<span>挂账额度：</span><input v-model="xinkehu.edu" type="text" size="10"/>
+								<span>专属顾问：<select v-model="xinkehu.guwen" style="width: 150px;height: 25px;"></select></span>
+								<span>顾问电话：<input v-model="xinkehu.guwenphone" type="text"></span>
 							</p>
 							<p>
 								<span>省：<select style="width: 150px;height: 25px;"></select></span>
@@ -681,7 +675,63 @@
 		</div>
 		<script type="text/javascript" src="layui/layui.js" ></script>
 		<script type="text/javascript" src="js/jquery-1.8.3.js" ></script>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="js/my.js"></script>
 		<script type="text/javascript">
+			var vm=new Vue({
+				el:"#ctx",
+				data(){
+					return{
+						kehu:[],
+						kehucar:[],
+						xinkehu:{}
+					}
+				},methods:{
+					test:function(event){
+						$(event.srcElement).parent().css("background-color","yellow").siblings().css("background-color","transparent");
+						var kehuno=$(event.srcElement.firstChild.data).selector;
+						console.log(kehuno)
+						$.ajax({
+							url:data.ip+"querybykehuno",
+							data:{
+								kehuno:kehuno
+							},
+							type: "get",
+							dataType: "json",
+							success:function(response) {
+								console.log(response);
+								vm.kehucar=response;
+							}
+						});
+					},
+					car:function(event){
+						$(event.srcElement).parent().css("background-color","yellow").siblings().css("background-color","transparent");
+						var kehuno=$(event.srcElement.firstChild.data).selector;
+						console.log(kehuno)
+//						$.ajax({
+//							url:data.ip+"querybykehuno",
+//							data:{
+//								kehuno:kehuno
+//							},
+//							type: "get",
+//							dataType: "json",
+//							success:function(response) {
+//								console.log(response);
+//								vm.kehucar=response;
+//							}
+//						});
+					}
+				}
+			});
+			$.ajax({
+				url: data.ip + "querykehu",
+				type: "get",
+				dataType: "json",
+				success:function(response) {
+					vm.kehu=response;
+				}
+			});
+				$(".asss").parent().css("background-color","#fff")
 			$(".huifang").hide();
 			$(".xiaofei").hide();
 			$(".keh").hide();

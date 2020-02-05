@@ -8,6 +8,8 @@
    <link href="assets/css/main-min.css" rel="stylesheet" type="text/css" />
  </head>
  <body>
+<div id="ctx">
+	
 
   <div class="header">
     
@@ -24,22 +26,22 @@
     <div class="dl-main-nav">
       <div class="dl-inform"><div class="dl-inform-title">贴心小秘书<s class="dl-inform-icon dl-up"></s></div></div>
       <ul id="J_Nav"  class="nav-list ks-clear">
-        <li class="nav-item dl-selected"><div class="nav-item-inner nav-home">前台</div></li>
-        <li class="nav-item"><div class="nav-item-inner nav-order">维修</div></li>
-        <li class="nav-item"><div class="nav-item-inner nav-inventory">客服</div></li>
-        <li class="nav-item"><div class="nav-item-inner nav-supplier">数据</div></li>
-        <li class="nav-item"><div class="nav-item-inner nav-marketing">人事</div></li>
-         <li class="nav-item"><div class="nav-item-inner nav-marketing">系统</div></li>
+        <li v-for="item in perms" v-if="item.parentid==0" class="nav-item"><div class="nav-item-inner">{{item.pname}}</div></li>
+        
       </ul>
     </div>
     <ul id="J_NavContent" class="dl-tab-conten">
 
     </ul>
    </div>
+   </div>
   <script type="text/javascript" src="assets/js/jquery-1.8.1.min.js"></script>
   <script type="text/javascript" src="assets/js/bui.js"></script>
   <script type="text/javascript" src="assets/js/config.js"></script>
+  <script type="text/javascript" src="js/vue.js"></script>
+  <script src="js/my.js" type="text/javascript" charset="utf-8"></script>
   <script>
+<<<<<<< HEAD
     BUI.use('common/main',function(){
       var config = [{
           id:'menu', 
@@ -140,6 +142,97 @@
         modulesConfig : config
       });
     });
+=======
+  	var vm=new Vue({
+  		el:"#ctx",
+  		data() {
+			return {
+				user:{Loginname:'123',Password:'456',Yuanno:'1'},
+				yuangong:{},
+				perms:[],
+				ping:[]
+			}
+		},
+		methods: {
+			
+		},created: function() {
+			var that=this;
+			$.ajax({
+				url: data.ip + "toIndex",
+				data:{
+					Yuanno:"ygbh001"
+				},
+				type: "get",
+				dataType: "json",
+				success:function(response) {
+					that.yuangong=response;
+					$.ajax({
+						url: data.ip + "find",
+						data:{
+							ZhiwuId:response.zhiwuid
+						},
+						type: "get",
+						dataType: "json",
+						success: function(response) {
+							that.perms = response;
+							console.log(that.perms);
+							find();
+						},
+						error: function(error) {
+
+						}
+					});
+				},error:function(response){
+					console.log(response);
+				}
+			});
+		}
+  })
+    function find(){
+    	BUI.use('common/main',function(){
+    		var config = [
+	                 
+    		];
+    		var s=[];
+    		var ss=[];
+    		var index=0;
+    		var index1=0;
+    		for(var i=0;i<vm.perms.length;i++){
+				config.push({id:vm.perms[i].penglishname,homePage:'code',menu:[]})
+				for(var j=0;j<vm.perms[i].childrens.length;j++){
+					if(index==1){
+						s=[];
+						index=0;
+					}
+					if( j!=0 && s[0].text=='首页内容' ){
+						s.push({text:vm.perms[i].childrens[j].pname,items:[]})
+					}else{
+						s.push({text:'首页内容',items:[{id:'code',text:'首页',href:'zShouye.html',closeable : false}]},{text:vm.perms[i].childrens[j].pname,items:[]})
+					}		
+					if(j==vm.perms[i].childrens.length-1){
+						
+						config[i].menu=s;
+						index=1;
+					}
+						
+					for(var a=0;a<vm.perms[i].childrens[j].childrens.length;a++){
+						ss.push({id:vm.perms[i].childrens[j].childrens[a].penglishname,text:vm.perms[i].childrens[j].childrens[a].pname,href:vm.perms[i].childrens[j].childrens[a].penglishname+'.html'});
+						if(a==vm.perms[i].childrens[j].childrens.length-1){
+							
+							s[j+1].items=ss;
+							ss=[];
+						}
+						
+					}
+				}
+				
+			}
+	      new PageUtil.MainPage({
+	        modulesConfig : config
+	      });
+	    });
+    }
+>>>>>>> refs/remotes/origin/zhouximing
   </script>
 </body>
 </html>

@@ -2,6 +2,10 @@ package com.accp.domain;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Kehu {
     private Integer kehuid;
 
@@ -12,7 +16,8 @@ public class Kehu {
     private String kehuaddress;
 
     private String zhuaddress;
-
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
     private Date kehubirthday;
 
     private String kehutype;
@@ -21,7 +26,7 @@ public class Kehu {
 
     private String kehuphone;
 
-    private Date zhangqi;
+    private int zhangqi;
 
     private Double guazhang;
 
@@ -45,7 +50,9 @@ public class Kehu {
 
     private String bankcard;
 
-    private String bei1;
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
+    private Date bei1;
 
     private String bei2;
 
@@ -53,7 +60,40 @@ public class Kehu {
 
     private String bei4;
 
-    public Integer getKehuid() {
+    private String huiyuanno;
+    
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
+    private Date ruhuitime;
+    
+    public String getHuiyuanno() {
+		return huiyuanno;
+	}
+
+	public void setHuiyuanno(String huiyuanno) {
+		this.huiyuanno = huiyuanno;
+	}
+
+	public Date getRuhuitime() {
+		return ruhuitime;
+	}
+
+	public void setRuhuitime(Date ruhuitime) {
+		this.ruhuitime = ruhuitime;
+	}
+
+	public Date getDaoqitime() {
+		return daoqitime;
+	}
+
+	public void setDaoqitime(Date daoqitime) {
+		this.daoqitime = daoqitime;
+	}
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
+	private Date daoqitime;
+
+	public Integer getKehuid() {
         return kehuid;
     }
 
@@ -125,11 +165,11 @@ public class Kehu {
         this.kehuphone = kehuphone;
     }
 
-    public Date getZhangqi() {
+    public int getZhangqi() {
         return zhangqi;
     }
 
-    public void setZhangqi(Date zhangqi) {
+    public void setZhangqi(int zhangqi) {
         this.zhangqi = zhangqi;
     }
 
@@ -221,11 +261,11 @@ public class Kehu {
         this.bankcard = bankcard;
     }
 
-    public String getBei1() {
+    public Date getBei1() {
         return bei1;
     }
 
-    public void setBei1(String bei1) {
+    public void setBei1(Date bei1) {
         this.bei1 = bei1;
     }
 
