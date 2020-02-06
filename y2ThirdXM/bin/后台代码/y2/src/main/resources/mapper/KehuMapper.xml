@@ -11,7 +11,7 @@
     <result column="KeHuType" property="kehutype" jdbcType="VARCHAR" />
     <result column="KeHuLianXi" property="kehulianxi" jdbcType="VARCHAR" />
     <result column="KeHuPhone" property="kehuphone" jdbcType="VARCHAR" />
-    <result column="ZhangQi" property="zhangqi" jdbcType="TIMESTAMP" />
+    <result column="ZhangQi" property="zhangqi" jdbcType="INTEGER" />
     <result column="GuaZhang" property="guazhang" jdbcType="DOUBLE" />
     <result column="eDu" property="edu" jdbcType="DOUBLE" />
     <result column="DinJin" property="dinjin" jdbcType="DOUBLE" />
@@ -28,6 +28,15 @@
     <result column="bei3" property="bei3" jdbcType="VARCHAR" />
     <result column="bei4" property="bei4" jdbcType="VARCHAR" />
   </resultMap>
+   <resultMap type="com.accp.domain.Kehu" id="BaseResultMapSales" extends="BaseResultMap">
+   			<result column="huiyuanno" property="huiyuanno" />
+		  	<result column="ruhuitime" property="ruhuitime" />
+		    <result column="daoqitime" property="daoqitime" />
+  </resultMap>
+  
+  <select id="findkehu" resultMap="BaseResultMapSales">
+	  SELECT * FROM kehu LEFT JOIN huiyuan ON kehu.`KeHuNo` = huiyuan.`KeHuNo`
+  </select>
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
@@ -134,7 +143,7 @@
     values (#{kehuid,jdbcType=INTEGER}, #{kehuno,jdbcType=VARCHAR}, #{kehuname,jdbcType=VARCHAR}, 
       #{kehuaddress,jdbcType=VARCHAR}, #{zhuaddress,jdbcType=VARCHAR}, #{kehubirthday,jdbcType=DATE}, 
       #{kehutype,jdbcType=VARCHAR}, #{kehulianxi,jdbcType=VARCHAR}, #{kehuphone,jdbcType=VARCHAR}, 
-      #{zhangqi,jdbcType=TIMESTAMP}, #{guazhang,jdbcType=DOUBLE}, #{edu,jdbcType=DOUBLE}, 
+      #{zhangqi,jdbcType=INTEGER}, #{guazhang,jdbcType=DOUBLE}, #{edu,jdbcType=DOUBLE}, 
       #{dinjin,jdbcType=DOUBLE}, #{guwen,jdbcType=VARCHAR}, #{guwenphone,jdbcType=VARCHAR}, 
       #{chepai,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{jifen,jdbcType=INTEGER}, 
       #{zhuphone,jdbcType=VARCHAR}, #{bank,jdbcType=VARCHAR}, #{bankcard,jdbcType=VARCHAR}, 
@@ -249,7 +258,7 @@
         #{kehuphone,jdbcType=VARCHAR},
       </if>
       <if test="zhangqi != null" >
-        #{zhangqi,jdbcType=TIMESTAMP},
+        #{zhangqi,jdbcType=INTEGER},
       </if>
       <if test="guazhang != null" >
         #{guazhang,jdbcType=DOUBLE},
@@ -335,7 +344,7 @@
         KeHuPhone = #{record.kehuphone,jdbcType=VARCHAR},
       </if>
       <if test="record.zhangqi != null" >
-        ZhangQi = #{record.zhangqi,jdbcType=TIMESTAMP},
+        ZhangQi = #{record.zhangqi,jdbcType=INTEGER},
       </if>
       <if test="record.guazhang != null" >
         GuaZhang = #{record.guazhang,jdbcType=DOUBLE},
@@ -398,7 +407,7 @@
       KeHuType = #{record.kehutype,jdbcType=VARCHAR},
       KeHuLianXi = #{record.kehulianxi,jdbcType=VARCHAR},
       KeHuPhone = #{record.kehuphone,jdbcType=VARCHAR},
-      ZhangQi = #{record.zhangqi,jdbcType=TIMESTAMP},
+      ZhangQi = #{record.zhangqi,jdbcType=INTEGER},
       GuaZhang = #{record.guazhang,jdbcType=DOUBLE},
       eDu = #{record.edu,jdbcType=DOUBLE},
       DinJin = #{record.dinjin,jdbcType=DOUBLE},
@@ -446,7 +455,7 @@
         KeHuPhone = #{kehuphone,jdbcType=VARCHAR},
       </if>
       <if test="zhangqi != null" >
-        ZhangQi = #{zhangqi,jdbcType=TIMESTAMP},
+        ZhangQi = #{zhangqi,jdbcType=INTEGER},
       </if>
       <if test="guazhang != null" >
         GuaZhang = #{guazhang,jdbcType=DOUBLE},
@@ -506,7 +515,7 @@
       KeHuType = #{kehutype,jdbcType=VARCHAR},
       KeHuLianXi = #{kehulianxi,jdbcType=VARCHAR},
       KeHuPhone = #{kehuphone,jdbcType=VARCHAR},
-      ZhangQi = #{zhangqi,jdbcType=TIMESTAMP},
+      ZhangQi = #{zhangqi,jdbcType=INTEGER},
       GuaZhang = #{guazhang,jdbcType=DOUBLE},
       eDu = #{edu,jdbcType=DOUBLE},
       DinJin = #{dinjin,jdbcType=DOUBLE},
