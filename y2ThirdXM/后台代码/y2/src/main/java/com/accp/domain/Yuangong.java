@@ -3,89 +3,89 @@ package com.accp.domain;
 import java.util.Date;
 
 public class Yuangong {
-    private String yuanno;
+    private String yuanno;//员工编号
 
-    private Integer shuxingid;
+    private Integer shuxingid;//属性id
 
-    private Integer bumenid;
+    private Integer bumenid;//所属部门id
 
-    private String yuanname;
+    private String yuanname;//员工姓名
 
-    private Date birthday;
+    private Date birthday;//出生日期
 
-    private String sex;
+    private String sex;//性别
 
-    private String phone;
+    private String phone;//联系电话
 
-    private String empeople;
+    private String empeople;//紧急联系人
 
-    private String emphone;
+    private String emphone;//紧急联系人电话
 
-    private String zhiwuid;
+    private String zhiwuid;//职务id
 
-    private String nowaddress;
+    private String nowaddress;//现住地址
 
-    private String huaddress;
+    private String huaddress;//户口地址
 
-    private String bank;
+    private String bank;//开户银行
 
-    private String cardnumber;
+    private String cardnumber;//银行帐号
 
-    private String email;
+    private String email;//邮箱
 
-    private String bodystate;
+    private String bodystate;//身体状况
 
-    private Integer height;
+    private Integer height;//身高
 
-    private String jiguan;
+    private String jiguan;//籍贯
 
-    private String minzu;
+    private String minzu;//民族
 
-    private String hunyin;
+    private String hunyin;//婚姻状况
 
-    private String xueli;
+    private String xueli;//学历
 
-    private String biye;
+    private String biye;//毕业学校
 
-    private String zhuanye;
+    private String zhuanye;//专业
 
-    private String zhuanyezg;
+    private String zhuanyezg;//专业资格
 
-    private String xuewei;
+    private String xuewei;//学位
 
-    private String bianzhi;
+    private String bianzhi;//编制
 
-    private String idcard;
+    private String idcard;//身份证号码
 
-    private String shouji;
+    private String shouji;//手机
 
-    private Date shiyong;
+    private Date shiyong;//试用到期
 
-    private Date hetongstart;
+    private Date hetongstart;//合同开始日期
 
-    private Date hetongend;
+    private Date hetongend;//合同结束日期
 
-    private String kazi;
+    private String kazi;//卡自编号
 
-    private String kanei;
+    private String kanei;//卡内部号
 
-    private String tuijian;
+    private String tuijian;//推荐人
 
-    private Double zdzhekou;
+    private Double zdzhekou;//整单折扣权
 
-    private Double gszhekou;
+    private Double gszhekou;//工时折扣权
 
-    private Double spzhekou;
+    private Double spzhekou;//商品折扣权
 
-    private Double jianmian;
+    private Double jianmian;//减免权
 
-    private String fenqi;
+    private String fenqi;//分期短号
 
-    private Integer sflz;
+    private Integer sflz;//是否离职1表示已经离职0表示没有离职
 
-    private Integer gangweid;
+    private Integer gangweid;//岗位id
 
-    private String login;
+    private String login;//登陆账号
 
     private String bei1;
 

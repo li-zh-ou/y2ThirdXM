@@ -1,11 +1,11 @@
 package com.accp.domain;
 
 public class Bumen {
-    private Integer bumenid;
+    private Integer bumenid;//部门id
 
-    private String bumenname;
+    private String bumenname;//部门名称
 
-    private Integer parentid;
+    private Integer parentid;//部门父级id
 
     private String bei1;
 

@@ -1,9 +1,9 @@
 package com.accp.domain;
 
 public class Gangwei {
-    private Integer gangweiid;
+    private Integer gangweiid;//岗位id
 
-    private String gangweiname;
+    private String gangweiname;//岗位名称
 
     private String bei1;
 

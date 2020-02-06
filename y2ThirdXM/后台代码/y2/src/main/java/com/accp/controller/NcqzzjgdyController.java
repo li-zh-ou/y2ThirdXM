@@ -20,14 +20,19 @@ public class NcqzzjgdyController {
 	@Autowired
 	NcqzzjgdyService ncqzzjgdyService;
 	
-	// 组织机构树状图查询
-//	  @GetMapping("/querybm") 
-//	  public Bumen querybm() {
-//		  return ncqzzjgdyService.querybm();
-//	  }
-
+	//组织机构树状图查询
+	@GetMapping("/querybm") 
+	public List<Bumen> querybm() {
+		return ncqzzjgdyService.querybm();
+	}
 	 
-	//岗位定义查询
+	//组织机构页面查询
+	@GetMapping("/findBygw") 
+	public Gangwei findBygw(Integer gangweiid) {
+		return ncqzzjgdyService.findBygw(gangweiid);
+	}
+	 
+	 //岗位定义查询
 	@GetMapping("/querygw") 
 	public List<Gangwei> querygw(){
 		return ncqzzjgdyService.querygw();

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import com.accp.domain.Bumen;
 import com.accp.domain.Gangwei;
@@ -22,9 +23,15 @@ public class NcqzzjgdyService {
 	GangweiMapper gangweiMapper;
 	
 	//组织机构树状图查询
-//	public Bumen querybm() {
-//		return bumenMapper.selectByPrimaryKey(null);
-//	}
+	public List<Bumen> querybm() {
+		return bumenMapper.selectByExample(null);
+	}
+	
+	//组织机构页面查询
+	@GetMapping("/findBygw") 
+	public Gangwei findBygw(Integer gangweiid) {
+		return gangweiMapper.selectByPrimaryKey(gangweiid);
+	}
 	
 	//岗位定义查询
 	public List<Gangwei> querygw(){
@@ -35,5 +42,6 @@ public class NcqzzjgdyService {
 	public int insertgw(Gangwei gangwei) {
 		return gangweiMapper.insert(gangwei);
 	}
+	
 	
 }
