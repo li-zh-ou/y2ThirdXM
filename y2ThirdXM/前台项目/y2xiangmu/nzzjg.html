@@ -649,13 +649,12 @@
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/vue.js"></script>
 <script type="text/javascript" src="js/my.js"></script>
-<!--<script type="text/javascript">
-	$(function(){
+<script type="text/javascript">
 	var vm = new Vue({
 				el: "#ctx",
 				data() {
 					return {
-						szcds: []
+						: {}
 					}
 				},
 				methods: {
@@ -672,8 +671,8 @@
 			type: "get",
 			dataType: "json",
 			success: function(result) {
-				vm.szcd = result;
 				console.log(result);
+				$.fn.zTree.init($("#treeDemo"), setting, result);//初始化树节点时，添加同步获取的数据
 			},
 			error: function(result) {
 				console.log(result);
@@ -681,33 +680,29 @@
 		});
 	}
 	
-	//数据结构，从后台查询数据进行赋值就可使用 
-	var zNodes =vm.szcd;
 	
 	//树状图
 	var setting = {
+		view: {
+        	selectedMulti: true
+    	},
 		check: {
-			
 			enable: true
 		},
 		data: {
+			key: {
+                    name: "bumenname",//树节点name名称
+                },
 			simpleData: {
-				enable: true
+				enable: true,//是否采用简单数据模式
+            	idKey: "bumenid",//树节点ID名称
+            	pIdKey: "parentid",//父节点ID名称
+            	rootPId: -1,//根节点ID
 			}
-		},
-		edit: {
-			enable: true
 		}
 	};
 
-	$(document).ready(function(){
-		$.fn.zTree.init($("#treeDemo"), setting, zNodes);
-	});
 	
-	
-	
-})
-	
-</script>-->
+</script>
 </body>
 </html>
