@@ -26,12 +26,6 @@ public class NcqzzjgdyController {
 		return ncqzzjgdyService.querybm();
 	}
 	 
-	//组织机构页面查询
-	@GetMapping("/findBygw") 
-	public Gangwei findBygw(Integer gangweiid) {
-		return ncqzzjgdyService.findBygw(gangweiid);
-	}
-	 
 	 //岗位定义查询
 	@GetMapping("/querygw") 
 	public List<Gangwei> querygw(){
@@ -42,6 +36,21 @@ public class NcqzzjgdyController {
 	@PostMapping("/insertgw")
 	public int insertgw(Gangwei gangwei) {
 		return ncqzzjgdyService.insertgw(gangwei);
+	}
+	
+	//删除岗位
+	@GetMapping("/delByIdgw")
+	public int delByIdgw(Integer gangweiid) {
+		return ncqzzjgdyService.delByIdgw(gangweiid);
+	}
+	
+	//修改岗位
+	@PostMapping("/upgw")
+	public int upgw(Integer gangweiid,String gangweiname,Integer ids) {
+		System.out.println(gangweiid+"-------------------------------------------------------------------");
+		System.out.println(gangweiname+"-------------------------------------------------------------------");
+		System.out.println(ids+"-------------------------------------------------------------------");
+		return ncqzzjgdyService.upgw(gangweiid,gangweiname,ids);
 	}
 	
 }

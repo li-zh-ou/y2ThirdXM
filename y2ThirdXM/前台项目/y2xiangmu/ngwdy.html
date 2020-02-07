@@ -31,14 +31,14 @@
 			<div id="dhl" class="row">
 				<div class="col-md-10">
 					<p style="margin-top:25px;">
-						岗位编码:<input type="text" v-model="huiyuanitem.gangweiid"/>&nbsp;&nbsp;&nbsp;
-						岗位名称:<input type="text" v-model="huiyuanitem.gangweiname"/>
+						岗位编码:<input type="text" v-model="gangwei.gangweiid"/>&nbsp;&nbsp;&nbsp;
+						岗位名称:<input type="text" v-model="gangwei.gangweiname"/>
 					</p>
 				</div>
 				<ol class="breadcrumb col-md-2">
 				  <li><span class="iconfont" style="vertical-align: middle">&#xe62c;</span><a href="#" style="vertical-align: middle" @click="insert">增加</a></li>
-				  <li><span class="iconfont" style="vertical-align: middle">&#xe612;</span><a href="#" style="vertical-align: middle">修改</a></li>
-				  <li><span class="iconfont" style="vertical-align: middle">&#xe614;</span><a href="#" style="vertical-align: middle">删除</a></li>
+				  <li><span class="iconfont" style="vertical-align: middle">&#xe612;</span><a href="#" style="vertical-align: middle" @click="up">修改</a></li>
+				  <li><span class="iconfont" style="vertical-align: middle">&#xe614;</span><a href="#" style="vertical-align: middle" @click="del(gangwei.gangweiid)">删除</a></li>
 				  <li><span class="iconfont" style="vertical-align: middle">&#xe6a5;</span><a href="#" style="vertical-align: middle">导出</a></li>
 				</ol>
 				
@@ -53,7 +53,7 @@
 							<td>岗位名称</td>
 						</tr>
 						
-						<tr v-for="item,index in gwdy" @click="tableDblclick(item.gangweiid)">
+						<tr v-for="item,index in gwdy" @click="tableDblclick(item)">
 							<td>{{item.gangweiid}}</td>
 							<td>{{item.gangweiname}}</td>
 						</tr>
@@ -77,34 +77,77 @@
 		data() {
 			return {
 				gwdy:{},
-				gangwei:{},
-				huiyuanitem:{}
+				gangwei:{gangweiid:"",gangweiname:""},
+				gangwei2:{gangweiid:"",gangweiname:""}
 			}
 		},
 		methods: {
 			insert:function(){//新增岗位
-				var that=this;
 				$.ajax({
 					url:data.ip +"ncq/insertgw",
 					type:"post",
-					data:this.gangwei,
+					data:vm.gangwei,
 					dataType:"text",
 					success:function(result){
 						console.log(result);
+						if(result>0){
+							alert("新增成功");
+						}else if(result<0){
+							alert("新增失败");
+						}
+						loading();
 					},error:function(result){
 						console.log(result);
 					}
 				});
 			},
-			tableDblclick:function(gangweiid){
+			tableDblclick:function(item){//查询岗位放入上方text框
+				vm.gangwei.gangweiid=item.gangweiid;
+				vm.gangwei.gangweiname=item.gangweiname;
+				vm.gangwei2.gangweiid=item.gangweiid;
+				vm.gangwei2.gangweiname=item.gangweiname;
+				console.log(vm.gangwei.gangweiid);
+				console.log(vm.gangwei.gangweiname);
+				console.log(vm.gangwei2.gangweiid);
+				console.log(vm.gangwei2.gangweiname);
+			},
+			up:function(){
+				console.log(vm.gangwei.gangweiid);
+				console.log(vm.gangwei.gangweiname);
+				console.log(vm.gangwei2.gangweiid);
 				$.ajax({
-					url:data.ip +"ncq/findBygw",
+					url:data.ip +"ncq/upgw",
+					type:"post",
+					data:{gangweiid:vm.gangwei.gangweiid,gangweiname:vm.gangwei.gangweiname,ids:vm.gangwei2.gangweiid},
+					dataType:"text",
+					success:function(result){
+						console.log(result);
+						if(result>0){
+							alert("修改成功");
+						}else if(result<0){
+							alert("修改失败");
+						}
+						loading();
+					},error:function(result){
+						console.log(result);
+					}
+				});
+			},
+			del:function(gangweiid){//删除岗位
+				$.ajax({
+					url:data.ip +"ncq/delByIdgw",
 					type:"get",
 					data:{gangweiid:gangweiid},
-					dataType:"json",
+					dataType:"text",
 					success:function(result){
-						vm.huiyuanitem=result;
 						console.log(result);
+						console.log(result);
+						if(result>0){
+							alert("删除成功");
+						}else if(result<0){
+							alert("删除失败");
+						}
+						loading();
 					},error:function(result){
 						console.log(result);
 					}
