@@ -62,7 +62,17 @@ public class Kehu {
 
     private String huiyuanno;
     
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private Kehucar car;
+    
+    
+    public Kehucar getCar() {
+		return car;
+	}
+
+	public void setCar(Kehucar car) {
+		this.car = car;
+	}
+	@DateTimeFormat(pattern="yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
     private Date ruhuitime;
     

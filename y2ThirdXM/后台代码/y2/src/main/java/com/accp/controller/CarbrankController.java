@@ -4,11 +4,15 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.domain.Carbrand;
 import com.accp.domain.Carxing;
 import com.accp.domain.Fadongbrand;
+import com.accp.domain.Kehu;
+import com.accp.domain.Kehucar;
 import com.accp.service.CarbrankService;
 
 @RestController
@@ -26,8 +30,12 @@ public class CarbrankController {
 		return ser.querybycarbrandid(carbrandid);
 	}
 	
-	@GetMapping("/querybyfabankid")
-	public Fadongbrand querybyfabankid(int fabankid) {
-		return ser.querybyfabankid(fabankid);
+	@GetMapping("/queryfadoji")
+	public List<Fadongbrand> queryfadoji() {
+		return ser.queryfadoji();
+	}
+	@PostMapping("/addkehuandche")
+	public int addkehuandche(@RequestBody Kehu kehu) {
+		return ser.addkehuandche(kehu);
 	}
 }

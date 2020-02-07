@@ -306,4 +306,5 @@ public class Kehucar {
     public void setBei4(String bei4) {
         this.bei4 = bei4;
     }
+
 }
