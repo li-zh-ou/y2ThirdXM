@@ -28,7 +28,9 @@ public class HuiYuanController {
 	@RequestMapping("queryAllHuiYuan")
 	@ResponseBody
 	public PageInfo<Huiyuan> queryAllHuiYuan(int pageNum,int pageSize){
-		return huiyuan.queryAllHuiYuan(pageNum,pageSize);
+		PageInfo<Huiyuan> page = huiyuan.queryAllHuiYuan(pageNum,pageSize);
+		System.out.println(page.getList().size());
+		return page;
 	}
 	
 	@RequestMapping("chongZhi")
