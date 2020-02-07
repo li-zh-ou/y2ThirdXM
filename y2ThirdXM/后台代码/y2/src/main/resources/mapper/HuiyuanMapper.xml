@@ -350,4 +350,16 @@
       bei4 = #{bei4,jdbcType=VARCHAR}
     where HuiYuanNo = #{huiyuanno,jdbcType=VARCHAR}
   </update>
+    <update id="yanQi" >
+  UPDATE huiyuan SET daoqitime = (
+  CASE #{money,jdbcType=INTEGER} WHEN 50 THEN DATE_ADD(DaoQiTime,INTERVAL 1 YEAR)
+  WHEN 120 THEN DATE_ADD(DaoQiTime,INTERVAL 3 YEAR)
+  WHEN 180 THEN DATE_ADD(DaoQiTime,INTERVAL 5 YEAR)
+  ELSE daoqitime
+  END
+  ) WHERE huiyuanno=#{no,jdbcType=VARCHAR}
+  </update>
+  <update id="chongZhi" parameterType="com.accp.domain.Huiyuan">
+  update huiyuan set huiyuanmoney = #{huiyuanmoney,jdbcType=DOUBLE} where huiyuanno = #{huiyuanno,jdbcType=VARCHAR}
+  </update>
 </mapper>
