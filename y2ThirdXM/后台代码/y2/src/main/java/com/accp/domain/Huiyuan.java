@@ -30,6 +30,17 @@ public class Huiyuan {
     private String bei3;
 
     private String bei4;
+    
+    private Integer shichang;
+    
+
+    public Integer getShichang() {
+		return shichang;
+	}
+
+	public void setShichang(Integer shichang) {
+		this.shichang = shichang;
+	}
 
     public String getHuiyuanno() {
         return huiyuanno;
