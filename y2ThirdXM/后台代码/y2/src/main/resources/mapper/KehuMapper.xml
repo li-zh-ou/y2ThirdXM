@@ -130,7 +130,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.accp.domain.Kehu" >
+  <insert id="insert" useGeneratedKeys="true" keyProperty="kehuid" parameterType="com.accp.domain.Kehu" >
     insert into kehu (kehuid, KeHuNo, KeHuName, 
       KeHuAddress, ZhuAddress, KeHuBirthday, 
       KeHuType, KeHuLianXi, KeHuPhone, 
