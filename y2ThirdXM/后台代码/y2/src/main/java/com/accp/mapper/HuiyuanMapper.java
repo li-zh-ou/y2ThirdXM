@@ -27,4 +27,9 @@ public interface HuiyuanMapper {
     int updateByPrimaryKeySelective(Huiyuan record);
 
     int updateByPrimaryKey(Huiyuan record);
+    
+    //李周添加
+    int chongZhi(Huiyuan record);
+    //李周添加
+    int yanQi(@Param("money") int money,@Param("no") String huiYuanNo);
 }
