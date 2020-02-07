@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.accp.domain.Bumen;
 import com.accp.domain.Gangwei;
@@ -27,12 +28,6 @@ public class NcqzzjgdyService {
 		return bumenMapper.selectByExample(null);
 	}
 	
-	//组织机构页面查询
-	@GetMapping("/findBygw") 
-	public Gangwei findBygw(Integer gangweiid) {
-		return gangweiMapper.selectByPrimaryKey(gangweiid);
-	}
-	
 	//岗位定义查询
 	public List<Gangwei> querygw(){
 		return gangweiMapper.selectByExample(null);
@@ -41,6 +36,16 @@ public class NcqzzjgdyService {
 	//新增岗位
 	public int insertgw(Gangwei gangwei) {
 		return gangweiMapper.insert(gangwei);
+	}
+	
+	//删除岗位
+	public int delByIdgw(Integer gangweiid) {
+		return gangweiMapper.deleteByPrimaryKey(gangweiid);
+	}
+	
+	//修改岗位
+	public int upgw(Integer gangweiid,String gangweiname,Integer ids) {
+		return gangweiMapper.update(gangweiid,gangweiname,ids);
 	}
 	
 	

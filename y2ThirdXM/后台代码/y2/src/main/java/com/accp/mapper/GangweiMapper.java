@@ -6,6 +6,9 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface GangweiMapper {
+	
+	int update(Integer gangweiid,String gangweiname,Integer ids);
+	
     int countByExample(GangweiExample example);
 
     int deleteByExample(GangweiExample example);
