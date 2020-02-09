@@ -57,4 +57,14 @@ public class CarbrankService {
 		kehu.getCar().setKehuno(k.getKehuno());
 		return kehucarmapper.insert(kehu.getCar());
 	}
+	public int addcar(Kehucar car) {
+		return kehucarmapper.insert(car);
+	}
+	public int updatecar(Kehucar car) {
+		return kehucarmapper.updateByPrimaryKey(car);
+	}
+	
+	public int deletecar(String chepai) {
+		return kehucarmapper.deleteByPrimaryKey(chepai);
+	}
 }

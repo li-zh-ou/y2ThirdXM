@@ -38,4 +38,16 @@ public class CarbrankController {
 	public int addkehuandche(@RequestBody Kehu kehu) {
 		return ser.addkehuandche(kehu);
 	}
+	@PostMapping("/addcar")
+	public int addcar(@RequestBody Kehucar car) {
+		return ser.addcar(car);
+	}
+	@PostMapping("/updatecar")
+	public int updatecar(@RequestBody Kehucar car) {
+		return ser.updatecar(car);
+	}
+	@GetMapping("/deletecar")
+	public int deletecar(String chepai) {
+		return ser.deletecar(chepai);
+	}
 }
