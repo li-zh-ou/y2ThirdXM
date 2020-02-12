@@ -46,9 +46,54 @@
     <result column="login" property="login" jdbcType="VARCHAR" />
     <result column="bei1" property="bei1" jdbcType="VARCHAR" />
     <result column="bei2" property="bei2" jdbcType="VARCHAR" />
-    <result column="bei3" property="bei3" jdbcType="VARCHAR" />
+    <result column="bei3" property="bei3" jdbcType="DATE" />
     <result column="bei4" property="bei4" jdbcType="VARCHAR" />
+    <result column="BuMenName" property="bumenname" jdbcType="VARCHAR" />
+    <result column="gangweiname" property="gangweiname" jdbcType="VARCHAR" />
   </resultMap>
+  
+  <select id="ygcx">
+	SELECT
+	yg.`BuMenId` AS '部门代码',
+	bm.`BuMenName` AS '部门名称',
+	yg.`yuanNo` AS '工号',
+	yg.`yuanName` AS '姓名',
+	yg.`sex` AS '性别',
+	gw.`gangweiname` AS '岗位名称',
+	yg.`bodystate` AS '身体状况',
+	yg.`height` AS '身高',
+	yg.`JiGuan` AS '籍贯',
+	yg.`MinZu` AS '民族',
+	yg.`HunYin` AS '婚姻状况',
+	yg.`xueWei` AS '学历',
+	yg.`BiYe` AS '毕业学校',
+	yg.`ZhuanYe` AS '专业',
+	yg.`ZhuanYezg` AS'专业资格',
+	yg.`xueWei` AS'学位',
+	yg.`bianZhi` AS'编制',
+	yg.`IDcard` AS' 身份证号',
+	yg.`HuAddress` AS'户口地址',
+	yg.`bei1` AS '户口邮编',
+	yg.`nowAddress` AS '现住地址',
+	yg.`bei2` AS '现住邮编',
+	yg.`phone` AS '联系电话',
+	yg.`shouJi` AS '手机',
+	yg.`email` AS 'EMail',
+	yg.`emPeople` AS '紧急情况联系人',
+	yg.`emPhone` AS '紧急联系人电话',
+	yg.`nowAddress` AS '现在何处',
+	yg.`ShiYong` AS '试用到期',
+	yg.`bei3` AS '入职日期',
+	yg.`birthday` AS '出生日期',
+	yg.`HeTongEnd` AS '合同开始日期',
+	yg.`HeTongEnd` AS '合同结束日期'
+	FROM `yuangong` AS yg
+	INNER JOIN `bumen` AS bm
+	ON yg.`BuMenId`=bm.`BuMenId`
+	INNER JOIN `gangwei` AS gw
+	ON yg.gangweId=gw.`gangweiId`
+</select>
+  
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
@@ -175,7 +220,7 @@
       #{tuijian,jdbcType=VARCHAR}, #{zdzhekou,jdbcType=DOUBLE}, #{gszhekou,jdbcType=DOUBLE}, 
       #{spzhekou,jdbcType=DOUBLE}, #{jianmian,jdbcType=DOUBLE}, #{fenqi,jdbcType=VARCHAR}, 
       #{sflz,jdbcType=INTEGER}, #{gangweid,jdbcType=INTEGER}, #{login,jdbcType=VARCHAR}, 
-      #{bei1,jdbcType=VARCHAR}, #{bei2,jdbcType=VARCHAR}, #{bei3,jdbcType=VARCHAR}, #{bei4,jdbcType=VARCHAR}
+      #{bei1,jdbcType=VARCHAR}, #{bei2,jdbcType=VARCHAR}, #{bei3,jdbcType=DATE}, #{bei4,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.accp.domain.Yuangong" >
@@ -454,7 +499,7 @@
         #{bei2,jdbcType=VARCHAR},
       </if>
       <if test="bei3 != null" >
-        #{bei3,jdbcType=VARCHAR},
+        #{bei3,jdbcType=DATE},
       </if>
       <if test="bei4 != null" >
         #{bei4,jdbcType=VARCHAR},
@@ -603,7 +648,7 @@
         bei2 = #{record.bei2,jdbcType=VARCHAR},
       </if>
       <if test="record.bei3 != null" >
-        bei3 = #{record.bei3,jdbcType=VARCHAR},
+        bei3 = #{record.bei3,jdbcType=DATE},
       </if>
       <if test="record.bei4 != null" >
         bei4 = #{record.bei4,jdbcType=VARCHAR},
@@ -659,7 +704,7 @@
       login = #{record.login,jdbcType=VARCHAR},
       bei1 = #{record.bei1,jdbcType=VARCHAR},
       bei2 = #{record.bei2,jdbcType=VARCHAR},
-      bei3 = #{record.bei3,jdbcType=VARCHAR},
+      bei3 = #{record.bei3,jdbcType=DATE},
       bei4 = #{record.bei4,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -798,7 +843,7 @@
         bei2 = #{bei2,jdbcType=VARCHAR},
       </if>
       <if test="bei3 != null" >
-        bei3 = #{bei3,jdbcType=VARCHAR},
+        bei3 = #{bei3,jdbcType=DATE},
       </if>
       <if test="bei4 != null" >
         bei4 = #{bei4,jdbcType=VARCHAR},
@@ -851,7 +896,7 @@
       login = #{login,jdbcType=VARCHAR},
       bei1 = #{bei1,jdbcType=VARCHAR},
       bei2 = #{bei2,jdbcType=VARCHAR},
-      bei3 = #{bei3,jdbcType=VARCHAR},
+      bei3 = #{bei3,jdbcType=DATE},
       bei4 = #{bei4,jdbcType=VARCHAR}
     where yuanNo = #{yuanno,jdbcType=VARCHAR}
   </update>

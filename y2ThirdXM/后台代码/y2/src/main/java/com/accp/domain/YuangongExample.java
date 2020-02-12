@@ -3092,62 +3092,62 @@ public class YuangongExample {
             return (Criteria) this;
         }
 
-        public Criteria andBei3EqualTo(String value) {
+        public Criteria andBei3EqualTo(Date value) {
             addCriterion("bei3 =", value, "bei3");
             return (Criteria) this;
         }
 
-        public Criteria andBei3NotEqualTo(String value) {
+        public Criteria andBei3NotEqualTo(Date value) {
             addCriterion("bei3 <>", value, "bei3");
             return (Criteria) this;
         }
 
-        public Criteria andBei3GreaterThan(String value) {
+        public Criteria andBei3GreaterThan(Date value) {
             addCriterion("bei3 >", value, "bei3");
             return (Criteria) this;
         }
 
-        public Criteria andBei3GreaterThanOrEqualTo(String value) {
+        public Criteria andBei3GreaterThanOrEqualTo(Date value) {
             addCriterion("bei3 >=", value, "bei3");
             return (Criteria) this;
         }
 
-        public Criteria andBei3LessThan(String value) {
+        public Criteria andBei3LessThan(Date value) {
             addCriterion("bei3 <", value, "bei3");
             return (Criteria) this;
         }
 
-        public Criteria andBei3LessThanOrEqualTo(String value) {
+        public Criteria andBei3LessThanOrEqualTo(Date value) {
             addCriterion("bei3 <=", value, "bei3");
             return (Criteria) this;
         }
 
-        public Criteria andBei3Like(String value) {
+        public Criteria andBei3Like(Date value) {
             addCriterion("bei3 like", value, "bei3");
             return (Criteria) this;
         }
 
-        public Criteria andBei3NotLike(String value) {
+        public Criteria andBei3NotLike(Date value) {
             addCriterion("bei3 not like", value, "bei3");
             return (Criteria) this;
         }
 
-        public Criteria andBei3In(List<String> values) {
+        public Criteria andBei3In(List<Date> values) {
             addCriterion("bei3 in", values, "bei3");
             return (Criteria) this;
         }
 
-        public Criteria andBei3NotIn(List<String> values) {
+        public Criteria andBei3NotIn(List<Date> values) {
             addCriterion("bei3 not in", values, "bei3");
             return (Criteria) this;
         }
 
-        public Criteria andBei3Between(String value1, String value2) {
+        public Criteria andBei3Between(Date value1, Date value2) {
             addCriterion("bei3 between", value1, value2, "bei3");
             return (Criteria) this;
         }
 
-        public Criteria andBei3NotBetween(String value1, String value2) {
+        public Criteria andBei3NotBetween(Date value1, Date value2) {
             addCriterion("bei3 not between", value1, value2, "bei3");
             return (Criteria) this;
         }

@@ -46,9 +46,112 @@
     <result column="login" property="login" jdbcType="VARCHAR" />
     <result column="bei1" property="bei1" jdbcType="VARCHAR" />
     <result column="bei2" property="bei2" jdbcType="VARCHAR" />
-    <result column="bei3" property="bei3" jdbcType="VARCHAR" />
+    <result column="bei3" property="bei3" jdbcType="DATE" />
     <result column="bei4" property="bei4" jdbcType="VARCHAR" />
   </resultMap>
+
+	<!--修改员工查询 -->
+	<select id="byupygff" resultMap="BaseResultMap">
+		SELECT
+		`yuanNo`,
+		`shuXingId`,
+		`BuMenId`,
+		`yuanName`,
+		`birthday`,
+		`sex`,
+		`phone`,
+		`emPeople`,
+		`emPhone`,
+		`ZhiWuId`,
+		`nowAddress`,
+		`HuAddress`,
+		`bank`,
+		`cardNumber`,
+		`email`,
+		`bodystate`,
+		`height`,
+		`JiGuan`,
+		`MinZu`,
+		`HunYin`,
+		`XueLi`,
+		`BiYe`,
+		`ZhuanYe`,
+		`ZhuanYezg`,
+		`xueWei`,
+		`bianZhi`,
+		`IDcard`,
+		`shouJi`,
+		`ShiYong`,
+		`HeTongstart`,
+		`HeTongEnd`,
+		`KaZi`,
+		`KaNei`,
+		`TuiJian`,
+		`zdZheKou`,
+		`gsZheKou`,
+		`spZheKou`,
+		`jianMian`,
+		`fenqi`,
+		`sflz`,
+		`gangweId`,
+		`login`,
+		`bei1`,
+		`bei2`,
+		`bei3`,
+		`bei4`
+		FROM`yuangong`
+		WHERE `yuanNo`=#{yuanno}
+	</select>
+  
+  <!-- 组织机构员工详情查询 -->
+  <select id="ygcx" resultMap="BaseResultMap">
+	SELECT
+	yg.`BuMenId`,
+	bm.`BuMenName`,
+	yg.`yuanNo`,
+	yg.`yuanName`,
+	yg.`sex`,
+	gw.`gangweiname`,
+	yg.`bodystate`,
+	yg.`height`,
+	yg.`JiGuan`,
+	yg.`MinZu`,
+	yg.`HunYin`,
+	yg.`XueLi`,
+	yg.`BiYe`,
+	yg.`ZhuanYe`,
+	yg.`ZhuanYezg`,
+	yg.`xueWei`,
+	yg.`bianZhi`,
+	yg.`IDcard`,
+	yg.`HuAddress`,
+	yg.`bei1`,
+	yg.`nowAddress`,
+	yg.`bei2`,
+	yg.`phone`,
+	yg.`shouJi`,
+	yg.`email`,
+	yg.`emPeople`,
+	yg.`emPhone`,
+	yg.`nowAddress`,
+	yg.`ShiYong`,
+	yg.`bei3`,
+	yg.`birthday`,
+	yg.`HeTongstart`,
+	yg.`HeTongEnd`
+	FROM `yuangong` AS yg
+	INNER JOIN `bumen` AS bm
+	ON yg.`BuMenId`=bm.`BuMenId`
+	INNER JOIN `gangwei` AS gw
+	ON yg.gangweId=gw.`gangweId`
+	WHERE `sflz`=0
+</select>
+
+<!-- 组织机构置空密码 -->
+<update id="zkmm">
+	UPDATE `yuangong` SET `bei4` = NULL WHERE `yuanNo` = #{yuanno}
+</update>
+  
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
@@ -175,7 +278,7 @@
       #{tuijian,jdbcType=VARCHAR}, #{zdzhekou,jdbcType=DOUBLE}, #{gszhekou,jdbcType=DOUBLE}, 
       #{spzhekou,jdbcType=DOUBLE}, #{jianmian,jdbcType=DOUBLE}, #{fenqi,jdbcType=VARCHAR}, 
       #{sflz,jdbcType=INTEGER}, #{gangweid,jdbcType=INTEGER}, #{login,jdbcType=VARCHAR}, 
-      #{bei1,jdbcType=VARCHAR}, #{bei2,jdbcType=VARCHAR}, #{bei3,jdbcType=VARCHAR}, #{bei4,jdbcType=VARCHAR}
+      #{bei1,jdbcType=VARCHAR}, #{bei2,jdbcType=VARCHAR}, #{bei3,jdbcType=DATE}, #{bei4,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.accp.domain.Yuangong" >
@@ -454,7 +557,7 @@
         #{bei2,jdbcType=VARCHAR},
       </if>
       <if test="bei3 != null" >
-        #{bei3,jdbcType=VARCHAR},
+        #{bei3,jdbcType=DATE},
       </if>
       <if test="bei4 != null" >
         #{bei4,jdbcType=VARCHAR},
@@ -603,7 +706,7 @@
         bei2 = #{record.bei2,jdbcType=VARCHAR},
       </if>
       <if test="record.bei3 != null" >
-        bei3 = #{record.bei3,jdbcType=VARCHAR},
+        bei3 = #{record.bei3,jdbcType=DATE},
       </if>
       <if test="record.bei4 != null" >
         bei4 = #{record.bei4,jdbcType=VARCHAR},
@@ -659,7 +762,7 @@
       login = #{record.login,jdbcType=VARCHAR},
       bei1 = #{record.bei1,jdbcType=VARCHAR},
       bei2 = #{record.bei2,jdbcType=VARCHAR},
-      bei3 = #{record.bei3,jdbcType=VARCHAR},
+      bei3 = #{record.bei3,jdbcType=DATE},
       bei4 = #{record.bei4,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -798,7 +901,7 @@
         bei2 = #{bei2,jdbcType=VARCHAR},
       </if>
       <if test="bei3 != null" >
-        bei3 = #{bei3,jdbcType=VARCHAR},
+        bei3 = #{bei3,jdbcType=DATE},
       </if>
       <if test="bei4 != null" >
         bei4 = #{bei4,jdbcType=VARCHAR},
@@ -851,7 +954,7 @@
       login = #{login,jdbcType=VARCHAR},
       bei1 = #{bei1,jdbcType=VARCHAR},
       bei2 = #{bei2,jdbcType=VARCHAR},
-      bei3 = #{bei3,jdbcType=VARCHAR},
+      bei3 = #{bei3,jdbcType=DATE},
       bei4 = #{bei4,jdbcType=VARCHAR}
     where yuanNo = #{yuanno,jdbcType=VARCHAR}
   </update>

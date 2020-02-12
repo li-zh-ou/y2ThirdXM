@@ -6,25 +6,32 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface YuangongMapper {
-    int countByExample(YuangongExample example);
+	
+	public Yuangong byupygff(String yuanno);//修改员工查询
 
-    int deleteByExample(YuangongExample example);
+	public int zkmm(String yuanno);// 组织机构置空密码
 
-    int deleteByPrimaryKey(String yuanno);
+	List<Yuangong> ygcx();// 组织机构员工详情查询
 
-    int insert(Yuangong record);
+	int countByExample(YuangongExample example);
 
-    int insertSelective(Yuangong record);
+	int deleteByExample(YuangongExample example);
 
-    List<Yuangong> selectByExample(YuangongExample example);
+	int deleteByPrimaryKey(String yuanno);
 
-    Yuangong selectByPrimaryKey(String yuanno);
+	int insert(Yuangong record);
 
-    int updateByExampleSelective(@Param("record") Yuangong record, @Param("example") YuangongExample example);
+	int insertSelective(Yuangong record);
 
-    int updateByExample(@Param("record") Yuangong record, @Param("example") YuangongExample example);
+	List<Yuangong> selectByExample(YuangongExample example);
 
-    int updateByPrimaryKeySelective(Yuangong record);
+	Yuangong selectByPrimaryKey(String yuanno);
 
-    int updateByPrimaryKey(Yuangong record);
+	int updateByExampleSelective(@Param("record") Yuangong record, @Param("example") YuangongExample example);
+
+	int updateByExample(@Param("record") Yuangong record, @Param("example") YuangongExample example);
+
+	int updateByPrimaryKeySelective(Yuangong record);
+
+	int updateByPrimaryKey(Yuangong record);
 }
