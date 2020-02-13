@@ -13,14 +13,19 @@ import com.accp.domain.Gangwei;
 import com.accp.domain.Yuangong;
 import com.accp.domain.YuangongExample;
 import com.accp.domain.Yuangongshu;
+import com.accp.domain.Zhiwu;
 import com.accp.mapper.BumenMapper;
 import com.accp.mapper.GangweiMapper;
 import com.accp.mapper.YuangongMapper;
 import com.accp.mapper.YuangongshuMapper;
+import com.accp.mapper.ZhiwuMapper;
 
 @Service
 @Transactional
 public class NcqzzjgdyService {
+
+	@Autowired
+	ZhiwuMapper zhiwuMapper;
 
 	@Autowired
 	YuangongMapper yuangongMapper;
@@ -71,14 +76,33 @@ public class NcqzzjgdyService {
 	}
 
 	// 组织机构修改员工查询
-	@GetMapping("/byupygff")
 	public Yuangong byupygff(String yuanno) {
 		return yuangongMapper.byupygff(yuanno);
 	}
 
 	// 组织机构修改员工
 	public int upygxq(Yuangong yuangong) {
-		return yuangongMapper.insert(yuangong);
+		return yuangongMapper.updateByPrimaryKey(yuangong);
+	}
+
+	// 组织机构查询角色
+	public List<Zhiwu> zzjgcxjs() {
+		return zhiwuMapper.selectByExample(null);
+	}
+
+	// 组织机构赋予员工角色
+	public int fujs(String zhiwuid, String yuanno) {
+		return yuangongMapper.fujs(zhiwuid, yuanno);
+	}
+
+	// 组织机构赋删除员工
+	public int xglzzt(String yuanno) {
+		return yuangongMapper.xglzzt(yuanno);
+	}
+
+	// 组织机构点击树状图获取部门在根据部门id查询员工详情
+	public List<Yuangong> gjbmcxyg(Integer bumenid){
+		return yuangongMapper.gjbmcxyg(bumenid);
 	}
 
 	// 岗位定义查询
@@ -99,6 +123,11 @@ public class NcqzzjgdyService {
 	// 岗位定义修改岗位
 	public int upgw(Integer gangweid, String gangweiname, Integer ids) {
 		return gangweiMapper.update(gangweid, gangweiname, ids);
+	}
+
+	// 通讯名录详情
+	public List<Yuangong> cxtxmlxq() {
+		return yuangongMapper.cxtxmlxq();
 	}
 
 }

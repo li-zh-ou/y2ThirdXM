@@ -19,7 +19,7 @@
 		</style>
 	</head>
 	<body>
-		<div class="container-fluid" >
+		<div class="container-fluid" id="ctx">
 			<div class="row" style="border: 1px solid #E6E6E6;">
 				<h3 class="col-md-2">通讯名录</h3>
 				<div class="col-md-7"></div>
@@ -49,20 +49,20 @@
 							<td>部门</td>
 							<td>员工编号</td>
 							<td>姓名</td>
-							<td>性别</td>
-							<td>职位</td>
-							<td>离职日期</td>
-							<td>离职原因</td>
+							<td>分机/短号</td>
+							<td>直播</td>
+							<td>手机</td>
+							<td>邮箱</td>
 						</tr>
 						
-						<tr>
-							<td>部门</tsd>
-							<td>员工编号</td>
-							<td>姓名</td>
-							<td><input type="text" value="性别" style="border: 0px;"/></td>
-							<td><input type="text" value="职位" style="border: 0px;"/></td>
-							<td><input type="text" value="离职日期" style="border: 0px;"/></td>
-							<td><input type="text" value="离职原因" style="border: 0px;"/></td>
+						<tr v-for="item in txmlxq">
+							<td>{{item.bumenname}}</tsd>
+							<td>{{item.yuanno}}</td>
+							<td>{{item.yuanname}}</td>
+							<td><input type="text" v-model="item.fenqi" value="" style="border: 0px;"/></td>
+							<td><input type="text" v-model="item.phone" value="" style="border: 0px;"/></td>
+							<td><input type="text" v-model="item.shouji" value="" style="border: 0px;"/></td>
+							<td><input type="text" v-model="item.email" value="" style="border: 0px;"/></td>
 						</tr>
 						
 				</table>
@@ -71,11 +71,40 @@
 			
 		</div>
 		
+	</div>	
 <script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript" src="js/my.js"></script>
 <script type="text/javascript">
-
+	var vm = new Vue({
+		el: "#ctx",
+		data() {
+			return {
+				txmlxq:{}//通讯名录详情
+			}
+		},
+		created(){//加载事件
+      		this.cxtxmlxq();//通讯名录详情
+   		},
+		methods: {
+			cxtxmlxq:function(){//通讯名录详情
+				$.ajax({
+					url: data.ip +"ncq/cxtxmlxq",
+					type: "get",
+					dataType: "json",
+					success: function(result) {
+						console.log(result);
+						vm.txmlxq = result;
+					},
+					error: function(result) {
+						console.log(result);
+					}	
+				});
+			}
+		}
+	});
+	
 </script>
-	</body>
+</body>
 </html>

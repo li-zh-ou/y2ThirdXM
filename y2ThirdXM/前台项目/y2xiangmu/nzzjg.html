@@ -536,18 +536,16 @@
 								<h4>员工角色</h4>
 							</div>
 							<div>
-								<button type="button" class="btn btn-success" style="vertical-align: middle; width: 150px;">保存</button>&nbsp;&nbsp;&nbsp;
+								<button type="button" class="btn btn-success" style="vertical-align: middle; width: 150px;" @click="fuyjs">保存</button>&nbsp;&nbsp;&nbsp;
 							</div>
 					</div>
 					<div>
 						<table class="table table-hover table-bordered">
 							<tr>
 								<td>角色名称</td>
-								<td>选择</td>
 							</tr>
-							<tr>
-								<td>经理</td>
-								<td><input type="checkbox"></td> 
+							<tr v-for="item in cxjs" @click="djhqjs(item)">
+								<td>{{item.zhiwuname}}</td>
 							</tr>
 						</table>
 					</div>
@@ -571,7 +569,7 @@
 				<ol class="breadcrumb">
 				  <li><span class="iconfont" style="vertical-align: middle">&#xe62c;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#ygxzmtk" >增加员工</a></li>
 				  <li><span class="iconfont" style="vertical-align: middle">&#xe612;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#ygxgmtk">修改</a></li>
-				  <li><span class="iconfont" style="vertical-align: middle">&#xe614;</span><a href="#" style="vertical-align: middle">删除</a></li>
+				  <li><span class="iconfont" style="vertical-align: middle">&#xe614;</span><a href="#" style="vertical-align: middle" @click="xglzzt">删除</a></li>
 				  <li><span class="iconfont" style="vertical-align: middle">&#xe78a;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#cxygmtk">查询</a></li>
 				  <li><span class="iconfont" style="vertical-align: middle">&#xe648;</span><a href="#" style="vertical-align: middle" @click="zkmm">置空密码</a></li>
 				  <li><span class="iconfont" style="vertical-align: middle">&#xe6a5;</span><a href="#" style="vertical-align: middle">导出</a></li>
@@ -701,7 +699,9 @@
 				yggw:{},//查询岗位
 				ygsx:{},//查询员工属性
 				xzyg:{},//新增员工
-				byupyg:{}//修改员工/查询
+				byupyg:{},//修改员工/查询
+				cxjs:{},//查询角色
+				jsid:{}//获取角色id
 			}
 		},
 		created(){//加载事件
@@ -710,6 +710,7 @@
       		this.cxyggw();//查询岗位
       		this.randomWord();//获取员工编号
       		this.cxygshux();//查询员工属性
+      		this.zzjgcxjs();//查询角色
    		},
 		methods: {
 			loading:function(){//获取初始树状图数据
@@ -845,7 +846,7 @@
 				$.ajax({//修改员工
 					url:data.ip +"ncq/upygxq",
 					type:"post",
-					data:{byupyg:vm.byupyg},
+					data:vm.byupyg,
 					dataType:"text",
 					success:function(result){
 						console.log(result);
@@ -853,6 +854,62 @@
 							alert("修改成功");
 						}else{
 							alert("修改失败");
+						}
+						vm.cxygcx();
+					},error:function(result){
+						console.log(result);
+					}
+				});
+			},
+			zzjgcxjs:function(){//查询角色
+				$.ajax({
+					url: data.ip +"ncq/zzjgcxjs",
+					type: "get",
+					dataType: "json",
+					success: function(result) {
+						console.log(result);
+						vm.cxjs = result;
+					},
+					error: function(result) {
+						console.log(result);
+					}	
+				});
+			},
+			djhqjs:function(item){//点击获取角色id
+				vm.jsid.zhiwuid=item.zhiwuid;
+				console.log(vm.jsid.zhiwuid);
+			},
+			fuyjs:function(){
+				$.ajax({//赋予员工角色
+					url:data.ip +"ncq/fujs",
+					type:"post",
+					data:{zhiwuid:vm.jsid.zhiwuid,yuanno:vm.djyg.yuanno},
+					dataType:"text",
+					success:function(result){
+						console.log(result);
+						if(result>0){
+							alert("赋予成功");
+						}else{
+							alert("赋予失败");
+						}
+						vm.cxygcx();
+					},error:function(result){
+						console.log(result);
+					}
+				});
+			},
+			xglzzt:function(){//删除员工
+				$.ajax({
+					url:data.ip +"ncq/xglzzt",
+					type:"post",
+					data:{yuanno:vm.djyg.yuanno},
+					dataType:"text",
+					success:function(result){
+						console.log(result);
+						if(result>0){
+							alert("删除成功");
+						}else{
+							alert("删除失败");
 						}
 						vm.cxygcx();
 					},error:function(result){
@@ -896,6 +953,19 @@
 		}
 		vm.xzygbm=treeNode;
 		console.log(vm.xzygbm);
+		$.ajax({//点击树状图获取部门在根据部门id查询员工详情
+			url: data.ip +"ncq/gjbmcxyg",
+			type: "get",
+			data:{bumenid:vm.xzygbm.bumenid},
+			dataType: "json",
+			success: function(result) {
+				console.log(result);
+				vm.ygcx = result;
+			},
+			error: function(result) {
+				console.log(result);
+			}	
+		});
 	}
 	
 	

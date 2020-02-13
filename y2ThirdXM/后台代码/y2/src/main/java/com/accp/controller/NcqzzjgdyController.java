@@ -14,6 +14,7 @@ import com.accp.domain.Bumen;
 import com.accp.domain.Gangwei;
 import com.accp.domain.Yuangong;
 import com.accp.domain.Yuangongshu;
+import com.accp.domain.Zhiwu;
 import com.accp.service.NcqzzjgdyService;
 
 @RestController
@@ -101,7 +102,31 @@ public class NcqzzjgdyController {
 	public int upygxq(Yuangong yuangong) {
 		return ncqzzjgdyService.upygxq(yuangong);
 	}
-
+	
+	// 组织机构查询角色
+	@GetMapping("zzjgcxjs")
+	public List<Zhiwu> zzjgcxjs() {
+		return ncqzzjgdyService.zzjgcxjs();
+	}
+	
+	// 组织机构赋予员工角色
+	@PostMapping("fujs")
+	public int fujs(String zhiwuid, String yuanno) {
+		return ncqzzjgdyService.fujs(zhiwuid, yuanno);
+	}
+	
+	// 组织机构赋删除员工
+	@PostMapping("xglzzt")
+	public int xglzzt(String yuanno) {
+		return ncqzzjgdyService.xglzzt(yuanno);
+	}
+	
+	// 组织机构点击树状图获取部门在根据部门id查询员工详情
+	@GetMapping("gjbmcxyg")
+	public List<Yuangong> gjbmcxyg(Integer bumenid){
+		return ncqzzjgdyService.gjbmcxyg(bumenid);
+	}
+	
 	// 岗位定义查询
 	@GetMapping("/querygw")
 	public List<Gangwei> querygw() {
@@ -124,6 +149,12 @@ public class NcqzzjgdyController {
 	@PostMapping("/upgw")
 	public int upgw(Integer gangweid, String gangweiname, Integer ids) {
 		return ncqzzjgdyService.upgw(gangweid, gangweiname, ids);
+	}
+	
+	// 通讯名录详情
+	@GetMapping("/cxtxmlxq")
+	public List<Yuangong> cxtxmlxq(){
+		return ncqzzjgdyService.cxtxmlxq();
 	}
 
 }

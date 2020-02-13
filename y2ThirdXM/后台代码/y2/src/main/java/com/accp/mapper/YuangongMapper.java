@@ -7,9 +7,17 @@ import org.apache.ibatis.annotations.Param;
 
 public interface YuangongMapper {
 	
-	public Yuangong byupygff(String yuanno);//修改员工查询
+	List<Yuangong> gjbmcxyg(Integer bumenid);// 组织机构点击树状图获取部门在根据部门id查询员工详情
+	
+	List<Yuangong> cxtxmlxq();// 通讯名录详情
+	
+	int xglzzt(String yuanno);// 组织机构赋删除员工
+	
+	int fujs(String zhiwuid, String yuanno);// 组织机构赋予员工角色
+	
+    Yuangong byupygff(String yuanno);//组织机构s修改员工查询
 
-	public int zkmm(String yuanno);// 组织机构置空密码
+	int zkmm(String yuanno);// 组织机构置空密码
 
 	List<Yuangong> ygcx();// 组织机构员工详情查询
 
