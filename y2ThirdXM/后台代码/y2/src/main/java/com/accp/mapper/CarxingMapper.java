@@ -6,6 +6,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface CarxingMapper {
+	List<Carxing> querycarxing(@Param("carbankid") int carbankid, @Param("JinKou") String JinKou);
+	
     int countByExample(CarxingExample example);
 
     int deleteByExample(CarxingExample example);

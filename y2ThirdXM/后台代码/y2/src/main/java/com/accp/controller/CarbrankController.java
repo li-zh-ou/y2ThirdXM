@@ -21,13 +21,13 @@ public class CarbrankController {
 	CarbrankService ser;
 	
 	@GetMapping("/querycarbrank")
-	public List<Carbrand> querycarbrank(){
-		return ser.querycarbrank();
+	public List<Carbrand> querycarbrank(String carbankname,String firstword){
+		return ser.querycarbrank(carbankname,firstword);
 	}
 	
 	@GetMapping("/querybycarbrandid")
-	public List<Carxing> querybycarbrandid(int carbrandid){
-		return ser.querybycarbrandid(carbrandid);
+	public List<Carxing> querybycarbrandid(int carbrandid,String jinkou){
+		return ser.querybycarbrandid(carbrandid,jinkou);
 	}
 	
 	@GetMapping("/queryfadoji")

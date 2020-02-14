@@ -16,6 +16,9 @@
     <result column="bei3" property="bei3" jdbcType="VARCHAR" />
     <result column="bei4" property="bei4" jdbcType="VARCHAR" />
   </resultMap>
+  <select id="querycarxing" resultMap="BaseResultMap">
+  	SELECT * FROM carxing WHERE carbankid='${carbankid}' AND JinKou LIKE '%${JinKou}%'
+  </select>
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
