@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>客户档案</title>
+		<link rel="stylesheet" href="layui/css/layui.css"/>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+		<style type="text/css">
+			.to{
+				height: 50px;	
+			}
+			.zuo{
+				margin-left: 10px;
+			}
+			.cha{
+				margin-top: 8px;
+			}
+			h3{
+				margin-top: 10px;
+			}
+			.dian{
+				margin-right: 10px;
+				display: inline;	
+			}
+			.tiao{
+				margin-bottom: 10px;
+			}
+			.dao{
+				margin-top: 10px;
+			}
+			.dao a{
+				margin-left: 10px;
+				font-size: 27;
+				text-decoration: none;
+			}
+			th{
+				background-color: #0D94FF;
+			}
+			.yi{
+				height: 300px;
+				border: 1px solid #080808;
+			}
+			.row1{
+				background-color: #E9E7E7;
+			}
+			.dian{
+				color: #9D9D9D;
+				
+			}
+			.sha{
+				margin-top: 10px;
+			}
+			.xinxi,.xiaofei,.huifang{
+				height: 190px;
+			}
+			.di{
+				margin-left: 5px;
+			}
+			.keh a,.che a{
+				color:#9D9D9D;
+				margin-left: 20px;
+				text-decoration: none;
+			}
+			.keh,.che{
+				margin-bottom: 10px;
+			}
+			.you{
+				color: #01AAED;
+			}
+			.you1{
+				color: #01AAED;
+			}
+			.zeng{
+				box-shadow: 2px 2px 10px #909090;
+				background-color: #fff;
+				width:1050px;
+				height:555px;
+				position: fixed;
+				left:10%;
+				top: -1%;
+			}
+			.toto{
+				font-size: 20px;
+				font-weight: bolder;
+			}
+			.bao{
+				margin-left: 800px;
+			}
+			.guan,.guan1{
+				font-size: 35px;
+			}
+			.guan2{
+				font-size: 35px;
+			}
+			.context{
+				width: 1020px;
+				height: 500px;
+				margin-left:16px ;
+				margin-top: -5px;
+				background-color: #E8E8E8;
+			}
+			.shang{
+				margin-top: 10px;
+				padding-top: 10px;
+				padding-left:10px;
+			}
+			.shang p{
+				margin-top: 15px;
+				color: #21bece;
+			}
+			.shang input{
+				color: black;
+			}
+			.ho{
+				color:red;
+			}
+			.chepai{
+				box-shadow: 2px 2px 10px #909090;
+				background-color: #fff;
+				width: 330px;
+				height: 330px;
+				position: fixed;
+				left:35%;
+				top: 20%;
+			}
+			.pinpai{
+				box-shadow: 2px 2px 10px #909090;
+				background-color: #fff;
+				width: 800px;
+				height:500px;
+				position: fixed;
+				left:20%;
+				top: 5%;
+			}
+			.toto1{
+				font-size: 20px;
+				font-weight: bolder;
+			}
+			.bao1{
+				margin-top:-5px;
+				margin-left: 620px;
+			}
+			.color1{
+				background-color: rgb(247, 255, 255);
+			}
+			.so{
+				margin-left: 5px;
+				font-size: 12px;
+				width: 250px;
+				height: 30px;
+			}
+			.tan1{
+				padding: 5px;
+				border-bottom: 1px solid #EEEEEE;
+			}
+			.pinpai .row{
+				padding-top: 10px;
+			}
+			.as table:nth-of-type(1){
+				margin-left: -16px;
+			}
+			.as div:nth-of-type(1){
+				margin-left: 16px;
+				background-color: #fff;
+				width: 320px;
+			}
+			.as div:nth-of-type(2){
+				margin-left: 18px;
+				background-color: #fff;
+			}
+			.jl{
+				margin-left: 16px;
+				margin-top: -10px;
+			}
+			.kehu{
+				box-shadow: 2px 2px 10px #909090;
+				background-color: #fff;
+				width:900px;
+				height:500px;
+				position: fixed;
+				left:12%;
+				top: 10%;
+			}
+			.xuanzkehu{
+				box-shadow: 2px 2px 10px #909090;
+				background-color: #fff;
+				width:900px;
+				height:500px;
+				position: fixed;
+				left:12%;
+				top: 10%;
+			}
+			.updatekehu{
+				box-shadow: 2px 2px 10px #909090;
+				background-color: #fff;
+				width:900px;
+				height:500px;
+				position: fixed;
+				left:12%;
+				top: 10%;
+			}
+			.context1{
+				width: 870px;
+				height: 420px;
+				margin-left:16px ;
+				margin-top: -5px;
+				background-color: #E8E8E8;
+			}
+			.context3{
+				width: 870px;
+				height: 430px;
+				margin-left:16px ;
+				margin-top: 10px;
+				background-color: #E8E8E8;
+			}
+			.context1 p{
+				margin-top: 25px;
+			}
+			.bao2{
+				margin-left: 730px;
+			}
+			.bao3{
+				margin-left: 740px;
+			}
+			.guan4{
+				font-size: 30px;
+			}
+			.guan5{
+				font-size: 30px;
+			}
+			.guan6{
+				font-size: 30px;
+			}
+			#ctx{
+				width: 1349px;
+			}
+			.ass{
+				width: 1349px;
+			}
+			.chezliao{
+				box-shadow: 2px 2px 10px #909090;
+				background-color: #fff;
+				width:950px;
+				height:500px;
+				position: fixed;
+				left:14%;
+				top: 6%;
+			}
+			.context2{
+				width: 920px;
+				height: 430px;
+				margin-left:16px ;
+				margin-top: -5px;
+				background-color: #E8E8E8;
+			}
+			.context2 p{
+				margin-top: 25px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="ctx" class="container-fluid">
+			<div class="row to" style="background-color: rgb(247, 255, 255);">
+				<div class="col-sm-2">
+					<h3>客户资料<button @click="xuankehu">选择</button></h3>
+				</div>
+				<div class="col-lg-offset-5 col-sm-5 cha">
+					<input size="32" placeholder="匹配名称/名称简码/手机/会员卡号/车牌号"/>
+					<button class="btn btn-primary zuo">搜索</button>
+					<button class="btn btn-danger zuo">关闭</button>
+				</div>
+			</div>
+			<div class="row row1">
+				<div class="row ass">
+					<div class="col-lg-offset-7 col-sm-5">
+						<p class="dao"><a class="bian">客户编辑</a><a class="zi">车资料</a><a>客户资料</a><a>查询</a><a>导出</a><a>字段设置</a></p>
+					</div>
+				</div>
+				<div class="keh row">
+					<div class="col-sm-6">
+						<a>客户编辑</a><a class="tianjia">增加客户和车</a><a class="tiankehu">增加客户</a><a class="xiukehu">修改客户</a><a @click="deletekehu">删除客户</a><a>相关证件</a><a>设置密码</a>
+					</div>
+					<div class="col-sm-offset-5 col-sm-1">
+						<span class="you right">收起</span>
+					</div>
+				</div>
+				<div class="che row">
+					<div class="col-sm-6">
+						<a>车资料</a>
+						<a class="znegjiache">增加车资料</a>
+						<a>修改车资料</a>
+						<a>删除车资料</a>
+					</div>
+					<div class="col-sm-offset-5 col-sm-1">
+						<span class="you1">收起</span>
+					</div>
+				</div>
+				<div class="yi" style=" overflow:auto;">
+					<table  class="table table-bordered table-hover" style="width: 2200px;">
+						<tr class="asss">
+							<th>客户编码</th>
+							<th>客户名称</th>
+							<th>详细地址</th>
+							<th>联系人</th>
+							<th>手机</th>
+							<th>客户生日</th>
+							<th>客户类别</th>
+							<th>会员卡号</th>
+							<th>入会日期</th>
+							<th>会员到期</th>
+							<th>备注</th>
+							<th>建档日期</th>
+							<th>服务顾问</th>
+							<th>顾问电话</th>
+							<th>账期(天)</th>
+							<th>挂账额度</th>
+							<th>累计积分</th>
+							<th>订金余额</th>
+							<th>注册电话</th>
+							<th>开户银行</th>
+							<th>银行账号</th>
+							<th>注册地址</th>
+							<th>其他一</th>
+							<th>其他二</th>
+						</tr>	
+						<tr v-for="item in kehu" @click="test">
+							<td>{{item.kehuno}}</td>
+							<td>{{item.kehuname}}</td>
+							<td>{{item.kehuaddress}}</td>
+							<td>{{item.kehulianxi}}</td>
+							<td>{{item.kehuphone}}</td>
+							<td>{{item.kehubirthday}}</td>
+							<td>{{item.kehutype}}</td>
+							<td>{{item.huiyuanno}}</td>
+							<td>{{item.ruhuitime}}</td>
+							<td>{{item.daoqitime}}</td>
+							<td>{{item.remark}}</td>
+							<td>{{item.bei1}}</td>
+							<td>{{item.guwen}}</td>
+							<td>{{item.guwenphone}}</td>
+							<td>{{item.zhangqi}}</td>
+							<td>{{item.edu}}</td>
+							<td>{{item.jifen}}</td>
+							<td>{{item.dinjin}}</td>
+							<td>{{item.zhuphone}}</td>
+							<td>{{item.bank}}</td>
+							<td>{{item.bankcard}}</td>
+							<td>{{item.zhuaddress}}</td>
+							<td>{{item.bei2}}</td>
+							<td>{{item.bei3}}</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="tiao">
+				<div class="sha">
+					<div class="dian diyi">车辆信息</div>
+					<div class="dian">历史消费</div>
+					<div class="dian">历史回访</div>
+				</div>
+				
+			</div>
+			<div class="row">
+				<div class="xinxi" style=" overflow:auto;">
+					<table class="table table-bordered table-hover carx" style="width: 2200px;">
+						<tr>
+							<th>车牌号码</th>
+							<th>车牌品牌</th>
+							<th>车牌型号</th>
+							<th>驾驶员</th>
+							<th>驾驶员电话</th>
+							<th>出生日期</th>
+							<th>车辆归属</th>
+							<th>驾证到期</th>
+							<th>车架号</th>
+							<th>发动机号</th>
+							<th>发动机品牌号</th>
+							<th>车辆年款</th>
+							<th>里程</th>
+							<th>载重</th>
+							<th>购买日期</th>
+							<th>上牌日期</th>
+							<th>车险到期</th>
+							<th>在我投保车</th>
+							<th>燃油类别</th>
+							<th>下次保养里程</th>
+							<th>下次保养日期</th>
+						</tr>
+						<tr v-for="item in kehucar" @click="car">
+							<td>{{item.chepai}}</td>
+							<td>{{item.carbankname}}</td>
+							<td>{{item.xinghao}}</td>
+							<td>{{item.sijiname}}</td>
+							<td>{{item.sijiphone}}</td>
+							<td>{{item.sijibirthday}}</td>
+							<td>{{item.guishu}}</td>
+							<td>{{item.jiazhao}}</td>
+							<td>{{item.chejia}}</td>
+							<td>{{item.fanumber}}</td>
+							<td>{{item.faname}}</td>
+							<td>{{item.niankuan}}</td>
+							<td>{{item.licheng}}</td>
+							<td>{{item.zaizhong}}</td>
+							<td>{{item.goumaidate}}</td>
+							<td>{{item.shangpaidate}}</td>
+							<td>{{item.chejian}}</td>
+							<td>{{item.bei1}}</td>
+							<td>{{item.ranyou}}</td>
+							<td>{{item.nextbaoxian}}</td>
+							<td>{{item.nextbaoxiandate}}</td>
+						</tr>
+					</table>
+				</div>
+				<div class="xiaofei">
+					<table class="table table-bordered table-hover">
+						<tr>
+							<th>车牌号码</th>
+							<th>车牌品牌</th>
+							<th>车牌型号</th>
+							<th>驾驶员</th>
+							<th>驾驶员电话</th>
+							<th>出生日期</th>
+							<th>车辆归属</th>
+							<th>驾证到期</th>
+						</tr>
+						<tr>
+							<td>车牌号码</td>
+							<td>车牌品牌</td>
+							<td>车牌型号</td>
+							<td>驾驶员</td>
+							<td>驾驶员电话</td>
+							<td>出生日期</td>
+							<td>车辆归属</td>
+							<td>驾证到期</td>
+						</tr>
+					</table>
+				</div>
+				<div class="huifang">
+					<table class="table table-bordered table-hover">
+						<tr>
+							<th>车牌号码</th>
+							<th>车牌品牌</th>
+							<th>车牌型号</th>
+							<th>驾驶员</th>
+							<th>驾驶员电话</th>
+							<th>出生日期</th>
+							<th>车辆归属</th>
+							<th>驾证到期</th>
+						</tr>
+						<tr>
+							<td>车牌号码</td>
+							<td>车牌品牌</td>
+							<td>车牌型号</td>
+							<td>驾驶员</td>
+							<td>驾驶员电话</td>
+							<td>出生日期</td>
+							<td>车辆归属</td>
+							<td>驾证到期</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="row">
+				<p class="di">共18条记录 第一页 共一页</p>
+			</div>
+			<div class="row zeng">
+				<div>
+					<div class="tan"><span class="toto">增加客户和车资料</span><button class="btn btn-group bao" @click="addkehuandcar">保存</button><span class="close guan">×</span></div>
+					<div class="context">
+						<div class="shang">
+							<p>
+								<span><span class="ho">* </span>客户编码：</span><input v-model="xinke.kehuno" type="text"/>
+								<span><span class="ho">* </span>客户名称：</span><input v-model="xinke.kehuname" type="text"/>
+								<span>联系人：</span><input v-model="xinke.kehulianxi" type="text"/>
+								<span><span class="ho">* </span>手机号码：</span><input v-model="xinke.kehuphone" type="text"/>
+							</p>
+							<p>
+								<span>客户地址：</span><input v-model="xinke.kehuaddress" type="text" size="50"/>
+								<span>客户生日：</span><input v-model="xinke.kehubirthday" type="date"/>
+							</p>
+							<p>
+								<span>账期(天)：</span><input v-model="xinke.zhangqi" type="text" size="5"/>
+								<span>挂账额度：</span><input v-model="xinke.edu" type="text" size="10"/>
+								<span>专属顾问：<select v-model="xinke.guwen" style="width: 150px;height: 25px;"></select></span>
+								<span>顾问电话：<input v-model="xinke.guwenphone" type="text"></span>
+							</p>
+							<p>
+								<span>省：</span><select v-model="xinke.bei2" id="sss_province" name="sss_province" style="width: 150px;height: 25px;"></select>
+								<span>市：</span><select v-model="xinke.bei3" id="sss_city" name="sss_city" style="width: 150px;height: 25px;"></select>
+								<span>区：</span><select v-model="xinke.bei4" id="sss_county" name="sss_county" style="width: 150px;height: 25px;"></select>
+							</p>
+							<p>
+								<span>备注：</span><input v-model="xinke.remark" type="text" size="100"/>
+							</p>
+							<p>
+								<span><span class="ho">* </span>车牌号码：</span><input class="paipai" type="text" style="width: 100px;height: 25px;"><button class="haoma">选择</button>
+								<span><span class="ho">* </span>车辆品牌：</span><input readonly="readonly" class="carbankname" type="text" /><button class="pin">选择</button>
+								<span><span class="ho">* </span>车辆型号：</span><input readonly="readonly" class="jinkous" v-model="xinke.car.xinghao" type="text" />
+								<span><span class="ho">* </span>驾驶员：</span><input v-model="xinke.car.sijiname" type="text" />
+							</p>
+							<p>
+								<span>驾驶员电话：</span><input v-model="xinke.car.sijiphone" type="text" />
+								<span>出生日期：</span><input v-model="xinke.car.sijibirthday" type="date" />
+								<span><span class="ho">* </span>车辆归属：</span><select v-model="xinke.car.guishu" style="width: 150px;height: 25px;">
+									<option>个人</option>
+								</select>
+								<span>驾证到期：</span><input v-model="xinke.car.jiazhao" type="date" />
+							</p>
+							<p>	
+								<span>车架号：</span><input v-model="xinke.car.chejia" type="text" />
+								<span>发动机号：</span><input type="date" />
+								<span>车辆年款：</span><select v-model="xinke.car.niankuan" style="width: 150px;height: 25px;"></select>
+								<span>里程：</span><input v-model="xinke.car.licheng" type="text" />
+							</p>
+							<p>
+								<span><span class="ho">* </span>发动机品牌：</span>
+								<select v-model="fadoname" style="width: 150px;height: 25px;" class="fabankname">
+									<option v-for="item in fadoji" Seleted ="true">{{item.faname}}</option>
+								</select>
+								<span>载重：</span><input v-model="xinke.car.zaizhong" type="text" />
+								<span>购买日期：</span><input v-model="xinke.car.goumaidate" type="date" />
+							</p>
+							<p>
+								<span>上牌日期：</span><input v-model="xinke.car.shanpaidate" type="date" />
+								<span>车检到期：</span><input v-model="xinke.car.chejian" type="date" />
+								<span>燃油类别：</span><select v-model="xinke.car.ranyou" style="width: 150px;height: 25px;"></select>
+								&nbsp;<input class="radios" name="Fruit" type="radio" />在我投保车
+							</p>
+							<p>
+								<span><span class="ho">保险：</span>交强险保险公司</span><select style="width: 150px;height: 25px;"></select>
+								<span>交强险到期：</span><select style="width: 150px;height: 25px;"></select>
+							</p>
+							<p>
+								<span>下次保险里程：</span><input v-model="xinke.car.nextbaoxian" type="text" />
+								<span>下次保险日期：</span><input v-model="xinke.car.nextbaoxiandate" type="date" />
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row kehu">
+				<div>
+					<div class="">
+					<div class="tan1 color1"><span class="toto1">新增客户</span><button @click="addkehu" class="btn btn-group bao2">保存</button><span class="close guan4">×</span></div>
+				</div>
+					<div class="context1">
+						<div class="shang">
+							<p>
+								<span><span class="ho">* </span>客户编码：</span><input v-model="xinkehu.kehuno" type="text" size="15"/>
+								<span><span class="ho">* </span>客户名称：</span><input v-model="xinkehu.kehuname" type="text" size="15"/>
+								<span>联系人：</span><input type="text" v-model="xinkehu.kehulianxi" size="15"/>
+								<span><span class="ho">* </span>手机：</span><input type="text" v-model="xinkehu.kehuphone" size="15"/>
+							</p>
+							<p>
+								<span>客户地址：</span><input v-model="xinkehu.kehuaddress" type="text" size="50"/>
+								<span>客户生日：</span><input v-model="xinkehu.kehubirthday" type="date"/>
+							</p>
+							<p>
+								<span>账期(天)：</span><input v-model="xinkehu.zhangqi" type="text" size="5"/>
+								<span>挂账额度：</span><input v-model="xinkehu.edu" type="text" size="10"/>
+								<span>专属顾问：<select v-model="xinkehu.guwen" style="width: 150px;height: 25px;"></select></span>
+								<span>顾问电话：<input v-model="xinkehu.guwenphone" type="text"></span>
+							</p>
+							<p>
+								<span>省：<select v-model="xinkehu.bei2" id="s_province" name="s_province" style="width: 150px;height: 25px;"></select></span>
+								<span>市：<select v-model="xinkehu.bei3" id="s_city" name="s_city" style="width: 150px;height: 25px;"></select></span>
+								<span>区：<select v-model="xinkehu.bei4" id="s_county" name="s_county" style="width: 150px;height: 25px;"></select></span>
+							</p>
+							<p>
+								<span>备注：</span><input v-model="xinkehu.remark" type="text" size="100"/>
+							</p>
+							<p>
+								<span>纳税人识别号：</span><input type="text" size="15"/>
+								<span>注册电话：</span><input v-model="xinkehu.zhuphone" type="text" size="15"/>
+								<span>开户银行：</span><input v-model="xinkehu.bank" type="text" size="15"/>
+							</p>
+							<p>
+								<span>银行账号：</span><input v-model="xinkehu.bankcard" type="text" size="15"/>
+								<span>注册地址：</span><input v-model="xinkehu.zhuaddress" type="text" size="50"/>
+							</p>
+							<p>
+								<span>其它一：</span><input type="text" size="15"/>
+								<span>其它二：</span><input type="text" size="15"/>
+								<span>其它三：</span><input type="text" size="15"/>	
+								<span>其它四：</span><input type="text" size="15"/>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row updatekehu">
+				<div>
+					<div class="">
+					<div class="tan1 color1"><span class="toto1">客户资料编辑</span><button @click="updatekehu" class="btn btn-group bao2">保存</button><span class="close guan5">×</span></div>
+				</div>
+					<div class="context1">
+						<div class="shang">
+							<p>
+								<span><span class="ho">* </span>客户编码：</span><input v-model="xinkehu.kehuno" readonly="readonly" type="text" size="15"/>
+								<span><span class="ho">* </span>客户名称：</span><input v-model="xinkehu.kehuname" type="text" size="15"/>
+								<span>联系人：</span><input type="text" v-model="xinkehu.kehulianxi" size="15"/>
+								<span><span class="ho">* </span>手机：</span><input type="text" v-model="xinkehu.kehuphone" size="15"/>
+							</p>
+							<p>
+								<span>客户地址：</span><input v-model="xinkehu.kehuaddress" type="text" size="50"/>
+								<span>客户生日：</span><input v-model="xinkehu.kehubirthday" type="date"/>
+							</p>
+							<p>
+								<span>账期(天)：</span><input v-model="xinkehu.zhangqi" type="text" size="5"/>
+								<span>挂账额度：</span><input v-model="xinkehu.edu" type="text" size="10"/>
+								<span>专属顾问：<select v-model="xinkehu.guwen" style="width: 150px;height: 25px;"></select></span>
+								<span>顾问电话：<input v-model="xinkehu.guwenphone" type="text"></span>
+							</p>
+							<p>
+								<span>省：<select v-model="xinkehu.bei2" id="ss_province" name="s_province" style="width: 150px;height: 25px;"></select></span>
+								<span>市：<select v-model="xinkehu.bei3" id="ss_city" name="ss_city" style="width: 150px;height: 25px;"></select></span>
+								<span>区：<select v-model="xinkehu.bei4" id="ss_county" name="ss_county" style="width: 150px;height: 25px;"></select></span>
+							</p>
+							<p>
+								<span>备注：</span><input v-model="xinkehu.remark" type="text" size="100"/>
+							</p>
+							<p>
+								<span>纳税人识别号：</span><input type="text" size="15"/>
+								<span>注册电话：</span><input v-model="xinkehu.zhuphone" type="text" size="15"/>
+								<span>开户银行：</span><input v-model="xinkehu.bank" type="text" size="15"/>
+							</p>
+							<p>
+								<span>银行账号：</span><input v-model="xinkehu.bankcard" type="text" size="15"/>
+								<span>注册地址：</span><input v-model="xinkehu.zhuaddress" type="text" size="50"/>
+							</p>
+							<p>
+								<span>其它一：</span><input type="text" size="15"/>
+								<span>其它二：</span><input  type="text" size="15"/>
+								<span>其它三：</span><input type="text" size="15"/>	
+								<span>其它四：</span><input type="text" size="15"/>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row chezliao">
+				<div>
+					<div class="">
+					<div class="tan1 color1"><span class="toto1">车辆资料</span><button class="btn btn-group bao3">保存</button><span class="close guan5">×</span></div>
+				</div>
+					<div class="context2">
+						<div class="shang">
+							<p>
+								<span><span class="ho">* </span>车牌号码：</span><input class="paipai" type="text" style="width: 50px;height: 25px;"><button class="haoma">选择</button>
+								<span><span class="ho">* </span>车辆品牌：</span><input readonly="readonly" style="width: 100px;height: 25px;" class="carbankname" type="text" /><button class="pin">选择</button>
+								<span><span class="ho">* </span>车辆型号：</span><input readonly="readonly" class="jinkous" v-model="car.xinghao" type="text" />
+								<span><span class="ho">* </span>驾驶员：</span><input v-model="cheliang.sijiname" type="text" />
+							</p>
+							<p>
+								<span><span class="ho">* </span>驾驶员电话：</span></span><input v-model="cheliang.sijiphone" type="text" size="15"/>
+								<span>出生日期：</span><input v-model="cheliang.sijibirthday" type="date"/>
+								<span><span class="ho">* </span>车辆归属：</span><select v-model="cheliang.guishu" style="width: 150px;height: 25px;">
+									<option>个人</option>
+								</select>
+								<span>驾证到期：</span><input v-model="cheliang.jiazhao" type="date" />
+							</p>
+							<p>	
+								<span>车架号：</span><input v-model="cheliang.chejia" type="text" />
+								<span>发动机号：</span><input type="date" />
+								<span>车辆年款：</span><select v-model="cheliang.niankuan" style="width: 150px;height: 25px;"></select>
+								<span>里程：</span><input v-model="cheliang.licheng" type="text" />
+							</p>
+							<p>
+								<span><span class="ho">* </span>发动机品牌：</span>
+								<select v-model="fadoname" style="width: 150px;height: 25px;" class="fabankname">
+									<option v-for="item in fadoji" Seleted ="true">{{item.faname}}</option>
+								</select>
+								<span>载重：</span><input v-model="cheliang.zaizhong" type="text" />
+								<span>购买日期：</span><input v-model="cheliang.goumaidate" type="date" />
+							</p>
+							<p>
+								<span>上牌日期：</span><input v-model="cheliang.shanpaidate" type="date" />
+								<span>车检到期：</span><input v-model="cheliang.chejian" type="date" />
+								<span>燃油类别：</span><select v-model="cheliang.ranyou" style="width: 150px;height: 25px;"></select>
+								&nbsp;<input class="radios" name="checks" type="checkbox" />在我投保车
+							</p>
+							<p>
+								<span><span class="ho">保险：</span>交强险保险公司</span><select style="width: 150px;height: 25px;"></select>
+								<span>交强险到期：</span><select style="width: 150px;height: 25px;"></select>
+							</p>
+							<p>
+								<span>商业险保险公司</span><input type="date" />
+								<span>商业险到期：</span><input type="date" />
+							</p>
+							<p>
+								<span>下次保养里程：</span><input v-model="cheliang.nextbaoxian" type="text" size="15"/>
+								<span>下次保养日期：</span><input v-model="cheliang.nextbaoxiandate" type="date"/>
+								<span>客户编码：</span><input class="cheliangno" readonly="readonly" v-model="cheliang.kehuno" type="text" size="15"/><button>选择</button>
+								<span>客户名称：</span><input class="cheliangname" readonly="readonly"  style="width: 100px;height: 25px;" type="text" size="15"/>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row chepai">
+				<div>
+					<div class="tan"><span class="toto">车牌号</span><span class="close guan1">×</span></div>
+					<div style="margin-left: 20px;margin-top: 5px;">
+						<button @click="xuanchepai" v-for="item,index in chepai" style="width: 40px;height: 40px;margin:3px"> 
+							{{item.chepai}}
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="row pinpai" style="background-color:#E9E7E7 ;">
+				<div class="">
+					<div class="tan1 color1"><span class="toto1">品牌车型</span><button class="btn btn-group bao1" @click="xuanz">选择</button><span class="close guan2">×</span></div>
+				</div>
+				<div class="row">
+					<div class="col-sm-5">
+						<input class="so" size="28" placeholder="匹配 品牌编码/品牌名称/首字母"/>
+						<button class="btn btn-danger">搜索</button>
+					</div>
+					<div class="col-sm-7">
+						<input class="so" size="32" placeholder="匹配 车型编码/车型名称"/>
+						<button class="btn btn-danger zuo">搜索</button>
+					</div>
+				</div>
+				<div class="row as">
+					<div class="col-sm-5">
+						<table class="table table-bordered table-hover">
+							<tr>
+								<th>编码</th>
+								<th>品牌名称</th>
+								<th>首字母</th>
+							</tr>
+							<tr @click="carpindian" v-for="item in carbrank">
+								<td>{{item.carbankid}}</td>
+								<td>{{item.carbankname}}</td>
+								<td>{{item.firstword}}</td>
+							</tr>
+						</table>
+					</div>
+					<div class="col-sm-7" style="width: 460px; overflow:auto;">
+						<table class="table table-bordered table-hover" style="width: 1000px;">
+							<tr>
+								<th>车型ID</th>
+								<th>车型名称</th>
+								<th>参考价格</th>
+								<th>车辆年款</th>
+							</tr>
+							<tr @click="carxingdian" v-for="item in carxing">
+								<td>{{item.xingid}}</td>
+								<td>{{item.jinkou}}</td>
+								<td>{{item.cankaoprice}}</td>
+								<td>{{item.caryearmoney}}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="row">
+					<p class="jl">记录条数：</p>
+				</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript" src="layui/layui.js" ></script>
+		<script type="text/javascript" src="js/jquery-1.8.3.js" ></script>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="js/my.js"></script>
+		<script class="resources library" src="js/area.js" type="text/javascript"></script>
+		<script type="text/javascript"></script>
+		<script type="text/javascript">
+			var kehunos=0;
+			var carbrandid=1;
+			var xingid=0;
+			var carbrandname;
+			var fabankid;
+			var	se="";
+			var vm=new Vue({
+				el:"#ctx",
+				data(){
+					return{
+						kehu:[],
+						fadoname:"",
+						kehucar:[],
+						xinkehu:{},
+						carbrank:[],
+						carxing:[],
+						fadoji:[],
+						jinkou:"",
+						xinke:{car:{}},
+						chepai:[
+							{"chepai":"京"},
+							{"chepai":"沪"},{"chepai":"津"},{"chepai":"渝"},
+							{"chepai":"冀"},{"chepai":"豫"},{"chepai":"云"},
+							{"chepai":"辽"},{"chepai":"黑"},{"chepai":"湘"},
+							{"chepai":"皖"},{"chepai":"鲁"},{"chepai":"新"},
+							{"chepai":"苏"},{"chepai":"浙"},{"chepai":"赣"},
+							{"chepai":"鄂"},{"chepai":"桂"},{"chepai":"甘"},
+							{"chepai":"晋"},{"chepai":"蒙"},{"chepai":"陕"},
+							{"chepai":"吉"},{"chepai":"闽"},{"chepai":"贵"},
+							{"chepai":"粤"},{"chepai":"青"},{"chepai":"藏"},
+							{"chepai":"川"},{"chepai":"宁"},{"chepai":"琼"}
+						],
+						chepaizi:"",
+						cheliang:{},
+						checar:{}
+						
+					}
+				},methods:{
+					test:function(event){
+						vm.checar={};
+						if(se!=""){
+							se.css("background-color","transparent");
+						}
+						
+						$(event.srcElement).parent().css("background-color","yellow").siblings().css("background-color","transparent");
+						kehunos=$(event.srcElement).parent()[0].cells[0].innerHTML;
+						$.ajax({
+							url:data.ip+"querybykehuno",
+							data:{
+								kehuno:kehunos
+							},
+							type: "get",
+							dataType: "json",
+							success:function(response) {
+								console.log(response);
+								vm.kehucar=response;
+							}
+						});
+					},
+					car:function(event){
+						$(event.srcElement).parent().css("background-color","yellow").siblings().css("background-color","transparent");
+						var kehuno=$(event.srcElement).parent()[0].cells[0].innerHTML;
+						se=$(event.srcElement).parent();
+						for(i=0;i<vm.kehucar.length;i++){
+							if(kehuno==vm.kehucar[i].chepai){
+								vm.checar=vm.kehucar[i];
+							}
+						}
+//						$.ajax({
+//							url:data.ip+"querybykehuno",
+//							data:{
+//								kehuno:kehuno
+//							},
+//							type: "get",
+//							dataType: "json",
+//							success:function(response) {
+//								console.log(response);
+//								vm.kehucar=response;
+//							}
+//						});
+				},addkehu:function(){
+						if($("#s_province").val()=="省份" || $("#s_city").val()=="地级市" || $("#s_county").val()=="市、县级市" || $("#s_province").val()==undefined || $("#s_city").val()==undefined || $("#s_county").val()==undefined){
+							alert("请把省市区填写完整！");
+						}else{
+							$.ajax({
+								url:data.ip+"AddKehu",
+								data:JSON.stringify(vm.xinkehu),
+								contentType:"application/json;charset=utf-8",
+								type: "post",
+								dataType: "json",
+								success:function(response) {
+									if(response>0){
+										alert("添加成功！");
+										query();
+										vm.xinkehu={};
+									}		
+								}
+							});
+						}
+						console.log(vm.xinkehu);
+					},updatekehu:function(){
+						$.ajax({
+							url:data.ip+"UpdateKehu",
+							data:JSON.stringify(vm.xinkehu),
+							contentType:"application/json;charset=utf-8",
+							type: "post",
+							dataType: "json",
+							success:function(response) {
+								if(response>0){
+									alert("编辑成功！");
+									query();
+									vm.xinkehu={};
+								}		
+							}
+						});
+					},deletekehu:function(){
+						if(kehunos!=0){
+							kehunodai=kehunos;
+							if(confirm("是否删除？")){
+								$.ajax({
+									url:data.ip+"DeleteKehu",
+									data:{
+										kehuno:kehunodai
+									},
+									type: "get",
+									dataType: "json",
+									success:function(response) {
+										if(response>0){
+											alert("删除成功！");
+											query();
+										}		
+									}
+								});
+							}
+						}else{
+							alert("请先选择要删除客户的编码！");
+						}
+					},carpindian:function(event){
+						$(event.srcElement).parent().css("background-color","yellow").siblings().css("background-color","transparent");
+						carbrandid=$(event.srcElement).parent()[0].cells[0].innerHTML;
+						carbrandname=$(event.srcElement).parent()[0].cells[1].innerHTML;
+						querycarbrand();
+					},carxingdian:function(event){
+						$(event.srcElement).parent().css("background-color","yellow").siblings().css("background-color","transparent");
+						xingid=$(event.srcElement).parent()[0].cells[0].innerHTML;
+						vm.jinkou=$(event.srcElement).parent()[0].cells[1].innerHTML;
+						for(i=0;i<vm.carxing.length;i++){
+							if(xingid==vm.carxing[i].xingid){
+								fabankid=vm.carxing[i].fabankid;
+							}
+						}
+					},xuanz:function(){
+						if(xingid==0){
+							alert("请选择完整！");
+						}else{
+							$(".carbankname").val(carbrandname);
+							vm.xinke.car.carbankid=parseInt(carbrandid);
+							vm.xinke.car.xinghao=vm.jinkou;
+							$(".jinkous").val(vm.jinkou);
+							$(".pinpai").hide();
+						}
+					},addkehuandcar:function(){
+						$.ajax({
+							url:data.ip+"addkehuandche",
+							data:JSON.stringify(vm.xinke),
+							contentType:"application/json;charset=utf-8",
+							type:"post",
+							dataType:"json",
+							success:function(response) {
+								if(response>0){
+									alert("添加成功！");
+									$(".zeng").hide();
+									vm.xinke.car={};
+									vm.xinke.kehuno="";
+									vm.xinke.kehuname="";
+									vm.xinke.kehulianxi="";
+									vm.xinke.kehuphone="";
+									vm.xinke.kehuaddress="";
+									vm.xinke.kehubirthday="";
+									vm.xinke.zhangqi="";
+									vm.xinke.edu="";
+									vm.xinke.guwen="";
+									vm.xinke.guwenphone="";
+									vm.xinke.bei2="";
+									vm.xinke.bei3="";
+									vm.xinke.bei4="";
+									vm.xinke.remark="";
+									vm.xinke.query();
+									
+								}		
+							}
+						});
+					},xuanchepai:function(event){
+						vm.chepaizi=$(event.srcElement)[0].innerText;
+						vm.xinke.car.chepai=vm.chepaizi;
+						$(".paipai").val(vm.chepaizi);
+						$(".chepai").hide();
+					},xuankehu:function(){
+						kehunodai=vm.kehu[0].kehuno;
+						if(kehunos!=0){
+							kehunodai=kehunos;
+						}
+						for(var i=0;i<vm.kehu.length;i++){
+							if(kehunodai==vm.kehu[i].kehuno){
+								vm.xinkehu=vm.kehu[i];
+							}
+						}
+						if(vm.xinkehu.kehuno==undefined){
+							alert("请选择！")
+						}else{
+							top.ren=vm.xinkehu;
+							window.opener.document.getElementById("cheliangno").value = top.ren.kehuno;
+							window.opener.document.getElementById("cheliangname").value = top.ren.kehuname;
+							
+							if(vm.checar.chepai==undefined){
+								vm.checar=vm.kehucar[0];
+								
+								if(vm.kehucar[0]==undefined){
+									alert("该客户暂无添加车辆！");
+								}else{
+									var parent= window.opener;
+									var person=vm.checar;
+									parent.shuaxin(person);
+									window.close();
+								}
+							}else{
+								var parent= window.opener;
+								var person=vm.checar;
+								parent.shuaxin(person);
+								window.close();
+							}
+						}	
+					}
+				}
+			});
+			
+			$(".haoma").click(function(){
+				$(".chepai").show();
+			})
+			$(".pin").click(function(){
+				vm.carxing=[];
+				vm.jinkou="";
+				xingid=0;
+				$(".pinpai").show();
+			})
+			$(".znegjiache").click(function(){
+				
+				$(".jinkous").val("");
+				$(".paipai").val("");
+				$(".carbankname").val("");
+				kehunodai=vm.kehu[0].kehuno;
+				if(kehunos!=0){
+					kehunodai=kehunos;
+				}
+				for(var i=0;i<vm.kehu.length;i++){
+					if(kehunodai==vm.kehu[i].kehuno){
+						vm.xinkehu=vm.kehu[i];
+					}
+				}
+				vm.cheliang.kehuno=vm.xinkehu.kehuno;
+				$(".cheliangno").val(vm.xinkehu.kehuno);
+				$(".cheliangname").val(vm.xinkehu.kehuname);
+				$(".chezliao").show();
+			})
+			function createRandomId() {
+				var str="";
+				for(i=0;i<4;i++){
+					str+=String.fromCharCode(
+						Math.floor(Math.random()*26+"a".charCodeAt(0))
+					);
+				}
+           		return (Math.random()*10000).toString(10).substr(0,4)+str.toUpperCase()+Math.random().toString().substr(2,5);
+        	}
+			querycarbrand();
+			function querycarbrand(){
+				$.ajax({
+					url:data.ip+"querybycarbrandid",
+					data:{
+						carbrandid:carbrandid
+					},
+					type: "get",
+					dataType: "json",
+					success:function(response) {
+						vm.carxing=response;
+					}
+				});
+			}
+			var kehunodai=0;
+			$(".xiukehu").click(function(){
+				
+				$(".updatekehu").show();
+				
+				kehunodai=vm.kehu[0].kehuno;
+				if(kehunos!=0){
+					kehunodai=kehunos;
+				}
+				for(var i=0;i<vm.kehu.length;i++){
+					if(kehunodai==vm.kehu[i].kehuno){
+						vm.xinkehu=vm.kehu[i];
+					}
+				}
+				opt0=[vm.xinkehu.bei2,vm.xinkehu.bei3,vm.xinkehu.bei4]
+				_init_area2();
+				opt0 = ["省份","地级市","市、县级市"];//初始值
+				var Gid  = document.getElementById ;
+				var showArea = function(){
+				    Gid('show').innerHTML = "<h3>省" + Gid('ss_province').value + " - 市" + 
+				    
+				    Gid('ss_city').value + " - 县/区" + 
+				    
+				    Gid('ss_county').value + "</h3>"
+				}
+			})
+			query();
+			function query(){
+				$.ajax({
+					url: data.ip + "querykehu",
+					type: "get",
+					dataType: "json",
+					success:function(response) {
+						vm.kehu=response;
+						$.ajax({
+							url:data.ip+"querybykehuno",
+							data:{
+								kehuno:vm.kehu[0].kehuno
+							},
+							type: "get",
+							dataType: "json",
+							success:function(response) {
+								console.log(response);
+								vm.kehucar=response;
+							}
+						});
+					}
+				});
+			}
+			$.ajax({
+				url: data.ip + "querycarbrank",
+				type: "get",
+				dataType: "json",
+				success:function(response) {
+					vm.carbrank=response;
+				}
+			});
+				$(".asss").parent().css("background-color","#fff")
+			$(".huifang").hide();
+			$(".xiaofei").hide();
+			$(".keh").hide();
+			$(".che").hide();
+			$(".zeng").hide();
+			$(".chepai").hide();
+			$(".pinpai").hide();
+			$(".kehu").hide();
+			$(".updatekehu").hide();
+			$(".chezliao").hide();
+			$(".bian").click(function(){
+				$(".keh").show();
+			})
+			$(".zi").click(function(){
+				$(".che").show();
+			})
+			$(".you").click(function(){
+				$(".keh").hide();
+			})
+			$(".you1").click(function(){
+				$(".che").hide();
+			})
+			$(".diyi").css("border-bottom","5px solid #0000FF");
+			$(".dian").click(function(){
+				$(".dian").css("border-bottom","0px solid #0000FF")
+				$(this).css("border-bottom","5px solid #0000FF");
+				if($(this).html()=="车辆信息"){
+					$(".xinxi").show();
+					$(".huifang").hide();
+					$(".xiaofei").hide();
+				}else if($(this).html()=="历史消费"){
+					$(".xinxi").hide();
+					$(".xiaofei").show();
+					$(".huifang").hide();
+				}else{
+					$(".xinxi").hide();
+					$(".xiaofei").hide();
+					$(".huifang").show();
+				}
+			})
+			$(".guan").click(function(){
+				$(".zeng").hide();
+				vm.xinke.car={};
+				vm.xinke.kehuno="";
+				vm.xinke.kehuname="";
+				vm.xinke.kehulianxi="";
+				vm.xinke.kehuphone="";
+				vm.xinke.kehuaddress="";
+				vm.xinke.kehubirthday="";
+				vm.xinke.zhangqi="";
+				vm.xinke.edu="";
+				vm.xinke.guwen="";
+				vm.xinke.guwenphone="";
+				vm.xinke.bei2="";
+				vm.xinke.bei3="";
+				vm.xinke.bei4="";
+				vm.xinke.remark="";
+			});
+			$(".tianjia").click(function(){
+				$(".zeng").show();
+				$(".jinkous").val("");
+				$(".paipai").val("");
+				$(".carbankname").val("");
+				_init_area1();
+				var Gid  = document.getElementById ;
+				var showArea = function(){
+				    Gid('show').innerHTML = "<h3>省" + Gid('sss_province').value + " - 市" + 
+				    
+				    Gid('sss_city').value + " - 县/区" + 
+				    
+				    Gid('sss_county').value + "</h3>"
+				}
+				$.ajax({
+					url:data.ip+"queryfadoji",
+					type: "get",
+					dataType: "json",
+					success:function(response) {
+						vm.fadoji=response;	
+						vm.fadoname=vm.fadoji[0].faname;
+						for(i=0;i<vm.fadoji.length;i++){
+							var fadoname1=vm.fadoname;
+							if(fadoname1==vm.fadoji[i].faname){
+								vm.xinke.car.fabankid=vm.fadoji[i].fabankid
+							}
+						}	
+					}
+				});
+				$(".fabankname").change(function(){
+					vm.fadoname=$(this).val();
+					for(i=0;i<vm.fadoji.length;i++){
+						var fadoname1=vm.fadoname;
+						if(fadoname1==vm.fadoji[i].faname){
+							vm.xinke.car.fabankid=vm.fadoji[i].fabankid
+						}
+					}	
+				})	
+				$("[name=Fruit]").click(function(){ 
+	                var r = $(this).attr("name");
+	                $(":radio[name=" + r + "]:not(:checked)").attr("tag", 0);
+	                if ($(this).attr("tag") == 1) {
+	                    $(this).attr("checked", false);
+	                    $(this).attr("tag", 0);
+	                    vm.xinke.car.bei1="否";
+	                }
+	                else {
+	                    $(this).attr("tag",1); 
+	                     vm.xinke.car.bei1="是";
+	                }	
+				});
+			})
+			
+			$(".guan1").click(function(){
+				$(".chepai").hide();
+			})
+			
+			$(".guan2").click(function(){
+				$(".pinpai").hide();
+			})
+			$(".tiankehu").click(function(){
+				$(".kehu").show();
+				_init_area();
+				var Gid  = document.getElementById ;
+				var showArea = function(){
+				    Gid('show').innerHTML = "<h3>省" + Gid('s_province').value + " - 市" + 
+				    
+				    Gid('s_city').value + " - 县/区" + 
+				    
+				    Gid('s_county').value + "</h3>"
+				}
+			})
+			$(".guan5").click(function(){
+				$(".updatekehu").hide();
+			})
+			$(".guan4").click(function(){
+				$(".kehu").hide();
+			})
+			
+			$(".guan5").click(function(){
+				$(".chezliao").hide();
+			})
+		</script>
+	</body>
+</html>

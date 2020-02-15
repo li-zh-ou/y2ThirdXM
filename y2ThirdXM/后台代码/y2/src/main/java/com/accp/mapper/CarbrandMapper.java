@@ -6,6 +6,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface CarbrandMapper {
+	List<Carbrand> querycarbrand( @Param("carbankname")String carbankname,@Param("firstWord")String firstWord);
+	
     int countByExample(CarbrandExample example);
 
     int deleteByExample(CarbrandExample example);

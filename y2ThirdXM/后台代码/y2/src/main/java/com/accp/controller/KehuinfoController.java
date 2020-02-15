@@ -26,6 +26,18 @@ public class KehuinfoController {
 	public List<Kehu> QueryKehu(){
 		return ser.QueryKehu();
 	}
+	@GetMapping("/querymokehu")
+	public List<Kehu> querymokehu(String kehuno,String kehuphone){
+		return ser.querymokehu(kehuno,kehuphone);
+	}
+	@GetMapping("/querybykehub")
+	public List<Kehu> querybykehub(String kehuno){
+		return ser.querybykehub(kehuno);
+	}
+	@GetMapping("/querymokehucar")
+	public List<Kehucar> querymokehucar(String chepai){
+		return ser.querymokehucar(chepai);
+	}
 	@GetMapping("/querybykehuno")
 	public List<Kehucar> QueryBykehuno(String kehuno){
 		System.out.println(kehuno);
@@ -45,5 +57,14 @@ public class KehuinfoController {
 	@GetMapping("/DeleteKehu")
 	public int DeleteKehu(String kehuno) {
 		return ser.DeleteKehu(kehuno);
+	}
+	
+	@PostMapping("/duochakehu")
+	public List<Kehu> duotiaojianchakehu(@RequestBody Kehu kehu){
+		return ser.duotiaojianchakehu(kehu);
+	}
+	@PostMapping("/duochacar")
+	public List<Kehucar> duotiaojianchacar(@RequestBody Kehucar kehucar){
+		return ser.duotiaojianchacar(kehucar);
 	}
 }

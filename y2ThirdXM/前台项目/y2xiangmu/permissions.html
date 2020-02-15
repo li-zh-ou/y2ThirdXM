@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>德召文车辆维修管理系统-权限</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="css/bootstrapStyle/bootstrapStyle.css" />
+	</head>
+	<body>
+		<div id="ctx" class="container-fluid" style="margin: 20px;">
+			<div class="row">
+					<div class="panel panel-success">
+					  <div class="panel-heading">
+					   	<span class="glyphicon glyphicon-globe"></span> 权限管理
+					   	<span style="position:relative;top:-7px;float: right;" >
+					   		<button class="btn btn-danger">关闭</button>
+					   	</span>
+					  </div>
+					</div>
+			</div>
+			<div class="row">
+				<div class="panel panel-success">
+				  <div class="panel-body">
+				  	<div class="form-inline">
+					    <div class="btn-group" role="group" >
+							<select class="form-control" v-model="rid" @change="findRolePerms($event)">
+								<!--<option value="">请选择</option>-->
+								<option v-for="item in roles" :value="item.rid" >{{item.rname}}</option>
+							</select>
+						</div>
+						<span style="position:relative;float: right;">
+							<button class="btn btn-success" @click="saveRoles">保存</button>
+					   		<button class="btn btn-success" @click="checkedAll">选择全部</button>
+					   		<button class="btn btn-success" @click="checkedNotAll">全部取消</button>
+							<button class="btn btn-success" @click="theSelected">反选</button>
+						</span>
+					</div>
+				  </div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<ul id="treeDemo" class="ztree"></ul>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
+		<script type="text/javascript" src="js/jquery.ztree.core.js" ></script>
+		<script type="text/javascript" src="js/jquery.ztree.excheck.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script type="text/javascript" src="js/my.js" ></script>
+		<script type="text/javascript" src="js/login.js" ></script>
+		<script type="text/javascript" src="js/perms.js" ></script>
+		<script>
+			var setting = {
+				check: {
+					enable: true
+					
+				},
+				data: {
+					simpleData: {
+						enable: true
+					}
+				},
+				edit: {
+					enable: true
+				},
+				view:{
+					showIcon:false
+				}
+			};
+			//数据结构，从后台查询数据进行赋值就可使用
+			var zNodes =[];
+			
+			var vm=new Vue({
+				el:"#ctx",
+				data(){
+					return {
+						perms:[],
+						roles:[],
+						rid:""
+					}
+				},methods:{
+					saveRoles(){
+						//保存
+						var zTree = $.fn.zTree.getZTreeObj("treeDemo"); //ztree对象
+		                var checked = zTree.getCheckedNodes(true);
+						$.ajax({
+							url:data.ip+"/rolesPerms/insertRolesPerms/"+vm.rid,
+							data:JSON.stringify(checked),
+							type:"post",
+							contentType:"application/json;charset=utf-8",
+							xhrFields:{
+								withCredentials: true
+							},success:function(response){
+								if(response.indexOf('1')){
+									alert("保存成功!");
+								}else{
+									alert("保存失败!");
+								}
+							},error:function(result){
+								console.log(result);
+							}
+						});
+					},findRolePerms(e){
+						//根据角色查询权限
+						var rid=$(e.target).val();
+						$.ajax({
+							url:data.ip+"/perms/findRolePerms",
+							type:"get",
+							xhrFields:{
+								withCredentials: true
+							},
+							data:{rid:rid},
+							dataType:"json",
+							success:function(response){
+								var zTree = $.fn.zTree.getZTreeObj("treeDemo"); //ztree对象
+								var node = zTree.getNodes();//得到全部节点
+		               			var nodes = zTree.transformToArray(node);//全部节点转换成数组array
+		               			zTree.checkAllNodes(false);//给全部节点设置为false
+		               			$.each(nodes, function(index,nid) {
+		               				if(response.filter(item=>item.id==nid.id).length>0){
+		               					zTree.checkNode(nid, true,false);
+		               				}
+			                    });
+							},error:function(error){
+								console.log(error);
+							}
+						});
+					},checkedAll(){
+						//全选
+						var zTree=$.fn.zTree.getZTreeObj("treeDemo");
+						var node = zTree.getNodes();//得到全部节点
+		                var nodes = zTree.transformToArray(node);//全部节点转换成数组array
+		                var checkNode = zTree.getCheckedNodes().length;//得到被选中的节点数量,zTree.getCheckedNodes()和zTree.getCheckedNodes(true)一样,可以传参(true/false),默认是true
+		
+		                if (checkNode < nodes.length) {//已选中的节点数小于总数 - 全选
+		                    zTree.checkAllNodes(true);//给全部节点设置为true
+		                } else{
+		                    zTree.checkAllNodes(false);//给全部节点设置为false
+		                }
+					},checkedNotAll(){
+						//全部取消
+			                var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+			                zTree.checkAllNodes(false);//设置全部为false,不选中节点
+					},theSelected(){
+						//反选
+						var zTree = $.fn.zTree.getZTreeObj("treeDemo"); //ztree对象
+
+		                var checked = zTree.getCheckedNodes(true);//得到选中的节点
+		                console.log(checked);
+		                var checkeds = zTree.transformToArray(checked); //转变为数组
+		                var checkNode = zTree.getCheckedNodes(true).length;//选中的节点数量
+		
+		                var node = zTree.getNodes();//全部节点
+		                var nodes = zTree.transformToArray(node);//全部节点数量
+		
+		                if(checkNode< nodes.length){//已选中的节点数小于总数 - 全选
+		
+		                    zTree.checkAllNodes(true);//给所有的都设置为true
+		
+		                    $.each(checkeds, function(index,node) {//之前选中的节点为false
+		                        zTree.checkNode(node, false, false);
+		                    });
+		
+		                }else{
+		                    zTree.checkAllNodes(false);//否则所有的都设置为false
+		                }
+					}
+				},created:function(){
+					//查询全部权限
+					findperm();
+					//查询全部角色
+					findRole();
+				}
+			});
+			
+			function findperm(){
+				//查询全部权限
+				$.ajax({
+					url: data.ip + "findperm",
+					type: "get",
+					dataType: "json",
+					success: function(response) {
+						
+						vm.perms=response;
+						vm.perms=JSON.parse(JSON.stringify(vm.perms).replace(/pname/g, 'name'))
+						console.log(vm.perms);
+						zNodes=vm.perms;
+						$.fn.zTree.init($("#treeDemo"), setting, zNodes);
+						$.fn.zTree.getZTreeObj("treeDemo").expandAll(true);
+					},
+					error: function(error) {
+						console.log(222)
+					}
+				});
+			}
+			
+			function findRole(){
+				$.ajax({
+						type:"get",
+						url:data.ip+"role/findRole",
+						xhrFields: {
+							withCredentials: true
+						},
+						data:{condition:""},
+						dataType:"json",
+						success:function(response){
+							vm.roles=response;
+							vm.rid=response[0].rid;
+							console.log(vm.roles);
+						},error:function(error){
+							console.log(error);
+						}
+					});
+			}
+			
+			
+		</script>
+	</body>
+</html>

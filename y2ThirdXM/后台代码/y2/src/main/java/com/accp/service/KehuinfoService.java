@@ -25,7 +25,15 @@ public class KehuinfoService {
 	public List<Kehu> QueryKehu(){
 		return kehumapper.findkehu();
 	}
-	
+	public List<Kehu> querymokehu(String kehuno,String kehuphone){
+		return kehumapper.querymokehu(kehuno, kehuphone);
+	}
+	public List<Kehu> querybykehub(String kehuno){
+		return kehumapper.querybykehub(kehuno);
+	}
+	public List<Kehucar> querymokehucar(String chepai){
+		return carmapper.querymokehucar(chepai);
+	}
 	public List<Kehucar> QueryBykehuno(String kehuno){
 		return carmapper.findkehucar(kehuno);
 	}
@@ -48,5 +56,13 @@ public class KehuinfoService {
 		example2.createCriteria().andKehunoEqualTo(kehuno);
 		carmapper.deleteByExample(example2);
 		return kehumapper.deleteByExample(example);
+	}
+	public List<Kehu> duotiaojianchakehu(Kehu kehu){
+		List<Kehu> ke=kehumapper.querychatiao(kehu);
+		return ke;
+	}
+	public List<Kehucar> duotiaojianchacar(Kehucar car){
+		List<Kehucar> ca=carmapper.chacar(car);
+		return ca;
 	}
 }

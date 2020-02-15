@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.accp.domain.Carbrand;
+import com.accp.domain.CarbrandExample;
 import com.accp.domain.Carxing;
 import com.accp.domain.CarxingExample;
 import com.accp.domain.Fadongbrand;
@@ -37,14 +38,12 @@ public class CarbrankService {
 	@Autowired
 	KehucarMapper kehucarmapper;
 	
-	public List<Carbrand> querycarbrank(){
-		return carbrankmapper.selectByExample(null);
+	public List<Carbrand> querycarbrank(String carbankname,String firstword){
+		return carbrankmapper.querycarbrand(carbankname,firstword);
 	}
 	
-	public List<Carxing> querybycarbrandid(int carbrandid){
-		CarxingExample example=new CarxingExample();
-		example.createCriteria().andCarbankidEqualTo(carbrandid);
-		return carxingmapper.selectByExample(example);
+	public List<Carxing> querybycarbrandid(int carbankid,String jinkou){
+		return carxingmapper.querycarxing(carbankid, jinkou);
 	}
 	
 	public List<Fadongbrand> queryfadoji() {
@@ -56,5 +55,15 @@ public class CarbrankService {
 		Kehu k=kehumapper.selectByPrimaryKey(kehu.getKehuid());
 		kehu.getCar().setKehuno(k.getKehuno());
 		return kehucarmapper.insert(kehu.getCar());
+	}
+	public int addcar(Kehucar car) {
+		return kehucarmapper.insert(car);
+	}
+	public int updatecar(Kehucar car) {
+		return kehucarmapper.updateByPrimaryKey(car);
+	}
+	
+	public int deletecar(String chepai) {
+		return kehucarmapper.deleteByPrimaryKey(chepai);
 	}
 }

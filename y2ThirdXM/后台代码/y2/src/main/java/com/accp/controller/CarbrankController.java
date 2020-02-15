@@ -21,13 +21,13 @@ public class CarbrankController {
 	CarbrankService ser;
 	
 	@GetMapping("/querycarbrank")
-	public List<Carbrand> querycarbrank(){
-		return ser.querycarbrank();
+	public List<Carbrand> querycarbrank(String carbankname,String firstword){
+		return ser.querycarbrank(carbankname,firstword);
 	}
 	
 	@GetMapping("/querybycarbrandid")
-	public List<Carxing> querybycarbrandid(int carbrandid){
-		return ser.querybycarbrandid(carbrandid);
+	public List<Carxing> querybycarbrandid(int carbrandid,String jinkou){
+		return ser.querybycarbrandid(carbrandid,jinkou);
 	}
 	
 	@GetMapping("/queryfadoji")
@@ -37,5 +37,17 @@ public class CarbrankController {
 	@PostMapping("/addkehuandche")
 	public int addkehuandche(@RequestBody Kehu kehu) {
 		return ser.addkehuandche(kehu);
+	}
+	@PostMapping("/addcar")
+	public int addcar(@RequestBody Kehucar car) {
+		return ser.addcar(car);
+	}
+	@PostMapping("/updatecar")
+	public int updatecar(@RequestBody Kehucar car) {
+		return ser.updatecar(car);
+	}
+	@GetMapping("/deletecar")
+	public int deletecar(String chepai) {
+		return ser.deletecar(chepai);
 	}
 }
