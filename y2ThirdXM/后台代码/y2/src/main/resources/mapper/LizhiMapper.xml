@@ -10,6 +10,17 @@
     <result column="bei3" property="bei3" jdbcType="VARCHAR" />
     <result column="bei4" property="bei4" jdbcType="VARCHAR" />
   </resultMap>
+  
+  <!-- //离职登记新增离职详情 -->
+  <insert id="lzxqinsert">
+  		INSERT INTO `lizhi` (`YuanNo`,`LiZhiTime`,`remark` ) VALUES (#{yuanno},#{lizhitime},#{remark})
+  </insert>
+  
+  <!-- 离职登记回滚删除离职详情 -->
+  <delete id="delete">
+  		DELETE  FROM `lizhi` WHERE `YuanNo` = #{yuanno}
+  </delete>
+  
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >

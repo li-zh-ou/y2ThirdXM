@@ -1,5 +1,6 @@
 package com.accp.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,12 +11,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.accp.domain.Bumen;
 import com.accp.domain.Gangwei;
+import com.accp.domain.Jigong;
+import com.accp.domain.JigongExample;
+import com.accp.domain.Jigongban;
+import com.accp.domain.Jigongstar;
+import com.accp.domain.Lizhi;
+import com.accp.domain.Waiqingcar;
 import com.accp.domain.Yuangong;
 import com.accp.domain.YuangongExample;
 import com.accp.domain.Yuangongshu;
 import com.accp.domain.Zhiwu;
 import com.accp.mapper.BumenMapper;
 import com.accp.mapper.GangweiMapper;
+import com.accp.mapper.JigongMapper;
+import com.accp.mapper.JigongbanMapper;
+import com.accp.mapper.JigongstarMapper;
+import com.accp.mapper.LizhiMapper;
+import com.accp.mapper.WaiqingcarMapper;
 import com.accp.mapper.YuangongMapper;
 import com.accp.mapper.YuangongshuMapper;
 import com.accp.mapper.ZhiwuMapper;
@@ -23,6 +35,21 @@ import com.accp.mapper.ZhiwuMapper;
 @Service
 @Transactional
 public class NcqzzjgdyService {
+	
+	@Autowired
+	JigongMapper jigongMapper;
+	
+	@Autowired
+	JigongbanMapper jigongbanMapper;
+	
+	@Autowired
+	WaiqingcarMapper waiqingcarMapper;
+	
+	@Autowired
+	JigongstarMapper jigongstarMapper;
+
+	@Autowired
+	LizhiMapper lizhiMapper;
 
 	@Autowired
 	ZhiwuMapper zhiwuMapper;
@@ -101,7 +128,7 @@ public class NcqzzjgdyService {
 	}
 
 	// 组织机构点击树状图获取部门在根据部门id查询员工详情
-	public List<Yuangong> gjbmcxyg(Integer bumenid){
+	public List<Yuangong> gjbmcxyg(Integer bumenid) {
 		return yuangongMapper.gjbmcxyg(bumenid);
 	}
 
@@ -130,4 +157,112 @@ public class NcqzzjgdyService {
 		return yuangongMapper.cxtxmlxq();
 	}
 
+	// 通讯名录修改
+	public int uptxml(List<Yuangong> yuangong) {
+		for (Yuangong wxyh : yuangong) {
+			yuangongMapper.updateByPrimaryKey(wxyh);
+		}
+		return 1;
+	}
+
+	// 离职登记获取初始数据
+	public List<Yuangong> querycssj() {
+		return yuangongMapper.querycssj();
+	}
+
+	// 离职登记打开
+	public Yuangong lzdjdk(String yuanno) {
+		return yuangongMapper.lzdjdk(yuanno);
+	}
+
+	// 离职登记回滚
+	public int lzdjhg(String yuanno) {
+		lizhiMapper.delete(yuanno);// 离职登记回滚删除离职详情
+		return yuangongMapper.lzdjhg(yuanno);
+	}
+
+	// 离职登记员工离职
+	public int insertlzxq(Lizhi lizhi) {
+		lizhiMapper.lzxqinsert(lizhi.getYuanno(), lizhi.getLizhitime(), lizhi.getRemark());// 离职登记新增离职详情
+		return yuangongMapper.xglzzt(lizhi.getYuanno());
+	}
+
+	// 离职登记删除离职员工数据
+	public int sclzygsj(String yuanno) {
+		lizhiMapper.delete(yuanno);// 离职登记回滚删除离职详情
+		return yuangongMapper.deleteByPrimaryKey(yuanno);
+	}
+
+	// 技工星级获取技工星级
+	public List<Jigongstar> queryjgxj() {
+		return jigongstarMapper.selectByExample(null);
+	}
+	
+	// 技工星级新增
+	public int insertjgxj(Jigongstar jigongstar) {
+		return jigongstarMapper.insert(jigongstar);
+	}
+
+	// 技工星级修改
+	public int upjgxj(Integer jistarid, String starname, String ticheng, Integer ids) {
+		return jigongstarMapper.upjgxj(jistarid, starname, ticheng, ids);
+	}
+	
+	// 技工星级删除
+	public int deljgxj(Integer jistarid) {
+		return jigongstarMapper.deleteByPrimaryKey(jistarid);
+	}
+	
+	// 外勤车辆获取
+	public List<Waiqingcar> querywqcl() {
+		return waiqingcarMapper.selectByExample(null);
+	}
+	
+	// 外勤车辆获取初始树状图数据
+	public List<Jigongban> querybzszt() {
+		return jigongbanMapper.selectByExample(null);
+	}
+
+	// 外勤车辆新增
+	public int insertwcql(Waiqingcar waiqingcar) {
+		return waiqingcarMapper.insert(waiqingcar);
+	}
+
+	// 修改外勤车辆
+	public int upwqcl(String chepai, String carbank, String chexing, String nowli, Integer banid, String ids) {
+		return waiqingcarMapper.upwqcl(chepai, carbank, chexing, nowli, banid, ids);
+	}
+	
+	// 删除外勤车辆
+	public int delwqcl(String chepai) {
+		return waiqingcarMapper.deleteByPrimaryKey(chepai);
+	}
+	
+	//班组技工详情
+	public List<Jigong> cxbzjgxq(){
+		return jigongMapper.cxbzjgxq();
+	}
+	
+	// 班组技工生成技工编号
+	public Jigong newjigongno() {
+		JigongExample example = new JigongExample();
+		example.setOrderByClause("jigongno desc");
+		List<Jigong> list = jigongMapper.selectByExample(example);
+		if (list != null && list.size() > 0) {
+			return list.get(0);
+		}
+		return null;
+	}
+	
+	//班组技工新增技工
+	public int xzjg(Jigong jigong) {
+		return jigongMapper.insert(jigong);
+	}
+	
+	
 }
+
+
+
+
+

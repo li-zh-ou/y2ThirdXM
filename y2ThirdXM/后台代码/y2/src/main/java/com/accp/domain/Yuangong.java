@@ -1,6 +1,7 @@
 package com.accp.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -113,6 +114,38 @@ public class Yuangong {
 	private String bumenname;// 部门名称
 
 	private String gangweiname;// 岗位名称
+	
+	private String zhiwuname;//角色名称
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@JsonFormat(pattern = "yyyy-MM-dd")
+	private Date lizhitime;//离职时间
+	
+	private String remark;//离职说明
+	
+	public String getZhiwuname() {
+		return zhiwuname;
+	}
+
+	public void setZhiwuname(String zhiwuname) {
+		this.zhiwuname = zhiwuname;
+	}
+
+	public Date getLizhitime() {
+		return lizhitime;
+	}
+
+	public void setLizhitime(Date lizhitime) {
+		this.lizhitime = lizhitime;
+	}
+
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
 
 	public String getBumenname() {
 		return bumenname;

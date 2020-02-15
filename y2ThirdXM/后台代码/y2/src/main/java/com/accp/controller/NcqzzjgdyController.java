@@ -1,6 +1,7 @@
 package com.accp.controller;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.domain.Bumen;
 import com.accp.domain.Gangwei;
+import com.accp.domain.Jigong;
+import com.accp.domain.Jigongban;
+import com.accp.domain.Jigongstar;
+import com.accp.domain.Lizhi;
+import com.accp.domain.Waiqingcar;
 import com.accp.domain.Yuangong;
 import com.accp.domain.Yuangongshu;
 import com.accp.domain.Zhiwu;
@@ -98,35 +104,35 @@ public class NcqzzjgdyController {
 	}
 
 	// 组织机构修改员工
-	@PostMapping("upygxq")
+	@PostMapping("/upygxq")
 	public int upygxq(Yuangong yuangong) {
 		return ncqzzjgdyService.upygxq(yuangong);
 	}
-	
+
 	// 组织机构查询角色
-	@GetMapping("zzjgcxjs")
+	@GetMapping("/zzjgcxjs")
 	public List<Zhiwu> zzjgcxjs() {
 		return ncqzzjgdyService.zzjgcxjs();
 	}
-	
+
 	// 组织机构赋予员工角色
-	@PostMapping("fujs")
+	@PostMapping("/fujs")
 	public int fujs(String zhiwuid, String yuanno) {
 		return ncqzzjgdyService.fujs(zhiwuid, yuanno);
 	}
-	
+
 	// 组织机构赋删除员工
-	@PostMapping("xglzzt")
+	@PostMapping("/xglzzt")
 	public int xglzzt(String yuanno) {
 		return ncqzzjgdyService.xglzzt(yuanno);
 	}
-	
+
 	// 组织机构点击树状图获取部门在根据部门id查询员工详情
-	@GetMapping("gjbmcxyg")
-	public List<Yuangong> gjbmcxyg(Integer bumenid){
+	@GetMapping("/gjbmcxyg")
+	public List<Yuangong> gjbmcxyg(Integer bumenid) {
 		return ncqzzjgdyService.gjbmcxyg(bumenid);
 	}
-	
+
 	// 岗位定义查询
 	@GetMapping("/querygw")
 	public List<Gangwei> querygw() {
@@ -150,11 +156,166 @@ public class NcqzzjgdyController {
 	public int upgw(Integer gangweid, String gangweiname, Integer ids) {
 		return ncqzzjgdyService.upgw(gangweid, gangweiname, ids);
 	}
-	
+
 	// 通讯名录详情
 	@GetMapping("/cxtxmlxq")
-	public List<Yuangong> cxtxmlxq(){
+	public List<Yuangong> cxtxmlxq() {
 		return ncqzzjgdyService.cxtxmlxq();
 	}
 
+	// 通讯名录修改
+	@PostMapping("/uptxml")
+	public int uptxml(@RequestBody List<Yuangong> yuangong) {
+		System.out.println(yuangong.get(0));
+		return ncqzzjgdyService.uptxml(yuangong);
+	}
+
+	// 离职登记获取初始数据
+	@GetMapping("/querycssj")
+	public List<Yuangong> querycssj() {
+		return ncqzzjgdyService.querycssj();
+	}
+
+	// 离职登记打开
+	@GetMapping("/lzdjdk")
+	public Yuangong lzdjdk(String yuanno) {
+		return ncqzzjgdyService.lzdjdk(yuanno);
+	}
+
+	// 离职登记回滚
+	@PostMapping("/lzdjhg")
+	public int lzdjhg(String yuanno) {
+		return ncqzzjgdyService.lzdjhg(yuanno);
+	}
+	
+	// 离职登记员工离职
+	@PostMapping("/insertlzxq")
+	public int insertlzxq(@RequestBody Lizhi lizhi) {
+		return ncqzzjgdyService.insertlzxq(lizhi);
+	}
+	
+	// 离职登记删除离职员工数据
+	@PostMapping("/sclzygsj")
+	public int sclzygsj(String yuanno) {
+		return ncqzzjgdyService.sclzygsj(yuanno);
+	}
+	
+	//技工星级获取技工星级
+	@GetMapping("/queryjgxj")
+	public List<Jigongstar> queryjgxj(){
+		return ncqzzjgdyService.queryjgxj();
+	}
+	
+	//技工星级新增
+	@PostMapping("/insertjgxj")
+	public int insertjgxj(Jigongstar jigongstar) {
+		return ncqzzjgdyService.insertjgxj(jigongstar);
+	}
+	
+	//技工星级修改
+	@PostMapping("/upjgxj")
+	public int upjgxj(Integer jistarid,String starname,String ticheng,Integer ids) {
+		return ncqzzjgdyService.upjgxj(jistarid,starname,ticheng,ids);
+	}
+	
+	//技工星级删除
+	@PostMapping("/deljgxj")
+	public int deljgxj(Integer jistarid) {
+		return ncqzzjgdyService.deljgxj(jistarid);
+	}
+	
+	//外勤车辆获取
+	@GetMapping("/querywqcl")
+	public List<Waiqingcar> querywqcl(){
+		return ncqzzjgdyService.querywqcl();
+	}
+	
+	//外勤车辆获取初始树状图数据
+	@GetMapping("/querybzszt")
+	public List<Jigongban> querybzszt(){
+		return ncqzzjgdyService.querybzszt();
+	}
+	
+	//外勤车辆新增
+	@PostMapping("/insertwcql")
+	public int insertwcql(Waiqingcar waiqingcar) {
+		return ncqzzjgdyService.insertwcql(waiqingcar);
+	}
+	
+	//修改外勤车辆
+	@PostMapping("/upwqcl")
+	public int upwqcl(String chepai,String carbank,String chexing,String nowli,Integer banid,String ids) {
+		return ncqzzjgdyService.upwqcl( chepai, carbank, chexing, nowli, banid, ids);
+	}
+	
+	//删除外勤车辆
+	@PostMapping("/delwqcl")
+	public int delwqcl(String chepai) {
+		return ncqzzjgdyService.delwqcl(chepai);
+	}
+	
+	//加载班组技工详情
+	@GetMapping("/cxbzjgxq")
+	public List<Jigong> cxbzjgxq(){
+		return ncqzzjgdyService.cxbzjgxq();
+	}
+	
+	// 班组技工生成技工编号
+	@GetMapping("/jgscbhbh")
+	public String newjigongno() {
+		String jigongno = "";
+		Jigong c = ncqzzjgdyService.newjigongno();
+		Integer no = null;
+		if (c != null) {
+			no = Integer.valueOf(c.getJigongno().substring(8)) + 1;
+		}
+
+		Calendar cal = Calendar.getInstance();
+		Integer year = cal.get(cal.YEAR);
+
+		if (c == null) {
+			// 当天没有则编号为年月日+001
+			jigongno = "jgb" + year.toString() + "001";
+		} else {
+			if (no.toString().length() == 1) {
+				// 0~9
+				jigongno = "jgb" + year.toString() + "00" + no.toString();
+			} else if (no.toString().length() == 2) {
+				// 10~99
+				jigongno = "jgb" + year.toString() + "0" + no.toString();
+			} else if (no.toString().length() > 2) {
+				// 大于等于100
+				jigongno = "jgb" + year.toString() + no.toString();
+			}
+		}
+		return jigongno;
+	}
+	
+	//班组技工新增技工
+	@PostMapping("/xzjg")
+	public int xzjg(Jigong jigong) {
+		return ncqzzjgdyService.xzjg(jigong);
+	}
+	
+	
+	
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

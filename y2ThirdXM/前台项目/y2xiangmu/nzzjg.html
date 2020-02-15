@@ -36,7 +36,7 @@
 					<div class="row modal-body">
 
 						<tr>
-							<td>员工编号:<input v-model="xzyg.yuanno"  type="text"  readonly ="readonly" style="vertical-align: middle"/></td>
+							<td>员工编号:<input v-model="xzyg.yuanno"  type="text"  disabled="true" style="vertical-align: middle"/></td>
 							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 							<td>员工姓名:<input v-model="xzyg.yuanname" type="text" style="vertical-align: middle"/></td>
 							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -48,9 +48,9 @@
 						</tr>
 
 						<tr>
-							<td>所在门店:<input value="成高" type="text" readonly ="readonly" disabled style="vertical-align: middle"/></td>
+							<td>所在门店:<input value="成高" type="text" disabled="true" style="vertical-align: middle"/></td>
 							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-							<td>选择部门:<select v-model="xzyg.bumenid" style="vertical-align: middle; width:174px; height:26px; ">
+							<td>选择部门:<select v-model="xzyg.bumenid" disabled="true" style="vertical-align: middle; width:174px; height:26px; ">
 										<option :value="xzygbm.bumenid">{{xzygbm.bumenname}}</option>
 									</select>
 							</td>
@@ -193,12 +193,14 @@
 						</tr>
 						
 						<tr>
-							<td>紧急联系人:<input v-model="xzyg.empeople" type="text" style="vertical-align: middle"/></td>
-							<td>紧急联系电话:<input v-model="xzyg.emphone" type="text" style="vertical-align: middle"/></td>
-							<td>商品折扣权%<input v-model="xzyg.spzhekou" type="text" style="vertical-align: middle"/></td>
-							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-							<td>工时折扣权%<input v-model="xzyg.gszhekou" type="text" style="vertical-align: middle"/></td>
-							<td>整单折扣权%<input v-model="xzyg.zdzhekou" type="text" style="vertical-align: middle"/></td>
+							<td>紧急联系:<input v-model="xzyg.empeople" type="text" style="vertical-align: middle"/></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>紧急电话:<input v-model="xzyg.emphone" type="text" style="vertical-align: middle"/></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>商品折扣:<input v-model="xzyg.spzhekou" type="text" style="vertical-align: middle"/></td>
+							<td>工时折扣:<input v-model="xzyg.gszhekou" type="text" style="vertical-align: middle"/></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>整单折扣:<input v-model="xzyg.zdzhekou" type="text" style="vertical-align: middle"/></td>
 						</tr>
 						
 					</div>
@@ -223,7 +225,7 @@
 
 						
 						<tr>
-							<td>员工编号:<input v-model="byupyg.yuanno"  type="text"  readonly ="readonly" style="vertical-align: middle"/></td>
+							<td>员工编号:<input v-model="byupyg.yuanno"  type="text"  disabled="true" style="vertical-align: middle"/></td>
 							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 							<td>员工姓名:<input v-model="byupyg.yuanname" type="text" style="vertical-align: middle"/></td>
 							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -235,10 +237,10 @@
 						</tr>
 
 						<tr>
-							<td>所在门店:<input value="成高" type="text" readonly ="readonly" disabled style="vertical-align: middle"/></td>
+							<td>所在门店:<input value="成高" type="text" disabled="true" style="vertical-align: middle"/></td>
 							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-							<td>选择部门:<select style="vertical-align: middle; width:174px; height:26px; ">
-										<option :value="byupyg.bumenid"></option>
+							<td>选择部门:<select disabled="true" v-model="djyg.bumenid" style="vertical-align: middle; width:174px; height:26px; ">
+										<option :value="byupyg.bumenid">{{djyg.bumenname}}</option>
 									</select>
 							</td>
 							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -380,12 +382,14 @@
 						</tr>
 						
 						<tr>
-							<td>紧急联系人:<input v-model="byupyg.empeople" type="text" style="vertical-align: middle"/></td>
-							<td>紧急联系电话:<input v-model="byupyg.emphone" type="text" style="vertical-align: middle"/></td>
-							<td>商品折扣权%<input v-model="byupyg.spzhekou" type="text" style="vertical-align: middle"/></td>
-							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-							<td>工时折扣权%<input v-model="byupyg.gszhekou" type="text" style="vertical-align: middle"/></td>
-							<td>整单折扣权%<input v-model="byupyg.zdzhekou" type="text" style="vertical-align: middle"/></td>
+							<td>紧急联系:<input v-model="byupyg.empeople" type="text" style="vertical-align: middle"/></td>
+								<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>紧急电话:<input v-model="byupyg.emphone" type="text" style="vertical-align: middle"/></td>
+								<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>商品折扣:<input v-model="byupyg.spzhekou" type="text" style="vertical-align: middle"/></td>
+							<td>工时折扣:<input v-model="byupyg.gszhekou" type="text" style="vertical-align: middle"/></td>
+								<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>整单折扣:<input v-model="byupyg.zdzhekou" type="text" style="vertical-align: middle"/></td>
 						</tr>
 						
 						
@@ -695,7 +699,7 @@
 			return {
 				ygcx:{},//加载初始员工详情
 				xzygbm:{},//点击树状图获取部门
-				djyg:{yuanno:""},//获得点击的员工id
+				djyg:{yuanno:"",bumenid:"",bumenname:""},//获得点击的员工id
 				yggw:{},//查询岗位
 				ygsx:{},//查询员工属性
 				xzyg:{},//新增员工
@@ -744,7 +748,11 @@
 			},
 			tableDblclick:function(item){//获得点击的员工id
 				vm.djyg.yuanno=item.yuanno;
+				vm.djyg.bumenname=item.bumenname;
+				vm.djyg.bumenid=item.bumenid;
 				console.log(vm.djyg.yuanno);
+				console.log(vm.djyg.bumenid);
+				console.log(vm.djyg.bumenname);
 				$.ajax({//修改员工查询
 					url: data.ip +"ncq/byupygff",
 					type: "get",
@@ -753,6 +761,7 @@
 					success: function(result) {
 						console.log(result);
 						vm.byupyg = result;
+						
 					},
 					error: function(result) {
 						console.log(result);
@@ -952,6 +961,8 @@
 			return;
 		}
 		vm.xzygbm=treeNode;
+		vm.xzyg.bumenid=vm.xzygbm.bumenid;
+		
 		console.log(vm.xzygbm);
 		$.ajax({//点击树状图获取部门在根据部门id查询员工详情
 			url: data.ip +"ncq/gjbmcxyg",

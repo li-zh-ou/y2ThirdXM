@@ -6,6 +6,9 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface WaiqingcarMapper {
+	
+	int upwqcl(String chepai, String carbank, String chexing, String nowli, Integer banid, String ids);// 修改外勤车辆
+	
     int countByExample(WaiqingcarExample example);
 
     int deleteByExample(WaiqingcarExample example);

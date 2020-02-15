@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.accp.mapper.WaiqingcarMapper" >
   <resultMap id="BaseResultMap" type="com.accp.domain.Waiqingcar" >
@@ -12,6 +11,11 @@
     <result column="bei3" property="bei3" jdbcType="VARCHAR" />
     <result column="bei4" property="bei4" jdbcType="VARCHAR" />
   </resultMap>
+  
+  <update id="upwqcl">
+  		UPDATE `waiqingcar` SET `ChePai` = #{chepai},`CarBank` = #{carbank},`CheXing` = #{chexing},`NowLi` = #{nowli},`BanId` = #{banid} WHERE `ChePai` = #{ids} 
+  </update>
+  
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >

@@ -3,7 +3,9 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
-		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="fonts/font_4aigx4do0lb/iconfont.css" />
+		<link rel="stylesheet" href="css/bootstrapStyle/bootstrapStyle.css" type="text/css">
 		<style type="text/css">
 			*{
 				margin: 0px;
@@ -32,7 +34,31 @@
 		</style>
 	</head>
 	<body>
-		<div class="container-fluid" id="gwdiv">
+		<div class="container-fluid" id="ctx">
+			
+			<!--选择班组-->
+			<div class="modal fade" tabindex="-1" role="dialog" id="xzbz">
+			<div class="modal-dialog" role="document" style="width:300px;">
+				<div class="modal-content">
+					<div class="modal-header" id="dhl">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<div class="col-md-7">
+							<h4>选择班组</h4>
+						</div>
+					</div>
+					<div class="row">
+					<div class="col-md-2"></div>
+						
+					<div class="col-md-8" style="border: 1px solid #E6E6E6;">
+						<ul id="treeDemo" class="ztree"></ul>
+					</div>
+				
+					<div class="col-md-2"></div>
+					</div>	
+				</div>
+			</div>
+		</div>
+			
 			<div id="gwdiv1">
 				<ul>
 					<li><h3>外勤车辆</h3></li>
@@ -41,18 +67,18 @@
 			</div>
 			<div id="gwdiv2"> 
 				<ul style="float: right;">
-					<li><span class="glyphicon glyphicon-align-justify"></span>增加</li>
-					<li><span class="glyphicon glyphicon-remove-circle"></span>删除</li>
-					<li><span class="glyphicon glyphicon-folder-open"></span>保存</li>
+					<li><span class="glyphicon glyphicon-align-justify" @click="insert">增加</span></li>
+					<li><span class="glyphicon glyphicon-remove-circle" @click="del(hqbmxz.chepai)" >删除</span></li>
+					<li><span class="glyphicon glyphicon-folder-open" @click="up">保存</span></li>
 				</ul>
 				<br />
 				<br />
 				<ul>
-					<li>车牌号<input type="text"></li>
-					<li>品牌<input type="text"></li>
-					<li>车型<input type="text"></li>
-					<li>当前里程<input type="text"></li>
-					<li>班组<input type="text" disabled="true"></li>
+					<li>车牌号<input v-model="hqbmxz.chepai" type="text"></li>
+					<li>品牌<input v-model="hqbmxz.carbank" type="text"></li>
+					<li>车型<input v-model="hqbmxz.chexing" type="text"></li>
+					<li>当前里程<input v-model="hqbmxz.nowli" type="text"></li>
+					<li>班组<input v-model="hqbmxz.banid" type="text" disabled="true"><button style="vertical-align: middle" data-toggle="modal" data-target="#xzbz">选择班组</button></li>
 				</ul>
 			</div>
 			<div>
@@ -68,17 +94,195 @@
 						</tr>			
 					</thead>
 					<tbody>
-						<tr>
-							<td>1</td>
-							<td>配件经理</td>
-							<td>23123</td>
-							<td>1900</td>
-							<td>机修1组</td>
+						<tr v-for="item in wqcl" @click="tableDblclick(item)">
+							<td>{{item.chepai}}</td>
+							<td>{{item.carbank}}</td>
+							<td>{{item.chexing}}</td>
+							<td>{{item.nowli}}</td>
+							<td>{{item.banid}}</td>
 							
 						</tr>
 					</tbody>
 				</table>
 			</div>
 		</div>
-	</body>
+		
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.ztree.core.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript" src="js/my.js"></script>
+<script type="text/javascript">
+	
+	var vm = new Vue({
+		el: "#ctx",
+		data() {
+			return {
+				wqcl:{},//获取外勤车辆
+				hqbm:{banid:"",banname:""},//获取班组
+				hqbmxz:{chepai:"",carbank:"",chexing:"",nowli:"",banid:""},//绑定文本框
+				hqbmxz2:{chepai:"",carbank:"",chexing:"",nowli:"",banid:""}////绑定文本框
+			}
+		},
+		created(){//
+      		this.loading();//加载外勤车辆
+      		this.bzszt();//加载班组树状图
+   		},
+		methods: {
+			bzszt:function(){//获取初始树状图数据
+				$.ajax({
+					url: data.ip +"ncq/querybzszt",
+					type: "get",
+					dataType: "json",
+					success: function(result) {
+						console.log(result);
+						$.fn.zTree.init($("#treeDemo"), setting, result);//初始化树节点时，添加同步获取的数据
+						$.fn.zTree.init($("#treeDemo"), setting, result).expandAll(true);//树状图加载好默认打开所有节点
+					},
+					error: function(result) {
+						console.log(result);
+					}	
+				});
+			},
+			loading:function() {//获取外勤车辆
+				$.ajax({
+					url: data.ip +"ncq/querywqcl",
+						type: "get",
+						dataType: "json",
+					success: function(result) {
+						vm.wqcl = result;
+						console.log(result);
+					},
+					error: function(result) {
+						console.log(result);
+					}
+				});
+			},
+			insert:function(){//新增外勤车辆
+				$.ajax({
+					url:data.ip +"ncq/insertwcql",
+					type:"post",
+					data:vm.hqbmxz,
+					dataType:"text",
+					success:function(result){
+						console.log(result);
+						if(result>0){
+							alert("新增成功");
+						}else{
+							alert("新增失败");
+						}
+						vm.loading();
+					},error:function(result){
+						console.log(result);
+					}
+				});
+			},
+			tableDblclick:function(item){//外勤车辆放入上方text框
+				vm.hqbmxz.chepai=item.chepai;
+				vm.hqbmxz.carbank=item.carbank;
+				vm.hqbmxz.chexing=item.chexing;
+				vm.hqbmxz.nowli=item.nowli;
+				vm.hqbmxz.banid=item.banid;
+				vm.hqbmxz2.chepai=item.chepai;
+				vm.hqbmxz2.carbank=item.carbank;
+				vm.hqbmxz2.chexing=item.chexing;
+				vm.hqbmxz2.nowli=item.nowli;
+				vm.hqbmxz2.banid=item.banid;
+				console.log(vm.hqbmxz.chepai);
+				console.log(vm.hqbmxz.carbank);
+				console.log(vm.hqbmxz.chexing);
+				console.log(vm.hqbmxz.nowli);
+				console.log(vm.hqbmxz.banid);
+				console.log(vm.hqbmxz2.chepai);
+				console.log(vm.hqbmxz2.carbank);
+				console.log(vm.hqbmxz2.chexing);
+				console.log(vm.hqbmxz2.nowli);
+				console.log(vm.hqbmxz2.banid);
+			},
+			up:function(){//修改外勤车辆
+				console.log(vm.hqbmxz.chepai);
+				console.log(vm.hqbmxz.carbank);
+				console.log(vm.hqbmxz.chexing);
+				console.log(vm.hqbmxz.nowli);
+				console.log(vm.hqbmxz.banid);
+				console.log(vm.hqbmxz2.chepai);
+				$.ajax({
+					url:data.ip +"ncq/upwqcl",
+					type:"post",
+					data:{chepai:vm.hqbmxz.chepai,carbank:vm.hqbmxz.carbank,chexing:vm.hqbmxz.chexing,nowli:vm.hqbmxz.nowli,banid:vm.hqbmxz.banid,ids:vm.hqbmxz2.chepai},
+					dataType:"text",
+					success:function(result){
+						console.log(result);
+						if(result>0){
+							alert("修改成功");
+						}else{
+							alert("修改失败");
+						}
+						vm.loading();
+					},error:function(result){
+						console.log(result);
+					}
+				});
+			},
+			del:function(chepai){//删除外勤车辆
+				$.ajax({
+					url:data.ip +"ncq/delwqcl",
+					type:"post",
+					data:{chepai:chepai},
+					dataType:"text",
+					success:function(result){
+						console.log(result);
+						console.log(result);
+						if(result>0){
+							alert("删除成功");
+						}else{
+							alert("删除失败");
+						}
+						vm.loading();
+					},error:function(result){
+						console.log(result);
+					}
+				});
+			}
+		}
+	});
+	
+		//树状图
+	var setting = {
+		view: {
+        	selectedMulti: true,
+        	showIcon:false
+    	},
+		check: {
+			enable: false
+		},
+		data: {
+			key: {
+                    name: "banname",//树节点name名称
+                },
+			simpleData: {
+				enable: true,//是否采用简单数据模式
+            	idKey: "banid",//树节点ID名称
+            	pIdKey: "parentid",//父节点ID名称
+            	rootPId: 0,//根节点ID
+			}
+		},
+		 callback:{
+			onClick:chooseNode,
+		}
+	};
+	
+	//点击树状图获取部门
+	function chooseNode(event,treeId,treeNode){
+		if (treeNode.parentid=="0") {
+			return;
+		}
+		vm.hqbm=treeNode;
+		vm.hqbmxz.banid=vm.hqbm.banid;
+		console.log(vm.hqbm);
+	}
+	
+</script>
+</body>
 </html>

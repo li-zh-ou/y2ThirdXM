@@ -33,7 +33,7 @@
 			<div id="dhl">
 				<div class="col-md-10"></div>
 				<ol class="breadcrumb col-md-2">
-				  <li><span class="iconfont" style="vertical-align: middle">&#xe6b6;</span><a href="#" style="vertical-align: middle">保存</a></li>
+				  <li><span class="iconfont" style="vertical-align: middle">&#xe6b6;</span><a href="#" style="vertical-align: middle" @click="uptxml">保存</a></li>
 				  <li><span class="iconfont" style="vertical-align: middle">&#xe78a;</span><a href="#" style="vertical-align: middle">查询</a></li>
 				  <li><span class="iconfont" style="vertical-align: middle">&#xe6a5;</span><a href="#" style="vertical-align: middle">导出</a></li>
 				</ol>
@@ -100,6 +100,25 @@
 					error: function(result) {
 						console.log(result);
 					}	
+				});
+			},
+			uptxml:function(){//通讯名录修改
+				$.ajax({
+					url:data.ip +"ncq/uptxml",
+					type:"post",
+					contentType:"application/json;charset=utf-8",
+					data:JSON.stringify(vm.txmlxq),
+					dataType:"text",
+					success:function(result){
+						console.log(result);
+						if(result>0){
+							alert("修改成功");
+						}else{
+							alert("修改失败");
+						}
+					},error:function(result){
+						console.log(result);
+					}
 				});
 			}
 		}

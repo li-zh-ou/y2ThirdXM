@@ -6,6 +6,9 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface JigongstarMapper {
+	
+	int upjgxj(Integer jistarid, String starname, String ticheng, Integer ids);// 技工星级修改
+	
     int countByExample(JigongstarExample example);
 
     int deleteByExample(JigongstarExample example);

@@ -6,6 +6,9 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface JigongMapper {
+	
+	List<Jigong> cxbzjgxq();//加载班组技工详情
+	
     int countByExample(JigongExample example);
 
     int deleteByExample(JigongExample example);

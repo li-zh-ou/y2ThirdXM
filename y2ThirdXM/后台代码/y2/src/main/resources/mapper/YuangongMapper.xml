@@ -59,6 +59,75 @@
 		<result column="bei3" property="bei3" jdbcType="DATE" />
 		<result column="bei4" property="bei4" jdbcType="VARCHAR" />
 	</resultMap>
+	
+	<!-- 离职登记回滚 -->
+	<update id="lzdjhg">
+		UPDATE `yuangong` SET `sflz` = 0 WHERE `yuanNo` = #{yuanno}
+	</update>
+	
+	<!-- 离职登记打开 -->
+	<select id="lzdjdk" resultMap="BaseResultMap">
+		SELECT
+		`yuanNo`,
+		`shuXingId`,
+		`BuMenId`,
+		`yuanName`,
+		`birthday`,
+		`sex`,
+		`phone`,
+		`emPeople`,
+		`emPhone`,
+		`ZhiWuId`,
+		`nowAddress`,
+		`HuAddress`,
+		`bank`,
+		`cardNumber`,
+		`email`,
+		`bodystate`,
+		`height`,
+		`JiGuan`,
+		`MinZu`,
+		`HunYin`,
+		`XueLi`,
+		`BiYe`,
+		`ZhuanYe`,
+		`ZhuanYezg`,
+		`xueWei`,
+		`bianZhi`,
+		`IDcard`,
+		`shouJi`,
+		`ShiYong`,
+		`HeTongstart`,
+		`HeTongEnd`,
+		`KaZi`,
+		`KaNei`,
+		`TuiJian`,
+		`zdZheKou`,
+		`gsZheKou`,
+		`spZheKou`,
+		`jianMian`,
+		`fenqi`,
+		`sflz`,
+		`gangweId`,
+		`login`,
+		`bei1`,
+		`bei2`,
+		`bei3`,
+		`bei4`
+		FROM`yuangong`
+		WHERE `yuanNo`=#{yuanno}
+	</select>
+	
+	<!-- 离职登记获取初始数据 -->
+	<select id="querycssj" resultMap="BaseResultMap">
+		SELECT
+		`yuangong`.*,`bumen`.`BuMenName`,`zhiwu`.`zhiWuName`,`lizhi`.`LiZhiTime`,`lizhi`.`remark`
+		FROM `yuangong`
+		LEFT JOIN `bumen` ON `yuangong`.`BuMenId`=`bumen`.`BuMenId`
+		LEFT JOIN `lizhi` ON `yuangong`.`yuanNo`=`lizhi`.`YuanNo`
+		LEFT JOIN `zhiwu` ON `yuangong`.`ZhiWuId`=`zhiwu`.`ZhiWuId`
+		WHERE `yuangong`.`sflz`=1
+	</select>
 
 	<!-- 组织机构点击树状图获取部门在根据部门id查询员工详情 -->
 	<select id="gjbmcxyg" resultMap="BaseResultMap">
@@ -108,18 +177,13 @@
 	</select>
 
 
-	<!-- 组织机构员工详情查询 -->
+	<!-- 通讯名录员工详情查询 -->
 	<select id="cxtxmlxq" resultMap="BaseResultMap">
 		SELECT
-		yg.`BuMenId`,
-		bm.`BuMenName`,
-		yg.`yuanNo`,
-		yg.`yuanName`,
-		yg.`fenqi`,
-		yg.`phone`,
-		yg.`shouJi`,
-		yg.`email`
-		FROM `yuangong` AS yg
+		yg.*,
+		bm.`BuMenName`
+		FROM
+		`yuangong` AS yg
 		INNER JOIN `bumen` AS bm
 		ON
 		yg.`BuMenId`=bm.`BuMenId`
@@ -138,7 +202,7 @@
 		`yuanNo` = #{yuanno}
 	</update>
 
-	<!--修改员工查询 -->
+	<!--组织机构修改员工查询 -->
 	<select id="byupygff" resultMap="BaseResultMap">
 		SELECT
 		`yuanNo`,
