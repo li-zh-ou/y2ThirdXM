@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html >
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+<title>登录</title>
+
+<link href="css/bootstrap.min.css" title="" rel="stylesheet" />
+<link title="orange" href="css/login.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+  
+<div style="height:1px;"></div>
+<div class="login">
+ <header>
+	<h1>登陆</h1>
+ </header>
+ <div class="sr">
+	<form>
+		<div class="name">
+			<label>
+			<i class="sublist-icon glyphicon glyphicon-user"></i>
+			</label>
+			<input type="text" v-model="user.username"  placeholder="这里输入登录名" class="name_inp">
+		</div>
+		 <div class="name">
+			<label>
+			<i class="sublist-icon glyphicon glyphicon-pencil"></i>
+			</label>
+			<input type="text" v-model="user.password"  placeholder="这里输入登录密码" class="name_inp">
+		</div>
+		<button @click="loginin()" class="dl">登陆</button>
+	</form>
+ </div>
+</div>
+<div style="text-align:center;margin:-150px 0; font:normal 14px/24px 'MicroSoft YaHei';color:#ffffff">
+</div>
+<script src="js/jquery-1.12.4.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/my.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var vm = new Vue({
+					el: "#ctx",
+					data() {
+							return {
+									user: {}
+							};
+					},
+					methods: {
+						loginin() {
+								var that = this;
+								$.ajax({
+										url: data.ip + "loginin",
+										data: that.user,
+										type: "post",
+										dataType: "json",
+										success: function(response) {
+												if(response && response.token) {
+													//将数据保存在浏览器的session存储对象中.对象转型成字符串
+													sessionStorage.setItem("user",JSON.stringify(response.user));
+													window.location.href = "zindex.html";
+												}else{
+													alert("用户登录失败。");
+												}
+											
+										}
+								});
+						}
+					}
+			});
+		</script>
+</body>
+</html>
+
