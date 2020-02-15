@@ -104,63 +104,63 @@ public class GangweiExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andGangweiidIsNull() {
-            addCriterion("gangweiId is null");
+        public Criteria andGangweidIsNull() {
+            addCriterion("gangweId is null");
             return (Criteria) this;
         }
 
-        public Criteria andGangweiidIsNotNull() {
-            addCriterion("gangweiId is not null");
+        public Criteria andGangweidIsNotNull() {
+            addCriterion("gangweId is not null");
             return (Criteria) this;
         }
 
-        public Criteria andGangweiidEqualTo(Integer value) {
-            addCriterion("gangweiId =", value, "gangweiid");
+        public Criteria andGangweidEqualTo(Integer value) {
+            addCriterion("gangweId =", value, "gangweid");
             return (Criteria) this;
         }
 
-        public Criteria andGangweiidNotEqualTo(Integer value) {
-            addCriterion("gangweiId <>", value, "gangweiid");
+        public Criteria andGangweidNotEqualTo(Integer value) {
+            addCriterion("gangweId <>", value, "gangweid");
             return (Criteria) this;
         }
 
-        public Criteria andGangweiidGreaterThan(Integer value) {
-            addCriterion("gangweiId >", value, "gangweiid");
+        public Criteria andGangweidGreaterThan(Integer value) {
+            addCriterion("gangweId >", value, "gangweid");
             return (Criteria) this;
         }
 
-        public Criteria andGangweiidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("gangweiId >=", value, "gangweiid");
+        public Criteria andGangweidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("gangweId >=", value, "gangweid");
             return (Criteria) this;
         }
 
-        public Criteria andGangweiidLessThan(Integer value) {
-            addCriterion("gangweiId <", value, "gangweiid");
+        public Criteria andGangweidLessThan(Integer value) {
+            addCriterion("gangweId <", value, "gangweid");
             return (Criteria) this;
         }
 
-        public Criteria andGangweiidLessThanOrEqualTo(Integer value) {
-            addCriterion("gangweiId <=", value, "gangweiid");
+        public Criteria andGangweidLessThanOrEqualTo(Integer value) {
+            addCriterion("gangweId <=", value, "gangweid");
             return (Criteria) this;
         }
 
-        public Criteria andGangweiidIn(List<Integer> values) {
-            addCriterion("gangweiId in", values, "gangweiid");
+        public Criteria andGangweidIn(List<Integer> values) {
+            addCriterion("gangweId in", values, "gangweid");
             return (Criteria) this;
         }
 
-        public Criteria andGangweiidNotIn(List<Integer> values) {
-            addCriterion("gangweiId not in", values, "gangweiid");
+        public Criteria andGangweidNotIn(List<Integer> values) {
+            addCriterion("gangweId not in", values, "gangweid");
             return (Criteria) this;
         }
 
-        public Criteria andGangweiidBetween(Integer value1, Integer value2) {
-            addCriterion("gangweiId between", value1, value2, "gangweiid");
+        public Criteria andGangweidBetween(Integer value1, Integer value2) {
+            addCriterion("gangweId between", value1, value2, "gangweid");
             return (Criteria) this;
         }
 
-        public Criteria andGangweiidNotBetween(Integer value1, Integer value2) {
-            addCriterion("gangweiId not between", value1, value2, "gangweiid");
+        public Criteria andGangweidNotBetween(Integer value1, Integer value2) {
+            addCriterion("gangweId not between", value1, value2, "gangweid");
             return (Criteria) this;
         }
 

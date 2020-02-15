@@ -31,14 +31,14 @@
 			<div id="dhl" class="row">
 				<div class="col-md-10">
 					<p style="margin-top:25px;">
-						岗位编码:<input type="text" v-model="gangwei.gangweiid"/>&nbsp;&nbsp;&nbsp;
+						岗位编码:<input type="text" v-model="gangwei.gangweid"/>&nbsp;&nbsp;&nbsp;
 						岗位名称:<input type="text" v-model="gangwei.gangweiname"/>
 					</p>
 				</div>
 				<ol class="breadcrumb col-md-2">
 				  <li><span class="iconfont" style="vertical-align: middle">&#xe62c;</span><a href="#" style="vertical-align: middle" @click="insert">增加</a></li>
-				  <li><span class="iconfont" style="vertical-align: middle">&#xe612;</span><a href="#" style="vertical-align: middle" @click="up">修改</a></li>
-				  <li><span class="iconfont" style="vertical-align: middle">&#xe614;</span><a href="#" style="vertical-align: middle" @click="del(gangwei.gangweiid)">删除</a></li>
+				  <li><span class="iconfont" style="vertical-align: middle">&#xe614;</span><a href="#" style="vertical-align: middle" @click="del(gangwei.gangweid)">删除</a></li>
+				  <li><span class="iconfont" style="vertical-align: middle">&#xe612;</span><a href="#" style="vertical-align: middle" @click="up">保存</a></li>
 				  <li><span class="iconfont" style="vertical-align: middle">&#xe6a5;</span><a href="#" style="vertical-align: middle">导出</a></li>
 				</ol>
 				
@@ -54,7 +54,7 @@
 						</tr>
 						
 						<tr v-for="item,index in gwdy" @click="tableDblclick(item)">
-							<td>{{item.gangweiid}}</td>
+							<td>{{item.gangweid}}</td>
 							<td>{{item.gangweiname}}</td>
 						</tr>
 						
@@ -76,12 +76,29 @@
 		el: "#ctx",
 		data() {
 			return {
-				gwdy:{},
-				gangwei:{gangweiid:"",gangweiname:""},
-				gangwei2:{gangweiid:"",gangweiname:""}
+				gwdy:{},//获取初岗位数据
+				gangwei:{gangweid:"",gangweiname:""},//绑定文本框
+				gangwei2:{gangweid:"",gangweiname:""}////绑定文本框
 			}
 		},
+		created(){//
+      		this.loading();//加载初岗位数据
+   		},
 		methods: {
+			loading:function() {//获取初岗位数据
+				$.ajax({
+					url: data.ip +"ncq/querygw",
+						type: "get",
+						dataType: "json",
+					success: function(result) {
+						vm.gwdy = result;
+						console.log(result);
+					},
+					error: function(result) {
+						console.log(result);
+					}
+				});
+			},
 			insert:function(){//新增岗位
 				$.ajax({
 					url:data.ip +"ncq/insertgw",
@@ -92,62 +109,62 @@
 						console.log(result);
 						if(result>0){
 							alert("新增成功");
-						}else if(result<0){
+						}else{
 							alert("新增失败");
 						}
-						loading();
+						vm.loading();
 					},error:function(result){
 						console.log(result);
 					}
 				});
 			},
 			tableDblclick:function(item){//查询岗位放入上方text框
-				vm.gangwei.gangweiid=item.gangweiid;
+				vm.gangwei.gangweid=item.gangweid;
 				vm.gangwei.gangweiname=item.gangweiname;
-				vm.gangwei2.gangweiid=item.gangweiid;
+				vm.gangwei2.gangweid=item.gangweid;
 				vm.gangwei2.gangweiname=item.gangweiname;
-				console.log(vm.gangwei.gangweiid);
+				console.log(vm.gangwei.gangweid);
 				console.log(vm.gangwei.gangweiname);
-				console.log(vm.gangwei2.gangweiid);
+				console.log(vm.gangwei2.gangweid);
 				console.log(vm.gangwei2.gangweiname);
 			},
 			up:function(){
-				console.log(vm.gangwei.gangweiid);
+				console.log(vm.gangwei.gangweid);
 				console.log(vm.gangwei.gangweiname);
-				console.log(vm.gangwei2.gangweiid);
-				$.ajax({
+				console.log(vm.gangwei2.gangweid);
+				$.ajax({//修改岗位
 					url:data.ip +"ncq/upgw",
 					type:"post",
-					data:{gangweiid:vm.gangwei.gangweiid,gangweiname:vm.gangwei.gangweiname,ids:vm.gangwei2.gangweiid},
+					data:{gangweid:vm.gangwei.gangweid,gangweiname:vm.gangwei.gangweiname,ids:vm.gangwei2.gangweid},
 					dataType:"text",
 					success:function(result){
 						console.log(result);
 						if(result>0){
 							alert("修改成功");
-						}else if(result<0){
+						}else{
 							alert("修改失败");
 						}
-						loading();
+						vm.loading();
 					},error:function(result){
 						console.log(result);
 					}
 				});
 			},
-			del:function(gangweiid){//删除岗位
+			del:function(gangweid){//删除岗位
 				$.ajax({
 					url:data.ip +"ncq/delByIdgw",
 					type:"get",
-					data:{gangweiid:gangweiid},
+					data:{gangweid:gangweid},
 					dataType:"text",
 					success:function(result){
 						console.log(result);
 						console.log(result);
 						if(result>0){
 							alert("删除成功");
-						}else if(result<0){
+						}else{
 							alert("删除失败");
 						}
-						loading();
+						vm.loading();
 					},error:function(result){
 						console.log(result);
 					}
@@ -156,24 +173,6 @@
 		}
 	});
 	
-	
-	//加载初始数据
-	loading();
-	//获取集合
-	function loading() {
-		$.ajax({
-			url: data.ip +"ncq/querygw",
-			type: "get",
-			dataType: "json",
-			success: function(result) {
-				vm.gwdy = result;
-				console.log(result);
-			},
-			error: function(result) {
-				console.log(result);
-			}
-		});
-	}
 	
 </script>
 </body>

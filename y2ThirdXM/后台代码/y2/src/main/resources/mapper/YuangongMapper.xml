@@ -1,858 +1,1228 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.accp.mapper.YuangongMapper" >
-  <resultMap id="BaseResultMap" type="com.accp.domain.Yuangong" >
-    <id column="yuanNo" property="yuanno" jdbcType="VARCHAR" />
-    <result column="shuXingId" property="shuxingid" jdbcType="INTEGER" />
-    <result column="BuMenId" property="bumenid" jdbcType="INTEGER" />
-    <result column="yuanName" property="yuanname" jdbcType="VARCHAR" />
-    <result column="birthday" property="birthday" jdbcType="DATE" />
-    <result column="sex" property="sex" jdbcType="CHAR" />
-    <result column="phone" property="phone" jdbcType="VARCHAR" />
-    <result column="emPeople" property="empeople" jdbcType="VARCHAR" />
-    <result column="emPhone" property="emphone" jdbcType="VARCHAR" />
-    <result column="ZhiWuId" property="zhiwuid" jdbcType="VARCHAR" />
-    <result column="nowAddress" property="nowaddress" jdbcType="VARCHAR" />
-    <result column="HuAddress" property="huaddress" jdbcType="VARCHAR" />
-    <result column="bank" property="bank" jdbcType="VARCHAR" />
-    <result column="cardNumber" property="cardnumber" jdbcType="VARCHAR" />
-    <result column="email" property="email" jdbcType="VARCHAR" />
-    <result column="bodystate" property="bodystate" jdbcType="VARCHAR" />
-    <result column="height" property="height" jdbcType="INTEGER" />
-    <result column="JiGuan" property="jiguan" jdbcType="VARCHAR" />
-    <result column="MinZu" property="minzu" jdbcType="VARCHAR" />
-    <result column="HunYin" property="hunyin" jdbcType="VARCHAR" />
-    <result column="XueLi" property="xueli" jdbcType="VARCHAR" />
-    <result column="BiYe" property="biye" jdbcType="VARCHAR" />
-    <result column="ZhuanYe" property="zhuanye" jdbcType="VARCHAR" />
-    <result column="ZhuanYezg" property="zhuanyezg" jdbcType="VARCHAR" />
-    <result column="xueWei" property="xuewei" jdbcType="VARCHAR" />
-    <result column="bianZhi" property="bianzhi" jdbcType="VARCHAR" />
-    <result column="IDcard" property="idcard" jdbcType="VARCHAR" />
-    <result column="shouJi" property="shouji" jdbcType="VARCHAR" />
-    <result column="ShiYong" property="shiyong" jdbcType="DATE" />
-    <result column="HeTongstart" property="hetongstart" jdbcType="DATE" />
-    <result column="HeTongEnd" property="hetongend" jdbcType="DATE" />
-    <result column="KaZi" property="kazi" jdbcType="VARCHAR" />
-    <result column="KaNei" property="kanei" jdbcType="VARCHAR" />
-    <result column="TuiJian" property="tuijian" jdbcType="VARCHAR" />
-    <result column="zdZheKou" property="zdzhekou" jdbcType="DOUBLE" />
-    <result column="gsZheKou" property="gszhekou" jdbcType="DOUBLE" />
-    <result column="spZheKou" property="spzhekou" jdbcType="DOUBLE" />
-    <result column="jianMian" property="jianmian" jdbcType="DOUBLE" />
-    <result column="fenqi" property="fenqi" jdbcType="VARCHAR" />
-    <result column="sflz" property="sflz" jdbcType="INTEGER" />
-    <result column="gangweId" property="gangweid" jdbcType="INTEGER" />
-    <result column="login" property="login" jdbcType="VARCHAR" />
-    <result column="bei1" property="bei1" jdbcType="VARCHAR" />
-    <result column="bei2" property="bei2" jdbcType="VARCHAR" />
-    <result column="bei3" property="bei3" jdbcType="VARCHAR" />
-    <result column="bei4" property="bei4" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List" >
-    yuanNo, shuXingId, BuMenId, yuanName, birthday, sex, phone, emPeople, emPhone, ZhiWuId, 
-    nowAddress, HuAddress, bank, cardNumber, email, bodystate, height, JiGuan, MinZu, 
-    HunYin, XueLi, BiYe, ZhuanYe, ZhuanYezg, xueWei, bianZhi, IDcard, shouJi, ShiYong, 
-    HeTongstart, HeTongEnd, KaZi, KaNei, TuiJian, zdZheKou, gsZheKou, spZheKou, jianMian, 
-    fenqi, sflz, gangweId, login, bei1, bei2, bei3, bei4
-  </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.YuangongExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from yuangong
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
-    <include refid="Base_Column_List" />
-    from yuangong
-    where yuanNo = #{yuanno,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from yuangong
-    where yuanNo = #{yuanno,jdbcType=VARCHAR}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.accp.domain.YuangongExample" >
-    delete from yuangong
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.accp.domain.Yuangong" >
-    insert into yuangong (yuanNo, shuXingId, BuMenId, 
-      yuanName, birthday, sex, 
-      phone, emPeople, emPhone, 
-      ZhiWuId, nowAddress, HuAddress, 
-      bank, cardNumber, email, 
-      bodystate, height, JiGuan, 
-      MinZu, HunYin, XueLi, 
-      BiYe, ZhuanYe, ZhuanYezg, 
-      xueWei, bianZhi, IDcard, 
-      shouJi, ShiYong, HeTongstart, 
-      HeTongEnd, KaZi, KaNei, 
-      TuiJian, zdZheKou, gsZheKou, 
-      spZheKou, jianMian, fenqi, 
-      sflz, gangweId, login, 
-      bei1, bei2, bei3, bei4
-      )
-    values (#{yuanno,jdbcType=VARCHAR}, #{shuxingid,jdbcType=INTEGER}, #{bumenid,jdbcType=INTEGER}, 
-      #{yuanname,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, #{sex,jdbcType=CHAR}, 
-      #{phone,jdbcType=VARCHAR}, #{empeople,jdbcType=VARCHAR}, #{emphone,jdbcType=VARCHAR}, 
-      #{zhiwuid,jdbcType=VARCHAR}, #{nowaddress,jdbcType=VARCHAR}, #{huaddress,jdbcType=VARCHAR}, 
-      #{bank,jdbcType=VARCHAR}, #{cardnumber,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
-      #{bodystate,jdbcType=VARCHAR}, #{height,jdbcType=INTEGER}, #{jiguan,jdbcType=VARCHAR}, 
-      #{minzu,jdbcType=VARCHAR}, #{hunyin,jdbcType=VARCHAR}, #{xueli,jdbcType=VARCHAR}, 
-      #{biye,jdbcType=VARCHAR}, #{zhuanye,jdbcType=VARCHAR}, #{zhuanyezg,jdbcType=VARCHAR}, 
-      #{xuewei,jdbcType=VARCHAR}, #{bianzhi,jdbcType=VARCHAR}, #{idcard,jdbcType=VARCHAR}, 
-      #{shouji,jdbcType=VARCHAR}, #{shiyong,jdbcType=DATE}, #{hetongstart,jdbcType=DATE}, 
-      #{hetongend,jdbcType=DATE}, #{kazi,jdbcType=VARCHAR}, #{kanei,jdbcType=VARCHAR}, 
-      #{tuijian,jdbcType=VARCHAR}, #{zdzhekou,jdbcType=DOUBLE}, #{gszhekou,jdbcType=DOUBLE}, 
-      #{spzhekou,jdbcType=DOUBLE}, #{jianmian,jdbcType=DOUBLE}, #{fenqi,jdbcType=VARCHAR}, 
-      #{sflz,jdbcType=INTEGER}, #{gangweid,jdbcType=INTEGER}, #{login,jdbcType=VARCHAR}, 
-      #{bei1,jdbcType=VARCHAR}, #{bei2,jdbcType=VARCHAR}, #{bei3,jdbcType=VARCHAR}, #{bei4,jdbcType=VARCHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.accp.domain.Yuangong" >
-    insert into yuangong
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="yuanno != null" >
-        yuanNo,
-      </if>
-      <if test="shuxingid != null" >
-        shuXingId,
-      </if>
-      <if test="bumenid != null" >
-        BuMenId,
-      </if>
-      <if test="yuanname != null" >
-        yuanName,
-      </if>
-      <if test="birthday != null" >
-        birthday,
-      </if>
-      <if test="sex != null" >
-        sex,
-      </if>
-      <if test="phone != null" >
-        phone,
-      </if>
-      <if test="empeople != null" >
-        emPeople,
-      </if>
-      <if test="emphone != null" >
-        emPhone,
-      </if>
-      <if test="zhiwuid != null" >
-        ZhiWuId,
-      </if>
-      <if test="nowaddress != null" >
-        nowAddress,
-      </if>
-      <if test="huaddress != null" >
-        HuAddress,
-      </if>
-      <if test="bank != null" >
-        bank,
-      </if>
-      <if test="cardnumber != null" >
-        cardNumber,
-      </if>
-      <if test="email != null" >
-        email,
-      </if>
-      <if test="bodystate != null" >
-        bodystate,
-      </if>
-      <if test="height != null" >
-        height,
-      </if>
-      <if test="jiguan != null" >
-        JiGuan,
-      </if>
-      <if test="minzu != null" >
-        MinZu,
-      </if>
-      <if test="hunyin != null" >
-        HunYin,
-      </if>
-      <if test="xueli != null" >
-        XueLi,
-      </if>
-      <if test="biye != null" >
-        BiYe,
-      </if>
-      <if test="zhuanye != null" >
-        ZhuanYe,
-      </if>
-      <if test="zhuanyezg != null" >
-        ZhuanYezg,
-      </if>
-      <if test="xuewei != null" >
-        xueWei,
-      </if>
-      <if test="bianzhi != null" >
-        bianZhi,
-      </if>
-      <if test="idcard != null" >
-        IDcard,
-      </if>
-      <if test="shouji != null" >
-        shouJi,
-      </if>
-      <if test="shiyong != null" >
-        ShiYong,
-      </if>
-      <if test="hetongstart != null" >
-        HeTongstart,
-      </if>
-      <if test="hetongend != null" >
-        HeTongEnd,
-      </if>
-      <if test="kazi != null" >
-        KaZi,
-      </if>
-      <if test="kanei != null" >
-        KaNei,
-      </if>
-      <if test="tuijian != null" >
-        TuiJian,
-      </if>
-      <if test="zdzhekou != null" >
-        zdZheKou,
-      </if>
-      <if test="gszhekou != null" >
-        gsZheKou,
-      </if>
-      <if test="spzhekou != null" >
-        spZheKou,
-      </if>
-      <if test="jianmian != null" >
-        jianMian,
-      </if>
-      <if test="fenqi != null" >
-        fenqi,
-      </if>
-      <if test="sflz != null" >
-        sflz,
-      </if>
-      <if test="gangweid != null" >
-        gangweId,
-      </if>
-      <if test="login != null" >
-        login,
-      </if>
-      <if test="bei1 != null" >
-        bei1,
-      </if>
-      <if test="bei2 != null" >
-        bei2,
-      </if>
-      <if test="bei3 != null" >
-        bei3,
-      </if>
-      <if test="bei4 != null" >
-        bei4,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="yuanno != null" >
-        #{yuanno,jdbcType=VARCHAR},
-      </if>
-      <if test="shuxingid != null" >
-        #{shuxingid,jdbcType=INTEGER},
-      </if>
-      <if test="bumenid != null" >
-        #{bumenid,jdbcType=INTEGER},
-      </if>
-      <if test="yuanname != null" >
-        #{yuanname,jdbcType=VARCHAR},
-      </if>
-      <if test="birthday != null" >
-        #{birthday,jdbcType=DATE},
-      </if>
-      <if test="sex != null" >
-        #{sex,jdbcType=CHAR},
-      </if>
-      <if test="phone != null" >
-        #{phone,jdbcType=VARCHAR},
-      </if>
-      <if test="empeople != null" >
-        #{empeople,jdbcType=VARCHAR},
-      </if>
-      <if test="emphone != null" >
-        #{emphone,jdbcType=VARCHAR},
-      </if>
-      <if test="zhiwuid != null" >
-        #{zhiwuid,jdbcType=VARCHAR},
-      </if>
-      <if test="nowaddress != null" >
-        #{nowaddress,jdbcType=VARCHAR},
-      </if>
-      <if test="huaddress != null" >
-        #{huaddress,jdbcType=VARCHAR},
-      </if>
-      <if test="bank != null" >
-        #{bank,jdbcType=VARCHAR},
-      </if>
-      <if test="cardnumber != null" >
-        #{cardnumber,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null" >
-        #{email,jdbcType=VARCHAR},
-      </if>
-      <if test="bodystate != null" >
-        #{bodystate,jdbcType=VARCHAR},
-      </if>
-      <if test="height != null" >
-        #{height,jdbcType=INTEGER},
-      </if>
-      <if test="jiguan != null" >
-        #{jiguan,jdbcType=VARCHAR},
-      </if>
-      <if test="minzu != null" >
-        #{minzu,jdbcType=VARCHAR},
-      </if>
-      <if test="hunyin != null" >
-        #{hunyin,jdbcType=VARCHAR},
-      </if>
-      <if test="xueli != null" >
-        #{xueli,jdbcType=VARCHAR},
-      </if>
-      <if test="biye != null" >
-        #{biye,jdbcType=VARCHAR},
-      </if>
-      <if test="zhuanye != null" >
-        #{zhuanye,jdbcType=VARCHAR},
-      </if>
-      <if test="zhuanyezg != null" >
-        #{zhuanyezg,jdbcType=VARCHAR},
-      </if>
-      <if test="xuewei != null" >
-        #{xuewei,jdbcType=VARCHAR},
-      </if>
-      <if test="bianzhi != null" >
-        #{bianzhi,jdbcType=VARCHAR},
-      </if>
-      <if test="idcard != null" >
-        #{idcard,jdbcType=VARCHAR},
-      </if>
-      <if test="shouji != null" >
-        #{shouji,jdbcType=VARCHAR},
-      </if>
-      <if test="shiyong != null" >
-        #{shiyong,jdbcType=DATE},
-      </if>
-      <if test="hetongstart != null" >
-        #{hetongstart,jdbcType=DATE},
-      </if>
-      <if test="hetongend != null" >
-        #{hetongend,jdbcType=DATE},
-      </if>
-      <if test="kazi != null" >
-        #{kazi,jdbcType=VARCHAR},
-      </if>
-      <if test="kanei != null" >
-        #{kanei,jdbcType=VARCHAR},
-      </if>
-      <if test="tuijian != null" >
-        #{tuijian,jdbcType=VARCHAR},
-      </if>
-      <if test="zdzhekou != null" >
-        #{zdzhekou,jdbcType=DOUBLE},
-      </if>
-      <if test="gszhekou != null" >
-        #{gszhekou,jdbcType=DOUBLE},
-      </if>
-      <if test="spzhekou != null" >
-        #{spzhekou,jdbcType=DOUBLE},
-      </if>
-      <if test="jianmian != null" >
-        #{jianmian,jdbcType=DOUBLE},
-      </if>
-      <if test="fenqi != null" >
-        #{fenqi,jdbcType=VARCHAR},
-      </if>
-      <if test="sflz != null" >
-        #{sflz,jdbcType=INTEGER},
-      </if>
-      <if test="gangweid != null" >
-        #{gangweid,jdbcType=INTEGER},
-      </if>
-      <if test="login != null" >
-        #{login,jdbcType=VARCHAR},
-      </if>
-      <if test="bei1 != null" >
-        #{bei1,jdbcType=VARCHAR},
-      </if>
-      <if test="bei2 != null" >
-        #{bei2,jdbcType=VARCHAR},
-      </if>
-      <if test="bei3 != null" >
-        #{bei3,jdbcType=VARCHAR},
-      </if>
-      <if test="bei4 != null" >
-        #{bei4,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.accp.domain.YuangongExample" resultType="java.lang.Integer" >
-    select count(*) from yuangong
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map" >
-    update yuangong
-    <set >
-      <if test="record.yuanno != null" >
-        yuanNo = #{record.yuanno,jdbcType=VARCHAR},
-      </if>
-      <if test="record.shuxingid != null" >
-        shuXingId = #{record.shuxingid,jdbcType=INTEGER},
-      </if>
-      <if test="record.bumenid != null" >
-        BuMenId = #{record.bumenid,jdbcType=INTEGER},
-      </if>
-      <if test="record.yuanname != null" >
-        yuanName = #{record.yuanname,jdbcType=VARCHAR},
-      </if>
-      <if test="record.birthday != null" >
-        birthday = #{record.birthday,jdbcType=DATE},
-      </if>
-      <if test="record.sex != null" >
-        sex = #{record.sex,jdbcType=CHAR},
-      </if>
-      <if test="record.phone != null" >
-        phone = #{record.phone,jdbcType=VARCHAR},
-      </if>
-      <if test="record.empeople != null" >
-        emPeople = #{record.empeople,jdbcType=VARCHAR},
-      </if>
-      <if test="record.emphone != null" >
-        emPhone = #{record.emphone,jdbcType=VARCHAR},
-      </if>
-      <if test="record.zhiwuid != null" >
-        ZhiWuId = #{record.zhiwuid,jdbcType=VARCHAR},
-      </if>
-      <if test="record.nowaddress != null" >
-        nowAddress = #{record.nowaddress,jdbcType=VARCHAR},
-      </if>
-      <if test="record.huaddress != null" >
-        HuAddress = #{record.huaddress,jdbcType=VARCHAR},
-      </if>
-      <if test="record.bank != null" >
-        bank = #{record.bank,jdbcType=VARCHAR},
-      </if>
-      <if test="record.cardnumber != null" >
-        cardNumber = #{record.cardnumber,jdbcType=VARCHAR},
-      </if>
-      <if test="record.email != null" >
-        email = #{record.email,jdbcType=VARCHAR},
-      </if>
-      <if test="record.bodystate != null" >
-        bodystate = #{record.bodystate,jdbcType=VARCHAR},
-      </if>
-      <if test="record.height != null" >
-        height = #{record.height,jdbcType=INTEGER},
-      </if>
-      <if test="record.jiguan != null" >
-        JiGuan = #{record.jiguan,jdbcType=VARCHAR},
-      </if>
-      <if test="record.minzu != null" >
-        MinZu = #{record.minzu,jdbcType=VARCHAR},
-      </if>
-      <if test="record.hunyin != null" >
-        HunYin = #{record.hunyin,jdbcType=VARCHAR},
-      </if>
-      <if test="record.xueli != null" >
-        XueLi = #{record.xueli,jdbcType=VARCHAR},
-      </if>
-      <if test="record.biye != null" >
-        BiYe = #{record.biye,jdbcType=VARCHAR},
-      </if>
-      <if test="record.zhuanye != null" >
-        ZhuanYe = #{record.zhuanye,jdbcType=VARCHAR},
-      </if>
-      <if test="record.zhuanyezg != null" >
-        ZhuanYezg = #{record.zhuanyezg,jdbcType=VARCHAR},
-      </if>
-      <if test="record.xuewei != null" >
-        xueWei = #{record.xuewei,jdbcType=VARCHAR},
-      </if>
-      <if test="record.bianzhi != null" >
-        bianZhi = #{record.bianzhi,jdbcType=VARCHAR},
-      </if>
-      <if test="record.idcard != null" >
-        IDcard = #{record.idcard,jdbcType=VARCHAR},
-      </if>
-      <if test="record.shouji != null" >
-        shouJi = #{record.shouji,jdbcType=VARCHAR},
-      </if>
-      <if test="record.shiyong != null" >
-        ShiYong = #{record.shiyong,jdbcType=DATE},
-      </if>
-      <if test="record.hetongstart != null" >
-        HeTongstart = #{record.hetongstart,jdbcType=DATE},
-      </if>
-      <if test="record.hetongend != null" >
-        HeTongEnd = #{record.hetongend,jdbcType=DATE},
-      </if>
-      <if test="record.kazi != null" >
-        KaZi = #{record.kazi,jdbcType=VARCHAR},
-      </if>
-      <if test="record.kanei != null" >
-        KaNei = #{record.kanei,jdbcType=VARCHAR},
-      </if>
-      <if test="record.tuijian != null" >
-        TuiJian = #{record.tuijian,jdbcType=VARCHAR},
-      </if>
-      <if test="record.zdzhekou != null" >
-        zdZheKou = #{record.zdzhekou,jdbcType=DOUBLE},
-      </if>
-      <if test="record.gszhekou != null" >
-        gsZheKou = #{record.gszhekou,jdbcType=DOUBLE},
-      </if>
-      <if test="record.spzhekou != null" >
-        spZheKou = #{record.spzhekou,jdbcType=DOUBLE},
-      </if>
-      <if test="record.jianmian != null" >
-        jianMian = #{record.jianmian,jdbcType=DOUBLE},
-      </if>
-      <if test="record.fenqi != null" >
-        fenqi = #{record.fenqi,jdbcType=VARCHAR},
-      </if>
-      <if test="record.sflz != null" >
-        sflz = #{record.sflz,jdbcType=INTEGER},
-      </if>
-      <if test="record.gangweid != null" >
-        gangweId = #{record.gangweid,jdbcType=INTEGER},
-      </if>
-      <if test="record.login != null" >
-        login = #{record.login,jdbcType=VARCHAR},
-      </if>
-      <if test="record.bei1 != null" >
-        bei1 = #{record.bei1,jdbcType=VARCHAR},
-      </if>
-      <if test="record.bei2 != null" >
-        bei2 = #{record.bei2,jdbcType=VARCHAR},
-      </if>
-      <if test="record.bei3 != null" >
-        bei3 = #{record.bei3,jdbcType=VARCHAR},
-      </if>
-      <if test="record.bei4 != null" >
-        bei4 = #{record.bei4,jdbcType=VARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map" >
-    update yuangong
-    set yuanNo = #{record.yuanno,jdbcType=VARCHAR},
-      shuXingId = #{record.shuxingid,jdbcType=INTEGER},
-      BuMenId = #{record.bumenid,jdbcType=INTEGER},
-      yuanName = #{record.yuanname,jdbcType=VARCHAR},
-      birthday = #{record.birthday,jdbcType=DATE},
-      sex = #{record.sex,jdbcType=CHAR},
-      phone = #{record.phone,jdbcType=VARCHAR},
-      emPeople = #{record.empeople,jdbcType=VARCHAR},
-      emPhone = #{record.emphone,jdbcType=VARCHAR},
-      ZhiWuId = #{record.zhiwuid,jdbcType=VARCHAR},
-      nowAddress = #{record.nowaddress,jdbcType=VARCHAR},
-      HuAddress = #{record.huaddress,jdbcType=VARCHAR},
-      bank = #{record.bank,jdbcType=VARCHAR},
-      cardNumber = #{record.cardnumber,jdbcType=VARCHAR},
-      email = #{record.email,jdbcType=VARCHAR},
-      bodystate = #{record.bodystate,jdbcType=VARCHAR},
-      height = #{record.height,jdbcType=INTEGER},
-      JiGuan = #{record.jiguan,jdbcType=VARCHAR},
-      MinZu = #{record.minzu,jdbcType=VARCHAR},
-      HunYin = #{record.hunyin,jdbcType=VARCHAR},
-      XueLi = #{record.xueli,jdbcType=VARCHAR},
-      BiYe = #{record.biye,jdbcType=VARCHAR},
-      ZhuanYe = #{record.zhuanye,jdbcType=VARCHAR},
-      ZhuanYezg = #{record.zhuanyezg,jdbcType=VARCHAR},
-      xueWei = #{record.xuewei,jdbcType=VARCHAR},
-      bianZhi = #{record.bianzhi,jdbcType=VARCHAR},
-      IDcard = #{record.idcard,jdbcType=VARCHAR},
-      shouJi = #{record.shouji,jdbcType=VARCHAR},
-      ShiYong = #{record.shiyong,jdbcType=DATE},
-      HeTongstart = #{record.hetongstart,jdbcType=DATE},
-      HeTongEnd = #{record.hetongend,jdbcType=DATE},
-      KaZi = #{record.kazi,jdbcType=VARCHAR},
-      KaNei = #{record.kanei,jdbcType=VARCHAR},
-      TuiJian = #{record.tuijian,jdbcType=VARCHAR},
-      zdZheKou = #{record.zdzhekou,jdbcType=DOUBLE},
-      gsZheKou = #{record.gszhekou,jdbcType=DOUBLE},
-      spZheKou = #{record.spzhekou,jdbcType=DOUBLE},
-      jianMian = #{record.jianmian,jdbcType=DOUBLE},
-      fenqi = #{record.fenqi,jdbcType=VARCHAR},
-      sflz = #{record.sflz,jdbcType=INTEGER},
-      gangweId = #{record.gangweid,jdbcType=INTEGER},
-      login = #{record.login,jdbcType=VARCHAR},
-      bei1 = #{record.bei1,jdbcType=VARCHAR},
-      bei2 = #{record.bei2,jdbcType=VARCHAR},
-      bei3 = #{record.bei3,jdbcType=VARCHAR},
-      bei4 = #{record.bei4,jdbcType=VARCHAR}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.Yuangong" >
-    update yuangong
-    <set >
-      <if test="shuxingid != null" >
-        shuXingId = #{shuxingid,jdbcType=INTEGER},
-      </if>
-      <if test="bumenid != null" >
-        BuMenId = #{bumenid,jdbcType=INTEGER},
-      </if>
-      <if test="yuanname != null" >
-        yuanName = #{yuanname,jdbcType=VARCHAR},
-      </if>
-      <if test="birthday != null" >
-        birthday = #{birthday,jdbcType=DATE},
-      </if>
-      <if test="sex != null" >
-        sex = #{sex,jdbcType=CHAR},
-      </if>
-      <if test="phone != null" >
-        phone = #{phone,jdbcType=VARCHAR},
-      </if>
-      <if test="empeople != null" >
-        emPeople = #{empeople,jdbcType=VARCHAR},
-      </if>
-      <if test="emphone != null" >
-        emPhone = #{emphone,jdbcType=VARCHAR},
-      </if>
-      <if test="zhiwuid != null" >
-        ZhiWuId = #{zhiwuid,jdbcType=VARCHAR},
-      </if>
-      <if test="nowaddress != null" >
-        nowAddress = #{nowaddress,jdbcType=VARCHAR},
-      </if>
-      <if test="huaddress != null" >
-        HuAddress = #{huaddress,jdbcType=VARCHAR},
-      </if>
-      <if test="bank != null" >
-        bank = #{bank,jdbcType=VARCHAR},
-      </if>
-      <if test="cardnumber != null" >
-        cardNumber = #{cardnumber,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null" >
-        email = #{email,jdbcType=VARCHAR},
-      </if>
-      <if test="bodystate != null" >
-        bodystate = #{bodystate,jdbcType=VARCHAR},
-      </if>
-      <if test="height != null" >
-        height = #{height,jdbcType=INTEGER},
-      </if>
-      <if test="jiguan != null" >
-        JiGuan = #{jiguan,jdbcType=VARCHAR},
-      </if>
-      <if test="minzu != null" >
-        MinZu = #{minzu,jdbcType=VARCHAR},
-      </if>
-      <if test="hunyin != null" >
-        HunYin = #{hunyin,jdbcType=VARCHAR},
-      </if>
-      <if test="xueli != null" >
-        XueLi = #{xueli,jdbcType=VARCHAR},
-      </if>
-      <if test="biye != null" >
-        BiYe = #{biye,jdbcType=VARCHAR},
-      </if>
-      <if test="zhuanye != null" >
-        ZhuanYe = #{zhuanye,jdbcType=VARCHAR},
-      </if>
-      <if test="zhuanyezg != null" >
-        ZhuanYezg = #{zhuanyezg,jdbcType=VARCHAR},
-      </if>
-      <if test="xuewei != null" >
-        xueWei = #{xuewei,jdbcType=VARCHAR},
-      </if>
-      <if test="bianzhi != null" >
-        bianZhi = #{bianzhi,jdbcType=VARCHAR},
-      </if>
-      <if test="idcard != null" >
-        IDcard = #{idcard,jdbcType=VARCHAR},
-      </if>
-      <if test="shouji != null" >
-        shouJi = #{shouji,jdbcType=VARCHAR},
-      </if>
-      <if test="shiyong != null" >
-        ShiYong = #{shiyong,jdbcType=DATE},
-      </if>
-      <if test="hetongstart != null" >
-        HeTongstart = #{hetongstart,jdbcType=DATE},
-      </if>
-      <if test="hetongend != null" >
-        HeTongEnd = #{hetongend,jdbcType=DATE},
-      </if>
-      <if test="kazi != null" >
-        KaZi = #{kazi,jdbcType=VARCHAR},
-      </if>
-      <if test="kanei != null" >
-        KaNei = #{kanei,jdbcType=VARCHAR},
-      </if>
-      <if test="tuijian != null" >
-        TuiJian = #{tuijian,jdbcType=VARCHAR},
-      </if>
-      <if test="zdzhekou != null" >
-        zdZheKou = #{zdzhekou,jdbcType=DOUBLE},
-      </if>
-      <if test="gszhekou != null" >
-        gsZheKou = #{gszhekou,jdbcType=DOUBLE},
-      </if>
-      <if test="spzhekou != null" >
-        spZheKou = #{spzhekou,jdbcType=DOUBLE},
-      </if>
-      <if test="jianmian != null" >
-        jianMian = #{jianmian,jdbcType=DOUBLE},
-      </if>
-      <if test="fenqi != null" >
-        fenqi = #{fenqi,jdbcType=VARCHAR},
-      </if>
-      <if test="sflz != null" >
-        sflz = #{sflz,jdbcType=INTEGER},
-      </if>
-      <if test="gangweid != null" >
-        gangweId = #{gangweid,jdbcType=INTEGER},
-      </if>
-      <if test="login != null" >
-        login = #{login,jdbcType=VARCHAR},
-      </if>
-      <if test="bei1 != null" >
-        bei1 = #{bei1,jdbcType=VARCHAR},
-      </if>
-      <if test="bei2 != null" >
-        bei2 = #{bei2,jdbcType=VARCHAR},
-      </if>
-      <if test="bei3 != null" >
-        bei3 = #{bei3,jdbcType=VARCHAR},
-      </if>
-      <if test="bei4 != null" >
-        bei4 = #{bei4,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where yuanNo = #{yuanno,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.accp.domain.Yuangong" >
-    update yuangong
-    set shuXingId = #{shuxingid,jdbcType=INTEGER},
-      BuMenId = #{bumenid,jdbcType=INTEGER},
-      yuanName = #{yuanname,jdbcType=VARCHAR},
-      birthday = #{birthday,jdbcType=DATE},
-      sex = #{sex,jdbcType=CHAR},
-      phone = #{phone,jdbcType=VARCHAR},
-      emPeople = #{empeople,jdbcType=VARCHAR},
-      emPhone = #{emphone,jdbcType=VARCHAR},
-      ZhiWuId = #{zhiwuid,jdbcType=VARCHAR},
-      nowAddress = #{nowaddress,jdbcType=VARCHAR},
-      HuAddress = #{huaddress,jdbcType=VARCHAR},
-      bank = #{bank,jdbcType=VARCHAR},
-      cardNumber = #{cardnumber,jdbcType=VARCHAR},
-      email = #{email,jdbcType=VARCHAR},
-      bodystate = #{bodystate,jdbcType=VARCHAR},
-      height = #{height,jdbcType=INTEGER},
-      JiGuan = #{jiguan,jdbcType=VARCHAR},
-      MinZu = #{minzu,jdbcType=VARCHAR},
-      HunYin = #{hunyin,jdbcType=VARCHAR},
-      XueLi = #{xueli,jdbcType=VARCHAR},
-      BiYe = #{biye,jdbcType=VARCHAR},
-      ZhuanYe = #{zhuanye,jdbcType=VARCHAR},
-      ZhuanYezg = #{zhuanyezg,jdbcType=VARCHAR},
-      xueWei = #{xuewei,jdbcType=VARCHAR},
-      bianZhi = #{bianzhi,jdbcType=VARCHAR},
-      IDcard = #{idcard,jdbcType=VARCHAR},
-      shouJi = #{shouji,jdbcType=VARCHAR},
-      ShiYong = #{shiyong,jdbcType=DATE},
-      HeTongstart = #{hetongstart,jdbcType=DATE},
-      HeTongEnd = #{hetongend,jdbcType=DATE},
-      KaZi = #{kazi,jdbcType=VARCHAR},
-      KaNei = #{kanei,jdbcType=VARCHAR},
-      TuiJian = #{tuijian,jdbcType=VARCHAR},
-      zdZheKou = #{zdzhekou,jdbcType=DOUBLE},
-      gsZheKou = #{gszhekou,jdbcType=DOUBLE},
-      spZheKou = #{spzhekou,jdbcType=DOUBLE},
-      jianMian = #{jianmian,jdbcType=DOUBLE},
-      fenqi = #{fenqi,jdbcType=VARCHAR},
-      sflz = #{sflz,jdbcType=INTEGER},
-      gangweId = #{gangweid,jdbcType=INTEGER},
-      login = #{login,jdbcType=VARCHAR},
-      bei1 = #{bei1,jdbcType=VARCHAR},
-      bei2 = #{bei2,jdbcType=VARCHAR},
-      bei3 = #{bei3,jdbcType=VARCHAR},
-      bei4 = #{bei4,jdbcType=VARCHAR}
-    where yuanNo = #{yuanno,jdbcType=VARCHAR}
-  </update>
+<mapper namespace="com.accp.mapper.YuangongMapper">
+	<resultMap id="BaseResultMap" type="com.accp.domain.Yuangong">
+		<id column="yuanNo" property="yuanno" jdbcType="VARCHAR" />
+		<result column="shuXingId" property="shuxingid"
+			jdbcType="INTEGER" />
+		<result column="BuMenId" property="bumenid" jdbcType="INTEGER" />
+		<result column="yuanName" property="yuanname"
+			jdbcType="VARCHAR" />
+		<result column="birthday" property="birthday" jdbcType="DATE" />
+		<result column="sex" property="sex" jdbcType="CHAR" />
+		<result column="phone" property="phone" jdbcType="VARCHAR" />
+		<result column="emPeople" property="empeople"
+			jdbcType="VARCHAR" />
+		<result column="emPhone" property="emphone" jdbcType="VARCHAR" />
+		<result column="ZhiWuId" property="zhiwuid" jdbcType="VARCHAR" />
+		<result column="nowAddress" property="nowaddress"
+			jdbcType="VARCHAR" />
+		<result column="HuAddress" property="huaddress"
+			jdbcType="VARCHAR" />
+		<result column="bank" property="bank" jdbcType="VARCHAR" />
+		<result column="cardNumber" property="cardnumber"
+			jdbcType="VARCHAR" />
+		<result column="email" property="email" jdbcType="VARCHAR" />
+		<result column="bodystate" property="bodystate"
+			jdbcType="VARCHAR" />
+		<result column="height" property="height" jdbcType="INTEGER" />
+		<result column="JiGuan" property="jiguan" jdbcType="VARCHAR" />
+		<result column="MinZu" property="minzu" jdbcType="VARCHAR" />
+		<result column="HunYin" property="hunyin" jdbcType="VARCHAR" />
+		<result column="XueLi" property="xueli" jdbcType="VARCHAR" />
+		<result column="BiYe" property="biye" jdbcType="VARCHAR" />
+		<result column="ZhuanYe" property="zhuanye" jdbcType="VARCHAR" />
+		<result column="ZhuanYezg" property="zhuanyezg"
+			jdbcType="VARCHAR" />
+		<result column="xueWei" property="xuewei" jdbcType="VARCHAR" />
+		<result column="bianZhi" property="bianzhi" jdbcType="VARCHAR" />
+		<result column="IDcard" property="idcard" jdbcType="VARCHAR" />
+		<result column="shouJi" property="shouji" jdbcType="VARCHAR" />
+		<result column="ShiYong" property="shiyong" jdbcType="DATE" />
+		<result column="HeTongstart" property="hetongstart"
+			jdbcType="DATE" />
+		<result column="HeTongEnd" property="hetongend" jdbcType="DATE" />
+		<result column="KaZi" property="kazi" jdbcType="VARCHAR" />
+		<result column="KaNei" property="kanei" jdbcType="VARCHAR" />
+		<result column="TuiJian" property="tuijian" jdbcType="VARCHAR" />
+		<result column="zdZheKou" property="zdzhekou" jdbcType="DOUBLE" />
+		<result column="gsZheKou" property="gszhekou" jdbcType="DOUBLE" />
+		<result column="spZheKou" property="spzhekou" jdbcType="DOUBLE" />
+		<result column="jianMian" property="jianmian" jdbcType="DOUBLE" />
+		<result column="fenqi" property="fenqi" jdbcType="VARCHAR" />
+		<result column="sflz" property="sflz" jdbcType="INTEGER" />
+		<result column="gangweId" property="gangweid"
+			jdbcType="INTEGER" />
+		<result column="login" property="login" jdbcType="VARCHAR" />
+		<result column="bei1" property="bei1" jdbcType="VARCHAR" />
+		<result column="bei2" property="bei2" jdbcType="VARCHAR" />
+		<result column="bei3" property="bei3" jdbcType="DATE" />
+		<result column="bei4" property="bei4" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<!-- 离职登记回滚 -->
+	<update id="lzdjhg">
+		UPDATE `yuangong` SET `sflz` = 0 WHERE `yuanNo` = #{yuanno}
+	</update>
+	
+	<!-- 离职登记打开 -->
+	<select id="lzdjdk" resultMap="BaseResultMap">
+		SELECT
+		`yuanNo`,
+		`shuXingId`,
+		`BuMenId`,
+		`yuanName`,
+		`birthday`,
+		`sex`,
+		`phone`,
+		`emPeople`,
+		`emPhone`,
+		`ZhiWuId`,
+		`nowAddress`,
+		`HuAddress`,
+		`bank`,
+		`cardNumber`,
+		`email`,
+		`bodystate`,
+		`height`,
+		`JiGuan`,
+		`MinZu`,
+		`HunYin`,
+		`XueLi`,
+		`BiYe`,
+		`ZhuanYe`,
+		`ZhuanYezg`,
+		`xueWei`,
+		`bianZhi`,
+		`IDcard`,
+		`shouJi`,
+		`ShiYong`,
+		`HeTongstart`,
+		`HeTongEnd`,
+		`KaZi`,
+		`KaNei`,
+		`TuiJian`,
+		`zdZheKou`,
+		`gsZheKou`,
+		`spZheKou`,
+		`jianMian`,
+		`fenqi`,
+		`sflz`,
+		`gangweId`,
+		`login`,
+		`bei1`,
+		`bei2`,
+		`bei3`,
+		`bei4`
+		FROM`yuangong`
+		WHERE `yuanNo`=#{yuanno}
+	</select>
+	
+	<!-- 离职登记获取初始数据 -->
+	<select id="querycssj" resultMap="BaseResultMap">
+		SELECT
+		`yuangong`.*,`bumen`.`BuMenName`,`zhiwu`.`zhiWuName`,`lizhi`.`LiZhiTime`,`lizhi`.`remark`
+		FROM `yuangong`
+		LEFT JOIN `bumen` ON `yuangong`.`BuMenId`=`bumen`.`BuMenId`
+		LEFT JOIN `lizhi` ON `yuangong`.`yuanNo`=`lizhi`.`YuanNo`
+		LEFT JOIN `zhiwu` ON `yuangong`.`ZhiWuId`=`zhiwu`.`ZhiWuId`
+		WHERE `yuangong`.`sflz`=1
+	</select>
+
+	<!-- 组织机构点击树状图获取部门在根据部门id查询员工详情 -->
+	<select id="gjbmcxyg" resultMap="BaseResultMap">
+		SELECT
+		yg.`BuMenId`,
+		bm.`BuMenName`,
+		yg.`yuanNo`,
+		yg.`yuanName`,
+		yg.`sex`,
+		gw.`gangweiname`,
+		yg.`bodystate`,
+		yg.`height`,
+		yg.`JiGuan`,
+		yg.`MinZu`,
+		yg.`HunYin`,
+		yg.`XueLi`,
+		yg.`BiYe`,
+		yg.`ZhuanYe`,
+		yg.`ZhuanYezg`,
+		yg.`xueWei`,
+		yg.`bianZhi`,
+		yg.`IDcard`,
+		yg.`HuAddress`,
+		yg.`bei1`,
+		yg.`nowAddress`,
+		yg.`bei2`,
+		yg.`phone`,
+		yg.`shouJi`,
+		yg.`email`,
+		yg.`emPeople`,
+		yg.`emPhone`,
+		yg.`nowAddress`,
+		yg.`ShiYong`,
+		yg.`bei3`,
+		yg.`birthday`,
+		yg.`HeTongstart`,
+		yg.`HeTongEnd`
+		FROM `yuangong` AS yg
+		INNER JOIN `bumen`
+		AS bm
+		ON
+		yg.`BuMenId`=bm.`BuMenId`
+		INNER JOIN `gangwei` AS gw
+		ON
+		yg.gangweId=gw.`gangweId`
+		WHERE `sflz`=0 AND yg.`BuMenId`=#{bumenid}
+	</select>
+
+
+	<!-- 通讯名录员工详情查询 -->
+	<select id="cxtxmlxq" resultMap="BaseResultMap">
+		SELECT
+		yg.*,
+		bm.`BuMenName`
+		FROM
+		`yuangong` AS yg
+		INNER JOIN `bumen` AS bm
+		ON
+		yg.`BuMenId`=bm.`BuMenId`
+		WHERE `sflz`=0
+	</select>
+
+	<!-- 组织机构赋删除员工 -->
+	<update id="xglzzt">
+		UPDATE `yuangong` SET `sflz` = 1 WHERE `yuanNo` =
+		#{yuanno}
+	</update>
+
+	<!-- 组织机构赋予员工角色 -->
+	<update id="fujs">
+		UPDATE `yuangong` SET `ZhiWuId` = #{zhiwuid} WHERE
+		`yuanNo` = #{yuanno}
+	</update>
+
+	<!--组织机构修改员工查询 -->
+	<select id="byupygff" resultMap="BaseResultMap">
+		SELECT
+		`yuanNo`,
+		`shuXingId`,
+		`BuMenId`,
+		`yuanName`,
+		`birthday`,
+		`sex`,
+		`phone`,
+		`emPeople`,
+		`emPhone`,
+		`ZhiWuId`,
+		`nowAddress`,
+		`HuAddress`,
+		`bank`,
+		`cardNumber`,
+		`email`,
+		`bodystate`,
+		`height`,
+		`JiGuan`,
+		`MinZu`,
+		`HunYin`,
+		`XueLi`,
+		`BiYe`,
+		`ZhuanYe`,
+		`ZhuanYezg`,
+		`xueWei`,
+		`bianZhi`,
+		`IDcard`,
+		`shouJi`,
+		`ShiYong`,
+		`HeTongstart`,
+		`HeTongEnd`,
+		`KaZi`,
+		`KaNei`,
+		`TuiJian`,
+		`zdZheKou`,
+		`gsZheKou`,
+		`spZheKou`,
+		`jianMian`,
+		`fenqi`,
+		`sflz`,
+		`gangweId`,
+		`login`,
+		`bei1`,
+		`bei2`,
+		`bei3`,
+		`bei4`
+		FROM`yuangong`
+		WHERE `yuanNo`=#{yuanno}
+	</select>
+
+	<!-- 组织机构员工详情查询 -->
+	<select id="ygcx" resultMap="BaseResultMap">
+		SELECT
+		yg.`BuMenId`,
+		bm.`BuMenName`,
+		yg.`yuanNo`,
+		yg.`yuanName`,
+		yg.`sex`,
+		gw.`gangweiname`,
+		yg.`bodystate`,
+		yg.`height`,
+		yg.`JiGuan`,
+		yg.`MinZu`,
+		yg.`HunYin`,
+		yg.`XueLi`,
+		yg.`BiYe`,
+		yg.`ZhuanYe`,
+		yg.`ZhuanYezg`,
+		yg.`xueWei`,
+		yg.`bianZhi`,
+		yg.`IDcard`,
+		yg.`HuAddress`,
+		yg.`bei1`,
+		yg.`nowAddress`,
+		yg.`bei2`,
+		yg.`phone`,
+		yg.`shouJi`,
+		yg.`email`,
+		yg.`emPeople`,
+		yg.`emPhone`,
+		yg.`nowAddress`,
+		yg.`ShiYong`,
+		yg.`bei3`,
+		yg.`birthday`,
+		yg.`HeTongstart`,
+		yg.`HeTongEnd`
+		FROM `yuangong` AS yg
+		INNER JOIN `bumen` AS bm
+		ON
+		yg.`BuMenId`=bm.`BuMenId`
+		INNER JOIN `gangwei` AS gw
+		ON
+		yg.gangweId=gw.`gangweId`
+		WHERE `sflz`=0
+	</select>
+
+	<!-- 组织机构置空密码 -->
+	<update id="zkmm">
+		UPDATE `yuangong` SET `bei4` = NULL WHERE `yuanNo` =
+		#{yuanno}
+	</update>
+
+	<sql id="Example_Where_Clause">
+		<where>
+			<foreach collection="oredCriteria" item="criteria"
+				separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value}
+									and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem"
+										open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Update_By_Example_Where_Clause">
+		<where>
+			<foreach collection="example.oredCriteria" item="criteria"
+				separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value}
+									and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem"
+										open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Base_Column_List">
+		yuanNo, shuXingId, BuMenId, yuanName, birthday, sex, phone,
+		emPeople,
+		emPhone, ZhiWuId,
+		nowAddress, HuAddress, bank, cardNumber,
+		email, bodystate, height, JiGuan, MinZu,
+		HunYin, XueLi, BiYe, ZhuanYe,
+		ZhuanYezg, xueWei, bianZhi, IDcard,
+		shouJi, ShiYong,
+		HeTongstart,
+		HeTongEnd, KaZi, KaNei, TuiJian, zdZheKou, gsZheKou, spZheKou,
+		jianMian,
+		fenqi, sflz, gangweId, login, bei1, bei2, bei3, bei4
+	</sql>
+	<select id="selectByExample" resultMap="BaseResultMap"
+		parameterType="com.accp.domain.YuangongExample">
+		select
+		<if test="distinct">
+			distinct
+		</if>
+		<include refid="Base_Column_List" />
+		from yuangong
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
+	</select>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from yuangong
+		where yuanNo = #{yuanno,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from
+		yuangong
+		where yuanNo = #{yuanno,jdbcType=VARCHAR}
+	</delete>
+	<delete id="deleteByExample"
+		parameterType="com.accp.domain.YuangongExample">
+		delete from yuangong
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</delete>
+	<insert id="insert" parameterType="com.accp.domain.Yuangong">
+		insert into yuangong (yuanNo,
+		shuXingId, BuMenId,
+		yuanName, birthday, sex,
+		phone, emPeople, emPhone,
+		ZhiWuId, nowAddress, HuAddress,
+		bank, cardNumber, email,
+		bodystate,
+		height, JiGuan,
+		MinZu, HunYin, XueLi,
+		BiYe, ZhuanYe, ZhuanYezg,
+		xueWei,
+		bianZhi, IDcard,
+		shouJi, ShiYong, HeTongstart,
+		HeTongEnd, KaZi, KaNei,
+		TuiJian, zdZheKou, gsZheKou,
+		spZheKou, jianMian, fenqi,
+		sflz, gangweId,
+		login,
+		bei1, bei2, bei3, bei4
+		)
+		values (#{yuanno,jdbcType=VARCHAR},
+		#{shuxingid,jdbcType=INTEGER},
+		#{bumenid,jdbcType=INTEGER},
+		#{yuanname,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE},
+		#{sex,jdbcType=CHAR},
+		#{phone,jdbcType=VARCHAR},
+		#{empeople,jdbcType=VARCHAR},
+		#{emphone,jdbcType=VARCHAR},
+		#{zhiwuid,jdbcType=VARCHAR}, #{nowaddress,jdbcType=VARCHAR},
+		#{huaddress,jdbcType=VARCHAR},
+		#{bank,jdbcType=VARCHAR},
+		#{cardnumber,jdbcType=VARCHAR},
+		#{email,jdbcType=VARCHAR},
+		#{bodystate,jdbcType=VARCHAR}, #{height,jdbcType=INTEGER},
+		#{jiguan,jdbcType=VARCHAR},
+		#{minzu,jdbcType=VARCHAR},
+		#{hunyin,jdbcType=VARCHAR},
+		#{xueli,jdbcType=VARCHAR},
+		#{biye,jdbcType=VARCHAR}, #{zhuanye,jdbcType=VARCHAR},
+		#{zhuanyezg,jdbcType=VARCHAR},
+		#{xuewei,jdbcType=VARCHAR},
+		#{bianzhi,jdbcType=VARCHAR},
+		#{idcard,jdbcType=VARCHAR},
+		#{shouji,jdbcType=VARCHAR}, #{shiyong,jdbcType=DATE},
+		#{hetongstart,jdbcType=DATE},
+		#{hetongend,jdbcType=DATE},
+		#{kazi,jdbcType=VARCHAR},
+		#{kanei,jdbcType=VARCHAR},
+		#{tuijian,jdbcType=VARCHAR}, #{zdzhekou,jdbcType=DOUBLE},
+		#{gszhekou,jdbcType=DOUBLE},
+		#{spzhekou,jdbcType=DOUBLE},
+		#{jianmian,jdbcType=DOUBLE},
+		#{fenqi,jdbcType=VARCHAR},
+		#{sflz,jdbcType=INTEGER}, #{gangweid,jdbcType=INTEGER},
+		#{login,jdbcType=VARCHAR},
+		#{bei1,jdbcType=VARCHAR},
+		#{bei2,jdbcType=VARCHAR},
+		#{bei3,jdbcType=DATE},
+		#{bei4,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective"
+		parameterType="com.accp.domain.Yuangong">
+		insert into yuangong
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="yuanno != null">
+				yuanNo,
+			</if>
+			<if test="shuxingid != null">
+				shuXingId,
+			</if>
+			<if test="bumenid != null">
+				BuMenId,
+			</if>
+			<if test="yuanname != null">
+				yuanName,
+			</if>
+			<if test="birthday != null">
+				birthday,
+			</if>
+			<if test="sex != null">
+				sex,
+			</if>
+			<if test="phone != null">
+				phone,
+			</if>
+			<if test="empeople != null">
+				emPeople,
+			</if>
+			<if test="emphone != null">
+				emPhone,
+			</if>
+			<if test="zhiwuid != null">
+				ZhiWuId,
+			</if>
+			<if test="nowaddress != null">
+				nowAddress,
+			</if>
+			<if test="huaddress != null">
+				HuAddress,
+			</if>
+			<if test="bank != null">
+				bank,
+			</if>
+			<if test="cardnumber != null">
+				cardNumber,
+			</if>
+			<if test="email != null">
+				email,
+			</if>
+			<if test="bodystate != null">
+				bodystate,
+			</if>
+			<if test="height != null">
+				height,
+			</if>
+			<if test="jiguan != null">
+				JiGuan,
+			</if>
+			<if test="minzu != null">
+				MinZu,
+			</if>
+			<if test="hunyin != null">
+				HunYin,
+			</if>
+			<if test="xueli != null">
+				XueLi,
+			</if>
+			<if test="biye != null">
+				BiYe,
+			</if>
+			<if test="zhuanye != null">
+				ZhuanYe,
+			</if>
+			<if test="zhuanyezg != null">
+				ZhuanYezg,
+			</if>
+			<if test="xuewei != null">
+				xueWei,
+			</if>
+			<if test="bianzhi != null">
+				bianZhi,
+			</if>
+			<if test="idcard != null">
+				IDcard,
+			</if>
+			<if test="shouji != null">
+				shouJi,
+			</if>
+			<if test="shiyong != null">
+				ShiYong,
+			</if>
+			<if test="hetongstart != null">
+				HeTongstart,
+			</if>
+			<if test="hetongend != null">
+				HeTongEnd,
+			</if>
+			<if test="kazi != null">
+				KaZi,
+			</if>
+			<if test="kanei != null">
+				KaNei,
+			</if>
+			<if test="tuijian != null">
+				TuiJian,
+			</if>
+			<if test="zdzhekou != null">
+				zdZheKou,
+			</if>
+			<if test="gszhekou != null">
+				gsZheKou,
+			</if>
+			<if test="spzhekou != null">
+				spZheKou,
+			</if>
+			<if test="jianmian != null">
+				jianMian,
+			</if>
+			<if test="fenqi != null">
+				fenqi,
+			</if>
+			<if test="sflz != null">
+				sflz,
+			</if>
+			<if test="gangweid != null">
+				gangweId,
+			</if>
+			<if test="login != null">
+				login,
+			</if>
+			<if test="bei1 != null">
+				bei1,
+			</if>
+			<if test="bei2 != null">
+				bei2,
+			</if>
+			<if test="bei3 != null">
+				bei3,
+			</if>
+			<if test="bei4 != null">
+				bei4,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="yuanno != null">
+				#{yuanno,jdbcType=VARCHAR},
+			</if>
+			<if test="shuxingid != null">
+				#{shuxingid,jdbcType=INTEGER},
+			</if>
+			<if test="bumenid != null">
+				#{bumenid,jdbcType=INTEGER},
+			</if>
+			<if test="yuanname != null">
+				#{yuanname,jdbcType=VARCHAR},
+			</if>
+			<if test="birthday != null">
+				#{birthday,jdbcType=DATE},
+			</if>
+			<if test="sex != null">
+				#{sex,jdbcType=CHAR},
+			</if>
+			<if test="phone != null">
+				#{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="empeople != null">
+				#{empeople,jdbcType=VARCHAR},
+			</if>
+			<if test="emphone != null">
+				#{emphone,jdbcType=VARCHAR},
+			</if>
+			<if test="zhiwuid != null">
+				#{zhiwuid,jdbcType=VARCHAR},
+			</if>
+			<if test="nowaddress != null">
+				#{nowaddress,jdbcType=VARCHAR},
+			</if>
+			<if test="huaddress != null">
+				#{huaddress,jdbcType=VARCHAR},
+			</if>
+			<if test="bank != null">
+				#{bank,jdbcType=VARCHAR},
+			</if>
+			<if test="cardnumber != null">
+				#{cardnumber,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				#{email,jdbcType=VARCHAR},
+			</if>
+			<if test="bodystate != null">
+				#{bodystate,jdbcType=VARCHAR},
+			</if>
+			<if test="height != null">
+				#{height,jdbcType=INTEGER},
+			</if>
+			<if test="jiguan != null">
+				#{jiguan,jdbcType=VARCHAR},
+			</if>
+			<if test="minzu != null">
+				#{minzu,jdbcType=VARCHAR},
+			</if>
+			<if test="hunyin != null">
+				#{hunyin,jdbcType=VARCHAR},
+			</if>
+			<if test="xueli != null">
+				#{xueli,jdbcType=VARCHAR},
+			</if>
+			<if test="biye != null">
+				#{biye,jdbcType=VARCHAR},
+			</if>
+			<if test="zhuanye != null">
+				#{zhuanye,jdbcType=VARCHAR},
+			</if>
+			<if test="zhuanyezg != null">
+				#{zhuanyezg,jdbcType=VARCHAR},
+			</if>
+			<if test="xuewei != null">
+				#{xuewei,jdbcType=VARCHAR},
+			</if>
+			<if test="bianzhi != null">
+				#{bianzhi,jdbcType=VARCHAR},
+			</if>
+			<if test="idcard != null">
+				#{idcard,jdbcType=VARCHAR},
+			</if>
+			<if test="shouji != null">
+				#{shouji,jdbcType=VARCHAR},
+			</if>
+			<if test="shiyong != null">
+				#{shiyong,jdbcType=DATE},
+			</if>
+			<if test="hetongstart != null">
+				#{hetongstart,jdbcType=DATE},
+			</if>
+			<if test="hetongend != null">
+				#{hetongend,jdbcType=DATE},
+			</if>
+			<if test="kazi != null">
+				#{kazi,jdbcType=VARCHAR},
+			</if>
+			<if test="kanei != null">
+				#{kanei,jdbcType=VARCHAR},
+			</if>
+			<if test="tuijian != null">
+				#{tuijian,jdbcType=VARCHAR},
+			</if>
+			<if test="zdzhekou != null">
+				#{zdzhekou,jdbcType=DOUBLE},
+			</if>
+			<if test="gszhekou != null">
+				#{gszhekou,jdbcType=DOUBLE},
+			</if>
+			<if test="spzhekou != null">
+				#{spzhekou,jdbcType=DOUBLE},
+			</if>
+			<if test="jianmian != null">
+				#{jianmian,jdbcType=DOUBLE},
+			</if>
+			<if test="fenqi != null">
+				#{fenqi,jdbcType=VARCHAR},
+			</if>
+			<if test="sflz != null">
+				#{sflz,jdbcType=INTEGER},
+			</if>
+			<if test="gangweid != null">
+				#{gangweid,jdbcType=INTEGER},
+			</if>
+			<if test="login != null">
+				#{login,jdbcType=VARCHAR},
+			</if>
+			<if test="bei1 != null">
+				#{bei1,jdbcType=VARCHAR},
+			</if>
+			<if test="bei2 != null">
+				#{bei2,jdbcType=VARCHAR},
+			</if>
+			<if test="bei3 != null">
+				#{bei3,jdbcType=DATE},
+			</if>
+			<if test="bei4 != null">
+				#{bei4,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<select id="countByExample"
+		parameterType="com.accp.domain.YuangongExample"
+		resultType="java.lang.Integer">
+		select count(*) from yuangong
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</select>
+	<update id="updateByExampleSelective" parameterType="map">
+		update yuangong
+		<set>
+			<if test="record.yuanno != null">
+				yuanNo = #{record.yuanno,jdbcType=VARCHAR},
+			</if>
+			<if test="record.shuxingid != null">
+				shuXingId = #{record.shuxingid,jdbcType=INTEGER},
+			</if>
+			<if test="record.bumenid != null">
+				BuMenId = #{record.bumenid,jdbcType=INTEGER},
+			</if>
+			<if test="record.yuanname != null">
+				yuanName = #{record.yuanname,jdbcType=VARCHAR},
+			</if>
+			<if test="record.birthday != null">
+				birthday = #{record.birthday,jdbcType=DATE},
+			</if>
+			<if test="record.sex != null">
+				sex = #{record.sex,jdbcType=CHAR},
+			</if>
+			<if test="record.phone != null">
+				phone = #{record.phone,jdbcType=VARCHAR},
+			</if>
+			<if test="record.empeople != null">
+				emPeople = #{record.empeople,jdbcType=VARCHAR},
+			</if>
+			<if test="record.emphone != null">
+				emPhone = #{record.emphone,jdbcType=VARCHAR},
+			</if>
+			<if test="record.zhiwuid != null">
+				ZhiWuId = #{record.zhiwuid,jdbcType=VARCHAR},
+			</if>
+			<if test="record.nowaddress != null">
+				nowAddress = #{record.nowaddress,jdbcType=VARCHAR},
+			</if>
+			<if test="record.huaddress != null">
+				HuAddress = #{record.huaddress,jdbcType=VARCHAR},
+			</if>
+			<if test="record.bank != null">
+				bank = #{record.bank,jdbcType=VARCHAR},
+			</if>
+			<if test="record.cardnumber != null">
+				cardNumber = #{record.cardnumber,jdbcType=VARCHAR},
+			</if>
+			<if test="record.email != null">
+				email = #{record.email,jdbcType=VARCHAR},
+			</if>
+			<if test="record.bodystate != null">
+				bodystate = #{record.bodystate,jdbcType=VARCHAR},
+			</if>
+			<if test="record.height != null">
+				height = #{record.height,jdbcType=INTEGER},
+			</if>
+			<if test="record.jiguan != null">
+				JiGuan = #{record.jiguan,jdbcType=VARCHAR},
+			</if>
+			<if test="record.minzu != null">
+				MinZu = #{record.minzu,jdbcType=VARCHAR},
+			</if>
+			<if test="record.hunyin != null">
+				HunYin = #{record.hunyin,jdbcType=VARCHAR},
+			</if>
+			<if test="record.xueli != null">
+				XueLi = #{record.xueli,jdbcType=VARCHAR},
+			</if>
+			<if test="record.biye != null">
+				BiYe = #{record.biye,jdbcType=VARCHAR},
+			</if>
+			<if test="record.zhuanye != null">
+				ZhuanYe = #{record.zhuanye,jdbcType=VARCHAR},
+			</if>
+			<if test="record.zhuanyezg != null">
+				ZhuanYezg = #{record.zhuanyezg,jdbcType=VARCHAR},
+			</if>
+			<if test="record.xuewei != null">
+				xueWei = #{record.xuewei,jdbcType=VARCHAR},
+			</if>
+			<if test="record.bianzhi != null">
+				bianZhi = #{record.bianzhi,jdbcType=VARCHAR},
+			</if>
+			<if test="record.idcard != null">
+				IDcard = #{record.idcard,jdbcType=VARCHAR},
+			</if>
+			<if test="record.shouji != null">
+				shouJi = #{record.shouji,jdbcType=VARCHAR},
+			</if>
+			<if test="record.shiyong != null">
+				ShiYong = #{record.shiyong,jdbcType=DATE},
+			</if>
+			<if test="record.hetongstart != null">
+				HeTongstart = #{record.hetongstart,jdbcType=DATE},
+			</if>
+			<if test="record.hetongend != null">
+				HeTongEnd = #{record.hetongend,jdbcType=DATE},
+			</if>
+			<if test="record.kazi != null">
+				KaZi = #{record.kazi,jdbcType=VARCHAR},
+			</if>
+			<if test="record.kanei != null">
+				KaNei = #{record.kanei,jdbcType=VARCHAR},
+			</if>
+			<if test="record.tuijian != null">
+				TuiJian = #{record.tuijian,jdbcType=VARCHAR},
+			</if>
+			<if test="record.zdzhekou != null">
+				zdZheKou = #{record.zdzhekou,jdbcType=DOUBLE},
+			</if>
+			<if test="record.gszhekou != null">
+				gsZheKou = #{record.gszhekou,jdbcType=DOUBLE},
+			</if>
+			<if test="record.spzhekou != null">
+				spZheKou = #{record.spzhekou,jdbcType=DOUBLE},
+			</if>
+			<if test="record.jianmian != null">
+				jianMian = #{record.jianmian,jdbcType=DOUBLE},
+			</if>
+			<if test="record.fenqi != null">
+				fenqi = #{record.fenqi,jdbcType=VARCHAR},
+			</if>
+			<if test="record.sflz != null">
+				sflz = #{record.sflz,jdbcType=INTEGER},
+			</if>
+			<if test="record.gangweid != null">
+				gangweId = #{record.gangweid,jdbcType=INTEGER},
+			</if>
+			<if test="record.login != null">
+				login = #{record.login,jdbcType=VARCHAR},
+			</if>
+			<if test="record.bei1 != null">
+				bei1 = #{record.bei1,jdbcType=VARCHAR},
+			</if>
+			<if test="record.bei2 != null">
+				bei2 = #{record.bei2,jdbcType=VARCHAR},
+			</if>
+			<if test="record.bei3 != null">
+				bei3 = #{record.bei3,jdbcType=DATE},
+			</if>
+			<if test="record.bei4 != null">
+				bei4 = #{record.bei4,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByExample" parameterType="map">
+		update yuangong
+		set yuanNo = #{record.yuanno,jdbcType=VARCHAR},
+		shuXingId = #{record.shuxingid,jdbcType=INTEGER},
+		BuMenId =
+		#{record.bumenid,jdbcType=INTEGER},
+		yuanName =
+		#{record.yuanname,jdbcType=VARCHAR},
+		birthday =
+		#{record.birthday,jdbcType=DATE},
+		sex = #{record.sex,jdbcType=CHAR},
+		phone = #{record.phone,jdbcType=VARCHAR},
+		emPeople =
+		#{record.empeople,jdbcType=VARCHAR},
+		emPhone =
+		#{record.emphone,jdbcType=VARCHAR},
+		ZhiWuId =
+		#{record.zhiwuid,jdbcType=VARCHAR},
+		nowAddress =
+		#{record.nowaddress,jdbcType=VARCHAR},
+		HuAddress =
+		#{record.huaddress,jdbcType=VARCHAR},
+		bank =
+		#{record.bank,jdbcType=VARCHAR},
+		cardNumber =
+		#{record.cardnumber,jdbcType=VARCHAR},
+		email =
+		#{record.email,jdbcType=VARCHAR},
+		bodystate =
+		#{record.bodystate,jdbcType=VARCHAR},
+		height =
+		#{record.height,jdbcType=INTEGER},
+		JiGuan =
+		#{record.jiguan,jdbcType=VARCHAR},
+		MinZu =
+		#{record.minzu,jdbcType=VARCHAR},
+		HunYin =
+		#{record.hunyin,jdbcType=VARCHAR},
+		XueLi =
+		#{record.xueli,jdbcType=VARCHAR},
+		BiYe =
+		#{record.biye,jdbcType=VARCHAR},
+		ZhuanYe =
+		#{record.zhuanye,jdbcType=VARCHAR},
+		ZhuanYezg =
+		#{record.zhuanyezg,jdbcType=VARCHAR},
+		xueWei =
+		#{record.xuewei,jdbcType=VARCHAR},
+		bianZhi =
+		#{record.bianzhi,jdbcType=VARCHAR},
+		IDcard =
+		#{record.idcard,jdbcType=VARCHAR},
+		shouJi =
+		#{record.shouji,jdbcType=VARCHAR},
+		ShiYong =
+		#{record.shiyong,jdbcType=DATE},
+		HeTongstart =
+		#{record.hetongstart,jdbcType=DATE},
+		HeTongEnd =
+		#{record.hetongend,jdbcType=DATE},
+		KaZi =
+		#{record.kazi,jdbcType=VARCHAR},
+		KaNei =
+		#{record.kanei,jdbcType=VARCHAR},
+		TuiJian =
+		#{record.tuijian,jdbcType=VARCHAR},
+		zdZheKou =
+		#{record.zdzhekou,jdbcType=DOUBLE},
+		gsZheKou =
+		#{record.gszhekou,jdbcType=DOUBLE},
+		spZheKou =
+		#{record.spzhekou,jdbcType=DOUBLE},
+		jianMian =
+		#{record.jianmian,jdbcType=DOUBLE},
+		fenqi =
+		#{record.fenqi,jdbcType=VARCHAR},
+		sflz =
+		#{record.sflz,jdbcType=INTEGER},
+		gangweId =
+		#{record.gangweid,jdbcType=INTEGER},
+		login =
+		#{record.login,jdbcType=VARCHAR},
+		bei1 =
+		#{record.bei1,jdbcType=VARCHAR},
+		bei2 =
+		#{record.bei2,jdbcType=VARCHAR},
+		bei3 = #{record.bei3,jdbcType=DATE},
+		bei4 = #{record.bei4,jdbcType=VARCHAR}
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByPrimaryKeySelective"
+		parameterType="com.accp.domain.Yuangong">
+		update yuangong
+		<set>
+			<if test="shuxingid != null">
+				shuXingId = #{shuxingid,jdbcType=INTEGER},
+			</if>
+			<if test="bumenid != null">
+				BuMenId = #{bumenid,jdbcType=INTEGER},
+			</if>
+			<if test="yuanname != null">
+				yuanName = #{yuanname,jdbcType=VARCHAR},
+			</if>
+			<if test="birthday != null">
+				birthday = #{birthday,jdbcType=DATE},
+			</if>
+			<if test="sex != null">
+				sex = #{sex,jdbcType=CHAR},
+			</if>
+			<if test="phone != null">
+				phone = #{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="empeople != null">
+				emPeople = #{empeople,jdbcType=VARCHAR},
+			</if>
+			<if test="emphone != null">
+				emPhone = #{emphone,jdbcType=VARCHAR},
+			</if>
+			<if test="zhiwuid != null">
+				ZhiWuId = #{zhiwuid,jdbcType=VARCHAR},
+			</if>
+			<if test="nowaddress != null">
+				nowAddress = #{nowaddress,jdbcType=VARCHAR},
+			</if>
+			<if test="huaddress != null">
+				HuAddress = #{huaddress,jdbcType=VARCHAR},
+			</if>
+			<if test="bank != null">
+				bank = #{bank,jdbcType=VARCHAR},
+			</if>
+			<if test="cardnumber != null">
+				cardNumber = #{cardnumber,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				email = #{email,jdbcType=VARCHAR},
+			</if>
+			<if test="bodystate != null">
+				bodystate = #{bodystate,jdbcType=VARCHAR},
+			</if>
+			<if test="height != null">
+				height = #{height,jdbcType=INTEGER},
+			</if>
+			<if test="jiguan != null">
+				JiGuan = #{jiguan,jdbcType=VARCHAR},
+			</if>
+			<if test="minzu != null">
+				MinZu = #{minzu,jdbcType=VARCHAR},
+			</if>
+			<if test="hunyin != null">
+				HunYin = #{hunyin,jdbcType=VARCHAR},
+			</if>
+			<if test="xueli != null">
+				XueLi = #{xueli,jdbcType=VARCHAR},
+			</if>
+			<if test="biye != null">
+				BiYe = #{biye,jdbcType=VARCHAR},
+			</if>
+			<if test="zhuanye != null">
+				ZhuanYe = #{zhuanye,jdbcType=VARCHAR},
+			</if>
+			<if test="zhuanyezg != null">
+				ZhuanYezg = #{zhuanyezg,jdbcType=VARCHAR},
+			</if>
+			<if test="xuewei != null">
+				xueWei = #{xuewei,jdbcType=VARCHAR},
+			</if>
+			<if test="bianzhi != null">
+				bianZhi = #{bianzhi,jdbcType=VARCHAR},
+			</if>
+			<if test="idcard != null">
+				IDcard = #{idcard,jdbcType=VARCHAR},
+			</if>
+			<if test="shouji != null">
+				shouJi = #{shouji,jdbcType=VARCHAR},
+			</if>
+			<if test="shiyong != null">
+				ShiYong = #{shiyong,jdbcType=DATE},
+			</if>
+			<if test="hetongstart != null">
+				HeTongstart = #{hetongstart,jdbcType=DATE},
+			</if>
+			<if test="hetongend != null">
+				HeTongEnd = #{hetongend,jdbcType=DATE},
+			</if>
+			<if test="kazi != null">
+				KaZi = #{kazi,jdbcType=VARCHAR},
+			</if>
+			<if test="kanei != null">
+				KaNei = #{kanei,jdbcType=VARCHAR},
+			</if>
+			<if test="tuijian != null">
+				TuiJian = #{tuijian,jdbcType=VARCHAR},
+			</if>
+			<if test="zdzhekou != null">
+				zdZheKou = #{zdzhekou,jdbcType=DOUBLE},
+			</if>
+			<if test="gszhekou != null">
+				gsZheKou = #{gszhekou,jdbcType=DOUBLE},
+			</if>
+			<if test="spzhekou != null">
+				spZheKou = #{spzhekou,jdbcType=DOUBLE},
+			</if>
+			<if test="jianmian != null">
+				jianMian = #{jianmian,jdbcType=DOUBLE},
+			</if>
+			<if test="fenqi != null">
+				fenqi = #{fenqi,jdbcType=VARCHAR},
+			</if>
+			<if test="sflz != null">
+				sflz = #{sflz,jdbcType=INTEGER},
+			</if>
+			<if test="gangweid != null">
+				gangweId = #{gangweid,jdbcType=INTEGER},
+			</if>
+			<if test="login != null">
+				login = #{login,jdbcType=VARCHAR},
+			</if>
+			<if test="bei1 != null">
+				bei1 = #{bei1,jdbcType=VARCHAR},
+			</if>
+			<if test="bei2 != null">
+				bei2 = #{bei2,jdbcType=VARCHAR},
+			</if>
+			<if test="bei3 != null">
+				bei3 = #{bei3,jdbcType=DATE},
+			</if>
+			<if test="bei4 != null">
+				bei4 = #{bei4,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where yuanNo = #{yuanno,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey"
+		parameterType="com.accp.domain.Yuangong">
+		update yuangong
+		set shuXingId =
+		#{shuxingid,jdbcType=INTEGER},
+		BuMenId = #{bumenid,jdbcType=INTEGER},
+		yuanName = #{yuanname,jdbcType=VARCHAR},
+		birthday =
+		#{birthday,jdbcType=DATE},
+		sex = #{sex,jdbcType=CHAR},
+		phone =
+		#{phone,jdbcType=VARCHAR},
+		emPeople = #{empeople,jdbcType=VARCHAR},
+		emPhone = #{emphone,jdbcType=VARCHAR},
+		ZhiWuId =
+		#{zhiwuid,jdbcType=VARCHAR},
+		nowAddress =
+		#{nowaddress,jdbcType=VARCHAR},
+		HuAddress =
+		#{huaddress,jdbcType=VARCHAR},
+		bank = #{bank,jdbcType=VARCHAR},
+		cardNumber = #{cardnumber,jdbcType=VARCHAR},
+		email =
+		#{email,jdbcType=VARCHAR},
+		bodystate = #{bodystate,jdbcType=VARCHAR},
+		height = #{height,jdbcType=INTEGER},
+		JiGuan =
+		#{jiguan,jdbcType=VARCHAR},
+		MinZu = #{minzu,jdbcType=VARCHAR},
+		HunYin =
+		#{hunyin,jdbcType=VARCHAR},
+		XueLi = #{xueli,jdbcType=VARCHAR},
+		BiYe =
+		#{biye,jdbcType=VARCHAR},
+		ZhuanYe = #{zhuanye,jdbcType=VARCHAR},
+		ZhuanYezg = #{zhuanyezg,jdbcType=VARCHAR},
+		xueWei =
+		#{xuewei,jdbcType=VARCHAR},
+		bianZhi = #{bianzhi,jdbcType=VARCHAR},
+		IDcard = #{idcard,jdbcType=VARCHAR},
+		shouJi =
+		#{shouji,jdbcType=VARCHAR},
+		ShiYong = #{shiyong,jdbcType=DATE},
+		HeTongstart = #{hetongstart,jdbcType=DATE},
+		HeTongEnd =
+		#{hetongend,jdbcType=DATE},
+		KaZi = #{kazi,jdbcType=VARCHAR},
+		KaNei =
+		#{kanei,jdbcType=VARCHAR},
+		TuiJian = #{tuijian,jdbcType=VARCHAR},
+		zdZheKou = #{zdzhekou,jdbcType=DOUBLE},
+		gsZheKou =
+		#{gszhekou,jdbcType=DOUBLE},
+		spZheKou = #{spzhekou,jdbcType=DOUBLE},
+		jianMian = #{jianmian,jdbcType=DOUBLE},
+		fenqi =
+		#{fenqi,jdbcType=VARCHAR},
+		sflz = #{sflz,jdbcType=INTEGER},
+		gangweId =
+		#{gangweid,jdbcType=INTEGER},
+		login = #{login,jdbcType=VARCHAR},
+		bei1 =
+		#{bei1,jdbcType=VARCHAR},
+		bei2 = #{bei2,jdbcType=VARCHAR},
+		bei3 =
+		#{bei3,jdbcType=DATE},
+		bei4 = #{bei4,jdbcType=VARCHAR}
+		where yuanNo =
+		#{yuanno,jdbcType=VARCHAR}
+	</update>
 </mapper>

@@ -2,6 +2,10 @@ package com.accp.domain;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Jigong {
     private String jigongno;
 
@@ -25,6 +29,8 @@ public class Jigong {
 
     private String wx;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+	@JsonFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
 
     private String idcard;
@@ -44,8 +50,28 @@ public class Jigong {
     private String bei3;
 
     private String bei4;
+    
+    private String banname;
+    
+    private String starname;
+    
+    public String getBanname() {
+		return banname;
+	}
 
-    public String getJigongno() {
+	public void setBanname(String banname) {
+		this.banname = banname;
+	}
+
+	public String getStarname() {
+		return starname;
+	}
+
+	public void setStarname(String starname) {
+		this.starname = starname;
+	}
+
+	public String getJigongno() {
         return jigongno;
     }
 

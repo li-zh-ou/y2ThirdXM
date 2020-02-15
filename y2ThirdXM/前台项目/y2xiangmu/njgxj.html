@@ -10,7 +10,7 @@
 				padding: 0px;
 			}
 			
-			#gwdiv{
+			#ctx{
 				border: 0px solid red;
 				
 			}
@@ -33,7 +33,7 @@
 		</style>
 	</head>
 	<body>
-		<div class="container-fluid" id="gwdiv">
+		<div class="container-fluid" id="ctx">
 			<div id="gwdiv1">
 				<ul>
 					<li><h3>技工星级</h3></li>
@@ -42,16 +42,16 @@
 			</div>
 			<div id="gwdiv2"> 
 				<ul style="float: right;">
-					<li><span class="glyphicon glyphicon-menu-hamburger"></span>增加</li>
-					<li> <span class="glyphicon glyphicon-remove-circle"></span>删除</li>
-					<li> <span class="glyphicon glyphicon-log-in"></span>保存</li>
+					<li><span class="glyphicon glyphicon-menu-hamburger" @click="insert" >增加</span></li>
+					<li> <span class="glyphicon glyphicon-remove-circle" @click="del(jgxjxz.jistarid)" >删除</span></li>
+					<li> <span class="glyphicon glyphicon-log-in" @click="up" >保存</span></li>
 				</ul>
 				<br />
 				<br />
 				<ul>
-					<li>等级编号<input type="text"></li>
-					<li>等级名称<input type="text"></li>
-					<li>提成权重<input type="text"></li>
+					<li>等级编号<input v-model="jgxjxz.jistarid" type="text"></li>
+					<li>等级名称<input v-model="jgxjxz.starname" type="text"></li>
+					<li>提成权重<input v-model="jgxjxz.ticheng" type="text"></li>
 				</ul>
 			</div>
 			<div>
@@ -64,14 +64,129 @@
 						</tr>			
 					</thead>
 					<tbody>
-						<tr>
-							<td>1</td>
-							<td>一星大流</td>
-							<td>0</td>
+						<tr v-for="item in jgxj" @click="tableDblclick(item)">
+							<td>{{item.jistarid}}</td>
+							<td>{{item.starname}}</td>
+							<td>{{item.ticheng}}</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 		</div>
-	</body>
+		
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript" src="js/my.js"></script>
+<script type="text/javascript">
+	
+	var vm = new Vue({
+		el: "#ctx",
+		data() {
+			return {
+				jgxj:{},//获取技工星级
+				jgxjxz:{jistarid:"",starname:"",ticheng:""},//绑定文本框
+				jgxjxz2:{jistarid:"",starname:"",ticheng:""}////绑定文本框
+			}
+		},
+		created(){//
+      		this.loading();//加载初岗位数据
+   		},
+		methods: {
+			loading:function() {//获取技工星级
+				$.ajax({
+					url: data.ip +"ncq/queryjgxj",
+						type: "get",
+						dataType: "json",
+					success: function(result) {
+						vm.jgxj = result;
+						console.log(result);
+					},
+					error: function(result) {
+						console.log(result);
+					}
+				});
+			},
+			insert:function(){//新增技工星级
+				$.ajax({
+					url:data.ip +"ncq/insertjgxj",
+					type:"post",
+					data:vm.jgxjxz,
+					dataType:"text",
+					success:function(result){
+						console.log(result);
+						if(result>0){
+							alert("新增成功");
+						}else{
+							alert("新增失败");
+						}
+						vm.loading();
+					},error:function(result){
+						console.log(result);
+					}
+				});
+			},
+			tableDblclick:function(item){//查询岗位放入上方text框
+				vm.jgxjxz.jistarid=item.jistarid;
+				vm.jgxjxz.starname=item.starname;
+				vm.jgxjxz.ticheng=item.ticheng;
+				vm.jgxjxz2.jistarid=item.jistarid;
+				vm.jgxjxz2.starname=item.starname;
+				vm.jgxjxz2.ticheng=item.ticheng;
+				console.log(vm.jgxjxz.jistarid);
+				console.log(vm.jgxjxz.starname);
+				console.log(vm.jgxjxz.ticheng);
+				console.log(vm.jgxjxz2.jistarid);
+				console.log(vm.jgxjxz2.starname);
+				console.log(vm.jgxjxz2.ticheng);
+			},
+			up:function(){
+				console.log(vm.jgxjxz.jistarid);
+				console.log(vm.jgxjxz.starname);
+				console.log(vm.jgxjxz2.ticheng);
+				$.ajax({//修改技工星级
+					url:data.ip +"ncq/upjgxj",
+					type:"post",
+					data:{jistarid:vm.jgxjxz.jistarid,starname:vm.jgxjxz.starname,ticheng:vm.jgxjxz.ticheng,ids:vm.jgxjxz2.jistarid},
+					dataType:"text",
+					success:function(result){
+						console.log(result);
+						if(result>0){
+							alert("修改成功");
+						}else{
+							alert("修改失败");
+						}
+						vm.loading();
+					},error:function(result){
+						console.log(result);
+					}
+				});
+			},
+			del:function(jistarid){//删除技工星级
+				$.ajax({
+					url:data.ip +"ncq/deljgxj",
+					type:"post",
+					data:{jistarid:jistarid},
+					dataType:"text",
+					success:function(result){
+						console.log(result);
+						console.log(result);
+						if(result>0){
+							alert("删除成功");
+						}else{
+							alert("删除失败");
+						}
+						vm.loading();
+					},error:function(result){
+						console.log(result);
+					}
+				});
+			}
+		}
+	});
+	
+	
+</script>
+</body>
 </html>

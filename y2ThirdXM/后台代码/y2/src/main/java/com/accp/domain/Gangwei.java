@@ -1,7 +1,7 @@
 package com.accp.domain;
 
 public class Gangwei {
-    private Integer gangweiid;//岗位id
+    private Integer gangweid;//岗位id
 
     private String gangweiname;//岗位名称
 
@@ -13,15 +13,17 @@ public class Gangwei {
 
     private String bei4;
 
-    public Integer getGangweiid() {
-        return gangweiid;
-    }
 
-    public void setGangweiid(Integer gangweiid) {
-        this.gangweiid = gangweiid;
-    }
 
-    public String getGangweiname() {
+    public Integer getGangweid() {
+		return gangweid;
+	}
+
+	public void setGangweid(Integer gangweid) {
+		this.gangweid = gangweid;
+	}
+
+	public String getGangweiname() {
         return gangweiname;
     }
 

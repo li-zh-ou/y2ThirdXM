@@ -19,170 +19,189 @@
 		</style>
 	</head>
 	<body>
-		
+		<div id="ctx">
 		<!--新增模态框-->
 		<div class="modal fade" tabindex="-1" role="dialog" id="ygxzmtk">
-			<div class="modal-dialog" role="document" style="width:800px;">
+			<div class="modal-dialog" role="document" style="width:810px;">
 				<div class="modal-content">
 					<div class="modal-header" id="dhl">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 						<div class="col-md-6"></div>
 							<div>
-								<button type="button" class="btn btn-success" style="vertical-align: middle; width: 150px;">保存</button>&nbsp;&nbsp;&nbsp;
+								<button type="button" class="btn btn-success" style="vertical-align: middle; width: 150px;" @click="zzjgxzyg">保存</button>&nbsp;&nbsp;&nbsp;
 								<span class="iconfont" style="vertical-align: middle">&#xe613;</span><a href="#" style="vertical-align: middle">打印</a>&nbsp;&nbsp;&nbsp;
 								<span class="iconfont" style="vertical-align: middle">&#xe613;</span><a href="#" style="vertical-align: middle">实名认证</a>
 							</div>
 					</div>
 					<div class="row modal-body">
-						<p>
-							*员工编号:<input type="text" readonly ="readonly" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							*员工姓名:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							*性别:
-								<select style="vertical-align: middle">
-									<option value="1">男</option>
-									<option value="2">女</option>
+
+						<tr>
+							<td>员工编号:<input v-model="xzyg.yuanno"  type="text"  disabled="true" style="vertical-align: middle"/></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>员工姓名:<input v-model="xzyg.yuanname" type="text" style="vertical-align: middle"/></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>员工性别:<select v-model="xzyg.sex" style="vertical-align: middle; width:174px; height:26px;">
+										<option value="男">男</option>
+										<option value="女">女</option>
+									 </select>
+							</td>
+						</tr>
+
+						<tr>
+							<td>所在门店:<input value="成高" type="text" disabled="true" style="vertical-align: middle"/></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>选择部门:<select v-model="xzyg.bumenid" disabled="true" style="vertical-align: middle; width:174px; height:26px; ">
+										<option :value="xzygbm.bumenid">{{xzygbm.bumenname}}</option>
+									</select>
+							</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>登录账号:<input v-model="xzyg.login" type="text" style="vertical-align: middle"/></td>
+						</tr>
+	
+						<tr>
+							<td>员工岗位:<select v-model="xzyg.gangweid" style="vertical-align: middle; width:174px; height:26px;">
+										<option v-for="item in yggw" :value="item.gangweid">{{item.gangweiname}}</option>
+									</select>
+							</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>身体状况:<input type="text" v-model="xzyg.bodystate" style="vertical-align: middle"/></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>员工身高:<input type="text" v-model="xzyg.height" style="vertical-align: middle"/></td>
+						</tr>
+	
+						<tr>
+							<td>员工籍贯:<select v-model="xzyg.jiguan" style="vertical-align: middle; width:174px; height:26px; ">
+									<option value="北京">北京</option>
+									<option value="湖南">湖南</option>
+									<option value="上海">上海</option>
+									<option value="深圳">深圳</option>
 								</select>
-						</p>
+							</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>员工民族:<select v-model="xzyg.minzu" style="vertical-align: middle; width:174px; height:26px;">
+									<option value="汉">汉</option>
+									<option value="满">满</option>
+									<option value="蒙">蒙</option>
+								</select>
+							</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>婚姻状况:<select v-model="xzyg.hunyin" style="vertical-align: middle; width:174px; height:26px;">
+										<option value="未婚">未婚</option>
+										<option value="已婚">已婚</option>
+									</select>
+							</td>
+						</tr>
+					
+						<tr>
+							<td>员工学历:<select v-model="xzyg.xueli" style="vertical-align: middle; width:174px; height:26px;">
+									<option value="初等教育">初等教育</option>
+									<option value="中等教育">中等教育</option>
+									<option value="高等教育">高等教育</option>
+								</select>
+							</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>毕业学校:<select v-model="xzyg.biye" style="vertical-align: middle; width:174px; height:26px;">
+										<option value="北京大学">北京大学</option>
+										<option value="清华大学">清华大学</option>
+									</select>
+							</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>员工专业:<select v-model="xzyg.zhuanye" style="vertical-align: middle; width:174px; height:26px;">
+									<option value="计算机软件">计算机软件</option>
+									<option value="网络工程">网络工程</option>
+								</select></td>
+						</tr>
 						
-						<p>
-							*所在门店:<input type="text" readonly ="readonly" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							*所在部门:
-									<select style="vertical-align: middle">
-										<option value="1">管理</option>
-										<option value="2">财务</option>
-										<option value="3">股东</option>
-									</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						</p>
+						<tr>
+							<td>专业资格:<select v-model="xzyg.zhuanyezg" style="vertical-align: middle; width:174px; height:26px; ">
+										<option value="初级工程师">初级工程师</option>
+										<option value="中级工程师">中级工程师</option>
+										<option value="高级工程师">高级工程师</option>
+									</select>
+							</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>员工属性:<select v-model="xzyg.shuxingid" style="vertical-align: middle; width:174px; height:26px;">
+									<option v-for="item in ygsx" :value="item.shuxingid">{{item.shuxingname}}</option>
+									
+								</select>
+							</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>员工学位:<select v-model="xzyg.xuewei" style="vertical-align: middle; width:174px; height:26px;">
+									<option value="本科">本科</option>
+									<option value="硕士">硕士</option>
+									<option value="博士">博士</option>
+								</select>
+							</td>
+						</tr>
 						
-						<p>
-							登录账号:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							岗位:
-								<select style="vertical-align: middle">
-									<option value="1">展厅经理</option>
-									<option value="2">销售顾问</option>
-									<option value="3">DCC主管</option>
-								</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							身体状况:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						</p>
+						<tr>
+							<td>员工编制:<select v-model="xzyg.bianzhi" style="vertical-align: middle; width:174px; height:26px;">
+									<option value="劳务派遣">劳务派遣</option>
+									<option value="劳务外包">劳务外包</option>
+									<option value="正式员工">正式员工</option>
+								</select>
+							</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>身份证号:<input v-model="xzyg.idcard" type="text" style="vertical-align: middle"/></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>户口地址:<input v-model="xzyg.huaddress" type="text" style="vertical-align: middle"/></td>
+						</tr>
 						
-						<p>
-							身高:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							籍贯:
-								<select style="vertical-align: middle">
-									<option value="1">北京</option>
-									<option value="2">湖南</option>
-									<option value="3">上海</option>
-									<option value="3">深圳</option>
-								</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							民族:
-								<select style="vertical-align: middle">
-									<option value="1">汉</option>
-									<option value="2">满</option>
-									<option value="3">蒙</option>
-								</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						</p>
+						<tr>
+							<td>现住地址:<input v-model="xzyg.nowaddress" type="text" style="vertical-align: middle"/></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>联系电话:<input v-model="xzyg.phone" type="text" style="vertical-align: middle"/></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>手机号码:<input v-model="xzyg.shouji" type="text" style="vertical-align: middle"/></td>
+						</tr>
 						
-						<p>
-							婚姻状况:
-									<select style="vertical-align: middle">
-										<option value="1">未婚</option>
-										<option value="2">已婚</option>
-									</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							学历:
-								<select style="vertical-align: middle">
-									<option value="1">汉</option>
-									<option value="2">满</option>
-									<option value="3">蒙</option>
-								</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							毕业学校:
-									<select style="vertical-align: middle">
-										<option value="1">北京大学</option>
-										<option value="2">清华</option>
-									</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						</p>
+						<tr>
+							<td>员工邮箱:<input v-model="xzyg.email" type="text" style="vertical-align: middle"/></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>开户银行:<select v-model="xzyg.bank" style="vertical-align: middle; width:174px; height:26px;">
+										<option value="建设银行">建设银行</option>
+										<option value="中国银行">中国银行</option>
+										<option value="交通银行">交通银行</option>
+									</select>
+							</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>银行账号:<input v-model="xzyg.cardnumber" type="text" style="vertical-align: middle"/></td>
+						</tr>
 						
-						<p>
-							专业:
-								<select style="vertical-align: middle">
-									<option value="1">计算机软件</option>
-									<option value="2">网络工程</option>
-								</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							专业资格:
-									<select style="vertical-align: middle">
-										<option value="1">初级工程师</option>
-										<option value="2">中级工程师</option>
-										<option value="3">高级工程师</option>
-									</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							*属性:
-								<select style="vertical-align: middle">
-									<option value="1">不考勤计薪</option>
-									<option value="2">计考勤不计薪</option>
-									<option value="3">不考勤不计薪</option>
-								</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							学位:
-								<select style="vertical-align: middle">
-									<option value="1">本科</option>
-									<option value="2">硕士</option>
-									<option value="3">博士</option>
-								</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						</p>
+						<tr>
+							<td>推荐人员:<input v-model="xzyg.tuijian" type="text" style="vertical-align: middle"/></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>减免权力:<input v-model="xzyg.jianmian" type="text" style="vertical-align: middle"/></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>入职日期:<input v-model="xzyg.bei3" type="date" style="vertical-align: middle; width:174px; height:26px;"/></td>
+						</tr>
 						
-						<p>
-							编制:
-								<select style="vertical-align: middle">
-									<option value="1">劳务派遣</option>
-									<option value="2">劳务外包</option>
-									<option value="3">正式员工</option>
-								</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							身份证号	:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							户口地址:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						</p>
+						<tr>
+							<td>试用到期:<input v-model="xzyg.shiyong" type="date" style="vertical-align: middle; width:174px; height:26px;"/></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>出生日期:<input v-model="xzyg.birthday" type="date" style="vertical-align: middle; width:174px; height:26px;"/></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>合同开始:<input v-model="xzyg.hetongstart" type="date" style="vertical-align: middle; width:174px; height:26px;"/></td>
+						</tr>
 						
-						<p>
-							现住地址:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							联系电话:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							手机:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						</p>
+						<tr>
+							<td>合同结束:<input v-model="xzyg.hetongend" type="date" style="vertical-align: middle; width:174px; height:26px;"/></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>卡自编号:<input v-model="xzyg.kazi" type="text" style="vertical-align: middle"/></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>卡内编号:<input v-model="xzyg.kanei" type="text" style="vertical-align: middle"/></td>
+						</tr>
 						
-						<p>
-							EMail:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							开户银行:
-									<select style="vertical-align: middle">
-										<option value="1">建设银行</option>
-										<option value="2">中国银行</option>
-										<option value="3">交通银行</option>
-									</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							银行账号:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						</p>
-						
-						<p>
-							紧急联系人:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							联系电话:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							入职日期:<input type="date" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						</p>
-						
-						<p>
-							试用日期:<input type="date" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							出生日期:<input type="date" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							合同开始:<input type="date" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						</p>
-						
-						<p>
-							合同结束:<input type="date" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							卡自编号:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							卡内编号:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						</p>
-						
-						<p>
-							推荐人:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							整单折扣权%<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							工时折扣权%<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						</p>
-						
-						<p>
-							商品折扣权%<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							减免权<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						</p>
+						<tr>
+							<td>紧急联系:<input v-model="xzyg.empeople" type="text" style="vertical-align: middle"/></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>紧急电话:<input v-model="xzyg.emphone" type="text" style="vertical-align: middle"/></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>商品折扣:<input v-model="xzyg.spzhekou" type="text" style="vertical-align: middle"/></td>
+							<td>工时折扣:<input v-model="xzyg.gszhekou" type="text" style="vertical-align: middle"/></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>整单折扣:<input v-model="xzyg.zdzhekou" type="text" style="vertical-align: middle"/></td>
+						</tr>
 						
 					</div>
 				</div>
@@ -191,167 +210,188 @@
 		
 		<!--修改模态框-->
 		<div class="modal fade" tabindex="-1" role="dialog" id="ygxgmtk">
-			<div class="modal-dialog" role="document" style="width:800px;">
+			<div class="modal-dialog" role="document" style="width:810px;">
 				<div class="modal-content">
 					<div class="modal-header" id="dhl">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 						<div class="col-md-6"></div>
 							<div>
-								<button type="button" class="btn btn-success" style="vertical-align: middle; width: 150px;">保存</button>&nbsp;&nbsp;&nbsp;
+								<button type="button" class="btn btn-success" style="vertical-align: middle; width: 150px;" @click="upyg">保存</button>&nbsp;&nbsp;&nbsp;
 								<span class="iconfont" style="vertical-align: middle">&#xe613;</span><a href="#" style="vertical-align: middle">打印</a>&nbsp;&nbsp;&nbsp;
 								<span class="iconfont" style="vertical-align: middle">&#xe613;</span><a href="#" style="vertical-align: middle">实名认证</a>
 							</div>
 					</div>
 					<div class="row modal-body">
-						<p>
-							*员工编号:<input type="text" readonly ="readonly" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							*员工姓名:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							*性别:
-								<select style="vertical-align: middle">
-									<option value="1">男</option>
-									<option value="2">女</option>
+
+						
+						<tr>
+							<td>员工编号:<input v-model="byupyg.yuanno"  type="text"  disabled="true" style="vertical-align: middle"/></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>员工姓名:<input v-model="byupyg.yuanname" type="text" style="vertical-align: middle"/></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>员工性别:<select v-model="byupyg.sex" style="vertical-align: middle; width:174px; height:26px;">
+										<option value="男">男</option>
+										<option value="女">女</option>
+									 </select>
+							</td>
+						</tr>
+
+						<tr>
+							<td>所在门店:<input value="成高" type="text" disabled="true" style="vertical-align: middle"/></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>选择部门:<select disabled="true" v-model="djyg.bumenid" style="vertical-align: middle; width:174px; height:26px; ">
+										<option :value="byupyg.bumenid">{{djyg.bumenname}}</option>
+									</select>
+							</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>登录账号:<input v-model="byupyg.login" type="text" style="vertical-align: middle"/></td>
+						</tr>
+	
+						<tr>
+							<td>员工岗位:<select v-model="byupyg.gangweid" style="vertical-align: middle; width:174px; height:26px;">
+										<option v-for="item in yggw" :value="item.gangweid">{{item.gangweiname}}</option>
+									</select>
+							</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>身体状况:<input type="text" v-model="byupyg.bodystate" style="vertical-align: middle"/></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>员工身高:<input type="text" v-model="byupyg.height" style="vertical-align: middle"/></td>
+						</tr>
+	
+						<tr>
+							<td>员工籍贯:<select v-model="byupyg.jiguan" style="vertical-align: middle; width:174px; height:26px; ">
+									<option value="北京">北京</option>
+									<option value="湖南">湖南</option>
+									<option value="上海">上海</option>
+									<option value="深圳">深圳</option>
 								</select>
-						</p>
+							</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>员工民族:<select v-model="byupyg.minzu" style="vertical-align: middle; width:174px; height:26px;">
+									<option value="汉">汉</option>
+									<option value="满">满</option>
+									<option value="蒙">蒙</option>
+								</select>
+							</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>婚姻状况:<select v-model="byupyg.hunyin" style="vertical-align: middle; width:174px; height:26px;">
+										<option value="未婚">未婚</option>
+										<option value="已婚">已婚</option>
+									</select>
+							</td>
+						</tr>
+					
+						<tr>
+							<td>员工学历:<select v-model="byupyg.xueli" style="vertical-align: middle; width:174px; height:26px;">
+									<option value="初等教育">初等教育</option>
+									<option value="中等教育">中等教育</option>
+									<option value="高等教育">高等教育</option>
+								</select>
+							</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>毕业学校:<select v-model="byupyg.biye" style="vertical-align: middle; width:174px; height:26px;">
+										<option value="北京大学">北京大学</option>
+										<option value="清华大学">清华大学</option>
+									</select>
+							</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>员工专业:<select v-model="byupyg.zhuanye" style="vertical-align: middle; width:174px; height:26px;">
+									<option value="计算机软件">计算机软件</option>
+									<option value="网络工程">网络工程</option>
+								</select></td>
+						</tr>
 						
-						<p>
-							*所在门店:<input type="text" readonly ="readonly" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							*所在部门:
-									<select style="vertical-align: middle">
-										<option value="1">管理</option>
-										<option value="2">财务</option>
-										<option value="3">股东</option>
-									</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						</p>
+						<tr>
+							<td>专业资格:<select v-model="byupyg.zhuanyezg" style="vertical-align: middle; width:174px; height:26px; ">
+										<option value="初级工程师">初级工程师</option>
+										<option value="中级工程师">中级工程师</option>
+										<option value="高级工程师">高级工程师</option>
+									</select>
+							</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>员工属性:<select v-model="byupyg.shuxingid" style="vertical-align: middle; width:174px; height:26px;">
+									<option v-for="item in ygsx" :value="item.shuxingid">{{item.shuxingname}}</option>
+									
+								</select>
+							</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>员工学位:<select v-model="byupyg.xuewei" style="vertical-align: middle; width:174px; height:26px;">
+									<option value="本科">本科</option>
+									<option value="硕士">硕士</option>
+									<option value="博士">博士</option>
+								</select>
+							</td>
+						</tr>
 						
-						<p>
-							登录账号:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							岗位:
-								<select style="vertical-align: middle">
-									<option value="1">展厅经理</option>
-									<option value="2">销售顾问</option>
-									<option value="3">DCC主管</option>
-								</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							身体状况:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						</p>
+						<tr>
+							<td>员工编制:<select v-model="byupyg.bianzhi" style="vertical-align: middle; width:174px; height:26px;">
+									<option value="劳务派遣">劳务派遣</option>
+									<option value="劳务外包">劳务外包</option>
+									<option value="正式员工">正式员工</option>
+								</select>
+							</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>身份证号:<input v-model="byupyg.idcard" type="text" style="vertical-align: middle"/></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>户口地址:<input v-model="byupyg.huaddress" type="text" style="vertical-align: middle"/></td>
+						</tr>
 						
-						<p>
-							身高:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							籍贯:
-								<select style="vertical-align: middle">
-									<option value="1">北京</option>
-									<option value="2">湖南</option>
-									<option value="3">上海</option>
-									<option value="3">深圳</option>
-								</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							民族:
-								<select style="vertical-align: middle">
-									<option value="1">汉</option>
-									<option value="2">满</option>
-									<option value="3">蒙</option>
-								</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						</p>
+						<tr>
+							<td>现住地址:<input v-model="byupyg.nowaddress" type="text" style="vertical-align: middle"/></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>联系电话:<input v-model="byupyg.phone" type="text" style="vertical-align: middle"/></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>手机号码:<input v-model="byupyg.shouji" type="text" style="vertical-align: middle"/></td>
+						</tr>
 						
-						<p>
-							婚姻状况:
-									<select style="vertical-align: middle">
-										<option value="1">未婚</option>
-										<option value="2">已婚</option>
-									</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							学历:
-								<select style="vertical-align: middle">
-									<option value="1">汉</option>
-									<option value="2">满</option>
-									<option value="3">蒙</option>
-								</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							毕业学校:
-									<select style="vertical-align: middle">
-										<option value="1">北京大学</option>
-										<option value="2">清华</option>
-									</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						</p>
+						<tr>
+							<td>员工邮箱:<input v-model="byupyg.email" type="text" style="vertical-align: middle"/></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>开户银行:<select v-model="byupyg.bank" style="vertical-align: middle; width:174px; height:26px;">
+										<option value="建设银行">建设银行</option>
+										<option value="中国银行">中国银行</option>
+										<option value="交通银行">交通银行</option>
+									</select>
+							</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>银行账号:<input v-model="byupyg.cardnumber" type="text" style="vertical-align: middle"/></td>
+						</tr>
 						
-						<p>
-							专业:
-								<select style="vertical-align: middle">
-									<option value="1">计算机软件</option>
-									<option value="2">网络工程</option>
-								</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							专业资格:
-									<select style="vertical-align: middle">
-										<option value="1">初级工程师</option>
-										<option value="2">中级工程师</option>
-										<option value="3">高级工程师</option>
-									</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							*属性:
-								<select style="vertical-align: middle">
-									<option value="1">不考勤计薪</option>
-									<option value="2">计考勤不计薪</option>
-									<option value="3">不考勤不计薪</option>
-								</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							学位:
-								<select style="vertical-align: middle">
-									<option value="1">本科</option>
-									<option value="2">硕士</option>
-									<option value="3">博士</option>
-								</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						</p>
+						<tr>
+							<td>推荐人员:<input v-model="byupyg.tuijian" type="text" style="vertical-align: middle"/></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>减免权力:<input v-model="byupyg.jianmian" type="text" style="vertical-align: middle"/></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>入职日期:<input v-model="byupyg.bei3" type="date" style="vertical-align: middle; width:174px; height:26px;"/></td>
+						</tr>
 						
-						<p>
-							编制:
-								<select style="vertical-align: middle">
-									<option value="1">劳务派遣</option>
-									<option value="2">劳务外包</option>
-									<option value="3">正式员工</option>
-								</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							身份证号	:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							户口地址:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						</p>
+						<tr>
+							<td>试用到期:<input v-model="byupyg.shiyong" type="date" style="vertical-align: middle; width:174px; height:26px;"/></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>出生日期:<input v-model="byupyg.birthday" type="date" style="vertical-align: middle; width:174px; height:26px;"/></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>合同开始:<input v-model="byupyg.hetongstart" type="date" style="vertical-align: middle; width:174px; height:26px;"/></td>
+						</tr>
 						
-						<p>
-							现住地址:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							联系电话:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							手机:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						</p>
+						<tr>
+							<td>合同结束:<input v-model="byupyg.hetongend" type="date" style="vertical-align: middle; width:174px; height:26px;"/></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>卡自编号:<input v-model="byupyg.kazi" type="text" style="vertical-align: middle"/></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>卡内编号:<input v-model="byupyg.kanei" type="text" style="vertical-align: middle"/></td>
+						</tr>
 						
-						<p>
-							EMail:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							开户银行:
-									<select style="vertical-align: middle">
-										<option value="1">建设银行</option>
-										<option value="2">中国银行</option>
-										<option value="3">交通银行</option>
-									</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							银行账号:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						</p>
+						<tr>
+							<td>紧急联系:<input v-model="byupyg.empeople" type="text" style="vertical-align: middle"/></td>
+								<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>紧急电话:<input v-model="byupyg.emphone" type="text" style="vertical-align: middle"/></td>
+								<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>商品折扣:<input v-model="byupyg.spzhekou" type="text" style="vertical-align: middle"/></td>
+							<td>工时折扣:<input v-model="byupyg.gszhekou" type="text" style="vertical-align: middle"/></td>
+								<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>整单折扣:<input v-model="byupyg.zdzhekou" type="text" style="vertical-align: middle"/></td>
+						</tr>
 						
-						<p>
-							紧急联系人:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							联系电话:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							入职日期:<input type="date" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						</p>
-						
-						<p>
-							试用日期:<input type="date" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							出生日期:<input type="date" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							合同开始:<input type="date" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						</p>
-						
-						<p>
-							合同结束:<input type="date" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							卡自编号:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							卡内编号:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						</p>
-						
-						<p>
-							推荐人:<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							整单折扣权%<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							工时折扣权%<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						</p>
-						
-						<p>
-							商品折扣权%<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							减免权<input type="text" style="vertical-align: middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						</p>
 						
 					</div>
 				</div>
@@ -500,18 +540,16 @@
 								<h4>员工角色</h4>
 							</div>
 							<div>
-								<button type="button" class="btn btn-success" style="vertical-align: middle; width: 150px;">保存</button>&nbsp;&nbsp;&nbsp;
+								<button type="button" class="btn btn-success" style="vertical-align: middle; width: 150px;" @click="fuyjs">保存</button>&nbsp;&nbsp;&nbsp;
 							</div>
 					</div>
 					<div>
 						<table class="table table-hover table-bordered">
 							<tr>
 								<td>角色名称</td>
-								<td>选择</td>
 							</tr>
-							<tr>
-								<td>经理</td>
-								<td><input type="checkbox"></td>
+							<tr v-for="item in cxjs" @click="djhqjs(item)">
+								<td>{{item.zhiwuname}}</td>
 							</tr>
 						</table>
 					</div>
@@ -533,11 +571,11 @@
 			
 			<div id="dhl">
 				<ol class="breadcrumb">
-				  <li><span class="iconfont" style="vertical-align: middle">&#xe62c;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#ygxzmtk">增加员工</a></li>
+				  <li><span class="iconfont" style="vertical-align: middle">&#xe62c;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#ygxzmtk" >增加员工</a></li>
 				  <li><span class="iconfont" style="vertical-align: middle">&#xe612;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#ygxgmtk">修改</a></li>
-				  <li><span class="iconfont" style="vertical-align: middle">&#xe614;</span><a href="#" style="vertical-align: middle">删除</a></li>
+				  <li><span class="iconfont" style="vertical-align: middle">&#xe614;</span><a href="#" style="vertical-align: middle" @click="xglzzt">删除</a></li>
 				  <li><span class="iconfont" style="vertical-align: middle">&#xe78a;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#cxygmtk">查询</a></li>
-				  <li><span class="iconfont" style="vertical-align: middle">&#xe648;</span><a href="#" style="vertical-align: middle">置空密码</a></li>
+				  <li><span class="iconfont" style="vertical-align: middle">&#xe648;</span><a href="#" style="vertical-align: middle" @click="zkmm">置空密码</a></li>
 				  <li><span class="iconfont" style="vertical-align: middle">&#xe6a5;</span><a href="#" style="vertical-align: middle">导出</a></li>
 				  <li><span class="iconfont" style="vertical-align: middle">&#xe6b6;</span><a href="#" style="vertical-align: middle">导入</a></li>
 				  <li><span class="iconfont" style="vertical-align: middle">&#xe68e;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#ygjsmtk">员工角色</a></li>
@@ -554,8 +592,9 @@
 				<div class="col-md-10" style="height:780px; overflow:scroll;">
 					
 					<table class="table table-hover table-bordered" style="width: 3500px;">
+						
 						<tr>
-							<td>选择</td>
+							
 							<td>机构</td>
 							<td>部门代码</td>
 							<td>部门名称</td>
@@ -576,14 +615,14 @@
 							<td>编制</td>
 							<td>身份证号</td>
 							<td>户口地址</td>
-							<td>邮编</td>
+							<td>户口邮编</td>
 							<td>现住地址</td>
-							<td>邮编</td>
+							<td>现住邮编</td>
 							<td>联系电话</td>
 							<td>手机</td>
 							<td>EMail</td>
 							<td>紧急情况联系人</td>
-							<td>联系电话</td>
+							<td>紧急联系人电话</td>
 							<td>现在何处</td>
 							<td>试用到期</td>
 							<td>入职日期</td>
@@ -595,53 +634,56 @@
 							
 						</tr>
 						
-						<tr>
-							<td><input type="checkbox"></td>
-							<td>机构</td>
-							<td>部门代码</td>
-							<td>部门名称</td>
-							<td>工号</td>
-							<td>姓名</td>
-							<td>性别</td>
-							<td>岗位名称</td>
-							<td>身体状况</td>
-							<td>身高</td>
-							<td>籍贯</td>
-							<td>民族</td>
-							<td>婚姻状况</td>
-							<td>学历</td>
-							<td>毕业学校</td>
-							<td>专业</td>
-							<td>专业资格</td>
-							<td>学位</td>
-							<td>编制</td>
-							<td>身份证号</td>
-							<td>户口地址</td>
-							<td>邮编</td>
-							<td>现住地址</td>
-							<td>邮编</td>
-							<td>联系电话</td>
-							<td>手机</td>
-							<td>EMail</td>
-							<td>紧急情况联系人</td>
-							<td>联系电话</td>
-							<td>现在何处</td>
-							<td>试用到期</td>
-							<td>入职日期</td>
-							<td>出生日期</td>
-							<td>合同开始日期</td>
-							<td>合同结束日期</td>
-							<td>生日</td>
-							<td>年龄</td>
+						<tr v-for="item in ygcx" @click="tableDblclick(item)">
+							
+							<td>成高</td>
+							<td>{{item.bumenid}}</td>
+							<td>{{item.bumenname}}</td>
+							<td>{{item.yuanno}}</td>
+							<td>{{item.yuanname}}</td>
+							<td>{{item.sex}}</td>
+							<td>{{item.gangweiname}}</td>
+							<td>{{item.bodystate}}</td>
+							<td>{{item.height}}</td>
+							<td>{{item.jiguan}}</td>
+							<td>{{item.minzu}}</td>
+							<td>{{item.hunyin}}</td>
+							<td>{{item.xueli}}</td>
+							<td>{{item.biye}}</td>
+							<td>{{item.zhuanye}}</td>
+							<td>{{item.zhuanyezg}}</td>
+							<td>{{item.xuewei}}</td>
+							<td>{{item.bianzhi}}</td>
+							<td>{{item.idcard}}</td>
+							<td>{{item.huaddress}}</td>
+							<td>{{item.bei1}}</td>
+							<td>{{item.nowaddress}}</td>
+							<td>{{item.bei2}}</td>
+							<td>{{item.phone}}</td>
+							<td>{{item.shouji}}</td>
+							<td>{{item.email}}</td>
+							<td>{{item.empeople}}</td>
+							<td>{{item.emphone}}</td>
+							<td>{{item.nowaddress}}</td>
+							<td>{{item.shiyong}}</td>
+							<td>{{item.bei3}}</td>
+							<td>{{item.birthday}}</td>
+							<td>{{item.hetongstart}}</td>
+							<td>{{item.hetongend}}</td>
+							
 						</tr>
 						
 					</table>
+					
+					
 					
 				</div>
 				
 			</div>
 			
 		</div>
+		
+	</div>
 		
 <script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
 <script type="text/javascript" src="js/jquery.min.js"></script>
@@ -650,44 +692,252 @@
 <script type="text/javascript" src="js/vue.js"></script>
 <script type="text/javascript" src="js/my.js"></script>
 <script type="text/javascript">
-	var vm = new Vue({
-				el: "#ctx",
-				data() {
-					return {
-						
-					}
-				},
-				methods: {
-
-				}
-			});
 	
-	//加载初始数据
-	loading();
-	//获取集合
-	function loading() {
-		$.ajax({
-			url: data.ip +"ncq/querybm",
-			type: "get",
-			dataType: "json",
-			success: function(result) {
-				console.log(result);
-				$.fn.zTree.init($("#treeDemo"), setting, result);//初始化树节点时，添加同步获取的数据
-			},
-			error: function(result) {
-				console.log(result);
+	var vm = new Vue({
+		el: "#ctx",
+		data() {
+			return {
+				ygcx:{},//加载初始员工详情
+				xzygbm:{},//点击树状图获取部门
+				djyg:{yuanno:"",bumenid:"",bumenname:""},//获得点击的员工id
+				yggw:{},//查询岗位
+				ygsx:{},//查询员工属性
+				xzyg:{},//新增员工
+				byupyg:{},//修改员工/查询
+				cxjs:{},//查询角色
+				jsid:{}//获取角色id
 			}
-		});
-	}
+		},
+		created(){//加载事件
+      		this.loading();//加载初始树状图
+      		this.cxygcx();//加载初始员工详情
+      		this.cxyggw();//查询岗位
+      		this.randomWord();//获取员工编号
+      		this.cxygshux();//查询员工属性
+      		this.zzjgcxjs();//查询角色
+   		},
+		methods: {
+			loading:function(){//获取初始树状图数据
+				$.ajax({
+					url: data.ip +"ncq/querybm",
+					type: "get",
+					dataType: "json",
+					success: function(result) {
+						console.log(result);
+						$.fn.zTree.init($("#treeDemo"), setting, result);//初始化树节点时，添加同步获取的数据
+						$.fn.zTree.init($("#treeDemo"), setting, result).expandAll(true);//树状图加载好默认打开所有节点
+					},
+					error: function(result) {
+						console.log(result);
+					}	
+				});
+			},
+			cxygcx:function(){//获取初始员工详情数据
+				$.ajax({
+					url: data.ip +"ncq/ygcx",
+					type: "get",
+					dataType: "json",
+					success: function(result) {
+						console.log(result);
+						vm.ygcx = result;
+					},
+					error: function(result) {
+						console.log(result);
+					}	
+				});
+			},
+			tableDblclick:function(item){//获得点击的员工id
+				vm.djyg.yuanno=item.yuanno;
+				vm.djyg.bumenname=item.bumenname;
+				vm.djyg.bumenid=item.bumenid;
+				console.log(vm.djyg.yuanno);
+				console.log(vm.djyg.bumenid);
+				console.log(vm.djyg.bumenname);
+				$.ajax({//修改员工查询
+					url: data.ip +"ncq/byupygff",
+					type: "get",
+					data:{yuanno:vm.djyg.yuanno},
+					dataType: "json",
+					success: function(result) {
+						console.log(result);
+						vm.byupyg = result;
+						
+					},
+					error: function(result) {
+						console.log(result);
+					}	
+				});
+			},
+			zkmm:function(){//置空密码
+				console.log(vm.djyg.yuanno);
+				$.ajax({
+					url:data.ip +"ncq/zkmm",
+					type:"post",
+					data:{yuanno:vm.djyg.yuanno},
+					dataType:"text",
+					success:function(result){
+						console.log(result);
+						if(result>0){
+							alert("置空成功");
+						}else{
+							alert("置空失败");
+						}
+						vm.cxygcx();
+					},error:function(result){
+						console.log(result);
+					}
+				});
+			},
+			cxyggw:function(){//查询员工岗位
+				$.ajax({
+					url: data.ip +"ncq/cxyggw",
+					type: "get",
+					dataType: "json",
+					success: function(result) {
+						console.log(result);
+						vm.yggw = result;
+					},
+					error: function(result) {
+						console.log(result);
+					}	
+				});
+			},
+			randomWord:function(){//组织机构生成员工编号
+				$.ajax({
+					url: data.ip +"ncq/sjygbh",
+					type: "get",
+					dataType: "text",
+					success: function(result) {
+						console.log(result);
+						vm.xzyg.yuanno= result;
+					},
+					error: function(result) {
+						console.log(result);
+					}	
+				});
+			},
+			cxygshux:function(){//查询员工属性
+				$.ajax({
+					url: data.ip +"ncq/cxygsx",
+					type: "get",
+					dataType: "json",
+					success: function(result) {
+						console.log(result);
+						vm.ygsx = result;
+					},
+					error: function(result) {
+						console.log(result);
+					}	
+				});
+			},
+			zzjgxzyg:function(){//新增员工
+				vm.xzyg.sflz=0;
+				console.log(vm.xzyg);
+				$.ajax({
+					url:data.ip +"ncq/zzjgxzyg",
+					type:"post",
+					data:vm.xzyg,
+					dataType:"json",
+					success:function(result){
+						console.log(result);
+						if(result>0){
+							alert("新增成功");
+						}else{
+							alert("新增失败");
+						}
+						vm.cxygcx();
+					},error:function(result){
+						console.log(result);
+					}
+				});
+			},
+			upyg:function(){
+				$.ajax({//修改员工
+					url:data.ip +"ncq/upygxq",
+					type:"post",
+					data:vm.byupyg,
+					dataType:"text",
+					success:function(result){
+						console.log(result);
+						if(result>0){
+							alert("修改成功");
+						}else{
+							alert("修改失败");
+						}
+						vm.cxygcx();
+					},error:function(result){
+						console.log(result);
+					}
+				});
+			},
+			zzjgcxjs:function(){//查询角色
+				$.ajax({
+					url: data.ip +"ncq/zzjgcxjs",
+					type: "get",
+					dataType: "json",
+					success: function(result) {
+						console.log(result);
+						vm.cxjs = result;
+					},
+					error: function(result) {
+						console.log(result);
+					}	
+				});
+			},
+			djhqjs:function(item){//点击获取角色id
+				vm.jsid.zhiwuid=item.zhiwuid;
+				console.log(vm.jsid.zhiwuid);
+			},
+			fuyjs:function(){
+				$.ajax({//赋予员工角色
+					url:data.ip +"ncq/fujs",
+					type:"post",
+					data:{zhiwuid:vm.jsid.zhiwuid,yuanno:vm.djyg.yuanno},
+					dataType:"text",
+					success:function(result){
+						console.log(result);
+						if(result>0){
+							alert("赋予成功");
+						}else{
+							alert("赋予失败");
+						}
+						vm.cxygcx();
+					},error:function(result){
+						console.log(result);
+					}
+				});
+			},
+			xglzzt:function(){//删除员工
+				$.ajax({
+					url:data.ip +"ncq/xglzzt",
+					type:"post",
+					data:{yuanno:vm.djyg.yuanno},
+					dataType:"text",
+					success:function(result){
+						console.log(result);
+						if(result>0){
+							alert("删除成功");
+						}else{
+							alert("删除失败");
+						}
+						vm.cxygcx();
+					},error:function(result){
+						console.log(result);
+					}
+				});
+			}
+		}
+	});
 	
 	
 	//树状图
 	var setting = {
 		view: {
-        	selectedMulti: true
+        	selectedMulti: true,
+        	showIcon:false
     	},
 		check: {
-			enable: true
+			enable: false
 		},
 		data: {
 			key: {
@@ -697,11 +947,38 @@
 				enable: true,//是否采用简单数据模式
             	idKey: "bumenid",//树节点ID名称
             	pIdKey: "parentid",//父节点ID名称
-            	rootPId: -1,//根节点ID
+            	rootPId: 0,//根节点ID
 			}
+		},
+		 callback:{
+			onClick:chooseNode,
 		}
 	};
-
+	
+	//点击树状图获取部门
+	function chooseNode(event,treeId,treeNode){
+		if (treeNode.parentid=="0") {
+			return;
+		}
+		vm.xzygbm=treeNode;
+		vm.xzyg.bumenid=vm.xzygbm.bumenid;
+		
+		console.log(vm.xzygbm);
+		$.ajax({//点击树状图获取部门在根据部门id查询员工详情
+			url: data.ip +"ncq/gjbmcxyg",
+			type: "get",
+			data:{bumenid:vm.xzygbm.bumenid},
+			dataType: "json",
+			success: function(result) {
+				console.log(result);
+				vm.ygcx = result;
+			},
+			error: function(result) {
+				console.log(result);
+			}	
+		});
+	}
+	
 	
 </script>
 </body>
