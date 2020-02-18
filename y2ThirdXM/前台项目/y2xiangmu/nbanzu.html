@@ -47,7 +47,7 @@
 		<div id="ctx" class="container-fluid">
 			
 			<!-- 增加 -->
-		<div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" >
 		  <div class="modal-dialog modal-lg" role="document" >
 		    <div class="modal-content"  style="width: 800px;">
 		      <div class="modal-header" id="mydiv_4">
@@ -134,7 +134,7 @@
 		</div>
 		
 		<!--修改-->
-			<div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalupdate">
+			<div class="modal fade bs-example-modal-lg" id="myModalupdate" tabindex="-1" role="dialog" >
 		  <div class="modal-dialog modal-lg" role="document" >
 		    <div class="modal-content"  style="width: 800px;">
 		      <div class="modal-header" id="mydiv_4">
@@ -306,7 +306,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr v-for="item in bzjgxq" @click="tableDblclick(item)">	
+						<tr v-for="item in bzjgxq">	
 							<td>{{item.banid}}</td>
 							<td>{{item.banname}}</td>
 							<td>{{item.jigongno}}</td>
@@ -446,7 +446,7 @@
 //				console.log(vm.djjg.jigongno);
 //				console.log(vm.djjg.banid);
 //				console.log(vm.djjg.banname);
-//				$.ajax({//修改员工查询
+//				$.ajax({//修改员工查询 这里没有做
 //					url: data.ip +"ncq/byupygff",
 //					type: "get",
 //					data:{yuanno:vm.djyg.yuanno},
