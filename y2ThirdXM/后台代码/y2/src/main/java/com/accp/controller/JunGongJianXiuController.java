@@ -14,7 +14,7 @@ import com.accp.service.JunGongJianXiuService;
 @RequestMapping("jungongjianxiu")
 public class JunGongJianXiuController {
 
-	/*@Autowired
+	@Autowired
 	JunGongJianXiuService jungong;
 	
 	@RequestMapping("toJunGongJianXiu")
@@ -25,22 +25,22 @@ public class JunGongJianXiuController {
 	@RequestMapping("queryCiShu")
 	@ResponseBody
 	public String queryCiShu(String wxdanno) {
-		return ""+jungong.queryCiShu(wxdanno);
+		return jungong.queryCiShu(wxdanno);
 	}
 	
 	@RequestMapping("insertJunGong")
 	@ResponseBody
 	public String insertJunGong(@RequestBody Jungong jun) {
 		if(jun.getYujitime()!=null) {
-			//jun.setYujitime(jun.getYujitime().replace('T', ' '));
+			jun.setYujitime(jun.getYujitime().replace('T', ' '));
 		}
 		if(jun.getShijitime()!=null) {
-			//jun.setShijitime(jun.getShijitime().replace('T', ' '));
+			jun.setShijitime(jun.getShijitime().replace('T', ' '));
 		}
 		
 		return jungong.insertJunGong(jun);
 	}
 	
 	
-	*/
+	
 }

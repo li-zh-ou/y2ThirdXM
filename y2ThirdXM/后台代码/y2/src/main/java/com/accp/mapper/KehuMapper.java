@@ -37,4 +37,6 @@ public interface KehuMapper {
     int updateByPrimaryKeySelective(Kehu record);
 
     int updateByPrimaryKey(Kehu record);
+    
+    List<Kehu> queryNoHuiYuan(@Param("where") String where);
 }

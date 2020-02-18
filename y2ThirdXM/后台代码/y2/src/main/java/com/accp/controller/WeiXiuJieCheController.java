@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.accp.domain.Wxjiedan;
+import com.accp.domain.Wxxiangmu;
 import com.accp.service.WeiXiuJieCheService;
 
 @Controller
@@ -43,7 +44,17 @@ public class WeiXiuJieCheController {
 		return "testToHtml";
 	}
 	
-	/*@RequestMapping("queryZuoYeZhong")
+	@RequestMapping("totestToHtml2")
+	public String totestToHtml2() {
+		return "testToHtml2";
+	}
+	
+	@RequestMapping("totestToHtml3")
+	public String totestToHtml3() {
+		return "testToHtml3";
+	}
+	
+	@RequestMapping("queryZuoYeZhong")
 	@ResponseBody
 	public List<Wxjiedan> queryZuoYeZhong(){
 		return wxjc.queryZuoYeZhong();
@@ -59,9 +70,9 @@ public class WeiXiuJieCheController {
 	@ResponseBody
 	public Wxjiedan queryWXKehuInfo(String wxchepai){
 		return wxjc.queryWXKehuInfo(wxchepai);
-	}*/
+	}
 	
-	/*@RequestMapping("autoCreateNo")
+	@RequestMapping("autoCreateNo")
 	@ResponseBody
 	public String autoCreateNo(){
 		StringBuffer no = new StringBuffer("WXD");
@@ -110,5 +121,12 @@ public class WeiXiuJieCheController {
 	@ResponseBody
 	public List<Wxjiedan> queryJunGong(String wxdanno,String chepai,String danjustatu,String pretime,String nexttime){
 		return wxjc.queryJunGong(wxdanno, chepai, danjustatu, pretime, nexttime);
-	}*/
+	}
+	
+	@RequestMapping("queryAllXiangMu")
+	@ResponseBody
+	public List<Wxxiangmu> queryAllXiangMu(String nos){
+		String[] newnows = nos.split(",");
+		return wxjc.queryAllXiangMu(newnows);
+	}
 }

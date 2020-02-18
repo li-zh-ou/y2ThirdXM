@@ -27,4 +27,20 @@ public interface WxjiedanMapper {
     int updateByPrimaryKeySelective(Wxjiedan record);
 
     int updateByPrimaryKey(Wxjiedan record);
+    
+    List<Wxjiedan> queryJunGong(@Param("wxdanno") String wxdanno,@Param("chepai") String chepai,@Param("danjustatu") String danjustatu,@Param("pretime") String pretime,@Param("nexttime") String nexttime);
+    
+    List<Wxjiedan> queryWxlishi(String chepai);
+    
+    Wxjiedan queryWXKehuInfo(String wxchepai);
+    
+    String getTodayMaxCount(@Param("today") String today);
+    
+    Wxjiedan oldwxJieDan(String wxdanno);
+    
+    Wxjiedan newwxJieDan(String chepai);
+    
+    int insertwxdan(Wxjiedan record);
+    
+    List<Wxjiedan> queryZuoYeZhong();
 }

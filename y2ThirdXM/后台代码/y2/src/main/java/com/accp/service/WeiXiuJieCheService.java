@@ -1,17 +1,22 @@
 package com.accp.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.accp.domain.Wxjiedan;
+import com.accp.domain.Wxxiangmu;
 
 @Service
 public class WeiXiuJieCheService {
 	
-	/*@Autowired
+	@Autowired
 	com.accp.mapper.WxjiedanMapper wxjiedan;
+	
+	@Autowired
+	com.accp.mapper.WxxiangmuMapper xiangmu;
 	
 	public List<Wxjiedan> queryZuoYeZhong(){
 		return wxjiedan.queryZuoYeZhong();
@@ -43,5 +48,14 @@ public class WeiXiuJieCheService {
 	
 	public List<Wxjiedan> queryJunGong(String wxdanno,String chepai,String danjustatu,String pretime,String nexttime){
 		return wxjiedan.queryJunGong(wxdanno, chepai, danjustatu, pretime, nexttime);
-	}*/
+	}
+	
+	public List<Wxxiangmu> queryAllXiangMu(String[] nos){
+		List<Wxxiangmu> list=new ArrayList<Wxxiangmu>();
+		for (int i = 0; i < nos.length; i++) {
+			list.add(xiangmu.selectByPrimaryKey(nos[i]));
+		}
+		return list;
+	}
+		
 }

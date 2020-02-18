@@ -29,4 +29,14 @@ public interface HuiyuanMapper {
     int updateByPrimaryKeySelective(Huiyuan record);
 
     int updateByPrimaryKey(Huiyuan record);
+    
+//要添加
+    
+    int chongZhi(Huiyuan record);
+    
+    int yanQi(@Param("money") int money,@Param("no") String huiYuanNo);
+    
+    int insertHuiYuan(Huiyuan record);
+    
+    List<Huiyuan> queryAllHuiYuan(@Param("hy") String hy,@Param("phone") String phone,@Param("order") String order);
 }

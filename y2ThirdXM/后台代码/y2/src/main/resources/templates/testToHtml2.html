@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>接车登记</title>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+	</head>
+	<body>
+					<div id="body">
+						<table class="table table-hover table-bordered text-center ">
+								<thead>
+									<tr>
+										<th>编码</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr v-for="item in data" ondblclick="colseIframe(this)">
+										<td>{{item.yewu}}</td>
+									</tr>
+								</tbody>
+						</table>
+			        </div>
+	</body>
+	<script type="text/javascript" th:src="@{/js/jquery-3.4.1.min.js}" ></script>
+	<script type="text/javascript" th:src="@{/js/vue.js}"></script>
+	<script type="text/javascript" th:src="@{/js/bootstrap.min.js}" ></script>
+	<script type="text/javascript">
+		var vm =new Vue({
+			el:"#body",
+			data(){
+				return {
+					data:[{yewu:"业务1"},{yewu:"业务2"}],
+				};
+			},
+			methods:{
+				
+			}
+		})
+		function colseIframe(trObj){
+			var index = $(trObj).index();
+			var childIframe=window.parent.document.getElementById("yewuiframe");
+			window.parent.vm.wxdan.yewutype=childIframe.contentWindow.vm.data[index].yewu;
+			index = null;
+			childIframe.remove();
+		}
+	</script>
+</html>

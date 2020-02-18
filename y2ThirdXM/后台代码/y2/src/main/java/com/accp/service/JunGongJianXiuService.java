@@ -11,16 +11,15 @@ public class JunGongJianXiuService {
 	@Autowired
 	com.accp.mapper.JungongMapper jungong;
 	
-	/*public String queryCiShu(String wxdanno) {
+	public String queryCiShu(String wxdanno) {
 		return ""+jungong.queryCiShu(wxdanno);
 	}
 	
 	public String insertJunGong(Jungong jun) {
 		Integer num =0;
 		if(jungong.insertJunGong(jun)>0) {
-			System.out.println(jun.getWxdanno()+"77777777777777777777777777777777777777777777777777777");
-			num = jungong.updatestatu(jun.getWxdanno());
+			num = jungong.updatestatu(jun.getShijitime(),jun.getWxdanno());
 		}
 		return ""+num;
-	}*/
+	}
 }

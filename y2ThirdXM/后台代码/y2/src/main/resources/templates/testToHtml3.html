@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>接车登记</title>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+	</head>
+	<body>
+					<div id="body">
+					<button onclick="colseIframe()">确定</button>
+						<table class="table table-hover table-bordered text-center ">
+								<thead>
+									<tr>
+									    <th></th>
+										<th>编码</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr v-for="item in data" onclick="trclick(this)">
+										<td><input class="xmcheckbox" type="checkbox" disabled="disabled"/></td>
+										<td>{{item.wxxiangmuno}}</td>
+									</tr>
+								</tbody>
+						</table>
+			        </div>
+	</body>
+	<script type="text/javascript" th:src="@{/js/jquery-3.4.1.min.js}" ></script>
+	<script type="text/javascript" th:src="@{/js/vue.js}"></script>
+	<script type="text/javascript" th:src="@{/js/bootstrap.min.js}" ></script>
+	<script type="text/javascript">
+		var vm =new Vue({
+			el:"#body",
+			data(){
+				return {
+					data:[{wxxiangmuno:"xm111111"},{wxxiangmuno:"xm222222"},{wxxiangmuno:"xm333333"}],
+					xiangmus:"",
+				};
+			},
+			methods:{
+				
+			}
+		})
+		function colseIframe(){
+			var childIframe=window.parent.document.getElementById("addxiangmu");
+			vm.xiangmus = window.parent.vm.xiangmus;
+			 for(var i = 0;i<$(".xmcheckbox").length;i++){
+				if($(".xmcheckbox")[i].checked){
+					if(vm.xiangmus.indexOf(vm.data[i].wxxiangmuno+",")==-1){
+						vm.xiangmus = vm.xiangmus + vm.data[i].wxxiangmuno+",";
+					}
+				}
+			} 
+			window.parent.vm.xiangmus=childIframe.contentWindow.vm.xiangmus;
+			index = null;
+			window.parent.queryWXxiangmu();
+			childIframe.remove();
+		}
+		
+		function trclick(obj){
+			var index = $(obj).index();
+			if($(".xmcheckbox")[index].checked){
+				$(".xmcheckbox")[index].checked = false;
+			}else{
+				$(".xmcheckbox")[index].checked = true;
+			}
+		}
+	</script>
+</html>

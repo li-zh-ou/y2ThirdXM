@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>维修单</title>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+		<style type="text/css">
+			body,ul,li{margin: 0;padding: 0;font:12px/1.5 arial;/* 字体12像素 行高 1.5em 字体 Arial */ }
+			ul,li{list-style:none;}
+			.wrap{width:99%; margin:20px auto;}
+			.hide{display:none;}
+			#tab_t{height:25px;border-bottom:1px solid #ccc;}
+			#tab_t li{float:left; width:80px; height:24px; line-height:24px; margin:0 4px; text-align:center; border:1px solid #ccc; border-bottom:none; background:#f5f5f5; cursor:pointer}
+			#tab_t .act{ position:relative; height:25px; margin-bottom:-1px; background:#fff;}
+			#tab_c{border:1px solid #ccc;height: 300px;overflow: scroll; border-top:none; padding:20px;}
+			.modal-lg { width: 100%;margin: 0px auto; }
+			.afterdate { background-color: red;}
+		</style>
+	</head>
+	<body>
+		<div id="body">
+			<div class="row" style="border-bottom: solid 1px silver;">
+				<h3 class="col-xs-offset-1 col-xs-4">维修单</h3>
+				<p class="col-xs-3" style="height: 50px; line-height: 50px;" id="danjustatu">{{wxdan.danjustatu}}</p>
+				<p class="col-xs-4" style="text-align: right; padding-right: 40px;"><button type="button" class="btn btn-success" style="margin: 14px 0 0 10px;" onclick="closeParent()">关闭</button></p>
+			</div>
+			<div class="row" style="font-size: 16px;border-bottom: solid 1px blue;">
+				<p class="col-xs-9" style="padding-left: 40px;">单号：<strong><span>{{wxno}}</span></strong></p>
+				<p class="col-xs-3"><strong><a href="javascript:void(0)" onclick="modalshow()">竣工检验</a>&nbsp;&nbsp;<a>委托书</a>&nbsp;&nbsp;<a>照片</a>&nbsp;&nbsp;<a href="#fudan" data-toggle="modal">附单</a></strong></p>
+			</div>
+			<div class="row" style="margin-top: 20px;">
+				<div class="row col-xs-10">
+					<p class="col-xs-3">
+						<label>*车牌号码</label>
+						<input type="text" v-model="wxChepai" disabled="disabled"/>
+					</p>
+					<p class="col-xs-3">
+						<label>车架号&nbsp;&nbsp;</label>
+						<input type="text" v-model="wxdan.chejiaxinghao" disabled="disabled"/>
+					</p>
+					<p class="col-xs-3">
+						<label>车辆型号</label>
+						<input type="text" v-model="wxdan.carxinghao" disabled="disabled"/>
+					</p>
+					<p class="col-xs-3">
+						<label>车辆品牌</label>
+						<input type="text" v-model="wxdan.carbankname" disabled="disabled"/>
+					</p>
+	<!--    *******************华丽分割线********************   -->
+					<p class="col-xs-3">
+						<label>发动机号</label>
+						<input type="text" v-model="wxdan.fanumber" disabled="disabled"/>
+					</p>
+					<p class="col-xs-6">
+						<label>发动机品牌</label>
+						<input type="text" size="8px" v-model="wxdan.fabankid" disabled="disabled"/>
+						<input type="text" v-model="wxdan.faname" disabled="disabled"/>
+					</p>
+					<p class="col-xs-3">
+						<label>服务顾问</label>
+						<select  style="width: 174px;padding: 3px 0px;" disabled="disabled">
+							<option value="李">李</option>
+							<option value="王">王</option>
+							<option value="刘">刘</option>
+						</select>
+					</p>
+	<!--    *******************华丽分割线********************   -->
+					<p class="col-xs-6">
+						<label>*车主姓名</label>
+						<input type="text" disabled="disabled" v-model="wxdan.kehuno"/>
+						<input type="text" disabled="disabled" v-model="wxdan.kehuname"/>
+					</p>
+					<p class="col-xs-3">
+						<label>*驾驶员&nbsp;&nbsp;</label>
+						<input type="text" v-model="wxdan.sijiname" disabled="disabled"/>
+					</p>
+					<p class="col-xs-3">
+						<label>联系电话</label>
+						<input type="text" v-model="wxdan.lianphone" disabled="disabled"/>
+					</p>
+	<!--    *******************华丽分割线********************   -->				
+					<p class="col-xs-3">
+						<label>进厂里程</label>
+						<input type="text" v-model="wxdan.jinchanli" disabled="disabled"/>
+					</p>
+					<p class="col-xs-3">
+						<label>进厂油量</label>
+						<select style="width: 174px; padding: 1px 0px;" disabled="disabled">
+							<option value="有">有</option>
+							<option value="无">无</option>
+						</select>
+					</p>
+					<p class="col-xs-3">
+						<label>上次里程</label>
+						<input type="text" v-model="wxdan.prevli" disabled="disabled"/>
+					</p>
+					<p class="col-xs-3">
+						<label>进厂时间</label>
+						<input type="datetime" v-model="wxdan.jinchantime" disabled="disabled"/>
+					</p>
+	<!--    *******************华丽分割线********************   -->				
+					<p class="col-xs-3">
+						<label>*业务类别</label>
+						<select style="width: 174px; padding: 3px 0px;" disabled="disabled">
+							<option>无</option>
+						</select>
+					</p>
+					<p class="col-xs-3">
+						<label>*施工班次</label>
+						<input type="text" v-model="wxdan.shigong" disabled="disabled"/>
+					</p>
+					<p class="col-xs-3">
+						<label>接车人</label>
+						<select style="width: 174px; padding: 3px 0px;" disabled="disabled">
+							<option value="小张">小张</option>
+							<option value="老王">老王</option>
+						</select>
+					</p>
+					<p class="col-xs-3">
+						<label>预计完工</label>
+						<input type="datetime" disabled="disabled">
+					</p>
+					<!--    *******************华丽分割线********************   -->
+					<p class="col-xs-3">
+						<label>*结算方式</label>
+						<select style="width: 164px; padding: 1px 0px;" disabled="disabled">
+							<option value="现金">现金</option>
+							<option value="会员卡">会员卡</option>
+						</select>
+					</p>
+					<p class="col-xs-3">
+						<label>赔款公司</label>
+						<select style="width: 174px; padding: 1px 0px;" disabled="disabled">
+							<option value="a公司">a公司</option>
+							<option value="b公司">b公司</option>
+						</select>
+					</p>
+					<p class="col-xs-3">
+						<label>完工时间</label>
+						<input type="datetime" v-model="wxdan.wangongtime" disabled="disabled"/>
+					</p>
+					<p class="col-xs-3">
+						<label>上次进厂</label>
+						<input type="text" v-model="wxdan.prevtime" disabled="disabled"/>
+					</p>
+	<!--    *******************华丽分割线********************   -->
+					<p class="col-xs-3">
+						<label>预估金额</label>
+						<input type="text" v-model="wxdan.money" disabled="disabled"/>
+					</p>
+					<p class="col-xs-9">
+						<label>接待备注</label>
+						<input type="text" size="50px" v-model="wxdan.remark" disabled="disabled"/>
+					</p>
+	<!--    *******************华丽分割线********************   -->
+					<p class="col-xs-12"></p>
+					<p class="col-xs-2" style="margin: 0 0 0 20px;text-align: center;height: 46px;line-height: 46px;border: 1px solid;font-size: 16px;">
+						<strong>保修陈述</strong>
+					</p>
+					<textarea cols="120" v-model="wxdan.baoxiu" style="height: 46px;" disabled="disabled">
+						
+					</textarea>
+	<!--    *******************华丽分割线********************   -->
+				</div>
+			</div>
+			<div class="wrap">
+				<ul id="tab_t">
+				    <li class="act">维修项目</li>
+				    <li>领料情况</li>
+				    <li>附加项目</li>
+				    <li>结算信息</li>
+				</ul>
+				<div id="tab_c">
+					<div >
+						<div class="row">
+							<table class="table table-hover table-bordered text-center" style="overflow: scroll; width: 1250px;">
+									<thead>
+										<tr>
+											<th class="text-center">选择</th>
+											<th class="text-center">项目编码</th>
+											<th class="text-center">项目名称</th>
+											<th class="text-center">数量</th>
+											<th class="text-center">价类</th>
+											<th class="text-center">优惠前价</th>
+											<th class="text-center">优惠后价</th>
+											<th class="text-center">优惠后金额</th>
+											<th class="text-center">故障描述</th>
+											<th class="text-center">故障原因</th>
+											<th class="text-center">机修班组</th>
+											<th class="text-center">作业人员</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="text-center"><input type="checkbox"></td>
+											<td class="text-center">华为荣耀p1000</td>
+											<td class="text-center">手机</td>
+											<td class="text-center">0.1</td>
+											<td class="text-center">99999</td>
+											<td class="text-center">99999</td>
+											<td class="text-center">99999</td>
+											<td class="text-center">手机</td>
+											<td class="text-center">0.1</td>
+											<td class="text-center">99999</td>
+											<td class="text-center">99999</td>
+											<td class="text-center">99999</td>
+										</tr>
+									</tbody>
+								</table>
+						</div>
+					</div>
+					<div class="hide"></div>
+					<div class="hide"></div>
+					<div class="hide"></div>
+				</div>
+			</div>
+			
+			
+			<!-- 竣工检验  -  模态框 -->
+			<div class="modal" tabindex="-1" role="dialog" id="stock">
+			  	<div class="modal-dialog" role="document">
+			    	<div class="modal-content">
+			      		<div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
+					        <div class="row">
+					        	<h3 class="modal-title col-xs-9">竣工检修</h3>
+					        	<button type="button" class="btn btn-success col-xs-2" onclick="insertJunGong()">保存</button>
+					        </div>
+			      		</div>
+				      	<div class="modal-body row" style="font-size: 17px;">
+				      		<div class="col-xs-6">
+					      		<p><label><input type="radio" name="ishege" value="true" onclick="show()">合格完工</label></p>
+					      		<p><label>预计完工时间</label><input type="datetime-local" class="hege" onchange="timechange()" name="yujitime" style="width: 160px;" disabled="disabled"/></p>
+					      		<p><label>实际完工时间</label><input type="datetime-local"  class="hege" onchange="timechange()" name="shijitime" style="width: 160px;" disabled="disabled"/></p>
+					      		<p><label>误工原因&nbsp;&nbsp;</label><input type="text" name="wugong" style="width: 180px;" disabled="disabled"/></p>
+					      		<p><label>质检员</label>
+					      			<select name="zhijian" class="hege" style="width: 173px; padding: 3px 0;" disabled="disabled">
+					      				<option value="">质检员1</option>
+					      				<option value="">超级用户</option>
+					      				<option value="">魏</option>
+					      			</select></p>
+					      		</p>
+					      		<p><label>责任人</label>
+					      			<select name="wugongren"  class="hege" style="width: 173px; padding: 3px 0;" disabled="disabled">
+					      				<option value="1">1</option>
+					      			</select></p>
+					      		<p><label>处罚金额</label><input type="number" value="100" class="hege" name="wugongchufa" style="width: 160px;" disabled="disabled"></p>
+				      		</div>
+				      		<div class="col-xs-6">
+				      			<p><label><input type="radio" name="ishege" value="false" onclick="show()">不合格返工</label>&nbsp;&nbsp;&nbsp;已返工<span>{{showcishu}}</span>次</p>
+				      			<p><label>返工原因</label><input type="text" class="fangong" name="fangong" style="width: 160px;" disabled="disabled"></p>
+				      			<p><label>责任人：</label><input type="text" class="fangong" name="fangongren" style="width: 160px;" disabled="disabled"></p>
+				      			<p><label>处罚金额</label><input type="number" value="100" class="fangong" name="fangongchufa" style="width: 160px;" disabled="disabled"></p>
+				      		</div>
+				      	</div>
+			    	</div><!-- /.modal-content -->
+			  	</div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+			
+			<!--  模态框  维修副单  -->
+			<div class="modal" tabindex="-1" role="dialog" id="fudan">
+			  	<div class="modal-dialog" role="document">
+			    	<div class="modal-content">
+			      		<div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
+					        <div class="row">
+					        	<h3 class="modal-title col-xs-8">维修附单</h3>
+					        	<button type="button" class="btn btn-success col-xs-2" style="margin-right: 10px;">保存</button>
+					        	<button type="button" class="btn btn-default col-xs-1">关闭</button>
+					        </div>
+					        <div class="row" style="margin-top: 30px;">
+					        	<p class="col-xs-4">单号：<span>000000000000</span></p>
+					        	<p class="col-xs-6">下次保养里程：<input type="text" style="width: 120px;"></p>
+					        	<p class="col-xs-2">结算单</p>
+					        </div>
+			      		</div>
+				      	
+			    	</div><!-- /.modal-content -->
+			  	</div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+		</div>
+
+		
+	</body>
+	<script type="text/javascript" th:src="@{/js/jquery-3.4.1.min.js}" ></script>
+	<script type="text/javascript" th:src="@{/js/bootstrap.min.js}" ></script>
+	<script type="text/javascript" th:src="@{/js/vue.js}"></script>
+	<script type="text/javascript">
+	var vm = new Vue({
+		el:"#body",
+		data(){
+			return {
+				wxdan:{},
+				wxno:"",
+				wxChepai:"",
+				cishu:0,
+				showcishu:0,
+				insert:{wxdanno:null,ishege:null,yujitime:null,
+					shijitime:null,wugong:null,zhijian:null,wugongren:null,
+					wugongchufa:null,fangongci:null,fangong:null,fangongren:null,
+					fangongchufa:null,bei1:null,bei2:null,bei3:null,bei4:null},
+			};
+		},
+		methods:{
+			
+		}
+	})
+	//页面加载方法
+	function tab(){
+		//获取id为tab_t的ul
+	    var tab_t=document.getElementById('tab_t');
+		//获取id为tab_t的ul的子元素li集
+	    var tab_t_li=tab_t.getElementsByTagName('li');
+	    //获取id为tab_t的div
+	    var tab_c=document.getElementById('tab_c');
+	    ////获取id为tab_t的div的子元素div集
+	    var tab_c_li=tab_c.getElementsByTagName('div');
+	    var len=tab_t_li.length;
+	    var i=0;
+	    for(i=0;i<len;i++){
+	        tab_t_li[i].index=i;
+	        //为每个li绑定click事件
+	        tab_t_li[i].onclick=function(){
+	            for(i=0;i<len;i++){
+	                tab_t_li[i].className='';
+	                tab_c_li[i].className='hide';
+	            }
+	            tab_t_li[this.index].className='act';
+	            tab_c_li[this.index].className='';
+	        }
+	    }
+	}
+	function load(){
+		vm.wxno = window.parent.vm.selectno;
+		vm.wxChepai = window.parent.vm.selectchepai;
+		$.ajax({
+			"url":"[[@{/weixiujieche/oldwxJieDan}]]",
+			"data":"wxdanno="+vm.wxno,
+			"type":"post",
+			"success":function(result){
+				vm.wxdan = result;
+			},
+			"error":function(){
+				alert("数据渲染失败555！");
+				return "";
+			}
+		})
+	}
+	//初始化，调用页面加载方法
+	tab();
+	load();
+	
+	function closeParent(){
+		if(top.location==self.location){
+			alert("当前窗口没有父窗口！");
+		}else{
+			var childIframe=window.parent.document.getElementById("weixiudan");
+			index = null;
+			vm.wxno = "";
+			vm.wxChepai = "";
+			window.parent.vm.selectchepai = "";
+			window.parent.vm.selectno="";
+			childIframe.remove();
+		}
+	}
+	
+
+	
+	function show(){
+		if($("input[name='ishege']:checked").val() =="true"){
+			vm.showcishu=0;
+			for(var i=0;i<$(".hege").length;i++){
+				$(".hege")[i].disabled=false;
+			}
+			for(var i=0;i<$(".fangong").length;i++){
+				$(".fangong")[i].disabled=true;
+				$(".fangong")[i].value="";
+			}
+		}
+		else
+		{
+			vm.showcishu=vm.cishu;
+			for(var i=0;i<$(".hege").length;i++){
+				$(".hege")[i].disabled=true;
+				$(".hege")[i].value="";
+			}
+			for(var i=0;i<$(".fangong").length;i++){
+				$(".fangong")[i].disabled=false;
+			}
+		}
+	}
+	
+	function timechange(){
+		if($("input[name='yujitime']").val()==""||$("input[name='shijitime']").val()==""){
+			$("input[name='wugong']")[0].disabled=false;
+		}
+		else{
+			if($("input[name='shijitime']").val()<$("input[name='yujitime']").val()){
+				$("input[name='wugong']")[0].disabled=true;
+			}
+			else{
+				$("input[name='wugong']")[0].disabled=false;
+			}
+		}
+	}
+	
+	function modalshow(){
+		if(vm.wxdan.danjustatu =="已竣工"){
+			alert("此单已竣工！");
+			return;
+		}
+		$.ajax({
+			"url":"[[@{/jungongjianxiu/queryCiShu}]]",
+			"data":"wxdanno="+vm.wxno,
+			"success":function(result){
+				if(result == null){
+					vm.cishu= 0;
+				}else
+				{
+					vm.cishu =result;
+				}
+			},
+			"error":function(){
+				alert("没有查到次数");
+			}
+		})
+		$("#stock").modal("show");
+	}
+	
+	function insertJunGong(){
+		vm.insert.wxdanno = vm.wxno;
+		vm.insert.ishege=$("input[name='ishege']:checked").val();
+		if($("input[name='ishege']:checked").val() =="true"){
+			vm.insert.yujitime = $("input[name='yujitime']").val();
+			vm.insert.shijitime = $("input[name='shijitime']").val();
+			vm.insert.wugong = $("input[name='wugong']").val();
+			vm.insert.zhijian = $("input[name='zhijian']").val();
+			vm.insert.wugongren = $("input[name='wugongren']").val();
+			vm.insert.wugongchufa = parseFloat($("input[name='wugongren']").val());
+		}
+		else
+		{
+			vm.insert.fangongci = vm.cishu;
+			vm.insert.fangong = $("input[name='fangong']").val();
+			vm.insert.fangongren = $("input[name='fangongren']").val();
+			vm.insert.fangongchufa = parseFloat($("input[name='fangongchufa']").val());
+		}
+		$.ajax({
+			"url":"[[@{/jungongjianxiu/insertJunGong}]]",
+			data:JSON.stringify(vm.insert),
+			type:"post",
+			contentType:"application/json;charset=UTF-8",
+			success:function(result){
+				alert(result);
+			},
+			error:function(){
+				alert("保存失败555！");
+			}
+		})
+	}
+	</script>
+</html>

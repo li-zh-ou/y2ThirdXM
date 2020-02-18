@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.JinritixinMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Jinritixin" >
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="jiechetaici" property="jiechetaici" jdbcType="INTEGER" />
+    <result column="jiesuantaici" property="jiesuantaici" jdbcType="INTEGER" />
+    <result column="zaixiutaici" property="zaixiutaici" jdbcType="INTEGER" />
+    <result column="shobaotaici" property="shobaotaici" jdbcType="INTEGER" />
+    <result column="fanxiutaici" property="fanxiutaici" jdbcType="INTEGER" />
+    <result column="znweixiutaici" property="znweixiutaici" jdbcType="INTEGER" />
+    <result column="zwweixiutaici" property="zwweixiutaici" jdbcType="INTEGER" />
+    <result column="zfeiweixiuzhi" property="zfeiweixiuzhi" jdbcType="DOUBLE" />
+    <result column="baoxianlipei" property="baoxianlipei" jdbcType="DOUBLE" />
+    <result column="xianjin" property="xianjin" jdbcType="DOUBLE" />
+    <result column="weixin" property="weixin" jdbcType="DOUBLE" />
+    <result column="xianjinrkucishu" property="xianjinrkucishu" jdbcType="INTEGER" />
+    <result column="xianjinrkujine" property="xianjinrkujine" jdbcType="DOUBLE" />
+    <result column="guazhanrkushu" property="guazhanrkushu" jdbcType="INTEGER" />
+    <result column="guazhanrkujine" property="guazhanrkujine" jdbcType="DOUBLE" />
+    <result column="xiaoshoushul" property="xiaoshoushul" jdbcType="INTEGER" />
+    <result column="zfeichukushul" property="zfeichukushul" jdbcType="INTEGER" />
+    <result column="zfeichukujine" property="zfeichukujine" jdbcType="DOUBLE" />
+    <result column="sanbaorkushul" property="sanbaorkushul" jdbcType="INTEGER" />
+    <result column="sanbaorkujine" property="sanbaorkujine" jdbcType="DOUBLE" />
+    <result column="danqiankucshul" property="danqiankucshul" jdbcType="INTEGER" />
+    <result column="danqiankucjine" property="danqiankucjine" jdbcType="DOUBLE" />
+    <result column="guazhang" property="guazhang" jdbcType="DOUBLE" />
+    <result column="yinhangzhanghu" property="yinhangzhanghu" jdbcType="DOUBLE" />
+    <result column="dantianshijian" property="dantianshijian" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, jiechetaici, jiesuantaici, zaixiutaici, shobaotaici, fanxiutaici, znweixiutaici, 
+    zwweixiutaici, zfeiweixiuzhi, baoxianlipei, xianjin, weixin, xianjinrkucishu, xianjinrkujine, 
+    guazhanrkushu, guazhanrkujine, xiaoshoushul, zfeichukushul, zfeichukujine, sanbaorkushul, 
+    sanbaorkujine, danqiankucshul, danqiankucjine, guazhang, yinhangzhanghu, dantianshijian
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.JinritixinExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from jinritixin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.accp.domain.JinritixinExample" >
+    delete from jinritixin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.Jinritixin" >
+    insert into jinritixin (id, jiechetaici, jiesuantaici, 
+      zaixiutaici, shobaotaici, fanxiutaici, 
+      znweixiutaici, zwweixiutaici, zfeiweixiuzhi, 
+      baoxianlipei, xianjin, weixin, 
+      xianjinrkucishu, xianjinrkujine, guazhanrkushu, 
+      guazhanrkujine, xiaoshoushul, zfeichukushul, 
+      zfeichukujine, sanbaorkushul, sanbaorkujine, 
+      danqiankucshul, danqiankucjine, guazhang, 
+      yinhangzhanghu, dantianshijian)
+    values (#{id,jdbcType=INTEGER}, #{jiechetaici,jdbcType=INTEGER}, #{jiesuantaici,jdbcType=INTEGER}, 
+      #{zaixiutaici,jdbcType=INTEGER}, #{shobaotaici,jdbcType=INTEGER}, #{fanxiutaici,jdbcType=INTEGER}, 
+      #{znweixiutaici,jdbcType=INTEGER}, #{zwweixiutaici,jdbcType=INTEGER}, #{zfeiweixiuzhi,jdbcType=DOUBLE}, 
+      #{baoxianlipei,jdbcType=DOUBLE}, #{xianjin,jdbcType=DOUBLE}, #{weixin,jdbcType=DOUBLE}, 
+      #{xianjinrkucishu,jdbcType=INTEGER}, #{xianjinrkujine,jdbcType=DOUBLE}, #{guazhanrkushu,jdbcType=INTEGER}, 
+      #{guazhanrkujine,jdbcType=DOUBLE}, #{xiaoshoushul,jdbcType=INTEGER}, #{zfeichukushul,jdbcType=INTEGER}, 
+      #{zfeichukujine,jdbcType=DOUBLE}, #{sanbaorkushul,jdbcType=INTEGER}, #{sanbaorkujine,jdbcType=DOUBLE}, 
+      #{danqiankucshul,jdbcType=INTEGER}, #{danqiankucjine,jdbcType=DOUBLE}, #{guazhang,jdbcType=DOUBLE}, 
+      #{yinhangzhanghu,jdbcType=DOUBLE}, #{dantianshijian,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Jinritixin" >
+    insert into jinritixin
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="jiechetaici != null" >
+        jiechetaici,
+      </if>
+      <if test="jiesuantaici != null" >
+        jiesuantaici,
+      </if>
+      <if test="zaixiutaici != null" >
+        zaixiutaici,
+      </if>
+      <if test="shobaotaici != null" >
+        shobaotaici,
+      </if>
+      <if test="fanxiutaici != null" >
+        fanxiutaici,
+      </if>
+      <if test="znweixiutaici != null" >
+        znweixiutaici,
+      </if>
+      <if test="zwweixiutaici != null" >
+        zwweixiutaici,
+      </if>
+      <if test="zfeiweixiuzhi != null" >
+        zfeiweixiuzhi,
+      </if>
+      <if test="baoxianlipei != null" >
+        baoxianlipei,
+      </if>
+      <if test="xianjin != null" >
+        xianjin,
+      </if>
+      <if test="weixin != null" >
+        weixin,
+      </if>
+      <if test="xianjinrkucishu != null" >
+        xianjinrkucishu,
+      </if>
+      <if test="xianjinrkujine != null" >
+        xianjinrkujine,
+      </if>
+      <if test="guazhanrkushu != null" >
+        guazhanrkushu,
+      </if>
+      <if test="guazhanrkujine != null" >
+        guazhanrkujine,
+      </if>
+      <if test="xiaoshoushul != null" >
+        xiaoshoushul,
+      </if>
+      <if test="zfeichukushul != null" >
+        zfeichukushul,
+      </if>
+      <if test="zfeichukujine != null" >
+        zfeichukujine,
+      </if>
+      <if test="sanbaorkushul != null" >
+        sanbaorkushul,
+      </if>
+      <if test="sanbaorkujine != null" >
+        sanbaorkujine,
+      </if>
+      <if test="danqiankucshul != null" >
+        danqiankucshul,
+      </if>
+      <if test="danqiankucjine != null" >
+        danqiankucjine,
+      </if>
+      <if test="guazhang != null" >
+        guazhang,
+      </if>
+      <if test="yinhangzhanghu != null" >
+        yinhangzhanghu,
+      </if>
+      <if test="dantianshijian != null" >
+        dantianshijian,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="jiechetaici != null" >
+        #{jiechetaici,jdbcType=INTEGER},
+      </if>
+      <if test="jiesuantaici != null" >
+        #{jiesuantaici,jdbcType=INTEGER},
+      </if>
+      <if test="zaixiutaici != null" >
+        #{zaixiutaici,jdbcType=INTEGER},
+      </if>
+      <if test="shobaotaici != null" >
+        #{shobaotaici,jdbcType=INTEGER},
+      </if>
+      <if test="fanxiutaici != null" >
+        #{fanxiutaici,jdbcType=INTEGER},
+      </if>
+      <if test="znweixiutaici != null" >
+        #{znweixiutaici,jdbcType=INTEGER},
+      </if>
+      <if test="zwweixiutaici != null" >
+        #{zwweixiutaici,jdbcType=INTEGER},
+      </if>
+      <if test="zfeiweixiuzhi != null" >
+        #{zfeiweixiuzhi,jdbcType=DOUBLE},
+      </if>
+      <if test="baoxianlipei != null" >
+        #{baoxianlipei,jdbcType=DOUBLE},
+      </if>
+      <if test="xianjin != null" >
+        #{xianjin,jdbcType=DOUBLE},
+      </if>
+      <if test="weixin != null" >
+        #{weixin,jdbcType=DOUBLE},
+      </if>
+      <if test="xianjinrkucishu != null" >
+        #{xianjinrkucishu,jdbcType=INTEGER},
+      </if>
+      <if test="xianjinrkujine != null" >
+        #{xianjinrkujine,jdbcType=DOUBLE},
+      </if>
+      <if test="guazhanrkushu != null" >
+        #{guazhanrkushu,jdbcType=INTEGER},
+      </if>
+      <if test="guazhanrkujine != null" >
+        #{guazhanrkujine,jdbcType=DOUBLE},
+      </if>
+      <if test="xiaoshoushul != null" >
+        #{xiaoshoushul,jdbcType=INTEGER},
+      </if>
+      <if test="zfeichukushul != null" >
+        #{zfeichukushul,jdbcType=INTEGER},
+      </if>
+      <if test="zfeichukujine != null" >
+        #{zfeichukujine,jdbcType=DOUBLE},
+      </if>
+      <if test="sanbaorkushul != null" >
+        #{sanbaorkushul,jdbcType=INTEGER},
+      </if>
+      <if test="sanbaorkujine != null" >
+        #{sanbaorkujine,jdbcType=DOUBLE},
+      </if>
+      <if test="danqiankucshul != null" >
+        #{danqiankucshul,jdbcType=INTEGER},
+      </if>
+      <if test="danqiankucjine != null" >
+        #{danqiankucjine,jdbcType=DOUBLE},
+      </if>
+      <if test="guazhang != null" >
+        #{guazhang,jdbcType=DOUBLE},
+      </if>
+      <if test="yinhangzhanghu != null" >
+        #{yinhangzhanghu,jdbcType=DOUBLE},
+      </if>
+      <if test="dantianshijian != null" >
+        #{dantianshijian,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.JinritixinExample" resultType="java.lang.Integer" >
+    select count(*) from jinritixin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update jinritixin
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.jiechetaici != null" >
+        jiechetaici = #{record.jiechetaici,jdbcType=INTEGER},
+      </if>
+      <if test="record.jiesuantaici != null" >
+        jiesuantaici = #{record.jiesuantaici,jdbcType=INTEGER},
+      </if>
+      <if test="record.zaixiutaici != null" >
+        zaixiutaici = #{record.zaixiutaici,jdbcType=INTEGER},
+      </if>
+      <if test="record.shobaotaici != null" >
+        shobaotaici = #{record.shobaotaici,jdbcType=INTEGER},
+      </if>
+      <if test="record.fanxiutaici != null" >
+        fanxiutaici = #{record.fanxiutaici,jdbcType=INTEGER},
+      </if>
+      <if test="record.znweixiutaici != null" >
+        znweixiutaici = #{record.znweixiutaici,jdbcType=INTEGER},
+      </if>
+      <if test="record.zwweixiutaici != null" >
+        zwweixiutaici = #{record.zwweixiutaici,jdbcType=INTEGER},
+      </if>
+      <if test="record.zfeiweixiuzhi != null" >
+        zfeiweixiuzhi = #{record.zfeiweixiuzhi,jdbcType=DOUBLE},
+      </if>
+      <if test="record.baoxianlipei != null" >
+        baoxianlipei = #{record.baoxianlipei,jdbcType=DOUBLE},
+      </if>
+      <if test="record.xianjin != null" >
+        xianjin = #{record.xianjin,jdbcType=DOUBLE},
+      </if>
+      <if test="record.weixin != null" >
+        weixin = #{record.weixin,jdbcType=DOUBLE},
+      </if>
+      <if test="record.xianjinrkucishu != null" >
+        xianjinrkucishu = #{record.xianjinrkucishu,jdbcType=INTEGER},
+      </if>
+      <if test="record.xianjinrkujine != null" >
+        xianjinrkujine = #{record.xianjinrkujine,jdbcType=DOUBLE},
+      </if>
+      <if test="record.guazhanrkushu != null" >
+        guazhanrkushu = #{record.guazhanrkushu,jdbcType=INTEGER},
+      </if>
+      <if test="record.guazhanrkujine != null" >
+        guazhanrkujine = #{record.guazhanrkujine,jdbcType=DOUBLE},
+      </if>
+      <if test="record.xiaoshoushul != null" >
+        xiaoshoushul = #{record.xiaoshoushul,jdbcType=INTEGER},
+      </if>
+      <if test="record.zfeichukushul != null" >
+        zfeichukushul = #{record.zfeichukushul,jdbcType=INTEGER},
+      </if>
+      <if test="record.zfeichukujine != null" >
+        zfeichukujine = #{record.zfeichukujine,jdbcType=DOUBLE},
+      </if>
+      <if test="record.sanbaorkushul != null" >
+        sanbaorkushul = #{record.sanbaorkushul,jdbcType=INTEGER},
+      </if>
+      <if test="record.sanbaorkujine != null" >
+        sanbaorkujine = #{record.sanbaorkujine,jdbcType=DOUBLE},
+      </if>
+      <if test="record.danqiankucshul != null" >
+        danqiankucshul = #{record.danqiankucshul,jdbcType=INTEGER},
+      </if>
+      <if test="record.danqiankucjine != null" >
+        danqiankucjine = #{record.danqiankucjine,jdbcType=DOUBLE},
+      </if>
+      <if test="record.guazhang != null" >
+        guazhang = #{record.guazhang,jdbcType=DOUBLE},
+      </if>
+      <if test="record.yinhangzhanghu != null" >
+        yinhangzhanghu = #{record.yinhangzhanghu,jdbcType=DOUBLE},
+      </if>
+      <if test="record.dantianshijian != null" >
+        dantianshijian = #{record.dantianshijian,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update jinritixin
+    set id = #{record.id,jdbcType=INTEGER},
+      jiechetaici = #{record.jiechetaici,jdbcType=INTEGER},
+      jiesuantaici = #{record.jiesuantaici,jdbcType=INTEGER},
+      zaixiutaici = #{record.zaixiutaici,jdbcType=INTEGER},
+      shobaotaici = #{record.shobaotaici,jdbcType=INTEGER},
+      fanxiutaici = #{record.fanxiutaici,jdbcType=INTEGER},
+      znweixiutaici = #{record.znweixiutaici,jdbcType=INTEGER},
+      zwweixiutaici = #{record.zwweixiutaici,jdbcType=INTEGER},
+      zfeiweixiuzhi = #{record.zfeiweixiuzhi,jdbcType=DOUBLE},
+      baoxianlipei = #{record.baoxianlipei,jdbcType=DOUBLE},
+      xianjin = #{record.xianjin,jdbcType=DOUBLE},
+      weixin = #{record.weixin,jdbcType=DOUBLE},
+      xianjinrkucishu = #{record.xianjinrkucishu,jdbcType=INTEGER},
+      xianjinrkujine = #{record.xianjinrkujine,jdbcType=DOUBLE},
+      guazhanrkushu = #{record.guazhanrkushu,jdbcType=INTEGER},
+      guazhanrkujine = #{record.guazhanrkujine,jdbcType=DOUBLE},
+      xiaoshoushul = #{record.xiaoshoushul,jdbcType=INTEGER},
+      zfeichukushul = #{record.zfeichukushul,jdbcType=INTEGER},
+      zfeichukujine = #{record.zfeichukujine,jdbcType=DOUBLE},
+      sanbaorkushul = #{record.sanbaorkushul,jdbcType=INTEGER},
+      sanbaorkujine = #{record.sanbaorkujine,jdbcType=DOUBLE},
+      danqiankucshul = #{record.danqiankucshul,jdbcType=INTEGER},
+      danqiankucjine = #{record.danqiankucjine,jdbcType=DOUBLE},
+      guazhang = #{record.guazhang,jdbcType=DOUBLE},
+      yinhangzhanghu = #{record.yinhangzhanghu,jdbcType=DOUBLE},
+      dantianshijian = #{record.dantianshijian,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

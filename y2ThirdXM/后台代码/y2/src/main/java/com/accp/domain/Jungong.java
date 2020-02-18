@@ -1,15 +1,14 @@
 package com.accp.domain;
 
-import java.util.Date;
 
 public class Jungong {
     private String wxdanno;
 
     private String ishege;
 
-    private Date yujitime;
-
-    private Date shijitime;
+    private String yujitime;
+    
+    private String shijitime;
 
     private String wugong;
 
@@ -51,19 +50,19 @@ public class Jungong {
         this.ishege = ishege;
     }
 
-    public Date getYujitime() {
+    public String getYujitime() {
         return yujitime;
     }
 
-    public void setYujitime(Date yujitime) {
+    public void setYujitime(String yujitime) {
         this.yujitime = yujitime;
     }
 
-    public Date getShijitime() {
+    public String getShijitime() {
         return shijitime;
     }
 
-    public void setShijitime(Date shijitime) {
+    public void setShijitime(String shijitime) {
         this.shijitime = shijitime;
     }
 

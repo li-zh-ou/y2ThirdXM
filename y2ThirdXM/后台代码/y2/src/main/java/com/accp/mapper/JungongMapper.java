@@ -19,4 +19,10 @@ public interface JungongMapper {
     int updateByExampleSelective(@Param("record") Jungong record, @Param("example") JungongExample example);
 
     int updateByExample(@Param("record") Jungong record, @Param("example") JungongExample example);
+
+    Integer queryCiShu(String wxdanno);
+    
+    Integer insertJunGong(Jungong record);
+    
+    Integer updatestatu(@Param("shijitime") String shijitime,@Param("wxdanno") String wxdanno);
 }

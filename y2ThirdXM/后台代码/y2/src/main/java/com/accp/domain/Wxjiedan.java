@@ -3,7 +3,7 @@ package com.accp.domain;
 import java.util.Date;
 
 public class Wxjiedan {
-    private String wxdanno;
+	private String wxdanno;
 
     private String wxdantype;
 
@@ -11,7 +11,7 @@ public class Wxjiedan {
 
     private String danjustatu;
 
-    private Date kaidantime;
+    private String kaidantime;
 
     private String kehunno;
 
@@ -41,9 +41,9 @@ public class Wxjiedan {
 
     private Integer prevli;
 
-    private Date prevtime;
+    private String prevtime;
 
-    private Date jinchantime;
+    private String jinchantime;
 
     private String yewutype;
 
@@ -51,13 +51,13 @@ public class Wxjiedan {
 
     private String jieche;
 
-    private Date yujitime;
+    private String yujitime;
 
-    private Date wangongtime;
+    private String wangongtime;
 
     private String jiesuantype;
 
-    private Date jiesuantime;
+    private String jiesuantime;
 
     private Double jiesuanmoney;
 
@@ -78,6 +78,143 @@ public class Wxjiedan {
     private String bei3;
 
     private String bei4;
+
+	private String huiyuanno;
+    
+    private Double huiyuanmoney;
+    
+    private String kehuname;
+    
+    private Integer atfertime;
+    
+    private String carbankname;
+    
+    private String faname;
+    
+    private Double jifen;
+    
+    private Double guazhang;
+    
+	private Double dinjin;
+	
+	private String kehuno;
+	
+	private String chejia;
+	 
+	private String xinghao;
+    
+    public String getKehuno() {
+		return kehuno;
+	}
+
+	public void setKehuno(String kehuno) {
+		this.kehuno = kehuno;
+	}
+
+	public String getChejia() {
+		return chejia;
+	}
+
+	public void setChejia(String chejia) {
+		this.chejia = chejia;
+	}
+
+	public String getXinghao() {
+		return xinghao;
+	}
+
+	public void setXinghao(String xinghao) {
+		this.xinghao = xinghao;
+	}
+
+	public Double getJifen() {
+    	if(jifen==null) {
+			return 0.0;
+		}else {
+			return jifen;
+		}
+	}
+
+	public void setJifen(Double jifen) {
+		this.jifen = jifen;
+	}
+
+	public Double getGuazhang() {
+		if(guazhang==null) {
+			return 0.0;
+		}else {
+			return guazhang;
+		}
+	}
+
+	public void setGuazhang(Double guazhang) {
+		this.guazhang = guazhang;
+	}
+
+	public Double getDinjin() {
+		if(dinjin==null) {
+			return 0.0;
+		}else {
+			return dinjin;
+		}
+	}
+
+	public void setDinjin(Double dinjin) {
+		this.dinjin = dinjin;
+	}
+
+    
+    public String getCarbankname() {
+		return carbankname;
+	}
+
+	public void setCarbankname(String carbankname) {
+		this.carbankname = carbankname;
+	}
+
+	public String getFaname() {
+		return faname;
+	}
+
+	public void setFaname(String faname) {
+		this.faname = faname;
+	}
+
+	public Integer getAtfertime() {
+		return atfertime;
+	}
+
+	public void setAtfertime(Integer atfertime) {
+		this.atfertime = atfertime;
+	}
+
+	public String getKehuname() {
+		return kehuname;
+	}
+
+	public void setKehuname(String kehuname) {
+		this.kehuname = kehuname;
+	}
+
+	public String getHuiyuanno() {
+		return huiyuanno;
+	}
+
+	public void setHuiyuanno(String huiyuanno) {
+		this.huiyuanno = huiyuanno;
+	}
+
+	public Double getHuiyuanmoney() {
+		if(huiyuanmoney==null) {
+			return 0.0;
+		}else {
+			return huiyuanmoney;
+		}
+	}
+
+	public void setHuiyuanmoney(Double huiyuanmoney) {
+		this.huiyuanmoney = huiyuanmoney;
+	}
 
     public String getWxdanno() {
         return wxdanno;
@@ -111,11 +248,11 @@ public class Wxjiedan {
         this.danjustatu = danjustatu;
     }
 
-    public Date getKaidantime() {
+    public String getKaidantime() {
         return kaidantime;
     }
 
-    public void setKaidantime(Date kaidantime) {
+    public void setKaidantime(String kaidantime) {
         this.kaidantime = kaidantime;
     }
 
@@ -231,19 +368,19 @@ public class Wxjiedan {
         this.prevli = prevli;
     }
 
-    public Date getPrevtime() {
+    public String getPrevtime() {
         return prevtime;
     }
 
-    public void setPrevtime(Date prevtime) {
+    public void setPrevtime(String prevtime) {
         this.prevtime = prevtime;
     }
 
-    public Date getJinchantime() {
+    public String getJinchantime() {
         return jinchantime;
     }
 
-    public void setJinchantime(Date jinchantime) {
+    public void setJinchantime(String jinchantime) {
         this.jinchantime = jinchantime;
     }
 
@@ -271,19 +408,19 @@ public class Wxjiedan {
         this.jieche = jieche;
     }
 
-    public Date getYujitime() {
+    public String getYujitime() {
         return yujitime;
     }
 
-    public void setYujitime(Date yujitime) {
+    public void setYujitime(String yujitime) {
         this.yujitime = yujitime;
     }
 
-    public Date getWangongtime() {
+    public String getWangongtime() {
         return wangongtime;
     }
 
-    public void setWangongtime(Date wangongtime) {
+    public void setWangongtime(String wangongtime) {
         this.wangongtime = wangongtime;
     }
 
@@ -295,11 +432,11 @@ public class Wxjiedan {
         this.jiesuantype = jiesuantype;
     }
 
-    public Date getJiesuantime() {
+    public String getJiesuantime() {
         return jiesuantime;
     }
 
-    public void setJiesuantime(Date jiesuantime) {
+    public void setJiesuantime(String jiesuantime) {
         this.jiesuantime = jiesuantime;
     }
 
