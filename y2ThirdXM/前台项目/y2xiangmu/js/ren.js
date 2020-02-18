@@ -1,1 +1,4 @@
-var ren={};
+var ren={
+	tixin:0
+};
+

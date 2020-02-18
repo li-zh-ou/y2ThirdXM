@@ -5,85 +5,328 @@
 		<title>卡修管理系统</title>
 		<link rel="stylesheet" href="layui/css/layui.css"/>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="css/bootstrapStyle/bootstrapStyle.css" type="text/css">
 		<style type="text/css">
 			.tixin{
 				box-shadow: 2px 2px 10px #909090;
 				position: fixed;
-				left: 25%;
+				left: 10%;
+				top:13%;
 				
+			}
+			.yems{
+				margin-left: 30px;
+			}
+			.zuobian{
+				border-right: 1px solid #000000;
+			}
+			.shangs{
+				
+				border-top: 1px solid #000000;
+			}
+			.notclick{
+			  pointer-events: auto;
+			}
+			.biaoqi{
+				padding-left: 20px;
+				border-bottom: 1px solid #000000;
+			}
+			td{
+				height: 40px;
 			}
 		</style>
 	</head>
 	<body>
 		<div id="ctx">
-			<div>
-				
-			</div>
-			<div class="row tixin" style="width: 700px;height: 580px;background-color: #fff;">
-				<div class="col-sm-4" style="width: 300px;margin-top: 10px;">
-						图片今日前台
-						<div style="margin-left: 35px;">
-							<hr />
-							<p>接车次数：<span>0</span></p>
-							<p>结算台次：<span>0</span></p>
-							<p>在修台次：<span>2</span></p>
-							<p>首保台次：<span>14</span></p>
-							<p>返修台次：<span>14</span></p>
-							<p>站内维修台次：<span>14</span></p>
-							<p>站外维修台次：<span>14</span></p>
-							<br />
-							<p>自费维修产值：￥ <span>0</span>.00</p>
-							<p>保险理赔产值：<span>14</span>.00</p>
-						</div>
-						图片今日结算
-						<div style="margin-left: 35px;">
-							<hr />
-							<p>现金：<span>14</span></p>
-							<p>微信：<span>14</span></p>
-						</div>
+			<div class="row yems">
+				<div class="col-sm-5 zuobian">
+					<h3>今日前台</h3>
+					<div>
+						<p>接车台次  <span>14</span></p>
+						<p>结算台次  <span>0</span></p>
+						<p>在修台次  <span>9</span></p>
+						<p>首保台次  <span>0</span></p>
+						<p>返修台次  <span>0</span></p>
+						<p>站内维修台次  <span>0</span></p>
+						<p>站外维修台次  <span>11</span></p>
+						<p></p>
+						<p>自费维修产值：￥<span>0.00</span></p>
+						<p>保险理赔产值：￥<span>0.00</span></p>
+					</div>
+					<h3>今日结算</h3>
+					<div class="shangs">
+						<p>现金 ：￥<span>0.00</span></p>
+						<p>微信 ：￥<span>0.00</span></p>
+					</div>
 				</div>
-				<div class="col-sm-8" style="width: 400px;border-left:1px solid #000000;margin-top: 10px;"> 
-					图片今日库房 <span class="close">&times;</span>
-					<div style="margin-left: 35px;">
-						<hr />
-						<p>现金入库数：<span>14</span></p>
-						<p>现金入库额：￥ <span>14</span>.00</p>
-						<p>挂帐入库数：<span>14</span></p>
-						<p>挂帐入库额：￥ <span>0</span>.00</p>
-						<p>销售数量：<span>14</span></p>
-						<p>销售金额：￥ <span>14</span>.00</p>
-						<p>自费出库数量：<span>14</span></p>
-						<p>自费出库金额：￥ <span>0</span>.00</p>
-						<p>三包出库数量：<span>14</span></p>
-						<p>三包出库金额：￥ <span>14</span>.00</p>
-						<p>当前库存数量：<span>793</span></p>
-						<p>当前库存金额：￥ <span>14</span>.00</p>
-						<br />
-						<hr />
-						<p>挂账：￥ <span>14</span>.00</p>
-						<p>银行账户：￥ <span>0</span>.00</p>
+				<div class="col-sm-7">
+					<h3>今日库房</h3>
+					<div>
+						<p>现金入库数  <span>0</span></p>
+						<p>现金入库额：￥<span>0.00</span></p>
+						<p>挂账入库数  <span>9</span></p>
+						<p>挂账入库额：￥<span>0.00</span></p>
+						<p>销售数量  <span>0</span></p>
+						<p>自费出库数量   <span>0</span></p>
+						<p>自费出库金额：￥<span>0.00</span></p>
+						<p>三包出库数量  <span>11</span></p>
+						<p>三包出库金额：￥<span>0.00</span></p>
+						<p>当前库存数量  <span>0</span></p>
+						<p>当前库存今日：￥<span>0.00</span></p>
+					</div>
+					<div class="shangs">
+						<p>挂账 ：￥<span>0.00</span></p>
+						<p>银行账户 ：￥<span>0.00</span></p>
+					</div>
+				</div>
+			</div>
+			<div class="row tixin" style="width: 950px;height: 350px;background-color: #fff;">
+				<h4 class="biaoqi">今日提醒<span class="close notclick">&times;</span></h4>
+				<div class="col-sm-4" style="width: 300px;margin-top: 10px;">
+						<ul id="treeDemo" class="ztree"></ul>
+				</div>
+				<div class="col-sm-8" style="border-left:1px solid #000000;margin-top: 10px;"> 
+					
+					<div style="margin-left: 35px;height: 250px; overflow:auto;" >
+						<table class="srkh table table-bordered table-hover" style="width: 2200px; ">
+							<tr >
+								<th>客户编码</th>
+								<th>客户名称</th>
+								<th>详细地址</th>
+								<th>联系人</th>
+								<th>手机</th>
+								<th>客户生日</th>
+								<th>客户类别</th>
+								<th>会员卡号</th>
+								<th>入会日期</th>
+								<th>会员到期</th>
+								<th>备注</th>
+								<th>建档日期</th>
+								<th>服务顾问</th>
+								<th>顾问电话</th>
+								<th>账期(天)</th>
+								<th>挂账额度</th>
+								<th>累计积分</th>
+								<th>订金余额</th>
+								<th>注册电话</th>
+								<th>开户银行</th>
+								<th>银行账号</th>
+								<th>注册地址</th>
+								<th>其他一</th>
+								<th>其他二</th>
+							</tr>
+							<tr  v-for="item in kehu">
+								<td>{{item.kehuno}}</td>
+								<td>{{item.kehuname}}</td>
+								<td>{{item.kehuaddress}}</td>
+								<td>{{item.kehulianxi}}</td>
+								<td>{{item.kehuphone}}</td>
+								<td>{{item.kehubirthday}}</td>
+								<td>{{item.kehutype}}</td>
+								<td>{{item.huiyuanno}}</td>
+								<td>{{item.ruhuitime}}</td>
+								<td>{{item.daoqitime}}</td>
+								<td>{{item.remark}}</td>
+								<td>{{item.bei1}}</td>
+								<td>{{item.guwen}}</td>
+								<td>{{item.guwenphone}}</td>
+								<td>{{item.zhangqi}}</td>
+								<td>{{item.edu}}</td>
+								<td>{{item.jifen}}</td>
+								<td>{{item.dinjin}}</td>
+								<td>{{item.zhuphone}}</td>
+								<td>{{item.bank}}</td>
+								<td>{{item.bankcard}}</td>
+								<td>{{item.zhuaddress}}</td>
+								<td>{{item.bei2}}</td>
+								<td>{{item.bei3}}</td>
+							</tr>
+							</table>
+							<table class="huiyuan table table-bordered table-hover" style="width: 600px; ">
+							<!--会员-->
+							<tr>
+						        <th class="text-center">客户编号</th>
+						        <th class="text-center">客户名称</th>
+						        <th class="text-center">会员卡号</th>
+						        <th class="text-center">会员余额</th>
+						        <th class="text-center">会员等级</th>
+						        <th class="text-center">消费金额</th>
+						        <th class="text-center">积分</th>
+						        <th class="text-center">优惠</th>
+					      </tr>
+					       <tr  v-for="item in huiyuan">
+						        <td class="text-center">{{item.kehuno}}</td>
+						        <td class="text-center">{{item.huiyuanname}}</td>
+						        <td class="text-center">{{item.huiyuanno}}</td>
+						        <td class="text-center">{{item.huiyuanmoney}}</td>
+						        <td class="text-center">{{item.huiyuangraden}}</td>
+						        <td class="text-center">{{item.xiaofei}}</td>
+						        <td class="text-center">{{item.jifen}}</td>
+						        <td class="text-center">{{item.youhui}}</td>
+					       </tr>
+					</table>
+					<table class="table chee table-bordered table-hover" style="width: 2200px;">
+						<tr>
+							<th>车牌号码</th>
+							<th>车牌品牌</th>
+							<th>车牌型号</th>
+							<th>驾驶员</th>
+							<th>驾驶员电话</th>
+							<th>出生日期</th>
+							<th>车辆归属</th>
+							<th>驾证到期</th>
+							<th>车架号</th>
+							<th>发动机号</th>
+							<th>发动机品牌号</th>
+							<th>车辆年款</th>
+							<th>里程</th>
+							<th>载重</th>
+							<th>购买日期</th>
+							<th>上牌日期</th>
+							<th>车险到期</th>
+							<th>在我投保车</th>
+							<th>燃油类别</th>
+							<th>下次保养里程</th>
+							<th>下次保养日期</th>
+						</tr>
+						<tr v-for="item in kehucar">
+							<td>{{item.chepai}}</td>
+							<td>{{item.carbankname}}</td>
+							<td>{{item.xinghao}}</td>
+							<td>{{item.sijiname}}</td>
+							<td>{{item.sijiphone}}</td>
+							<td>{{item.sijibirthday}}</td>
+							<td>{{item.guishu}}</td>
+							<td>{{item.jiazhao}}</td>
+							<td>{{item.chejia}}</td>
+							<td>{{item.fanumber}}</td>
+							<td>{{item.faname}}</td>
+							<td>{{item.niankuan}}</td>
+							<td>{{item.licheng}}</td>
+							<td>{{item.zaizhong}}</td>
+							<td>{{item.goumaidate}}</td>
+							<td>{{item.shangpaidate}}</td>
+							<td>{{item.chejian}}</td>
+							<td>{{item.bei1}}</td>
+							<td>{{item.ranyou}}</td>
+							<td>{{item.nextbaoxian}}</td>
+							<td>{{item.nextbaoxiandate}}</td>
+						</tr>
+					</table>
 					</div>
 				</div>
 			</div>
 		</div>
-		<script type="text/javascript" src="layui/layui.js" ></script>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" src="js/jquery-1.8.3.js" ></script>
+		<script type="text/javascript" src="js/jquery.ztree.core.js" ></script>
+		<script type="text/javascript" src="js/jquery.ztree.excheck.js" ></script>
+		<script type="text/javascript" src="js/vue.js"></script>
 		<script type="text/javascript">
-			layui.use('element', function(){
-			  var $ = layui.jquery
-			  ,element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
-			  //Hash地址的定位
-			  var layid = location.hash.replace(/^#test=/, '');
-			  element.tabChange('test', layid);
-			  
-			  element.on('tab(test)', function(elem){
-			    location.hash = 'test='+ $(this).attr('lay-id');
-			  });
-			  
+			var vm=new Vue({
+				el:"#ctx",
+				data(){
+					return{
+						kehu:[],
+						huiyuan:[],
+						kehucar:[]
+					}
+				}
+			})
+			
+			function query(){
+				$.ajax({
+					url: top.data.ip + "querykehubydata",
+					type: "get",
+					dataType: "json",
+					success:function(response) {
+						vm.kehu=response;
+					}
+				});
+			}
+			function queryjiazhao(){
+				$.ajax({
+					url: top.data.ip + "queryjiazhao",
+					type: "get",
+					dataType: "json",
+					success:function(response) {
+						vm.kehucar=response;
+					}
+				});
+			}
+			function queryHuiyuan(){
+				$.ajax({
+					url: top.data.ip + "queryhuiyuan",
+					type: "get",
+					dataType: "json",
+					success:function(response) {
+						vm.huiyuan=response;
+					}
+				});
+			}
+			var setting = {
+				data: {
+					simpleData: {
+						enable: true
+					}
+				},
+				edit: {
+					enable: true
+				}
+				,callback:{
+					onClick:chooseNode,
+				}
+			};
+		//数据结构，从后台查询数据进行赋值就可使用
+			var zNodes =[
+				{id:1, pId:0, name:"提醒情况", open:true},
+				{id:101, pId:1, name:"今天过生日的客户"},
+				{id:102, pId:1, name:"即将到期的会员"},
+				{id:103, pId:1, name:"驾证到期的驾驶员"},
+				{id:104, pId:1, name:"须续办的保险车辆"},
+				{id:108, pId:1, name:"须车检车辆"},
+				{id:109, pId:1, name:"流失客户"},
+				{id:110, pId:1, name:"过生日的驾驶员"},
+				{id:111, pId:1, name:"车辆保养提醒"},
+				{id:112, pId:1, name:"今天过生日员工"},
+				{id:113, pId:1, name:"合同即将到期的员工"},	
+			];
+	
+			$(document).ready(function(){
+				$.fn.zTree.init($("#treeDemo"), setting, zNodes);
 			});
+			$(".huiyuan").hide();
+			query();
+			$(".chee").hide();
+			function chooseNode(event,treeId,treeNode){
+				if(treeNode.id==101){
+					$(".srkh").show();
+					query();
+					$(".huiyuan").hide();
+					$(".chee").hide();
+				}
+				if(treeNode.id==102){
+					$(".srkh").hide();
+					$(".huiyuan").show();
+					$(".chee").hide();
+					queryHuiyuan();
+				}
+				if(treeNode.id==103){
+					$(".srkh").hide();
+					$(".huiyuan").hide();
+					$(".chee").show();
+					queryjiazhao();
+				}
+				
+				
+			}
 			$(function(){
+				if(top.ren.tixin==1){
+					$(".tixin").hide();
+				}
 				$(".close").click(function(){
-					$(".row").hide();
+					top.ren.tixin=1;
+					$(".tixin").hide();
 				})
 				
 				$(".row p").each(function(){
