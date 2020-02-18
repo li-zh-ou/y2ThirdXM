@@ -12,12 +12,11 @@
 <body>
   
 <div style="height:1px;"></div>
-<div class="login">
+<div class="login" id="ctx">
  <header>
 	<h1>登陆</h1>
  </header>
  <div class="sr">
-	<form>
 		<div class="name">
 			<label>
 			<i class="sublist-icon glyphicon glyphicon-user"></i>
@@ -31,7 +30,6 @@
 			<input type="text" v-model="user.password"  placeholder="这里输入登录密码" class="name_inp">
 		</div>
 		<button @click="loginin()" class="dl">登陆</button>
-	</form>
  </div>
 </div>
 <div style="text-align:center;margin:-150px 0; font:normal 14px/24px 'MicroSoft YaHei';color:#ffffff">
@@ -50,10 +48,9 @@
 					},
 					methods: {
 						loginin() {
-								var that = this;
 								$.ajax({
 										url: data.ip + "loginin",
-										data: that.user,
+										data:this.user,
 										type: "post",
 										dataType: "json",
 										success: function(response) {

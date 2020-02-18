@@ -17,6 +17,9 @@
     <result column="bei3" property="bei3" jdbcType="VARCHAR" />
     <result column="bei4" property="bei4" jdbcType="VARCHAR" />
   </resultMap>
+   <select id="queryhuiyuan" resultMap="BaseResultMap">
+  	 SELECT * FROM huiyuan WHERE YEAR(DaoQiTime)=YEAR(NOW()) AND MONTH(DaoQiTime)=MONTH(NOW()) AND DAY(DaoQiTime)-5&lt;=DAY(NOW())
+  </select>
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >

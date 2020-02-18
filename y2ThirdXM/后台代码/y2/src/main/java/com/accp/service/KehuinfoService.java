@@ -6,10 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.accp.domain.Huiyuan;
 import com.accp.domain.Kehu;
 import com.accp.domain.KehuExample;
 import com.accp.domain.Kehucar;
 import com.accp.domain.KehucarExample;
+import com.accp.mapper.HuiyuanMapper;
 import com.accp.mapper.KehuMapper;
 import com.accp.mapper.KehucarMapper;
 
@@ -21,9 +23,20 @@ public class KehuinfoService {
 	KehuMapper kehumapper;
 	@Autowired
 	KehucarMapper carmapper;
+	@Autowired
+	HuiyuanMapper huiyuanmapper;
 	
 	public List<Kehu> QueryKehu(){
 		return kehumapper.findkehu();
+	}
+	public List<Kehu> querykehubydata(){
+		return kehumapper.findshengr();
+	}
+	public List<Huiyuan> queryhuiyuan(){
+		return huiyuanmapper.queryhuiyuan();
+	}
+	public List<Kehucar> queryjiazhao(){
+		return carmapper.queryjiazhao();
 	}
 	public List<Kehu> querymokehu(String kehuno,String kehuphone){
 		return kehumapper.querymokehu(kehuno, kehuphone);

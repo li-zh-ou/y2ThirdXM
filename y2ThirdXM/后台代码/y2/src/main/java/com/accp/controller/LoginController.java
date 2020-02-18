@@ -1,6 +1,7 @@
 package com.accp.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -20,17 +21,17 @@ public class LoginController {
 	
 	@PostMapping("/loginin")
 	public Map<String, Object> loginin(String username, String password, HttpSession session) {
-//		Yuangong yg=new Yuangong()
-//		yg.setz(username);
-//		yg.setPassword(password);
-//		users = service.findByUsers(users);
-//		if (users == null) {
-//			return null;
-//		}
-//		session.setAttribute("user", users);
-//		Map<String, Object> map = new HashMap<>();
-//		map.put("user", users);
-//		map.put("token", session.getId());
-		return null;
+		Yuangong yg=new Yuangong();
+		yg.setLogin(username);
+		yg.setBei4(password);
+		List<Yuangong> ss = ser.queryby(yg);
+		if (ss.size() == 0) {
+			return null;
+		}
+		session.setAttribute("yg", ss.get(0));
+		Map<String, Object> map = new HashMap<>();
+		map.put("user", ss.get(0));
+		map.put("token", session.getId());
+		return map;
 	}
 }

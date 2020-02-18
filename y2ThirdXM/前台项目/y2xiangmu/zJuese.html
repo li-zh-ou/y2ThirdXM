@@ -94,6 +94,12 @@
 				margin-left: 2px;
 				color: #9D9D9D;
 			}
+			.mokuai{
+				margin-left: 20px;
+			}
+			.diyi{
+				margin-left: 35px;
+			}
 		</style>
 	</head>
 	<body>
@@ -111,7 +117,7 @@
 			<div class="row xuan">
 				<div class="col-lg-3">
 					角色名称 <select style="width: 150px;height: 25px;" @change="findRolePerms($event)">
-						<option>-请选择-</option>
+						<option value="0">-请选择-</option>
 						<option v-for="item in zhiwu" :value="item.zhiwuid">{{item.zhiwuname}}</option>
 					</select>
 				</div>
@@ -121,16 +127,16 @@
 			</div>
 			<div class="tiao">
 				<div class="sha">
-					<div class="dian diyi">模块权限</div>
-					<div class="dian">单据权限</div>
+					<div class="dian diyi">权限管理</div>
+					<!--<div class="dian">单据权限</div>
 					<div class="dian">数据权限</div>
-					<div class="dian">仓库开单</div>
+					<div class="dian">仓库开单</div>-->
 				</div>
 			</div>
 			<div class="mokuai row">
 				<ul id="treeDemo" class="ztree"></ul>
 			</div>
-			<div class="danju">
+			<!--<div class="danju">
 				456
 			</div>
 			<div class="shuj">
@@ -138,7 +144,7 @@
 			</div>
 			<div class="canku">
 				000
-			</div>
+			</div>-->
 			<div class="row dingyi">
 				<div>
 					<div class="tan"><span class="toto">角色定义</span><button class="btn btn-danger xiao">取消</button></div>
@@ -174,7 +180,6 @@
 		<script type="text/javascript" src="js/jquery-1.8.3.js" ></script>
 		<script type="text/javascript" src="js/jquery.ztree.core.js" ></script>
 		<script type="text/javascript" src="js/jquery.ztree.excheck.js" ></script>
-		<script type="text/javascript" src="js/my.js"></script>
 		<script type="text/javascript" src="js/perms.js" ></script>
 		<script type="text/javascript">
 			var setting = {
@@ -223,7 +228,7 @@
 							}
 						}
 						$.ajax({
-							url:data.ip+"addzhiwu",
+							url:top.data.ip+"addzhiwu",
 							data:JSON.stringify(vm.zhiwuyi),
 							contentType:"application/json;charset=utf-8",
 							type:"post",
@@ -238,7 +243,7 @@
 						});
 					},updatezhiwu:function(){
 						$.ajax({
-							url:data.ip+"updatezhiwu",
+							url:top.data.ip+"updatezhiwu",
 							data:JSON.stringify(vm.zhiwuyi),
 							contentType:"application/json;charset=utf-8",
 							type:"post",
@@ -255,7 +260,7 @@
 						var zhiwuid=$(e.target).val();
 						vm.zhiwuid=zhiwuid;
 						$.ajax({
-							url: data.ip + "findpermbu",
+							url: top.data.ip + "findpermbu",
 							data:{
 								zhiwuid:zhiwuid
 							},
@@ -281,6 +286,10 @@
 						});
 					},saveRoles(){
 						//保存
+						if(vm.zhiwuid==0){
+							alert("请选择角色赋予权限！");
+							return;
+						}
 						var zTree = $.fn.zTree.getZTreeObj("treeDemo"); //ztree对象
 		                var checked = zTree.getCheckedNodes(true);
 		                checked=JSON.parse(JSON.stringify(checked).replace(/name/g, 'pname'))
@@ -288,15 +297,16 @@
 						checked=JSON.parse(JSON.stringify(checked).replace(/id/g, 'pid'))
 		                console.log(checked);
 						$.ajax({
-							url:data.ip+"addquanxian?zhiwuid="+vm.zhiwuid,
+							url:top.data.ip+"addquanxian?zhiwuid="+vm.zhiwuid,
 							data:JSON.stringify(checked),
 							type:"post",
 							contentType:"application/json;charset=utf-8",
 							success:function(response){
 								if(response>0){
 									alert("保存成功!");
+									
 									$.ajax({
-										url: data.ip + "findPerms",
+										url: top.data.ip + "findPerms",
 										type: "get",
 										xhrFields: {
 											withCredentials: true
@@ -304,11 +314,13 @@
 										dataType: "json",
 										success: function(response) {
 											top.data.perms = response;
+											location.reload();
 										},
 										error: function(error) {
 								
 										}
 									});
+									
 								}else{
 									alert("保存失败!");
 								}
@@ -328,7 +340,7 @@
 			function findperm(){
 				//查询全部权限
 				$.ajax({
-					url: data.ip + "findperm",
+					url: top.data.ip + "findperm",
 					type: "get",
 					dataType: "json",
 					success: function(response) {
@@ -349,7 +361,7 @@
 			//查询全部角色
 			function queryzhiwu(){
 				$.ajax({
-					url:data.ip+"queryzhiwu",
+					url:top.data.ip+"queryzhiwu",
 					type: "get",
 					dataType: "json",
 					success:function(response) {

@@ -34,7 +34,9 @@
 		    <result column="faname" property="faname" />
 		    <result column="fanumber" property="fanumber" />
   </resultMap>
-  
+  <select id="queryjiazhao"  resultMap="BaseResultMapSales">
+  	  SELECT * FROM kehucar WHERE JiaZhao&lt;NOW()
+  </select>
   <select id="chacar" resultMap="BaseResultMapSales">
   	SELECT * FROM kehucar 
 				INNER JOIN carbrand ON kehucar.`CarBankId`=carbrand.`CarBankId`

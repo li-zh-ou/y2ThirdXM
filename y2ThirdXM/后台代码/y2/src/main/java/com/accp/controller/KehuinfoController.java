@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.accp.domain.Huiyuan;
 import com.accp.domain.Kehu;
 import com.accp.domain.Kehucar;
 import com.accp.service.KehuinfoService;
@@ -25,6 +26,18 @@ public class KehuinfoController {
 	@GetMapping("/querykehu")
 	public List<Kehu> QueryKehu(){
 		return ser.QueryKehu();
+	}
+	@GetMapping("/querykehubydata")
+	public List<Kehu> querykehubydata(){
+		return ser.querykehubydata();
+	}
+	@GetMapping("/queryhuiyuan")
+	public List<Huiyuan> queryhuiyuan(){
+		return ser.queryhuiyuan();
+	}
+	@GetMapping("/queryjiazhao")
+	public List<Kehucar> queryjiazhao(){
+		return ser.queryjiazhao();
 	}
 	@GetMapping("/querymokehu")
 	public List<Kehu> querymokehu(String kehuno,String kehuphone){

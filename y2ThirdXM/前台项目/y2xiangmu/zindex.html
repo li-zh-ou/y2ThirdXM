@@ -6,6 +6,11 @@
    <link href="assets/css/dpl-min.css" rel="stylesheet" type="text/css" />
   <link href="assets/css/bui-min.css" rel="stylesheet" type="text/css" />
    <link href="assets/css/main-min.css" rel="stylesheet" type="text/css" />
+   <style type="text/css">
+   	.notclick{
+	  pointer-events: none;
+	}
+   </style>
  </head>
  <body>
 <div id="ctx">
@@ -19,11 +24,11 @@
         </a>
       </div>
 
-    <div class="dl-log">欢迎您，<span class="dl-log-user">**.**@alibaba-inc.com</span><a href="###" title="退出系统" class="dl-log-quit">[退出]</a><a href="http://http://sc.chinaz.com/" title="文档库" class="dl-log-quit">文档库</a>
+    <div class="dl-log">欢迎您，<span class="dl-log-user min"></span><a @click="tuichu" title="退出系统" class="dl-log-quit">[退出]</a><a href="http://http://sc.chinaz.com/" title="文档库" class="dl-log-quit">文档库</a>
     </div>
   </div>
    <div class="content">
-    <div class="dl-main-nav">
+    <div class="dl-main-nav sye">
       <div class="dl-inform"><div class="dl-inform-title">贴心小秘书<s class="dl-inform-icon dl-up"></s></div></div>
       <ul id="J_Nav"  class="nav-list ks-clear">
         <li v-for="item in perms" v-if="item.parentid==0" class="nav-item"><div class="nav-item-inner">{{item.pname}}</div></li>
@@ -39,33 +44,46 @@
   <script type="text/javascript" src="assets/js/bui.js"></script>
   <script type="text/javascript" src="assets/js/config.js"></script>
   <script type="text/javascript" src="js/vue.js"></script>
+  <script type="text/javascript" src="js/ren.js"></script>
   <script type="text/javascript" src="js/my.js"></script>
   <script type="text/javascript" src="js/lo.js"></script>
   <script src="js/my.js" type="text/javascript" charset="utf-8"></script>
   <script>
+  	
   	var vm=new Vue({
   		el:"#ctx",
   		data() {
 			return {
-				user:{Loginname:'123',Password:'456',Yuanno:'1'},
+				user:{},
 				yuangong:{},
 				perms:[],
 				ping:[]
 			}
 		},
 		methods: {
-			
+			tuichu:function(){
+				if(confirm("确定退出？")){
+					sessionStorage.setItem("user",undefined);
+					window.location.href="zlogin.html";
+				}
+			}
 		},created: function() {
+			let user=sessionStorage.getItem("user");
+			
+			console.log(user)
 			var that=this;
+			that.user=JSON.parse(user);
+			$(".min").html(that.user.yuanname)
 			$.ajax({
 				url: data.ip + "toIndex",
 				data:{
-					Yuanno:"ygbh001"
+					Yuanno:that.user.yuanno
 				},
 				type: "get",
 				dataType: "json",
 				success:function(response) {
 					that.yuangong=response;
+					console.log(that.yuangong)
 					$.ajax({
 						url: data.ip + "find",
 						data:{
@@ -129,6 +147,7 @@
 			}
 	      new PageUtil.MainPage({
 	        modulesConfig : config
+	        
 	      });
 	    });
     }

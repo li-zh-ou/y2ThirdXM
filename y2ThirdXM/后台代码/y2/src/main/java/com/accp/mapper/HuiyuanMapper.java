@@ -6,6 +6,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface HuiyuanMapper {
+	List<Huiyuan> queryhuiyuan();
+	
     int countByExample(HuiyuanExample example);
 
     int deleteByExample(HuiyuanExample example);
