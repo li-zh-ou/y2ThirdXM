@@ -33,6 +33,11 @@
 		  	<result column="ruhuitime" property="ruhuitime" />
 		    <result column="daoqitime" property="daoqitime" />
   </resultMap>
+
+  
+  <select id="findshengr" resultMap="BaseResultMapSales" >
+  	SELECT * FROM kehu WHERE MONTH(kehu.kehubirthday)=MONTH(NOW()) AND DAY(kehu.kehubirthday)=DAY(NOW())
+  </select>
   <select id="querychatiao" resultMap="BaseResultMapSales" parameterType="com.accp.domain.Kehu">
   	SELECT * FROM kehu LEFT JOIN huiyuan ON kehu.`KeHuid` = huiyuan.`KeHuNo` 
 		WHERE kehu.`KeHuNo` LIKE '%${aaa.KeHuNo}%' AND kehu.kehuname LIKE '%${aaa.kehuname}%' AND kehu.kehutype LIKE '%${aaa.kehutype}%'
