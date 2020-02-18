@@ -46,7 +46,7 @@
   <script type="text/javascript" src="js/vue.js"></script>
   <script type="text/javascript" src="js/ren.js"></script>
   <script type="text/javascript" src="js/my.js"></script>
-  
+  <script type="text/javascript" src="js/lo.js"></script>
   <script src="js/my.js" type="text/javascript" charset="utf-8"></script>
   <script>
   	
@@ -77,21 +77,13 @@
 			$.ajax({
 				url: data.ip + "toIndex",
 				data:{
-<<<<<<< HEAD
-					Yuanno:"ygb2020001"
-=======
 					Yuanno:that.user.yuanno
->>>>>>> refs/remotes/origin/zhouximing
 				},
 				type: "get",
 				dataType: "json",
 				success:function(response) {
 					that.yuangong=response;
-<<<<<<< HEAD
-					console.log(that.yuangong);
-=======
 					console.log(that.yuangong)
->>>>>>> refs/remotes/origin/zhouximing
 					$.ajax({
 						url: data.ip + "find",
 						data:{
