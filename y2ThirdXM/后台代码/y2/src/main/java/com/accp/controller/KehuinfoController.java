@@ -52,14 +52,14 @@ public class KehuinfoController {
 	public List<Kehucar> querysijir(){
 		return ser.querysijir();
 	}
-//	@GetMapping("/queryygsr")
-//	public List<Yuangong> queryygsr(){
-//		return ser.queryygsr();
-//	}
-//	@GetMapping("/queryygsrht")
-//	public List<Yuangong> queryygsrht(){
-//		return ser.queryygsrht();
-//	}
+	@GetMapping("/queryygsr")
+	public List<Yuangong> queryygsr(){
+		return ser.queryygsr();
+	}
+	@GetMapping("/queryygsrht")
+	public List<Yuangong> queryygsrht(){
+		return ser.queryygsrht();
+	}
 	
 	
 	

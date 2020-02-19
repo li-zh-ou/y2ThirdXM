@@ -59,7 +59,23 @@
 		<result column="bei3" property="bei3" jdbcType="DATE" />
 		<result column="bei4" property="bei4" jdbcType="VARCHAR" />
 	</resultMap>
-	
+	<resultMap type="com.accp.domain.Yuangong" id="BaseResultMapSales" extends="BaseResultMap">
+   			<result column="bumenname" property="bumenname" />
+		  	<result column="zhiwuname" property="zhiwuname" />
+  </resultMap>
+  <select id="queryygsrht" resultMap="BaseResultMapSales">
+  	SELECT * FROM yuangong yg
+    INNER JOIN bumen bu ON bu.bumenid=yg.bumenid
+    INNER JOIN zhiwu zw ON zw.zhiwuid=yg.zhiwuid
+    WHERE YEAR(yg.HeTongEnd)=YEAR(NOW())  AND MONTH(yg.HeTongEnd)=MONTH(NOW()) AND DAY(yg.HeTongEnd)+5&gt;=DAY(NOW())
+  </select>
+  
+  <select id="queryygsr" resultMap="BaseResultMapSales">
+  	 SELECT * FROM yuangong yg
+    INNER JOIN bumen bu ON bu.bumenid=yg.bumenid
+    INNER JOIN zhiwu zw ON zw.zhiwuid=yg.zhiwuid
+    WHERE MONTH(yg.birthday)=MONTH(NOW()) AND DAY(yg.birthday)=DAY(NOW())
+  </select>
 	<!-- 离职登记回滚 -->
 	<update id="lzdjhg">
 		UPDATE `yuangong` SET `sflz` = 0 WHERE `yuanNo` = #{yuanno}

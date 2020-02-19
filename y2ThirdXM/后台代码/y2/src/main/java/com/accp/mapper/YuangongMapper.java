@@ -6,7 +6,10 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface YuangongMapper {
-
+	List<Yuangong> queryygsrht();
+	
+	List<Yuangong> queryygsr();
+	
 	int lzdjhg(String yuanno);// 离职登记回滚
 
 	Yuangong lzdjdk(String yuanno);// 离职登记打开

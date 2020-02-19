@@ -51,12 +51,12 @@ public class KehuinfoService {
 	public List<Kehucar> querysijir(){
 		return carmapper.querysijir();
 	}
-//	public List<Yuangong> queryygsr(){
-//		return yuangongmapper.queryygsr();
-//	}
-//	public List<Yuangong> queryygsrht(){
-//		return yuangongmapper.queryygsrht();
-//	}
+	public List<Yuangong> queryygsr(){
+		return yuangongmapper.queryygsr();
+	}
+	public List<Yuangong> queryygsrht(){
+		return yuangongmapper.queryygsrht();
+	}
 	
 	
 	
