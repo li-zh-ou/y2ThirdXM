@@ -213,6 +213,23 @@
 							<td>{{item.nextbaoxiandate}}</td>
 						</tr>
 					</table>
+							
+					<table class="table yuan table-bordered table-hover" style="width: 1000px;">
+						<tr>
+							<td>部门</td>
+							<td>员工编号</td>
+							<td>姓名</td>
+							<td>性别</td>
+							<td>职位</td>
+						</tr>
+						<tr v-for="item in yuangong">
+							<td>{{item.bumenname}}</td>
+							<td>{{item.yuanno}}</td>
+							<td>{{item.yuanname}}</td>
+							<td>{{item.sex}}</td>
+							<td>{{item.zhiwuname}}</td>
+						</tr>
+					</table>
 					</div>
 				</div>
 			</div>
@@ -229,12 +246,14 @@
 					return{
 						kehu:[],
 						huiyuan:[],
-						kehucar:[]
+						kehucar:[],
+						yuangong:[]
 					}
 				}
 			})
 			
 			function query(){
+				vm.kehu=[];
 				$.ajax({
 					url: top.data.ip + "querykehubydata",
 					type: "get",
@@ -245,12 +264,68 @@
 				});
 			}
 			function queryjiazhao(){
+				vm.kehucar=[];
 				$.ajax({
 					url: top.data.ip + "queryjiazhao",
 					type: "get",
 					dataType: "json",
 					success:function(response) {
 						vm.kehucar=response;
+					}
+				});
+			}
+			function querybaoxian(){
+				vm.kehucar=[];
+				$.ajax({
+					url: top.data.ip + "querybaoxian",
+					type: "get",
+					dataType: "json",
+					success:function(response) {
+						vm.kehucar=response;
+					}
+				});
+			}
+			function queryliushi(){
+				vm.kehu=[];
+				$.ajax({
+					url: top.data.ip + "queryliushi",
+					type: "get",
+					dataType: "json",
+					success:function(response) {
+						vm.kehu=response;
+					}
+				});
+			}
+			function querysijir(){
+				vm.kehucar=[];
+				$.ajax({
+					url: top.data.ip + "querysijir",
+					type: "get",
+					dataType: "json",
+					success:function(response) {
+						vm.kehucar=response;
+					}
+				});
+			}
+			function queryygsr(){
+				vm.yuangong=[];
+				$.ajax({
+					url: top.data.ip + "queryygsr",
+					type: "get",
+					dataType: "json",
+					success:function(response) {
+						vm.yuangong=response;
+					}
+				});
+			}
+			function queryygsrht(){
+				vm.yuangong=[];
+				$.ajax({
+					url: top.data.ip + "queryygsrht",
+					type: "get",
+					dataType: "json",
+					success:function(response) {
+						vm.yuangong=response;
 					}
 				});
 			}
@@ -283,11 +358,9 @@
 				{id:101, pId:1, name:"今天过生日的客户"},
 				{id:102, pId:1, name:"即将到期的会员"},
 				{id:103, pId:1, name:"驾证到期的驾驶员"},
-				{id:104, pId:1, name:"须续办的保险车辆"},
-				{id:108, pId:1, name:"须车检车辆"},
+				{id:104, pId:1, name:"须车检车辆"},
 				{id:109, pId:1, name:"流失客户"},
 				{id:110, pId:1, name:"过生日的驾驶员"},
-				{id:111, pId:1, name:"车辆保养提醒"},
 				{id:112, pId:1, name:"今天过生日员工"},
 				{id:113, pId:1, name:"合同即将到期的员工"},	
 			];
@@ -298,27 +371,64 @@
 			$(".huiyuan").hide();
 			query();
 			$(".chee").hide();
+			$(".yuan").hide();
 			function chooseNode(event,treeId,treeNode){
 				if(treeNode.id==101){
 					$(".srkh").show();
 					query();
 					$(".huiyuan").hide();
 					$(".chee").hide();
+					$(".yuan").hide();
 				}
 				if(treeNode.id==102){
 					$(".srkh").hide();
 					$(".huiyuan").show();
 					$(".chee").hide();
+					$(".yuan").hide();
 					queryHuiyuan();
 				}
 				if(treeNode.id==103){
 					$(".srkh").hide();
 					$(".huiyuan").hide();
 					$(".chee").show();
+					$(".yuan").hide();
 					queryjiazhao();
 				}
-				
-				
+				if(treeNode.id==104){
+					$(".srkh").hide();
+					$(".huiyuan").hide();
+					$(".chee").show();
+					$(".yuan").hide();
+					querybaoxian();
+				}
+				if(treeNode.id==109){
+					$(".srkh").show();
+					$(".huiyuan").hide();
+					$(".chee").hide();
+					$(".yuan").hide();
+					queryliushi();
+				}
+				if(treeNode.id==110){
+					$(".srkh").hide();
+					$(".huiyuan").hide();
+					$(".chee").show();
+					$(".yuan").hide();
+					querysijir();
+				}
+				if(treeNode.id==112){
+					$(".srkh").hide();
+					$(".huiyuan").hide();
+					$(".chee").hide();
+					$(".yuan").show();
+					queryygsr();
+				}
+				if(treeNode.id==113){
+					$(".srkh").hide();
+					$(".huiyuan").hide();
+					$(".chee").hide();
+					$(".yuan").show();
+					queryygsrht();
+				}
 			}
 			$(function(){
 				if(top.ren.tixin==1){
