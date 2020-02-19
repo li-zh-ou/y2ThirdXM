@@ -6,6 +6,10 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface YuangongMapper {
+	List<Yuangong> queryygsrht();
+	
+	List<Yuangong> queryygsr();
+	
     int countByExample(YuangongExample example);
 
     int deleteByExample(YuangongExample example);

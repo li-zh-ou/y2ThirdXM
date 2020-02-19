@@ -95,6 +95,26 @@ public class Yuangong {
 
     private String bei4;
 
+    private String bumenname;
+    
+    public String getBumenname() {
+		return bumenname;
+	}
+
+	public void setBumenname(String bumenname) {
+		this.bumenname = bumenname;
+	}
+
+	public String getZhiwuname() {
+		return zhiwuname;
+	}
+
+	public void setZhiwuname(String zhiwuname) {
+		this.zhiwuname = zhiwuname;
+	}
+
+	private String zhiwuname;
+    
     public String getYuanno() {
         return yuanno;
     }

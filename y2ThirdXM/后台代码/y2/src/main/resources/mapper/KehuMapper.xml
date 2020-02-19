@@ -33,7 +33,9 @@
 		  	<result column="ruhuitime" property="ruhuitime" />
 		    <result column="daoqitime" property="daoqitime" />
   </resultMap>
-
+<select id="queryliushi" resultMap="BaseResultMapSales" >
+  	  SELECT * FROM kehu WHERE MONTH(bei1)+1=MONTH(NOW()) AND DAY(bei1)=DAY(NOW())
+  </select>
   
   <select id="findshengr" resultMap="BaseResultMapSales" >
   	SELECT * FROM kehu WHERE MONTH(kehu.kehubirthday)=MONTH(NOW()) AND DAY(kehu.kehubirthday)=DAY(NOW())

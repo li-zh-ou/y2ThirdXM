@@ -6,6 +6,10 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface KehucarMapper {
+	List<Kehucar> querysijir();
+	
+	List<Kehucar> querybaoxian();
+	
 	List<Kehucar> queryjiazhao();
 	
 	List<Kehucar> chacar(@Param("aaa")Kehucar car);
