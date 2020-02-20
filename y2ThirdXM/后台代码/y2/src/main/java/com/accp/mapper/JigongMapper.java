@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.Param;
 
 public interface JigongMapper {
 	
+	List<Jigong> djbzcxjg(Integer banid);// 点击树状图获取班组在根据班组id查询技工详情
+	
 	List<Jigong> cxbzjgxq();//加载班组技工详情
 	
     int countByExample(JigongExample example);

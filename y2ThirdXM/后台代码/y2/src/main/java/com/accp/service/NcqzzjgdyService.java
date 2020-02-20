@@ -35,16 +35,16 @@ import com.accp.mapper.ZhiwuMapper;
 @Service
 @Transactional
 public class NcqzzjgdyService {
-	
+
 	@Autowired
 	JigongMapper jigongMapper;
-	
+
 	@Autowired
 	JigongbanMapper jigongbanMapper;
-	
+
 	@Autowired
 	WaiqingcarMapper waiqingcarMapper;
-	
+
 	@Autowired
 	JigongstarMapper jigongstarMapper;
 
@@ -132,6 +132,11 @@ public class NcqzzjgdyService {
 		return yuangongMapper.gjbmcxyg(bumenid);
 	}
 
+	// 组织机构新增部门
+	public int xzbm(String bumenname, Integer parentid) {
+		return bumenMapper.xzbm(bumenname, parentid);
+	}
+
 	// 岗位定义查询
 	public List<Gangwei> querygw() {
 		return gangweiMapper.selectByExample(null);
@@ -197,7 +202,7 @@ public class NcqzzjgdyService {
 	public List<Jigongstar> queryjgxj() {
 		return jigongstarMapper.selectByExample(null);
 	}
-	
+
 	// 技工星级新增
 	public int insertjgxj(Jigongstar jigongstar) {
 		return jigongstarMapper.insert(jigongstar);
@@ -207,17 +212,17 @@ public class NcqzzjgdyService {
 	public int upjgxj(Integer jistarid, String starname, String ticheng, Integer ids) {
 		return jigongstarMapper.upjgxj(jistarid, starname, ticheng, ids);
 	}
-	
+
 	// 技工星级删除
 	public int deljgxj(Integer jistarid) {
 		return jigongstarMapper.deleteByPrimaryKey(jistarid);
 	}
-	
+
 	// 外勤车辆获取
 	public List<Waiqingcar> querywqcl() {
 		return waiqingcarMapper.selectByExample(null);
 	}
-	
+
 	// 外勤车辆获取初始树状图数据
 	public List<Jigongban> querybzszt() {
 		return jigongbanMapper.selectByExample(null);
@@ -232,17 +237,17 @@ public class NcqzzjgdyService {
 	public int upwqcl(String chepai, String carbank, String chexing, String nowli, Integer banid, String ids) {
 		return waiqingcarMapper.upwqcl(chepai, carbank, chexing, nowli, banid, ids);
 	}
-	
+
 	// 删除外勤车辆
 	public int delwqcl(String chepai) {
 		return waiqingcarMapper.deleteByPrimaryKey(chepai);
 	}
-	
-	//班组技工详情
-	public List<Jigong> cxbzjgxq(){
+
+	// 班组技工详情
+	public List<Jigong> cxbzjgxq() {
 		return jigongMapper.cxbzjgxq();
 	}
-	
+
 	// 班组技工生成技工编号
 	public Jigong newjigongno() {
 		JigongExample example = new JigongExample();
@@ -253,16 +258,36 @@ public class NcqzzjgdyService {
 		}
 		return null;
 	}
-	
-	//班组技工新增技工
+
+	// 班组技工新增技工
 	public int xzjg(Jigong jigong) {
 		return jigongMapper.insert(jigong);
 	}
-	
-	
+
+	// 班组技工修改技工查询
+	public Jigong bzjgxgcx(String jigongno) {
+		return jigongMapper.selectByPrimaryKey(jigongno);
+	}
+
+	// 班组技工修改技工
+	public int upjgxg(Jigong jigong) {
+		return jigongMapper.updateByPrimaryKey(jigong);
+	}
+
+	// 班组技工删除技工
+	@PostMapping("/deljg")
+	public int deljg(String jigongno) {
+		return jigongMapper.deleteByPrimaryKey(jigongno);
+	}
+
+	// 点击树状图获取班组在根据班组id查询技工详情
+	public List<Jigong> djbzcxjg(Integer banid) {
+		return jigongMapper.djbzcxjg(banid);
+	}
+
+	// 班组技工新增班组
+	public int xzbz(String banname, Integer parentid) {
+		return jigongbanMapper.xzbz(banname, parentid);
+	}
+
 }
-
-
-
-
-

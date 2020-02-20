@@ -7,50 +7,23 @@
 		<link rel="stylesheet" href="fonts/font_4aigx4do0lb/iconfont.css" />
 		<link rel="stylesheet" href="css/bootstrapStyle/bootstrapStyle.css" type="text/css">
 		<style type="text/css">
-			*{
-				margin: 0px;
-				padding: 0px;
+			#tbss{
+				padding: 1em 2em;
+				display: flex;
 			}
-			#ctx{
-				border: 0px solid red;
-			}
-			
-			#mydiv li{
-				list-style: none;
-				display: inline-block;
-			}
-			#mydiv_1{
-				font-size: 18px;
-			}
-			#mydiv_1 li{
-				list-style: none;
-				display: inline-block;
-			}
-			#mydiv_4 li{
-				list-style: none;
-				display: inline-block;
-			}
-			#mydiv_3{
-				border: 0px solid red;
-			}
-			
-			#mydiv_5 ul{
-				list-style: none;
-			}
-			
-			#mydiv_1 ul li{
-				margin-left: 20px;
+			#dhl a{
+				font-size: 15px;
 			}
 		</style>
 	</head>
 	<body>
-		<div id="ctx" class="container-fluid">
+		<div id="ctx" class="container-fluid row">
 			
 			<!-- 增加 -->
 		<div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" >
 		  <div class="modal-dialog modal-lg" role="document" >
 		    <div class="modal-content"  style="width: 800px;">
-		      <div class="modal-header" id="mydiv_4">
+		      <div class="modal-header">
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		        
 		        <div class="row">
@@ -59,7 +32,7 @@
 					</div>
 					<div class="col-md-8"></div>
 					<div class="col-md-1" >
-						<button type="button" class="btn btn-success" @click="xzjg">保存</button>
+						<button type="button" data-dismiss="modal" class="btn btn-success" @click="xxzjg">保存</button>
 					</div>
 				</div>
 				
@@ -74,7 +47,7 @@
 							<td>技工姓名:<input v-model="bzjg.jigongname" type="text" style="vertical-align: middle"></td>
 							<td>性别选择:<select v-model="bzjg.sex" style="vertical-align: middle; width:174px; height:26px;">
 									<option value="男">男</option>
-									<option value="男">女</option>
+									<option value="女">女</option>
 								</select>
 							</td>
 						</tr>
@@ -86,7 +59,7 @@
 								</select>
 							</td>
 							<td>所在班组:<select v-model="bzjg.banid" disabled="true" style="vertical-align: middle; width:174px; height:26px;">
-									<option :value="hqbm.banid">{{hqbm.banname}}</option>
+									<option :value="hqbz.banid">{{hqbz.banname}}</option>
 								</select>
 							</td>
 							<td>手机号码:<input v-model="bzjg.phone" type="text" style="vertical-align: middle"></td>
@@ -137,7 +110,7 @@
 			<div class="modal fade bs-example-modal-lg" id="myModalupdate" tabindex="-1" role="dialog" >
 		  <div class="modal-dialog modal-lg" role="document" >
 		    <div class="modal-content"  style="width: 800px;">
-		      <div class="modal-header" id="mydiv_4">
+		      <div class="modal-header">
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		        
 		        <div class="row">
@@ -146,7 +119,7 @@
 					</div>
 					<div class="col-md-8"></div>
 					<div class="col-md-1" >
-						<button type="button" class="btn btn-success" @click="xzjg">保存</button>
+						<button type="button" data-dismiss="modal" class="btn btn-success" @click="upjg">保存</button>
 					</div>
 				</div>
 				
@@ -157,39 +130,39 @@
 					<table>
 						
 						<tr>
-							<td>技工编号:<input v-model="bzjg.jigongno" disabled="true" type="text" style="vertical-align: middle"></td>
-							<td>技工姓名:<input v-model="bzjg.jigongname" type="text" style="vertical-align: middle"></td>
-							<td>性别选择:<select v-model="bzjg.sex" style="vertical-align: middle; width:174px; height:26px;">
+							<td>技工编号:<input v-model="bzjgxg.jigongno" disabled="true" type="text" style="vertical-align: middle"></td>
+							<td>技工姓名:<input v-model="bzjgxg.jigongname" type="text" style="vertical-align: middle"></td>
+							<td>性别选择:<select v-model="bzjgxg.sex" style="vertical-align: middle; width:174px; height:26px;">
 									<option value="男">男</option>
-									<option value="男">女</option>
+									<option value="女">女</option>
 								</select>
 							</td>
 						</tr>
 						
 						<tr>
-							<td>是否组长:<select v-model="bzjg.iszuzhang" style="vertical-align: middle; width:174px; height:26px;">
+							<td>是否组长:<select v-model="bzjgxg.iszuzhang" style="vertical-align: middle; width:174px; height:26px;">
 									<option value="0">否</option>
 									<option value="1">是</option>
 								</select>
 							</td>
-							<td>所在班组:<select v-model="bzjg.banid" disabled="true" style="vertical-align: middle; width:174px; height:26px;">
-									<option :value="hqbm.banid">{{hqbm.banname}}</option>
+							<td>所在班组:<select v-model="bzjgxg.banid" disabled="true" style="vertical-align: middle; width:174px; height:26px;">
+									<option :value="djjg.banid">{{djjg.banname}}</option>
 								</select>
 							</td>
-							<td>手机号码:<input v-model="bzjg.phone" type="text" style="vertical-align: middle"></td>
+							<td>手机号码:<input v-model="bzjgxg.phone" type="text" style="vertical-align: middle"></td>
 							
 						</tr>
 						
 						<tr>
-							<td>登录账号:<input v-model="bzjg.login" type="text" style="vertical-align: middle"></td>
-							<td>微信账号:<input v-model="bzjg.wx" type="text" style="vertical-align: middle"></td>
-							<td>出生日期:<input v-model="bzjg.birthday" type="date" style="vertical-align: middle; width:174px; height:26px;"></td>
+							<td>登录账号:<input v-model="bzjgxg.login" type="text" style="vertical-align: middle"></td>
+							<td>微信账号:<input v-model="bzjgxg.wx" type="text" style="vertical-align: middle"></td>
+							<td>出生日期:<input v-model="bzjgxg.birthday" type="date" style="vertical-align: middle; width:174px; height:26px;"></td>
 						</tr>
 						
 						<tr>
-							<td>银行账号:<input v-model="bzjg.bankcard" type="text" style="vertical-align: middle"></td>
-							<td>身份证号:<input v-model="bzjg.idcard" type="text" style="vertical-align: middle"></td>
-							<td>开户银行:<select v-model="bzjg.bank" style="vertical-align: middle; width:174px; height:26px;">
+							<td>银行账号:<input v-model="bzjgxg.bankcard" type="text" style="vertical-align: middle"></td>
+							<td>身份证号:<input v-model="bzjgxg.idcard" type="text" style="vertical-align: middle"></td>
+							<td>开户银行:<select v-model="bzjgxg.bank" style="vertical-align: middle; width:174px; height:26px;">
 									<option value="建设银行">建设银行</option>
 									<option value="中国银行">中国银行</option>
 									<option value="交通银行">交通银行</option>
@@ -198,17 +171,17 @@
 						</tr>
 						
 						<tr>
-							<td>员工星级:<select v-model="bzjg.jigongxing" style="vertical-align: middle; width:174px; height:26px;">
+							<td>员工星级:<select v-model="bzjgxg.jigongxing" style="vertical-align: middle; width:174px; height:26px;">
 									<option v-for="item in jgxj" :value="item.jistarid">{{item.starname}}</option>
 								</select>
 							</td>
-							<td>维修工种:<input v-model="bzjg.weixiutype" type="text" style="vertical-align: middle"></td>
-							<td>维修品牌:<input v-model="bzjg.weixiubank" type="text" style="vertical-align: middle"></td>
+							<td>维修工种:<input v-model="bzjgxg.weixiutype" type="text" style="vertical-align: middle"></td>
+							<td>维修品牌:<input v-model="bzjgxg.weixiubank" type="text" style="vertical-align: middle"></td>
 						</tr>
 						
 						<tr>
-							<td>现在地址:<input v-model="bzjg.address" type="text" style="vertical-align: middle;"></td>	
-							<td>户口地址:<input v-model="bzjg.hukouaddress" type="text" style="vertical-align: middle;"></td>
+							<td>现在地址:<input v-model="bzjgxg.address" type="text" style="vertical-align: middle;"></td>	
+							<td>户口地址:<input v-model="bzjgxg.hukouaddress" type="text" style="vertical-align: middle;"></td>
 						</tr>
 						
 					</table>
@@ -224,89 +197,140 @@
 		<div class="modal fade " id="myModalbz" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		  <div class="modal-dialog " role="document" >
 		    <div class="modal-content"  style="width: 300px;">
-		      <div class="modal-header" id="mydiv_6">
+		      <div class="modal-header">
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				
 				<ul>
-					<li><h4 class="modal-title" id="myModalLabel2">维修班组</h4></li>
-					<li style="padding-left: 200px;  "><button type="button" class="btn btn-success">保存</button></li>
+					<li><h4 class="modal-title" id="myModalLabel2">新增班组</h4></li>
+					<li style="padding-left: 150px;"><button type="button" data-dismiss="modal" class="btn btn-success" @click="xzbzdw">保存</button></li>
 				</ul>
 		      </div>
 		      <div class="modal-body">
 				<div>
 					<table class="table table-bordered">
 						<tr>
-							<td>班组编号<input type="text" value="自动" readonly ="readonly"></td>		
+							<td>班组编号:<input type="text" value="无需设置" disabled="true"></td>		
 						</tr>
 						<tr>
-							<td>班组名称<input type="text"></td>		
+							<td>班组名称:<input v-model="xzbz.banname" type="text"></td>		
 						</tr>
 						<tr>
-							<td>班组权重<input type="text"></td>		
+							<td>班组权重:<select v-model="xzbz.parentid" disabled="true" style="vertical-align: middle; width:174px; height:26px;">
+									<option :value="hqbzfl.banid">{{hqbzfl.banname}}</option>
+							</td>		
 						</tr>
 					</table>
 				</div>
-		      </div>
-		      <div class="modal-footer">
-		       <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		        <button type="button" class="btn btn-primary">Save changes</button> -->
 		      </div>
 		    </div>
 		  </div>
 		  
 		</div>
 		
+		<!--查询模态框-->
+				<div class="modal fade" tabindex="-1" role="dialog" id="cxygmtk">
+			<div class="modal-dialog" role="document" style="width:300px;">
+				<div class="modal-content">
+					<div class="modal-header" id="dhl">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<div>
+								<button type="button" class="btn btn-success" data-dismiss="modal" style="vertical-align: middle; width: 150px;">保存</button>&nbsp;&nbsp;&nbsp;
+							</div>
+					</div>
+					<div class="row modal-body">
+					<table>
+						<tr>
+							<td>
+								员工编号:<input type="text" style="vertical-align: middle"/>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								员工姓名:<input type="text" style="vertical-align: middle"/>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								员工性别:<select style="vertical-align: middle; width:174px; height:26px;">
+										<option value="男">男</option>
+										<option value="女">女</option>
+									</select>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								员工岗位:<select style="vertical-align: middle; width:174px; height:26px;">
+										<option value="1">展厅经理</option>
+										<option value="2">销售顾问</option>
+										<option value="3">DCC主管</option>
+									</select>
+							</td>
+						</tr>
+						<tr>
+							<td>				
+								所在部门:<select style="vertical-align: middle; width:174px; height:26px;">
+											<option value="1">管理</option>
+											<option value="2">财务</option>
+											<option value="3">股东</option>
+										</select>
+							</td>
+						</tr>
+					</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		
 		
 			
-			<div id="mydiv">
-				<ul>
-					<li><h2>班组技工</h2></li>
-					<li style="padding-left: 1350px;"><input type="text" placeholder="匹配工号/姓名/手机" class="form-control input-sm" ></li>
-					<li><button type="button" class="btn btn-warning" style="width: 150px;">搜索</button></li>
-					<li><button type="button" class="btn btn-default">关闭</button></li>
-				</ul>
-			</div>
-			<div id="mydiv_1">
+			<div id="ctx" >
+				
+				<div class="row" style="border: 1px solid #E6E6E6;">
+					<h3 class="col-md-2">班组技工</h3>
+						<div class="col-md-7"></div>
+						<div class="col-md-3" id="tbss">
+							<input type="text" placeholder="匹配工号/姓名/手机" class="form-control input-sm" style="margin-top: 2px;">&nbsp;&nbsp;&nbsp;
+							<button type="button" class="btn btn-warning" style="width: 150px;">搜索</button>&nbsp;&nbsp;&nbsp;
+							<button type="button" class="btn btn-default">关闭</button>
+						</div>
+				</div>
+			
+			<div id="dhl">
 				<ol class="breadcrumb">
-					<li><a  class="" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-menu-hamburger"></span>增加员工</a></li>
-					<li><a  class="" data-toggle="modal" data-target="#myModalupdate"> <span class="glyphicon glyphicon-edit"></span>修改</a></li>
-					<li><a href="#" class="" > <span class="glyphicon glyphicon-remove-circle"></span>删除</a></li>
-					<li><a href="#" class="" > <span class="glyphicon glyphicon-search"></span>查询</a></li>
-					<!--<li> <span class="glyphicon glyphicon-asterisk"></span>置空密码</li>
-					<li> <span class="glyphicon glyphicon-globe"></span>班组权重</li>
-					<li> <span class="glyphicon glyphicon-log-in"></span>导出</li>-->
-					<li><a  class="" data-toggle="modal" data-target="#myModalbz" id="xzbz"> <span class="glyphicon glyphicon-menu-hamburger"></span>新增班组</a></li>
+					<li><span class="iconfont" style="vertical-align: middle">&#xe62c;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#myModal" >增加员工</a></li>
+					<li><span class="iconfont" style="vertical-align: middle">&#xe612;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#myModalupdate">修改</a></li>
+					<li><span class="iconfont" style="vertical-align: middle">&#xe614;</span><a href="#" style="vertical-align: middle" @click="del">删除</a></li>
+					<li><span class="iconfont" style="vertical-align: middle">&#xe78a;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#cxygmtk">查询</a></li>
+					<!--<li><span class="iconfont" style="vertical-align: middle">&#xe6b6;</span><a href="#" style="vertical-align: middle">班组权重</a></li>-->
+					<!--<li><span class="iconfont" style="vertical-align: middle">&#xe6a5;</span><a href="#" style="vertical-align: middle">导出</a></li>-->
+					<li><span class="iconfont" style="vertical-align: middle">&#xe613;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#myModalbz">新增班组</a></li>
 				</ol>
 			</div>
 			<div id="mydiv_2" class="col-md-2" style="border: 1px solid #E6E6E6; height:780px; overflow:scroll;">
 				<ul id="treeDemo" class="ztree"></ul>
 			</div>
-			<div id="mydiv_3" class="col-md-10" style="height:780px;overflow:scroll;">
+			<div  class="col-md-10" style="height:780px;overflow:scroll;">
 				<table class="table table-hover table-bordered" style="width: 2000px;">
-					<thead>
 						<tr>
-							<th>班组编号</th>
-							<th>班组名称</th>
-							<th>技工编号</th>
-							<th>技工姓名</th>
-							<th>性别</th>
-							<th>手机</th>
-							<th>地址</th>
-							<th>出生日期</th>
-							<th>组长</th>
-							<th>登陆名</th>
-							<th>身份证号</th>
-							<th>户口地址</th>
-							<th>开户银行</th>
-							<th>户口地址</th>
-							<th>银行账号</th>
-							<th>星级</th>
-							<th>维修工种</th>
-							<th>维修品牌</th>
+							<td>班组编号</td>
+							<td>班组名称</td>
+							<td>技工编号</td>
+							<td>技工姓名</td>
+							<td>性别</td>
+							<td>手机</td>
+							<td>地址</td>
+							<td>出生日期</td>
+							<td>组长</td>
+							<td>登陆名</td>
+							<td>身份证号</td>
+							<td>户口地址</td>
+							<td>开户银行</td>
+							<td>户口地址</td>
+							<td>银行账号</td>
+							<td>星级</td>
+							<td>维修工种</td>
+							<td>维修品牌</td>
 						</tr>
-					</thead>
-					<tbody>
-						<tr v-for="item in bzjgxq">	
+						<tr v-for="item in bzjgxq" @click="tableDblclick(item)">	
 							<td>{{item.banid}}</td>
 							<td>{{item.banname}}</td>
 							<td>{{item.jigongno}}</td>
@@ -326,14 +350,13 @@
 							<td>{{item.weixiutype}}</td>
 							<td>{{item.weixiubank}}</td>
 						</tr>
-					</tbody>
 				</table>
 			</div>
 		</div>
 		
+	</div>
 		
-		
-	</body>
+</body>
 
 <script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
 <script type="text/javascript" src="js/jquery.min.js"></script>
@@ -347,12 +370,14 @@
 		el: "#ctx",
 		data() {
 			return {
-				hqbm:{},//获取班组
+				hqbz:{},//获取班组
 				jgxj:{},//技工星级
 				bzjgxq:{},//班组技工详情
-				bzjg:{jigongno:""},//新增班组技工	
+				bzjg:{},//新增班组技工	
 				bzjgxg:{},//班组技工修改
-				djjg:{}//点击技工
+				djjg:{},//点击技工
+				xzbz:{},//新增班组
+				hqbzfl:{}//获取班组根目录
 			}
 		},
 		created(){//加载事件
@@ -419,7 +444,8 @@
 					}	
 				});
 			},
-			xzjg:function(){
+			xxzjg:function(){
+				console.log(vm.bzjg);
 				$.ajax({//新增技工
 					url: data.ip +"ncq/xzjg",
 					type: "post",
@@ -438,29 +464,87 @@
 						console.log(result);
 					}	
 				});
+			},
+			tableDblclick:function(item){//获得点击的技工id
+				vm.djjg.jigongno=item.jigongno;
+				vm.djjg.banid=item.banid;
+				vm.djjg.banname=item.banname;
+				console.log(vm.djjg.jigongno);
+				console.log(vm.djjg.banid);
+				console.log(vm.djjg.banname);
+				$.ajax({//修改技工查询 
+					url: data.ip +"ncq/bzjgxgcx",
+					type: "get",
+					data:{jigongno:vm.djjg.jigongno},
+					dataType: "json",
+					success: function(result) {
+						console.log(result);
+						vm.bzjgxg = result;
+						
+					},
+					error: function(result) {
+						console.log(result);
+					}	
+				});
+			},
+			upjg:function(){//修改技工
+				$.ajax({
+					url:data.ip +"ncq/upjgxg",
+					type:"post",
+					data:vm.bzjgxg,
+					dataType:"text",
+					success:function(result){
+						console.log(result);
+						if(result>0){
+							alert("修改成功");
+						}else{
+							alert("修改失败");
+						}
+						vm.cxbzjgxq();
+					},error:function(result){
+						console.log(result);
+					}
+				});
+			},
+			del:function(){//删除技工
+				$.ajax({
+					url:data.ip +"ncq/deljg",
+					type:"post",
+					data:{jigongno:vm.djjg.jigongno},
+					dataType:"text",
+					success:function(result){
+						console.log(result);
+						if(result>0){
+							alert("删除成功");
+						}else{
+							alert("删除失败");
+						}
+						vm.cxbzjgxq();
+					},error:function(result){
+						console.log(result);
+					}
+				});
+			},
+			xzbzdw:function(){//新增班组
+				$.ajax({
+					url: data.ip +"ncq/xzbz",
+					type: "post",
+					data:{banname:vm.xzbz.banname,parentid:vm.xzbz.parentid},
+					dataType: "json",
+					success:function(result) {
+						console.log(result);
+						if(result>0){
+							alert("新增成功");
+						}else{
+							alert("新增失败");
+						}
+						vm.loading();
+					},
+					error: function(result) {
+						console.log(result);
+					}	
+				});
 			}
-//			tableDblclick:function(item){//获得点击的技工id
-//				vm.djjg.jigongno=item.jigongno;
-//				vm.djjg.banid=item.banid;
-//				vm.djjg.banname=item.banname;
-//				console.log(vm.djjg.jigongno);
-//				console.log(vm.djjg.banid);
-//				console.log(vm.djjg.banname);
-//				$.ajax({//修改员工查询 这里没有做
-//					url: data.ip +"ncq/byupygff",
-//					type: "get",
-//					data:{yuanno:vm.djyg.yuanno},
-//					dataType: "json",
-//					success: function(result) {
-//						console.log(result);
-//						vm.bzjgxg = result;
-//						
-//					},
-//					error: function(result) {
-//						console.log(result);
-//					}	
-//				});
-//			}
 		}
 	});
 	
@@ -490,16 +574,35 @@
 		}
 	};
 	
-	//点击树状图获取部门
+	//点击树状图获取班组
 	function chooseNode(event,treeId,treeNode){
 		if (treeNode.parentid=="0") {
+			vm.hqbzfl=treeNode;
+			vm.xzbz.parentid=vm.hqbzfl.banid;
+			console.log(vm.hqbzfl);
+			console.log(vm.xzbz.parentid);
 			return;
 		}
-		vm.hqbm=treeNode;
-		vm.bzjg.banid=vm.hqbm.banid;
-		console.log(vm.hqbm);
+		vm.hqbz=treeNode;
+		vm.bzjg.banid=vm.hqbz.banid;
+		console.log(vm.hqbz);
 		console.log(vm.bzjg.banid);
+		$.ajax({//点击树状图获取班组在根据班组id查询技工详情
+			url: data.ip +"ncq/djbzcxjg",
+			type: "get",
+			data:{banid:vm.hqbz.banid},
+			dataType: "json",
+			success: function(result) {
+				console.log(result);
+				vm.bzjgxq = result;
+			},
+			error: function(result) {
+				console.log(result);
+			}	
+		});
 	}
+	
+	
 	
 	
 </script>
