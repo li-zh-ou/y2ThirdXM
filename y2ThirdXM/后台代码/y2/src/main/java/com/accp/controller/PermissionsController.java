@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.domain.Permissions;
+import com.accp.domain.Yuangong;
 import com.accp.service.PermissionsService;
 
 @RestController
@@ -46,7 +47,9 @@ public class PermissionsController {
 		return permService.addquanxian(checked,zhiwuid);
 	}
 	@GetMapping("/findPerms")
-	public List<Permissions> findPermssions(HttpSession sessions){
-		return permService.findByzhiwuid("1");
+	public List<Permissions> findPermssions(HttpSession session){
+		System.out.println(session);
+		Yuangong yag=(Yuangong)session.getAttribute("yg");
+		return permService.findByzhiwuid(yag.getZhiwuid());
 	}
 }
