@@ -11,7 +11,7 @@
   </resultMap>
 
 	<update id="update">
-		UPDATE `gangwei` SET`gangweId` = #{gangweid},`gangweiname` = #{gangweiname} WHERE `gangweId` = #{ids}
+		UPDATE `gangwei` SET `gangweiname` = #{gangweiname} WHERE `gangweId` = #{gangweid}
 	</update>
   
   <sql id="Example_Where_Clause" >

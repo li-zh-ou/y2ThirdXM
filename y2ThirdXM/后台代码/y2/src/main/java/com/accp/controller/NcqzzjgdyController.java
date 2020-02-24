@@ -132,6 +132,12 @@ public class NcqzzjgdyController {
 	public List<Yuangong> gjbmcxyg(Integer bumenid) {
 		return ncqzzjgdyService.gjbmcxyg(bumenid);
 	}
+	
+	// 组织机构新增部门
+	@PostMapping("/xzbm")
+	public int xzbm(String bumenname, Integer parentid) {
+		return ncqzzjgdyService.xzbm(bumenname, parentid);
+	}
 
 	// 岗位定义查询
 	@GetMapping("/querygw")
@@ -153,8 +159,8 @@ public class NcqzzjgdyController {
 
 	// 岗位定义修改岗位
 	@PostMapping("/upgw")
-	public int upgw(Integer gangweid, String gangweiname, Integer ids) {
-		return ncqzzjgdyService.upgw(gangweid, gangweiname, ids);
+	public int upgw(Integer gangweid, String gangweiname) {
+		return ncqzzjgdyService.upgw(gangweid, gangweiname);
 	}
 
 	// 通讯名录详情
@@ -187,79 +193,79 @@ public class NcqzzjgdyController {
 	public int lzdjhg(String yuanno) {
 		return ncqzzjgdyService.lzdjhg(yuanno);
 	}
-	
+
 	// 离职登记员工离职
 	@PostMapping("/insertlzxq")
 	public int insertlzxq(@RequestBody Lizhi lizhi) {
 		return ncqzzjgdyService.insertlzxq(lizhi);
 	}
-	
+
 	// 离职登记删除离职员工数据
 	@PostMapping("/sclzygsj")
 	public int sclzygsj(String yuanno) {
 		return ncqzzjgdyService.sclzygsj(yuanno);
 	}
-	
-	//技工星级获取技工星级
+
+	// 技工星级获取技工星级
 	@GetMapping("/queryjgxj")
-	public List<Jigongstar> queryjgxj(){
+	public List<Jigongstar> queryjgxj() {
 		return ncqzzjgdyService.queryjgxj();
 	}
-	
-	//技工星级新增
+
+	// 技工星级新增
 	@PostMapping("/insertjgxj")
 	public int insertjgxj(Jigongstar jigongstar) {
 		return ncqzzjgdyService.insertjgxj(jigongstar);
 	}
-	
-	//技工星级修改
+
+	// 技工星级修改
 	@PostMapping("/upjgxj")
-	public int upjgxj(Integer jistarid,String starname,String ticheng,Integer ids) {
-		return ncqzzjgdyService.upjgxj(jistarid,starname,ticheng,ids);
+	public int upjgxj(Integer jistarid, String starname, String ticheng) {
+		return ncqzzjgdyService.upjgxj(jistarid, starname, ticheng);
 	}
-	
-	//技工星级删除
+
+	// 技工星级删除
 	@PostMapping("/deljgxj")
 	public int deljgxj(Integer jistarid) {
 		return ncqzzjgdyService.deljgxj(jistarid);
 	}
-	
-	//外勤车辆获取
+
+	// 外勤车辆获取
 	@GetMapping("/querywqcl")
-	public List<Waiqingcar> querywqcl(){
+	public List<Waiqingcar> querywqcl() {
 		return ncqzzjgdyService.querywqcl();
 	}
-	
-	//外勤车辆获取初始树状图数据
+
+	// 外勤车辆获取初始树状图数据
 	@GetMapping("/querybzszt")
-	public List<Jigongban> querybzszt(){
+	public List<Jigongban> querybzszt() {
 		return ncqzzjgdyService.querybzszt();
 	}
-	
-	//外勤车辆新增
+
+	// 外勤车辆新增
 	@PostMapping("/insertwcql")
 	public int insertwcql(Waiqingcar waiqingcar) {
 		return ncqzzjgdyService.insertwcql(waiqingcar);
 	}
-	
-	//修改外勤车辆
+
+	// 修改外勤车辆
 	@PostMapping("/upwqcl")
-	public int upwqcl(String chepai,String carbank,String chexing,String nowli,Integer banid,String ids) {
-		return ncqzzjgdyService.upwqcl( chepai, carbank, chexing, nowli, banid, ids);
+	public int upwqcl(String chepai, String carbank, String chexing, String nowli, Integer banid, String ids) {
+		return ncqzzjgdyService.upwqcl(chepai, carbank, chexing, nowli, banid, ids);
 	}
-	
-	//删除外勤车辆
+
+	// 删除外勤车辆
 	@PostMapping("/delwqcl")
 	public int delwqcl(String chepai) {
 		return ncqzzjgdyService.delwqcl(chepai);
 	}
-	
-	//加载班组技工详情
+
+	// 加载班组技工详情
 	@GetMapping("/cxbzjgxq")
-	public List<Jigong> cxbzjgxq(){
+	public List<Jigong> cxbzjgxq() {
 		return ncqzzjgdyService.cxbzjgxq();
 	}
-	
+
 	// 班组技工生成技工编号
 	@GetMapping("/jgscbhbh")
 	public String newjigongno() {
@@ -290,32 +296,40 @@ public class NcqzzjgdyController {
 		}
 		return jigongno;
 	}
-	
-	//班组技工新增技工
+
+	// 班组技工新增技工
 	@PostMapping("/xzjg")
 	public int xzjg(Jigong jigong) {
 		return ncqzzjgdyService.xzjg(jigong);
 	}
+
+	// 班组技工修改技工查询
+	@GetMapping("/bzjgxgcx")
+	public Jigong bzjgxgcx(String jigongno) {
+		return ncqzzjgdyService.bzjgxgcx(jigongno);
+	}
+
+	// 班组技工修改技工
+	@PostMapping("/upjgxg")
+	public int upjgxg(Jigong jigong) {
+		return ncqzzjgdyService.upjgxg(jigong);
+	}
+
+	// 班组技工删除技工
+	@PostMapping("/deljg")
+	public int deljg(String jigongno) {
+		return ncqzzjgdyService.deljg(jigongno);
+	}
+
+	// 点击树状图获取班组在根据班组id查询技工详情
+	@GetMapping("/djbzcxjg")
+	public List<Jigong> djbzcxjg(Integer banid) {
+		return ncqzzjgdyService.djbzcxjg(banid);
+	}
 	
-	
-	
-	
+	//班组技工新增班组
+	@PostMapping("/xzbz")
+	public int xzbz(String banname,Integer parentid){
+		return ncqzzjgdyService.xzbz(banname,parentid);
+	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

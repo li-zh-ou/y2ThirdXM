@@ -12,14 +12,11 @@
 				padding: 1em 2em;
 				display: flex;
 			}
-			#dhl a{
-				font-size: 15px;
-			}
 			
 		</style>
 	</head>
 	<body>
-		<div class="container-fluid" id="ctx">
+		<div id="ctx">
 			<div class="row" style="border: 1px solid #E6E6E6;">
 				<h3 class="col-md-2">岗位定义</h3>
 				<div class="col-md-9"></div>
@@ -28,25 +25,47 @@
 				</div>
 			</div>
 			
-			<div id="dhl" class="row">
-				<div class="col-md-10">
-					<p style="margin-top:25px;">
-						岗位编码:<input type="text" v-model="gangwei.gangweid"/>&nbsp;&nbsp;&nbsp;
-						岗位名称:<input type="text" v-model="gangwei.gangweiname"/>
-					</p>
-				</div>
-				<ol class="breadcrumb col-md-2">
-				  <li><span class="iconfont" style="vertical-align: middle">&#xe62c;</span><a href="#" style="vertical-align: middle" @click="insert">增加</a></li>
-				  <li><span class="iconfont" style="vertical-align: middle">&#xe614;</span><a href="#" style="vertical-align: middle" @click="del(gangwei.gangweid)">删除</a></li>
-				  <li><span class="iconfont" style="vertical-align: middle">&#xe612;</span><a href="#" style="vertical-align: middle" @click="up">保存</a></li>
-				  <li><span class="iconfont" style="vertical-align: middle">&#xe6a5;</span><a href="#" style="vertical-align: middle">导出</a></li>
+			<div class="row">
+				
+				<ol class="breadcrumb">
+				  <li><span class="iconfont" style="vertical-align: middle">&#xe62c;</span><a href="#" style="vertical-align: middle" @click="insert">增加岗位</a></li>
+				  <li><span class="iconfont" style="vertical-align: middle">&#xe614;</span><a href="#" style="vertical-align: middle" @click="del(gangwei.gangweid)">删除岗位</a></li>
+				  <li><span class="iconfont" style="vertical-align: middle">&#xe612;</span><a href="#" style="vertical-align: middle" @click="up">修改岗位</a></li>
+				  <!--<li><span class="iconfont" style="vertical-align: middle">&#xe6a5;</span><a href="#" style="vertical-align: middle">导出</a></li>-->
 				</ol>
 				
 			</div>
 			
-			<div class="row" id="tbss" style=" border: 1px solid #E6E6E6;height:780px;">
+			<div>
+				<table>
+					<tr>
+						<td class="col-md-2">
+							<div class="input-group">
+											
+								<span class="input-group-addon" >岗位编码:</span>
+								<input v-model="gangwei.gangweid" type="text" class="form-control" aria-describedby="basic-addon3" disabled="true" style="vertical-align: middle ; width:160px; height:33px;">
+									
+							</div>
+						</td>	
+						<td class="col-md-2">
+							<div class="input-group">
+									
+								<span class="input-group-addon" >岗位名称:</span>
+								<input v-model="gangwei.gangweiname" type="text" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
+								
+							</div>
+						</td>
+						<td class="col-md-2"></td>
+						<td class="col-md-2"></td>
+						<td class="col-md-2"></td>
+						<td class="col-md-2"></td>
+					</tr>
+				</table>
+			</div>
+			
+			<div class="row" id="tbss" style=" border: 1px solid #E6E6E6;height:470px;">
 				
-				<table class="table table-hover table-bordered" style="width:800px;">
+				<table class="table table-hover table-bordered" style="width:600px;">
 					 
 						<tr>
 							<td>岗位编码</td>
@@ -78,7 +97,6 @@
 			return {
 				gwdy:{},//获取初岗位数据
 				gangwei:{gangweid:"",gangweiname:""},//绑定文本框
-				gangwei2:{gangweid:"",gangweiname:""}////绑定文本框
 			}
 		},
 		created(){//
@@ -121,21 +139,16 @@
 			tableDblclick:function(item){//查询岗位放入上方text框
 				vm.gangwei.gangweid=item.gangweid;
 				vm.gangwei.gangweiname=item.gangweiname;
-				vm.gangwei2.gangweid=item.gangweid;
-				vm.gangwei2.gangweiname=item.gangweiname;
 				console.log(vm.gangwei.gangweid);
 				console.log(vm.gangwei.gangweiname);
-				console.log(vm.gangwei2.gangweid);
-				console.log(vm.gangwei2.gangweiname);
 			},
 			up:function(){
 				console.log(vm.gangwei.gangweid);
 				console.log(vm.gangwei.gangweiname);
-				console.log(vm.gangwei2.gangweid);
 				$.ajax({//修改岗位
 					url:data.ip +"ncq/upgw",
 					type:"post",
-					data:{gangweid:vm.gangwei.gangweid,gangweiname:vm.gangwei.gangweiname,ids:vm.gangwei2.gangweid},
+					data:{gangweid:vm.gangwei.gangweid,gangweiname:vm.gangwei.gangweiname},
 					dataType:"text",
 					success:function(result){
 						console.log(result);

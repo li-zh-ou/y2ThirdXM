@@ -6,6 +6,9 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface BumenMapper {
+	
+	int xzbm(String bumenname, Integer parentid);// 组织机构新增部门
+	
     int countByExample(BumenExample example);
 
     int deleteByExample(BumenExample example);

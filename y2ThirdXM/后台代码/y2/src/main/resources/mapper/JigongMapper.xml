@@ -24,7 +24,38 @@
     <result column="bei3" property="bei3" jdbcType="VARCHAR" />
     <result column="bei4" property="bei4" jdbcType="VARCHAR" />
   </resultMap>
+  
+	<!--点击树状图获取班组在根据班组id查询技工详情 -->
 
+	<select id="djbzcxjg" resultMap="BaseResultMap">
+		SELECT
+		jg.`BanId`,
+		bz.`BanName`,
+		jg.`JiGongNo`,
+		jg.`JiGongName`,
+		jg.`sex`,
+		jg.`phone`,
+		jg.`address`,
+		jg.`birthday`,
+		jg.`isZuZhang`,
+		jg.`login`,
+		jg.`idCard`,
+		jg.`HuKouAddress`,
+		jg.`Bank`,
+		jg.`HuKouAddress`,
+		jg.`BankCard`,
+		jg.`jiGongXing`,
+		xj.`StarName`,
+		jg.`WeiXiuType`,
+		jg.`WeiXiuBank`
+		FROM `jigong` AS jg
+		INNER JOIN `jigongban` AS bz
+		ON jg.`BanId`=bz.`BanId`
+		INNER JOIN `jigongstar` AS xj
+		ON jg.`jiGongXing`=xj.`JiStarId`
+		WHERE jg.`BanId`=#{banid}
+	</select>
+	
 	<!-- 加载班组技工详情 -->
 	<select id="cxbzjgxq" resultMap="BaseResultMap">
 		SELECT

@@ -6,6 +6,9 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface JigongbanMapper {
+	
+	int xzbz(String banname, Integer parentid);// 班组技工新增班组
+	
     int countByExample(JigongbanExample example);
 
     int deleteByExample(JigongbanExample example);
