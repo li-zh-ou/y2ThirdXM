@@ -102,7 +102,7 @@
 			.shang{
 				margin-top: 10px;
 				padding-top: 10px;
-				padding-left:10px;
+				padding-left:20px;
 			}
 			.shang p{
 				margin-top: 15px;
@@ -369,12 +369,14 @@
 			<div class="row row1">
 				<div class="row ass">
 					<div class="col-lg-offset-7 col-sm-5">
-						<p class="dao"><a class="bian">客户编辑</a><a class="zi">车资料</a><a>客户资料</a><a @click="chaxun">查询</a><a class="fenlei">客户分类</a><a @click="exportExcel">导出</a><a>字段设置</a></p>
+						<p class="dao"><a class="bian glyphicon glyphicon-eye-open">客户编辑</a><a class="zi glyphicon glyphicon-eye-open">车资料</a><a @click="chaxun" class="glyphicon glyphicon-eye-open" data-toggle="modal" data-target="#chaxun">查询</a><a class="fenlei glyphicon glyphicon-calendar" data-toggle="modal" data-target="#kehufenlei">客户分类</a>
+							<a @click="exportExcel" class="glyphicon glyphicon-share">导出</a></p>
 					</div>
 				</div>
 				<div class="keh row">
 					<div class="col-sm-6">
-						<a>客户编辑</a><a class="tianjia">增加客户和车</a><a class="tiankehu">增加客户</a><a class="xiukehu">修改客户</a><a @click="deletekehu">删除客户</a><a>相关证件</a><a>设置密码</a>
+						<a>客户编辑</a><a class="tianjia glyphicon glyphicon-align-right" data-toggle="modal" data-target="#zeng">增加客户和车</a><a class="tiankehu glyphicon glyphicon-align-right" data-toggle="modal" data-target="#kehu">增加客户</a>
+						<a class="xiukehu glyphicon glyphicon-pencil" data-toggle="modal" data-target="#updatekehu">修改客户</a><a class="glyphicon glyphicon-remove-sign" @click="deletekehu">删除客户</a>
 					</div>
 					<div class="col-sm-offset-5 col-sm-1">
 						<span class="you right">收起</span>
@@ -383,9 +385,9 @@
 				<div class="che row">
 					<div class="col-sm-6">
 						<a>车资料</a>
-						<a class="znegjiache">增加车资料</a>
-						<a class="updatequery">修改车资料</a>
-						<a @click="deletecar">删除车资料</a>
+						<a class="znegjiache glyphicon glyphicon-align-right" data-toggle="modal" data-target="#chezliao">增加车资料</a>
+						<a class="updatequery glyphicon glyphicon-pencil" data-toggle="modal" data-target="#xiugaiche">修改车资料</a>
+						<a @click="deletecar" class="glyphicon glyphicon-remove-sign">删除车资料</a>
 					</div>
 					<div class="col-sm-offset-5 col-sm-1">
 						<span class="you1">收起</span>
@@ -451,8 +453,6 @@
 			<div class="tiao">
 				<div class="sha">
 					<div class="dian diyi">车辆信息</div>
-					<div class="dian">历史消费</div>
-					<div class="dian">历史回访</div>
 				</div>
 				
 			</div>
@@ -507,550 +507,765 @@
 						</tr>
 					</table>
 				</div>
-				<div class="xiaofei">
-					<table class="table table-bordered table-hover">
-						<tr>
-							<th>车牌号码</th>
-							<th>车牌品牌</th>
-							<th>车牌型号</th>
-							<th>驾驶员</th>
-							<th>驾驶员电话</th>
-							<th>出生日期</th>
-							<th>车辆归属</th>
-							<th>驾证到期</th>
-						</tr>
-						<tr>
-							<td>车牌号码</td>
-							<td>车牌品牌</td>
-							<td>车牌型号</td>
-							<td>驾驶员</td>
-							<td>驾驶员电话</td>
-							<td>出生日期</td>
-							<td>车辆归属</td>
-							<td>驾证到期</td>
-						</tr>
-					</table>
-				</div>
-				<div class="huifang">
-					<table class="table table-bordered table-hover">
-						<tr>
-							<th>车牌号码</th>
-							<th>车牌品牌</th>
-							<th>车牌型号</th>
-							<th>驾驶员</th>
-							<th>驾驶员电话</th>
-							<th>出生日期</th>
-							<th>车辆归属</th>
-							<th>驾证到期</th>
-						</tr>
-						<tr>
-							<td>车牌号码</td>
-							<td>车牌品牌</td>
-							<td>车牌型号</td>
-							<td>驾驶员</td>
-							<td>驾驶员电话</td>
-							<td>出生日期</td>
-							<td>车辆归属</td>
-							<td>驾证到期</td>
-						</tr>
-					</table>
-				</div>
 			</div>
-			<div class="row">
-				<p class="di">共18条记录 第一页 共一页</p>
-			</div>
-			<div class="row zeng">
-				<div>
-					<div class="tan"><span class="toto">增加客户和车资料</span><button class="btn btn-group bao" @click="addkehuandcar">保存</button><span class="close guan">×</span></div>
-					<div class="context">
-						<div class="shang">
+			<div class="modal fade" id="zeng" class="zeng"  role="dialog">
+			  <div class="modal-dialog" role="document" style="width: 880px;">
+			    <div class="modal-content">
+			    	<div class="modal-header" style="height: 60px;" id="dhl">
+				      	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="guan">&times;</span></button>
+				      	<h4 class="modal-title" style="margin-top:5px;">增加客户和车资料</h4>
+				      	<div class="col-md-9"></div>
+				      	<div >
+				      	  <button type="button" class="btn btn-success" style="margin-top: -50px;margin-left: 100px; vertical-align: middle; width: 60px;" @click="addkehuandcar">保存</button>
+				      	</div>
+				 	</div>
+			     	<div class="modal-body" style="margin-top: -30px;">
+			       		<div class="shang">
 							<p>
-								<span><span class="ho">* </span>客户编码：</span><input v-model="xinke.kehuno" type="text"/>
-								<span><span class="ho">* </span>客户名称：</span><input v-model="xinke.kehuname" type="text"/>
-								<span>联系人：</span><input v-model="xinke.kehulianxi" type="text"/>
-								<span><span class="ho">* </span>手机号码：</span><input v-model="xinke.kehuphone" type="text"/>
-							</p>
-							<p>
-								<span>客户地址：</span><input v-model="xinke.kehuaddress" type="text" size="50"/>
-								<span>客户生日：</span><input v-model="xinke.kehubirthday" type="date"/>
-							</p>
-							<p>
-								<span>账期(天)：</span><input v-model="xinke.zhangqi" type="text" size="5"/>
-								<span>挂账额度：</span><input v-model="xinke.edu" type="text" size="10"/>
-								<span>专属顾问：<select v-model="xinke.guwen" style="width: 150px;height: 25px;"></select></span>
-								<span>顾问电话：<input v-model="xinke.guwenphone" type="text"></span>
-							</p>
-							<p>
-								<span>省：</span><select v-model="xinke.bei2" id="sss_province" name="sss_province" style="width: 150px;height: 25px;"></select>
-								<span>市：</span><select v-model="xinke.bei3" id="sss_city" name="sss_city" style="width: 150px;height: 25px;"></select>
-								<span>区：</span><select v-model="xinke.bei4" id="sss_county" name="sss_county" style="width: 150px;height: 25px;"></select>
-							</p>
-							<p>
-								<span>备注：</span><input v-model="xinke.remark" type="text" size="100"/>
-							</p>
-							<p>
-								<span><span class="ho">* </span>车牌号码：</span><input class="paipai" type="text" style="width: 100px;height: 25px;"><button class="haoma">选择</button>
-								<span><span class="ho">* </span>车辆品牌：</span><input readonly="readonly" class="carbankname" type="text" /><button class="pin">选择</button>
-								<span><span class="ho">* </span>车辆型号：</span><input readonly="readonly" class="jinkous" v-model="xinke.car.xinghao" type="text" />
-								<span><span class="ho">* </span>驾驶员：</span><input v-model="xinke.car.sijiname" type="text" />
-							</p>
-							<p>
-								<span>驾驶员电话：</span><input v-model="xinke.car.sijiphone" type="text" />
-								<span>出生日期：</span><input v-model="xinke.car.sijibirthday" type="date" />
-								<span><span class="ho">* </span>车辆归属：</span><select v-model="xinke.car.guishu" style="width: 150px;height: 25px;">
+								<div class="input-group">
+								  	<span class="input-group-addon " id="basic-addon3">客户编码：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" disabled="disabled" v-model="xinke.kehuno" class="form-control bianhao" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">客户名称：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinke.kehuname" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								 	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;&nbsp;&nbsp;联系人：</span>
+								  <input type="text" style="width: 160px;height: 33px;" v-model="xinke.kehulianxi" class="form-control" id="basic-url" aria-describedby="basic-addon3"> 
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  	<span class="input-group-addon " id="basic-addon3">手机号码：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinke.kehuphone" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">客户地址：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinke.kehuaddress" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								 	<span class="input-group-addon" id="basic-addon3">客户生日：</span>
+								  <input type="date" style="width: 160px;height: 33px;" v-model="xinke.kehubirthday" class="form-control" id="basic-url" aria-describedby="basic-addon3"> 
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+									<span class="input-group-addon " id="basic-addon3">&nbsp;账期(天)：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinke.zhangqi" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">挂账额度：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinke.edu" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								 	<span class="input-group-addon" id="basic-addon3">专属顾问：</span>
+								  <select style="width: 160px;height: 33px;" class="form-control" id="basic-url" aria-describedby="basic-addon3" v-model="xinke.guwen" style="width: 150px;height: 25px;"></select>
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+									<span class="input-group-addon " id="basic-addon3">顾问电话：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinke.guwenphone" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;省：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								  	<select v-model="xinke.bei2" class="form-control" aria-describedby="basic-addon3" id="sss_province" name="sss_province" style="width: 160px;height: 33px;"></select>
+								 	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;市：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								  <select v-model="xinke.bei3" class="form-control" aria-describedby="basic-addon3"  id="sss_city" name="sss_city" style="width: 160px;height: 33px;"></select>
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+									<span class="input-group-addon " id="basic-addon3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								  	<select v-model="xinke.bei4" class="form-control" aria-describedby="basic-addon3" id="sss_county" name="sss_county" style="width: 160px;height: 33px;"></select>
+								  	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;备注：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinke.remark" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								 	<span class="input-group-addon" id="basic-addon3">&nbsp;车牌号码：<button style="width: 35;" class="haoma" data-toggle="modal" data-target="#chepai">选择</button></span>
+								  <input type="text" style="width: 120px;height: 33px;"  class="form-control paipai" id="basic-url" aria-describedby="basic-addon3">
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  	<span class="input-group-addon " id="basic-addon3">车辆品牌：<button class="pin" data-toggle="modal" data-target="#pinpai" >选择</button></span>
+								  	<input type="text" style="width: 130px;height: 33px;" disabled="disabled" class="form-control carbankname" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">车辆型号：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinke.car.xinghao" class="form-control jinkous" id="basic-url" aria-describedby="basic-addon3">
+								 	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;驾驶员：</span>
+								  <input type="text" style="width: 160px;height: 33px;" v-model="xinke.car.sijiname" class="form-control" id="basic-url" aria-describedby="basic-addon3"> 
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  	<span class="input-group-addon " id="basic-addon3">司机电话：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinke.car.sijiphone" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">出生日期：</span>
+								  	<input type="date" style="width: 160px;height: 33px;" v-model="xinke.car.sijibirthday" class="form-control " id="basic-url" aria-describedby="basic-addon3">
+								 	<span class="input-group-addon" id="basic-addon3">车辆归属：</span>
+								  <select v-model="xinke.car.guishu" style="width: 160px;height: 33px;" v-model="xinke.car.guishu" class="form-control" id="basic-url" aria-describedby="basic-addon3">
 									<option>个人</option>
 								</select>
-								<span>驾证到期：</span><input v-model="xinke.car.jiazhao" type="date" />
-							</p>
-							<p>	
-								<span>车架号：</span><input v-model="xinke.car.chejia" type="text" />
-								<span>发动机号：</span><input type="date" />
-								<span>车辆年款：</span><select v-model="xinke.car.niankuan" style="width: 150px;height: 25px;"></select>
-								<span>里程：</span><input v-model="xinke.car.licheng" type="text" />
-							</p>
-							<p>
-								<span><span class="ho">* </span>发动机品牌：</span>
-								<select v-model="fadoname" style="width: 150px;height: 25px;" class="fabankname">
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  	<span class="input-group-addon " id="basic-addon3">驾证到期：</span>
+								  	<input type="date" style="width: 160px;height: 33px;" v-model="xinke.car.jiazhao"  class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;&nbsp;车架号：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinke.car.chejia" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								 	<span class="input-group-addon" id="basic-addon3">发动机号：</span>
+								  <input type="t" style="width: 160px;height: 33px;" class="form-control" id="basic-url" aria-describedby="basic-addon3"> 
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  	<span class="input-group-addon " id="basic-addon3">车辆年款：</span>
+								  	<select v-model="xinke.car.niankuan" style="width: 160px;height: 33px;" class="form-control" id="basic-url" aria-describedby="basic-addon3"></select>
+								  	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;里程：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinke.car.licheng" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								 	<span class="input-group-addon" id="basic-addon3">发动机牌：</span>
+								  <select style="width: 160px;height: 33px;" class="form-control" id="basic-url" aria-describedby="basic-addon3" v-model="fadoname" class="fabankname">
 									<option v-for="item in fadoji" Seleted ="true">{{item.faname}}</option>
 								</select>
-								<span>载重：</span><input v-model="xinke.car.zaizhong" type="text" />
-								<span>购买日期：</span><input v-model="xinke.car.goumaidate" type="date" />
-							</p>
-							<p>
-								<span>上牌日期：</span><input v-model="xinke.car.shanpaidate" type="date" />
-								<span>车检到期：</span><input v-model="xinke.car.chejian" type="date" />
-								<span>燃油类别：</span><select v-model="xinke.car.ranyou" style="width: 150px;height: 25px;"></select>
-								&nbsp;<input class="radios" name="Fruit" type="radio" />在我投保车
-							</p>
-							<p>
-								<span><span class="ho">保险：</span>交强险保险公司</span><select style="width: 150px;height: 25px;"></select>
-								<span>交强险到期：</span><select style="width: 150px;height: 25px;"></select>
-							</p>
-							<p>
-								<span>下次保险里程：</span><input v-model="xinke.car.nextbaoxian" type="text" />
-								<span>下次保险日期：</span><input v-model="xinke.car.nextbaoxiandate" type="date" />
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row kehu">
-				<div>
-					<div class="">
-					<div class="tan1 color1"><span class="toto1">新增客户</span><button @click="addkehu" class="btn btn-group bao2">保存</button><span class="close guan4">×</span></div>
-				</div>
-					<div class="context1">
-						<div class="shang">
-							<p>
-								<span><span class="ho">* </span>客户编码：</span><input v-model="xinkehu.kehuno" type="text" size="15"/>
-								<span><span class="ho">* </span>客户名称：</span><input v-model="xinkehu.kehuname" type="text" size="15"/>
-								<span>联系人：</span><input type="text" v-model="xinkehu.kehulianxi" size="15"/>
-								<span><span class="ho">* </span>手机：</span><input type="text" v-model="xinkehu.kehuphone" size="15"/>
-							</p>
-							<p>
-								<span>客户地址：</span><input v-model="xinkehu.kehuaddress" type="text" size="50"/>
-								<span>客户生日：</span><input v-model="xinkehu.kehubirthday" type="date"/>
-							</p>
-							<p>
-								<span>账期(天)：</span><input v-model="xinkehu.zhangqi" type="text" size="5"/>
-								<span>挂账额度：</span><input v-model="xinkehu.edu" type="text" size="10"/>
-								<span>专属顾问：<select v-model="xinkehu.guwen" style="width: 150px;height: 25px;"></select></span>
-								<span>顾问电话：<input v-model="xinkehu.guwenphone" type="text"></span>
-							</p>
-							<p>
-								<span>省：<select v-model="xinkehu.bei2" id="s_province" name="s_province" style="width: 150px;height: 25px;"></select></span>
-								<span>市：<select v-model="xinkehu.bei3" id="s_city" name="s_city" style="width: 150px;height: 25px;"></select></span>
-								<span>区：<select v-model="xinkehu.bei4" id="s_county" name="s_county" style="width: 150px;height: 25px;"></select></span>
-							</p>
-							<p>
-								<span>备注：</span><input v-model="xinkehu.remark" type="text" size="100"/>
-							</p>
-							<p>
-								<span>纳税人识别号：</span><input type="text" size="15"/>
-								<span>注册电话：</span><input v-model="xinkehu.zhuphone" type="text" size="15"/>
-								<span>开户银行：</span><input v-model="xinkehu.bank" type="text" size="15"/>
-							</p>
-							<p>
-								<span>银行账号：</span><input v-model="xinkehu.bankcard" type="text" size="15"/>
-								<span>注册地址：</span><input v-model="xinkehu.zhuaddress" type="text" size="50"/>
-							</p>
-							<p>
-								<span>其它一：</span><input type="text" size="15"/>
-								<span>其它二：</span><input type="text" size="15"/>
-								<span>其它三：</span><input type="text" size="15"/>	
-								<span>其它四：</span><input type="text" size="15"/>
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  	<span class="input-group-addon " id="basic-addon3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;载重：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinke.car.zaizhong" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">购买日期：</span>
+								  	<input type="date" style="width: 160px;height: 33px;" v-model="xinke.car.goumaidate" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								 	<span class="input-group-addon" id="basic-addon3">上牌日期：</span>
+								  <input type="date" style="width: 160px;height: 33px;" v-model="xinke.car.shanpaidate" class="form-control" id="basic-url" aria-describedby="basic-addon3"> 
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  	<span class="input-group-addon " id="basic-addon3">车检到期：</span>
+								  	<input type="date" style="width: 160px;height: 33px;" v-model="xinke.car.chejian" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">燃油类别：</span>
+								  	<select class="form-control" style="width: 160px;height: 33px;" v-model="xinke.car.ranyou" id="basic-url" aria-describedby="basic-addon3"  ></select>
+								 	<span class="input-group-addon" id="basic-addon3">不知道是：</span>
+								  <input type="date" style="width: 160px;height: 33px;" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  	<span class="input-group-addon " id="basic-addon3">下次保险里程：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinke.car.nextbaoxian" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">下次保险日期：</span>
+								  	<input type="date" style="width: 160px;height: 33px;" v-model="xinke.car.nextbaoxiandate" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+		
+								 </div>
+								 <div class="input-group" style="margin-top: 20px;">
+								 	投保车： 
+								  	<input style="width: 30px;" class="radios" name="Fruit" type="radio" />
+								 </div>
 							</p>
 						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row updatekehu">
-				<div>
-					<div class="">
-					<div class="tan1 color1"><span class="toto1">客户资料编辑</span><button @click="updatekehu" class="btn btn-group bao2">保存</button><span class="close guan5">×</span></div>
-				</div>
-					<div class="context1">
-						<div class="shang">
+			     	 </div>
+			    </div><!-- /.modal-content -->
+			  </div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+			<div class="modal fade" id="kehu" class="kehu"  role="dialog">
+			  <div class="modal-dialog" role="document" style="width: 880px;">
+			    <div class="modal-content">
+			    	<div class="modal-header" style="height: 60px;" id="dhl">
+				      	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="guan4">&times;</span></button>
+				      	<h4 class="modal-title" style="margin-top:5px;">新增客户</h4>
+				      	<div class="col-md-9"></div>
+				      	<div >
+				      	  <button type="button" class="btn btn-success" style="margin-top: -50px;margin-left: 100px; vertical-align: middle; width: 60px;" @click="addkehu">保存</button>
+				      	</div>
+				 	</div>
+			     	<div class="modal-body" style="margin-top: -30px;">
+			       		<div class="shang">
 							<p>
-								<span><span class="ho">* </span>客户编码：</span><input v-model="xinkehu.kehuno" readonly="readonly" type="text" size="15"/>
-								<span><span class="ho">* </span>客户名称：</span><input v-model="xinkehu.kehuname" type="text" size="15"/>
-								<span>联系人：</span><input type="text" v-model="xinkehu.kehulianxi" size="15"/>
-								<span><span class="ho">* </span>手机：</span><input type="text" v-model="xinkehu.kehuphone" size="15"/>
-							</p>
-							<p>
-								<span>客户地址：</span><input v-model="xinkehu.kehuaddress" type="text" size="50"/>
-								<span>客户生日：</span><input v-model="xinkehu.kehubirthday" type="date"/>
-							</p>
-							<p>
-								<span>账期(天)：</span><input v-model="xinkehu.zhangqi" type="text" size="5"/>
-								<span>挂账额度：</span><input v-model="xinkehu.edu" type="text" size="10"/>
-								<span>专属顾问：<select v-model="xinkehu.guwen" style="width: 150px;height: 25px;"></select></span>
-								<span>顾问电话：<input v-model="xinkehu.guwenphone" type="text"></span>
-							</p>
-							<p>
-								<span>省：<select v-model="xinkehu.bei2" id="ss_province" name="s_province" style="width: 150px;height: 25px;"></select></span>
-								<span>市：<select v-model="xinkehu.bei3" id="ss_city" name="ss_city" style="width: 150px;height: 25px;"></select></span>
-								<span>区：<select v-model="xinkehu.bei4" id="ss_county" name="ss_county" style="width: 150px;height: 25px;"></select></span>
-							</p>
-							<p>
-								<span>备注：</span><input v-model="xinkehu.remark" type="text" size="100"/>
-							</p>
-							<p>
-								<span>纳税人识别号：</span><input type="text" size="15"/>
-								<span>注册电话：</span><input v-model="xinkehu.zhuphone" type="text" size="15"/>
-								<span>开户银行：</span><input v-model="xinkehu.bank" type="text" size="15"/>
-							</p>
-							<p>
-								<span>银行账号：</span><input v-model="xinkehu.bankcard" type="text" size="15"/>
-								<span>注册地址：</span><input v-model="xinkehu.zhuaddress" type="text" size="50"/>
-							</p>
-							<p>
-								<span>其它一：</span><input type="text" size="15"/>
-								<span>其它二：</span><input  type="text" size="15"/>
-								<span>其它三：</span><input type="text" size="15"/>	
-								<span>其它四：</span><input type="text" size="15"/>
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row querykehu">
-				<div>
-					<div class="">
-					<div class="tan1 color1"><span class="toto1">客户资料编辑</span><span class="close guan11">×</span></div>
-				</div>
-					<div class="context1">
-						<div class="shang">
-							<p>
-								<span><span class="ho">* </span>客户编码：</span><input v-model="xinkehu.kehuno" readonly="readonly" type="text" size="15"/>
-								<span><span class="ho">* </span>客户名称：</span><input v-model="xinkehu.kehuname" type="text" size="15"/>
-								<span>联系人：</span><input type="text" v-model="xinkehu.kehulianxi" size="15"/>
-								<span><span class="ho">* </span>手机：</span><input type="text" v-model="xinkehu.kehuphone" size="15"/>
-							</p>
-							<p>
-								<span>客户地址：</span><input v-model="xinkehu.kehuaddress" type="text" size="50"/>
-								<span>客户生日：</span><input v-model="xinkehu.kehubirthday" type="date"/>
-							</p>
-							<p>
-								<span>账期(天)：</span><input v-model="xinkehu.zhangqi" type="text" size="5"/>
-								<span>挂账额度：</span><input v-model="xinkehu.edu" type="text" size="10"/>
-								<span>专属顾问：<select v-model="xinkehu.guwen" style="width: 150px;height: 25px;"></select></span>
-								<span>顾问电话：<input v-model="xinkehu.guwenphone" type="text"></span>
-							</p>
-							<p>
-								<span>省：<select v-model="xinkehu.bei2" id="ssss_province" name="ssss_province" style="width: 150px;height: 25px;"></select></span>
-								<span>市：<select v-model="xinkehu.bei3" id="ssss_city" name="ssss_city" style="width: 150px;height: 25px;"></select></span>
-								<span>区：<select v-model="xinkehu.bei4" id="ssss_county" name="ssss_county" style="width: 150px;height: 25px;"></select></span>
-							</p>
-							<p>
-								<span>备注：</span><input v-model="xinkehu.remark" type="text" size="100"/>
-							</p>
-							<p>
-								<span>纳税人识别号：</span><input type="text" size="15"/>
-								<span>注册电话：</span><input v-model="xinkehu.zhuphone" type="text" size="15"/>
-								<span>开户银行：</span><input v-model="xinkehu.bank" type="text" size="15"/>
-							</p>
-							<p>
-								<span>银行账号：</span><input v-model="xinkehu.bankcard" type="text" size="15"/>
-								<span>注册地址：</span><input v-model="xinkehu.zhuaddress" type="text" size="50"/>
-							</p>
-							<p>
-								<span>其它一：</span><input type="text" size="15"/>
-								<span>其它二：</span><input  type="text" size="15"/>
-								<span>其它三：</span><input type="text" size="15"/>	
-								<span>其它四：</span><input type="text" size="15"/>
+								<div class="input-group">
+								  	<span class="input-group-addon " id="basic-addon3">客户编码：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" disabled="disabled" v-model="xinkehu.kehuno" class="form-control bianhao" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">客户名称：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinkehu.kehuname" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								 	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;&nbsp;&nbsp;联系人：</span>
+								  <input type="text" style="width: 160px;height: 33px;" v-model="xinkehu.kehulianxi" class="form-control" id="basic-url" aria-describedby="basic-addon3"> 
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  	<span class="input-group-addon " id="basic-addon3">手机号码：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinkehu.kehuphone" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">客户地址：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinkehu.kehuaddress" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								 	<span class="input-group-addon" id="basic-addon3">客户生日：</span>
+								  <input type="date" style="width: 160px;height: 33px;" v-model="xinkehu.kehubirthday" class="form-control" id="basic-url" aria-describedby="basic-addon3"> 
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+									<span class="input-group-addon " id="basic-addon3">&nbsp;账期(天)：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinkehu.zhangqi" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">挂账额度：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinkehu.edu" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								 	<span class="input-group-addon" id="basic-addon3">专属顾问：</span>
+								  <select style="width: 160px;height: 33px;" class="form-control" id="basic-url" aria-describedby="basic-addon3" v-model="xinkehu.guwen" style="width: 150px;height: 25px;"></select>
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+									<span class="input-group-addon " id="basic-addon3">顾问电话：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinkehu.guwenphone" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;省：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								  	<select v-model="xinkehu.bei2" class="form-control" aria-describedby="basic-addon3" id="s_province" name="s_province" style="width: 160px;height: 33px;"></select>
+								 	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;市：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								  <select v-model="xinkehu.bei3" class="form-control" aria-describedby="basic-addon3"  id="s_city" name="s_city" style="width: 160px;height: 33px;"></select>
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+									<span class="input-group-addon " id="basic-addon3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								  	<select v-model="xinkehu.bei4" class="form-control" aria-describedby="basic-addon3" id="s_county" name="s_county" style="width: 160px;height: 33px;"></select>
+								  	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;备注：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinkehu.remark" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								 	<span class="input-group-addon" id="basic-addon3">注册电话：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinkehu.zhuphone" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+									<span class="input-group-addon" id="basic-addon3">开户银行：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinkehu.bank" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">银行账号：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinkehu.bankcard" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								 	<span class="input-group-addon" id="basic-addon3">注册地址：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinkehu.zhuaddress" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								</div>
 							</p>
 						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row chezliao">
-				<div>
-					<div class="">
-					<div class="tan1 color1"><span class="toto1">车辆资料</span><button class="btn btn-group bao3" @click="addcar">保存</button><span class="close guan5">×</span></div>
-				</div>
-					<div class="context2">
-						<div class="shang">
+			     	 </div>
+			    </div><!-- /.modal-content -->
+			  </div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+			<div class="modal fade" id="updatekehu" class="updatekehu"  role="dialog">
+			  <div class="modal-dialog" role="document" style="width: 880px;">
+			    <div class="modal-content">
+			    	<div class="modal-header" style="height: 60px;" id="dhl">
+				      	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="guan5">&times;</span></button>
+				      	<h4 class="modal-title" style="margin-top:5px;">客户资料编辑</h4>
+				      	<div class="col-md-9"></div>
+				      	<div >
+				      	  <button type="button" class="btn btn-success" style="margin-top: -50px;margin-left: 100px; vertical-align: middle; width: 60px;" @click="updatekehu">保存</button>
+				      	</div>
+				 	</div>
+			     	<div class="modal-body" style="margin-top: -30px;">
+			       		<div class="shang">
 							<p>
-								<span><span class="ho">* </span>车牌号码：</span><input v-model="cheliang.chepai" class="paipai" type="text" style="width: 50px;height: 25px;"><button class="haoma">选择</button>
-								<span><span class="ho">* </span>车辆品牌：</span><input readonly="readonly" style="width: 100px;height: 25px;" class="carbankname" type="text" /><button class="pin">选择</button>
-								<span><span class="ho">* </span>车辆型号：</span><input readonly="readonly" class="jinkous" v-model="car.xinghao" type="text" />
-								<span><span class="ho">* </span>驾驶员：</span><input v-model="cheliang.sijiname" type="text" />
+								<div class="input-group">
+								  	<span class="input-group-addon " id="basic-addon3">客户编码：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" disabled="disabled" v-model="xinkehu.kehuno" class="form-control bianhao" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">客户名称：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinkehu.kehuname" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								 	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;&nbsp;&nbsp;联系人：</span>
+								  <input type="text" style="width: 160px;height: 33px;" v-model="xinkehu.kehulianxi" class="form-control" id="basic-url" aria-describedby="basic-addon3"> 
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  	<span class="input-group-addon " id="basic-addon3">手机号码：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinkehu.kehuphone" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">客户地址：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinkehu.kehuaddress" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								 	<span class="input-group-addon" id="basic-addon3">客户生日：</span>
+								  <input type="date" style="width: 160px;height: 33px;" v-model="xinkehu.kehubirthday" class="form-control" id="basic-url" aria-describedby="basic-addon3"> 
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+									<span class="input-group-addon " id="basic-addon3">&nbsp;账期(天)：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinkehu.zhangqi" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">挂账额度：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinkehu.edu" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								 	<span class="input-group-addon" id="basic-addon3">专属顾问：</span>
+								  <select style="width: 160px;height: 33px;" class="form-control" id="basic-url" aria-describedby="basic-addon3" v-model="xinkehu.guwen" style="width: 150px;height: 25px;"></select>
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+									<span class="input-group-addon " id="basic-addon3">顾问电话：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinkehu.guwenphone" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;省：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								  	<select v-model="xinkehu.bei2" class="form-control" aria-describedby="basic-addon3" id="ss_province" name="ss_province" style="width: 160px;height: 33px;"></select>
+								 	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;市：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								  <select v-model="xinkehu.bei3" class="form-control" aria-describedby="basic-addon3"  id="ss_city" name="ss_city" style="width: 160px;height: 33px;"></select>
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+									<span class="input-group-addon " id="basic-addon3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								  	<select v-model="xinkehu.bei4" class="form-control" aria-describedby="basic-addon3" id="ss_county" name="ss_county" style="width: 160px;height: 33px;"></select>
+								  	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;备注：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinkehu.remark" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								 	<span class="input-group-addon" id="basic-addon3">注册电话：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinkehu.zhuphone" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+									<span class="input-group-addon" id="basic-addon3">开户银行：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinkehu.bank" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">银行账号：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinkehu.bankcard" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								 	<span class="input-group-addon" id="basic-addon3">注册地址：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinkehu.zhuaddress" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								</div>
 							</p>
+						</div>
+			     	 </div>
+			    </div><!-- /.modal-content -->
+			  </div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+			<div class="modal fade" id="chezliao" class="chezliao"  role="dialog">
+			  <div class="modal-dialog" role="document" style="width: 880px;">
+			    <div class="modal-content">
+			    	<div class="modal-header" style="height: 60px;" id="dhl">
+				      	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="guan5">&times;</span></button>
+				      	<h4 class="modal-title" style="margin-top:5px;">车辆资料</h4>
+				      	<div class="col-md-9"></div>
+				      	<div >
+				      	  <button type="button" class="btn btn-success" style="margin-top: -50px;margin-left: 100px; vertical-align: middle; width: 60px;" @click="addcar">保存</button>
+				      	</div>
+				 	</div>
+			     	<div class="modal-body" style="margin-top: -30px;">
+			       		<div class="shang">
 							<p>
-								<span><span class="ho">* </span>驾驶员电话：</span></span><input v-model="cheliang.sijiphone" type="text" size="15"/>
-								<span>出生日期：</span><input v-model="cheliang.sijibirthday" type="date"/>
-								<span><span class="ho">* </span>车辆归属：</span><select v-model="cheliang.guishu" style="width: 150px;height: 25px;">
+								<div class="input-group" style="margin-top: 20px;">
+								 	<span class="input-group-addon" id="basic-addon3">&nbsp;车牌号码：<button style="width: 35;" class="haoma" data-toggle="modal" data-target="#chepai">选择</button></span>
+								  <input type="text" style="width: 120px;height: 33px;" v-model="cheliang.chepai"  class="form-control paipai" id="basic-url" aria-describedby="basic-addon3">
+									<span class="input-group-addon " id="basic-addon3">车辆品牌：<button class="pin" data-toggle="modal" data-target="#pinpai" >选择</button></span>
+								  	<input type="text" style="width: 130px;height: 33px;" disabled="disabled" class="form-control carbankname" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">车辆型号：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="cheliang.xinghao" class="form-control jinkous" id="basic-url" aria-describedby="basic-addon3">
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;驾驶员：</span>
+								  <input type="text" style="width: 160px;height: 33px;" v-model="cheliang.sijiname" class="form-control" id="basic-url" aria-describedby="basic-addon3"> 
+									<span class="input-group-addon " id="basic-addon3">司机电话：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="cheliang.sijiphone" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">出生日期：</span>
+								  	<input type="date" style="width: 160px;height: 33px;" v-model="cheliang.sijibirthday" class="form-control " id="basic-url" aria-describedby="basic-addon3">
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  	<span class="input-group-addon" id="basic-addon3">车辆归属：</span>
+								  <select  style="width: 160px;height: 33px;" v-model="cheliang.guishu" class="form-control" id="basic-url" aria-describedby="basic-addon3">
 									<option>个人</option>
 								</select>
-								<span>驾证到期：</span><input v-model="cheliang.jiazhao" type="date" />
-							</p>
-							<p>	
-								<span>车架号：</span><input v-model="cheliang.chejia" type="text" />
-								<span>发动机号：</span><input type="date" />
-								<span>车辆年款：</span><select v-model="cheliang.niankuan" style="width: 150px;height: 25px;"></select>
-								<span>里程：</span><input v-model="cheliang.licheng" type="text" />
-							</p>
-							<p>
-								<span><span class="ho">* </span>发动机品牌：</span>
-								<select v-model="fadoname" style="width: 150px;height: 25px;" class="fabankname">
-									<option v-for="item in fadoji">{{item.faname}}</option>
+								<span class="input-group-addon " id="basic-addon3">驾证到期：</span>
+								  	<input type="date" style="width: 160px;height: 33px;" v-model="cheliang.jiazhao"  class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;&nbsp;车架号：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="cheliang.chejia" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  	<span class="input-group-addon" id="basic-addon3">发动机号：</span>
+								  <input type="t" style="width: 160px;height: 33px;" class="form-control" id="basic-url" aria-describedby="basic-addon3"> 
+									<span class="input-group-addon " id="basic-addon3">车辆年款：</span>
+								  	<select v-model="cheliang.niankuan" style="width: 160px;height: 33px;" class="form-control" id="basic-url" aria-describedby="basic-addon3"></select>
+								  	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;里程：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="cheliang.licheng" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  	<span class="input-group-addon" id="basic-addon3">发动机牌：</span>
+								  <select style="width: 160px;height: 33px;" class="form-control" id="basic-url" aria-describedby="basic-addon3" v-model="fadoname" class="fabankname">
+									<option v-for="item in fadoji" Seleted ="true">{{item.faname}}</option>
 								</select>
-								<span>载重：</span><input v-model="cheliang.zaizhong" type="text" />
-								<span>购买日期：</span><input v-model="cheliang.goumaidate" type="date" />
-							</p>
-							<p>
-								<span>上牌日期：</span><input v-model="cheliang.shanpaidate" type="date" />
-								<span>车检到期：</span><input v-model="cheliang.chejian" type="date" />
-								<span>燃油类别：</span><select v-model="cheliang.ranyou" style="width: 150px;height: 25px;"></select>
-								&nbsp;<input class="radios" name="checks" type="checkbox" />在我投保车
-							</p>
-							<p>
-								<span><span class="ho">保险：</span>交强险保险公司</span><select style="width: 150px;height: 25px;"></select>
-								<span>交强险到期：</span><select style="width: 150px;height: 25px;"></select>
-							</p>
-							<p>
-								<span>商业险保险公司</span><input type="date" />
-								<span>商业险到期：</span><input type="date" />
-							</p>
-							<p>
-								<span>下次保养里程：</span><input v-model="cheliang.nextbaoxian" type="text" size="15"/>
-								<span>下次保养日期：</span><input v-model="cheliang.nextbaoxiandate" type="date"/>
-								<span>客户编码：</span><input id="cheliangno" class="cheliangno" readonly="readonly" v-model="cheliang.kehuno" type="text" size="15"/><button @click="kai">选择</button>
-								<span>客户名称：</span><input id="cheliangname" class="cheliangname" readonly="readonly"  style="width: 100px;height: 25px;" type="text" size="15"/>
+									<span class="input-group-addon " id="basic-addon3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;载重：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="cheliang.zaizhong" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">购买日期：</span>
+								  	<input type="date" style="width: 160px;height: 33px;" v-model="cheliang.goumaidate" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								 	
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  <span class="input-group-addon" id="basic-addon3">上牌日期：</span>
+								  <input type="date" style="width: 160px;height: 33px;" v-model="cheliang.shanpaidate" class="form-control" id="basic-url" aria-describedby="basic-addon3"> 
+									<span class="input-group-addon " id="basic-addon3">车检到期：</span>
+								  	<input type="date" style="width: 160px;height: 33px;" v-model="cheliang.chejian" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">燃油类别：</span>
+								  	<select class="form-control" style="width: 160px;height: 33px;" v-model="cheliang.ranyou" id="basic-url" aria-describedby="basic-addon3"  ></select>
+								 	
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  <span class="input-group-addon" id="basic-addon3">客户编码：<button @click="kai">选择</button></span>
+								  <input type="text" v-model="cheliang.kehuno" disabled="disabled"  style="width: 160px;height: 33px;" class="form-control cheliangno" id="cheliangno" aria-describedby="basic-addon3">
+									<span class="input-group-addon " id="basic-addon3">客户名称：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" disabled="disabled" class="form-control cheliangname" id="cheliangname" aria-describedby="basic-addon3">
+								</div>
+								 <div class="input-group" style="margin-top: 20px;">
+								 	投保车： 
+								  	<input class="radios" name="checks" type="checkbox" />
+								 </div>
 							</p>
 						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row xiugaiche">
-				<div>
-					<div class="">
-					<div class="tan1 color1"><span class="toto1">车辆资料编辑</span><button class="btn btn-group bao3" @click="updatecar">保存</button><span class="close guan10">×</span></div>
-				</div>
-					<div class="context2">
-						<div class="shang">
+			     	 </div>
+			    </div><!-- /.modal-content -->
+			  </div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+			<div class="modal fade" id="xiugaiche" class="xiugaiche"  role="dialog">
+			  <div class="modal-dialog" role="document" style="width: 880px;">
+			    <div class="modal-content">
+			    	<div class="modal-header" style="height: 60px;" id="dhl">
+				      	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="guan10">&times;</span></button>
+				      	<h4 class="modal-title" style="margin-top:5px;">车辆资料编辑</h4>
+				      	<div class="col-md-9"></div>
+				      	<div>
+				      	  <button type="button" class="btn btn-success" style="margin-top: -50px;margin-left: 100px; vertical-align: middle; width: 60px;" @click="updatecar">保存</button>
+				      	</div>
+				 	</div>
+			     	<div class="modal-body" style="margin-top: -30px;">
+			       		<div class="shang">
 							<p>
-								<span><span class="ho">* </span>车牌号码：</span><input readonly="readonly" v-model="cheliang.chepai" class="paipai" type="text" style="width: 60px;height: 25px;"><button class="haoma">选择</button>
-								<span><span class="ho">* </span>车辆品牌：</span><input readonly="readonly" style="width: 100px;height: 25px;" class="carbankname" type="text" /><button class="pin">选择</button>
-								<span><span class="ho">* </span>车辆型号：</span><input readonly="readonly" class="jinkous" v-model="car.xinghao" type="text" />
-								<span><span class="ho">* </span>驾驶员：</span><input v-model="cheliang.sijiname" type="text" />
-							</p>
-							<p>
-								<span><span class="ho">* </span>驾驶员电话：</span></span><input v-model="cheliang.sijiphone" type="text" size="15"/>
-								<span>出生日期：</span><input v-model="cheliang.sijibirthday" type="date"/>
-								<span><span class="ho">* </span>车辆归属：</span><select v-model="cheliang.guishu" style="width: 150px;height: 25px;">
+								<div class="input-group" style="margin-top: 20px;">
+								 	<span class="input-group-addon" id="basic-addon3">&nbsp;车牌号码：<button style="width: 35;" class="haoma" data-toggle="modal" data-target="#chepai">选择</button></span>
+								  <input type="text" style="width: 120px;height: 33px;" v-model="cheliang.chepai"  class="form-control paipai" id="basic-url" aria-describedby="basic-addon3">
+									<span class="input-group-addon " id="basic-addon3">车辆品牌：<button class="pin" data-toggle="modal" data-target="#pinpai" >选择</button></span>
+								  	<input type="text" style="width: 130px;height: 33px;" disabled="disabled" class="form-control carbankname" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">车辆型号：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="cheliang.xinghao" class="form-control jinkous" id="basic-url" aria-describedby="basic-addon3">
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;驾驶员：</span>
+								  <input type="text" style="width: 160px;height: 33px;" v-model="cheliang.sijiname" class="form-control" id="basic-url" aria-describedby="basic-addon3"> 
+									<span class="input-group-addon " id="basic-addon3">司机电话：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="cheliang.sijiphone" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">出生日期：</span>
+								  	<input type="date" style="width: 160px;height: 33px;" v-model="cheliang.sijibirthday" class="form-control " id="basic-url" aria-describedby="basic-addon3">
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  	<span class="input-group-addon" id="basic-addon3">车辆归属：</span>
+								  <select style="width: 160px;height: 33px;" v-model="cheliang.guishu" class="form-control" id="basic-url" aria-describedby="basic-addon3">
 									<option>个人</option>
 								</select>
-								<span>驾证到期：</span><input v-model="cheliang.jiazhao" type="date" />
-							</p>
-							<p>	
-								<span>车架号：</span><input v-model="cheliang.chejia" type="text" />
-								<span>发动机号：</span><input type="date" />
-								<span>车辆年款：</span><select v-model="cheliang.niankuan" style="width: 150px;height: 25px;"></select>
-								<span>里程：</span><input v-model="cheliang.licheng" type="text" />
-							</p>
-							<p>
-								<span><span class="ho">* </span>发动机品牌：</span>
-								<select v-model="fadoname" style="width: 150px;height: 25px;" class="fabankname">
-									<option v-for="item in fadoji" >{{item.faname}}</option>
-									
+								<span class="input-group-addon " id="basic-addon3">驾证到期：</span>
+								  	<input type="date" style="width: 160px;height: 33px;" v-model="cheliang.jiazhao"  class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;&nbsp;车架号：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="cheliang.chejia" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  	<span class="input-group-addon" id="basic-addon3">发动机号：</span>
+								  <input type="t" style="width: 160px;height: 33px;" class="form-control" id="basic-url" aria-describedby="basic-addon3"> 
+									<span class="input-group-addon " id="basic-addon3">车辆年款：</span>
+								  	<select v-model="cheliang.niankuan" style="width: 160px;height: 33px;" class="form-control" id="basic-url" aria-describedby="basic-addon3"></select>
+								  	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;里程：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="cheliang.licheng" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  	<span class="input-group-addon" id="basic-addon3">发动机牌：</span>
+								  <select style="width: 160px;height: 33px;" class="form-control" id="basic-url" aria-describedby="basic-addon3" v-model="fadoname" class="fabankname">
+									<option v-for="item in fadoji" Seleted ="true">{{item.faname}}</option>
 								</select>
-								<span>载重：</span><input v-model="cheliang.zaizhong" type="text" />
-								<span>购买日期：</span><input v-model="cheliang.goumaidate" type="date" />
-							</p>
-							<p>
-								<span>上牌日期：</span><input v-model="cheliang.shanpaidate" type="date" />
-								<span>车检到期：</span><input v-model="cheliang.chejian" type="date" />
-								<span>燃油类别：</span><select v-model="cheliang.ranyou" style="width: 150px;height: 25px;"></select>
-								&nbsp;<input class="radios" name="checkss" type="checkbox" />在我投保车
-							</p>
-							<p>
-								<span><span class="ho">保险：</span>交强险保险公司</span><select style="width: 150px;height: 25px;"></select>
-								<span>交强险到期：</span><select style="width: 150px;height: 25px;"></select>
-							</p>
-							<p>
-								<span>商业险保险公司</span><input type="date" />
-								<span>商业险到期：</span><input type="date" />
-							</p>
-							<p>
-								<span>下次保养里程：</span><input v-model="cheliang.nextbaoxian" type="text" size="15"/>
-								<span>下次保养日期：</span><input v-model="cheliang.nextbaoxiandate" type="date"/>
-								<span>客户编码：</span><input id="cheliangno" class="cheliangno" readonly="readonly" v-model="cheliang.kehuno" type="text" size="15"/><button @click="kai">选择</button>
-								<span>客户名称：</span><input id="cheliangname" class="cheliangname" readonly="readonly"  style="width: 100px;height: 25px;" type="text" size="15"/>
+									<span class="input-group-addon " id="basic-addon3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;载重：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="cheliang.zaizhong" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">购买日期：</span>
+								  	<input type="date" style="width: 160px;height: 33px;" v-model="cheliang.goumaidate" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								 	
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  <span class="input-group-addon" id="basic-addon3">上牌日期：</span>
+								  <input type="date" style="width: 160px;height: 33px;" v-model="cheliang.shanpaidate" class="form-control" id="basic-url" aria-describedby="basic-addon3"> 
+									<span class="input-group-addon " id="basic-addon3">车检到期：</span>
+								  	<input type="date" style="width: 160px;height: 33px;" v-model="cheliang.chejian" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">燃油类别：</span>
+								  	<select class="form-control" style="width: 160px;height: 33px;" v-model="cheliang.ranyou" id="basic-url" aria-describedby="basic-addon3"  ></select>
+								 	
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  <span class="input-group-addon" id="basic-addon3">客户编码：<button @click="kai">选择</button></span>
+								  <input type="text" v-model="cheliang.kehuno" disabled="disabled"  style="width: 160px;height: 33px;" class="form-control cheliangno" id="cheliangno" aria-describedby="basic-addon3">
+									<span class="input-group-addon " id="basic-addon3">客户名称：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" disabled="disabled" class="form-control cheliangname" id="cheliangname" aria-describedby="basic-addon3">
+								</div>
+								 <div class="input-group" style="margin-top: 20px;">
+								 	投保车： 
+								  	<input class="radios" name="checkss" type="checkbox" />
+								 </div>
 							</p>
 						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row querycar">
-				<div>
-					<div class="">
-					<div class="tan1 color1"><span class="toto1">车辆资料编辑</span><span class="close guan12">×</span></div>
-				</div>
-					<div class="context2">
-						<div class="shang">
+			     	 </div>
+			    </div><!-- /.modal-content -->
+			  </div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+			<div class="modal fade" id="querycar" class="querycar"  role="dialog">
+			  <div class="modal-dialog" role="document" style="width: 880px;">
+			    <div class="modal-content">
+			    	<div class="modal-header" style="height: 60px;" id="dhl">
+				      	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="guan12">&times;</span></button>
+				      	<h4 class="modal-title" style="margin-top:5px;">车辆资料</h4>
+				      	<div class="col-md-9"></div>
+				      	<div>
+				      	  <button type="button" class="btn btn-success" style="margin-top: -50px;margin-left: 100px; vertical-align: middle; width: 60px;"></button>
+				      	</div>
+				 	</div>
+			     	<div class="modal-body" style="margin-top: -30px;">
+			       		<div class="shang">
 							<p>
-								<span><span class="ho">* </span>车牌号码：</span><input v-model="cheliang.chepai" class="paipai" type="text" style="width: 60px;height: 25px;"><button class="haoma">选择</button>
-								<span><span class="ho">* </span>车辆品牌：</span><input readonly="readonly" style="width: 100px;height: 25px;" class="carbankname" type="text" /><button class="pin">选择</button>
-								<span><span class="ho">* </span>车辆型号：</span><input readonly="readonly" class="jinkous" v-model="car.xinghao" type="text" />
-								<span><span class="ho">* </span>驾驶员：</span><input v-model="cheliang.sijiname" type="text" />
-							</p>
-							<p>
-								<span><span class="ho">* </span>驾驶员电话：</span></span><input v-model="cheliang.sijiphone" type="text" size="15"/>
-								<span>出生日期：</span><input v-model="cheliang.sijibirthday" type="date"/>
-								<span><span class="ho">* </span>车辆归属：</span><select v-model="cheliang.guishu" style="width: 150px;height: 25px;">
+								<div class="input-group" style="margin-top: 20px;">
+								 	<span class="input-group-addon" id="basic-addon3">&nbsp;车牌号码：<button disabled="disabled" style="width: 35;" class="haoma" data-toggle="modal" data-target="#chepai">选择</button></span>
+								  <input type="text" style="width: 120px;height: 33px;" v-model="cheliang.chepai"  class="form-control paipai" id="basic-url" aria-describedby="basic-addon3">
+									<span class="input-group-addon " id="basic-addon3">车辆品牌：<button class="pin" disabled="disabled" data-toggle="modal" data-target="#pinpai" >选择</button></span>
+								  	<input type="text" style="width: 130px;height: 33px;" disabled="disabled" class="form-control carbankname" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">车辆型号：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="cheliang.xinghao" class="form-control jinkous" id="basic-url" aria-describedby="basic-addon3">
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;驾驶员：</span>
+								  <input type="text" style="width: 160px;height: 33px;" v-model="cheliang.sijiname" class="form-control" id="basic-url" aria-describedby="basic-addon3"> 
+									<span class="input-group-addon " id="basic-addon3">司机电话：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="cheliang.sijiphone" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">出生日期：</span>
+								  	<input type="date" style="width: 160px;height: 33px;" v-model="cheliang.sijibirthday" class="form-control " id="basic-url" aria-describedby="basic-addon3">
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  	<span class="input-group-addon" id="basic-addon3">车辆归属：</span>
+								  <select  style="width: 160px;height: 33px;" v-model="cheliang.guishu" class="form-control" id="basic-url" aria-describedby="basic-addon3">
 									<option>个人</option>
 								</select>
-								<span>驾证到期：</span><input v-model="cheliang.jiazhao" type="date" />
-							</p>
-							<p>	
-								<span>车架号：</span><input v-model="cheliang.chejia" type="text" />
-								<span>发动机号：</span><input type="date" />
-								<span>车辆年款：</span><select v-model="cheliang.niankuan" style="width: 150px;height: 25px;"></select>
-								<span>里程：</span><input v-model="cheliang.licheng" type="text" />
-							</p>
-							<p>
-								<span><span class="ho">* </span>发动机品牌：</span>
-								<select v-model="fadoname" style="width: 150px;height: 25px;" class="fabankname">
-									<option v-for="item in fadoji" >{{item.faname}}</option>
-									
+								<span class="input-group-addon " id="basic-addon3">驾证到期：</span>
+								  	<input type="date" style="width: 160px;height: 33px;" v-model="cheliang.jiazhao"  class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;&nbsp;车架号：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="cheliang.chejia" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  	<span class="input-group-addon" id="basic-addon3">发动机号：</span>
+								  <input type="t" style="width: 160px;height: 33px;" class="form-control" id="basic-url" aria-describedby="basic-addon3"> 
+									<span class="input-group-addon " id="basic-addon3">车辆年款：</span>
+								  	<select v-model="cheliang.niankuan" style="width: 160px;height: 33px;" class="form-control" id="basic-url" aria-describedby="basic-addon3"></select>
+								  	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;里程：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="cheliang.licheng" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  	<span class="input-group-addon" id="basic-addon3">发动机牌：</span>
+								  <select style="width: 160px;height: 33px;" class="form-control" id="basic-url" aria-describedby="basic-addon3" v-model="fadoname" class="fabankname">
+									<option v-for="item in fadoji" Seleted ="true">{{item.faname}}</option>
 								</select>
-								<span>载重：</span><input v-model="cheliang.zaizhong" type="text" />
-								<span>购买日期：</span><input v-model="cheliang.goumaidate" type="date" />
-							</p>
-							<p>
-								<span>上牌日期：</span><input v-model="cheliang.shanpaidate" type="date" />
-								<span>车检到期：</span><input v-model="cheliang.chejian" type="date" />
-								<span>燃油类别：</span><select v-model="cheliang.ranyou" style="width: 150px;height: 25px;"></select>
-								&nbsp;<input class="radios" name="checkss" type="checkbox" />在我投保车
-							</p>
-							<p>
-								<span><span class="ho">保险：</span>交强险保险公司</span><select style="width: 150px;height: 25px;"></select>
-								<span>交强险到期：</span><select style="width: 150px;height: 25px;"></select>
-							</p>
-							<p>
-								<span>商业险保险公司</span><input type="date" />
-								<span>商业险到期：</span><input type="date" />
-							</p>
-							<p>
-								<span>下次保养里程：</span><input v-model="cheliang.nextbaoxian" type="text" size="15"/>
-								<span>下次保养日期：</span><input v-model="cheliang.nextbaoxiandate" type="date"/>
-								<span>客户编码：</span><input id="cheliangno" class="cheliangno" readonly="readonly" v-model="cheliang.kehuno" type="text" size="15"/><button @click="kai">选择</button>
-								<span>客户名称：</span><input id="cheliangname" class="cheliangname" readonly="readonly"  style="width: 100px;height: 25px;" type="text" size="15"/>
+									<span class="input-group-addon " id="basic-addon3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;载重：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="cheliang.zaizhong" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">购买日期：</span>
+								  	<input type="date" style="width: 160px;height: 33px;" v-model="cheliang.goumaidate" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								 	
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  <span class="input-group-addon" id="basic-addon3">上牌日期：</span>
+								  <input type="date" style="width: 160px;height: 33px;" v-model="cheliang.shanpaidate" class="form-control" id="basic-url" aria-describedby="basic-addon3"> 
+									<span class="input-group-addon " id="basic-addon3">车检到期：</span>
+								  	<input type="date" style="width: 160px;height: 33px;" v-model="cheliang.chejian" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">燃油类别：</span>
+								  	<select class="form-control" style="width: 160px;height: 33px;" v-model="cheliang.ranyou" id="basic-url" aria-describedby="basic-addon3"  ></select>
+								 	
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  <span class="input-group-addon" id="basic-addon3">客户编码：<button disabled="disabled" @click="kai">选择</button></span>
+								  <input type="text" v-model="cheliang.kehuno" disabled="disabled"  style="width: 160px;height: 33px;" class="form-control cheliangno" id="cheliangno" aria-describedby="basic-addon3">
+									<span class="input-group-addon " id="basic-addon3">客户名称：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" disabled="disabled" class="form-control cheliangname" id="cheliangname" aria-describedby="basic-addon3">
+								</div>
+								 <div class="input-group" style="margin-top: 20px;">
+								 	投保车： 
+								  	<input class="radios" name="checks" type="checkbox" />
+								 </div>
 							</p>
 						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row chepai">
-				<div>
-					<div class="tan"><span class="toto">车牌号</span><span class="close guan1">×</span></div>
-					<div style="margin-left: 20px;margin-top: 5px;">
-						<button @click="xuanchepai" v-for="item,index in chepai" style="width: 40px;height: 40px;margin:3px"> 
-							{{item.chepai}}
-						</button>
-					</div>
-				</div>
-			</div>
-			<div class="row pinpai" style="background-color:#E9E7E7 ;">
-				<div class="">
-					<div class="tan1 color1"><span class="toto1">品牌车型</span><button class="btn btn-group bao1" @click="xuanz">选择</button><span class="close guan2">×</span></div>
-				</div>
-				<div class="row">
-					<div class="col-sm-5">
-						<input class="so pinpainame" size="28" placeholder="匹配 品牌名称/首字母"/>
-						<button class="btn btn-danger" @click="querypinpai">搜索</button>
-					</div>
-					<div class="col-sm-7">
-						<input class="so chexingname" size="32" placeholder="匹配 车型编码/车型名称"/>
-						<button class="btn btn-danger zuo" @click="querychexing">搜索</button>
-					</div>
-				</div>
-				<div class="row as">
-					<div class="col-sm-5">
-						<table class="table table-bordered table-hover">
-							<tr>
-								<th>编码</th>
-								<th>品牌名称</th>
-								<th>首字母</th>
-							</tr>
-							<tr @click="carpindian" v-for="item in carbrank">
-								<td>{{item.carbankid}}</td>
-								<td>{{item.carbankname}}</td>
-								<td>{{item.firstword}}</td>
-							</tr>
-						</table>
-					</div>
-					<div class="col-sm-7" style="width: 460px; overflow:auto;">
-						<table class="table table-bordered table-hover" style="width: 1000px;">
-							<tr>
-								<th>车型ID</th>
-								<th>车型名称</th>
-								<th>参考价格</th>
-								<th>车辆年款</th>
-							</tr>
-							<tr @click="carxingdian" v-for="item in carxing">
-								<td>{{item.xingid}}</td>
-								<td>{{item.jinkou}}</td>
-								<td>{{item.cankaoprice}}</td>
-								<td>{{item.caryearmoney}}</td>
-							</tr>
-						</table>
-					</div>
-				</div>
-				<div class="row">
-					<p class="jl">记录条数：</p>
-				</div>
-			</div>
-			<div class="row kehufenlei">
-				<div>
-					<div class="">
-					<div class="tan1 color1"><span class="toto1">客户分类</span><button class="btn btn-group bao3">保存</button><span class="close guan15">×</span></div>
-				</div>
-					<div class="context2">
-						<div class="shang">
-							<div class="fenleikuang"><a class="addtype">增加</a><a class="deletetype">删除</a><a class="updatetype">保存</a></div>
+			     	 </div>
+			    </div><!-- /.modal-content -->
+			  </div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+			<div class="modal fade" id="querykehu" class="querykehu"  role="dialog">
+			  <div class="modal-dialog" role="document" style="width: 880px;">
+			    <div class="modal-content">
+			    	<div class="modal-header" style="height: 60px;" id="dhl">
+				      	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="guan11">&times;</span></button>
+				      	<h4 class="modal-title" style="margin-top:5px;">客户资料编辑</h4>
+				      	<div class="col-md-9"></div>
+				      	<div >
+				      	</div>
+				 	</div>
+			     	<div class="modal-body" style="margin-top: -30px;">
+			       		<div class="shang">
+							<p>
+								<div class="input-group">
+								  	<span class="input-group-addon " id="basic-addon3">客户编码：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" disabled="disabled" v-model="xinkehu.kehuno" class="form-control bianhao" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">客户名称：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinkehu.kehuname" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								 	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;&nbsp;&nbsp;联系人：</span>
+								  <input type="text" style="width: 160px;height: 33px;" v-model="xinkehu.kehulianxi" class="form-control" id="basic-url" aria-describedby="basic-addon3"> 
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  	<span class="input-group-addon " id="basic-addon3">手机号码：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinkehu.kehuphone" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">客户地址：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinkehu.kehuaddress" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								 	<span class="input-group-addon" id="basic-addon3">客户生日：</span>
+								  <input type="date" style="width: 160px;height: 33px;" v-model="xinkehu.kehubirthday" class="form-control" id="basic-url" aria-describedby="basic-addon3"> 
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+									<span class="input-group-addon " id="basic-addon3">&nbsp;账期(天)：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinkehu.zhangqi" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">挂账额度：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinkehu.edu" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								 	<span class="input-group-addon" id="basic-addon3">专属顾问：</span>
+								  <select style="width: 160px;height: 33px;" class="form-control" id="basic-url" aria-describedby="basic-addon3" v-model="xinkehu.guwen" style="width: 150px;height: 25px;"></select>
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+									<span class="input-group-addon " id="basic-addon3">顾问电话：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinkehu.guwenphone" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;省：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								  	<select v-model="xinkehu.bei2" class="form-control" aria-describedby="basic-addon3" id="ssss_province" name="ssss_province" style="width: 160px;height: 33px;"></select>
+								 	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;市：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								  <select v-model="xinkehu.bei3" class="form-control" aria-describedby="basic-addon3"  id="ssss_city" name="ssss_city" style="width: 160px;height: 33px;"></select>
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+									<span class="input-group-addon " id="basic-addon3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								  	<select v-model="xinkehu.bei4" class="form-control" aria-describedby="basic-addon3" id="ssss_county" name="ssss_county" style="width: 160px;height: 33px;"></select>
+								  	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;备注：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinkehu.remark" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								 	<span class="input-group-addon" id="basic-addon3">注册电话：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinkehu.zhuphone" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+									<span class="input-group-addon" id="basic-addon3">开户银行：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinkehu.bank" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">银行账号：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinkehu.bankcard" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								 	<span class="input-group-addon" id="basic-addon3">注册地址：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinkehu.zhuaddress" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								</div>
+							</p>
+						</div>
+			     	 </div>
+			    </div><!-- /.modal-content -->
+			  </div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+			<div class="modal fade" id="chaxun" class="chaxun"  role="dialog">
+			  <div class="modal-dialog" role="document" style="width: 880px;">
+			    <div class="modal-content">
+			    	<div class="modal-header" style="height: 60px;" id="dhl">
+				      	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="guan20">&times;</span></button>
+				      	<h4 class="modal-title" style="margin-top:5px;">客户查询</h4>
+				      	<div class="col-md-9"></div>
+				      	<div >
+				      		<button type="button" class="btn btn-success" style="margin-top: -50px;margin-left: 100px; vertical-align: middle; width: 60px;" @click="chaxunqding">保存</button>
+				      	</div>
+				 	</div>
+			     	<div class="modal-body" style="margin-top: -30px;">
+			       		<div class="shang">
+							<p>
+								<div class="input-group">
+								  	<span class="input-group-addon " id="basic-addon3">客户编码：</span>
+								  	<input type="text" style="width: 160px;height: 33px;"  id="cheliangno" v-model="chakehu.kehuno" class="form-control cheliangno"  aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">客户名称：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="chakehu.kehuname" id="cheliangname"  class="form-control cheliangname" aria-describedby="basic-addon3">
+								 	<span class="input-group-addon " id="basic-addon3">手机号码：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="chakehu.kehuphone" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  	<span class="input-group-addon" id="basic-addon3">客户地址：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="chakehu.kehuaddress" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								 	<span class="input-group-addon" id="basic-addon3">客户生日：</span>
+								  <input type="date" style="width: 160px;height: 33px;" v-model="chakehu.kehubirthday" class="form-control" id="basic-url" aria-describedby="basic-addon3"> 
+									<span class="input-group-addon" id="basic-addon3">专属顾问：</span>
+								  <select style="width: 160px;height: 33px;" class="form-control" id="basic-url" aria-describedby="basic-addon3" v-model="chakehu.guwen" style="width: 150px;height: 25px;"></select>
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								 	<span class="input-group-addon" id="basic-addon3">&nbsp;车牌号码：<button style="width: 35;" class="haoma" data-toggle="modal" data-target="#chepai">选择</button></span>
+								  <input type="text" style="width: 120px;height: 33px;" v-model="chacar.chepai"  class="form-control paipai" id="basic-url" aria-describedby="basic-addon3">
+									<span class="input-group-addon " id="basic-addon3">车辆品牌：<button class="pin" data-toggle="modal" data-target="#pinpai" >选择</button></span>
+								  	<input type="text" style="width: 130px;height: 33px;" disabled="disabled" class="form-control carbankname" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">车辆型号：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="chacar.xinghao" class="form-control jinkous" id="basic-url" aria-describedby="basic-addon3">
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;驾驶员：</span>
+								  <input type="text" style="width: 160px;height: 33px;" v-model="chacar.sijiname" class="form-control" id="basic-url" aria-describedby="basic-addon3"> 
+									<span class="input-group-addon " id="basic-addon3">司机电话：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="chacar.sijiphone" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">出生日期：</span>
+								  	<input type="date" style="width: 160px;height: 33px;" v-model="chacar.sijibirthday" class="form-control " id="basic-url" aria-describedby="basic-addon3">
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+									<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;&nbsp;车架号：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="chacar.chejia" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">发动机牌：</span>
+								  <select style="width: 160px;height: 33px;" class="form-control" id="basic-url" aria-describedby="basic-addon3" v-model="fadoname" class="fabankname">
+									<option v-for="item in fadoji" Seleted ="true">{{item.faname}}</option>
+								</select>
+								</div>
+							</p>
+						</div>
+			     	 </div>
+			    </div><!-- /.modal-content -->
+			  </div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+			<div class="modal fade" id="chepai" class="chepai"  role="dialog">
+			  <div class="modal-dialog" role="document" style="width: 500px;">
+			    <div class="modal-content">
+			    	<div class="modal-header" style="height: 60px;" id="dhl">
+				      	<button type="button" class="close"><span aria-hidden="true" class="guan1">&times;</span></button>
+				      	<h4 class="modal-title" style="margin-top:5px;">车牌</h4>
+				      	<div class="col-md-9"></div>
+				 	</div>
+			     	<div class="modal-body" style="margin-top: 0px;">
+							<div style="margin-left: 20px;margin-top: 5px;">
+								<button @click="xuanchepai" v-for="item,index in chepai" style="width: 40px;height: 40px;margin:3px"> 
+									{{item.chepai}}
+								</button>
+							</div>
+			     	 </div>
+			    </div><!-- /.modal-content -->
+			  </div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+			<div class="modal fade" id="pinpai" class="pinpai"  role="dialog">
+			  <div class="modal-dialog" role="document" style="width:850px;">
+			    <div class="modal-content">
+			    	<div class="modal-header" style="height: 60px;" id="dhl">
+				      	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="guan2">&times;</span></button>
+				      	<h4 class="modal-title" style="margin-top:5px;">品牌车型</h4>
+				      	<div class="col-md-9"></div>
+				      	<div >
+				      	  <button type="button" class="btn btn-success bao1" data-dismiss="modal" style="margin-top: -50px;margin-left: 100px; vertical-align: middle; width: 60px;" @click="xuanz">选择</button>
+				      	</div>
+				 	</div>
+			     	<div class="modal-body" style="margin-top: 0px;">
+							<div class="row">
+								<div class="col-sm-5" style="margin-left: -5px;margin-bottom: 10px;">
+									<input class="so pinpainame" size="28" placeholder="匹配 品牌名称/首字母"/>
+									<button class="btn btn-danger" @click="querypinpai">搜索</button>
+								</div>
+								<div class="col-sm-7" style="margin-left: -15px;margin-bottom: 10px;">
+									<input class="so chexingname" size="32" placeholder="匹配 车型编码/车型名称"/>
+									<button class="btn btn-danger zuo" @click="querychexing">搜索</button>
+								</div>
+							</div>
+							<div class="row as">
+								<div class="col-sm-5">
+									<table class="table table-bordered table-hover">
+										<tr>
+											<th>编码</th>
+											<th>品牌名称</th>
+											<th>首字母</th>
+										</tr>
+										<tr @click="carpindian" v-for="item in carbrank">
+											<td>{{item.carbankid}}</td>
+											<td>{{item.carbankname}}</td>
+											<td>{{item.firstword}}</td>
+										</tr>
+									</table>
+								</div>
+								<div class="col-sm-7" style="width: 460px; overflow:auto;">
+									<table class="table table-bordered table-hover" style="width: 1000px;">
+										<tr>
+											<th>车型ID</th>
+											<th>车型名称</th>
+											<th>参考价格</th>
+											<th>车辆年款</th>
+										</tr>
+										<tr @click="carxingdian" v-for="item in carxing">
+											<td>{{item.xingid}}</td>
+											<td>{{item.jinkou}}</td>
+											<td>{{item.cankaoprice}}</td>
+											<td>{{item.caryearmoney}}</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+			     	 </div>
+			    </div><!-- /.modal-content -->
+			  </div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+
+			<div class="modal fade" id="kehufenlei" class="kehufenlei"  role="dialog">
+			  <div class="modal-dialog" role="document" style="width: 880px;">
+			    <div class="modal-content">
+			    	<div class="modal-header" style="height: 60px;" id="dhl">
+				      	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="guan15">&times;</span></button>
+				      	<h4 class="modal-title" style="margin-top:5px;">客户分类</h4>
+				      	<div class="col-md-9"></div>
+				      	<div>
+				      	  </div>
+				 	</div>
+			     	<div class="modal-body" style="margin-top: -30px;">
+			       		<div class="shang">
+							<div style="margin-left: 500px;margin-top: 10px; margin-bottom: 10px;"><a class="addtype" style="margin-left: 10px;">增加</a><a class="deletetype" style="margin-left: 10px;">删除</a><a class="updatetype" style="margin-left: 10px;">保存</a></div>
 							<div class="kekai">
-								<p><span>分类代码：<input readonly="readonly" v-model="kehutype.typeid" type="text"/></span><span>客户类别：<input v-model="kehutype.typename" type="text"/></span>
-									<span>价格类型：<select v-model="kehutype.typeprice" style="width: 120px;">
-										<option selected="true">-请选择-</option>
-										<option>标准价</option>
-										<option>会员价</option>
-										<option>协议价</option>
-										<option>索赔价</option>
-										<option>保险价</option>
-									</select></span>
-								</p>
-								<p><span>有效年(年)：<input v-model="kehutype.youxiaoqi" type="text"/></span><span>会费：<input v-model="kehutype.huifei" type="text"/></span>
-									<span>类别：<select v-model="kehutype.huiyuan" style="width: 120px;">
+								<div class="input-group">
+								  	<span class="input-group-addon " id="basic-addon3">分类代码：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" disabled="disabled" v-model="kehutype.typeid" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">客户类别：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="kehutype.typename" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								 	<span class="input-group-addon" id="basic-addon3">价格类型：</span>
+									  <select v-model="kehutype.typeprice" style="width: 160px;height: 33px;" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+											<option selected="true">-请选择-</option>
+											<option>标准价</option>
+											<option>会员价</option>
+											<option>协议价</option>
+											<option>索赔价</option>
+											<option>保险价</option>
+										</select>
+								</div>
+								<div class="input-group"  style="margin-top: 20px;">
+								  	<span class="input-group-addon " id="basic-addon3">&nbsp;&nbsp;&nbsp;有效年：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="kehutype.youxiaoqi" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;会费：&nbsp;</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="kehutype.huifei" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								 	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;类别：&nbsp;</span>
+									 <select v-model="kehutype.huiyuan" style="width: 160px;height: 33px;"  class="form-control" id="basic-url" aria-describedby="basic-addon3">
 										<option selected="true">-请选择-</option>
 										<option>会员</option>
 										<option>非会员</option>
-									</select></span>
-								</p>
+									</select>
+								</div>
 							</div>
-							<div class="fenleishuj" style=" overflow:auto;">
+							<div class="fenleishuj" style=" overflow:auto;margin-top: 20px; width: 830px;" >
 								<table class="table table-hover table-bordered">
 									<tr>
 										<th>分类编码</th>
@@ -1071,132 +1286,16 @@
 								</table>
 							</div>
 						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row chaxun">
-				<div>
-					<div class="">
-					<div class="tan1 color1"><span class="toto1">客户查询</span><button class="btn btn-group bao4" @click="chaxunqding">确定</button><span class="close guan20">×</span></div>
-				</div>
-					<div class="context5">
-						<div class="juli">
-							<p>
-								<span>客户编码：</span><input id="cheliangno" class="cheliangno" v-model="chakehu.kehuno" type="text" size="20"/>
-								<span>客户名称：</span><input v-model="chakehu.kehuname" id="cheliangname" class="cheliangname"  size="20" style="width: 100px;height: 25px;" type="text" size="15"/>
-								<span><span class="ho">* </span>客户类别：</span><select v-model="chakehu.kehutype" size="20" style="width: 150px;height: 25px;">
-									<option>个人</option>
-								</select>							
-							</p>
-							<p>
-								<span>联系人：</span><input v-model="chakehu.kehulianxi" class="paipai" type="text" style="width: 60px;height: 25px;">
-								<span>手机号码：</span><input v-model="chakehu.kehuphone" style="width: 100px;height: 25px;" type="text" />
-								<span>客户地址：</span><input v-model="chakehu.kehuaddress" type="text" />
-							</p>
-							<p>
-								<span>备注：</span><input v-model="chakehu.remark" type="text" />
-								<span>会员卡号：</span><input type="text" />
-								<span>客户生日：</span><input v-model="chakehu.kehubirthday" type="date"/>
-								<input class="radios" name="checkss" type="checkbox" />在我投保车
-							</p>
-							<p>	
-								<span>超过X月没修：</span><input type="text" />
-								<span>专属顾问：</span><input type="text" v-model="chakehu.guwen"/><button>选择</button>
-								<span>顾问电话：</span><input v-model="chakehu.guwenphone" type="text" />
-							</p>
-							<p>
-								<span><span class="ho">* </span>车牌号码：</span><input v-model="chacar.chepai" class="paipai" type="text" style="width: 60px;height: 25px;"><button disabled="disabled" class="haoma">选择</button>
-								<span><span class="ho">* </span>车辆品牌：</span><input readonly="readonly" style="width: 100px;height: 25px;" class="carbankname" type="text" /><button class="pin">选择</button>
-								<span><span class="ho">* </span>车辆型号：</span><input class="jinkous" v-model="chacar.xinghao" type="text" />
-							</p>
-							<p>
-								<span>车架号：</span><input v-model="chacar.chejia" type="text" />
-								<span>发动机号：</span><input type="date" />
-								<span>保险公司</span><input type="date" />
-							</p>
-							<p>
-								<span><span class="ho">* </span>发动机品牌：</span>
-								<select v-model="fadoname" style="width: 150px;height: 25px;" class="fabankname">
-									<option v-for="item in fadoji" >{{item.faname}}</option>
-								</select>
-								<span><span class="ho">* </span>驾驶员：</span><input v-model="chacar.sijiname" type="text" />
-								<span><span class="ho">* </span>驾驶员电话：</span><input v-model="chacar.sijiphone" type="text" />
-							</p>
-							<p>
-								<input size="10"  placeholder="开户日期">
-								<input  type="date" /><input  type="date" />
-								<input size="10"  placeholder="购买日期"><input size="10"  placeholder="所有">
-								<span>驾驶员生日：</span><input v-model="chacar.sijibirthday" type="date"/>
-								&nbsp;
-							</p>
-							<p>
-								<span>定金余额：<input size="20"  type="text"/></span>
-								<span>至：</span><input type="text"/>
-								<span>储蓄卡余额：</span><input type="text" />
-							</p>
-							<p>
-								<span>至：</span><input type="text" />
-								<span>积分：</span><input type="text" />
-								<span>至：</span><input type="text" />
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row pinpai" style="background-color:#E9E7E7 ;">
-				<div class="">
-					<div class="tan1 color1"><span class="toto1">品牌车型</span><button class="btn btn-group bao1" @click="xuanz">选择</button><span class="close guan2">×</span></div>
-				</div>
-				<div class="row">
-					<div class="col-sm-5">
-						<input class="so pinpainame" size="28" placeholder="匹配 品牌名称/首字母"/>
-						<button class="btn btn-danger" @click="querypinpai">搜索</button>
-					</div>
-					<div class="col-sm-7">
-						<input class="so chexingname" size="32" placeholder="匹配 车型编码/车型名称"/>
-						<button class="btn btn-danger zuo" @click="querychexing">搜索</button>
-					</div>
-				</div>
-				<div class="row as">
-					<div class="col-sm-5">
-						<table class="table table-bordered table-hover">
-							<tr>
-								<th>编码</th>
-								<th>品牌名称</th>
-								<th>首字母</th>
-							</tr>
-							<tr @click="carpindian" v-for="item in carbrank">
-								<td>{{item.carbankid}}</td>
-								<td>{{item.carbankname}}</td>
-								<td>{{item.firstword}}</td>
-							</tr>
-						</table>
-					</div>
-					<div class="col-sm-7" style="width: 460px; overflow:auto;">
-						<table class="table table-bordered table-hover" style="width: 1000px;">
-							<tr>
-								<th>车型ID</th>
-								<th>车型名称</th>
-								<th>参考价格</th>
-								<th>车辆年款</th>
-							</tr>
-							<tr @click="carxingdian" v-for="item in carxing">
-								<td>{{item.xingid}}</td>
-								<td>{{item.jinkou}}</td>
-								<td>{{item.cankaoprice}}</td>
-								<td>{{item.caryearmoney}}</td>
-							</tr>
-						</table>
-					</div>
-				</div>
-				<div class="row">
-					<p class="jl">记录条数：</p>
-				</div>
-			</div>
+			     	 </div>
+			    </div><!-- /.modal-content -->
+			  </div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+			
+			
 		</div>
-		
-		<script type="text/javascript" src="layui/layui.js" ></script>
 		<script type="text/javascript" src="js/jquery-1.8.3.js" ></script>
+		<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" src="js/my.js"></script>
 	
@@ -1319,6 +1418,7 @@
 								success:function(response) {
 									if(response>0){
 										alert("添加成功！");
+										$('#kehu').modal('hide');
 										query();
 										vm.xinkehu={};
 									}		
@@ -1336,6 +1436,7 @@
 							success:function(response) {
 								if(response>0){
 									alert("编辑成功！");
+									$('#updatekehu').modal('hide');
 									query();
 									vm.xinkehu={};
 								}		
@@ -1346,17 +1447,33 @@
 							kehunodai=kehunos;
 							if(confirm("是否删除？")){
 								$.ajax({
-									url:data.ip+"DeleteKehu",
+									url:data.ip+"queryjiechekehu",
 									data:{
 										kehuno:kehunodai
 									},
 									type: "get",
 									dataType: "json",
 									success:function(response) {
-										if(response>0){
-											alert("删除成功！");
-											query();
-										}		
+										console.log(response);
+										if(response.length>0){
+											alert("该车辆正在执行项目中，无法删除！");
+											
+										}else{
+											$.ajax({
+												url:data.ip+"DeleteKehu",
+												data:{
+													kehuno:kehunodai
+												},
+												type: "get",
+												dataType: "json",
+												success:function(response) {
+													if(response>0){
+														alert("删除成功！");
+														query();
+													}		
+												}
+											});
+										}
 									}
 								});
 							}
@@ -1388,7 +1505,8 @@
 							vm.xinke.car.xinghao=vm.jinkou;
 							vm.cheliang.xinghao=vm.jinkou;
 							$(".jinkous").val(vm.jinkou);
-							$(".pinpai").hide();
+							$('#pinpai').modal('hide');
+							$('#zeng').css("overflow-y","scroll");
 						}
 					},addkehuandcar:function(){
 						var c=0;
@@ -1401,6 +1519,7 @@
 				   				c=1;
 				   			}
 			   			}
+						console.log(vm.xinke)
 						if(c==1){
 								$.ajax({
 									url:data.ip+"addkehuandche",
@@ -1411,7 +1530,7 @@
 									success:function(response) {
 										if(response>0){
 											alert("添加成功！");
-											$(".zeng").hide();
+											$('#zeng').modal('hide');
 											vm.xinke.car={};
 											vm.xinke.kehuno="";
 											vm.xinke.kehuname="";
@@ -1427,7 +1546,7 @@
 											vm.xinke.bei3="";
 											vm.xinke.bei4="";
 											vm.xinke.remark="";
-											vm.xinke.query();
+											query();
 											
 										}		
 									}
@@ -1438,7 +1557,8 @@
 						vm.xinke.car.chepai=vm.chepaizi;
 						vm.cheliang.chepai=vm.chepaizi;
 						$(".paipai").val(vm.chepaizi);
-						$(".chepai").hide();
+						$('#chepai').modal('hide');
+						$('#zeng').css("overflow-y","scroll");
 					},kai:function(){
 						window.open('zkehucha.html','big','fullscreen=yes');
 					},addcar:function(){
@@ -1448,7 +1568,6 @@
 						}else{
 							vm.cheliang.bei1="否";
 						}
-						alert(vm.cheliang.chepai);
 						var c=0;
 						for(b=0;b<vm.chepai.length;b++){
 			   				if(vm.cheliang.chepai==vm.chepai[b].chepai){
@@ -1458,6 +1577,9 @@
 				   				c=1;
 				   			}
 			   			}
+						
+						vm.cheliang.kehuno=$("#cheliangno").val();
+						console.log(vm.cheliang);
 						if(c==1){
 								$.ajax({
 									url:data.ip+"addcar",
@@ -1468,8 +1590,10 @@
 									success:function(response) {
 										if(response>0){
 											alert("添加成功！");
+											
 											vm.cheliang={};
 											query();
+											$('#chezliao').modal('hide');
 											$(".chezliao").hide();
 										}		
 									}
@@ -1488,6 +1612,7 @@
 							}else{
 								vm.cheliang.bei1="否";
 							}
+							vm.cheliang.kehuno=$("#cheliangno").val();
 							console.log(vm.cheliang)
 							$.ajax({
 								url:data.ip+"updatecar",
@@ -1498,6 +1623,7 @@
 								success:function(response) {
 									if(response>0){
 										alert("修改成功！");
+										$('#xiugaiche').modal('hide');
 										vm.cheliang={};
 										query();
 										$(".xiugaiche").hide();
@@ -1505,7 +1631,7 @@
 								}
 							});	
 					},shuangji:function(){
-						$(".querykehu").show();
+						$('#querykehu').modal('show');
 				
 						kehunodai=vm.kehu[0].kehuno;
 						if(kehunos!=0){
@@ -1550,7 +1676,8 @@
 							if(vm.kehucar[0]==undefined){
 								alert("该客户暂无添加车辆！");
 							}else{
-								$(".querycar").show();
+								$('#querycar').modal('show');
+								
 								if(vm.cheliang.bei1=="是"){
 									$("[name=checkss]").prop("checked", true);
 								}else{
@@ -1560,7 +1687,7 @@
 								
 							}
 						}else{	
-							$(".querycar").show();
+							$('#querycar').modal('show');
 								if(vm.cheliang.bei1=="是"){
 									$("[name=checkss]").prop("checked", true);
 								}else{
@@ -1578,39 +1705,73 @@
 								if(vm.kehucar[0]==undefined){
 									alert("该客户暂无添加车辆！");
 								}else{
-									$.ajax({
-										url:data.ip+"deletecar",
-										data:{
-											chepai:vm.cheliang.chepai
-										},
-										type: "get",
-										dataType: "json",
-										success:function(response) {
-											if(response>0){
-												alert("删除成功！");
-												vm.cheliang={};
-												query();
+										$.ajax({
+											url:data.ip+"queryjieche",
+											data:{
+												chepai:vm.cheliang.chepai
+											},
+											type: "get",
+											dataType: "json",
+											success:function(response) {
+												console.log(response);
+												if(response.length>0){
+													alert("该车辆正在执行项目中，无法删除！");
+													
+												}else{
+													$.ajax({
+														url:data.ip+"deletecar",
+														data:{
+															chepai:vm.cheliang.chepai
+														},
+														type: "get",
+														dataType: "json",
+														success:function(response) {
+															if(response>0){
+																alert("删除成功！");
+																vm.cheliang={};
+																query();
+															}
+														}
+													});
+												}
 											}
-										}
-									});
+										});
+										
+									
 									
 								}
 							}else{
 								$.ajax({
-									url:data.ip+"deletecar",
-									data:{
-										chepai:vm.cheliang.chepai
-									},
-									type: "get",
-									dataType: "json",
-									success:function(response) {
-										if(response>0){
-											alert("删除成功！");
-											vm.cheliang={};
-											query();
-										}
-									}
-								});
+											url:data.ip+"queryjieche",
+											data:{
+												chepai:vm.cheliang.chepai
+											},
+											type: "get",
+											dataType: "json",
+											success:function(response) {
+												console.log(response);
+												if(response.length>0){
+													alert("该车辆正在执行项目中，无法删除！");
+													
+												}else{
+													$.ajax({
+														url:data.ip+"deletecar",
+														data:{
+															chepai:vm.cheliang.chepai
+														},
+														type: "get",
+														dataType: "json",
+														success:function(response) {
+															if(response>0){
+																alert("删除成功！");
+																vm.cheliang={};
+																query();
+															}
+														}
+													});
+												}
+											}
+										});
 							}
 						}
 					},querypinpai:function(){
@@ -1718,6 +1879,7 @@
 						$(".tiaojian").val("");
 					},chaxun:function(){
 						vm.chaname="";
+						$('#chaxun').modal('hide');
 						$(".chaxun").show();
 					},chaxunqding:function(){
 						$.ajax({
@@ -1777,6 +1939,7 @@
 									vm.chacarss=vm.chacar;
 									vm.chakehu={};
 									vm.chacar={};
+									$('#chaxun').modal('hide');
 									$(".chaxun").hide();
 								}else if(Object.keys(vm.chakehu).length != 0 && Object.keys(vm.chacar).length != 0){
 									alert(0)
@@ -1828,6 +1991,7 @@
 									vm.chacarss=vm.chacar;
 									vm.chakehu={};
 									vm.chacar={};
+									$('#chaxun').modal('hide');
 									$(".chaxun").hide();
 								}else{
 									vm.kehu=response;
@@ -1862,6 +2026,7 @@
 									vm.chacarss=vm.chacar;
 									vm.chakehu={};
 									vm.chacar={};
+									$('#chaxun').modal('hide');
 									$(".chaxun").hide();
 								}
 							}
@@ -2170,7 +2335,7 @@
 						Math.floor(Math.random()*26+"a".charCodeAt(0))
 					);
 				}
-           		return (Math.random()*10000).toString(10).substr(0,4)+str.toUpperCase()+Math.random().toString().substr(2,5);
+           		return (Math.random()*10000).toString(5).substr(0,3)+str.toUpperCase()+Math.random().toString().substr(2,3);
         	}
 			function createRandomchepai(pai) {
 				var str="";
@@ -2342,6 +2507,7 @@
 			});
 			$(".tianjia").click(function(){
 				$(".zeng").show();
+				vm.xinke.kehuno=createRandomId();
 				vm.xinke.car={};
 				$(".jinkous").val("");
 				$(".paipai").val("");
@@ -2395,6 +2561,7 @@
 			})
 			
 			$(".guan1").click(function(){
+				$('#chepai').modal('hide');
 				$(".chepai").hide();
 			})
 			
@@ -2403,7 +2570,9 @@
 			})
 			$(".tiankehu").click(function(){
 				vm.xinkehu={};
+				
 				$(".kehu").show();
+				vm.xinkehu.kehuno=createRandomId();
 				_init_area();
 				var Gid  = document.getElementById ;
 				var showArea = function(){
@@ -2428,6 +2597,7 @@
 				$(".xiugaiche").hide();	
 			})
 			$(".guan4").click(function(){
+				
 				$(".kehu").hide();
 			})
 			$(".guan11").click(function(){

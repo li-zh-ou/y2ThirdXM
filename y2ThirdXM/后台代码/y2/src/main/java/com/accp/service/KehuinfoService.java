@@ -11,10 +11,13 @@ import com.accp.domain.Kehu;
 import com.accp.domain.KehuExample;
 import com.accp.domain.Kehucar;
 import com.accp.domain.KehucarExample;
+import com.accp.domain.Wxjiedan;
+import com.accp.domain.WxjiedanExample;
 import com.accp.domain.Yuangong;
 import com.accp.mapper.HuiyuanMapper;
 import com.accp.mapper.KehuMapper;
 import com.accp.mapper.KehucarMapper;
+import com.accp.mapper.WxjiedanMapper;
 import com.accp.mapper.YuangongMapper;
 
 @Service
@@ -29,9 +32,23 @@ public class KehuinfoService {
 	HuiyuanMapper huiyuanmapper;
 	@Autowired
 	YuangongMapper yuangongmapper;
-	
+	@Autowired
+	WxjiedanMapper wxmapper;
+	public List<Wxjiedan> queryjieche(String chepai) {
+		WxjiedanExample example=new WxjiedanExample();
+		example.createCriteria().andChepaiEqualTo(chepai);
+		return wxmapper.selectByExample(example);
+	}
+	public List<Wxjiedan> queryjiechekehu(String kehuno) {
+		WxjiedanExample example=new WxjiedanExample();
+		example.createCriteria().andKehunnoEqualTo(kehuno);
+		return wxmapper.selectByExample(example);
+	}
 	public List<Kehu> QueryKehu(){
 		return kehumapper.findkehu();
+	}
+	public List<Kehucar> querykehucar(){
+		return carmapper.findqbukehucar();
 	}
 	public List<Kehu> querykehubydata(){
 		return kehumapper.findshengr();
