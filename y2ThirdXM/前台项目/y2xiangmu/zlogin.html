@@ -52,6 +52,9 @@
 										url: data.ip + "loginin",
 										data:this.user,
 										type: "post",
+										xhrFields: {
+											withCredentials: true
+										},
 										dataType: "json",
 										success: function(response) {
 												if(response && response.token) {
