@@ -405,4 +405,12 @@
      	order by daoqitime asc
      </if>
   </select>
+   <select id="getTodayMaxCount" resultType="java.lang.Integer" parameterType="java.lang.String">
+  	 SELECT COUNT(huiyuanno)+1 FROM huiyuan WHERE huiyuanno LIKE '%${today}%'
+  </select>
+  <select id="xiaopiao" resultMap="BaseResultMap" parameterType="java.lang.String"> 
+  	SELECT kehuname AS HuiYuanName,huiyuan.`HuiYuanNo`,huiyuan.`YouHui` FROM kehucar INNER JOIN kehu ON kehucar.`KeHuNo` = kehu.`kehuid`
+LEFT JOIN huiyuan ON kehu.`KeHuNo` = huiyuan.`KeHuNo`
+ WHERE kehucar.`ChePai` = #{chepai,jdbcType=VARCHAR}
+  </select>
 </mapper>

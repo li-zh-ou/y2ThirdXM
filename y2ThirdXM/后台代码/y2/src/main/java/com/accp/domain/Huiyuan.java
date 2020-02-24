@@ -2,6 +2,10 @@ package com.accp.domain;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Huiyuan {
     private String huiyuanno;
 
@@ -13,8 +17,12 @@ public class Huiyuan {
 
     private Double xiaofei;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss",timezone="GMT+8")
     private Date ruhuitime;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss",timezone="GMT+8")
     private Date daoqitime;
 
     private String huiyuangraden;
@@ -30,8 +38,18 @@ public class Huiyuan {
     private String bei3;
 
     private String bei4;
+    
+    private Integer shichang;
 
-    public String getHuiyuanno() {
+    public Integer getShichang() {
+		return shichang;
+	}
+
+	public void setShichang(Integer shichang) {
+		this.shichang = shichang;
+	}
+
+	public String getHuiyuanno() {
         return huiyuanno;
     }
 
