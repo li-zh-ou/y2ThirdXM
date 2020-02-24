@@ -2,10 +2,17 @@ package com.accp.mapper;
 
 import com.accp.domain.Wxxiangmu;
 import com.accp.domain.WxxiangmuExample;
+import com.accp.domain.wxxia_wxshou1;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface WxxiangmuMapper {
+	
+	wxxia_wxshou1 querywxxwxSelect2(@Param("XiangMuNo") String XiangMuNo);
+	
+	List<wxxia_wxshou1> querywxxwxSelect1(@Param("pname") String pname);
+	
     int countByExample(WxxiangmuExample example);
 
     int deleteByExample(WxxiangmuExample example);

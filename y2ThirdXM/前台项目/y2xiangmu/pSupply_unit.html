@@ -38,17 +38,14 @@
             -->
 			<section style="" style="height: 100%;">
 				<div class="" style="height: 100%;">
-					<div class="">
-						<nav class="navbar navbar-default" style="margin-bottom: 0px;>
+					<div id="ctx1">
+						<nav class="navbar navbar-default" style="margin-bottom: 0px;">
 						  <div class="container-fluid">
 						    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						      <ul class="nav navbar-nav navbar-right" id="wxxm_tu_1">
 						        <li><a href="#"><span class="glyphicon glyphicon-tasks" aria-hidden="true" data-toggle="modal" data-target="#myModal1">增加</a></span></li>
 						        <li><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true" data-toggle="modal" data-target="#myModal5">修改</a></span></li>
-						        <li><a href="#"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true">删除</a></span></li>
-						        <li><a href="#"><span class="glyphicon glyphicon-th" aria-hidden="true" data-toggle="modal" data-target="#myModal9">查询</a></span></li>
-						        <li><a href="#"><span class="glyphicon glyphicon-folder-open " aria-hidden="true">导出</a></span></li>
-						        <li><a href="#"><span class="glyphicon glyphicon-level-up" aria-hidden="true">照片</a></span></li>
+						        <li><a href="#"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true" @click="supply_sc1">删除</a></span></li>
 						        <li><a href="#"><span class="glyphicon glyphicon-level-up" aria-hidden="true" data-toggle="modal" data-target="#myModal11">联系人</a></span></li>
 						        <li><a href="#"><span class="glyphicon glyphicon-level-up" aria-hidden="true" data-toggle="modal" data-target="#myModal12">字段设置</a></span></li>
 						      </ul>
@@ -523,141 +520,6 @@
 								    </div>
 								  </div>
 							</div>
-							
-							<!--查询-->
-								<div class="modal fade" id="myModal9" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-								  	<div class="modal-dialog" role="document">
-								    	<div class="modal-content">
-								      		<div class="modal-header">
-								        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-								        		<h4 class="modal-title" id="myModalLabel">供货单位查询</h4>
-								      		</div>
-								      		<div class="modal-body">
-								        		<table class="table table-hover">
-								        			<tr>
-								        				<th>
-								        					广商代码<input type="text" class="form-control" placeholder="询" style="width: 100%;">
-								        				</th>
-								        				<th>
-								        					广商名称<input type="text" class="form-control" placeholder="询" style="width: 100%;">
-								        				</th>
-								        			</tr>
-								        			<tr>
-								        				<th>
-								        					地址<input type="text" class="form-control" placeholder="询" style="width: 100%;">
-								        				</th>
-								        				<th>
-								        					付款方式
-								        					<form class="form-inline">
-															  <div class="form-group">
-															    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
-															    <div class="input-group">
-															      <input type="text" class="form-control" placeholder="Amount">
-																	 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
-																	 	<div class="dropdown">
-																		  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
-																		    
-																		    <span class="caret"></span>
-																		  </button>
-																		  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-																		    <li><a href="#">Acd</a></li>
-																		  </ul>
-																		</div>
-																	 </div>
-															    </div>
-															  </div>
-															</form>
-								        				</th>
-								        			</tr>
-								        			<tr>
-								        				<th>
-								        					广商等级
-								        						<form class="form-inline">
-																  <div class="form-group">
-																    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
-																    <div class="input-group">
-																      <input type="text" class="form-control" placeholder="Amount">
-																		 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
-																		 	<div class="dropdown">
-																			  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
-																			    
-																			    <span class="caret"></span>
-																			  </button>
-																			  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-																			    <li><a href="#">Acd</a></li>
-																			  </ul>
-																			</div>
-																		 </div>
-																    </div>
-																  </div>
-																</form>
-								        				</th>
-								        				<th>
-								        					经营品牌<input type="text" class="form-control" placeholder="询" style="width: 100%;">
-								        				</th>
-								        			</tr>
-								        			<tr>
-								        				<th>
-								        					广商类别
-								        						<form class="form-inline">
-																  	<div class="form-group">
-																    	<label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
-																    	<div class="input-group">
-																      		<input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
-																      		<div class="input-group-addon">
-																      			<button data-toggle="modal" data-target="#myModal10">a</button>
-																      			
-																      				<!--查询里广商类别-->
-																      					<div class="modal fade" id="myModal10" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-																						  	<div class="modal-dialog" role="document">
-																						    	<div class="modal-content">
-																						      		<div class="modal-header">
-																						        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-																						        		<h4 class="modal-title" id="myModalLabel">广商分类选择</h4>
-																						      		</div>
-																						      		<div class="modal-body">
-																						        		<ul id="treeDemo3" class="ztree"></ul>
-																						      		</div>
-																						      		<div class="modal-footer">
-																						        		<button type="button" class="btn btn-primary">选择</button>
-																						      		</div>
-																						    	</div>
-																						  	</div>
-																						</div>
-																      		</div>
-																    	</div>
-																  	</div>
-																</form>
-								        				</th>
-								        				<th>
-								        					联系人<input type="text" class="form-control" placeholder="询" style="width: 100%;">
-								        				</th>
-								        			</tr>
-								        			<tr>
-								        				<th>
-								        					电话<input type="text" class="form-control" placeholder="询" style="width: 100%;">
-								        				</th>
-								        				<th>
-								        					手机<input type="text" class="form-control" placeholder="询" style="width: 100%;">
-								        				</th>
-								        			</tr>
-								        			<tr>
-								        				<th>
-								        					经营情况<input type="text" class="form-control" placeholder="询" style="width: 100%;">
-								        				</th>
-								        				<th>
-								        					备注<input type="text" class="form-control" placeholder="询" style="width: 100%;">
-								        				</th>
-								        			</tr>
-								        		</table>
-								      		</div>
-								      		<div class="modal-footer">
-								        		<button type="button" class="btn btn-primary">查询</button>
-								      		</div>
-								    	</div>
-								  	</div>
-								</div>
-								
 							<!--联系人-->
 								<div class="modal fade" id="myModal11" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 								  	<div class="modal-dialog" role="document">
@@ -767,36 +629,46 @@
 								</div>
 								
 					</div>
-					<div class="row" style="height: 100%;">
+					<div class="row" style="height: 100%;" id="ctx">
 						<div class="col-md-2" style="border: 1px solid #080808;">
-							<ul id="treeDemo" class="ztree"></ul>
+							<ul id="treeDemo" class="ztree" name="zhi"></ul>
 						</div>
 						<div class="col-md-10" style="height: 100%;">
 							<div class="" style="height: 300px; background-color: #FFFFFF; overflow-y: scroll;">
 								<table border="1" class="table">
 									<tr style="background-color: #269ABC;">
 										<td width="4%">&nbsp;</td>
-										<td>1</td>
-										<td>1</td>
-										<td>1</td>
-										<td>1</td>
-										<td>1</td>
-										<td>1</td>
-										<td>1</td>
-										<td>1</td>
-										<td>1</td>
+										<td>供货商编码</td>
+										<td>供货商名称</td>
+										<td>供货商地址</td>
+										<td>经营情况</td>
+										<td>网址</td>
+										<td>开户行</td>
+										<td>银行卡号</td>
+										<td>付款方式</td>
+										<td>厂商等级</td>
+										<td>经营品牌</td>
+										<td>厂商类别</td>
+										<td>联系人</td>
+										<td>电话</td>
+										<td>手机</td>
 									</tr>
-									<tr>
+									<tr v-for="item in page" @click="byid(item)">
 										<td width="4%">&nbsp;</td>
-										<td>1</td>
-										<td>1</td>
-										<td>1</td>
-										<td>1</td>
-										<td>1</td>
-										<td>1</td>
-										<td>1</td>
-										<td>1</td>
-										<td>1</td>
+										<td>{{item.huoshangno}}</td>
+										<td>{{item.shangname}}</td>
+										<td>{{item.address}}</td>
+										<td>{{item.jingyin}}</td>
+										<td>{{item.wangzhi}}</td>
+										<td>{{item.kaihu}}</td>
+										<td>{{item.yinhangcard}}</td>
+										<td>{{item.fukuan}}</td>
+										<td>{{item.shanggraden}}</td>
+										<td>{{item.jingyintype}}</td>
+										<td>{{item.shangtype}}</td>
+										<td>{{item.lianxi}}</td>
+										<td>{{item.dianhua}}</td>
+										<td>{{item.shouji}}</td>
 									</tr>
 								</table>
 							</div>
@@ -810,66 +682,16 @@
 										    <tr style="background-color: #269ABC;">
 										    	<td width="4%">&nbsp;</td>
 										    	<td>联系人</td>
-										    	<td>职位</td>
 										    	<td>手机</td>
 										    	<td>电话</td>
 										    	<td>Email</td>
 										    </tr>
-										    <tr>
+										    <tr v-for="item in page">
 										    	<td width="4%">&nbsp;</td>
-										    	<td>联系人</td>
-										    	<td>职位</td>
-										    	<td>手机</td>
-										    	<td>电话</td>
-										    	<td>Email</td>
-										    </tr>
-										    <tr>
-										    	<td width="4%">&nbsp;</td>
-										    	<td>联系人</td>
-										    	<td>职位</td>
-										    	<td>手机</td>
-										    	<td>电话</td>
-										    	<td>Email</td>
-										    </tr>
-										    <tr>
-										    	<td width="4%">&nbsp;</td>
-										    	<td>联系人</td>
-										    	<td>职位</td>
-										    	<td>手机</td>
-										    	<td>电话</td>
-										    	<td>Email</td>
-										    </tr>
-										    <tr>
-										    	<td width="4%">&nbsp;</td>
-										    	<td>联系人</td>
-										    	<td>职位</td>
-										    	<td>手机</td>
-										    	<td>电话</td>
-										    	<td>Email</td>
-										    </tr>
-										    <tr>
-										    	<td width="4%">&nbsp;</td>
-										    	<td>联系人</td>
-										    	<td>职位</td>
-										    	<td>手机</td>
-										    	<td>电话</td>
-										    	<td>Email</td>
-										    </tr>
-										    <tr>
-										    	<td width="4%">&nbsp;</td>
-										    	<td>联系人</td>
-										    	<td>职位</td>
-										    	<td>手机</td>
-										    	<td>电话</td>
-										    	<td>Email</td>
-										    </tr>
-										    <tr>
-										    	<td width="4%">&nbsp;</td>
-										    	<td>联系人</td>
-										    	<td>职位</td>
-										    	<td>手机</td>
-										    	<td>电话</td>
-										    	<td>Email</td>
+										    	<td>{{item.lianxi}}</td>
+										    	<td>{{item.shouji}}</td>
+										    	<td>{{item.dianhua}}</td>
+										    	<td>{{item.email}}</td>
 										    </tr>
 										</table>
 								  	</div>
@@ -879,241 +701,131 @@
 					</div>	
 				</div>	
 			</section>
-			<!--
-            	作者：offline
-            	时间：2019-12-31
-            	描述：导航
-            -->
-			<nav>
-				
-				
-				
-			</nav>
-			<!--
-            	作者：offline
-            	时间：2019-12-31
-            	描述：底部
-            -->
-            <foote>
-            	
-            </foote>
-            <!--
-            	作者：offline
-            	时间：2019-12-31
-            	描述：相关内容
-            -->
-            <aside>
-            	
-            </aside>
-            <!--
-            	作者：offline
-            	时间：2019-12-31
-            	描述：独立文章
-            -->
-            <article>
-            	
-            </article>
 		</div>
 				
 		<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/jquery.ztree.core.js"></script>
+		<script type="text/javascript" src="js/jquery.ztree.core.js"></script>
+		<script type="text/javascript" src="js/jquery.ztree.excheck.js"></script>
+		<script type="text/javascript" src="js/jquery.ztree.exedit.js"></script>
 		<script type="text/javascript" src="js/vue.js"></script>
 		<script type="text/javascript" src="js/jquery.ztree.core.js"></script>
 		<script type="text/javascript">
-			
-			//treeDemo是最前页面1是增加里的2是修改里的3是查询里的
-			
-			var setting = {
-				check: {
-					
-					enable: true
+			var vm1=new Vue({
+				el:"#ctx1",
+				data(){
+					return{
+						andt:[]
+					};
 				},
-				data: {
-					simpleData: {
-						enable: true
+				methods:{
+					supply_sc1:function(){
+						if(confirm("你确定要删除"+vm1.andt.huoshangno+"么?"))
+						$.ajax({
+							dataType:"json",
+							type:"post",
+							url:"http://localhost:8080/supplyunit4",
+							data:{huoshangno:vm1.andt.huoshangno},
+							success:function(result){
+								if (result>=1) {
+									alert("删成功")
+								} else{
+									alert("再来")
+								}
+							}
+						});
 					}
-				},
-				edit: {
-					enable: true
 				}
-			};
-			//数据结构，从后台查询数据进行赋值就可使用
-			var zNodes =[
-				{id:1, pId:0, name:"[core]", open:true},
-			{id:101, pId:1, name:"最简单的树"},
-			{id:10101, pId:101, name:"最简单的树"},
-			{id:1010101, pId:10101, name:"最简单的树"},
-			{id:101010101, pId:1010101, name:"最简单的"},
-			{id:102, pId:1, name:"最简单的树"},
-			{id:103, pId:1, name:"不显示 连接线"},
-			{id:104, pId:1, name:"不显示 节点 图标"},
-			{id:108, pId:1, name:"异步加载 节点数据"},
-			{id:109, pId:1, name:"用 zTree"},
-			{id:110, pId:1, name:"用 zTree "},
-			{id:111, pId:1, name:"单击 节点 控制"},
-			{id:112, pId:1, name:"展开 /"},
-			{id:113, pId:1, name:"根据 参数 查找 节点"},
-			{id:114, pId:1, name:"其他 鼠标 事件监听"},
-			
-			{id:2, pId:0, name:"[excheck] ", open:false},
-			{id:201, pId:2, name:"Checkbox 勾选操作"},
-			{id:206, pId:2, name:"Checkbox"},
-			{id:207, pId:2, name:"Checkbox"},
-			{id:208, pId:2, name:"Checkbox"},
-			{id:202, pId:2, name:"Checkbox 勾选统计"},
-			{id:203, pId:2, name:"用 zTree"},
-			{id:204, pId:2, name:"Radio 勾选操作"},
-			{id:209, pId:2, name:"Radio"},
-			{id:210, pId:2, name:"Radio "},
-			{id:211, pId:2, name:"Radio"},
-			{id:205, pId:2, name:"用 zTre"},
-		
-			];
-		
-			$(document).ready(function(){
-				$.fn.zTree.init($("#treeDemo"), setting, zNodes);
 			});
-			
-			//新增里面的树形
-			var setting = {
-				check: {
-					
-					enable: true
+			var vm=new Vue({
+				el:"#ctx",
+				data(){
+					return{
+						page:{},
+					};
 				},
-				data: {
-					simpleData: {
-						enable: true
+				created:function(){
+					queryTree();
+				},
+				methods:{
+					byid:function(item){
+//						item=JSON.stringify(item);
+						alert("选中项目编号:"+item.huoshangno)
+//						vm1.dataa1=item;
+						$.ajax({
+							url:"http://localhost:8080/supplyunit3",
+							dataType:"json",
+							data:{
+								huoshangno:item.huoshangno
+							},
+							type:"post",
+							success:function(result){
+								console.log(result);
+								vm1.andt=result;
+							}
+						});
 					}
-				},
-				edit: {
-					enable: true
 				}
-			};
-			//数据结构，从后台查询数据进行赋值就可使用
-			var zNodes =[
-				{id:1, pId:0, name:"[core]", open:true},
-			{id:101, pId:1, name:"最简单的树"},
-			{id:10101, pId:101, name:"最简单的树"},
-			{id:1010101, pId:10101, name:"最简单的树"},
-			{id:101010101, pId:1010101, name:"最简单的"},
-			{id:102, pId:1, name:"最简单的树"},
-			{id:103, pId:1, name:"不显示 连接线"},
-			{id:104, pId:1, name:"不显示 节点 图标"},
-			{id:108, pId:1, name:"异步加载 节点数据"},
-			{id:109, pId:1, name:"用 zTree"},
-			{id:110, pId:1, name:"用 zTree "},
-			{id:111, pId:1, name:"单击 节点 控制"},
-			{id:112, pId:1, name:"展开 /"},
-			{id:113, pId:1, name:"根据 参数 查找 节点"},
-			{id:114, pId:1, name:"其他 鼠标 事件监听"},
-			
-			{id:2, pId:0, name:"[excheck] ", open:false},
-			{id:201, pId:2, name:"Checkbox 勾选操作"},
-			{id:206, pId:2, name:"Checkbox"},
-			{id:207, pId:2, name:"Checkbox"},
-			{id:208, pId:2, name:"Checkbox"},
-			{id:202, pId:2, name:"Checkbox 勾选统计"},
-			{id:203, pId:2, name:"用 zTree"},
-			{id:204, pId:2, name:"Radio 勾选操作"},
-			{id:209, pId:2, name:"Radio"},
-			{id:210, pId:2, name:"Radio "},
-			{id:211, pId:2, name:"Radio"},
-			{id:205, pId:2, name:"用 zTre"},
-		
-			];
-		
-			$(document).ready(function(){
-				$.fn.zTree.init($("#treeDemo1"), setting, zNodes);
 			});
 			
-			//修改里的
-			var setting = {
-				check: {
-					
-					enable: true
-				},
-				data: {
-					simpleData: {
-						enable: true
-					}
-				},
-				edit: {
-					enable: true
+			function chooseNode(event,treeid,treeNode){
+				alert("是:"+treeNode.hid)
+				$.ajax({
+					url:"http://localhost:8080/supplyunit2",
+					type:"get",
+					data:{bei1:treeNode.hid},
+					xhrFields:{
+						withCredentials:true
+					},
+					dataType:"json",
+					success:function(result){
+						vm.page=result;
+				},error:function(result){
+					console.log(result+"004");
 				}
-			};
-			//数据结构，从后台查询数据进行赋值就可使用
-			var zNodes =[
-				{id:1, pId:0, name:"[core]", open:true},
-			{id:101, pId:1, name:"最简单的树"},
-			{id:10101, pId:101, name:"最简单的树"},
-			{id:1010101, pId:10101, name:"最简单的树"},
-			{id:101010101, pId:1010101, name:"最简单的"},
-			{id:102, pId:1, name:"最简单的树"},
-			{id:103, pId:1, name:"不显示 连接线"},
-			{id:104, pId:1, name:"不显示 节点 图标"},
-			{id:108, pId:1, name:"异步加载 节点数据"},
-			{id:109, pId:1, name:"用 zTree"},
-			{id:110, pId:1, name:"用 zTree "},
-			{id:111, pId:1, name:"单击 节点 控制"},
-			{id:112, pId:1, name:"展开 /"},
-			{id:113, pId:1, name:"根据 参数 查找 节点"},
-			{id:114, pId:1, name:"其他 鼠标 事件监听"},
-			
-			{id:2, pId:0, name:"[excheck] ", open:false},
-			{id:201, pId:2, name:"Checkbox 勾选操作"},
-			{id:206, pId:2, name:"Checkbox"},
-			{id:207, pId:2, name:"Checkbox"},
-			{id:208, pId:2, name:"Checkbox"},
-			{id:202, pId:2, name:"Checkbox 勾选统计"},
-			{id:203, pId:2, name:"用 zTree"},
-			{id:204, pId:2, name:"Radio 勾选操作"},
-			{id:209, pId:2, name:"Radio"},
-			{id:210, pId:2, name:"Radio "},
-			{id:211, pId:2, name:"Radio"},
-			{id:205, pId:2, name:"用 zTre"},
-		
-			];
-		
-			$(document).ready(function(){
-				$.fn.zTree.init($("#treeDemo2"), setting, zNodes);
 			});
+			}
 			
-//			查询里的
-var zNodes =[
-				{id:1, pId:0, name:"[core]", open:true},
-			{id:101, pId:1, name:"最简单的树"},
-			{id:10101, pId:101, name:"最简单的树"},
-			{id:1010101, pId:10101, name:"最简单的树"},
-			{id:101010101, pId:1010101, name:"最简单的"},
-			{id:102, pId:1, name:"最简单的树"},
-			{id:103, pId:1, name:"不显示 连接线"},
-			{id:104, pId:1, name:"不显示 节点 图标"},
-			{id:108, pId:1, name:"异步加载 节点数据"},
-			{id:109, pId:1, name:"用 zTree"},
-			{id:110, pId:1, name:"用 zTree "},
-			{id:111, pId:1, name:"单击 节点 控制"},
-			{id:112, pId:1, name:"展开 /"},
-			{id:113, pId:1, name:"根据 参数 查找 节点"},
-			{id:114, pId:1, name:"其他 鼠标 事件监听"},
-			
-			{id:2, pId:0, name:"[excheck] ", open:false},
-			{id:201, pId:2, name:"Checkbox 勾选操作"},
-			{id:206, pId:2, name:"Checkbox"},
-			{id:207, pId:2, name:"Checkbox"},
-			{id:208, pId:2, name:"Checkbox"},
-			{id:202, pId:2, name:"Checkbox 勾选统计"},
-			{id:203, pId:2, name:"用 zTree"},
-			{id:204, pId:2, name:"Radio 勾选操作"},
-			{id:209, pId:2, name:"Radio"},
-			{id:210, pId:2, name:"Radio "},
-			{id:211, pId:2, name:"Radio"},
-			{id:205, pId:2, name:"用 zTre"},
-		
-			];
-		
-			$(document).ready(function(){
-				$.fn.zTree.init($("#treeDemo3"), setting, zNodes);
-			});
+			function queryTree(){
+    	 //树状结构
+         $.ajax({
+           type:"get",
+           url:"http://localhost:8080/supplyunit1",
+           dateType:"json",
+           xhrFields:{
+            withCredentials:true
+           },
+           success:function(response){
+              console.log(response);
+              $.fn.zTree.init($("#treeDemo"), setting, response);//初始化节点数据
+             $.fn.zTree.init($("#treeDemo"), setting, response).expandAll(true);
+           }
+          }); 
+          
+          var setting = {
+             view: {
+                    selectedMulti: true,
+                    showIcon:false
+                },
+             check: {
+              enable: false
+             },
+             data: {
+               key: {
+                    name: "hname",//树节点名称
+               },
+               simpleData: {
+                enable: true,//是否采用简单数据模式
+                    idKey: "hid",//树节点ID名称
+                    pIdKey: "harentid",//父节点ID名称
+                    rootPId: 0,//根节点ID
+               }
+             },
+             callback:{
+               onClick:chooseNode,
+             }
+          }}
 		</script>
 	</body>
 </html>

@@ -28,58 +28,54 @@
             	描述：独立区域中间
             -->
 			<section style="">
-				<div class="">
+				<div class="" id="ctx">
 					<div class="row nav-tabs bg-success" style="margin-right:0px; margin-left:0px;">
 						<div class="col-lg-9">
 							<div class="input-group" style="margin-top: 5%;">
-								   <span class="input-group-btn">
-								    	<button class="btn btn-default" type="button">分类代码</button>
-								    </span>
-								      <input type="text" class="form-control" placeholder="Search for" style="width: 40%;">
-									<span class="input-group-btn">
-								    <button class="btn btn-default" type="button">分类名称</button>
+								<span class="input-group-btn">
+								    	<button class="btn btn-default" type="button">分类名称</button>
 								</span>
-								    <input type="text" class="form-control" placeholder="Search for" style="width: 40%;">
+								      <input type="text" v-model="inse.faname" class="form-control" placeholder="Search for" style="width: 40%;">
+									  <input type="text" v-model="inse.fabankid" class="form-control" placeholder="编" style="width: 8%;">
+								<span class="input-group-btn">
+								    <button class="btn btn-default" type="button">分类柴油</button>
+								</span>
+								    <input type="text" v-model="inse.fanumber" class="form-control" placeholder="Search for" style="width: 40%;">
 							</div>
 						</div>
 						<div class="col-md-3">
-							<span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
-							增加
-							<span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
-							刪除
-							<span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
-							保存
-							<span class="glyphicon glyphicon-share" aria-hidden="true"></span>
-							导出
+							<button @click="engInsert1">
+								<span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
+								增加
+							</button>
+							<button @click="engDelecte1">
+								<span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+								刪除
+							</button>
+							<button @click="engUpdate1">
+								<span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
+								保存
+							</button>
+							<button>
+								<span class="glyphicon glyphicon-share" aria-hidden="true"></span>
+								导出
+							</button>
 						</div>
 					</div>
-					<div class="row nav-tabs bg-success" style="background-color: #F7F7F7; border: none; margin-left: 0px; margin-right: 0px;">
+					<div id="" class="row nav-tabs bg-success" style="background-color: #F7F7F7; border: none; margin-left: 0px; margin-right: 0px;">
 						<div class="col-md-4" style="overflow-y: scroll; height: 300px;">
 							<table class="table table-bordered" style="overflow-y: scroll;">
 								<tr style="background-color: #31B0D5;">
 									<th>&nbsp;</th>
-									<th>发动机品牌编码</th>
+									<th>ID</th>
 									<th>发动机品牌名称</th>
+									<th>发动机柴油品牌</th>
 								</tr>
-								<tr>
+								<tr v-for="item in page" @click="byid(item)">
 									<td>&nbsp;</td>
-									<td>102</td>
-									<td>青岛动机</td>
-								</tr>
-								<tr>
-									<td>&nbsp;</td>
-									<td>102</td>
-									<td>青岛动机</td>
-								</tr>
-								<tr>
-									<td>&nbsp;</td>
-									<td>102</td>
-									<td>青岛动机</td>
-								</tr>
-								<tr>
-									<td>&nbsp;</td>
-									<td>102</td>
-									<td>青岛动机</td>
+									<td>{{item.fabankid}}</td>
+									<td>{{item.faname}}</td>
+									<td>{{item.fanumber}}</td>
 								</tr>
 							</table>
 						</div>
@@ -125,11 +121,111 @@
             	
             </article>
 		</div>
-		<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+		<script type="text/javascript" src="js/jquery-3.4.1.min .js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/vue.js"></script>
+		<script type="text/javascript" src="js/my.js"></script>
 		<script type="text/javascript">
-			
+			var vm=new Vue({
+				el:"#ctx",
+				data(){
+					return{
+						page:[],
+						jihe:{},
+						inse:{},
+						xgdx:{}
+					};
+				},
+				created:function(){
+					this.engine_brandSelect();
+				},
+				methods:{
+					byid:function(item){
+						vm.jihe=item;
+						$.ajax({
+							url:"http://localhost:8080/student_Engine1/enginSe2",
+							dataType:"json",
+							data:{
+								fabankid:vm.jihe.fabankid
+							},
+							type:"post",
+							success:function(result){
+								alert("数据："+result)
+								console.log(result);
+								vm.inse=result;
+							}
+						});
+					},
+					engine_brandSelect:function(){
+						$.ajax({
+							url:"http://localhost:8080/student_Engine1/enginSe1",
+							dataType:"json",
+							type:"get",
+							success:function(result){
+								vm.page=result;
+							}
+						});
+					},
+					engDelecte1:function(){
+						if(confirm("你确定要删除"+vm.jihe.fabankid+"么?"))
+						$.ajax({
+							data:{
+								fabankid:vm.jihe.fabankid
+							},
+							type:"post",
+							url:"http://localhost:8080/student_Engine1/enginDe1",
+							success:function(result){
+								if(result>0){
+									vm.page();
+									alert("恭喜！删除成功");
+								}else{
+									alert("主人！出问题了")
+								}
+							},error:function(resulr){
+								console.log(result);
+							}
+						});
+					},
+					engInsert1:function(){
+						alert("新增:"+vm.inse.faname);
+						inse=JSON.stringify(vm.inse);
+						alert(inse+":asd");
+						$.ajax({
+							url:"http://localhost:8080/student_Engine1/enginIn1",
+							contentType:"application/json;charset=utf-8",
+							dataType:"json",
+							data:inse,
+							type:"post",
+							success:function(result){
+								alert("asdasd");
+								if(result>0){
+									alert("恭喜！成功");
+								}else{
+									alert("主人！出问题了")
+								}
+							}
+						});
+					},
+					engUpdate1:function(){
+						inse=JSON.stringify(vm.inse);
+						alert(":"+inse);
+						$.ajax({
+							url:"http://localhost:8080/student_Engine1/enginUp1",
+							contentType:"application/json;charset=utf-8",
+							dataType:"json",
+							data:inse,
+							type:"put",
+							success:function(result){
+								if (result>0) {
+									alert("恭喜")
+								} else{
+									alert("再来")
+								}
+							}
+						});
+					}
+				}
+			});
 		</script>
 	</body>
 </html>
