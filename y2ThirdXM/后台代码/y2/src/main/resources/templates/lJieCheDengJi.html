@@ -22,15 +22,13 @@
 			<div id="header" class="row col-xs-12" style="border-bottom: 0.6px solid;">
 				<h3 class="col-xs-7" style="margin-left: 30px;">接车登记</h3>
 				<p class="col-xs-4" style="padding-top: 15px;">
-					<input type="text" class="col-xs-7" placeholder="匹配车牌号/车架号/手机" style="padding: 5px 0;"/>
-					<button type="button" class="btn btn-success col-xs-2" style="margin-left: 20px;">保存</button>
-					<button type="button" class="btn btn-success" style="margin-left: 20px;widows: 11%;" onclick="closeParent()">关闭</button>
+					<!-- <input type="hidden" class="col-xs-7" placeholder="匹配车牌号/车架号/手机" style="padding: 5px 0;"/>-->
+					<!-- <button type="button" class="btn btn-success" style="margin-left: 260px;">保存</button> -->
+					<button type="button" class="btn btn-success" style="margin-left: 340px;widows: 11%;" onclick="closeParent()">关闭</button>
 				</p>
 			</div>
 			<p class="col-xs-12 row" style="text-align: right;font-size: 16px; height: 30px; line-height: 30px;">
 				<a href="javascirpt:void(0)" onclick="wxjieche()">维修接车</a>
-				<a>救援接单</a>
-				<a>关注公众号</a>
 			</p>
 			<div class="row" style="margin-left: 40px;">
 				<div class="col-xs-12">
@@ -61,8 +59,8 @@
 			        <li class="act">作业中车辆</li>
 			        <li>维修历史</li>
 			        <li>维修项目</li>
-			        <li>领料情况</li>
-			        <li>历史回访</li>
+			        <!-- <li>领料情况</li>
+			        <li>历史回访</li> -->
 			    </ul>
 			    <div id="tab_c">
 			        <div>
@@ -128,9 +126,43 @@
 						</table>
 						<p v-else style="font-weight:800;">车牌号:{{selectedchepai}}&nbsp;没有历史维修记录</p>
 			        </div>
-			        <div class='hide'>维修项目还未做</div>
-			        <div class='hide'>木有领料情况</div>
-			        <div class='hide'>木有回访功能</div>
+			        <div class='hide'>
+							<table class="table table-hover table-bordered text-center" style="overflow: scroll; width: 1250px;" v-if="wxxiangmus.length">
+									<thead>
+										<tr>
+											<th class="text-center">项目编码</th>
+											<th class="text-center">项目名称</th>
+											<th class="text-center">数量</th>
+											<th class="text-center">价类</th>
+											<th class="text-center">优惠前价</th>
+											<th class="text-center">优惠后价</th>
+											<th class="text-center">优惠后金额</th>
+											<th class="text-center">故障描述</th>
+											<th class="text-center">故障原因</th>
+											<th class="text-center">机修班组</th>
+											<th class="text-center">作业人员</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr  v-for="item in wxxiangmus">
+											<td class="text-center">{{item.xiangmuno}}</td>
+											<td class="text-center">{{item.xiangmuname}}</td>
+											<td class="text-center"></td>
+											<td class="text-center"></td>
+											<td class="text-center"></td>
+											<td class="text-center"></td>
+											<td class="text-center"></td>
+											<td class="text-center"></td>
+											<td class="text-center"></td>
+											<td class="text-center"></td>
+											<td class="text-center"></td>
+										</tr>
+									</tbody>
+								</table>
+								<p v-else style="font-weight:800;">&nbsp;没有维修项目</p>
+					</div>
+			        <!-- <div class='hide'>木有领料情况</div>
+			        <div class='hide'>木有回访功能</div> -->
 			    </div>
 			</div>
 			
@@ -163,10 +195,10 @@
 				return {
 					zuoyezhong:[],
 					wxlishi:[],
+					wxxiangmus:[],
 					wxKehuInfo:{},
 					selectedchepai:"",
 					selectedwxdanno:"",
-					
 				};
 			},
 			methods:{
@@ -198,6 +230,13 @@
 		            if(this.index=="1"){
 		            	queryHistory();
 		            }
+		            if(this.index=="2"){
+		            	if(vm.selectedwxdanno==null || vm.selectedwxdanno==""){
+		            	}else{
+		            		queryXinagMu();
+		            	}
+		            	
+		            }
 		            tab_t_li[this.index].className='act';
 		            tab_c_li[this.index].className='';
 		        }
@@ -220,6 +259,23 @@
 					alert("数据渲染失败444！");
 				}
 			})
+		}
+		//查询当前维修项目集
+		function queryXinagMu(){
+			if(vm.selectedwxdanno!=""){
+				$.ajax({
+					"url":"[[@{/weixiujieche/queryXinagMu}]]",
+					"type":"post",
+					"data":"no="+vm.selectedwxdanno,
+					"dataType":"json",
+					"success":function(result){
+						vm.wxxiangmus=result;
+					},
+					"error":function(){
+						alert("数据渲染失败444！");
+					}
+				})
+			}
 		}
 		
 		function closeParent(){
@@ -258,6 +314,9 @@
 			})
 		}
 		
+		function load(){
+			queryZuoYeZhong();
+		}
 		
 		//iframe打开其它页面
 		function toHtml(){

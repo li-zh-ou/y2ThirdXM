@@ -55,4 +55,8 @@ public class HuiYuanService {
 		return ""+ huiyuan.insertHuiYuan(record);
 				
 	}
+	
+	public Integer getTodayMaxCount(String today) {
+		return huiyuan.getTodayMaxCount(today);
+	}
 }

@@ -302,7 +302,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <insert id="insertJunGong" parameterType="com.accp.domain.Jungong" >
+    <insert id="insertJunGong" parameterType="com.accp.domain.Jungong" >
   	insert into jungong (wxDanNo, isHeGe, 
       <if test='ishege == "true"'>
        YuJiTime, ShiJiTime, WuGong, ZhiJian, WuGongRen, WuGongChuFa,
@@ -327,9 +327,10 @@
       )
   </insert>
   <select id="queryCiShu" resultType="java.lang.Integer">
-  	      select fangongci from jungong where wxdanno =#{wxdanno,jdbcType=VARCHAR}  order by fangongci desc limit 0,1;
+       SELECT COUNT(wxdanno) FROM jungong WHERE bei1 = (SELECT bei4 FROM wxjiedan WHERE wxdanno = #{wxdanno,jdbcType=VARCHAR})
+
   </select>
   <select id="updatestatu" parameterType="java.lang.String" resultType="java.lang.Integer" >
-  UPDATE wxjiedan SET danjustatu ="已竣工",ShiJiTime = #{shijitime,jdbcType=VARCHAR} WHERE wxdanno =#{wxdanno,jdbcType=VARCHAR}
+  UPDATE wxjiedan SET danjustatu ="已竣工",WanGongTime = #{shijitime,jdbcType=VARCHAR} WHERE wxdanno =#{wxdanno,jdbcType=VARCHAR}
   </select>
 </mapper>

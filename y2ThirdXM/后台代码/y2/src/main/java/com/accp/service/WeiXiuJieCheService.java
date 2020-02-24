@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.accp.domain.Huiyuan;
 import com.accp.domain.Wxjiedan;
 import com.accp.domain.Wxxiangmu;
 
@@ -17,6 +18,9 @@ public class WeiXiuJieCheService {
 	
 	@Autowired
 	com.accp.mapper.WxxiangmuMapper xiangmu;
+	
+	@Autowired
+	com.accp.mapper.HuiyuanMapper huiyuan;
 	
 	public List<Wxjiedan> queryZuoYeZhong(){
 		return wxjiedan.queryZuoYeZhong();
@@ -43,7 +47,14 @@ public class WeiXiuJieCheService {
 	}
 
 	public String insertWXdan(Wxjiedan dan) {
-		return "" + wxjiedan.insertwxdan(dan);
+		Integer num =0;
+		if(wxjiedan.queryByPrimaryKeyCount(dan.getWxdanno())<1) {
+			num = wxjiedan.insertwxdan(dan);
+		}
+		else {
+			wxjiedan.updateByPrimaryKey(dan);
+		}
+		return "" + num;
 	}
 	
 	public List<Wxjiedan> queryJunGong(String wxdanno,String chepai,String danjustatu,String pretime,String nexttime){
@@ -57,5 +68,36 @@ public class WeiXiuJieCheService {
 		}
 		return list;
 	}
+	
+	public List<Wxxiangmu> queryXinagMu(String no){
+		Wxjiedan jiedan = wxjiedan.selectByPrimaryKey(no);
+		String bei3 =jiedan.getBei3();
+		jiedan=null;
+		List<Wxxiangmu> list=new ArrayList<Wxxiangmu>();
+		if(("").equals(bei3) || bei3 == null) {
+			
+		}else {
+			String [] nos = bei3.split(",");
+			for (int i = 0; i < nos.length; i++) {
+				list.add(xiangmu.selectByPrimaryKey(nos[i]));
+			}
+			nos = null;
+			bei3 = null;
+		}
+		return list;
+	}
 		
+	public List<Wxxiangmu> queryXinagMuBybei3(String xmji) {
+		String [] nos = xmji.split(",");
+		List<Wxxiangmu> list=new ArrayList<Wxxiangmu>();
+		for (int i = 0; i < nos.length; i++) {
+			list.add(xiangmu.selectByPrimaryKey(nos[i]));
+		}
+		nos = null;
+		return list;
+	}
+	
+	public Huiyuan xiaopiao(String chepai) {
+		return huiyuan.xiaopiao(chepai);
+	}
 }

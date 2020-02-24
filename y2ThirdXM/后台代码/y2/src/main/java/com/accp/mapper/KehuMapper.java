@@ -40,5 +40,7 @@ public interface KehuMapper {
 
     int updateByPrimaryKey(Kehu record);
     
+    //李周添加
     List<Kehu> queryNoHuiYuan(@Param("where") String where);
+    
 }

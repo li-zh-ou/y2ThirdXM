@@ -28,6 +28,7 @@ public interface WxjiedanMapper {
 
     int updateByPrimaryKey(Wxjiedan record);
     
+    //李周要添加
     List<Wxjiedan> queryJunGong(@Param("wxdanno") String wxdanno,@Param("chepai") String chepai,@Param("danjustatu") String danjustatu,@Param("pretime") String pretime,@Param("nexttime") String nexttime);
     
     List<Wxjiedan> queryWxlishi(String chepai);
@@ -40,7 +41,11 @@ public interface WxjiedanMapper {
     
     Wxjiedan newwxJieDan(String chepai);
     
-    int insertwxdan(Wxjiedan record);
+    Integer insertwxdan(Wxjiedan record);
     
     List<Wxjiedan> queryZuoYeZhong();
+    
+    List<Wxjiedan> queryJieSuan(@Param("wxdanno") String wxdanno,@Param("starttime")String starttime,@Param("endtime")String endtime,@Param("jiesuanstatu")String jiesuanstatu,@Param("danjustatu")String danjustatu,@Param("chepai")String chepai,@Param("kehuname")String kehuname,@Param("guwen")String guwen,@Param("yewutype")String yewutype,@Param("remark")String remark);
+    
+    int queryByPrimaryKeyCount(String wxdanno);
 }

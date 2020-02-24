@@ -6,8 +6,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface HuiyuanMapper {
-	List<Huiyuan> queryhuiyuan();
-	
     int countByExample(HuiyuanExample example);
 
     int deleteByExample(HuiyuanExample example);
@@ -30,7 +28,9 @@ public interface HuiyuanMapper {
 
     int updateByPrimaryKey(Huiyuan record);
     
-//要添加
+    List<Huiyuan> queryhuiyuan();
+    
+    //李周要添加
     
     int chongZhi(Huiyuan record);
     
@@ -39,4 +39,8 @@ public interface HuiyuanMapper {
     int insertHuiYuan(Huiyuan record);
     
     List<Huiyuan> queryAllHuiYuan(@Param("hy") String hy,@Param("phone") String phone,@Param("order") String order);
+    
+    Integer getTodayMaxCount(String today);
+    
+    Huiyuan xiaopiao(String chepai);
 }

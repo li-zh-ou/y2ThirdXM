@@ -129,4 +129,17 @@ public class WeiXiuJieCheController {
 		String[] newnows = nos.split(",");
 		return wxjc.queryAllXiangMu(newnows);
 	}
+	
+	@RequestMapping("queryXinagMu")
+	@ResponseBody
+	public List<Wxxiangmu> queryXinagMu(String no){
+		return wxjc.queryXinagMu(no);
+	}
+
+	@RequestMapping("queryXinagMuBybei3")
+	@ResponseBody
+	public List<Wxxiangmu> queryXinagMuBybei3(String bei3){
+		return wxjc.queryXinagMuBybei3(bei3);
+	}
+	
 }

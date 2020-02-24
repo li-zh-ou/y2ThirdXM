@@ -25,8 +25,8 @@
 				<p class="col-xs-4" style="text-align: right; padding-right: 40px;"><button type="button" class="btn btn-success" style="margin: 14px 0 0 10px;" onclick="closeParent()">关闭</button></p>
 			</div>
 			<div class="row" style="font-size: 16px;border-bottom: solid 1px blue;">
-				<p class="col-xs-9" style="padding-left: 40px;">单号：<strong><span>{{wxno}}</span></strong></p>
-				<p class="col-xs-3"><strong><a href="javascript:void(0)" onclick="modalshow()">竣工检验</a>&nbsp;&nbsp;<a>委托书</a>&nbsp;&nbsp;<a>照片</a>&nbsp;&nbsp;<a href="#fudan" data-toggle="modal">附单</a></strong></p>
+				<p class="col-xs-10" style="padding-left: 40px;">单号：<strong><span>{{wxno}}</span></strong></p>
+				<p class="col-xs-2"><strong><a href="javascript:void(0)" onclick="modalshow()">竣工检验</a>&nbsp;&nbsp;<!-- <a href="#fudan" data-toggle="modal">附单</a> --></strong></p>
 			</div>
 			<div class="row" style="margin-top: 20px;">
 				<div class="row col-xs-10">
@@ -96,7 +96,7 @@
 					</p>
 					<p class="col-xs-3">
 						<label>进厂时间</label>
-						<input type="datetime" v-model="wxdan.jinchantime" disabled="disabled"/>
+						<input type="text" v-model="wxdan.jinchantime" disabled="disabled"/>
 					</p>
 	<!--    *******************华丽分割线********************   -->				
 					<p class="col-xs-3">
@@ -118,7 +118,7 @@
 					</p>
 					<p class="col-xs-3">
 						<label>预计完工</label>
-						<input type="datetime" disabled="disabled">
+						<input type="text" v-model="wxdan.yujitime" disabled="disabled">
 					</p>
 					<!--    *******************华丽分割线********************   -->
 					<p class="col-xs-3">
@@ -137,7 +137,7 @@
 					</p>
 					<p class="col-xs-3">
 						<label>完工时间</label>
-						<input type="datetime" v-model="wxdan.wangongtime" disabled="disabled"/>
+						<input type="text" v-model="wxdan.wangongtime" disabled="disabled"/>
 					</p>
 					<p class="col-xs-3">
 						<label>上次进厂</label>
@@ -166,9 +166,9 @@
 			<div class="wrap">
 				<ul id="tab_t">
 				    <li class="act">维修项目</li>
-				    <li>领料情况</li>
-				    <li>附加项目</li>
-				    <li>结算信息</li>
+				    <!-- <li>领料情况</li> -->
+				    <!-- <li>附加项目</li> -->
+				    <!-- <li>结算信息</li> -->
 				</ul>
 				<div id="tab_c">
 					<div >
@@ -176,7 +176,6 @@
 							<table class="table table-hover table-bordered text-center" style="overflow: scroll; width: 1250px;">
 									<thead>
 										<tr>
-											<th class="text-center">选择</th>
 											<th class="text-center">项目编码</th>
 											<th class="text-center">项目名称</th>
 											<th class="text-center">数量</th>
@@ -191,19 +190,18 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td class="text-center"><input type="checkbox"></td>
-											<td class="text-center">华为荣耀p1000</td>
-											<td class="text-center">手机</td>
-											<td class="text-center">0.1</td>
-											<td class="text-center">99999</td>
-											<td class="text-center">99999</td>
-											<td class="text-center">99999</td>
-											<td class="text-center">手机</td>
-											<td class="text-center">0.1</td>
-											<td class="text-center">99999</td>
-											<td class="text-center">99999</td>
-											<td class="text-center">99999</td>
+										<tr  v-for="item in wxxiangmus" v-if="item != null">
+											<td class="text-center">{{item.xiangmuno}}</td>
+											<td class="text-center">{{item.xiangmuname}}</td>
+											<td class="text-center"></td>
+											<td class="text-center"></td>
+											<td class="text-center"></td>
+											<td class="text-center"></td>
+											<td class="text-center"></td>
+											<td class="text-center"></td>
+											<td class="text-center"></td>
+											<td class="text-center"></td>
+											<td class="text-center"></td>
 										</tr>
 									</tbody>
 								</table>
@@ -230,7 +228,7 @@
 				      	<div class="modal-body row" style="font-size: 17px;">
 				      		<div class="col-xs-6">
 					      		<p><label><input type="radio" name="ishege" value="true" onclick="show()">合格完工</label></p>
-					      		<p><label>预计完工时间</label><input type="datetime-local" class="hege" onchange="timechange()" name="yujitime" style="width: 160px;" disabled="disabled"/></p>
+					      		<p><label>预计完工时间</label><input type="datetime-local" v-model="jungongyuji" name="yujitime" style="width: 160px;" disabled="disabled"/></p>
 					      		<p><label>实际完工时间</label><input type="datetime-local"  class="hege" onchange="timechange()" name="shijitime" style="width: 160px;" disabled="disabled"/></p>
 					      		<p><label>误工原因&nbsp;&nbsp;</label><input type="text" name="wugong" style="width: 180px;" disabled="disabled"/></p>
 					      		<p><label>质检员</label>
@@ -241,9 +239,7 @@
 					      			</select></p>
 					      		</p>
 					      		<p><label>责任人</label>
-					      			<select name="wugongren"  class="hege" style="width: 173px; padding: 3px 0;" disabled="disabled">
-					      				<option value="1">1</option>
-					      			</select></p>
+					      			<input type="text" name="wugongren"  class="hege" disabled="disabled">
 					      		<p><label>处罚金额</label><input type="number" value="100" class="hege" name="wugongchufa" style="width: 160px;" disabled="disabled"></p>
 				      		</div>
 				      		<div class="col-xs-6">
@@ -299,6 +295,8 @@
 					shijitime:null,wugong:null,zhijian:null,wugongren:null,
 					wugongchufa:null,fangongci:null,fangong:null,fangongren:null,
 					fangongchufa:null,bei1:null,bei2:null,bei3:null,bei4:null},
+				wxxiangmus:[],
+				jungongyuji:null,
 			};
 		},
 		methods:{
@@ -325,14 +323,17 @@
 	                tab_t_li[i].className='';
 	                tab_c_li[i].className='hide';
 	            }
+	            if(this.index=="0"){
+	            	queryXinagMu();
+	            }
 	            tab_t_li[this.index].className='act';
 	            tab_c_li[this.index].className='';
 	        }
 	    }
 	}
 	function load(){
-		vm.wxno = window.parent.vm.selectno;
-		vm.wxChepai = window.parent.vm.selectchepai;
+		vm.wxno = window.parent.vm.selectedwxdanno;
+		vm.wxChepai = window.parent.vm.selectedchepai;
 		$.ajax({
 			"url":"[[@{/weixiujieche/oldwxJieDan}]]",
 			"data":"wxdanno="+vm.wxno,
@@ -358,8 +359,7 @@
 			index = null;
 			vm.wxno = "";
 			vm.wxChepai = "";
-			window.parent.vm.selectchepai = "";
-			window.parent.vm.selectno="";
+			window.parent.load();
 			childIframe.remove();
 		}
 	}
@@ -369,6 +369,7 @@
 	function show(){
 		if($("input[name='ishege']:checked").val() =="true"){
 			vm.showcishu=0;
+			vm.jungongyuji = vm.wxdan.yujitime.replace(" ","T");
 			for(var i=0;i<$(".hege").length;i++){
 				$(".hege")[i].disabled=false;
 			}
@@ -380,6 +381,7 @@
 		else
 		{
 			vm.showcishu=vm.cishu;
+			vm.jungongyuji = null;
 			for(var i=0;i<$(".hege").length;i++){
 				$(".hege")[i].disabled=true;
 				$(".hege")[i].value="";
@@ -391,11 +393,11 @@
 	}
 	
 	function timechange(){
-		if($("input[name='yujitime']").val()==""||$("input[name='shijitime']").val()==""){
-			$("input[name='wugong']")[0].disabled=false;
+		if($("input[name='yujitime']").val()=="" || $("input[name='shijitime']").val()==""){
+			$("input[name='wugong']")[0].disabled=true;
 		}
 		else{
-			if($("input[name='shijitime']").val()<$("input[name='yujitime']").val()){
+			if($("input[name='shijitime']").val().replace('T', ' ')<$("input[name='yujitime']").val().replace('T', ' ')){
 				$("input[name='wugong']")[0].disabled=true;
 			}
 			else{
@@ -409,11 +411,12 @@
 			alert("此单已竣工！");
 			return;
 		}
+		
 		$.ajax({
 			"url":"[[@{/jungongjianxiu/queryCiShu}]]",
 			"data":"wxdanno="+vm.wxno,
 			"success":function(result){
-				if(result == null){
+				if(result == "null"){
 					vm.cishu= 0;
 				}else
 				{
@@ -437,6 +440,16 @@
 			vm.insert.zhijian = $("input[name='zhijian']").val();
 			vm.insert.wugongren = $("input[name='wugongren']").val();
 			vm.insert.wugongchufa = parseFloat($("input[name='wugongren']").val());
+			if(vm.insert.yujitime =="" || vm.insert.shijitime ==""){
+				alert("请完善合格完工信息！");
+				return;
+			}
+			if($("input[name='shijitime']").val().replace('T', ' ')>$("input[name='yujitime']").val().replace('T', ' ')){
+				if(vm.insert.wugong == "" || vm.insert.wugongren == ""){
+					alert("请完善误工信息");
+					return;
+				}
+			}
 		}
 		else
 		{
@@ -444,6 +457,10 @@
 			vm.insert.fangong = $("input[name='fangong']").val();
 			vm.insert.fangongren = $("input[name='fangongren']").val();
 			vm.insert.fangongchufa = parseFloat($("input[name='fangongchufa']").val());
+			if(vm.insert.fangong =="" || vm.insert.fangongren ==""){
+				alert("请完善返工信息！");
+				return;
+			}
 		}
 		$.ajax({
 			"url":"[[@{/jungongjianxiu/insertJunGong}]]",
@@ -451,12 +468,34 @@
 			type:"post",
 			contentType:"application/json;charset=UTF-8",
 			success:function(result){
-				alert(result);
+				if(result =="null" ){
+					alert("竣工成功！");
+				}else if(result.length > 4){
+					alert("本单已返工！新单号为"+result+"，给您造成的不便还望见谅！")
+				}
+				closeParent();
 			},
 			error:function(){
 				alert("保存失败555！");
 			}
 		})
+	}
+	
+	//查询当前维修项目集
+	function queryXinagMu(){
+		if(vm.selectedwxdanno!=""){
+			$.ajax({
+				"url":"[[@{/weixiujieche/queryXinagMuBybei3}]]",
+				"type":"post",
+				"data":"bei3="+vm.wxdan.bei3,
+				"success":function(result){
+					vm.wxxiangmus=result;
+				},
+				"error":function(){
+					alert("数据渲染失败444！");
+				}
+			})
+		}
 	}
 	</script>
 </html>

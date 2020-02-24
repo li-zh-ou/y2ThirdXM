@@ -37,7 +37,6 @@ public class JunGongJianXiuController {
 		if(jun.getShijitime()!=null) {
 			jun.setShijitime(jun.getShijitime().replace('T', ' '));
 		}
-		
 		return jungong.insertJunGong(jun);
 	}
 	

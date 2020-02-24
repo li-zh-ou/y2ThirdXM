@@ -20,6 +20,8 @@ public interface JungongMapper {
 
     int updateByExample(@Param("record") Jungong record, @Param("example") JungongExample example);
 
+    //李周
+    
     Integer queryCiShu(String wxdanno);
     
     Integer insertJunGong(Jungong record);

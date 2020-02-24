@@ -15,11 +15,11 @@
 			<div class="page-header" style="border-bottom: 1px solid blue;"></div>
 			<div>
 				<p>
-					<span>开单日期：</span><input type="date" id="pretime"><input type="date" id="nexttime">
+					<span>开单日期：</span><input type="date" id="pretime">至<input type="date" id="nexttime">
 					<span>维修单号：</span><input type="text" id="wxdanno"/>
 					<span>单据状态：</span><select id="danjustatu">
 						<option value="">全部</option>
-						<option value="待竣工">待竣工车</option>
+						<option value="作业中">待竣工车</option>
 						<option value="已竣工">已竣工车</option>
 						</select>
 					<span>车牌号</span><input type="text" id="chepai"/>
@@ -78,8 +78,8 @@
 		data(){
 			return {
 				zuoyezhong:[],
-				selectno:"",
-				selectchepai:"",
+				selectedwxdanno:"",
+				selectedchepai:"",
 			}
 		}
 	})
@@ -89,7 +89,6 @@
 	//页面加载事件
 	load();
 		function load(){
-			//alert("wxdanno="+$("#wxdanno").val()+"&chepai="+$("#chepai").val()+"&danjustatu="+$("#danjustatu").val()+"&pretime="+$("#pretime").val()+"&nexttime="+$("#nexttime").val());
 			$.ajax({
 				"url":"[[@{/weixiujieche/queryJunGong}]]",
 				"data":"wxdanno="+$("#wxdanno").val()+"&chepai="+$("#chepai").val()+"&danjustatu="+$("#danjustatu").val()+"&pretime="+$("#pretime").val()+"&nexttime="+$("#nexttime").val(),
@@ -116,10 +115,8 @@
 				mybody = null;
 				return;
 			}
-			vm.selectno = vm.zuoyezhong[vmindex].wxdanno;
-			vm.selectchepai = vm.zuoyezhong[vmindex].chepai;
-			
-			vmindex = null;
+			vm.selectedwxdanno = vm.zuoyezhong[vmindex].wxdanno;
+			vm.selectedchepai = vm.zuoyezhong[vmindex].chepai;
 			mybody.append(Myiframe);
 		}
 		

@@ -554,4 +554,11 @@
       bei4 = #{bei4,jdbcType=VARCHAR}
     where kehuid = #{kehuid,jdbcType=INTEGER}
   </update>
+    <select id="queryNoHuiYuan" resultMap="BaseResultMap">
+  	 SELECT kehuid,kehuno,kehuname FROM kehu WHERE kehuno NOT IN(SELECT kehuno FROM huiyuan) 
+  	 AND (kehuno LIKE #{where,jdbcType=VARCHAR}
+  	 OR kehuname LIKE #{where,jdbcType=VARCHAR}
+  	 OR `KeHuPhone` LIKE #{where,jdbcType=VARCHAR})
+  	 limit 0,15
+  </select>
 </mapper>

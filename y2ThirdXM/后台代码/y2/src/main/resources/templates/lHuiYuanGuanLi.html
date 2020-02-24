@@ -73,7 +73,7 @@
 						</tbody>
 					</table>
 					<div class="btn-group" role="group" style="margin-left: 40%;">
-						<button type="button" class="btn btn-default" onclick="pageQuery(1,10)">首页</button>
+						<button type="button" class="btn btn-default" onclick="shoupage()">首页</button>
 					  	<button type="button" class="btn btn-default" @click="nextpage()">《</button>
 					  	<button type="button" class="btn btn-default">{{allhy.pageNum}}/{{allhy.lastPage}}</button>
 					  	<button type="button" class="btn btn-default" @click="prevpage()">》</button>
@@ -186,9 +186,9 @@
 				      	<div class="modal-body row" style="font-size: 17px;">
 				      		<p class="col-xs-12"><strong>会员卡号：{{huiyuaninfo.huiyuanno}}</strong></p>
 				      		<p class="col-xs-6">会员姓名：<span style="font-weight: 700;font-size:15px;color:green;">{{huiyuaninfo.huiyuanname}}</span></p>
-				      		<p class="col-xs-6">会员余额：<span style="font-weight: 700;font-size:15px;color:red;">{{huiyuaninfo.huiyuanmoney}}</span></p>
+				      		<p class="col-xs-6">会员余额：<span style="font-weight: 700;font-size:24px;color:red;">{{huiyuaninfo.huiyuanmoney}}</span></p>
 							<p class="col-xs-12" style="height: 25px;border-bottom:1px solid;"></p>
-							<p class="col-xs-offset-8 col-xs-4" style="color:red;">注意：会员注销后无法恢复！</p>
+							<p class="col-xs-offset-8 col-xs-4" style="color:red;">注意：会员注销后会员积分等无法恢复！</p>
 							<button class="btn btn-success col-xs-offset-10" onclick="quedinzhuxiao()">确定注销</button>
 				      	</div>
 			    	</div><!-- /.modal-content -->
@@ -207,7 +207,7 @@
 			      		</div>
 				      	<div class="modal-body row" style="font-size: 17px;">
 				      		<p>请搜索：<input type="text" id="hycztext" placeholder="匹配客户编号/客户名称/联系电话" style="width:250px"></p>
-				      		<table class="table table-hover table-bordered text-center " style="width: 90%;margin-left:5%;margin-right:5%;">
+				      		<table class="table table-hover table-bordered text-center" style="width: 90%;margin-left:5%;margin-right:5%;">
 								<thead>
 									<tr>
 						      			<th width="50px">id</th>
@@ -274,14 +274,17 @@
 			},
 			methods:{
 				nextpage:function(){
-					pageQuery(this.allhy.nextPage,10);
+					pageQuery(this.allhy.nextPage,10,$("[name='hyno']").val(),$("[name='phone']").val(),$("[name='order']").val());
 				},
 				prevpage:function(){
-					pageQuery(this.allhy.prePage,10);
+					pageQuery(this.allhy.prePage,10,$("[name='hyno']").val(),$("[name='phone']").val(),$("[name='order']").val());
 				},
 				lastpage:function(){
-					pageQuery(this.allhy.lastPage,10);
+					pageQuery(this.allhy.lastPage,10,$("[name='hyno']").val(),$("[name='phone']").val(),$("[name='order']").val());
 				},
+				shoupage:function(){
+					pageQuery(1,10,$("[name='hyno']").val(),$("[name='phone']").val(),$("[name='order']").val());
+				}
 			}
 		})
 		var timeoutID = null;
@@ -314,6 +317,8 @@
 		}
 		//加入会员
 		function jiaRuHuiYuan(){
+			//打开模态框前刷新
+			vm.nohyKeHu=[];
 			$("#kehuchazhao").modal("show");
 		}
 		//加入会员  ，客户查找input 输入框text回车响应事件
@@ -324,7 +329,6 @@
 					"data":"where="+$("#hycztext").val(),
 					"type":"post",
 					"success":function(result){
-						//console.log(result);
 						vm.nohyKeHu=result;
 					},"error":function(){
 						alert("出错了！");
@@ -347,23 +351,37 @@
 		}
 		//加入会员 确认加入会员button点击提交函数
 		function queRenJiaRu(){
-			var money = parseFloat($("[name='shoudao']").val()) - parseFloat($("[name='huiyuanshichang']").val());
-			var shic =parseInt($("[name='huiyuanshichang']").val());
-			var record ={kehuno:jrkehuno,huiyuanname:$("[name='huiyuanname']").val(),huiyuanphone:$("[name='huiyuanname']").val(),huiyuanmoney:money,shichang:shic};
-			money=null;
-			shic=null;
-			$.ajax({
-				"url":"[[@{/huiyuan/insertHuiYuan}]]",
-				"data":JSON.stringify(record),
-				"type":"post",
-				"contentType":"application/json;charset=UTF-8",
-				"success":function(result){
-					alert(result);
-				},
-				"error":function(){
-					alert("加入会员失败了？");
+			//判断会员信息是否为空
+			if($("[name='huiyuanshichang']").val() == "0" || $("[name='huiyuanname']").val() == "" || $("[name='huiyuanname']").val() == "" ){
+				alert("请完善会员信息！");
+			}else{
+				//收到框数值判断
+				if( $("[name='shoudao']").val() == "0" || $("[name='shoudao']").val() == "" || parseFloat($("[name='shoudao']").val()) - parseFloat($("[name='huiyuanshichang']").val()) <0){
+					alert("注意！！！收到金额不能小于开通会员必须费用！");
+				}else{
+					var money = parseFloat($("[name='shoudao']").val()) - parseFloat($("[name='huiyuanshichang']").val());
+					var shic =parseInt($("[name='huiyuanshichang']").val());
+					var record ={kehuno:jrkehuno,huiyuanname:$("[name='huiyuanname']").val(),huiyuanphone:$("[name='huiyuanname']").val(),huiyuanmoney:money,shichang:shic};
+					money=null;
+					shic=null;
+					$.ajax({
+						"url":"[[@{/huiyuan/insertHuiYuan}]]",
+						"data":JSON.stringify(record),
+						"type":"post",
+						"contentType":"application/json;charset=UTF-8",
+						"success":function(result){
+							if(result =="1"){
+								alert("操作成功！");
+							}
+							pageQuery(1,10,"","","");
+							$("#jiaruhuiyuan").modal("hide");
+						},
+						"error":function(){
+							alert("加入会员失败了!");
+						}
+					}) 
 				}
-			}) 
+			}
 		}
 		//注销会员
 		// table中的radio选中,获取对应tr的信息 -
@@ -389,11 +407,14 @@
 				"success":function(result){
 					if(result=="1"){
 						alert("注销成功！");
+						pageQuery(1,10,"","","");
+						$("#hyzhuxiao").modal("hide");
 					}else{
 						alert("注销出问题了！")
 					}
 				}
 			})
+			
 		}
 		//会员充值
 		function hyChongZhi(){
@@ -452,6 +473,13 @@
 						"success":function(result){
 							if(result=="1"){
 								alert("充值成功!");
+								pageQuery(1,10,"","","");
+								for(var i=0;i<$("[name='hyradio']").length;i++){
+									if($("[name='hyradio']")[i].checked){
+										vm.huiyuaninfo=vm.allhy.list[i];
+									}
+								}
+								$("#huiyuanCZ").modal("hide");
 							}
 							zc=null;
 						},
@@ -480,6 +508,7 @@
 						"success":function(result){
 							if(result=="1"){
 								alert("延期成功!");
+								$("#huiyuanCZ").modal("hide");
 							}
 						},
 						"error":function(){
@@ -498,7 +527,6 @@
 				"dataType":"json",
 				"success":function(result){
 					vm.allhy = result;
-					//console.log(result);
 					$("[name='hyno']").val(hy);$("[name='phone']").val(phone);$("[name='order']").val(order);
 				},
 				"error":function(){

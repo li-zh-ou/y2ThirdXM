@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+	</head>
+	<body>
+		<div id="body">
+			<div style="padding: 40px 29% 0;">
+				<div class="row" style="border: 1px solid;padding: 40px 20px 100px;">
+					<p style="font-size: 13px;font-weight: 900;">欢迎光临<a onclick="closethis()" href="javaScript:void(0)"><span style="float:right;">X</span></a></p>
+					<p style="font-size: 13px;font-weight: 900;">北京德召文卡车系统</p>
+					<p style="line-height: 30px;font-size: 18px;font-weight: 800;">消费结算清单</p>
+					<p class="col-xs-12">收银员：<span></span></p>
+					<p class="col-xs-5">会员卡：<span v-if="huiyuanno ==null">尚未成为会员</span><span v-else>{{huiyuanno}}</span></p>
+					<p class="col-xs-7">车牌号：<span>{{chepai}}</span></p>
+					<p class="col-xs-12">客户：<span>{{kehuname}}</span></p>
+					<p class="col-xs-12" style="margin-top: 30px;">时间：<span>2020-1-5&nbsp;&nbsp;10:51</span></p>
+					<p class="col-xs-12">单号：<span>{{danno}}</span></p>
+					
+					<p class="col-xs-12" style="height: 30px;">&nbsp;</p>
+					
+					<div v-for="item in xiangmus">
+						<p class="col-xs-8">{{item.xiangmuname}}</p>
+						<p class="col-xs-3">{{item.xingmutype}}</p>
+						<p class="col-xs-3">{{item.shoujiaan}}</p>
+						<p class="col-xs-3">{{item.shoujiaan}}￥</p>
+						<p class="col-xs-5">{{item.shoujiaan}}￥</p>
+						<p class="col-xs-1">0</p>
+					</div>
+					
+					<p class="col-xs-12" style="margin-top: 30px;">总计：{{zongjia}}￥</p>
+					<p class="col-xs-12" style="margin-top: 30px;">优惠后：{{youhuihou}}￥</p>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" th:src="@{/js/jquery-3.4.1.min.js}" ></script>
+	<script type="text/javascript" th:src="@{/js/bootstrap.min.js}" ></script>
+	<script type="text/javascript" th:src="@{/js/vue.js}" ></script>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:"#body",
+			data(){
+				return {
+					huiyuanno:null,
+					zongjia:0,
+					kehuname:"",
+					chepai:"",
+					time:"",
+					danno:"",
+					xmji:"",
+					xiangmus:[],
+					youhui:10,
+					youhuihou:0,
+				}
+			},
+			method:{
+				
+			}
+		})
+		
+		load();
+		
+		function load(){
+			vm.danno = window.parent.vm.selectedwxdanno;
+			vm.chepai = window.parent.vm.selectedchepai;
+			$.ajax({
+				"url":"[[@{/jiesuanzhongxin/queryXiangMu}]]",
+				"data":"danno="+vm.danno,
+				"type":"post",
+				"success":function(result){
+					for(var i = 0;i<result.length;i++){
+						vm.zongjia=vm.zongjia + parseFloat(result[i].shoujiaan);
+					}
+					vm.xiangmus = result
+					
+				},
+				"error":function(){
+					alert("加载出错了！");
+				}
+			})
+			$.ajax({
+				"url":"[[@{/jiesuanzhongxin/xiaopiao}]]",
+				"data":"chepai="+vm.chepai,
+				"type":"post",
+				"success":function(result){
+					vm.kehuname = result.huiyuanname;
+					vm.huiyuanno = result.huiyuanno;
+					if(result.youhui !=null &&result.youhui !=""){
+						vm.youhui = result.youhui;
+					}
+					vm.youhuihou = (parseInt(vm.youhui)/10) * parseFloat(vm.zongjia);
+				},
+				"error":function(){
+					alert("加载出错了！");
+				}
+			})
+		}
+		
+		function closethis(){
+			var childIframe=window.parent.document.getElementById("otherHtml");
+			childIframe.remove();
+		}
+	</script>
+</html>
