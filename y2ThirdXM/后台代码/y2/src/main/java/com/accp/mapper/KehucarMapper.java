@@ -9,6 +9,7 @@ public interface KehucarMapper {
 	List<Kehucar> querysijir();
 	
 	List<Kehucar> querybaoxian();
+	List<Kehucar> findqbukehucar();
 	
 	List<Kehucar> queryjiazhao();
 	

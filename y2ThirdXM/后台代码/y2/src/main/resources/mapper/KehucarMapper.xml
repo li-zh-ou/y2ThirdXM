@@ -58,6 +58,11 @@
 		INNER JOIN fadongbrand ON fadongbrand.`FaBankId`=kehucar.`FaBankId` 
 		WHERE kehucar.`KeHuNo`=#{kehuno}
   </select>
+  <select id="findqbukehucar" resultMap="BaseResultMapSales">
+	  SELECT * FROM kehucar 
+		INNER JOIN carbrand ON kehucar.`CarBankId`=carbrand.`CarBankId`
+		INNER JOIN fadongbrand ON fadongbrand.`FaBankId`=kehucar.`FaBankId` 
+  </select>
   <select id="querymokehucar" resultMap="BaseResultMapSales">
   	SELECT * FROM kehucar 
 	INNER JOIN carbrand ON kehucar.`CarBankId`=carbrand.`CarBankId`

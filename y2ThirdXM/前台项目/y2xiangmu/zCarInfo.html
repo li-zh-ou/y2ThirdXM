@@ -243,11 +243,68 @@
 				</div>
 				<div class="row ass" style="margin-top:-15px ;">
 					<div class="col-lg-offset-7 col-sm-5">
-						<p class="dao"><a class="znegjiache">增加</a><a class="updatequery">修改</a><a @click="deletecar">删除</a><a @click="chaxun">查询</a><a>保养</a><a @click="exportExcel">导出</a><a>字段设置</a></p>
+						<p class="dao"><a class="znegjiache glyphicon glyphicon-align-right">增加</a><a class="updatequery glyphicon glyphicon-pencil">修改</a><a @click="deletecar" class="glyphicon glyphicon-remove-sign">删除</a><a @click="chaxun" class="glyphicon glyphicon-align-right">查询</a><a @click="exportExcel" class="glyphicon glyphicon-share">导出</a></p>
 					</div>
 				</div>
 				<div class="yi" style=" overflow:auto;">
 					<table  class="table table-bordered table-hover" style="width: 2200px;">
+						<tr class="asss">
+							<th>车牌号码</th>
+							<th>车牌品牌</th>
+							<th>车牌型号</th>
+							<th>驾驶员</th>
+							<th>驾驶员电话</th>
+							<th>出生日期</th>
+							<th>车辆归属</th>
+							<th>驾证到期</th>
+							<th>车架号</th>
+							<th>发动机号</th>
+							<th>发动机品牌号</th>
+							<th>车辆年款</th>
+							<th>里程</th>
+							<th>载重</th>
+							<th>购买日期</th>
+							<th>上牌日期</th>
+							<th>车险到期</th>
+							<th>在我投保车</th>
+							<th>燃油类别</th>
+							<th>下次保养里程</th>
+							<th>下次保养日期</th>
+						</tr>
+						<tr v-for="item in kehucar"  @click="car" @dblclick="shuangjicar">
+							<td>{{item.chepai}}</td>
+							<td>{{item.carbankname}}</td>
+							<td>{{item.xinghao}}</td>
+							<td>{{item.sijiname}}</td>
+							<td>{{item.sijiphone}}</td>
+							<td>{{item.sijibirthday}}</td>
+							<td>{{item.guishu}}</td>
+							<td>{{item.jiazhao}}</td>
+							<td>{{item.chejia}}</td>
+							<td>{{item.fanumber}}</td>
+							<td>{{item.faname}}</td>
+							<td>{{item.niankuan}}</td>
+							<td>{{item.licheng}}</td>
+							<td>{{item.zaizhong}}</td>
+							<td>{{item.goumaidate}}</td>
+							<td>{{item.shangpaidate}}</td>
+							<td>{{item.chejian}}</td>
+							<td>{{item.bei1}}</td>
+							<td>{{item.ranyou}}</td>
+							<td>{{item.nextbaoxian}}</td>
+							<td>{{item.nextbaoxiandate}}</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="tiao">
+				<div class="sha">
+					<div class="dian diyi">客户信息</div>
+				</div>
+			</div>
+			<div class="row gao">
+				<div class="xinxi" style=" overflow:auto;">
+					<table class="table table-bordered table-hover" style="width: 2200px;">
 						<tr class="asss">
 							<th>客户编码</th>
 							<th>客户名称</th>
@@ -274,7 +331,7 @@
 							<th>其他一</th>
 							<th>其他二</th>
 						</tr>	
-						<tr v-for="item in kehu" @click="test" @dblclick="shuangji">
+						<tr v-for="item in kehu"  @dblclick="shuangji">
 							<td>{{item.kehuno}}</td>
 							<td>{{item.kehuname}}</td>
 							<td>{{item.kehuaddress}}</td>
@@ -303,369 +360,319 @@
 					</table>
 				</div>
 			</div>
-			<div class="tiao">
-				<div class="sha">
-					<div class="dian diyi">客户信息</div>
-				</div>
-			</div>
-			<div class="row gao">
-				<div class="xinxi" style=" overflow:auto;">
-					<table class="table table-bordered table-hover" style="width: 2200px;">
-						<tr>
-							<th>车牌号码</th>
-							<th>车牌品牌</th>
-							<th>车牌型号</th>
-							<th>驾驶员</th>
-							<th>驾驶员电话</th>
-							<th>出生日期</th>
-							<th>车辆归属</th>
-							<th>驾证到期</th>
-							<th>车架号</th>
-							<th>发动机号</th>
-							<th>发动机品牌号</th>
-							<th>车辆年款</th>
-							<th>里程</th>
-							<th>载重</th>
-							<th>购买日期</th>
-							<th>上牌日期</th>
-							<th>车险到期</th>
-							<th>在我投保车</th>
-							<th>燃油类别</th>
-							<th>下次保养里程</th>
-							<th>下次保养日期</th>
-						</tr>
-						<tr v-for="item in kehucar" @click="car" @dblclick="shuangjicar">
-							<td>{{item.chepai}}</td>
-							<td>{{item.carbankname}}</td>
-							<td>{{item.xinghao}}</td>
-							<td>{{item.sijiname}}</td>
-							<td>{{item.sijiphone}}</td>
-							<td>{{item.sijibirthday}}</td>
-							<td>{{item.guishu}}</td>
-							<td>{{item.jiazhao}}</td>
-							<td>{{item.chejia}}</td>
-							<td>{{item.fanumber}}</td>
-							<td>{{item.faname}}</td>
-							<td>{{item.niankuan}}</td>
-							<td>{{item.licheng}}</td>
-							<td>{{item.zaizhong}}</td>
-							<td>{{item.goumaidate}}</td>
-							<td>{{item.shangpaidate}}</td>
-							<td>{{item.chejian}}</td>
-							<td>{{item.bei1}}</td>
-							<td>{{item.ranyou}}</td>
-							<td>{{item.nextbaoxian}}</td>
-							<td>{{item.nextbaoxiandate}}</td>
-						</tr>
-					</table>
-				</div>
-			</div>
-			<div class="row chezliao">
-				<div>
-					<div class="">
-					<div class="tan1 color1"><span class="toto1">车辆资料</span><button class="btn btn-group bao3" @click="addcar">保存</button><span class="close guan5">×</span></div>
-				</div>
-					<div class="context2">
-						<div class="shang">
+			<div class="modal fade" id="chezliao" class="chezliao"  role="dialog">
+			  <div class="modal-dialog" role="document" style="width: 880px;">
+			    <div class="modal-content">
+			    	<div class="modal-header" style="height: 60px;" id="dhl">
+				      	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="guan5">&times;</span></button>
+				      	<h4 class="modal-title" style="margin-top:5px;">车辆资料</h4>
+				      	<div class="col-md-9"></div>
+				      	<div >
+				      	  <button type="button" class="btn btn-success" style="margin-top: -50px;margin-left: 100px; vertical-align: middle; width: 60px;" @click="addcar">保存</button>
+				      	</div>
+				 	</div>
+			     	<div class="modal-body" style="margin-top: -30px;">
+			       		<div class="shang">
 							<p>
-								<span><span class="ho">* </span>车牌号码：</span><input v-model="cheliang.chepai" class="paipai" type="text" style="width: 50px;height: 25px;"><button class="haoma">选择</button>
-								<span><span class="ho">* </span>车辆品牌：</span><input readonly="readonly" style="width: 100px;height: 25px;" class="carbankname" type="text" /><button class="pin">选择</button>
-								<span><span class="ho">* </span>车辆型号：</span><input readonly="readonly" class="jinkous" v-model="car.xinghao" type="text" />
-								<span><span class="ho">* </span>驾驶员：</span><input v-model="cheliang.sijiname" type="text" />
-							</p>
-							<p>
-								<span><span class="ho">* </span>驾驶员电话：</span></span><input v-model="cheliang.sijiphone" type="text" size="15"/>
-								<span>出生日期：</span><input v-model="cheliang.sijibirthday" type="date"/>
-								<span><span class="ho">* </span>车辆归属：</span><select v-model="cheliang.guishu" style="width: 150px;height: 25px;">
+								<div class="input-group" style="margin-top: 20px;">
+								 	<span class="input-group-addon" id="basic-addon3">&nbsp;车牌号码：<button style="width: 35;" class="haoma" data-toggle="modal" data-target="#chepai">选择</button></span>
+								  <input type="text" style="width: 120px;height: 33px;"  class="form-control paipai" id="basic-url" aria-describedby="basic-addon3">
+									<span class="input-group-addon " id="basic-addon3">车辆品牌：<button class="pin" data-toggle="modal" data-target="#pinpai" >选择</button></span>
+								  	<input type="text" style="width: 130px;height: 33px;" disabled="disabled" class="form-control carbankname" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">车辆型号：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="cheliang.xinghao" class="form-control jinkous" id="basic-url" aria-describedby="basic-addon3">
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;驾驶员：</span>
+								  <input type="text" style="width: 160px;height: 33px;" v-model="cheliang.sijiname" class="form-control" id="basic-url" aria-describedby="basic-addon3"> 
+									<span class="input-group-addon " id="basic-addon3">司机电话：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="cheliang.sijiphone" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">出生日期：</span>
+								  	<input type="date" style="width: 160px;height: 33px;" v-model="cheliang.sijibirthday" class="form-control " id="basic-url" aria-describedby="basic-addon3">
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  	<span class="input-group-addon" id="basic-addon3">车辆归属：</span>
+								  <select v-model="cheliang.guishu" style="width: 160px;height: 33px;" v-model="cheliang.guishu" class="form-control" id="basic-url" aria-describedby="basic-addon3">
 									<option>个人</option>
 								</select>
-								<span>驾证到期：</span><input v-model="cheliang.jiazhao" type="date" />
-							</p>
-							<p>	
-								<span>车架号：</span><input v-model="cheliang.chejia" type="text" />
-								<span>发动机号：</span><input type="date" />
-								<span>车辆年款：</span><select v-model="cheliang.niankuan" style="width: 150px;height: 25px;"></select>
-								<span>里程：</span><input v-model="cheliang.licheng" type="text" />
-							</p>
-							<p>
-								<span><span class="ho">* </span>发动机品牌：</span>
-								<select v-model="fadoname" style="width: 150px;height: 25px;" class="fabankname">
-									<option v-for="item in fadoji">{{item.faname}}</option>
+								<span class="input-group-addon " id="basic-addon3">驾证到期：</span>
+								  	<input type="date" style="width: 160px;height: 33px;" v-model="cheliang.jiazhao"  class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;&nbsp;车架号：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="cheliang.chejia" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  	<span class="input-group-addon" id="basic-addon3">发动机号：</span>
+								  <input type="t" style="width: 160px;height: 33px;" class="form-control" id="basic-url" aria-describedby="basic-addon3"> 
+									<span class="input-group-addon " id="basic-addon3">车辆年款：</span>
+								  	<select v-model="cheliang.niankuan" style="width: 160px;height: 33px;" class="form-control" id="basic-url" aria-describedby="basic-addon3"></select>
+								  	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;里程：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="cheliang.licheng" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  	<span class="input-group-addon" id="basic-addon3">发动机牌：</span>
+								  <select style="width: 160px;height: 33px;" class="form-control" id="basic-url" aria-describedby="basic-addon3" v-model="fadoname" class="fabankname">
+									<option v-for="item in fadoji" Seleted ="true">{{item.faname}}</option>
 								</select>
-								<span>载重：</span><input v-model="cheliang.zaizhong" type="text" />
-								<span>购买日期：</span><input v-model="cheliang.goumaidate" type="date" />
-							</p>
-							<p>
-								<span>上牌日期：</span><input v-model="cheliang.shanpaidate" type="date" />
-								<span>车检到期：</span><input v-model="cheliang.chejian" type="date" />
-								<span>燃油类别：</span><select v-model="cheliang.ranyou" style="width: 150px;height: 25px;"></select>
-								&nbsp;<input class="radios" name="checks" type="checkbox" />在我投保车
-							</p>
-							<p>
-								<span><span class="ho">保险：</span>交强险保险公司</span><select style="width: 150px;height: 25px;"></select>
-								<span>交强险到期：</span><select style="width: 150px;height: 25px;"></select>
-							</p>
-							<p>
-								<span>商业险保险公司</span><input type="date" />
-								<span>商业险到期：</span><input type="date" />
-							</p>
-							<p>
-								<span>下次保养里程：</span><input v-model="cheliang.nextbaoxian" type="text" size="15"/>
-								<span>下次保养日期：</span><input v-model="cheliang.nextbaoxiandate" type="date"/>
-								<span>客户编码：</span><input id="cheliangno" class="cheliangno" readonly="readonly" v-model="cheliang.kehuno" type="text" size="15"/><button @click="kai">选择</button>
-								<span>客户名称：</span><input id="cheliangname" class="cheliangname" readonly="readonly"  style="width: 100px;height: 25px;" type="text" size="15"/>
+									<span class="input-group-addon " id="basic-addon3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;载重：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="cheliang.zaizhong" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">购买日期：</span>
+								  	<input type="date" style="width: 160px;height: 33px;" v-model="cheliang.goumaidate" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								 	
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  <span class="input-group-addon" id="basic-addon3">上牌日期：</span>
+								  <input type="date" style="width: 160px;height: 33px;" v-model="cheliang.shanpaidate" class="form-control" id="basic-url" aria-describedby="basic-addon3"> 
+									<span class="input-group-addon " id="basic-addon3">车检到期：</span>
+								  	<input type="date" style="width: 160px;height: 33px;" v-model="cheliang.chejian" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">燃油类别：</span>
+								  	<select class="form-control" style="width: 160px;height: 33px;" v-model="cheliang.ranyou" id="basic-url" aria-describedby="basic-addon3"  ></select>
+								 	
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  <span class="input-group-addon" id="basic-addon3">客户编码：<button @click="kai">选择</button></span>
+								  <input type="text" v-model="cheliang.kehuno" disabled="disabled"  style="width: 160px;height: 33px;" class="form-control cheliangno" id="cheliangno" aria-describedby="basic-addon3">
+									<span class="input-group-addon " id="basic-addon3">客户名称：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" disabled="disabled" class="form-control cheliangname" id="cheliangname" aria-describedby="basic-addon3">
+								</div>
+								 <div class="input-group" style="margin-top: 20px;">
+								 	投保车： 
+								  	<input class="radios" name="checks" type="checkbox" />
+								 </div>
 							</p>
 						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row chepai">
-				<div>
-					<div class="tan"><span class="toto">车牌号</span><span class="close guan1">×</span></div>
-					<div style="margin-left: 20px;margin-top: 5px;">
-						<button @click="xuanchepai" v-for="item,index in chepai" style="width: 40px;height: 40px;margin:3px"> 
-							{{item.chepai}}
-						</button>
-					</div>
-				</div>
-			</div>
-			<div class="row pinpai" style="background-color:#E9E7E7 ;">
-				<div class="">
-					<div class="tan1 color1"><span class="toto1">品牌车型</span><button class="btn btn-group bao1" @click="xuanz">选择</button><span class="close guan2">×</span></div>
-				</div>
-				<div class="row">
-					<div class="col-sm-5">
-						<input class="so pinpainame" size="28" placeholder="匹配 品牌名称/首字母"/>
-						<button class="btn btn-danger" @click="querypinpai">搜索</button>
-					</div>
-					<div class="col-sm-7">
-						<input class="so chexingname" size="32" placeholder="匹配 车型编码/车型名称"/>
-						<button class="btn btn-danger zuo" @click="querychexing">搜索</button>
-					</div>
-				</div>
-				<div class="row as">
-					<div class="col-sm-5">
-						<table class="table table-bordered table-hover">
-							<tr>
-								<th>编码</th>
-								<th>品牌名称</th>
-								<th>首字母</th>
-							</tr>
-							<tr @click="carpindian" v-for="item in carbrank">
-								<td>{{item.carbankid}}</td>
-								<td>{{item.carbankname}}</td>
-								<td>{{item.firstword}}</td>
-							</tr>
-						</table>
-					</div>
-					<div class="col-sm-7" style="width: 460px; overflow:auto;">
-						<table class="table table-bordered table-hover" style="width: 1000px;">
-							<tr>
-								<th>车型ID</th>
-								<th>车型名称</th>
-								<th>参考价格</th>
-								<th>车辆年款</th>
-							</tr>
-							<tr @click="carxingdian" v-for="item in carxing">
-								<td>{{item.xingid}}</td>
-								<td>{{item.jinkou}}</td>
-								<td>{{item.cankaoprice}}</td>
-								<td>{{item.caryearmoney}}</td>
-							</tr>
-						</table>
-					</div>
-				</div>
-			</div>
-			<div class="row xiugaiche">
-				<div>
-					<div class="">
-					<div class="tan1 color1"><span class="toto1">车辆资料编辑</span><button class="btn btn-group bao3" @click="updatecar">保存</button><span class="close guan10">×</span></div>
-				</div>
-					<div class="context2">
-						<div class="shang">
+			     	 </div>
+			    </div><!-- /.modal-content -->
+			  </div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+			<div class="modal fade" id="chaxun" class="chaxun"  role="dialog">
+			  <div class="modal-dialog" role="document" style="width: 880px;">
+			    <div class="modal-content">
+			    	<div class="modal-header" style="height: 60px;" id="dhl">
+				      	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="guan20">&times;</span></button>
+				      	<h4 class="modal-title" style="margin-top:5px;">客户查询</h4>
+				      	<div class="col-md-9"></div>
+				      	<div >
+				      		<button type="button" class="btn btn-success" style="margin-top: -50px;margin-left: 100px; vertical-align: middle; width: 60px;" @click="chaxunqding">保存</button>
+				      	</div>
+				 	</div>
+			     	<div class="modal-body" style="margin-top: -30px;">
+			       		<div class="shang">
 							<p>
-								<span><span class="ho">* </span>车牌号码：</span><input readonly="readonly" v-model="cheliang.chepai" class="paipai" type="text" style="width: 60px;height: 25px;"><button disabled="disabled" class="haoma">选择</button>
-								<span><span class="ho">* </span>车辆品牌：</span><input readonly="readonly" style="width: 100px;height: 25px;" class="carbankname" type="text" /><button class="pin">选择</button>
-								<span><span class="ho">* </span>车辆型号：</span><input readonly="readonly" class="jinkous" v-model="car.xinghao" type="text" />
-								<span><span class="ho">* </span>驾驶员：</span><input v-model="cheliang.sijiname" type="text" />
+								<div class="input-group">
+								  	<span class="input-group-addon " id="basic-addon3">客户编码：</span>
+								  	<input type="text" style="width: 160px;height: 33px;"  id="cheliangno" v-model="chakehu.kehuno" class="form-control cheliangno"  aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">客户名称：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="chakehu.kehuname" id="cheliangname"  class="form-control cheliangname" aria-describedby="basic-addon3">
+								 	<span class="input-group-addon " id="basic-addon3">手机号码：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="chakehu.kehuphone" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  	<span class="input-group-addon" id="basic-addon3">客户地址：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="chakehu.kehuaddress" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								 	<span class="input-group-addon" id="basic-addon3">客户生日：</span>
+								  <input type="date" style="width: 160px;height: 33px;" v-model="chakehu.kehubirthday" class="form-control" id="basic-url" aria-describedby="basic-addon3"> 
+									<span class="input-group-addon" id="basic-addon3">专属顾问：</span>
+								  <select style="width: 160px;height: 33px;" class="form-control" id="basic-url" aria-describedby="basic-addon3" v-model="chakehu.guwen" style="width: 150px;height: 25px;"></select>
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								 	<span class="input-group-addon" id="basic-addon3">&nbsp;车牌号码：<button style="width: 35;" class="haoma" data-toggle="modal" data-target="#chepai">选择</button></span>
+								  <input type="text" style="width: 120px;height: 33px;" v-model="chacar.chepai"  class="form-control paipai" id="basic-url" aria-describedby="basic-addon3">
+									<span class="input-group-addon " id="basic-addon3">车辆品牌：<button class="pin" data-toggle="modal" data-target="#pinpai" >选择</button></span>
+								  	<input type="text" style="width: 130px;height: 33px;" disabled="disabled" class="form-control carbankname" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">车辆型号：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="chacar.xinghao" class="form-control jinkous" id="basic-url" aria-describedby="basic-addon3">
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;驾驶员：</span>
+								  <input type="text" style="width: 160px;height: 33px;" v-model="chacar.sijiname" class="form-control" id="basic-url" aria-describedby="basic-addon3"> 
+									<span class="input-group-addon " id="basic-addon3">司机电话：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="chacar.sijiphone" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">出生日期：</span>
+								  	<input type="date" style="width: 160px;height: 33px;" v-model="chacar.sijibirthday" class="form-control " id="basic-url" aria-describedby="basic-addon3">
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+									<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;&nbsp;车架号：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="chacar.chejia" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">发动机牌：</span>
+								  <select style="width: 160px;height: 33px;" class="form-control" id="basic-url" aria-describedby="basic-addon3" v-model="fadoname" class="fabankname">
+									<option v-for="item in fadoji" Seleted ="true">{{item.faname}}</option>
+								</select>
+								</div>
 							</p>
+						</div>
+			     	 </div>
+			    </div><!-- /.modal-content -->
+			  </div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+			<div class="modal fade" id="xiugaiche" class="xiugaiche"  role="dialog">
+			  <div class="modal-dialog" role="document" style="width: 880px;">
+			    <div class="modal-content">
+			    	<div class="modal-header" style="height: 60px;" id="dhl">
+				      	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="guan10">&times;</span></button>
+				      	<h4 class="modal-title" style="margin-top:5px;">车辆资料编辑</h4>
+				      	<div class="col-md-9"></div>
+				      	<div>
+				      	  <button type="button" class="btn btn-success" style="margin-top: -50px;margin-left: 100px; vertical-align: middle; width: 60px;" @click="updatecar">保存</button>
+				      	</div>
+				 	</div>
+			     	<div class="modal-body" style="margin-top: -30px;">
+			       		<div class="shang">
 							<p>
-								<span><span class="ho">* </span>驾驶员电话：</span></span><input v-model="cheliang.sijiphone" type="text" size="15"/>
-								<span>出生日期：</span><input v-model="cheliang.sijibirthday" type="date"/>
-								<span><span class="ho">* </span>车辆归属：</span><select v-model="cheliang.guishu" style="width: 150px;height: 25px;">
+								<div class="input-group" style="margin-top: 20px;">
+								 	<span class="input-group-addon" id="basic-addon3">&nbsp;车牌号码：<button style="width: 35;" class="haoma" data-toggle="modal" data-target="#chepai">选择</button></span>
+								  <input type="text" style="width: 120px;height: 33px;" v-model="cheliang.chepai"  class="form-control paipai" id="basic-url" aria-describedby="basic-addon3">
+									<span class="input-group-addon " id="basic-addon3">车辆品牌：<button class="pin" data-toggle="modal" data-target="#pinpai" >选择</button></span>
+								  	<input type="text" style="width: 130px;height: 33px;" disabled="disabled" class="form-control carbankname" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">车辆型号：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="cheliang.xinghao" class="form-control jinkous" id="basic-url" aria-describedby="basic-addon3">
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;驾驶员：</span>
+								  <input type="text" style="width: 160px;height: 33px;" v-model="cheliang.sijiname" class="form-control" id="basic-url" aria-describedby="basic-addon3"> 
+									<span class="input-group-addon " id="basic-addon3">司机电话：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="cheliang.sijiphone" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">出生日期：</span>
+								  	<input type="date" style="width: 160px;height: 33px;" v-model="cheliang.sijibirthday" class="form-control " id="basic-url" aria-describedby="basic-addon3">
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  	<span class="input-group-addon" id="basic-addon3">车辆归属：</span>
+								  <select style="width: 160px;height: 33px;" v-model="cheliang.guishu" class="form-control" id="basic-url" aria-describedby="basic-addon3">
 									<option>个人</option>
 								</select>
-								<span>驾证到期：</span><input v-model="cheliang.jiazhao" type="date" />
-							</p>
-							<p>	
-								<span>车架号：</span><input v-model="cheliang.chejia" type="text" />
-								<span>发动机号：</span><input type="date" />
-								<span>车辆年款：</span><select v-model="cheliang.niankuan" style="width: 150px;height: 25px;"></select>
-								<span>里程：</span><input v-model="cheliang.licheng" type="text" />
-							</p>
-							<p>
-								<span><span class="ho">* </span>发动机品牌：</span>
-								<select v-model="fadoname" style="width: 150px;height: 25px;" class="fabankname">
-									<option v-for="item in fadoji" >{{item.faname}}</option>
-									
+								<span class="input-group-addon " id="basic-addon3">驾证到期：</span>
+								  	<input type="date" style="width: 160px;height: 33px;" v-model="cheliang.jiazhao"  class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;&nbsp;车架号：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="cheliang.chejia" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  	<span class="input-group-addon" id="basic-addon3">发动机号：</span>
+								  <input type="t" style="width: 160px;height: 33px;" class="form-control" id="basic-url" aria-describedby="basic-addon3"> 
+									<span class="input-group-addon " id="basic-addon3">车辆年款：</span>
+								  	<select v-model="cheliang.niankuan" style="width: 160px;height: 33px;" class="form-control" id="basic-url" aria-describedby="basic-addon3"></select>
+								  	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;里程：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="cheliang.licheng" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  	<span class="input-group-addon" id="basic-addon3">发动机牌：</span>
+								  <select style="width: 160px;height: 33px;" class="form-control" id="basic-url" aria-describedby="basic-addon3" v-model="fadoname" class="fabankname">
+									<option v-for="item in fadoji" Seleted ="true">{{item.faname}}</option>
 								</select>
-								<span>载重：</span><input v-model="cheliang.zaizhong" type="text" />
-								<span>购买日期：</span><input v-model="cheliang.goumaidate" type="date" />
-							</p>
-							<p>
-								<span>上牌日期：</span><input v-model="cheliang.shanpaidate" type="date" />
-								<span>车检到期：</span><input v-model="cheliang.chejian" type="date" />
-								<span>燃油类别：</span><select v-model="cheliang.ranyou" style="width: 150px;height: 25px;"></select>
-								&nbsp;<input class="radios" name="checkss" type="checkbox" />在我投保车
-							</p>
-							<p>
-								<span><span class="ho">保险：</span>交强险保险公司</span><select style="width: 150px;height: 25px;"></select>
-								<span>交强险到期：</span><select style="width: 150px;height: 25px;"></select>
-							</p>
-							<p>
-								<span>商业险保险公司</span><input type="date" />
-								<span>商业险到期：</span><input type="date" />
-							</p>
-							<p>
-								<span>下次保养里程：</span><input v-model="cheliang.nextbaoxian" type="text" size="15"/>
-								<span>下次保养日期：</span><input v-model="cheliang.nextbaoxiandate" type="date"/>
-								<span>客户编码：</span><input id="cheliangno" class="cheliangno" readonly="readonly" v-model="cheliang.kehuno" type="text" size="15"/><button @click="kai">选择</button>
-								<span>客户名称：</span><input id="cheliangname" class="cheliangname" readonly="readonly"  style="width: 100px;height: 25px;" type="text" size="15"/>
+									<span class="input-group-addon " id="basic-addon3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;载重：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="cheliang.zaizhong" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">购买日期：</span>
+								  	<input type="date" style="width: 160px;height: 33px;" v-model="cheliang.goumaidate" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								 	
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  <span class="input-group-addon" id="basic-addon3">上牌日期：</span>
+								  <input type="date" style="width: 160px;height: 33px;" v-model="cheliang.shanpaidate" class="form-control" id="basic-url" aria-describedby="basic-addon3"> 
+									<span class="input-group-addon " id="basic-addon3">车检到期：</span>
+								  	<input type="date" style="width: 160px;height: 33px;" v-model="cheliang.chejian" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon" id="basic-addon3">燃油类别：</span>
+								  	<select class="form-control" style="width: 160px;height: 33px;" v-model="cheliang.ranyou" id="basic-url" aria-describedby="basic-addon3"  ></select>
+								 	
+								</div>
+								<div class="input-group" style="margin-top: 20px;">
+								  <span class="input-group-addon" id="basic-addon3">客户编码：<button @click="kai">选择</button></span>
+								  <input type="text" v-model="cheliang.kehuno" disabled="disabled"  style="width: 160px;height: 33px;" class="form-control cheliangno" id="cheliangno" aria-describedby="basic-addon3">
+									<span class="input-group-addon " id="basic-addon3">客户名称：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" disabled="disabled" class="form-control cheliangname" id="cheliangname" aria-describedby="basic-addon3">
+								</div>
+								 <div class="input-group" style="margin-top: 20px;">
+								 	投保车： 
+								  	<input class="radios" name="checkss" type="checkbox" />
+								 </div>
 							</p>
 						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row chepai">
-				<div>
-					<div class="tan"><span class="toto">车牌号</span><span class="close guan1">×</span></div>
-					<div style="margin-left: 20px;margin-top: 5px;">
-						<button @click="xuanchepai" v-for="item,index in chepai" style="width: 40px;height: 40px;margin:3px"> 
-							{{item.chepai}}
-						</button>
-					</div>
-				</div>
-			</div>
-			<div class="row chaxun">
-				<div>
-					<div class="">
-					<div class="tan1 color1"><span class="toto1">客户查询</span><button class="btn btn-group bao4" @click="chaxunqding">确定</button><span class="close guan20">×</span></div>
-				</div>
-					<div class="context5">
-						<div class="juli">
-							<p>
-								<span>客户编码：</span><input id="cheliangno" class="cheliangno" v-model="chakehu.kehuno" type="text" size="20"/>
-								<span>客户名称：</span><input v-model="chakehu.kehuname" id="cheliangname" class="cheliangname"  size="20" style="width: 100px;height: 25px;" type="text" size="15"/>
-								<span><span class="ho">* </span>客户类别：</span><select v-model="chakehu.kehutype" size="20" style="width: 150px;height: 25px;">
-									<option>个人</option>
-								</select>							
-							</p>
-							<p>
-								<span>联系人：</span><input v-model="chakehu.kehulianxi" class="paipai" type="text" style="width: 60px;height: 25px;">
-								<span>手机号码：</span><input v-model="chakehu.kehuphone" style="width: 100px;height: 25px;" type="text" />
-								<span>客户地址：</span><input v-model="chakehu.kehuaddress" type="text" />
-							</p>
-							<p>
-								<span>备注：</span><input v-model="chakehu.remark" type="text" />
-								<span>会员卡号：</span><input type="text" />
-								<span>客户生日：</span><input v-model="chakehu.kehubirthday" type="date"/>
-								<input class="radios" name="checkss" type="checkbox" />在我投保车
-							</p>
-							<p>	
-								<span>超过X月没修：</span><input type="text" />
-								<span>专属顾问：</span><input type="text" v-model="chakehu.guwen"/><button>选择</button>
-								<span>顾问电话：</span><input v-model="chakehu.guwenphone" type="text" />
-							</p>
-							<p>
-								<span><span class="ho">* </span>车牌号码：</span><input v-model="chacar.chepai" class="paipai" type="text" style="width: 60px;height: 25px;"><button disabled="disabled" class="haoma">选择</button>
-								<span><span class="ho">* </span>车辆品牌：</span><input readonly="readonly" style="width: 100px;height: 25px;" class="carbankname" type="text" /><button class="pin">选择</button>
-								<span><span class="ho">* </span>车辆型号：</span><input class="jinkous" v-model="chacar.xinghao" type="text" />
-							</p>
-							<p>
-								<span>车架号：</span><input v-model="chacar.chejia" type="text" />
-								<span>发动机号：</span><input type="date" />
-								<span>保险公司</span><input type="date" />
-							</p>
-							<p>
-								<span><span class="ho">* </span>发动机品牌：</span>
-								<select v-model="fadoname" style="width: 150px;height: 25px;" class="fabankname">
-									<option v-for="item in fadoji" >{{item.faname}}</option>
-								</select>
-								<span><span class="ho">* </span>驾驶员：</span><input v-model="chacar.sijiname" type="text" />
-								<span><span class="ho">* </span>驾驶员电话：</span><input v-model="chacar.sijiphone" type="text" />
-							</p>
-							<p>
-								<input size="10"  placeholder="开户日期">
-								<input  type="date" /><input  type="date" />
-								<input size="10"  placeholder="购买日期"><input size="10"  placeholder="所有">
-								<span>驾驶员生日：</span><input v-model="chacar.sijibirthday" type="date"/>
-								&nbsp;
-							</p>
-							<p>
-								<span>定金余额：<input size="20"  type="text"/></span>
-								<span>至：</span><input type="text"/>
-								<span>储蓄卡余额：</span><input type="text" />
-							</p>
-							<p>
-								<span>至：</span><input type="text" />
-								<span>积分：</span><input type="text" />
-								<span>至：</span><input type="text" />
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row pinpai" style="background-color:#E9E7E7 ;">
-				<div class="">
-					<div class="tan1 color1"><span class="toto1">品牌车型</span><button class="btn btn-group bao1" @click="xuanz">选择</button><span class="close guan2">×</span></div>
-				</div>
-				<div class="row">
-					<div class="col-sm-5">
-						<input class="so pinpainame" size="28" placeholder="匹配 品牌名称/首字母"/>
-						<button class="btn btn-danger" @click="querypinpai">搜索</button>
-					</div>
-					<div class="col-sm-7">
-						<input class="so chexingname" size="32" placeholder="匹配 车型编码/车型名称"/>
-						<button class="btn btn-danger zuo" @click="querychexing">搜索</button>
-					</div>
-				</div>
-				<div class="row as">
-					<div class="col-sm-5">
-						<table class="table table-bordered table-hover">
-							<tr>
-								<th>编码</th>
-								<th>品牌名称</th>
-								<th>首字母</th>
-							</tr>
-							<tr @click="carpindian" v-for="item in carbrank">
-								<td>{{item.carbankid}}</td>
-								<td>{{item.carbankname}}</td>
-								<td>{{item.firstword}}</td>
-							</tr>
-						</table>
-					</div>
-					<div class="col-sm-7" style="width: 460px; overflow:auto;">
-						<table class="table table-bordered table-hover" style="width: 1000px;">
-							<tr>
-								<th>车型ID</th>
-								<th>车型名称</th>
-								<th>参考价格</th>
-								<th>车辆年款</th>
-							</tr>
-							<tr @click="carxingdian" v-for="item in carxing">
-								<td>{{item.xingid}}</td>
-								<td>{{item.jinkou}}</td>
-								<td>{{item.cankaoprice}}</td>
-								<td>{{item.caryearmoney}}</td>
-							</tr>
-						</table>
-					</div>
-				</div>
-			</div>
+			     	 </div>
+			    </div><!-- /.modal-content -->
+			  </div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+			<div class="modal fade" id="chepai" class="chepai"  role="dialog">
+			  <div class="modal-dialog" role="document" style="width: 500px;">
+			    <div class="modal-content">
+			    	<div class="modal-header" style="height: 60px;" id="dhl">
+				      	<button type="button" class="close"><span aria-hidden="true" class="guan1">&times;</span></button>
+				      	<h4 class="modal-title" style="margin-top:5px;">车牌</h4>
+				      	<div class="col-md-9"></div>
+				 	</div>
+			     	<div class="modal-body" style="margin-top: 0px;">
+							<div style="margin-left: 20px;margin-top: 5px;">
+								<button @click="xuanchepai" v-for="item,index in chepai" style="width: 40px;height: 40px;margin:3px"> 
+									{{item.chepai}}
+								</button>
+							</div>
+			     	 </div>
+			    </div><!-- /.modal-content -->
+			  </div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+			<div class="modal fade" id="pinpai" class="pinpai"  role="dialog">
+			  <div class="modal-dialog" role="document" style="width:850px;">
+			    <div class="modal-content">
+			    	<div class="modal-header" style="height: 60px;" id="dhl">
+				      	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="guan2">&times;</span></button>
+				      	<h4 class="modal-title" style="margin-top:5px;">品牌车型</h4>
+				      	<div class="col-md-9"></div>
+				      	<div >
+				      	  <button type="button" class="btn btn-success bao1" data-dismiss="modal" style="margin-top: -50px;margin-left: 100px; vertical-align: middle; width: 60px;" @click="xuanz">选择</button>
+				      	</div>
+				 	</div>
+			     	<div class="modal-body" style="margin-top: 0px;">
+							<div class="row">
+								<div class="col-sm-5" style="margin-left: -5px;margin-bottom: 10px;">
+									<input class="so pinpainame" size="28" placeholder="匹配 品牌名称/首字母"/>
+									<button class="btn btn-danger" @click="querypinpai">搜索</button>
+								</div>
+								<div class="col-sm-7" style="margin-left: -15px;margin-bottom: 10px;">
+									<input class="so chexingname" size="32" placeholder="匹配 车型编码/车型名称"/>
+									<button class="btn btn-danger zuo" @click="querychexing">搜索</button>
+								</div>
+							</div>
+							<div class="row as">
+								<div class="col-sm-5">
+									<table class="table table-bordered table-hover">
+										<tr>
+											<th>编码</th>
+											<th>品牌名称</th>
+											<th>首字母</th>
+										</tr>
+										<tr @click="carpindian" v-for="item in carbrank">
+											<td>{{item.carbankid}}</td>
+											<td>{{item.carbankname}}</td>
+											<td>{{item.firstword}}</td>
+										</tr>
+									</table>
+								</div>
+								<div class="col-sm-7" style="width: 460px; overflow:auto;">
+									<table class="table table-bordered table-hover" style="width: 1000px;">
+										<tr>
+											<th>车型ID</th>
+											<th>车型名称</th>
+											<th>参考价格</th>
+											<th>车辆年款</th>
+										</tr>
+										<tr @click="carxingdian" v-for="item in carxing">
+											<td>{{item.xingid}}</td>
+											<td>{{item.jinkou}}</td>
+											<td>{{item.cankaoprice}}</td>
+											<td>{{item.caryearmoney}}</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+			     	 </div>
+			    </div><!-- /.modal-content -->
+			  </div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+			
+
+			
+
 			</div>
 		</div>
-		<script type="text/javascript" src="layui/layui.js" ></script>
 		<script type="text/javascript" src="js/jquery-1.8.3.js" ></script>
+		<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 			<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" src="js/my.js"></script>
 	
@@ -723,31 +730,33 @@
 						vm.cheliang={};
 						if(se!=""){
 							se.css("background-color","transparent");
-						}
+						}	
 						$(event.srcElement).parent().css("background-color","yellow").siblings().css("background-color","transparent");
 						kehunos=$(event.srcElement).parent()[0].cells[0].innerHTML;
-						$.ajax({
-							url:data.ip+"querybykehuno",
-							data:{
-								kehuno:kehunos
-							},
-							type: "get",
-							dataType: "json",
-							success:function(response) {
-								console.log(response);
-								vm.kehucar=response;
-							}
-						});
+						
 					},
 					car:function(event){
 						$(event.srcElement).parent().css("background-color","yellow").siblings().css("background-color","transparent");
 						var kehuno=$(event.srcElement).parent()[0].cells[0].innerHTML;
 						se=$(event.srcElement).parent();
+						var kehunocar;
 						for(i=0;i<vm.kehucar.length;i++){
 							if(kehuno==vm.kehucar[i].chepai){
 								vm.cheliang=vm.kehucar[i];
 							}
 						}
+						$.ajax({
+							url:data.ip+"querybykehub",
+							data:{
+								kehuno:vm.cheliang.kehuno
+							},
+							type: "get",
+							dataType: "json",
+							success:function(response) {
+								console.log(response);
+								vm.kehu=response;
+							}
+						});
 //						$.ajax({
 //							url:data.ip+"querybykehuno",
 //							data:{
@@ -780,18 +789,17 @@
 							alert("请选择完整！");
 						}else{
 							$(".carbankname").val(carbrandname);
-							vm.xinke.car.carbankid=parseInt(carbrandid);
 							vm.cheliang.carbankid=parseInt(carbrandid);
-							vm.xinke.car.xinghao=vm.jinkou;
 							vm.cheliang.xinghao=vm.jinkou;
 							$(".jinkous").val(vm.jinkou);
+							$('#pinpai').modal('hide');
 							$(".pinpai").hide();
 						}
 					},xuanchepai:function(event){
 						vm.chepaizi=$(event.srcElement)[0].innerText;
-						vm.xinke.car.chepai=vm.chepaizi;
-						vm.cheliang.chepai=vm.chepaizi;
 						$(".paipai").val(vm.chepaizi);
+						vm.cheliang.chepai=vm.chepaizi;
+						$('#chepai').modal('hide');
 						$(".chepai").hide();
 					},kai:function(){
 						window.open('zkehucha.html','big','fullscreen=yes');
@@ -802,7 +810,7 @@
 						}else{
 							vm.cheliang.bei1="否";
 						}
-						alert(vm.cheliang.chepai);
+						vm.cheliang.chepai=$(".paipai").val();
 						var c=0;
 						for(b=0;b<vm.chepai.length;b++){
 			   				if(vm.cheliang.chepai==vm.chepai[b].chepai){
@@ -824,6 +832,7 @@
 											alert("添加成功！");
 											vm.cheliang={};
 											query();
+											$('#chezliao').modal('hide');
 											$(".chezliao").hide();
 										}		
 									}
@@ -854,6 +863,7 @@
 										alert("修改成功！");
 										vm.cheliang={};
 										query();
+										$('#xiugaiche').modal('hide');
 										$(".xiugaiche").hide();
 									}		
 								}
@@ -933,38 +943,70 @@
 									alert("该客户暂无添加车辆！");
 								}else{
 									$.ajax({
-										url:data.ip+"deletecar",
-										data:{
-											chepai:vm.cheliang.chepai
-										},
-										type: "get",
-										dataType: "json",
-										success:function(response) {
-											if(response>0){
-												alert("删除成功！");
-												vm.cheliang={};
-												query();
+											url:data.ip+"queryjieche",
+											data:{
+												chepai:vm.cheliang.chepai
+											},
+											type: "get",
+											dataType: "json",
+											success:function(response) {
+												console.log(response);
+												if(response.length>0){
+													alert("该车辆正在执行项目中，无法删除！");
+													
+												}else{
+													$.ajax({
+														url:data.ip+"deletecar",
+														data:{
+															chepai:vm.cheliang.chepai
+														},
+														type: "get",
+														dataType: "json",
+														success:function(response) {
+															if(response>0){
+																alert("删除成功！");
+																vm.cheliang={};
+																query();
+															}
+														}
+													});
+												}
 											}
-										}
-									});
+										});
 									
 								}
 							}else{
 								$.ajax({
-									url:data.ip+"deletecar",
-									data:{
-										chepai:vm.cheliang.chepai
-									},
-									type: "get",
-									dataType: "json",
-									success:function(response) {
-										if(response>0){
-											alert("删除成功！");
-											vm.cheliang={};
-											query();
-										}
-									}
-								});
+											url:data.ip+"queryjieche",
+											data:{
+												chepai:vm.cheliang.chepai
+											},
+											type: "get",
+											dataType: "json",
+											success:function(response) {
+												console.log(response);
+												if(response.length>0){
+													alert("该车辆正在执行项目中，无法删除！");
+													
+												}else{
+													$.ajax({
+														url:data.ip+"deletecar",
+														data:{
+															chepai:vm.cheliang.chepai
+														},
+														type: "get",
+														dataType: "json",
+														success:function(response) {
+															if(response>0){
+																alert("删除成功！");
+																vm.cheliang={};
+																query();
+															}
+														}
+													});
+												}
+											}
+										});
 							}
 						}
 					},querypinpai:function(){
@@ -981,84 +1023,56 @@
 							se.css("background-color","transparent");
 						}
 						$.ajax({
-							url: data.ip + "querymokehu",
+							url: data.ip + "querymokehucar",
 							data:{
-								kehuno:name,
-								kehuphone:name
+								chepai:name,
 							},
 							type: "get",
 							dataType: "json",
 							success:function(response) {
-								vm.kehumo=response;
-								console.log(vm.kehumo)
-								if(vm.kehumo.length==0){
+								vm.kehucar=response;
+								console.log(vm.kehucar)
+								if(vm.kehucar.length==0){
 									$.ajax({
-										url:data.ip+"querymokehucar",
+										url:data.ip+"querymokehu",
 										data:{
-											chepai:name
+											kehuno:name,
+											kehuphone:name
 										},
 										type: "get",
 										dataType: "json",
 										success:function(response) {
-											vm.kehucarmo=response;
+											vm.kehumo=response;
+											
 											$.ajax({
-												url:data.ip+"querybykehub",
+												url:data.ip+"querybykehuno",
 												data:{
-													kehuno:vm.kehucarmo[0].kehuno
+													kehuno:vm.kehumo[0].kehuno
 												},
 												type: "get",
 												dataType: "json",
 												success:function(response) {
 													console.log(response);
-													vm.kehu=response;
-													kehunodai=vm.kehu[0].kehuno;
-													if(kehunos!=0){
-														kehunodai=kehunos;
-													}
-													for(var i=0;i<vm.kehu.length;i++){
-														if(kehunodai==vm.kehu[i].kehuno){
-															vm.xinkehu=vm.kehu[i];
-														}
-													}
-													$.ajax({
-														url:data.ip+"querybykehuno",
-														data:{
-															kehuno:vm.kehu[0].kehuno
-														},
-														type: "get",
-														dataType: "json",
-														success:function(response) {
-															console.log(response);
-															vm.kehucar=response;
-														}
-													});
+													vm.kehucar=vm.kehucarmo;
+													
 												}
 											});
 										}
 									});
 								}else{
-									vm.kehu=vm.kehumo;
-									kehunodai=vm.kehu[0].kehuno;
-									if(kehunos!=0){
-										kehunodai=kehunos;
-									}
-									for(var i=0;i<vm.kehu.length;i++){
-										if(kehunodai==vm.kehu[i].kehuno){
-											vm.xinkehu=vm.kehu[i];
-										}
-									}
 									$.ajax({
-										url:data.ip+"querybykehuno",
+										url:data.ip+"querybykehub",
 										data:{
-											kehuno:vm.kehu[0].kehuno
+											kehuno:vm.kehucar[0].kehuno
 										},
 										type: "get",
 										dataType: "json",
 										success:function(response) {
 											console.log(response);
-											vm.kehucar=response;
+											vm.kehu=response;
 										}
 									});
+									
 									if(se1!=""){
 										se1.css("background-color","transparent");
 									}
@@ -1071,6 +1085,10 @@
 						});
 						$(".tiaojian").val("");
 					},chaxun:function(){
+						$(".jinkous").val("");
+						$(".paipai").val("");
+						$(".carbankname").val("");
+						$('#chaxun').modal('show');
 						$(".chaxun").show();
 					},chaxunqding:function(){
 							chashuju();
@@ -1101,11 +1119,7 @@
 					     input.name = "name";
 					     input.value = vm.chaname;
 					     form.appendChild(input);
-					     var input = document.createElement("input");
-					     input.type = "hidden";
-					     input.name = "kehunos";
-					     input.value = kehunos;
-					     form.appendChild(input);
+					   
 					     
 					    form.submit();
 					    vm.chaname="";
@@ -1116,58 +1130,63 @@
 			});
 			function chashuju(){
 				$.ajax({
-							url:data.ip+"duochakehu",
-							data:JSON.stringify(vm.chakehu),
+							url:data.ip+"duochacar",
+							data:JSON.stringify(vm.chacar),
 							contentType:"application/json;charset=utf-8",
 							type:"post",
 							dataType:"json",
 							success:function(response) {
 								if(response.length==0){
-									alert("你要找的客户信息不存在！");
-								}else if(Object.keys(vm.chakehu).length == 0&& Object.keys(vm.chacar).length != 0){
+									alert("你要找的车辆信息不存在！");
+								}else if(Object.keys(vm.chakehu).length != 0&& Object.keys(vm.chacar).length == 0){
 									$.ajax({
-										url:data.ip+"duochacar",
-										data:JSON.stringify(vm.chacar),
+										url:data.ip+"duochakehu",
+										data:JSON.stringify(vm.chakehu),
 										contentType:"application/json;charset=utf-8",
 										type:"post",
 										dataType:"json",
 										success:function(response) {
-											vm.kehucarmo=response;
-											if(vm.kehucarmo.length==0){
+											vm.kehumo=response;
+											if(vm.kehumo.length==0){
 												alert("查无此数据！");
 												return;
 											}
 											$.ajax({
-												url:data.ip+"querybykehub",
+												url:data.ip+"querybykehuno",
 												data:{
-													kehuno:vm.kehucarmo[0].kehuno
+													kehuno:vm.kehumo[0].kehuno
 												},
 												type: "get",
 												dataType: "json",
 												success:function(response) {
 													console.log(response);
-													vm.kehu=response;
-													kehunodai=vm.kehu[0].kehuno;
-													if(kehunos!=0){
-														kehunodai=kehunos;
-													}
-													for(var i=0;i<vm.kehu.length;i++){
-														if(kehunodai==vm.kehu[i].kehuno){
-															vm.xinkehu=vm.kehu[i];
+													vm.kehucar=response;
+													if(vm.kehucar.length==0){
+														alert("改用户暂无车辆！");
+														return;
+													}else{
+														kehunodai=vm.kehucar[0].kehuno;
+														if(kehunos!=0){
+															kehunodai=kehunos;
 														}
-													}
-													$.ajax({
-														url:data.ip+"querybykehuno",
-														data:{
-															kehuno:vm.kehu[0].kehuno
-														},
-														type: "get",
-														dataType: "json",
-														success:function(response) {
-															console.log(response);
-															vm.kehucar=response;
+														for(var i=0;i<vm.kehucar.length;i++){
+															if(kehunodai==vm.kehucar[i].kehuno){
+																vm.xinke=vm.kehucar[i];
+															}
 														}
-													});
+														$.ajax({
+															url:data.ip+"querybykehub",
+															data:{
+																kehuno:vm.kehucar[0].kehuno
+															},
+															type: "get",
+															dataType: "json",
+															success:function(response) {
+																console.log(response);
+																vm.kehu=response;
+															}
+														});
+													}
 												}
 											});
 										}
@@ -1176,6 +1195,7 @@
 									vm.chacarss=vm.chacar;
 									vm.chakehu={};
 									vm.chacar={};
+									$('#chaxun').modal('hide');
 									$(".chaxun").hide();
 								}else if(Object.keys(vm.chakehu).length != 0 && Object.keys(vm.chacar).length != 0){
 									$.ajax({
@@ -1226,28 +1246,29 @@
 									vm.chacarss=vm.chacar;
 									vm.chakehu={};
 									vm.chacar={};
+									$('#chaxun').modal('hide');
 									$(".chaxun").hide();
 								}else{
-									vm.kehu=response;
-									kehunodai=vm.kehu[0].kehuno;
+									vm.kehucar=response;
+									kehunodai=vm.kehucar[0].kehuno;
 									if(kehunos!=0){
 										kehunodai=kehunos;
 									}
-									for(var i=0;i<vm.kehu.length;i++){
-										if(kehunodai==vm.kehu[i].kehuno){
-											vm.xinkehu=vm.kehu[i];
+									for(var i=0;i<vm.kehucar.length;i++){
+										if(kehunodai==vm.kehucar[i].kehuno){
+											vm.xinke=vm.kehucar[i];
 										}
 									}
 									$.ajax({
-										url:data.ip+"querybykehuno",
+										url:data.ip+"querybykehub",
 										data:{
-											kehuno:vm.kehu[0].kehuno
+											kehuno:vm.kehucar[0].kehuno
 										},
 										type: "get",
 										dataType: "json",
 										success:function(response) {
 											console.log(response);
-											vm.kehucar=response;
+											vm.kehu=response;
 										}
 									});
 									if(se1!=""){
@@ -1260,6 +1281,7 @@
 									vm.chacarss=vm.chacar;
 									vm.chakehu={};
 									vm.chacar={};
+									$('#chaxun').modal('hide');
 									$(".chaxun").hide();
 								}
 							}
@@ -1318,6 +1340,7 @@
 					if(vm.kehucar[0]==undefined){
 						alert("该客户暂无添加车辆！");
 					}else{
+						$('#xiugaiche').modal('show');
 						$(".xiugaiche").show();
 						if(vm.cheliang.bei1=="是"){
 							$("[name=checkss]").prop("checked", true);
@@ -1328,7 +1351,7 @@
 						
 					}
 				}else{
-					
+					$('#xiugaiche').modal('show');
 					$(".xiugaiche").show();
 						if(vm.cheliang.bei1=="是"){
 							$("[name=checkss]").prop("checked", true);
@@ -1401,7 +1424,7 @@
 	        }
 			$(".haoma").click(function(){
 				if($(this).disabled==true){
-					alert(1);
+					
 				}else{
 					$(".chepai").show();
 				}
@@ -1416,6 +1439,7 @@
 			})
 			$(".znegjiache").click(function(){
 				da=1;
+				vm.cheliang={};
 				$(".jinkous").val("");
 				$(".paipai").val("");
 				$(".carbankname").val("");
@@ -1432,7 +1456,7 @@
 				$(".cheliangno").val(vm.xinkehu.kehuno);
 				$(".cheliangname").val(vm.xinkehu.kehuname);
 				
-				$(".chezliao").show();
+				$('#chezliao').modal('show');
 				$.ajax({
 					url:data.ip+"queryfadoji",
 					type: "get",
@@ -1523,22 +1547,23 @@
 					se.css("background-color","transparent");
 				}
 				$.ajax({
-					url: data.ip + "querykehu",
+					url: data.ip + "querykehucar",
 					type: "get",
 					dataType: "json",
 					success:function(response) {
-						vm.kehu=response;
-						kehunodai=vm.kehu[0].kehuno;
+						console.log(response);
+						vm.kehucar=response;
+						kehunodai=vm.kehucar[0].kehuno;
 						if(kehunos!=0){
 							kehunodai=kehunos;
 						}
-						for(var i=0;i<vm.kehu.length;i++){
-							if(kehunodai==vm.kehu[i].kehuno){
-								vm.xinkehu=vm.kehu[i];
+						for(var i=0;i<vm.kehucar.length;i++){
+							if(kehunodai==vm.kehucar[i].kehuno){
+								vm.xinkehu=vm.kehucar[i];
 							}
 						}
 						$.ajax({
-							url:data.ip+"querybykehuno",
+							url:data.ip+"querybykehub",
 							data:{
 								kehuno:vm.xinkehu.kehuno
 							},
@@ -1546,7 +1571,7 @@
 							dataType: "json",
 							success:function(response) {
 								console.log(response);
-								vm.kehucar=response;
+								vm.kehu=response;
 							}
 						});
 					}
@@ -1591,21 +1616,25 @@
 				$(".chezliao").show();
 			})
 			$(".guan5").click(function(){
+				$('#chezliao').modal('hide');
 				$(".chezliao").hide();
 			})
 			$(".chehao").click(function(){
 				$(".chepai").show();
 			})
 			$(".guan1").click(function(){
+				$('#chepai').modal('hide');
 				$(".chepai").hide();
 			})
 			$(".chepin").click(function(){
 				$(".pinpai").show();
 			})
 			$(".guan2").click(function(){
+				$('#pinpai').modal('hide');
 				$(".pinpai").hide();
 			})
 			$(".guan20").click(function(){
+				$('#chaxun').modal('hide');
 				$(".chaxun").hide();
 			})
 			$(".xiugaiche").hide();
@@ -1616,6 +1645,7 @@
 				vm.cheliang={};
 				vm.car.xinghao="";
 				query();
+				$('#xiugaiche').modal('hide');
 				$(".xiugaiche").hide();	
 			})
 		</script>

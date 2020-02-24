@@ -247,11 +247,20 @@
 						kehu:[],
 						huiyuan:[],
 						kehucar:[],
-						yuangong:[]
+						yuangong:[],
+						jinrtixin:{}
 					}
 				}
 			})
-			
+//			$.ajax({
+//				url:data.ip+"queryjinrtixin",
+//				type: "get",
+//				dataType: "json",
+//				success:function(response) {
+//					console.log(response);
+//					vm.jinrtixin=response;
+//				}
+//			});
 			function query(){
 				vm.kehu=[];
 				$.ajax({

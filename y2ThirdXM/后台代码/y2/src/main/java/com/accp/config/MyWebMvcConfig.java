@@ -49,7 +49,6 @@ public class MyWebMvcConfig extends WebMvcConfigurationSupport {
 		//json格式转换器
 		MappingJackson2HttpMessageConverter jackson = new MappingJackson2HttpMessageConverter();
 		converters.add(jackson);
-		
 		ByteArrayHttpMessageConverter bytemessage = new ByteArrayHttpMessageConverter();
 		converters.add(bytemessage);
 		super.configureMessageConverters(converters);

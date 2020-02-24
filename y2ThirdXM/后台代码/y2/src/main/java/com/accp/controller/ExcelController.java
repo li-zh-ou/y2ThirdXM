@@ -162,17 +162,13 @@ public class ExcelController {
 		return new ResponseEntity<byte[]>(baos.toByteArray(),headers,HttpStatus.OK);
 	}
 	@PostMapping("/exportExcelcar")
-	public ResponseEntity<byte []> exportExcelcar(String chak,String chac,String name,String kehunos) throws IOException{	
+	public ResponseEntity<byte []> exportExcelcar(String chak,String chac,String name) throws IOException{	
 		ObjectMapper mapper = new ObjectMapper();
-		List<Kehu> keq=ser.QueryKehu();
-		List<Kehucar> list=ser.QueryBykehuno(keq.get(0).getKehuno());
+		List<Kehucar> list=ser.querykehucar();
 		if(name=="") {
-			if(chak==null && chac==null && kehunos!=null) {
-				list=ser.QueryBykehuno(kehunos);
-			}
-			if(chak==null && chac==null && kehunos==null) {
-				List<Kehu> ke=ser.querybykehub(list.get(0).getKehuno());
-				list=ser.QueryBykehuno(ke.get(0).getKehuno());
+			if(chak==null && chac==null) {
+				list=ser.querykehucar();
+				
 			}else if(chak!=null && chac==null){
 				Kehu k = mapper.readValue(chak, Kehu.class);
 				List<Kehu> ke=ser.duotiaojianchakehu(k);
@@ -180,28 +176,26 @@ public class ExcelController {
 			}else if(chak!=null && chac!=null) {
 				Kehu k = mapper.readValue(chak, Kehu.class);
 				Kehucar car=mapper.readValue(chac, Kehucar.class);
-				List<Kehu> kes=ser.duotiaojianchakehu(k);
-				List<Kehucar> cr=ser.duotiaojianchacar(car);
-				if(list.size()==0 && cr.size()==0) {
+				List<Kehucar> list1=ser.duotiaojianchacar(car);
+				List<Kehu> cr=ser.duotiaojianchakehu(k);
+				if(list1.size()==0) {
 					return null;
-				}else if(list.size()!=0 && cr.size()!=0) {
-					List<Kehu> ke=ser.querybykehub(cr.get(0).getKehuno());
-					list=ser.QueryBykehuno(ke.get(0).getKehuno());
-				}else if(list.size()!=0 && cr.size()==0) {
-					List<Kehu> ke=ser.querybykehub(chak);
-					list=ser.QueryBykehuno(ke.get(0).getKehuno());
-				}else if(list.size()==0 && cr.size()!=0) {
-					List<Kehu> ke=ser.querybykehub(cr.get(0).getKehuno());
+				}else if(list1.size()==0 && cr.size()!=0) {
+					list=ser.duotiaojianchacar(car);
+				}else if(list1.size()!=0 && cr.size()!=0){
+					List<Kehu> ke=ser.querybykehub(list1.get(0).getKehuno());
 					list=ser.QueryBykehuno(ke.get(0).getKehuno());
 				}
+			}else if(chak==null && chac!=null) {
+				Kehucar car=mapper.readValue(chac, Kehucar.class);
+				list=ser.duotiaojianchacar(car);
 			}
 		}else {
 			list =ser.querymokehucar(name);
-			List<Kehu> ke=ser.querybykehub(list.get(0).getKehuno());
-			list=ser.QueryBykehuno(ke.get(0).getKehuno());
 			if(list.size()==0) {
-				List<Kehu> kes=ser.querymokehu(name, name);
-				list=ser.QueryBykehuno(kes.get(0).getKehuno());
+				List<Kehu> cr=ser.querymokehu(name,name);
+				List<Kehucar> ke=ser.QueryBykehuno(cr.get(0).getKehuno());
+				list=ke;
 			}
 		}
 		

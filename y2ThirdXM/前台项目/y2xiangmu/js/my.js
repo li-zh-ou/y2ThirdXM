@@ -7,7 +7,10 @@ function loadPerms(){
 	$.ajax({
 		url: data.ip + "findPerms",
 		type: "get",
-		dataType: "json",
+		xhrFields: {
+			withCredentials: true
+		},
+		dataType: "JSON",
 		success: function(response) {
 			data.perms = response;
 		},

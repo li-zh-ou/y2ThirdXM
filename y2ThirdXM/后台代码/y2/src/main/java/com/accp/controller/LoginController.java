@@ -29,6 +29,7 @@ public class LoginController {
 			return null;
 		}
 		session.setAttribute("yg", ss.get(0));
+		System.out.println(session);
 		Map<String, Object> map = new HashMap<>();
 		map.put("user", ss.get(0));
 		map.put("token", session.getId());
