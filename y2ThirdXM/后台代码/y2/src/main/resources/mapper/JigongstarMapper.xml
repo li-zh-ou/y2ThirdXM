@@ -12,7 +12,7 @@
   </resultMap>
   <!-- 技工星级修改 -->
   <update id="upjgxj">
-  		UPDATE `jigongstar` SET `JiStarId` = #{jistarid},`StarName` = #{starname},`TiCheng` = #{ticheng} WHERE `JiStarId` = #{ids} ;
+  		UPDATE `jigongstar` SET `StarName` = #{starname},`TiCheng` = #{ticheng} WHERE `JiStarId` = #{jistarid} ;
   </update>
   
   <sql id="Example_Where_Clause" >

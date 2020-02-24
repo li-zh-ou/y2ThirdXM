@@ -12,8 +12,15 @@
 				padding: 1em 2em;
 				display: flex;
 			}
-			#dhl a{
-				font-size: 15px;
+			
+			.shang{
+			    margin-top: 10px;
+			    padding-top: 10px;
+			    padding-left:15px;
+		   	}
+		   	
+		   	.guan{
+			    font-size: 35px;
 			}
 		
 		</style>
@@ -24,59 +31,122 @@
 			<div class="modal fade" tabindex="-1" role="dialog" id="xzbz">
 			<div class="modal-dialog" role="document" style="width:300px;">
 				<div class="modal-content">
-					<div class="modal-header" id="dhl">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<div class="col-md-7">
-							<h4>选择班组</h4>
+					<div class="modal-header" style="height: 60px;">
+	           			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="guan">&times;</span></button>
+	           			<h4 class="modal-title" style="margin-top:5px;">选择班组</h4>
+			           	<div >
+			             	<button type="button" class="btn btn-success" data-dismiss="modal" style="margin-top: -50px;margin-left: 180px; vertical-align: middle; width: 60px;" >确定</button>
+			          	</div>
+     				</div>
+					<div class="row modal-body"  style="margin-top: -20px; ">
+						<div class="shang">
+							
+							<div class="col-md-2"></div>
+							<div class="col-md-8" style="border: 1px solid #E6E6E6;">
+								
+								<ul id="treeDemo" class="ztree"></ul>
+								
+							</div>
+							<div class="col-md-2"></div>
+					
 						</div>
 					</div>
-					<div class="row">
-					<div class="col-md-2"></div>
-						
-					<div class="col-md-8" style="border: 1px solid #E6E6E6;">
-						<ul id="treeDemo" class="ztree"></ul>
-					</div>
-				
-					<div class="col-md-2"></div>
-					</div>	
 				</div>
 			</div>
 		</div>
 		
-		<div class="container-fluid" >
 
+		<div>
 			<div  class="row" style="border: 1px solid #E6E6E6;" >
 					<h3 class="col-md-11">外勤车辆</h3>
 					<div class="col-md-1" id="tbss">
 						<button type="button" class="btn btn-default" >关闭</button>
 					</div>
 			</div>
-			<div class="row" id="dhl" style="border: 1px solid #E6E6E6;">
-				<div class="col-md-10">
-					<p style="margin-top:25px;">
-						车牌号:<input v-model="hqbmxz.chepai" type="text">
-						品牌:<input v-model="hqbmxz.carbank" type="text">
-						车型:<input v-model="hqbmxz.chexing" type="text">
-						当前里程:<input v-model="hqbmxz.nowli" type="text">
-						班组:<input v-model="hqbmxz.banid" type="text" disabled="true">
-						<button style="vertical-align: middle" data-toggle="modal" data-target="#xzbz">选择班组</button>
-					</p>
-				</div>
-				<ol class="breadcrumb col-md-2">
-					<li><span class="iconfont" style="vertical-align: middle">&#xe62c;</span><a href="#" style="vertical-align: middle" @click="insert">增加</a></li>
-				  	<li><span class="iconfont" style="vertical-align: middle">&#xe614;</span><a href="#" style="vertical-align: middle" @click="del(hqbmxz.chepai)">删除</a></li>
-				  	<li><span class="iconfont" style="vertical-align: middle">&#xe612;</span><a href="#" style="vertical-align: middle" @click="up">保存</a></li>
-				</ol>
-			</div>
+			
 			<div>
+
+				<ol class="breadcrumb">
+					<li><span class="iconfont" style="vertical-align: middle">&#xe62c;</span><a href="#" style="vertical-align: middle" @click="insert">增加车辆</a></li>
+				  	<li><span class="iconfont" style="vertical-align: middle">&#xe614;</span><a href="#" style="vertical-align: middle" @click="del(hqbmxz.chepai)">删除车辆</a></li>
+				  	<li><span class="iconfont" style="vertical-align: middle">&#xe612;</span><a href="#" style="vertical-align: middle" @click="up">修改车辆</a></li>
+				</ol>
+				
+			</div>
+		
+			<div>
+				
+				<table>
+					<tr>
+						<td class="col-md-2">
+							<div class="input-group">
+												
+								<span class="input-group-addon" >车牌号码:</span>
+								<input v-model="hqbmxz.chepai" type="text" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
+										
+							</div>
+						</td>					
+						<td class="col-md-2">
+							<div class="input-group">
+										
+								<span class="input-group-addon" >车辆品牌:</span>
+								<input v-model="hqbmxz.carbank" type="text" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
+									
+							</div>
+						</td>
+						<td class="col-md-2">
+							<div class="input-group">
+										
+								<span class="input-group-addon" >车辆类型:</span>
+								<input v-model="hqbmxz.chexing" type="text" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
+									
+							</div>
+						</td>
+						<td class="col-md-2"></td>
+						<td class="col-md-2"></td>
+						<td class="col-md-2"></td>
+					</tr>
+				</table>
+				<table>
+					<tr>
+						<td class="col-md-2">
+							<div class="input-group">
+							
+								<span class="input-group-addon" >当前里程:</span>
+								<input v-model="hqbmxz.nowli" type="text" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
+							
+							</div>
+						</td>
+						<td class="col-md-2">
+							<div class="input-group">
+							
+								<span class="input-group-addon" >选择班组:</span>
+								<input v-model="hqbmxz.banid" type="text" class="form-control" aria-describedby="basic-addon3" disabled="true" style="vertical-align: middle ; width:160px; height:33px;">
+							
+							</div>
+						</td>
+						<td class="col-md-2">
+							
+							<button style="vertical-align: middle" data-toggle="modal" data-target="#xzbz">选择班组</button>
+							
+						</td>
+						<td class="col-md-2"></td>
+						<td class="col-md-2"></td>
+						<td class="col-md-2"></td>
+					</tr>
+				</table>
+				
+			</div>
+			
+			<div class="row" id="tbss" style=" border: 1px solid #E6E6E6;height:470px;">
 				<table class="table table-hover table-bordered" style="width: 800px;">
 					
 					<tr>
-						<th>车牌号</th>
-						<th>品牌</th>
-						<th>车型</th>
-						<th>当前里程</th>
-						<th>归属班组</th>
+						<td>车牌号码</td>
+						<td>车辆品牌</td>
+						<td>车辆类型</td>
+						<td>当前里程</td>
+						<td>归属班组</td>
 							
 					</tr>			
 					

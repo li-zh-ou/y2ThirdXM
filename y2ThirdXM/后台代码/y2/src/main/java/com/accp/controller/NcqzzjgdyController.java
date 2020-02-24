@@ -159,8 +159,8 @@ public class NcqzzjgdyController {
 
 	// 岗位定义修改岗位
 	@PostMapping("/upgw")
-	public int upgw(Integer gangweid, String gangweiname, Integer ids) {
-		return ncqzzjgdyService.upgw(gangweid, gangweiname, ids);
+	public int upgw(Integer gangweid, String gangweiname) {
+		return ncqzzjgdyService.upgw(gangweid, gangweiname);
 	}
 
 	// 通讯名录详情
@@ -220,8 +220,8 @@ public class NcqzzjgdyController {
 
 	// 技工星级修改
 	@PostMapping("/upjgxj")
-	public int upjgxj(Integer jistarid, String starname, String ticheng, Integer ids) {
-		return ncqzzjgdyService.upjgxj(jistarid, starname, ticheng, ids);
+	public int upjgxj(Integer jistarid, String starname, String ticheng) {
+		return ncqzzjgdyService.upjgxj(jistarid, starname, ticheng);
 	}
 
 	// 技工星级删除

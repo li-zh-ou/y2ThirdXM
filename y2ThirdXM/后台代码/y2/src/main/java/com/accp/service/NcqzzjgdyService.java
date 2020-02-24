@@ -153,8 +153,8 @@ public class NcqzzjgdyService {
 	}
 
 	// 岗位定义修改岗位
-	public int upgw(Integer gangweid, String gangweiname, Integer ids) {
-		return gangweiMapper.update(gangweid, gangweiname, ids);
+	public int upgw(Integer gangweid, String gangweiname) {
+		return gangweiMapper.update(gangweid, gangweiname);
 	}
 
 	// 通讯名录详情
@@ -209,8 +209,8 @@ public class NcqzzjgdyService {
 	}
 
 	// 技工星级修改
-	public int upjgxj(Integer jistarid, String starname, String ticheng, Integer ids) {
-		return jigongstarMapper.upjgxj(jistarid, starname, ticheng, ids);
+	public int upjgxj(Integer jistarid, String starname, String ticheng) {
+		return jigongstarMapper.upjgxj(jistarid, starname, ticheng);
 	}
 
 	// 技工星级删除

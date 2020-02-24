@@ -11,277 +11,414 @@
 				padding: 1em 2em;
 				display: flex;
 			}
-			#dhl a{
-				font-size: 15px;
+			.shang{
+			    margin-top: 10px;
+			    padding-top: 10px;
+			    padding-left:15px;
+		   	}
+		   	
+		   	.guan{
+			    font-size: 35px;
 			}
+			
 		</style>
 	</head>
 	<body>
 		<div id="ctx" class="container-fluid row">
 			
-			<!-- 增加 -->
+		<!-- 增加 -->
 		<div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" >
 		  <div class="modal-dialog modal-lg" role="document" >
 		    <div class="modal-content"  style="width: 800px;">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		        
-		        <div class="row">
-		      		<div class="col-md-2" >
-						<h4 class="modal-title"  id="myModalLabel">技工资料</h4>
-					</div>
-					<div class="col-md-8"></div>
-					<div class="col-md-1" >
-						<button type="button" data-dismiss="modal" class="btn btn-success" @click="xxzjg">保存</button>
-					</div>
-				</div>
-				
-		      </div>
-		      <div class="modal-body">
-				<div>
-					
-					<table>
-						
-						<tr>
-							<td>技工编号:<input v-model="bzjg.jigongno" disabled="true" type="text" style="vertical-align: middle"></td>
-							<td>技工姓名:<input v-model="bzjg.jigongname" type="text" style="vertical-align: middle"></td>
-							<td>性别选择:<select v-model="bzjg.sex" style="vertical-align: middle; width:174px; height:26px;">
-									<option value="男">男</option>
-									<option value="女">女</option>
-								</select>
-							</td>
-						</tr>
-						
-						<tr>
-							<td>是否组长:<select v-model="bzjg.iszuzhang" style="vertical-align: middle; width:174px; height:26px;">
-									<option value="0">否</option>
-									<option value="1">是</option>
-								</select>
-							</td>
-							<td>所在班组:<select v-model="bzjg.banid" disabled="true" style="vertical-align: middle; width:174px; height:26px;">
-									<option :value="hqbz.banid">{{hqbz.banname}}</option>
-								</select>
-							</td>
-							<td>手机号码:<input v-model="bzjg.phone" type="text" style="vertical-align: middle"></td>
+		     <div class="modal-content">
+					<div class="modal-header" style="height: 60px;" >
+	           			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="guan">&times;</span></button>
+	           			<h4 class="modal-title" style="margin-top:5px;">技工新增</h4>
+	          			<div class="col-md-9"></div>
+			           	<div >
+			             	<button type="button" class="btn btn-success" data-dismiss="modal" style="margin-top: -50px;margin-left: 100px; vertical-align: middle; width: 60px;" @click="xxzjg">新增</button>
+			          	</div>
+     				</div>
+					<div class="row modal-body"  style="margin-top: -30px; ">
+						<div class="shang">
 							
-						</tr>
-						
-						<tr>
-							<td>登录账号:<input v-model="bzjg.login" type="text" style="vertical-align: middle"></td>
-							<td>微信账号:<input v-model="bzjg.wx" type="text" style="vertical-align: middle"></td>
-							<td>出生日期:<input v-model="bzjg.birthday" type="date" style="vertical-align: middle; width:174px; height:26px;"></td>
-						</tr>
-						
-						<tr>
-							<td>银行账号:<input v-model="bzjg.bankcard" type="text" style="vertical-align: middle"></td>
-							<td>身份证号:<input v-model="bzjg.idcard" type="text" style="vertical-align: middle"></td>
-							<td>开户银行:<select v-model="bzjg.bank" style="vertical-align: middle; width:174px; height:26px;">
-									<option value="建设银行">建设银行</option>
-									<option value="中国银行">中国银行</option>
-									<option value="交通银行">交通银行</option>
-								</select>
-							</td>
-						</tr>
-						
-						<tr>
-							<td>员工星级:<select v-model="bzjg.jigongxing" style="vertical-align: middle; width:174px; height:26px;">
-									<option v-for="item in jgxj" :value="item.jistarid">{{item.starname}}</option>
-								</select>
-							</td>
-							<td>维修工种:<input v-model="bzjg.weixiutype" type="text" style="vertical-align: middle"></td>
-							<td>维修品牌:<input v-model="bzjg.weixiubank" type="text" style="vertical-align: middle"></td>
-						</tr>
-						
-						<tr>
-							<td>现在地址:<input v-model="bzjg.address" type="text" style="vertical-align: middle;"></td>	
-							<td>户口地址:<input v-model="bzjg.hukouaddress" type="text" style="vertical-align: middle;"></td>
-						</tr>
-						
-					</table>
-					
-				</div>
-		      </div>
-		    </div>
-		  </div>
-		  
-		</div>
-		
-		<!--修改-->
-			<div class="modal fade bs-example-modal-lg" id="myModalupdate" tabindex="-1" role="dialog" >
-		  <div class="modal-dialog modal-lg" role="document" >
-		    <div class="modal-content"  style="width: 800px;">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		        
-		        <div class="row">
-		      		<div class="col-md-2" >
-						<h4 class="modal-title"  id="myModalLabel">技工资料</h4>
-					</div>
-					<div class="col-md-8"></div>
-					<div class="col-md-1" >
-						<button type="button" data-dismiss="modal" class="btn btn-success" @click="upjg">保存</button>
-					</div>
-				</div>
-				
-		      </div>
-		      <div class="modal-body">
-				<div>
-					
-					<table>
-						
-						<tr>
-							<td>技工编号:<input v-model="bzjgxg.jigongno" disabled="true" type="text" style="vertical-align: middle"></td>
-							<td>技工姓名:<input v-model="bzjgxg.jigongname" type="text" style="vertical-align: middle"></td>
-							<td>性别选择:<select v-model="bzjgxg.sex" style="vertical-align: middle; width:174px; height:26px;">
-									<option value="男">男</option>
-									<option value="女">女</option>
-								</select>
-							</td>
-						</tr>
-						
-						<tr>
-							<td>是否组长:<select v-model="bzjgxg.iszuzhang" style="vertical-align: middle; width:174px; height:26px;">
-									<option value="0">否</option>
-									<option value="1">是</option>
-								</select>
-							</td>
-							<td>所在班组:<select v-model="bzjgxg.banid" disabled="true" style="vertical-align: middle; width:174px; height:26px;">
-									<option :value="djjg.banid">{{djjg.banname}}</option>
-								</select>
-							</td>
-							<td>手机号码:<input v-model="bzjgxg.phone" type="text" style="vertical-align: middle"></td>
-							
-						</tr>
-						
-						<tr>
-							<td>登录账号:<input v-model="bzjgxg.login" type="text" style="vertical-align: middle"></td>
-							<td>微信账号:<input v-model="bzjgxg.wx" type="text" style="vertical-align: middle"></td>
-							<td>出生日期:<input v-model="bzjgxg.birthday" type="date" style="vertical-align: middle; width:174px; height:26px;"></td>
-						</tr>
-						
-						<tr>
-							<td>银行账号:<input v-model="bzjgxg.bankcard" type="text" style="vertical-align: middle"></td>
-							<td>身份证号:<input v-model="bzjgxg.idcard" type="text" style="vertical-align: middle"></td>
-							<td>开户银行:<select v-model="bzjgxg.bank" style="vertical-align: middle; width:174px; height:26px;">
-									<option value="建设银行">建设银行</option>
-									<option value="中国银行">中国银行</option>
-									<option value="交通银行">交通银行</option>
-								</select>
-							</td>
-						</tr>
-						
-						<tr>
-							<td>员工星级:<select v-model="bzjgxg.jigongxing" style="vertical-align: middle; width:174px; height:26px;">
-									<option v-for="item in jgxj" :value="item.jistarid">{{item.starname}}</option>
-								</select>
-							</td>
-							<td>维修工种:<input v-model="bzjgxg.weixiutype" type="text" style="vertical-align: middle"></td>
-							<td>维修品牌:<input v-model="bzjgxg.weixiubank" type="text" style="vertical-align: middle"></td>
-						</tr>
-						
-						<tr>
-							<td>现在地址:<input v-model="bzjgxg.address" type="text" style="vertical-align: middle;"></td>	
-							<td>户口地址:<input v-model="bzjgxg.hukouaddress" type="text" style="vertical-align: middle;"></td>
-						</tr>
-						
-					</table>
-					
-				</div>
-		      </div>
-		    </div>
-		  </div>
-		  
-		</div>
-		
-		<!--新增班组-->
-		<div class="modal fade " id="myModalbz" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		  <div class="modal-dialog " role="document" >
-		    <div class="modal-content"  style="width: 300px;">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<ul>
-					<li><h4 class="modal-title" id="myModalLabel2">新增班组</h4></li>
-					<li style="padding-left: 150px;"><button type="button" data-dismiss="modal" class="btn btn-success" @click="xzbzdw">保存</button></li>
-				</ul>
-		      </div>
-		      <div class="modal-body">
-				<div>
-					<table class="table table-bordered">
-						<tr>
-							<td>班组编号:<input type="text" value="无需设置" disabled="true"></td>		
-						</tr>
-						<tr>
-							<td>班组名称:<input v-model="xzbz.banname" type="text"></td>		
-						</tr>
-						<tr>
-							<td>班组权重:<select v-model="xzbz.parentid" disabled="true" style="vertical-align: middle; width:174px; height:26px;">
-									<option :value="hqbzfl.banid">{{hqbzfl.banname}}</option>
-							</td>		
-						</tr>
-					</table>
-				</div>
-		      </div>
-		    </div>
-		  </div>
-		  
-		</div>
-		
-		<!--查询模态框-->
-				<div class="modal fade" tabindex="-1" role="dialog" id="cxygmtk">
-			<div class="modal-dialog" role="document" style="width:300px;">
-				<div class="modal-content">
-					<div class="modal-header" id="dhl">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<div>
-								<button type="button" class="btn btn-success" data-dismiss="modal" style="vertical-align: middle; width: 150px;">保存</button>&nbsp;&nbsp;&nbsp;
-							</div>
-					</div>
-					<div class="row modal-body">
-					<table>
-						<tr>
-							<td>
-								员工编号:<input type="text" style="vertical-align: middle"/>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								员工姓名:<input type="text" style="vertical-align: middle"/>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								员工性别:<select style="vertical-align: middle; width:174px; height:26px;">
+							<p>
+								<div class="input-group" style="margin-top: 20px;">
+									
+									<span class="input-group-addon">技工编号:</span>
+									<input type="text" v-model="bzjg.jigongno" class="form-control" aria-describedby="basic-addon3" disabled="true" style="vertical-align: middle ; width:160px; height:33px;">
+									
+									<span class="input-group-addon">技工姓名:</span>
+									<input type="text" v-model="bzjg.jigongname" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
+									
+									<span class="input-group-addon">性别选择:</span>
+									<select v-model="bzjg.sex" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle; width:160px; height:33px;">
 										<option value="男">男</option>
 										<option value="女">女</option>
 									</select>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								员工岗位:<select style="vertical-align: middle; width:174px; height:26px;">
-										<option value="1">展厅经理</option>
-										<option value="2">销售顾问</option>
-										<option value="3">DCC主管</option>
+									 
+								</div>
+							</p>
+							
+							<p>
+								<div class="input-group" style="margin-top: 20px;">
+									
+									<span class="input-group-addon">是否组长:</span>
+									<select v-model="bzjg.iszuzhang" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle; width:160px; height:33px;">
+										<option value="0">否</option>
+										<option value="1">是</option>
 									</select>
-							</td>
-						</tr>
-						<tr>
-							<td>				
-								所在部门:<select style="vertical-align: middle; width:174px; height:26px;">
-											<option value="1">管理</option>
-											<option value="2">财务</option>
-											<option value="3">股东</option>
-										</select>
-							</td>
-						</tr>
-					</table>
+									
+									<span class="input-group-addon">所在班组:</span>
+									<select v-model="bzjg.banid" class="form-control" aria-describedby="basic-addon3" disabled="true" style="vertical-align: middle; width:160px; height:33px;">
+										<option :value="hqbz.banid">{{hqbz.banname}}</option>
+									</select>
+									
+									<span class="input-group-addon">手机号码:</span>
+									<input type="text" v-model="bzjg.phone" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
+									
+								</div>
+							</p>
+							
+							<p>
+								<div class="input-group" style="margin-top: 20px;">
+									
+									<span class="input-group-addon">登录账号:</span>
+									<input type="text" v-model="bzjg.login" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
+									
+									<span class="input-group-addon">微信账号:</span>
+									<input type="text" v-model="bzjg.wx" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
+									
+									<span class="input-group-addon">出生日期:</span>
+									<input type="date" v-model="bzjg.birthday" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
+									
+
+								</div>
+							</p>
+					
+							<p>
+								<div class="input-group" style="margin-top: 20px;">
+									
+									<span class="input-group-addon">银行账号:</span>
+									<input type="text" v-model="bzjg.bankcard" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
+									
+									<span class="input-group-addon">身份证号:</span>
+									<input type="text" v-model="bzjg.idcard" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
+									
+									<span class="input-group-addon">开户银行:</span>
+									<select v-model="bzjg.bank" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle; width:160px; height:33px;">
+										<option value="建设银行">建设银行</option>
+										<option value="中国银行">中国银行</option>
+										<option value="交通银行">交通银行</option>
+									</select>
+									
+
+								</div>
+							</p>
+							
+							<p>
+								<div class="input-group" style="margin-top: 20px;">
+									
+									<span class="input-group-addon">员工星级:</span>
+									<select v-model="bzjg.jigongxing" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle; width:160px; height:33px;">
+										<option v-for="item in jgxj" :value="item.jistarid">{{item.starname}}</option>
+									</select>
+									
+									<span class="input-group-addon">维修工种:</span>
+									<input type="text" v-model="bzjg.weixiutype" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
+
+									
+									<span class="input-group-addon">维修品牌:</span>
+									<input type="text" v-model="bzjg.weixiubank" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
+									
+								</div>
+							</p>
+							
+							<table>
+								<tr>
+									<td class="col-md-0">
+										<div class="input-group">
+														
+											<span class="input-group-addon" >现在地址:</span>
+											<input type="text" v-model="bzjg.address" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
+												
+										</div>
+									</td>	
+									<td class="col-md-7">
+										<div class="input-group">
+												
+											<span class="input-group-addon">户口地址:</span>
+											<input type="text" v-model="bzjg.hukouaddress" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
+											
+										</div>
+									</td>
+								</tr>
+							</table>
+							
+						</div>
+					</div>
+		      	</div>
+		    </div>
+		</div>
+	</div>
+	
+	<!--修改-->
+		<div class="modal fade bs-example-modal-lg" id="myModalupdate" tabindex="-1" role="dialog" >
+		  <div class="modal-dialog modal-lg" role="document" >
+		    <div class="modal-content"  style="width: 800px;">
+		     <div class="modal-content">
+					<div class="modal-header" style="height: 60px;" >
+	           			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="guan">&times;</span></button>
+	           			<h4 class="modal-title" style="margin-top:5px;">技工修改</h4>
+	          			<div class="col-md-9"></div>
+			           	<div >
+			             	<button type="button" class="btn btn-success" data-dismiss="modal" style="margin-top: -50px;margin-left: 100px; vertical-align: middle; width: 60px;" @click="upjg">修改</button>
+			          	</div>
+     				</div>
+					<div class="row modal-body"  style="margin-top: -30px; ">
+						<div class="shang">
+							
+							<p>
+								<div class="input-group" style="margin-top: 20px;">
+									
+									<span class="input-group-addon">技工编号:</span>
+									<input type="text" v-model="bzjgxg.jigongno" class="form-control" aria-describedby="basic-addon3" disabled="true" style="vertical-align: middle ; width:160px; height:33px;">
+									
+									<span class="input-group-addon">技工姓名:</span>
+									<input type="text" v-model="bzjgxg.jigongname" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
+									
+									<span class="input-group-addon">性别选择:</span>
+									<select v-model="bzjgxg.sex" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle; width:160px; height:33px;">
+										<option value="男">男</option>
+										<option value="女">女</option>
+									</select>
+									 
+								</div>
+							</p>
+							
+							<p>
+								<div class="input-group" style="margin-top: 20px;">
+									
+									<span class="input-group-addon">是否组长:</span>
+									<select v-model="bzjgxg.iszuzhang" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle; width:160px; height:33px;">
+										<option value="0">否</option>
+										<option value="1">是</option>
+									</select>
+									
+									<span class="input-group-addon">所在班组:</span>
+									<select v-model="bzjgxg.banid" class="form-control" aria-describedby="basic-addon3" disabled="true" style="vertical-align: middle; width:160px; height:33px;">
+										<option :value="djjg.banid">{{djjg.banname}}</option>
+									</select>
+									
+									<span class="input-group-addon">手机号码:</span>
+									<input type="text" v-model="bzjgxg.phone" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
+									
+								</div>
+							</p>
+							
+							<p>
+								<div class="input-group" style="margin-top: 20px;">
+									
+									<span class="input-group-addon">登录账号:</span>
+									<input type="text" v-model="bzjgxg.login" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
+									
+									<span class="input-group-addon">微信账号:</span>
+									<input type="text" v-model="bzjgxg.wx" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
+									
+									<span class="input-group-addon">出生日期:</span>
+									<input type="date" v-model="bzjgxg.birthday" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
+									
+
+								</div>
+							</p>
+					
+							<p>
+								<div class="input-group" style="margin-top: 20px;">
+									
+									<span class="input-group-addon">银行账号:</span>
+									<input type="text" v-model="bzjgxg.bankcard" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
+									
+									<span class="input-group-addon">身份证号:</span>
+									<input type="text" v-model="bzjgxg.idcard" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
+									
+									<span class="input-group-addon">开户银行:</span>
+									<select v-model="bzjgxg.bank" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle; width:160px; height:33px;">
+										<option value="建设银行">建设银行</option>
+										<option value="中国银行">中国银行</option>
+										<option value="交通银行">交通银行</option>
+									</select>
+									
+
+								</div>
+							</p>
+							
+							<p>
+								<div class="input-group" style="margin-top: 20px;">
+									
+									<span class="input-group-addon">员工星级:</span>
+									<select v-model="bzjgxg.jigongxing" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle; width:160px; height:33px;">
+										<option v-for="item in jgxj" :value="item.jistarid">{{item.starname}}</option>
+									</select>
+									
+									<span class="input-group-addon">维修工种:</span>
+									<input type="text" v-model="bzjgxg.weixiutype" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
+
+									
+									<span class="input-group-addon">维修品牌:</span>
+									<input type="text" v-model="bzjgxg.weixiubank" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
+									
+								</div>
+							</p>
+							
+							<table>
+								<tr>
+									<td class="col-md-0">
+										<div class="input-group">
+														
+											<span class="input-group-addon" >现在地址:</span>
+											<input type="text" v-model="bzjgxg.address" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
+												
+										</div>
+									</td>	
+									<td class="col-md-7">
+										<div class="input-group">
+												
+											<span class="input-group-addon">户口地址:</span>
+											<input type="text" v-model="bzjgxg.hukouaddress" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
+											
+										</div>
+									</td>
+								</tr>
+							</table>
+							
+						</div>
+					</div>
+		      	</div>
+		    </div>
+		</div>
+	</div>
+	
+	<!--新增班组-->
+	<div class="modal fade" tabindex="-1" role="dialog" id="xzbzmtk">
+		<div class="modal-dialog" role="document" style="width:300px;">
+			<div class="modal-content">
+				<div class="modal-header" style="height: 60px;">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="guan">&times;</span></button>
+					<h4 class="modal-title" style="margin-top:5px;">新增班组</h4>
+					<div>
+						<button type="button" class="btn btn-success" data-dismiss="modal" style="margin-top: -50px;margin-left: 180px; vertical-align: middle; width: 60px;" @click="xzbzdw">新增</button>
+					</div>
+				</div>
+					<div class="row modal-body"  style="margin-top: -30px; ">
+						<div class="shang">
+							
+							<p>
+								<div class="input-group" style="margin-top: 20px;">
+									
+									<span class="input-group-addon" >班组编号:</span>
+									<input type="text" value="无需设置"  class="form-control" aria-describedby="basic-addon3" disabled="true" style="vertical-align: middle ; width:160px; height:33px;">
+									
+								</div>
+							</p>
+							
+							<p>
+								<div class="input-group" style="margin-top: 20px;">
+									
+									<span class="input-group-addon" >班组名称:</span>
+									<input type="text" v-model="xzbz.banname"  class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
+									
+								</div>
+							</p>
+							
+							<p>
+								<div class="input-group" style="margin-top: 20px;">
+									
+									<span class="input-group-addon" >班组权重:</span>
+									<select v-model="xzbz.parentid" class="form-control" aria-describedby="basic-addon3" disabled="true" style="vertical-align: middle; width:160px; height:33px;">
+										<option :value="hqbzfl.banid">{{hqbzfl.banname}}</option>
+									</select>
+									
+								</div>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--查询模态框-->
+		<div class="modal fade" tabindex="-1" role="dialog" id="cxygmtk">
+			<div class="modal-dialog" role="document" style="width:300px;">
+				<div class="modal-content">
+					<div class="modal-header" style="height: 60px;">
+	           			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="guan">&times;</span></button>
+	           			<h4 class="modal-title" style="margin-top:5px;">查询技工</h4>
+			           	<div >
+			             	<button type="button" class="btn btn-success" data-dismiss="modal" style="margin-top: -50px;margin-left: 180px; vertical-align: middle; width: 60px;" >查询</button>
+			          	</div>
+     				</div>
+					<div class="row modal-body"  style="margin-top: -30px; ">
+						<div class="shang">
+							
+							<p>
+								<div class="input-group" style="margin-top: 20px;">
+									
+									<span class="input-group-addon" >技工编号:</span>
+									<input type="text" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
+									
+								</div>
+							</p>
+							
+							<p>
+								<div class="input-group" style="margin-top: 20px;">
+									
+									<span class="input-group-addon" >技工姓名:</span>
+									<input type="text" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
+									
+								</div>
+							</p>
+							
+							<p>
+								<div class="input-group" style="margin-top: 20px;">
+									
+									<span class="input-group-addon" >技工性别:</span>
+									<select class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle; width:160px; height:33px;">
+										<option value="男">男</option>
+										<option value="女">女</option>
+									</select>
+									
+								</div>
+							</p>
+							
+							<p>
+								<div class="input-group" style="margin-top: 20px;">
+									
+									<span class="input-group-addon" >技工星级:</span>
+									<select class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle; width:160px; height:33px;">
+										<option v-for="item in jgxj" :value="item.jistarid">{{item.starname}}</option>
+									</select>
+									
+								</div>
+							</p>
+							
+							<p>
+								<div class="input-group" style="margin-top: 20px;">
+									
+									<span class="input-group-addon" >所在班组:</span>
+									<select class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle; width:160px; height:33px;">
+										<option value="1">不要忘记先查询记得查询班组的语句不要查询=0的父节点</option>
+									</select>
+									
+								</div>
+							</p>
+					
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		
-		
-			
+
 			<div id="ctx" >
 				
 				<div class="row" style="border: 1px solid #E6E6E6;">
@@ -294,21 +431,21 @@
 						</div>
 				</div>
 			
-			<div id="dhl">
+			<div>
 				<ol class="breadcrumb">
-					<li><span class="iconfont" style="vertical-align: middle">&#xe62c;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#myModal" >增加员工</a></li>
-					<li><span class="iconfont" style="vertical-align: middle">&#xe612;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#myModalupdate">修改</a></li>
-					<li><span class="iconfont" style="vertical-align: middle">&#xe614;</span><a href="#" style="vertical-align: middle" @click="del">删除</a></li>
-					<li><span class="iconfont" style="vertical-align: middle">&#xe78a;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#cxygmtk">查询</a></li>
+					<li><span class="iconfont" style="vertical-align: middle">&#xe62c;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#myModal" >技工新增</a></li>
+					<li><span class="iconfont" style="vertical-align: middle">&#xe612;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#myModalupdate">技工修改</a></li>
+					<li><span class="iconfont" style="vertical-align: middle">&#xe614;</span><a href="#" style="vertical-align: middle" @click="del">技工删除</a></li>
+					<li><span class="iconfont" style="vertical-align: middle">&#xe78a;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#cxygmtk">技工查询</a></li>
 					<!--<li><span class="iconfont" style="vertical-align: middle">&#xe6b6;</span><a href="#" style="vertical-align: middle">班组权重</a></li>-->
 					<!--<li><span class="iconfont" style="vertical-align: middle">&#xe6a5;</span><a href="#" style="vertical-align: middle">导出</a></li>-->
-					<li><span class="iconfont" style="vertical-align: middle">&#xe613;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#myModalbz">新增班组</a></li>
+					<li><span class="iconfont" style="vertical-align: middle">&#xe613;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#xzbzmtk">新增班组</a></li>
 				</ol>
 			</div>
-			<div id="mydiv_2" class="col-md-2" style="border: 1px solid #E6E6E6; height:780px; overflow:scroll;">
+			<div class="col-md-2" style="border: 1px solid #E6E6E6; height:500px; overflow:scroll;">
 				<ul id="treeDemo" class="ztree"></ul>
 			</div>
-			<div  class="col-md-10" style="height:780px;overflow:scroll;">
+			<div  class="col-md-10" style="height:500px;overflow:scroll;">
 				<table class="table table-hover table-bordered" style="width: 2000px;">
 						<tr>
 							<td>班组编号</td>
@@ -373,7 +510,7 @@
 				hqbz:{},//获取班组
 				jgxj:{},//技工星级
 				bzjgxq:{},//班组技工详情
-				bzjg:{},//新增班组技工	
+				bzjg:{jigongno:""},//新增班组技工	
 				bzjgxg:{},//班组技工修改
 				djjg:{},//点击技工
 				xzbz:{},//新增班组
@@ -579,12 +716,14 @@
 		if (treeNode.parentid=="0") {
 			vm.hqbzfl=treeNode;
 			vm.xzbz.parentid=vm.hqbzfl.banid;
+			vm.cxbzjgxq();
 			console.log(vm.hqbzfl);
 			console.log(vm.xzbz.parentid);
 			return;
 		}
 		vm.hqbz=treeNode;
 		vm.bzjg.banid=vm.hqbz.banid;
+		vm.jgscbhzz();
 		console.log(vm.hqbz);
 		console.log(vm.bzjg.banid);
 		$.ajax({//点击树状图获取班组在根据班组id查询技工详情

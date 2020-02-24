@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 
 public interface GangweiMapper {
 	//岗位定义修改岗位
-	int update(Integer gangweiid,String gangweiname,Integer ids);
+	int update(Integer gangweid,String gangweiname);
 	
     int countByExample(GangweiExample example);
 
