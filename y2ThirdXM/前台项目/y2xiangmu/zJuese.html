@@ -117,8 +117,8 @@
 						<option v-for="item in zhiwu" :value="item.zhiwuid">{{item.zhiwuname}}</option>
 					</select>
 				</div>
-				<div class="col-lg-offset-6 col-sm-3 lian">
-					<a @click="saveRoles">保存</a><a>全部选择</a><a>全部取消</a><a class="jusedin">角色定义</a>
+				<div class="col-lg-offset-5 col-sm-4 lian">
+					<a @click="saveRoles" class="glyphicon glyphicon-align-right">保存</a><a class="glyphicon glyphicon-comment">全部选择</a><a class="glyphicon glyphicon-comment">全部取消</a><a class="jusedin glyphicon glyphicon-comment" >角色定义</a>
 				</div>
 			</div>
 			<div class="tiao">
@@ -141,39 +141,54 @@
 			<div class="canku">
 				000
 			</div>-->
-			<div class="row dingyi">
-				<div>
-					<div class="tan"><span class="toto">角色定义</span><button class="btn btn-danger xiao">取消</button></div>
-				</div>
-				<div class="bei">
-					<div class="jie">
-						<a @click="addzhiwu" v-perms="'addzhiwu'">增加</a><a>删除</a><a @click="updatezhiwu">保存</a>
-					</div>
-					<div class="xie">
-						<p>角色代码 <input v-model="zhiwuyi.zhiwuid" readonly="readonly" type="text" size="15"/>&nbsp;&nbsp;&nbsp;角色名称 <input v-model="zhiwuyi.zhiwuname" type="text" size="15"/></p>
-					</div>
-					<div class="ge" style="width: 460px; overflow:auto;">
-						<table class="table table-bordered table-hover" v-if="$perms('findzhiwu')">
-							<tr>
-								<th>角色编码</th>
-								<th>角色名称</th>
-							</tr>
-							<tr v-for="item in zhiwu" @click="updatezhiwuxuan">
-								<td>{{item.zhiwuid}}</td>
-								<td>{{item.zhiwuname}}</td>
-							</tr>
-						</table>
-						<div v-else class="alert alert-danger" role="alert">权限不足</div>
-					</div>
-					<div>
-						<p class="di">合计：<span>1</span>记录</p>
-					</div>
-				</div>
-			</div>
+			<div class="modal fade" id="dingyi" class="dingyi"  role="dialog">
+			  <div class="modal-dialog" role="document" style="width: 600px;">
+			    <div class="modal-content">
+			    	<div class="modal-header" style="height: 60px;" id="dhl">
+				      	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="xiao">&times;</span></button>
+				      	<h4 class="modal-title" style="margin-top:5px;">角色定义</h4>
+				      	<div class="col-md-9"></div>
+				      	<div>
+				      	  </div>
+				 	</div>
+			     	<div class="modal-body" style="margin-top: -30px;">
+			       		<div class="shang">
+							<div class="bei">
+								<div class="jie">
+									<a @click="addzhiwu" class="glyphicon glyphicon-align-right" v-perms="'addzhiwu'">增加</a><a class="glyphicon glyphicon-remove-sign">删除</a><a @click="updatezhiwu" class="glyphicon glyphicon-pencil">保存</a>
+								</div>
+								<div class="xie input-group">
+									<span class="input-group-addon " id="basic-addon3">角色代码：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" disabled="disabled" v-model="zhiwuyi.zhiwuid" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon " id="basic-addon3">角色名称：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="zhiwuyi.zhiwuname" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								</div>
+								<div class="ge" style="margin-left: 15px; width: 530px; overflow:auto;">
+									<table class="table table-bordered table-hover" v-if="$perms('findzhiwu')">
+										<tr>
+											<th>角色编码</th>
+											<th>角色名称</th>
+										</tr>
+										<tr v-for="item in zhiwu" @click="updatezhiwuxuan">
+											<td>{{item.zhiwuid}}</td>
+											<td>{{item.zhiwuname}}</td>
+										</tr>
+									</table>
+									<div v-else class="alert alert-danger" role="alert">权限不足</div>
+								</div>
+							</div>
+						</div>
+			     	 </div>
+			    </div><!-- /.modal-content -->
+			  </div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+			
 		</div>
 		<script type="text/javascript" src="layui/layui.js" ></script>
 		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" src="js/jquery-1.8.3.js" ></script>
+		<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/jquery.ztree.core.js" ></script>
 		<script type="text/javascript" src="js/jquery.ztree.excheck.js" ></script>
 		<script type="text/javascript" src="js/perms.js" ></script>
@@ -412,9 +427,11 @@
 				$(".pinpai").hide();
 			})
 			$(".xiao").click(function(){
+				$('#dingyi').modal('hide');
 				$(".dingyi").hide();
 			})
 			$(".jusedin").click(function(){
+				$('#dingyi').modal('show');
 				$(".dingyi").show();
 				queryzhiwu();
 			})
