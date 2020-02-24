@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>德召文车辆维修管理系统-商品资料</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+	</head>
+	<body>
+		<div class="container-fluid" style="margin: 20px;" id="ctx">
+				<div id="title"  style="padding: 20px;background: #F7F7F7;">
+				 	<span style="font-size: 30px;"> 
+				 		<strong>商品资料</strong>
+				 	</span>
+				 	<div style="float: right;">
+				 		<input style="width: 400px; height: 37px;" type="text" v-model="cbno" placeholder="匹配编码/名称/简码/品牌/大类+号实现双条件查询"/>
+				 		<button type="button" class="btn btn-success" @click="FindQuery">搜索</button>
+				 		<button type="button" class="btn btn-warning">关闭</button>
+				 	</div>
+			 	</div>
+			 	
+			 	<div class="row" style="padding: 20px;">
+				 		<button type="button" class="btn btn-default" @click="toAdd" >增加</button>
+				 		<button type="button" class="btn btn-default" @click="QueryByid">修改</button>
+				 		<button type="button" class="btn btn-default" @click="DeleteByid">删除</button>
+				 		<button type="button" class="btn btn-default" style="margin-right: 50px;">查询</button>
+				 		<button type="button" class="btn btn-default" @click="exportExcel">导出</button>
+				</div>
+				
+				
+				<div style="width: 1700px; height:780px;overflow:scroll;">
+					<table class="table table-hover">
+				 				<tr>
+				 					<td>商品编号</td>
+				 					<td>商品名称</td>
+				 					<td>商品品牌</td>
+				 					<td>适用车辆</td>
+				 					<td>数量单位</td>
+				 					<td>商品大类</td>
+				 					<td>商品中类</td>
+				 					<td>商品小类</td>
+				 					<td>收入分类</td>
+				 					<td>原厂副厂</td>
+				 					<td>商品等级</td>
+				 					<td>商品产地</td>
+				 					<td>厂商名称</td>
+				 					<td>原厂编码</td>
+				 					<td>条形码</td>
+				 					<td>包装规格</td>
+				 					<td>体积A</td>
+				 					<td>毛重</td>
+				 					<td>净重</td>
+				 					<td>加价率</td>
+				 					<td>互换码</td>
+				 				</tr>
+				 				
+				 				<tr v-for="item in CommodityInfo" @click="jihe(item)">
+				 					<td>{{item.cno}}</td>
+				 					<td>{{item.cname}}</td>
+				 					<td>{{item.zcbname}}</td>
+				 					<td>{{item.vehicletype}}</td>
+				 					<td>{{item.zcuname}}</td>
+				 					<td><span v-if="item.zparentid==0">{{item.zgame}}</span></td>
+				 					<td><span v-if="item.zparentid>0 && item.zparentid<=10">{{item.zgame}}</span></td>
+				 					<td><span v-if="item.zparentid>10">{{item.zgame}}</span></td>
+				 					<td>{{item.ztoname}}</td>
+				 					<td>{{item.zconame}}</td>
+				 					<td>{{item.zgcname}}</td>
+				 					<td>{{item.zpname}}</td>
+				 					<td>{{item.zmfname}}</td>
+				 					<td>{{item.origin}}</td>
+				 					<td>{{item.barcode}}</td>
+				 					<td>{{item.pack}}</td> 
+				 					<td>{{item.volume}}</td>
+				 					<td>{{item.grossweight}}</td>
+				 					<td>{{item.netweight}}</td>
+				 					<td>{{item.markup}}</td>
+				 					<td>{{item.exchangecode}}</td>
+				 				</tr>	
+				 </table>		 	
+				</div>
+				
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+			     <div class="modal-dialog" role="document">
+				    <div class="modal-content" style="width:800px; height:700;">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title">品牌定义</h4>
+				      </div>
+				      <div class="modal-body" id="inputx">
+				         	商品名称:<input type="text" id="input_1" v-model="comc.cname"/>
+				         	商品品牌:<select id="sel1" v-model="comc.cbid">
+									  <option v-for="item,index in query" :value ="item.cbid" >{{item.cbname}}</option>
+									</select>
+							适用车辆:<input type="text" id="input_2" v-model="comc.vehicletype"/>		
+				         	<br/><br/><br/>
+				         	
+				         	数量单位:<select id="sel2" v-model="comc.cuid">
+									  <option v-for="item1 in querya" :value ="item1.cuid">{{item1.cuname}}</option>
+									</select>
+							商品大类:<select v-model="comc.gid">
+									  <option v-for="item2 in queryab" :value ="item2.gid">{{item2.gname}}</option>
+								</select>
+							收入分类:<select v-model="comc.toino">
+									  <option v-for="item3 in queryac" :value ="item3.toino">{{item3.toname}}</option>
+								</select>
+							原厂副厂:<select v-model="comc.coid">
+									  <option v-for="item4 in queryad" :value ="item4.coid">{{item4.coname}}</option>
+								</select>
+							<br/><br/><br/>
+							
+							商品等级:<select v-model="comc.gcid">
+									  <option v-for="item5 in querye" :value ="item5.gcid">{{item5.gcname}}</option>
+								</select>
+							商品产地:<select v-model="comc.pid">
+									  <option v-for="item6 in queryef" :value ="item6.pid">{{item6.pname}}</option>
+								</select>
+							厂商名称:<select v-model="comc.mfid">
+									  <option v-for="item7 in queryeg" :value ="item7.mfid">{{item7.mfname}}</option>
+								</select>
+							<br/><br/><br/>
+							
+							原厂编码:<input type="text" id="input_3" v-model="comc.origin"/>
+							条形码:<input type="text" id="input_4" v-model="comc.barcode"/>
+							包装规格:<input type="text" id="input_5" v-model="comc.pack"/>
+							
+							<br/><br/><br/>
+							体积A:<input type="text" id="input_6" v-model="comc.volume"/>
+							毛重:<input type="text" id="input_7" v-model="comc.grossweight"/>
+							净重:<input type="text" id="input_8" v-model="comc.netweight"/>
+							<br/><br/><br/>
+							
+							进货价:<input type="text" id="input_9" v-model="comc.stockprice"/>				
+							加价率:<input type="text" id="input_10" v-model="comc.markup"/>
+							互换码:<input type="text" id="input_11" v-model="comc.exchangecode"/>
+							<br/><br/><br/>
+							
+							标准价:<input type="text" id="input_12" v-model="comc.standardprice"/>
+							会员价:<input type="text" id="input_13" v-model="comc.memberprice"/>
+							VIP价:<input type="text" id="input_14" v-model="comc.vipprice"/>
+							<br/><br/><br/>
+							
+							协议价:<input type="text" id="input_15" v-model="comc.agreementprice"/>
+							索赔价:<input type="text" id="input_16" v-model="comc.insuranceprice"/>
+							保险价:<input type="text" id="input_17" v-model="comc.claimprice"/>				         	
+				      </div>
+				      <div class="modal-footer">
+				        	<button @click="UpdaCommd"  type="button" class="btn btn-default">修改</button>
+				        	<button @click="addCommd"    type="button" class="btn btn-default">新增</button>
+				      </div>
+				    </div><!-- /.modal-content -->
+				</div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+		
+				
+		</div>
+		<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="js/vue.js" ></script>
+	</body>
+<script type="text/javascript">
+		
+	
+		var vm=new Vue({
+            el:"#ctx",
+			data(){
+    			return {
+    				CommodityInfo:[], //table集合
+    				cbno:"",         //查询
+    				query:[],         //商品品牌
+    				querya:[],		  //商品单位
+    				queryab:[],		  //商品大类
+    				queryac:[],		  //收入分类
+    				queryad:[],		  //原厂副厂
+    				querye:[],         //商品等级
+    				queryef:[],         //商品产地
+    				queryeg:[],          //产商名称
+    				comc:{},          //新增
+    				isok:false
+        		};
+			},
+			created:function() {
+            this.getData();
+            this.Query();
+            this.Querya();
+            this.Queryab();
+            this.Queryac();
+            this.Queryad();
+            this.Querye();
+            this.Queryef();
+            this.Queryeg();
+           	
+       		},
+			methods: {
+				getData:function(){
+						$.ajax({
+						url: "http://localhost:8080/CommodityInfoRest",					
+						type: "get",
+						xhrFields: {
+							withCredentials: true
+						},
+						dataType: "json",
+						success: function(result) {
+							vm.CommodityInfo=result;
+						},error:function(result){					
+							console.log(result+"101");
+						}
+					});
+				},	
+				FindQuery:function(){
+						$.ajax({
+						url: "http://localhost:8080/CommodityInfoRest/FindQuery",					
+						type: "get",
+						data:{
+							cbno:vm.cbno
+						},
+						xhrFields: {
+							withCredentials: true
+						},
+						dataType: "text",
+						success: function(result) {
+							if(result){
+								vm.CommodityInfo=eval('('+result+')');	
+							}else{
+								vm.CommodityInfo=[];
+							}
+						},error:function(result){					
+							console.log(result+"101");
+						}
+					});
+				},
+				
+				/**
+				 * 打开新增模态框
+				 */
+				
+				toAdd:function(){
+					
+					$("#myModal").modal("show");
+				},
+				
+				
+				/**
+				 * 新增商品信息
+				 */
+				addCommd:function(){
+					if($("#input_1").val()==""){
+						alert("商品名称不能为空!")
+						return false;
+					}else if($("#sel1").val()==""){
+						alert("商品品牌不能为空")
+						return false;
+					}else if($("#sel2").val()==""){
+						alert("商品单位不能为空")
+						return false;
+					}else{
+						$.ajax({
+							url:"http://localhost:8080/CommodityInfoRest/addCommd",
+							data:JSON.stringify(vm.comc),						
+							type:"post",
+							xhrFields: {
+									withCredentials: true
+								},
+							contentType:"application/json;charset=utf-8",
+							success:function(result){
+								alert("新增成功")
+								vm.getData();
+							},error:function(result){
+								console.log(result+"add")
+							}
+						})
+					}
+				},
+				
+				/**
+				 * 商品品牌下拉框
+				 */	
+				Query:function(){
+						$.ajax({
+						url: "http://localhost:8080/CommodityInfoRest/query",					
+						type: "get",
+						xhrFields: {
+							withCredentials: true
+						},
+						dataType: "json",
+						success: function(result) {
+							vm.query=result;
+							vm.comc.cbid = result[0].cbid;
+						},error:function(result){					
+							console.log(result+"101");
+						}
+					});
+				},
+				/**
+				 * 商品单位
+				 */
+				Querya:function(){
+						$.ajax({
+						url: "http://localhost:8080/CommodityInfoRest/querya",					
+						type: "get",
+						xhrFields: {
+							withCredentials: true
+						},
+						dataType: "json",
+						success: function(result) {
+							vm.querya=result;
+							vm.comc.cuid=result[0].cuid;
+						},error:function(result){					
+							console.log(result+"101");
+						}
+					});
+				},
+				/**
+				 * 商品大类
+				 */
+				Queryab:function(){
+						$.ajax({
+						url: "http://localhost:8080/CommodityInfoRest/queryab",					
+						type: "get",
+						xhrFields: {
+							withCredentials: true
+						},
+						dataType: "json",
+						success: function(result) {
+							vm.queryab=result;
+							vm.comc.gid=result[0].gid;
+						},error:function(result){					
+							console.log(result+"101");
+						}
+					});
+				},
+				/**
+				 *  收入分类 
+				 */
+				Queryac:function(){
+						$.ajax({
+						url: "http://localhost:8080/CommodityInfoRest/queryac",					
+						type: "get",
+						xhrFields: {
+							withCredentials: true
+						},
+						dataType: "json",
+						success: function(result) {
+							vm.queryac=result;
+							vm.comc.toino=result[0].toino;
+						},error:function(result){					
+							console.log(result+"101");
+						}
+					});
+				},
+				/**
+				 * 原厂副厂
+				 */
+				Queryad:function(){
+						$.ajax({
+						url: "http://localhost:8080/CommodityInfoRest/queryad",					
+						type: "get",
+						xhrFields: {
+							withCredentials: true
+						},
+						dataType: "json",
+						success: function(result) {
+							vm.queryad=result;
+							vm.comc.coid=result[0].coid;
+						},error:function(result){					
+							console.log(result+"101");
+						}
+					});
+				},
+				/**
+				 * 商品等级
+				 */
+				Querye:function(){
+						$.ajax({
+						url: "http://localhost:8080/CommodityInfoRest/querye",					
+						type: "get",
+						xhrFields: {
+							withCredentials: true
+						},
+						dataType: "json",
+						success: function(result) {
+							vm.querye=result;
+							vm.comc.gcid=result[0].gcid;
+						},error:function(result){					
+							console.log(result+"101");
+						}
+					});
+				},
+				/**
+				 * 商品产地
+				 */
+				Queryef:function(){
+						$.ajax({
+						url: "http://localhost:8080/CommodityInfoRest/queryef",					
+						type: "get",
+						xhrFields: {
+							withCredentials: true
+						},
+						dataType: "json",
+						success: function(result) {
+							vm.queryef=result;
+							vm.comc.pid=result[0].pid;
+						},error:function(result){					
+							console.log(result+"101");
+						}
+					});
+				},
+				/**
+				 * 产商名称
+				 */
+				Queryeg:function(){
+						$.ajax({
+						url: "http://localhost:8080/CommodityInfoRest/queryeg",					
+						type: "get",
+						xhrFields: {
+							withCredentials: true
+						},
+						dataType: "json",
+						success: function(result) {
+							vm.queryeg=result;
+							vm.comc.mfid=result[0].mfid;
+						},error:function(result){					
+							console.log(result+"101");
+						}
+					});
+				},
+				/**
+				 * 删除
+				 */
+				jihe:function(item){
+					vm.CommodityInfo.cno=item.cno;
+				},	
+				DeleteByid:function(){
+					if (confirm("你确定要删除"+vm.CommodityInfo.cno+"么?")) {
+						$.ajax({
+								url:"http://localhost:8080/CommodityInfoRest/deleteid",
+								data:{
+									cno:vm.CommodityInfo.cno
+								},
+								type:"post",
+								xhrFields: {
+									withCredentials: true
+								},
+								dataType:"json",
+								success:function(result){
+											alert("删除成功")
+											vm.getData();																				
+									},error:function(result){
+										console.log(result);
+									},
+							})
+						}
+				},
+				QueryByid:function(){
+						$("#myModal").modal("show");
+					
+						$.ajax({
+							url:"http://localhost:8080/CommodityInfoRest/QueryByid",
+							type:"get",
+							xhrFields: {
+								withCredentials: true
+							},
+							data:{cno:vm.CommodityInfo.cno},
+							dataType:"json",
+							success:function(result){
+								vm.comc=result;
+							}
+						})
+				},
+				/**
+				 * 修改商品信息
+				 */
+				UpdaCommd:function(){					
+						if($("#input_1").val()==""){
+							alert("商品名称不能为空!")
+							return false;
+						}else if($("#sel1").val()==""){
+							alert("商品品牌不能为空")
+							return false;
+						}else if($("#sel2").val()==""){
+							alert("商品单位不能为空")
+							return false;
+						}else{
+							$.ajax({
+								url:"http://localhost:8080/CommodityInfoRest/updaCommd",
+								data:JSON.stringify(vm.comc),						
+								type:"put",
+								xhrFields: {
+										withCredentials: true
+									},
+								contentType:"application/json;charset=utf-8",
+								success:function(result){
+									alert("修改成功")
+									vm.getData();
+								},error:function(result){
+									console.log(result+"add")
+								}
+							})
+					}
+				},
+				exportExcel:function(){
+					window.location.href="http://localhost:8080/ZFileAndExport/exportExcel"
+				},
+			}
+		})
+</script>
+	</html>

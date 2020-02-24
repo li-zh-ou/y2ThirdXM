@@ -49,29 +49,28 @@
             	时间：2019-12-31
             	描述：独立区域中间
             -->
-			<section style="width: 100%;>
-				<div class="">
-					<nav class="navbar navbar-default" style="margin-bottom: 0px;>
+				<div style="width: 100%;>	
+					<div>
 					  <div class="container-fluid">
 					    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="background-color:beige">
 					      <ul class="nav navbar-nav navbar-right" id="wxxm_tu_1">
 					        <li><a href="#"><span class="glyphicon glyphicon-tasks" aria-hidden="true"data-toggle="modal" data-target="#myModal1">增加</a></span></li>
 					        <li><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"data-toggle="modal" data-target="#myModal2">修改</a></span></li>
-					        <li><a href="#"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true">删除</a></span></li>
+					        <li><a href="#" @click="sc1"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true">删除</a></span></li>
 					        <li><a href="#"><span class="glyphicon glyphicon-th" aria-hidden="true"data-toggle="modal" data-target="#myModal3">调价</a></span></li>
 					        <li><a href="#"><span class="glyphicon glyphicon-folder-open " aria-hidden="true">保存</a></span></li>
 					        <li><a href="#"><span class="glyphicon glyphicon-level-up" aria-hidden="true">导出</a></span></li>
 					      </ul>
 					    </div>
 					  </div>
-					</nav>
-					
+					</div>	
 					<!--
                     	作者：offline
                     	时间：2020-01-03
                     	描述：模态框
                     -->
                     	<!--增加-->
+                    <div id="dierge">	
                     	<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 						  <div class="modal-dialog" role="document">
 						    <div class="modal-content" style="width: 600px;">
@@ -86,19 +85,19 @@
 						        			<th>
 						        				<div class="form-group">
 												    <label for="exampleInputName2">项目编码</label>
-												    <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+												    <input type="text" v-model="dataa.xiangmuno" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
 												</div>
 						        			</th>
 						        			<th>
 						        				<div class="form-group">
 												    <label for="exampleInputEmail2">项目名称</label>
-												    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+												    <input type="email" v-model="dataa.xiangmuname" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
 												</div>
 						        			</th>
 						        			<th>
 						        				<div class="form-group">
 												    <label for="exampleInputName2">收入种类</label>
-												    <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+												    <input type="text" v-model="dataa.shouruid" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
 												</div>
 						        			</th>
 						        		</tr>
@@ -106,19 +105,22 @@
 						        			<th>
 						        				<div class="form-group">
 												    <label for="exampleInputEmail2">项目类别</label>
-												    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+												    <select name="" class="form-control" v-model="dataa.bei1">
+												    	<option value="1">大车</option>
+												    	<option value="2">大啊</option>
+												    </select>
 												</div>
 						        			</th>
 						        			<th>
 						        				<div class="form-group">
 												    <label for="exampleInputEmail2">标准价</label>
-												    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+												    <input type="email" v-model="dataa.price" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
 												</div>
 						        			</th>
 						        			<th>
 						        				<div class="form-group">
 												    <label for="exampleInputName2">会员价</label>
-												    <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+												    <input type="text" v-model="dataa.huiprice" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
 												</div>
 						        			</th>
 						        		</tr>
@@ -126,33 +128,13 @@
 						        			<th>
 						        				<div class="form-group">
 												    <label for="exampleInputEmail2">VIP价</label>
-												    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+												    <input type="email" v-model="dataa.vipprice" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
 												</div>
 						        			</th>
 						        			<th>
 						        				<div class="form-group">
 												    <label for="exampleInputName2">协议价</label>
-												    <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
-												</div>
-						        			</th>
-						        			<th>
-						        				<div class="form-group">
-												    <label for="exampleInputEmail2">索赔价</label>
-												    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
-												</div>
-						        			</th>
-						        		</tr>
-						        		<tr>
-						        			<th>
-						        				<div class="form-group">
-												    <label for="exampleInputEmail2">保险价</label>
-												    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
-												</div>
-						        			</th>
-						        			<th>
-						        				<div class="form-group">
-												    <label for="exampleInputName2">备注</label>
-												    <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe" style="width: 200%;">
+												    <input type="text" v-model="dataa.xieprice" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
 												</div>
 						        			</th>
 						        		</tr>
@@ -161,6 +143,7 @@
 						      </div>
 						      <div class="modal-footer">
 						        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						        <button type="button" class="btn btn-default" @click="inse_baoc1">保存</button>
 						      </div>
 						    </div>
 						  </div>
@@ -181,19 +164,19 @@
 						        			<th>
 						        				<div class="form-group">
 												    <label for="exampleInputName2">项目编码</label>
-												    <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+												    <input type="text" v-model="dataa1.xiangmuno" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
 												</div>
 						        			</th>
 						        			<th>
 						        				<div class="form-group">
 												    <label for="exampleInputEmail2">项目名称</label>
-												    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+												    <input type="email" v-model="dataa1.xiangmuname" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
 												</div>
 						        			</th>
 						        			<th>
 						        				<div class="form-group">
 												    <label for="exampleInputName2">收入种类</label>
-												    <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+												    <input type="text" v-model="dataa1.shourutype" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
 												</div>
 						        			</th>
 						        		</tr>
@@ -201,19 +184,22 @@
 						        			<th>
 						        				<div class="form-group">
 												    <label for="exampleInputEmail2">项目类别</label>
-												    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+												    <select name="" class="form-control" v-model="dataa1.pname">
+												    	<option value="1">大车</option>
+												    	<option value="2">大啊</option>
+												    </select>
 												</div>
 						        			</th>
 						        			<th>
 						        				<div class="form-group">
 												    <label for="exampleInputEmail2">标准价</label>
-												    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+												    <input type="email" v-model="dataa1.price" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
 												</div>
 						        			</th>
 						        			<th>
 						        				<div class="form-group">
 												    <label for="exampleInputName2">会员价</label>
-												    <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+												    <input type="text" v-model="dataa1.huiprice" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
 												</div>
 						        			</th>
 						        		</tr>
@@ -221,41 +207,21 @@
 						        			<th>
 						        				<div class="form-group">
 												    <label for="exampleInputEmail2">VIP价</label>
-												    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+												    <input type="email" v-model="dataa1.vipprice" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
 												</div>
 						        			</th>
 						        			<th>
 						        				<div class="form-group">
 												    <label for="exampleInputName2">协议价</label>
-												    <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+												    <input type="text" v-model="dataa1.xieprice" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
 												</div>
 						        			</th>
-						        			<th>
-						        				<div class="form-group">
-												    <label for="exampleInputEmail2">索赔价</label>
-												    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
-												</div>
-						        			</th>
-						        		</tr>
-						        		<tr>
-						        			<th>
-						        				<div class="form-group">
-												    <label for="exampleInputEmail2">保险价</label>
-												    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
-												</div>
-						        			</th>
-						        			<th>
-						        				<div class="form-group">
-												    <label for="exampleInputName2">备注</label>
-												    <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe" style="width: 200%;">
-												</div>
-						        			</th>
-						        		</tr>
 						        	</table>
 								</form>
 						      </div>
 						      <div class="modal-footer">
 						        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						        <button type="button" class="btn btn-default" @click="xgbaoc1">保存</button>
 						      </div>
 						    </div>
 						  </div>
@@ -299,9 +265,9 @@
 				</div>
 				<div class="row" style=" height: 100%; width: 101%; border: 1px solid #269ABC;">
 					<div class="col-md-2" style="border: 1px solid #255625; height: 100%;">
-						<ul id="treeDemo" class="ztree" style=""></ul>
+						<ul id="treeDemo" class="ztree" name="zhi"></ul>
 					</div>
-					<div class="col-md-10" style="border: 1px solid #262626; overflow-y: scroll; height: 80%;">
+					<div class="col-md-10" id="ctx" style="border: 1px solid #262626; overflow-y: scroll; height: 80%;">
 						<table class="table table-bordered">
 							<tr style="background-color: #31B0D5;">
 								<th style="width: 4%;">&nbsp;</th>
@@ -314,117 +280,198 @@
 								<th>会员价</th>
 								<th>VIP价</th>
 								<th>协议价</th>
-								<th>索赔价</th>
-								<th>保险价</th>
 							</tr>
-							<tr>
+							<tr v-for="item in page1" @click="byid(item)">
 								<th>&nbsp;</th>
-								<th>Header</th>
-								<th>Header</th>
-								<th>Header</th>
-								<th>Header</th>
-								<th>Header</th>
-								<th>Header</th>
-								<th>Header</th>
-								<th>Header</th>
-								<th>Header</th>
-								<th>Header</th>
-								<th>Header</th>
+								<th>{{item.pname}}</th>
+								<th>{{item.xiangmuno}}</th>
+								<th>{{item.xiangmuname}}</th>
+								<th>{{item.shoujiaan}}</th>
+								<th>{{item.shourutype}}</th>
+								<th>{{item.price}}</th>
+								<th>{{item.huiprice}}</th>
+								<th>{{item.vipprice}}</th>
+								<th>{{item.xieprice}}</th>
 							</tr>
 						</table>
 					</div>
 				</div>
-			</section>
-			<!--
-            	作者：offline
-            	时间：2019-12-31
-            	描述：导航
-            -->
-			<nav>
-				
-				
-				
-			</nav>
-			<!--
-            	作者：offline
-            	时间：2019-12-31
-            	描述：底部
-            -->
-            <foote>
-            	
-            </foote>
-            <!--
-            	作者：offline
-            	时间：2019-12-31
-            	描述：相关内容
-            -->
-            <aside>
-            	
-            </aside>
-            <!--
-            	作者：offline
-            	时间：2019-12-31
-            	描述：独立文章
-            -->
-            <article>
-            	
-            </article>
 		</div>
 		<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/jquery.ztree.core.js"></script>
+		<script type="text/javascript" src="js/jquery.ztree.core.js"></script>
+		<script type="text/javascript" src="js/jquery.ztree.excheck.js"></script>
+		<script type="text/javascript" src="js/jquery.ztree.exedit.js"></script>
 		<script type="text/javascript" src="js/vue.js"></script>
+		<script type="text/javascript" src="js/my.js"></script>
 		<script type="text/javascript">
-			var setting = {
-		check: {
+			var vm2=new Vue({
+				el:"#bs-example-navbar-collapse-1",
+				data(){
+					return{
+						sc:{}
+					}
+				},
+				methods:{
+					sc1:function(){
+						alert("删除"+vm2.sc.xiangmuno);
+						$.ajax({
+							type:"post",
+							url:"http://localhost:8080/maintenance6",
+							data:{xiangmuno:vm2.sc.xiangmuno},
+							success:function(result){
+								queryTree();
+								if(result>0){
+									alert("恭喜！成功");
+								}else{
+									alert("主人！出问题了")
+								}
+							}
+						});
+					}
+				}
+			});
+			var vm1=new Vue({
+				el:"#dierge",
+				data(){
+					return{
+						dataa:{},
+						dataa1:{}
+					}
+				},
+				methods:{
+					inse_baoc1:function(){
+						dataa=JSON.stringify(vm1.dataa);
+						alert("asddas"+dataa);
+						$.ajax({
+							url:"http://localhost:8080/maintenance3",
+							contentType:"application/json;charset=utf-8",
+							dataType:"json",
+							data:dataa,
+							type:"post",
+							success:function(result){
+								queryTree();
+								if(result>0){
+									alert("恭喜！成功");
+								}else{
+									alert("主人！出问题了")
+								}
+							}
+						});
+					},
+					xgbaoc1:function(){
+						dataa12=JSON.stringify(vm1.dataa1);
+							alert("asddas"+dataa12);
+							$.ajax({
+								url:"http://localhost:8080/maintenance5",
+								contentType:"application/json;charset=utf-8",
+								dataType:"json",
+								data:dataa12,
+								type:"put",
+								success:function(result){
+									queryTree();
+									if(result>0){
+										alert("恭喜！成功");
+									}else{
+										alert("主人！出问题了")
+									}
+								}
+							});
+					}
+				}
+			});
+			var vm=new Vue({
+				el:"#ctx",
+				data(){
+					return{
+						page:[],
+						page1:[]
+					};
+				},
+				created:function(){
+					queryTree();
+				},
+				methods:{
+					byid:function(item){
+//						item=JSON.stringify(item);
+						alert("选中项目编号:"+item.xiangmuno)
+//						vm1.dataa1=item;
+						$.ajax({
+							url:"http://localhost:8080/maintenance4",
+							dataType:"json",
+							data:{
+								xiangmuno:item.xiangmuno
+							},
+							type:"post",
+							success:function(result){
+								console.log(result);
+								vm1.dataa1=result;
+								vm2.sc=result;
+							}
+						});
+					},
+					ed:function(zhi){
+						alert("值:"+zhi)
+					}
+				}
+			});
 			
-			enable: true
-		},
-		data: {
-			simpleData: {
-				enable: true
+			function chooseNode(event,treeid,treeNode){
+				$.ajax({
+					url:"http://localhost:8080/maintenance2",
+					type:"get",
+					data:{pname:treeNode.pname},
+					xhrFields:{
+						withCredentials:true
+					},
+					dataType:"json",
+					success:function(result){
+						vm.page1=result;
+				},error:function(result){
+					console.log(result+"004");
+				}
+			});
 			}
-		},
-		edit: {
-			enable: true
-		}
-	};
-	//数据结构，从后台查询数据进行赋值就可使用
-	var zNodes =[
-		{id:1, pId:0, name:"[core]", open:true},
-	{id:101, pId:1, name:"最简单的树"},
-	{id:10101, pId:101, name:"最简单的树"},
-	{id:1010101, pId:10101, name:"最简单的树"},
-	{id:101010101, pId:1010101, name:"最简单的树"},
-	{id:102, pId:1, name:"最简单的树"},
-	{id:103, pId:1, name:"不显示 连接线"},
-	{id:104, pId:1, name:"不显示 节点 图标"},
-	{id:108, pId:1, name:"异步加载 节点数据"},
-	{id:109, pId:1, name:"用 zTree"},
-	{id:110, pId:1, name:"用 zTree"},
-	{id:111, pId:1, name:"单击 节点 控制"},
-	{id:112, pId:1, name:"展开"},
-	{id:113, pId:1, name:"根据 参数 查找 节点"},
-	{id:114, pId:1, name:"其他 鼠标 事件监听"},
-	
-	{id:2, pId:0, name:"[excheck]", open:false},
-	{id:201, pId:2, name:"Checkbox 勾选操作"},
-	{id:206, pId:2, name:"Checkbox"},
-	{id:207, pId:2, name:"Checkbox"},
-	{id:208, pId:2, name:"Checkbox"},
-	{id:202, pId:2, name:"Checkbox 勾选统计"},
-	{id:203, pId:2, name:"用 zTree"},
-	{id:204, pId:2, name:"Radio 勾选操作"},
-	{id:209, pId:2, name:"Radio"},
-	{id:210, pId:2, name:"Radio"},
-	{id:211, pId:2, name:"Radio"},
-	{id:205, pId:2, name:"用 zTree"},
-
-	];
-
-	$(document).ready(function(){
-		$.fn.zTree.init($("#treeDemo"), setting, zNodes);
-	});
+		function queryTree(){
+     //树状结构
+         $.ajax({
+           type:"get",
+           url:"http://localhost:8080/maintenance1",
+           dateType:"json",
+           xhrFields:{
+            withCredentials:true
+           },
+           success:function(response){
+              console.log(response);
+              $.fn.zTree.init($("#treeDemo"), setting, response);//初始化节点数据
+             $.fn.zTree.init($("#treeDemo"), setting, response).expandAll(true);
+           }
+          }); 
+          
+          var setting = {
+             view: {
+                    selectedMulti: true,
+                    showIcon:false
+                },
+             check: {
+              enable: false
+             },
+             data: {
+               key: {
+                    name: "pname",//树节点名称
+               },
+               simpleData: {
+                enable: true,//是否采用简单数据模式
+                    idKey: "pid",//树节点ID名称
+                    pIdKey: "parentid",//父节点ID名称
+                    rootPId: 0,//根节点ID
+               }
+             },
+             callback:{
+               onClick:chooseNode,
+             }
+          }}
 		</script>
 	</body>
 </html>

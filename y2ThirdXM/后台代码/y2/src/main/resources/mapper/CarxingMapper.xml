@@ -16,6 +16,17 @@
     <result column="bei3" property="bei3" jdbcType="VARCHAR" />
     <result column="bei4" property="bei4" jdbcType="VARCHAR" />
   </resultMap>
+  
+  <!-- 车型档案里右下三表查询 -->
+  	<select id="modelchexbSelect1" resultType="com.accp.domain.Model_three_table_check1">
+	  	SELECT carbrand.firstWord AS carbr_first,carbrand.CarBankId AS carbr_carbank,
+		fadongbrand.FaName AS fadong_faname,fadongbrand.FaNumber AS fadong_fanumb,carxing.CanKaoPrice AS carxing_cankaop,
+		carxing.CarYearMoney AS carxing_caryearm,carxing.GongLv AS carxing_gonglv,carxing.JinKou AS carxing_jinkou,
+		carxing.RanYou AS carxing_ranyou,carxing.ZaiZhong AS carxing_zaizhon FROM carxing,fadongbrand,
+		carbrand WHERE carbrand.CarBankId=carxing.xingId 
+		AND fadongbrand.FaBankId=carxing.FaBankId AND carxing.xingId=#{CarBankId_1}
+  	</select>
+  
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >

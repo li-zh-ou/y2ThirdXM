@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>德召文车辆维修管理系统-供货单位</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrapStyle/bootstrapStyle.css"/>
+	</head>
+	<style type="text/css">
+			#button_1 button{
+				float: right;		
+				margin-right: 10px;		
+			}
+	</style>
+	<body>
+			<div class="container-fluid" style="margin: 20px;" id="ctx">
+				<div id="title"  style="padding: 20px;background: #F7F7F7;">
+				 	<span style="font-size: 30px;"> 
+				 		<strong>供货单位</strong>
+				 	</span>
+				 	<div style="float: right;">
+				 		<input style="width: 300px; height: 37px;" v-model="name" type="text" placeholder="匹配名称/联系人/简码/手机+号实现双条件查询"/>
+				 		<button type="button" class="btn btn-success" @click="Queryname">搜索</button>
+				 		<button type="button" class="btn btn-warning">关闭</button>
+				 	</div>
+			 	</div>
+			 	<div class="row" id="button_1" style="padding: 20px;">
+				 		<button type="button" class="btn btn-default" @click="Updaid" data-toggle="modal" data-target="#myModal1">联系人</button>
+				 		<button type="button" class="btn btn-default">照片</button>
+				 		<button type="button" class="btn btn-default">导出</button>
+				 		<button type="button" class="btn btn-default" @click="Deletes">删除</button>
+				 		<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal" @click="Updaid">修改</button>
+				 		<button type="button" class="btn btn-default"  data-toggle="modal" data-target="#myModal">新增</button>
+				</div>	
+			 	
+				 <div class="row">
+				 	<div class="col-md-2">
+						<ul id="treeDemo" class="ztree"></ul>
+				    </div>
+				 
+					<div class="col-md-10">
+					 	<div>
+					 		<table class="table table-hover">
+				 				<tr>
+				 					<td>产商编号</td>
+				 					<td>厂商名称</td>
+				 					<td>地址</td>
+				 					<td>经营情况</td>
+				 					<td>网址</td>
+				 					<td>开户行</td>
+				 					<td>银行账户</td>
+				 					<td>付款方式</td>
+				 					<td>厂商等级</td>
+				 					<td>经营品牌</td>
+				 					<td>厂商类别</td>
+				 					<td>联系人</td>
+				 					<td>电话</td>
+				 					<td>手机</td>
+				 					<td>Email</td>
+				 					<td>期帐</td>
+				 					<td>备注</td>
+				 				</tr>
+				 				
+				 				<tr v-for="item in queryFind" @click="ajk(item)">
+				 					<td>{{item.mfid}}</td>
+				 					<td>{{item.mfname}}</td>
+				 					<td>{{item.mfaddress}}</td>
+				 					<td>{{item.mfsituation}}</td>
+				 					<td>{{item.mfwebsite}}</td>
+				 					<td>{{item.mfopeningbank}}</td>
+				 					<td>{{item.mfbankaccount}}</td>
+				 					<td>{{item.zpmname}}</td>
+				 					<td>{{item.zlpname}}</td>
+				 					<td>{{item.mfmanagementbrand}}</td>
+				 					<td>{{item.zpname}}</td>
+				 					<td>{{item.mfcontacts}}</td>
+				 					<td>{{item.mfphone}}</td>
+				 					<td>{{item.mftellphone}}</td>
+				 					<td>{{item.mfemail}}</td>
+				 					<td>{{item.mfaccount}}</td>
+				 					<td>{{item.mfremark}}</td>
+				 					
+				 				</tr>
+				 		</table>
+					 	</div>
+					 		<p>联系人</p>
+					 	<div>
+					 		<table class="table table-bordered" style="width: 620px;">
+				 				<tr style="background-color: #F7F7F7;">
+				 					<td>联系人</td>
+				 					<td>职位</td>
+				 					<td>手机</td>
+				 					<td>电话</td>
+				 					<td>Email</td>
+				 				</tr>
+				 				
+				 				<tr v-for="item1 in queryFindmfid">
+				 					<td>{{item1.zlinkname}}</td>			
+				 					<td>{{item1.zposition}}</td>		
+				 					<td>{{item1.zlinkphone}}</td>
+				 					<td>{{item1.zphone}}</td>
+				 					<td>{{item1.zlinkemail}}</td>
+				 				</tr>
+				 		</table>
+					 	</div>
+					</div>
+				 </div>
+				 
+				 <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+			     <div class="modal-dialog" role="document">
+				    <div class="modal-content" style="width:800px; height:700;">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title">品牌定义</h4>
+				      </div>
+				      <div class="modal-body" id="inputx">
+				         	厂商名称:<input type="text" id="input_2" v-model="maun.mfname"/>
+				         	地址:<input type="text" v-model="maun.mfaddress" />
+				         	经营情况:<input type="text" v-model="maun.mfsituation"/>
+				         	<br /> <br /><br /> <br />
+				         	
+				         	网址:<input type="text" v-model="maun.mfwebsite"/>
+				         	开户行:<input type="text" v-model="maun.mfopeningbank"/>
+				         	银行账号:<input type="text" v-model="maun.mfbankaccount"/>
+				         	<br /> <br /><br /> <br />
+				         	付款方式:<select v-model="maun.pmid">
+									  <option v-for="item3 in fkquery" :value="item3.pmid">{{item3.pmname}}</option>
+									</select>
+				         	产地:<select v-model="maun.pid">
+									  <option v-for="item5 in query" :value="item5.pid">{{item5.pname}}</option>
+									</select>
+							厂商等级:<select v-model="maun.lpid">
+									  <option v-for="item4 in levequery" :value="item4.lpid">{{item4.lpname}}</option>
+									</select>
+							<br /> <br /><br /> <br />
+							经营品牌:<input type="text" v-model="maun.mfmanagementbrand"/>
+				         	联系人:<input type="text" v-model="maun.mfcontacts"/>
+				         	电话:<input type="text" v-model="maun.mfphone"/>
+							<br /> <br /><br /> <br />
+							手机:<input type="text" v-model="maun.mftellphone"/>
+				         	Email:<input type="text" v-model="maun.mfemail"/>
+				         	<br /> <br /><br/> <br/>
+				         	账期:<input type="text" v-model="maun.mfaccount"/>
+				         	备注:<input type="text" v-model="maun.mfremark"/>
+							
+				           	     	
+				      </div>
+				      <div class="modal-footer">
+				      	    
+				       		<span><button  type="button" class="btn btn-default" @click="Upda" >修改</button></span> 	
+				        	<span><button  type="button" class="btn btn-default" @click="Addt" >新增</button></span>
+				      </div>
+				    </div><!-- /.modal-content -->
+				</div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+			
+			
+			<div class="modal fade" id="myModal1" tabindex="-1" role="dialog">
+			     <div class="modal-dialog" role="document">
+				    <div class="modal-content" style="width:800px; height:700;">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title"><input type="text" v-model="waimiande.mfcontacts"  style="border:none;"/></h4>
+				        <h4>的联系人</h4>
+				      </div>
+				      <div class="modal-body" id="inputx">
+				      	
+				      			<button @click="addd" type="button" class="btn btn-default">新增</button>
+				      			<button @click="Deletetwo" type="button" class="btn btn-default">删除</button>
+				      			<button @click="QueryFindid" type="button" class="btn btn-default">保存</button>
+				      			
+				      			
+				      			<br /> <br />
+				     			联系人:<input type="text" id="input_a1" v-model="limiande.zlinkname"/>
+				         		手机:<input type="text" v-model="limiande.zlinkphone"/>	 				
+								职位:<input type="text" v-model="limiande.zposition"/>
+								<br /> <br />
+								电话:<input type="text" v-model="limiande.zphone"/>							
+								Email:<input type="text" v-model="limiande.zlinkemail"/>
+								产商编号:<input type="text" readonly="readonly" v-model="limiande.zmfid" />
+								<br /> <br />
+								
+								<table class="table table-hover" style="width: 620px;">
+					 				<tr style="background-color: #F7F7F7;">
+					 					<td>联系人编号</td>
+					 					<td>联系人</td>
+					 					<td>职位</td>
+					 					<td>手机</td>
+					 					<td>电话</td>
+					 					<td>Email</td>
+					 				</tr>
+					 				
+					 				<tr v-for="item1 in queryFindmfid" @click="id(item1)">
+					 					<td>{{item1.zlinkno}}</td>
+					 					<td>{{item1.zlinkname}}</td>			
+					 					<td>{{item1.zposition}}</td>		
+					 					<td>{{item1.zlinkphone}}</td>
+					 					<td>{{item1.zphone}}</td>
+					 					<td>{{item1.zlinkemail}}</td>
+					 				</tr>
+				 				</table>
+								
+								
+								
+				      </div>
+				      <div class="modal-footer">
+				      </div>
+				    </div><!-- /.modal-content -->
+				</div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+				 
+				 			 	
+			</div>
+			<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
+			<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+			<script type="text/javascript" src="js/jquery.ztree.core.js" ></script>
+			<script src="js/jquery.ztree.excheck.js" type="text/javascript" charset="utf-8"></script>
+			<script src="js/jquery.ztree.exedit.js" type="text/javascript" charset="utf-8"></script>
+			<script type="text/javascript" src="js/vue.js" ></script>
+			<script type="text/javascript">
+				
+				function queryTree(){
+					//树状结构
+				     $.ajax({
+				       type:"get",
+				       url:"http://localhost:8080/PlaceOriginRest",
+				       dateType:"json",
+				       xhrFields:{
+				        withCredentials:true
+				       },
+				       success:function(response){
+				       		 console.log(response);
+				       		 $.fn.zTree.init($("#treeDemo"), setting, response);//初始化节点数据
+				        	$.fn.zTree.init($("#treeDemo"), setting, response).expandAll(true);
+				       }
+				      }); 
+				      
+				      var setting = {
+				         view: {
+				                selectedMulti: true,
+				                showIcon:false
+				            },
+				         check: {
+				          enable: false
+				         },
+				         data: {
+				           key: {
+				                name: "pname",//树节点名称
+				           },
+				           simpleData: {
+				            enable: true,//是否采用简单数据模式
+				                idKey: "pid",//树节点ID名称
+				                pIdKey: "parentid",//父节点ID名称
+				                rootPId: 0,//根节点ID
+				           }
+				         },
+				         callback:{
+				          	onClick:chooseNode,
+				         }
+				      };
+				      
+				     function chooseNode(event, treeId, treeNode) {
+				     			vm.queryFindmfid=[];
+				     			$.ajax({
+								url: "http://localhost:8080/PlaceOriginRest/queryFindTwo",					
+								type: "get",
+								data:{pid:treeNode.pid},
+								xhrFields: {
+									withCredentials: true
+								},
+								dataType: "text",
+								success: function(result) {
+									if(result){
+										vm.queryFind=eval('('+result+')');	
+										
+									}else{
+										vm.queryFind=[];
+									}
+								},error:function(result){					
+									console.log(result+"004");
+								}
+							});	
+				         	 console.log(treeNode)
+				      }
+				     
+				      
+				}
+				
+				function queryTable(mfid){
+					$.ajax({									
+									url: "http://localhost:8080/PlaceOriginRest/queryFindmfid",					
+									type: "get",
+									data:{mfid:mfid},
+									xhrFields: {
+										withCredentials: true
+									},
+									dataType: "text",
+									success: function(result) {
+										if(result){							
+											vm.queryFindmfid=eval('('+result+')');
+											console.log(vm.queryFindmfid);
+										}else{
+											vm.queryFindmfid=[];
+										}
+									},error:function(result){					
+										console.log(result+"004");
+									}
+								});
+				}
+				
+				var vm = new Vue({
+					el: "#ctx",
+					data() {
+						return {
+							queryFind:[],  //table
+							name:"",			//模糊查询
+							queryFindmfid:[],    //联系人table
+							fkquery:[],				//付款方式
+							levequery:[],			//产商等级
+							query:[],           //产地
+							maun:{},		//新增信息
+							waimiande:{},//外面的点击对象
+							limiande:{mfcontacts:"",zmfid:""}, //模态框里面的点击对象
+							kk:"0"
+							
+						}
+					},
+					created:function() { 
+						queryTree();
+						this.QueryFind();
+						this.Fkquery();
+						this.Levequery();
+						this.Query();
+						
+					},
+					methods: {
+								addd:function(){
+									let mfid = vm.limiande.zmfid;
+									vm.limiande={mfcontacts:"",zmfid:""};
+									vm.limiande.zmfid =mfid;				
+									vm.kk="0";
+								},
+								QueryFind:function(){
+								$.ajax({
+									url: "http://localhost:8080/PlaceOriginRest/queryFind",					
+									type: "get",
+									xhrFields: {
+										withCredentials: true
+									},
+									dataType: "json",
+									success: function(result) {
+										vm.queryFind=result;
+										queryTable(result[0].mfid);
+									},error:function(result){					
+										console.log(result+"1012");
+									}
+								});
+							},
+							/**
+							 * 模糊查询
+							 */
+							Queryname:function(){
+								var that=this;
+								$.ajax({
+									url: "http://localhost:8080/PlaceOriginRest/queryFindname",					
+									type: "get",
+									data:{name:that.name},
+									xhrFields: {
+										withCredentials: true
+									},
+									dataType: "text",
+									success: function(result) {
+										if(result){
+										vm.queryFind=eval('('+result+')');	
+									}else{
+										vm.queryFind=[];
+									}
+									},error:function(result){					
+										console.log(result+"1001");
+									}
+								});
+							},
+							ajk:function(item){
+								vm.queryFind.mfid=item.mfid;
+								vm.waimiande = item;
+								queryTable(item.mfid);
+								
+							},
+								/**
+								 *  付款方式
+								 */
+								Fkquery:function(){
+								$.ajax({
+										url: "http://localhost:8080/PlaceOriginRest/fkquery",					
+										type: "get",
+										xhrFields: {
+											withCredentials: true
+										},
+										dataType: "json",
+										success: function(result) {
+											vm.fkquery=result;
+											vm.maun.pmid=result[0].pmid;
+										},error:function(result){					
+											console.log(result+"102");
+										}
+									});
+								},
+								
+								/**
+								 *  产商等级
+								 */
+								Levequery:function(){
+								$.ajax({
+										url: "http://localhost:8080/PlaceOriginRest/levequery",					
+										type: "get",
+										xhrFields: {
+											withCredentials: true
+										},
+										dataType: "json",
+										success: function(result) {
+											vm.levequery=result;
+											vm.maun.lpid=result[0].lpid;
+										},error:function(result){					
+											console.log(result+"1021");
+										}
+									});
+								},
+								
+								/*
+								 * 产地
+								 */
+								Query:function(){
+									$.ajax({
+										url: "http://localhost:8080/PlaceOriginRest",					
+										type: "get",
+										xhrFields: {
+											withCredentials: true
+										},
+										dataType: "json",
+										success: function(result) {
+											vm.query=result;
+											vm.maun.pid=result[0].pid;
+										},error:function(result){					
+											console.log(result+"1021");
+										}
+									});
+								},
+								/**
+								 * 新增
+								 */
+								Addt:function(){
+									if($("#input_2").val()==""){
+									alert("项目名称名称不能为空!")
+									return false;
+								}else{	
+										$.ajax({
+											url:"http://localhost:8080/PlaceOriginRest/add",
+											data:JSON.stringify(vm.maun),						
+											type:"post",
+											xhrFields: {
+													withCredentials: true
+												},
+											contentType:"application/json;charset=utf-8",
+											success:function(result){
+												alert("新增成功")
+												vm.QueryFind();
+											},error:function(result){
+												console.log(result+"add")
+											}
+										})
+									}
+								},
+								Updaid:function(){
+									
+									if(vm.waimiande.mfid==undefined){
+											alert("请选择厂商");
+											return false;
+									}else{
+									
+										vm.limiande.zmfid=vm.waimiande.mfid;
+											$.ajax({
+											url:"http://localhost:8080/PlaceOriginRest/updaid",
+											type:"get",
+											xhrFields: {
+												withCredentials: true
+											},
+											data:{mfid:vm.queryFind.mfid},
+											dataType:"json",
+											success:function(result){
+												vm.maun=result;
+											},error:function(result){					
+												console.log(result+"110");
+											}
+										})
+									}
+								},
+								/**
+								 * 修改
+								 */
+								Upda:function(){
+									if($("#input_2").val()==""){
+									alert("项目名称名称不能为空!")
+									return false;
+								}else{	
+										$.ajax({
+											url:"http://localhost:8080/PlaceOriginRest/upda",
+											data:JSON.stringify(vm.maun),						
+											type:"put",
+											xhrFields: {
+													withCredentials: true
+												},
+											contentType:"application/json;charset=utf-8",
+											success:function(result){
+												alert("修改成功")
+												vm.QueryFind();
+											},error:function(result){
+												console.log(result+"upda")
+											}
+										})
+									}
+								},
+								
+								
+								/**
+								 * 新增
+								 */
+								addtwos(){
+									if($("#input_a1").val()==""){
+									alert("联系人不能为空!")
+									return false;
+								}else{	
+										vm.maun.linkno = vm.limiande.zlinkno 
+					 					vm.maun.linkname= vm.limiande.zlinkname		
+					 					vm.maun.position= vm.limiande.zposition		
+					 					vm.maun.linkphone= vm.limiande.zlinkphone
+					 					vm.maun.phone= vm.limiande.zphone
+					 					vm.maun.linkemail= vm.limiande.zlinkemail;
+					 					vm.maun.mfid = vm.limiande.zmfid;
+										$.ajax({
+											url:"http://localhost:8080/PlaceOriginRest/addtwo",
+											data:JSON.stringify(vm.maun),						
+											type:"post",
+											xhrFields: {
+													withCredentials: true
+												},
+											contentType:"application/json;charset=utf-8",
+											success:function(result){
+												alert("新增成功")
+												vm.QueryFind();
+												queryTable(vm.waimiande.mfid);
+												
+											},error:function(result){
+												console.log(result+"adds")
+											}
+										})
+									}
+								},
+								id(item){
+									vm.queryFindmfid.linkno=item.zlinkno;
+									vm.limiande=item;
+									vm.kk="5";
+									console.log(item);
+									
+								},					
+								Deletetwo:function(){
+									if (confirm("你确定要删除"+vm.queryFindmfid.linkno+"么?")) {
+									$.ajax({
+											url:"http://localhost:8080/PlaceOriginRest/deletetwo",
+											data:{
+												linkno:vm.queryFindmfid.linkno
+											},
+											type:"post",
+											xhrFields: {
+												withCredentials: true
+											},
+											dataType:"json",
+											success:function(result){
+														alert("删除成功")
+														vm.QueryFind();	
+														vm.limiande={mfcontacts:"",zmfid:""};
+														queryTable(vm.waimiande.mfid);
+												},error:function(result){
+													console.log(result);
+												},
+										})
+									}
+								},
+								
+								Updatwo(){
+									if($("#input_a1").val()==""){
+									alert("联系人不能为空!")
+									return false;
+								}else{	
+									vm.maun.linkno = vm.limiande.zlinkno
+					 					vm.maun.linkname= vm.limiande.zlinkname		
+					 					vm.maun.position= vm.limiande.zposition		
+					 					vm.maun.linkphone= vm.limiande.zlinkphone
+					 					vm.maun.phone= vm.limiande.zphone
+					 					vm.maun.linkemail= vm.limiande.zlinkemail;
+					 					vm.maun.mfid = vm.limiande.zmfid;
+									vm.maun.mfid = vm.limiande.zmfid; 
+										$.ajax({
+											url:"http://localhost:8080/PlaceOriginRest/updatwo",
+											data:JSON.stringify(vm.maun),						
+											type:"put",
+											xhrFields: {
+													withCredentials: true
+												},
+											contentType:"application/json;charset=utf-8",
+											success:function(result){
+												alert("修改成功")
+												vm.QueryFind();
+												queryTable(vm.waimiande.mfid);
+											},error:function(result){
+												console.log(result+"adds")
+											}
+										})
+									}
+								},
+								
+								QueryFindid:function(){
+									alert(vm.kk);
+									if(vm.kk=="0"){
+										//新增
+										this.addtwos();
+									}else if(vm.kk=="5"){
+										//修改
+										this.Updatwo();
+									}
+									
+//										$.ajax({
+//										url:"http://localhost:8080/PlaceOriginRest/queryFindid",
+//										type:"get",
+//										xhrFields: {
+//											withCredentials: true
+//										},
+//										async:false,
+//										data:{linkno:vm.queryFindmfid.linkno},
+//										dataType:"json",
+//										success:function(result){
+//											if(result==1){
+//												//修改
+//												Updatwo();
+//											}else{
+//												//x新增
+//												addtwos();
+//											}
+//										},error:function(result){					
+//											console.log(result+"1106");
+//										}
+//									})
+								},
+								Deletes:function(){
+									if (confirm("你确定要删除"+vm.queryFind.mfid+"么?")) {
+									$.ajax({
+											url:"http://localhost:8080/PlaceOriginRest/deletes",
+											data:{
+												myid:vm.queryFind.mfid
+											},
+											type:"post",
+											xhrFields: {
+												withCredentials: true
+											},
+											dataType:"json",
+											success:function(result){
+														alert("删除成功")
+														vm.QueryFind();	
+												},error:function(result){
+													console.log(result);
+												},
+										})
+									}
+								},
+						}
+				});
+			</script>
+			
+	</body>
+</html>

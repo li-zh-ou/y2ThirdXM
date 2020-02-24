@@ -16,6 +16,24 @@
     <result column="bei3" property="bei3" jdbcType="VARCHAR" />
     <result column="bei4" property="bei4" jdbcType="VARCHAR" />
   </resultMap>
+  
+  
+  <select id="querywxxwxSelect1" resultType="com.accp.domain.wxxia_wxshou1">
+  	SELECT wxxdbiao.pname AS pname,wxxiangmu.XiangMuNo AS xiangmuno,
+	wxxiangmu.XiangMuName AS xiangmuname,wxxiangmu.ShouJiaAn AS shoujiaan,
+	wxshouru.ShouRuType AS shourutype,wxxiangmu.price AS price,wxxiangmu.huiPrice AS
+	huiprice,wxxiangmu.VIPprice AS vippr,wxxiangmu.xiePrice AS xieprice FROM wxxiangmu,
+	wxshouru,wxxdbiao WHERE wxxiangmu.ShouRuid=wxshouru.ShouRuId AND wxxdbiao.pid=wxxiangmu.bei1 AND wxxdbiao.pname=#{pname}
+  </select>
+  
+  <select id="querywxxwxSelect2" resultType="com.accp.domain.wxxia_wxshou1">
+  	SELECT wxxdbiao.pname AS pname,wxxiangmu.XiangMuNo AS xiangmuno,
+	wxxiangmu.XiangMuName AS xiangmuname,wxxiangmu.ShouJiaAn AS shoujiaan,
+	wxshouru.ShouRuType AS shourutype,wxxiangmu.price AS price,wxxiangmu.huiPrice AS
+	huiprice,wxxiangmu.VIPprice AS vippr,wxxiangmu.xiePrice AS xieprice FROM wxxiangmu,
+	wxshouru,wxxdbiao WHERE wxxiangmu.ShouRuid=wxshouru.ShouRuId AND wxxdbiao.pid=wxxiangmu.bei1 AND wxxiangmu.XiangMuNo=#{XiangMuNo}
+  </select>
+  
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
