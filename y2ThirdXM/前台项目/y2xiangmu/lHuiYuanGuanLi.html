@@ -9,38 +9,41 @@
 		<div id="huiyuanapp">
 			<div>
 				<div class="row" style="border-bottom: solid 1px;">
-					<h3 class="col-xs-offset-1 col-xs-9">会员管理</h3>
-					<p class="col-xs-2"><button class="btn btn-success" style="margin-top: 15px;">关闭</button></p>
+					<h3 class="col-xs-11">会员管理</h3>
+					<p class="col-xs-1"><button class="btn btn-default" style="margin-top: 15px;">关闭</button></p>
 				</div>
-				<div style="padding: 20px 30px;">
-					<p style="text-align: right;font-size: 16px;font-weight: 600;">
+				<div style="padding: 20px 0px 20px 15px;">
+					<p style="font-size: 16px;font-weight: 600;">
 						<a href="javascript:void(0)" onclick="jiaRuHuiYuan()">加入会员</a>
 						<a href="javascript:void(0)" onclick="hyChongZhi()">会员充值</a>
 						<a href="javascript:void(0)" onclick="zhuxiaoHY()">会员注销</a>
 					</p>
 				</div> 
 				<div class="row" style="margin-top: 30px;">
-					<p class="col-xs-4 col-xs-offset-1">
-						<label><span>姓名/编号</span><input type="text" name="hyno" value="" placeholder="匹配会员姓名/会员号"></label>
-					</p>
-					<p class="col-xs-3">
-						<label>
-							<span>手机</span>
-							<input type="text" name="phone" value="" placeholder="请输入预留号码">
-						</label>
-					</p>
-					<p class="col-xs-3">
-						<label>
-							<span>排序方式</span>
-							<select style="padding: 3px 0; width: 180px;" name="order" onchange="queryBytime()">
+					<div class="col-xs-4 col-xs-offset-1">
+						<div class="input-group">
+							<span class="input-group-addon">姓名/编号</span>
+							<input type="text" name="hyno" value="" placeholder="匹配会员姓名/会员号" style="vertical-align: middle ; width:160px; height:33px;">
+						</div>
+					</div>
+					<div class="col-xs-3">
+						<div class="input-group">
+							<span class="input-group-addon">手机</span>
+							<input type="text" name="phone" value="" placeholder="请输入预留号码" style="vertical-align: middle ; width:160px; height:33px;">
+						</div>
+					</div>
+					<div class="col-xs-3">
+						<div class="input-group">
+							<span class="input-group-addon">排序方式</span>
+							<select style="vertical-align: middle ; width:160px; height:33px;" name="order" onchange="queryBytime()">
 								<option value="">请选择</option>
 								<option value="1">按入会时间降序</option>
 								<option value="2">按到期时间降序</option>
 								<option value="3">按入会时间升序</option>
 								<option value="4">按到期时间升序</option>
 							</select>
-						</label>
-					</p>
+						</div>
+					</div>
 				</div>
 				<!-- 会员信息列表 -->
 				<div>
@@ -150,21 +153,45 @@
 				      		<div>
 				      			<h4><a href="javaScript:void(0)">余额充值</a></h4>
 				      			<div id="yuecz" class="row">
-				      				<p class="col-xs-offset-1 col-xs-5">
-				      					当前余额：<input name="dangqianyue" type="number" v-model="huiyuaninfo.huiyuanmoney" disabled="disabled"></p>
-				      				<p class="col-xs-6"><label>充值金额：<input name="chongzhijine" type="number" onblur="czNumberBlur()" min="0" max="50000"></label></p>
-				      				<p class="col-xs-offset-6 col-xs-6">之后金额：<input name="zhihouyue" type="number" disabled="disabled"></p>
+				      				<div class="col-xs-offset-1 col-xs-5">
+				      					<div class="input-group">
+					      					<span class="input-group-addon">当前余额：</span>
+					      					<input name="dangqianyue" type="number" v-model="huiyuaninfo.huiyuanmoney" style="vertical-align: middle;" disabled="disabled">
+					      				</div>
+				      				</div>
+				      				<div class="col-xs-6">
+				      					<div class="input-group">
+					      					<span class="input-group-addon">充值金额：</span>
+					      					<input name="chongzhijine" type="number" onblur="czNumberBlur()" style="vertical-align: middle;" min="0" max="50000">
+					      				</div>
+				      				</div>
+				      				<div class="col-xs-offset-6 col-xs-6">
+				      					<div class="input-group">
+					      					<span class="input-group-addon">之后金额：</span>
+					      					<input name="zhihouyue" type="number" style="vertical-align: middle;" disabled="disabled">
+					      				</div>
+				      				</div>
 				      				<button class="btn btn-success col-xs-offset-10" onclick="chongzhiButton()">确定充值</button>
 				      			</div>
 				      			<h4><a href="javaScript:void(0)" onclick="hyyuecz()">会员延期</a></h4>
 				      			<div id="hyyanqi" class="row">
-				      				<p class="col-xs-offset-1 col-xs-5"><label><span>延期时长：</span><select name="yanqishichang" onchange="yqSelectChange()">
-				      					<option value="0">请选择延期时长</option>
-				      					<option value="50">一年</option>
-				      					<option value="120">三年</option>
-				      					<option value="180">五年</option>
-				      				</select></label></p>
-				      				<p>应付金额：<input name="yanqiyingfu" type="number" disabled="disabled"></p>
+				      				<div class="col-xs-offset-1 col-xs-5">
+				      					<div class="input-group">
+				      						<span class="input-group-addon">延期时长：</span>
+					      					<select name="yanqishichang" onchange="yqSelectChange()" style="vertical-align: middle; height:33px;">
+						      					<option value="0">请选择延期时长</option>
+						      					<option value="50">一年</option>
+						      					<option value="120">三年</option>
+						      					<option value="180">五年</option>
+						      				</select>
+					      				</div>
+				      				</div>
+				      				<div class="col-lg-6">
+				      					<div class="input-group">
+					      					<span class="input-group-addon">应付金额：</span>
+					      					<input name="yanqiyingfu" type="number" style="vertical-align: middle;" disabled="disabled">
+					      				</div>
+				      				</div>
 				      				<button class="btn btn-success col-xs-offset-10" onclick="yanqiButton()">确定延期</button>
 				      			</div>
 				      		</div>
@@ -206,7 +233,10 @@
 					        </div>
 			      		</div>
 				      	<div class="modal-body row" style="font-size: 17px;">
-				      		<p>请搜索：<input type="text" id="hycztext" placeholder="匹配客户编号/客户名称/联系电话" style="width:250px"></p>
+				      		<div class="input-group" style="margin-left: 31px;">
+				      			<span class="input-group-addon">请搜索：</span>
+				      			<input type="text" id="hycztext" placeholder="匹配客户编号/客户名称/联系电话"  style="vertical-align: middle ; width:270px; height:33px;">
+				      		</div>
 				      		<table class="table table-hover table-bordered text-center" style="width: 90%;margin-left:5%;margin-right:5%;">
 								<thead>
 									<tr>
@@ -239,7 +269,7 @@
 					        </div>
 			      		</div>
 				      	<div class="modal-body row" style="font-size: 17px;">
-				      		<p class="col-xs-6"><label><span>会员时长：</span><select name="huiyuanshichang" onchange="hyscChange()">
+				      		<p class="col-xs-6"><label><span>会员时长：</span><select name="huiyuanshichang" onchange="hyscChange()" style="vertical-align: middle ; width:220px; height:29px;">
 				      				<option value="0">请选择会员时长</option>
 				      				<option value="50">一年</option>
 				      				<option value="120">三年</option>
