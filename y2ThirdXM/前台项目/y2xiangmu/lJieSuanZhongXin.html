@@ -1,100 +1,190 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8">
 		<title>结算中心</title>
-		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
 	</head>
 	<body>
-		<div class="row">
-			<h3 class="col-xs-9" style="margin-left: 20px;">结算中心</h3>
-			<p class="row col-xs-2" style="padding-top: 15px;">
-				<button class="btn btn-success" style="width: 50%;margin-right: 10px;">查询</button>
-				<button class="btn btn-default">关闭</button>
-			</p>
-		</div>
-		<div style="padding: 0 15px;">
-			<p style="height: 30px;border-bottom: 1px solid blue;"></p>
-		</div>
-		<div class="row" style="padding: 0 15px;">
-			<div class="col-xs-10">
-				<label>开单日期</label><input type="date"/><input type="date"/>&nbsp;&nbsp;&nbsp;
-				<label>销售单号</label><input type="text"/>&nbsp;&nbsp;&nbsp;
-				<label>结算状态</label>
-				<select style="padding: 3px 0;width: 100px;">
-					<option>已结算</option>
-					<option>未结算</option>
-				</select>&nbsp;&nbsp;&nbsp;
-				<label>车牌号</label><input type="text"/>&nbsp;&nbsp;&nbsp;
-				<br />
-				<label>客户名称</label>
-				<select style="padding: 3px 0;width: 140px;">
-					<option>请选择</option>
-				</select>&nbsp;&nbsp;&nbsp;
-				<label>服务顾问</label>
-				<select style="padding: 3px 0;width: 140px;">
-					<option>请选择</option>
-				</select>&nbsp;&nbsp;&nbsp;
-				<label>业务类型</label>
-				<select style="padding: 3px 0;width: 140px;">
-					<option>请选择</option>
-				</select>&nbsp;&nbsp;&nbsp;
-				<label>单据状态</label>
-				<select style="padding: 3px 0;width: 140px;">
-					<option>已完工</option>
-					<option>未完工</option>
-				</select>&nbsp;&nbsp;&nbsp;
-				<label>备注</label><input type="text"/>
+		<div id="body">
+			<div class="row">
+				<h3 class="col-xs-9" style="margin-left: 20px;">结算中心</h3>
+				<p class="row col-xs-2" style="padding-top: 15px;">
+					<button class="btn btn-success" onclick="queryJieSuan()" style="width: 50%;margin-right: 10px;">查询</button>
+					<button class="btn btn-default">关闭</button>
+				</p>
 			</div>
+			<div style="padding: 0 15px;">
+				<p style="height: 30px;border-bottom: 1px solid blue;"></p>
+			</div>
+			<div class="row" style="padding: 0 15px;">
+				<div class="col-xs-11">
+					<label>开单日期</label><input type="date" name="starttime"/>至<input type="date" name="endtime"/>&nbsp;&nbsp;&nbsp;
+					<label>销售单号</label><input type="text" name="wxdanno"/>&nbsp;&nbsp;&nbsp;
+					<label>结算状态</label>
+					<select style="padding: 3px 0;width: 100px;" name="jiesuanstatu">
+						<option value="">请选择</option>
+						<option value="已结算">已结算</option>
+						<option value="未结算">未结算</option>
+					</select>&nbsp;&nbsp;&nbsp;
+					<label>车牌号</label><input type="text" name="chepai"/>&nbsp;&nbsp;&nbsp;
+					<br />
+					<label>客户名称</label>
+					<input type="text" name="kehuname">&nbsp;&nbsp;&nbsp;
+					<label>服务顾问</label>
+					<select name="guwen" style="padding: 3px 0;width: 140px;">
+						<option value="">请选择</option>
+						<option value="李">李</option>
+						<option value="王">王</option>
+						<option value="刘">刘</option>
+					</select>&nbsp;&nbsp;&nbsp;
+					<label>业务类型</label>
+					<select name="yewutype" style="padding: 3px 0;width: 140px;">
+						<option value="">请选择</option>
+					</select>&nbsp;&nbsp;&nbsp;
+					<label>单据状态</label>
+					<select name="danjustatu" style="padding: 3px 0;width: 140px;">
+						<option value="">全部</option>
+						<option value="已竣工">已完工</option>
+						<option value="作业中">未完工</option>
+					</select>&nbsp;&nbsp;&nbsp;
+					<label>备注</label><input type="text" name="remark"/>
+				</div>
+			</div>
+			
+			<p style="text-align: right;font-size: 18px;">
+				<a href="javascript:void(0)" style="margin-right: 20px;" onclick="shouyin()">收银</a>
+				<a href="javascript:void(0)" onclick="toWeiXiuDan()" style="margin-right: 20px;">打开单据</a>
+				<!-- <a href="javascript:void(0)" style="margin-right: 20px;">导出</a> -->
+			</p>
+			<div>
+				<table class="table table-hover table-bordered text-center ">
+						<thead>
+							<tr>
+								<th></th>
+								<th class="text-center">单号</th>
+								<th class="text-center">单据类型</th>
+								<th class="text-center">结算方式</th>
+								<th class="text-center">单据状态</th>
+								<th class="text-center">结算时间</th>
+								<th class="text-center">结算人</th>
+								<th class="text-center">结算金额</th>
+								<th class="text-center">业务类型</th>
+								<th class="text-center">客户名称</th>
+								<th class="text-center">车牌</th>
+								<th class="text-center">车辆型号</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr v-for="item in alljiesuan" onclick="trclick(this)">
+								<td><input type="radio" name="jiesuan" disabled="disabled"></td>
+								<td class="text-center">{{item.wxdanno}}</td>
+								<td class="text-center">{{item.wxdantype}}</td>
+								<td class="text-center">{{item.jiesuantype}}</td>
+								<td class="text-center">{{item.danjustatu}}</td>
+								<td class="text-center">{{item.jiesuantime}}</td>
+								<td class="text-center">{{item.bei2}}</td>
+								<td class="text-center">{{item.jiesuanmoney}}</td>
+								<td class="text-center">{{item.yewutype}}</td>
+								<td class="text-center">{{item.kehuname}}</td>
+								<td class="text-center">{{item.chepai}}</td>
+								<td class="text-center">{{item.xinghao}}</td>
+							</tr>
+						</tbody>
+				</table>
+			</div>
+		
 		</div>
-		
-		<p style="text-align: right;font-size: 18px;">
-			<a href="javascript:void(0)" style="margin-right: 20px;">收银</a>
-			<a href="javascript:void(0)" style="margin-right: 20px;">打开单据</a>
-			<a href="javascript:void(0)" style="margin-right: 20px;">导出</a>
-		</p>
-		<div>
-			<table class="table table-hover table-bordered text-center ">
-					<thead>
-						<tr>
-							<th class="text-center">单据状态</th>
-							<th class="text-center">业务类型</th>
-							<th class="text-center">客户名称</th>
-							<th class="text-center">车牌号</th>
-							<th class="text-center">手机</th>
-							<th class="text-center">会员卡号</th>
-							<th class="text-center">维修单号</th>
-							<th class="text-center">单据类型</th>
-							<th class="text-center">开单时间</th>
-							<th class="text-center">预计完工</th>
-							<th class="text-center">完工时间</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td class="text-center">华为荣耀p1000</td>
-							<td class="text-center">手机</td>
-							<td class="text-center">0.1</td>
-							<td class="text-center">99999</td>
-							<td class="text-center">99999</td>
-							<td class="text-center">99999</td>
-							<td class="text-center">手机</td>
-							<td class="text-center">0.1</td>
-							<td class="text-center">99999</td>
-							<td class="text-center">99999</td>
-							<td class="text-center">99999</td>
-						</tr>
-					</tbody>
-			</table>
-		</div>
-		
-		
-		
 		
 	</body>
 	<script type="text/javascript" src="js/jquery-3.4.1.min .js" ></script>
+	<script type="text/javascript" src="js/vue.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+	<script type="text/javascript" src="js/my.js"></script>
 	<script type="text/javascript">
+		var vm = new Vue({
+			el:"#body",
+			data(){
+				return {
+					alljiesuan:[],
+					selectedwxdanno:"",
+				    selectedchepai:"",
+				}
+			},
+			methods:{
+				
+			}
+		})
+		var vmindex =null;
+		//加载函数
+		queryJieSuan();
+		function queryJieSuan(){
+			$.ajax({
+				"url":"http://localhost:8080/jiesuanzhongxin/queryJieSuan",
+				"data":"wxdanno="+$("[name='wxdanno']").val()+"&starttime="+$("[name='starttime']").val()+"&endtime="+$("[name='endtime']").val()
+				+"&guwen="+$("[name='guwen']").val()+"&remark="+$("[name='remark']").val()+"&danjustatu="+$("[name='danjustatu']").val()+"&jiesuanstatu="+$("[name='jiesuanstatu']").val()
+				+"&chepai="+$("[name='chepai']").val()+"&kehuname="+$("[name='kehuname']").val()+"&yewutype="+$("[name='yewutype']").val(),
+				"type":"post",
+				"success":function(result){
+					vm.alljiesuan = result;
+				},
+				"error":function(){
+					
+				}
+			})
+		}
+		function trclick(item){
+			var index = $(item).index();
+			if($("input[type=radio]")[index].checked){
+				$("input[type=radio]")[index].checked =false;
+				vmindex = null;
+			}else{
+				$("input[type=radio]")[index].checked =true;
+				vmindex = index;
+			}
+				
+		}
+		//iframe跳转维修单
+		function toWeiXiuDan(){
+			var Myiframe=document.createElement("iframe");
+			Myiframe.setAttribute("style","position:fixed;z-index:999;top:0px;left:0px;width:100%;height:100%;");
+			Myiframe.src="lWeiXiuDan.html";
+			Myiframe.id="weixiudan";
+			var mybody=document.getElementById("body");
+			if(vmindex==null){
+				alert("未选中任何单据");
+				Myiframe = null;
+				mybody = null;
+				return;
+			}
+			vm.selectedwxdanno = vm.alljiesuan[vmindex].wxdanno;
+			vm.selectedchepai = vm.alljiesuan[vmindex].chepai;
+			
+			vmindex = null;
+			mybody.append(Myiframe);
+		}
 		
+		function load(){
+			
+		}
+		
+		function shouyin(){
+			if(vmindex==null){
+				alert("未选中任何单据");
+				Myiframe = null;
+				mybody = null;
+				return;
+			}
+			vm.selectedwxdanno = vm.alljiesuan[vmindex].wxdanno;
+			vm.selectedchepai = vm.alljiesuan[vmindex].chepai;
+			
+			vmindex = null;
+			var Myiframe=document.createElement("iframe");
+			Myiframe.setAttribute("style","position:fixed;z-index:500;top:0px;left:0px;width:100%;height:100%;");
+			Myiframe.src="lXiaoPao.html";
+			Myiframe.id="otherHtml";
+			var mybody=document.getElementById("body");
+			mybody.append(Myiframe);
+		}
 	</script>
 </html>

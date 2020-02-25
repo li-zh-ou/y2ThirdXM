@@ -1,49 +1,559 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>会员管理</title>
-		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
-	</head>
-	<body>
-		<div>
-			<div class="row" style="border-bottom: solid 1px;">
-				<h3 class="col-xs-offset-1 col-xs-9">会员管理</h3>
-				<p class="col-xs-2"><button class="btn btn-success" style="margin-top: 15px;">关闭</button></p>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>会员管理</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+</head>
+<body>
+		<div id="huiyuanapp">
+			<div>
+				<div class="row" style="border-bottom: solid 1px;">
+					<h3 class="col-xs-offset-1 col-xs-9">会员管理</h3>
+					<p class="col-xs-2"><button class="btn btn-success" style="margin-top: 15px;">关闭</button></p>
+				</div>
+				<div style="padding: 20px 30px;">
+					<p style="text-align: right;font-size: 16px;font-weight: 600;">
+						<a href="javascript:void(0)" onclick="jiaRuHuiYuan()">加入会员</a>
+						<a href="javascript:void(0)" onclick="hyChongZhi()">会员充值</a>
+						<a href="javascript:void(0)" onclick="zhuxiaoHY()">会员注销</a>
+					</p>
+				</div> 
+				<div class="row" style="margin-top: 30px;">
+					<p class="col-xs-4 col-xs-offset-1">
+						<label><span>姓名/编号</span><input type="text" name="hyno" value="" placeholder="匹配会员姓名/会员号"></label>
+					</p>
+					<p class="col-xs-3">
+						<label>
+							<span>手机</span>
+							<input type="text" name="phone" value="" placeholder="请输入预留号码">
+						</label>
+					</p>
+					<p class="col-xs-3">
+						<label>
+							<span>排序方式</span>
+							<select style="padding: 3px 0; width: 180px;" name="order" onchange="queryBytime()">
+								<option value="">请选择</option>
+								<option value="1">按入会时间降序</option>
+								<option value="2">按到期时间降序</option>
+								<option value="3">按入会时间升序</option>
+								<option value="4">按到期时间升序</option>
+							</select>
+						</label>
+					</p>
+				</div>
+				<!-- 会员信息列表 -->
+				<div>
+					<table class="table table-hover table-bordered text-center " style="width: 90%;margin-left:5%;margin-right:5%;">
+						<thead>
+							<tr>
+								<td></td>
+								<th class="text-center">客户编号</th>
+								<th class="text-center">客户名称</th>
+								<th class="text-center">会员卡号</th>
+								<th class="text-center">会员余额</th>
+								<th class="text-center">会员等级</th>
+								<th class="text-center">消费金额</th>
+								<th class="text-center">积分</th>
+								<th class="text-center">优惠</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr v-for="item,index in allhy.list" ondblclick="tableDblclick(this)" onclick="tableClick(this)">
+								<td><input type="radio" name="hyradio"  disabled="disabled"></td>
+								<td class="text-center">{{item.kehuno}}</td>
+								<td class="text-center">{{item.huiyuanname}}</td>
+								<td class="text-center">{{item.huiyuanno}}</td>
+								<td class="text-center">{{item.huiyuanmoney}}</td>
+								<td class="text-center">{{item.huiyuangraden}}</td>
+								<td class="text-center">{{item.xiaofei}}</td>
+								<td class="text-center">{{item.jifen}}</td>
+								<td class="text-center">{{item.youhui}}</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="btn-group" role="group" style="margin-left: 40%;">
+						<button type="button" class="btn btn-default" onclick="shoupage()">首页</button>
+					  	<button type="button" class="btn btn-default" @click="nextpage()">《</button>
+					  	<button type="button" class="btn btn-default">{{allhy.pageNum}}/{{allhy.lastPage}}</button>
+					  	<button type="button" class="btn btn-default" @click="prevpage()">》</button>
+					  	<button type="button" class="btn btn-default" @click="lastpage()">末页</button>
+					</div>
+				</div>
 			</div>
-			<div style="padding: 20px 30px;">
-				<p style="text-align: right;font-size: 16px;font-weight: 600;">
-					<a href="javascript:void(0)">会员办理</a>
-					<a href="javascript:void(0)">会员注销</a>
-				</p>
-			</div> 
-			<div class="row" style="margin-top: 30px;">
-				<p class="col-xs-3">
-					<label><span>姓名</span><input type="text"></label>
-				</p>
-				<p class="col-xs-3">
-					<label>
-						<span>性别</span>
-						<select style="padding: 3px 0; width: 180px;">
-							<option>请选择</option>
-							<option>男</option>
-							<option>女</option>
-						</select>
-					</label>
-				</p>
-				<p class="col-xs-3">
-					<label>
-						<span>排序方式</span>
-						<select style="padding: 3px 0; width: 180px;">
-							<option>请选择</option>
-							<option>男</option>
-							<option>女</option>
-						</select>
-					</label>
-				</p>
-			</div>
+			
+			
+			<!-- 模态框部分 -->
+			<div class="modal" tabindex="-1" role="dialog" id="huiyuanModal">
+			  	<div class="modal-dialog" role="document">
+			    	<div class="modal-content">
+			      		<div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
+					        <div class="row">
+					        	<h3 class="modal-title col-xs-9">会员信息</h3>
+					        </div>
+			      		</div>
+				      	<div class="modal-body row" style="font-size: 17px;">
+				      		<p class="col-xs-12">客户姓名：<strong>{{huiyuaninfo.huiyuanname}}</strong></p>
+				      		<p class="col-xs-6">入会时间：<span style="font-weight: 700;font-size:15px;color:green;">{{huiyuaninfo.ruhuitime}}</span></p>
+				      		<p class="col-xs-6">到期时间：<span style="font-weight: 700;font-size:15px;color:red;">{{huiyuaninfo.daoqitime}}</span></p>
+							<p class="col-xs-12" style="height: 25px;border-bottom:1px solid;"></p>
+				      		<p class="col-xs-6"></p>
+				      		<p class="col-xs-6" style="font-size:17px;font-weight: 700;">会员卡号：{{huiyuaninfo.huiyuanno}}</p>
+				      		<p class="col-xs-4" style="font-size:16px;font-weight: 600;">会员等级：{{huiyuaninfo.huiyuangraden}}</p>
+				      		<p class="col-xs-5" style="font-size:16px;font-weight: 600;">账户余额：{{huiyuaninfo.huiyuanmoney}}</p>
+				      		<p class="col-xs-3" style="font-size:16px;font-weight: 600;">优惠：{{huiyuaninfo.youhui}}折</p>
+				      		<p class="col-xs-6" style="font-size:16px;font-weight: 600;">消费总金额：{{huiyuaninfo.xiaofei}}</p>
+				      		<p class="col-xs-6" style="font-size:16px;font-weight: 600;">积分：{{huiyuaninfo.jifen}}</p>
+				      	</div>
+			    	</div><!-- /.modal-content -->
+			  	</div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+			
+			<!-- 会员充值模态框 -->
+			<div class="modal" tabindex="-1" role="dialog" id="huiyuanCZ">
+			  	<div class="modal-dialog modal-lg" role="document">
+			    	<div class="modal-content">
+			      		<div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
+					        <div class="row">
+					        	<h3 class="modal-title col-xs-9">会员充值</h3>
+					        </div>
+			      		</div>
+				      	<div class="modal-body row" style="font-size: 17px;">
+				      		<table border="1" style="margin-left: 30px;">
+				      			<tr>
+				      				<th width="120px">会员卡号</th>
+				      				<td width="250px">{{huiyuaninfo.huiyuanno}}</td>
+				      				<th width="120px">会员姓名</th>
+				      				<td width="250px">{{huiyuaninfo.huiyuanname}}</td>
+				      			</tr>
+				      			<tr>
+				      				<th>会员余额</th>
+				      				<td>{{huiyuaninfo.huiyuanmoney}}</td>
+				      				<th>会员积分</th>
+				      				<td>{{huiyuaninfo.jifen}}</td>
+				      			</tr>
+				      			<tr>
+				      				<th>入会日期</th>
+				      				<td>{{huiyuaninfo.ruhuitime}}</td>
+				      				<th>到期日期</th>
+				      				<td>{{huiyuaninfo.daoqitime}}</td>
+				      			</tr>
+				      			<tr>
+				      				<th>会员等级</th>
+				      				<td>{{huiyuaninfo.huiyuangraden}}</td>
+				      				<th>会员折扣</th>
+				      				<td>{{huiyuaninfo.youhui}}</td>
+				      			</tr>
+				      		</table>
+				      		<div>
+				      			<h4><a href="javaScript:void(0)">余额充值</a></h4>
+				      			<div id="yuecz" class="row">
+				      				<p class="col-xs-offset-1 col-xs-5">
+				      					当前余额：<input name="dangqianyue" type="number" v-model="huiyuaninfo.huiyuanmoney" disabled="disabled"></p>
+				      				<p class="col-xs-6"><label>充值金额：<input name="chongzhijine" type="number" onblur="czNumberBlur()" min="0" max="50000"></label></p>
+				      				<p class="col-xs-offset-6 col-xs-6">之后金额：<input name="zhihouyue" type="number" disabled="disabled"></p>
+				      				<button class="btn btn-success col-xs-offset-10" onclick="chongzhiButton()">确定充值</button>
+				      			</div>
+				      			<h4><a href="javaScript:void(0)" onclick="hyyuecz()">会员延期</a></h4>
+				      			<div id="hyyanqi" class="row">
+				      				<p class="col-xs-offset-1 col-xs-5"><label><span>延期时长：</span><select name="yanqishichang" onchange="yqSelectChange()">
+				      					<option value="0">请选择延期时长</option>
+				      					<option value="50">一年</option>
+				      					<option value="120">三年</option>
+				      					<option value="180">五年</option>
+				      				</select></label></p>
+				      				<p>应付金额：<input name="yanqiyingfu" type="number" disabled="disabled"></p>
+				      				<button class="btn btn-success col-xs-offset-10" onclick="yanqiButton()">确定延期</button>
+				      			</div>
+				      		</div>
+				      	</div>
+			    	</div><!-- /.modal-content -->
+			  	</div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+			
+			<!-- 会员注销模态框 -->
+			<div class="modal" tabindex="-1" role="dialog" id="hyzhuxiao">
+			  	<div class="modal-dialog" role="document">
+			    	<div class="modal-content">
+			      		<div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
+					        <div class="row">
+					        	<h3 class="modal-title col-xs-9">会员注销</h3>
+					        </div>
+			      		</div>
+				      	<div class="modal-body row" style="font-size: 17px;">
+				      		<p class="col-xs-12"><strong>会员卡号：{{huiyuaninfo.huiyuanno}}</strong></p>
+				      		<p class="col-xs-6">会员姓名：<span style="font-weight: 700;font-size:15px;color:green;">{{huiyuaninfo.huiyuanname}}</span></p>
+				      		<p class="col-xs-6">会员余额：<span style="font-weight: 700;font-size:24px;color:red;">{{huiyuaninfo.huiyuanmoney}}</span></p>
+							<p class="col-xs-12" style="height: 25px;border-bottom:1px solid;"></p>
+							<p class="col-xs-offset-8 col-xs-4" style="color:red;">注意：会员注销后会员积分等无法恢复！</p>
+							<button class="btn btn-success col-xs-offset-10" onclick="quedinzhuxiao()">确定注销</button>
+				      	</div>
+			    	</div><!-- /.modal-content -->
+			  	</div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+			
+			<!-- 非会员客户查找模态框 -->
+			<div class="modal" tabindex="-1" role="dialog" id="kehuchazhao">
+			  	<div class="modal-dialog" role="document">
+			    	<div class="modal-content">
+			      		<div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
+					        <div class="row">
+					        	<h3 class="modal-title col-xs-9">客户查找</h3>
+					        </div>
+			      		</div>
+				      	<div class="modal-body row" style="font-size: 17px;">
+				      		<p>请搜索：<input type="text" id="hycztext" placeholder="匹配客户编号/客户名称/联系电话" style="width:250px"></p>
+				      		<table class="table table-hover table-bordered text-center" style="width: 90%;margin-left:5%;margin-right:5%;">
+								<thead>
+									<tr>
+						      			<th width="50px">id</th>
+						      			<th width="120px">客户编号</th>
+						      			<th width="300px">客户姓名</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr v-for="item in nohyKeHu" ondblclick="jrDblclick(this)">
+						      			<td>{{item.kehuid}}</td>
+						      			<td>{{item.kehuno}}</td>
+						      			<td>{{item.kehuname}}</td>
+									</tr>
+								</tbody>
+							</table>
+				      	</div>
+			    	</div><!-- /.modal-content -->
+			  	</div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+			
+				<!-- 加入会员模态框 -->
+			<div class="modal" tabindex="-1" role="dialog" id="jiaruhuiyuan">
+			  	<div class="modal-dialog" role="document">
+			    	<div class="modal-content">
+			      		<div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
+					        <div class="row">
+					        	<h3 class="modal-title col-xs-9">加入会员</h3>
+					        </div>
+			      		</div>
+				      	<div class="modal-body row" style="font-size: 17px;">
+				      		<p class="col-xs-6"><label><span>会员时长：</span><select name="huiyuanshichang" onchange="hyscChange()">
+				      				<option value="0">请选择会员时长</option>
+				      				<option value="50">一年</option>
+				      				<option value="120">三年</option>
+				      				<option value="180">五年</option>
+				      		</select></label></p>
+				      		<p class="col-xs-6">对应金额：<input type="number" name="duiyingjine" disabled="disabled"></p>
+				      		<p class="col-xs-6">会员名称：<input name="huiyuanname" type="text"></p>
+				      		<p class="col-xs-6">联系电话：<input name="huiyuanphone" type="text"></p>
+				      		<p class="col-xs-12"></p>
+				      		<p class="col-xs-offset-6 col-xs-6">收到：<input name="shoudao" type="number"></p>
+				      		<button class="btn btn-success col-xs-offset-10" onclick="queRenJiaRu()">确认加入</button>
+				      		
+				      	</div>
+			    	</div><!-- /.modal-content -->
+			  	</div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
 		</div>
-			</body>
+</body>
 	<script type="text/javascript" src="js/jquery-3.4.1.min .js" ></script>
+	<script type="text/javascript" src="js/vue.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+	<script type="text/javascript" src="js/my.js"></script>
+	<script>
+		var vm =new Vue({
+			el:"#huiyuanapp",
+			data(){
+				return {
+					allhy:[],
+					huiyuaninfo:{},
+					nohyKeHu:[]
+					
+				}
+			},
+			methods:{
+				nextpage:function(){
+					pageQuery(this.allhy.nextPage,10,$("[name='hyno']").val(),$("[name='phone']").val(),$("[name='order']").val());
+				},
+				prevpage:function(){
+					pageQuery(this.allhy.prePage,10,$("[name='hyno']").val(),$("[name='phone']").val(),$("[name='order']").val());
+				},
+				lastpage:function(){
+					pageQuery(this.allhy.lastPage,10,$("[name='hyno']").val(),$("[name='phone']").val(),$("[name='order']").val());
+				},
+				shoupage:function(){
+					pageQuery(1,10,$("[name='hyno']").val(),$("[name='phone']").val(),$("[name='order']").val());
+				}
+			}
+		})
+		var timeoutID = null;
+		var jrkehuno = null;
+		function tableClick(item){
+			clearTimeout(timeoutID);
+			timeoutID = window.setTimeout(function (){
+				  var index = $(item).index();
+				  if($("[name='hyradio']")[index].checked){
+					  $("[name='hyradio']")[index].checked=false;
+				  }else{
+					  $("[name='hyradio']")[index].checked=true;
+				  }
+			},300);
+		}
+		// table的双击选中tr,并取出td的值
+		function tableDblclick(huiyuanitem){
+			clearTimeout(timeoutID); 
+			//获取子元素td的文本
+			/*var item = $(huiyuanitem).find("td");
+			var hyobj={kehuno:item[1].textContent,kehuname:item[2].textContent,huiyuanno:item[3].textContent,huiyuanmoney:parseFloat(item[4].textContent),huiyuandraden:item[5].textContent,xiaofei:parseFloat(item[6].textContent),jifen:parseFloat(item[7].textContent),youhui:parseFloat(item[8].textContent)};
+			var newhyobj=JSON.parse(JSON.stringify(hyobj));
+			console.log(newhyobj);
+			vm.huiyuaninfo=newhyobj;
+			$("#huiyuanModal").modal("show");*/
+			var index = $(huiyuanitem).index();
+			vm.huiyuaninfo=vm.allhy.list[index];
+			index=null;
+			$("#huiyuanModal").modal("show");
+		}
+		//加入会员
+		function jiaRuHuiYuan(){
+			//打开模态框前刷新
+			vm.nohyKeHu=[];
+			$("#kehuchazhao").modal("show");
+		}
+		//加入会员  ，客户查找input 输入框text回车响应事件
+		$("#hycztext").bind('keypress',function(event){
+			if(event.keyCode=="13"){
+				$.ajax({
+					url:"http://localhost:8080/huiyuan/queryNoHuiYuan",
+					"data":"where="+$("#hycztext").val(),
+					"type":"post",
+					"success":function(result){
+						vm.nohyKeHu=result;
+					},"error":function(){
+						alert("出错了！");
+					}
+				})
+			}
+		})
+		//加入会员  table的tr双击传递客户编号
+		function jrDblclick(jrhyitem){
+			var index = $(jrhyitem).index();
+			jrkehuno=vm.nohyKeHu[index].kehuno;
+			index=null;
+			$("#kehuchazhao").modal("hide");
+			$("#jiaruhuiyuan").modal("show");
+		}
+		//加入会员  会员时长下拉框Change事件函数
+		function hyscChange(){
+			$("[name='duiyingjine']").val(parseFloat($("[name='huiyuanshichang']").val()));
+			
+		}
+		//加入会员 确认加入会员button点击提交函数
+		function queRenJiaRu(){
+			//判断会员信息是否为空
+			if($("[name='huiyuanshichang']").val() == "0" || $("[name='huiyuanname']").val() == "" || $("[name='huiyuanname']").val() == "" ){
+				alert("请完善会员信息！");
+			}else{
+				//收到框数值判断
+				if( $("[name='shoudao']").val() == "0" || $("[name='shoudao']").val() == "" || parseFloat($("[name='shoudao']").val()) - parseFloat($("[name='huiyuanshichang']").val()) <0){
+					alert("注意！！！收到金额不能小于开通会员必须费用！");
+				}else{
+					var money = parseFloat($("[name='shoudao']").val()) - parseFloat($("[name='huiyuanshichang']").val());
+					var shic =parseInt($("[name='huiyuanshichang']").val());
+					var record ={kehuno:jrkehuno,huiyuanname:$("[name='huiyuanname']").val(),huiyuanphone:$("[name='huiyuanname']").val(),huiyuanmoney:money,shichang:shic};
+					money=null;
+					shic=null;
+					$.ajax({
+						url:"http://localhost:8080/huiyuan/insertHuiYuan",
+						"data":JSON.stringify(record),
+						"type":"post",
+						"contentType":"application/json;charset=UTF-8",
+						"success":function(result){
+							if(result =="1"){
+								alert("操作成功！");
+							}
+							pageQuery(1,10,"","","");
+							$("#jiaruhuiyuan").modal("hide");
+						},
+						"error":function(){
+							alert("加入会员失败了!");
+						}
+					}) 
+				}
+			}
+		}
+		//注销会员
+		// table中的radio选中,获取对应tr的信息 -
+		function zhuxiaoHY(){
+			if($("input:checked").length==0){
+				alert("没有选中任何信息！");
+				return;
+			}else{
+				for(var i=0;i<$("[name='hyradio']").length;i++){
+					if($("[name='hyradio']")[i].checked){
+						vm.huiyuaninfo=vm.allhy.list[i];
+					}
+				}
+				$("#hyzhuxiao").modal("show");
+			}
+		}
+		//会员注销，确定注销button事件
+		function quedinzhuxiao(){
+			$.ajax({
+				"url":"http://localhost:8080/huiyuan/zhuXiao",
+				"data":"huiyuanno="+vm.huiyuaninfo.huiyuanno,
+				"type":"post",
+				"success":function(result){
+					if(result=="1"){
+						alert("注销成功！");
+						pageQuery(1,10,"","","");
+						$("#hyzhuxiao").modal("hide");
+					}else{
+						alert("注销出问题了！")
+					}
+				}
+			})
+			
+		}
+		//会员充值
+		function hyChongZhi(){
+			if($("input:checked").length==0){
+				alert("没有选中任何信息！");
+				return;
+			}else{
+				for(var i=0;i<$("[name='hyradio']").length;i++){
+					if($("[name='hyradio']")[i].checked){
+						vm.huiyuaninfo=vm.allhy.list[i];
+					}
+				}
+				$("[name='chongzhijine']").val(null);
+				$("[name='zhihouyue']").val(null);
+				document.getElementsByName("yanqishichang")[0].selectedIndex=0;
+				$("[name='yanqiyingfu']").val(null);
+				$("#huiyuanCZ").modal("show");
+			}
+		}
+		//会员充值，充值金额number框blur事件函数
+		function czNumberBlur(){
+			if(isNaN(parseFloat($("[name='chongzhijine']").val()))){
+				$("[name='chongzhijine']").val(0);
+			}else if(parseFloat($("[name='chongzhijine']").val())<0){
+				$("[name='chongzhijine']").val(0);
+			}else if(parseFloat($("[name='chongzhijine']").val())>100000){
+				$("[name='chongzhijine']").val(100000);
+			}
+			$("[name='chongzhijine']").val(parseFloat($("[name='chongzhijine']").val()));
+			var he = parseFloat($("[name='dangqianyue']").val())+parseFloat($("[name='chongzhijine']").val());
+			$("[name='zhihouyue']").val(he);
+		}
+		//会员充值，会员延期下拉框change事件函数
+		function yqSelectChange(){
+			$("[name='yanqiyingfu']").val(parseFloat($("[name='yanqishichang']").val()));
+		}
+		//会员充值，确定充值button按钮click事件函数
+		function chongzhiButton(){
+			if($("[name='chongzhijine']").val()=="0"||$("[name='chongzhijine']").val()==""){
+				alert("请填写充值金额");
+			}else{
+				var isTrue = confirm("确定充值吗？");
+				if(isTrue){
+					var chongzhijine = $("[name='chongzhijine']").val();
+					var zhihouyue = $("[name='zhihouyue']").val();
+					$("[name='chongzhijine']").val(null);
+					$("[name='zhihouyue']").val(null);
+					var zc = {huiyuanmoney:zhihouyue,huiyuanno:vm.huiyuaninfo.huiyuanno};
+					chongzhijine=null;
+					zhihouyue=null;
+					$.ajax({
+						"url":"http://localhost:8080/huiyuan/chongZhi",
+						"data":JSON.stringify(zc),
+						"type":"post",
+						"contentType":"application/json;charset=UTF-8",
+						"success":function(result){
+							if(result=="1"){
+								alert("充值成功!");
+								pageQuery(1,10,"","","");
+								for(var i=0;i<$("[name='hyradio']").length;i++){
+									if($("[name='hyradio']")[i].checked){
+										vm.huiyuaninfo=vm.allhy.list[i];
+									}
+								}
+								$("#huiyuanCZ").modal("hide");
+							}
+							zc=null;
+						},
+						"error":function(){
+							alert("充值出问题了！");
+						}
+					})
+					
+				}
+			}
+		}
+		//会员充值，确定延期button按钮click事件函数
+		function yanqiButton(){
+			if($("[name='yanqishichang']").val()=="0"){
+				alert("请选择延期时长");
+			}else{
+				var isTrue = confirm("确定延期吗？");
+				if(isTrue){
+					var yanqishichang=$("[name='yanqishichang']").val();
+					document.getElementsByName("yanqishichang")[0].selectedIndex=0;
+					$("[name='yanqiyingfu']").val(null);
+					$.ajax({
+						"url":"http://localhost:8080/huiyuan/yanQi",
+						"data":"money="+yanqishichang+"&no="+vm.huiyuaninfo.huiyuanno,
+						"type":"post",
+						"success":function(result){
+							if(result=="1"){
+								alert("延期成功!");
+								$("#huiyuanCZ").modal("hide");
+							}
+						},
+						"error":function(){
+							alert("延期出问题了！");
+						}
+					})
+				}
+			}
+		}
+		
+		function pageQuery(pageNum,pageSize,hy,phone,order){
+			$.ajax({
+				"url":"http://localhost:8080/huiyuan/queryAllHuiYuan",
+				"data":"pageNum="+pageNum+"&pageSize="+pageSize+"&hy="+hy+"&phone="+phone+"&order="+order,
+				"type":"post",
+				"dataType":"json",
+				"success":function(result){
+					vm.allhy = result;
+					$("[name='hyno']").val(hy);$("[name='phone']").val(phone);$("[name='order']").val(order);
+				},
+				"error":function(){
+					alert("渲染了");
+				}
+			})
+		}
+		//排序下拉框blur事件
+		function queryBytime(){
+			pageQuery(vm.allhy.pageNum,vm.allhy.pageSize,$("[name='hyno']").val(),$("[name='phone']").val(),$("[name='order']").val());
+		}
+		
+		$("[name='hyno']").bind('keypress',function(event){
+			if(event.keyCode=="13"){
+				pageQuery(vm.allhy.pageNum,vm.allhy.pageSize,$("[name='hyno']").val(),$("[name='phone']").val(),$("[name='order']").val());
+			}
+		})
+		
+		$("[name='phone']").bind('keypress',function(event){
+			if(event.keyCode=="13"){
+				pageQuery(vm.allhy.pageNum,vm.allhy.pageSize,$("[name='hyno']").val(),$("[name='phone']").val(),$("[name='order']").val());
+			}
+		})
+		
+		$(function(){
+			pageQuery(1,10,"","","");
+		})
+	</script>
 </html>

@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>新维修单</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+		<style type="text/css">
+			body,ul,li{margin: 0;padding: 0;font:12px/1.5 arial;/* 字体12像素 行高 1.5em 字体 Arial */ }
+			ul,li{list-style:none;}
+			.wrap{width:99%; margin:20px auto;}
+			.hide{display:none;}
+			#tab_t{height:25px;border-bottom:1px solid #ccc;}
+			#tab_t li{float:left; width:80px; height:24px; line-height:24px; margin:0 4px; text-align:center; border:1px solid #ccc; border-bottom:none; background:#f5f5f5; cursor:pointer}
+			#tab_t .act{ position:relative; height:25px; margin-bottom:-1px; background:#fff;}
+			#tab_c{border:1px solid #ccc;height: 300px;overflow: scroll; border-top:none; padding:20px;}
+			.modal-lg { width: 100%;margin: 0px auto; }
+			.afterdate { background-color: red;}
+		</style>
+	</head>
+	<body>
+		<div id="body">
+			<div class="row" style="border-bottom: solid 1px silver;">
+				<h3 class="col-xs-offset-1 col-xs-4">维修单</h3>
+				<p class="col-xs-3" style="height: 50px; line-height: 50px;" id="danjustatu">{{danjustatu}}</p>
+				<p class="col-xs-4" style="text-align: right; padding-right: 40px;"><button type="button" class="btn btn-success" style="margin: 14px 0 0 10px;" onclick="closeParent()">关闭</button></p>
+			</div>
+			<div class="row" style="font-size: 16px;border-bottom: solid 1px blue;">
+				<p class="col-xs-10" style="padding-left: 40px;">单号：<strong><span>{{wxno}}</span></strong></p>
+				<p class="col-xs-2"><strong><a onclick="jiechewan()">接车完</a>&nbsp;&nbsp;</strong></p>
+			</div>
+			<div class="row" style="margin-top: 20px;">
+				<div class="row col-xs-10">
+					<p class="col-xs-3">
+						<label>*车牌号码</label>
+						<input type="text" v-model="wxChepai" disabled="disabled"/>
+					</p>
+					<p class="col-xs-3">
+						<label>车架号&nbsp;&nbsp;</label>
+						<input type="text" v-model="wxdan.chejiaxinghao" disabled="disabled"/>
+					</p>
+					<p class="col-xs-3">
+						<label>*车辆型号</label>
+						<input type="text" v-model="wxdan.carxinghao" disabled="disabled"/>
+					</p>
+					<p class="col-xs-3">
+						<label>*车辆品牌</label>
+						<input type="text" v-model="wxdan.carbankname" disabled="disabled"/>
+					</p>
+	<!--    *******************华丽分割线********************   -->
+					<p class="col-xs-3">
+						<label>发动机号</label>
+						<input type="text" v-model="wxdan.fanumber" disabled="disabled"/>
+					</p>
+					<p class="col-xs-6">
+						<label>*发动机品牌</label>
+						<input type="text" size="8px" v-model="wxdan.fabankid" disabled="disabled"/>
+						<input type="text" v-model="wxdan.faname" disabled="disabled"/>
+					</p>
+					<p class="col-xs-3">
+						<label>服务顾问</label>
+						<select v-model="wxdan.guwen"  style="width: 174px;padding: 1px 0px;" id="guwen">
+							<option v-for="item in guwen" :value="item.val">
+							{{item.text}}
+							</option>
+						</select>
+					</p>
+	<!--    *******************华丽分割线********************   -->
+					<p class="col-xs-6">
+						<label>*车主姓名</label>
+						<input type="text" disabled="disabled" v-model="wxdan.kehuno"/>
+						<input type="text" disabled="disabled" v-model="wxdan.kehuname"/>
+					</p>
+					<p class="col-xs-3">
+						<label>*驾驶员&nbsp;&nbsp;</label>
+						<input type="text" v-model="wxdan.sijiname"/>
+					</p>
+					<p class="col-xs-3">
+						<label>*联系电话</label>
+						<input type="text" v-model="wxdan.lianphone"/>
+					</p>
+	<!--    *******************华丽分割线********************   -->				
+					<p class="col-xs-3">
+						<label>进厂里程</label>
+						<input type="number" onchange="numberchange(this)" min="0" v-model="wxdan.jinchanli"/>
+					</p>
+					<p class="col-xs-3">
+						<label>进厂油量</label>
+						<input type="number" onchange="numberchange(this)"  min="0" v-model="wxdan.jinchanyou">
+					</p>
+					<p class="col-xs-3">
+						<label>上次里程</label>
+						<input type="number" onchange="numberchange(this)"  min="0" v-model="wxdan.prevli"/>
+					</p>
+					<p class="col-xs-3">
+						<label>进厂时间</label>
+						<input type="datetime-local" v-model="wxdan.jinchantime"/>
+					</p>
+	<!--    *******************华丽分割线********************   -->				
+					<p class="col-xs-3">
+						<label>*业务类别</label>
+						<input type="text" id="yewutype" v-model="wxdan.yewutype" ondblclick="yewutypDbl()">
+					</p>
+					<p class="col-xs-3">
+						<label>施工班次</label>
+						<select v-model="wxdan.shigong" style="width: 174px; padding: 1px 0px;">
+							<option v-for="item in banci" :value="item.val">
+							{{item.text}}
+							</option>
+						</select>
+					</p>
+					<p class="col-xs-3">
+						<label>接车人</label>
+						<select v-model="wxdan.jieche" style="width: 174px; padding: 1px 0px;">
+							<option v-for="item in jiecheren" :value="item.val">
+							{{item.text}}
+							</option>
+						</select>
+					</p>
+					<p class="col-xs-3">
+						<label>*预计完工</label>
+						<input type="datetime-local" v-model="wxdan.yujitime">
+					</p>
+					<!--    *******************华丽分割线********************   -->
+					<p class="col-xs-3">
+						<label>结算方式</label>
+						<select v-model="wxdan.jiesuantype" style="width: 164px; padding: 1px 0px;">
+							<option v-for="item in jiesuan" :value="item.val">
+							{{item.text}}
+							</option>
+						</select>
+					</p>
+					<p class="col-xs-3">
+						<label>赔款公司</label>
+						<select id="peikuan" style="width: 174px; padding: 1px 0px;">
+							<option value="a公司">a公司</option>
+							<option value="b公司">b公司</option>
+						</select>
+					</p>
+					<p class="col-xs-3">
+						<label>完工时间</label>
+						<input type="text" v-model="wxdan.wangongtime" disabled="disabled"/>
+					</p>
+					<p class="col-xs-3">
+						<label>上次进厂</label>
+						<input type="datetime-local" v-model="wxdan.prevtime"/>
+					</p>
+	<!--    *******************华丽分割线********************   -->
+					<p class="col-xs-3">
+						<label>预估金额</label>
+						<input type="number" v-model="wxdan.money"/>
+					</p>
+					<p class="col-xs-6">
+						<label>接待备注</label>
+						<input type="text" size="50px" v-model="wxdan.remark"/>
+					</p>
+	<!--    *******************华丽分割线********************   -->
+					<p class="col-xs-3">
+						<label>结算金额</label>
+						<input type="number" v-model="wxdan.jiesuanmoney"/>
+					</p>
+					<p class="col-xs-2" style="margin: 0 0 0 20px;text-align: center;height: 46px;line-height: 46px;border: 1px solid;font-size: 16px;">
+						<strong>保修陈述</strong>
+					</p>
+					<textarea cols="120" v-model="wxdan.baoxiu" style="height: 46px;">
+						
+					</textarea>
+					
+	<!--    *******************华丽分割线********************   -->
+				</div>
+			</div>
+			<div class="wrap">
+				<ul id="tab_t">
+				    <li class="act">维修项目</li>
+				   <!--  <li>结算信息</li>  -->
+				</ul>
+				<div id="tab_c" >
+					<div>
+							<p><button onclick="addxiangmu()">增加项目</button><button onclick="deleteXMByno()">删除</button></p>
+							<table class="table table-hover table-bordered text-center" style="overflow: scroll; width: 1250px;">
+									<thead>
+										<tr>
+											<th class="text-center">选择</th>
+											<th class="text-center">项目编码</th>
+											<th class="text-center">项目名称</th>
+											<th class="text-center">数量</th>
+											<th class="text-center">价类</th>
+											<th class="text-center">优惠前价</th>
+											<th class="text-center">优惠后价</th>
+											<th class="text-center">优惠后金额</th>
+											<th class="text-center">故障描述</th>
+											<th class="text-center">故障原因</th>
+											<th class="text-center">机修班组</th>
+											<th class="text-center">作业人员</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr  v-for="item in xiangmudata" v-if="item != null" onclick="wxxmTrClick(this)">
+											<td class="text-center"><input class="wxxmcheckbox" type="checkbox" disabled="disabled"></td>
+											<td class="text-center">{{item.xiangmuno}}</td>
+											<td class="text-center">{{item.xiangmuname}}</td>
+											<td class="text-center"></td>
+											<td class="text-center"></td>
+											<td class="text-center"></td>
+											<td class="text-center"></td>
+											<td class="text-center"></td>
+											<td class="text-center"></td>
+											<td class="text-center"></td>
+											<td class="text-center"></td>
+											<td class="text-center"></td>
+										</tr>
+									</tbody>
+								</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		
+	</body>
+	<script type="text/javascript" src="js/jquery-3.4.1.min .js" ></script>
+	<script type="text/javascript" src="js/vue.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+	<script type="text/javascript" src="js/my.js"></script>
+	<script type="text/javascript">
+	var vm = new Vue({
+		el:"#body",
+		data(){
+			return {
+				wxdan:{},
+				wxno:"",
+				wxChepai:"",
+				danjustatu:"接车",
+				chejia:"",
+				carxinghao:"",
+				xiangmus:"",
+				xiangmudata:[],
+				guwen:[
+					{val:"李顾问",text:"李顾问"},{val:"王顾问",text:"王顾问"},{val:"刘顾问",text:"刘顾问"}
+				],
+				banci:[
+					{val:"白天",text:"白天"},{val:"晚班",text:"晚班"}
+				],
+				jiecheren:[
+					{val:"小王",text:"小王"},{val:"老张",text:"老张"}
+				],
+				jiesuan:[
+					{val:"现金",text:"现金"},{val:"会员卡",text:"会员卡"}
+				]
+			};
+		},
+		methods:{
+			
+		}
+	})
+	//页面加载方法
+	function tab(){
+		//获取id为tab_t的ul
+	    var tab_t=document.getElementById('tab_t');
+		//获取id为tab_t的ul的子元素li集
+	    var tab_t_li=tab_t.getElementsByTagName('li');
+	    //获取id为tab_t的div
+	    var tab_c=document.getElementById('tab_c');
+	    ////获取id为tab_t的div的子元素div集
+	    var tab_c_li=tab_c.getElementsByTagName('div');
+	    var len=tab_t_li.length;
+	    var i=0;
+	    for(i=0;i<len;i++){
+	        tab_t_li[i].index=i;
+	        //为每个li绑定click事件
+	        tab_t_li[i].onclick=function(){
+	            for(i=0;i<len;i++){
+	                tab_t_li[i].className='';
+	                tab_c_li[i].className='hide';
+	            }
+	            tab_t_li[this.index].className='act';
+	            tab_c_li[this.index].className='';
+	        }
+	    }
+	}
+	var num =0;
+	function load(){
+		if(window.parent.nowwxdanno != ""){
+			vm.wxno = window.parent.nowwxdanno;
+		}else{
+			vm.wxno = window.parent.vm.selectedwxdanno;
+		}
+		vm.wxChepai = window.parent.vm.selectedchepai;
+		if(window.parent.nowwxdanno.length <1){
+			$.ajax({
+				"url":"http://localhost:8080/weixiujieche/oldwxJieDan",
+				"data":"wxdanno="+vm.wxno,
+				"type":"post",
+				"success":function(result){
+					result.jinchantime = result.jinchantime == null?null:result.jinchantime.replace(" ","T");
+					result.yujitime = result.yujitime == null?null:result.yujitime.replace(" ","T");
+					result.prevtime = result.prevtime == null?null:result.prevtime.replace(" ","T");
+					vm.wxdan = result;
+					if(result.bei3!="" && result.bei3 !=null){
+						vm.xiangmus =result.bei3;
+						$.ajax({
+							"url":"http://localhost:8080/weixiujieche/queryXinagMuBybei3",
+							"type":"post",
+							"data":"bei3="+vm.xiangmus,
+							"success":function(result){
+								vm.xiangmudata=result;
+							},
+							"error":function(){
+								alert("数据渲染失败444！");
+							}
+						})
+					}
+				},
+				"error":function(){
+					alert("数据渲染失败555！");
+					return "";
+				}
+			})
+		}else{
+			$.ajax({
+				"url":"http://localhost:8080/weixiujieche/newwxJieDan",
+				"data":"chepai="+vm.wxChepai,
+				"type":"post",
+				"success":function(result){
+					vm.wxdan = result;
+					console.log(vm.wxdan);
+				},
+				"error":function(){
+					alert("数据渲染失败555！");
+					return "";
+				}
+			})
+		}
+		//下拉框绑定初始值
+		if(vm.wxdan.guwen !=null && vm.wxdan.guwen!=""){
+			for(var i =0;i<vm.guwen.length;i++){
+				if(vm.guwen[i].text == vm.wxdan.guwen){
+					num++;
+				}
+			}if(num ==0){
+				vm.guwen.push({val:vm.wxdan.guwen,text:vm.wxdan.guwen});
+				num = 0;
+			}
+		}
+		if(vm.wxdan.shigong !=null && vm.wxdan.shigong!=""){
+			for(var i =0;i<vm.banci.length;i++){
+				if(vm.banci[i].text == vm.wxdan.shigong){
+					num++;
+				}
+			}if(num ==0){
+				vm.youliang.push({val:vm.wxdan.shigong,text:vm.wxdan.shigong});
+				num = 0;
+			}
+		}
+		if(vm.wxdan.jieche !=null && vm.wxdan.jieche!=""){
+			for(var i =0;i<vm.jiecheren.length;i++){
+				if(vm.jiecheren[i].text == vm.wxdan.jieche){
+					num++;
+				}
+			}if(num ==0){
+				vm.guwen.push({val:vm.wxdan.jieche,text:vm.wxdan.jieche});
+				num = 0;
+			}
+		}
+		if(vm.wxdan.jiesuantype !=null && vm.wxdan.jiesuantype!=""){
+			for(var i =0;i<vm.jiesuan.length;i++){
+				if(vm.jiesuan[i].text == vm.wxdan.jiesuantype){
+					num++;
+				}
+			}if(num ==0){
+				vm.guwen.push({val:vm.wxdan.jiesuantype,text:vm.wxdan.jiesuantype});
+				num = 0;
+			}
+		}
+		
+	}
+	//初始化，调用页面加载方法
+	tab();
+	load();
+	//关闭当前窗口，判断当前窗口是否为子窗口，是则关闭，不是则不关闭。
+	function closeParent(){
+		if(top.location==self.location){
+			alert("当前窗口没有父窗口！");
+		}else{
+			var isTure = confirm("是否保存此次操作");
+			if(isTure){
+				vm.wxdan.wxdanno=vm.wxno;
+				vm.wxdan.wxdantype="维修";
+				vm.wxdan.danjustatu = vm.danjustatu;
+				vm.wxdan.chezhu = vm.wxdan.kehuname;
+				vm.wxdan.chepai = vm.wxChepai;
+				vm.wxdan.kehunno = vm.wxdan.kehuno;
+				vm.wxdan.jinchanli = parseInt(vm.wxdan.jinchanli);
+				vm.wxdan.jinchanyou = parseInt(vm.wxdan.jinchanyou);
+				vm.wxdan.bei3 = vm.xiangmus;
+				if(vm.wxdan.yujitime == "" || vm.wxdan.yewutype == null || vm.wxdan.sijiname ==null || vm.wxdan.lianphone == null){
+					alert("请完善信息!");
+					return;
+				}else{
+					if(vm.wxdan.bei3 == ""){
+						alert("没有添加维修项目！");
+						return;
+					}
+					vm.wxdan.jiesuanmoney = isNaN(parseFloat(vm.wxdan.jiesuanmoney))?null:parseFloat(vm.wxdan.jiesuanmoney);
+					vm.wxdan.prevli = isNaN(parseInt(vm.wxdan.prevli))?null:parseInt(vm.wxdan.prevli);
+					vm.wxdan.money = isNaN(parseFloat(vm.wxdan.money))?null:parseFloat(vm.wxdan.money);
+					vm.wxdan.jinchantime = vm.wxdan.jinchantime == null?null:vm.wxdan.jinchantime.replace("T"," ");
+					vm.wxdan.yujitime = vm.wxdan.yujitime == null?null:vm.wxdan.yujitime.replace("T"," ");
+					vm.wxdan.prevtime = vm.wxdan.prevtime == null?null:vm.wxdan.prevtime.replace("T"," ");
+					var obj = JSON.stringify(this.vm.wxdan);
+					$.ajax({
+						"url":"http://localhost:8080/weixiujieche/insertWXdan",
+						"data":obj,
+						type:"post",
+						dataType:"json",
+						contentType:"application/json;charset=UTF-8",
+						success:function(result){
+							alert("新增成功！");
+						},
+						error:function(){
+							alert("保存失败555！");
+						}
+					})
+				}
+			}
+			var childIframe=window.parent.document.getElementById("zuoweixiudan");
+			index = null;
+			vm.wxno = "";
+			vm.wxChepai = "";
+			window.parent.nowwxdanno = "";
+			window.parent.queryWXKehuInfo();
+			window.parent.queryZuoYeZhong();
+			window.parent.queryHistory();
+			childIframe.remove();
+		}
+	}
+	//接车完   超链接的click点击事件
+	function jiechewan(){
+		if(vm.danjustatu =="作业中"){
+			var isok = confirm("确定取消作业中！");
+			if(isok){
+				vm.danjustatu = "接车";
+			}
+		}else{
+			var isok = confirm("确定接车完！");
+			if(isok){
+				vm.danjustatu = "作业中";
+			}
+		}
+	}
+	//业务类型双击，用iframe唤出业务类型窗口。
+	function yewutypDbl(){
+		var yewuiframe=document.createElement("iframe");
+		yewuiframe.setAttribute("style","position:fixed;z-index:999;top:5%;left:5%;width:90%;height:95%;");
+		yewuiframe.src="testToHtml2.html";
+		yewuiframe.id="yewuiframe";
+		var mybody=document.getElementById("body");
+		mybody.append(yewuiframe);
+	}
+	//添加维修项目，通过iframe打开维修项目页面。
+	function addxiangmu(){
+		var addxiangmu=document.createElement("iframe");
+		addxiangmu.setAttribute("style","position:fixed;z-index:999;top:0px;left:0px;width:100%;height:100%;");
+		addxiangmu.src="testToHtml3.html";
+		addxiangmu.id="addxiangmu";
+		var mybody=document.getElementById("body");
+		mybody.append(addxiangmu);
+	}
+	//查询当前维修订单的维修项目，并渲染。
+	function queryWXxiangmu(){
+		$.ajax({
+			"url":"http://localhost:8080/weixiujieche/queryAllXiangMu",
+			"data":"nos="+vm.xiangmus,
+			"type":"post",
+			"success":function(result){
+				vm.xiangmudata = result;
+			},
+			"error":function(){
+				
+			}
+		})
+	}
+	//删除按钮，删除维修单中维修项目;
+	function deleteXMByno(){
+		var istrue = confirm("确定删除吗？");
+		if(istrue){
+			for(var i =0;i<$(".wxxmcheckbox").length;i++){
+				if($(".wxxmcheckbox")[i].checked){
+					vm.xiangmus = vm.xiangmus.replace(vm.xiangmudata[i].xiangmuno+",","");
+				}
+			}
+			if(vm.xiangmus == ""){
+				vm.xiangmus = "dsxk000000dse";
+			}
+			queryWXxiangmu();
+		}
+	}
+	//维修项目处的table表格，tr的点击事件
+	function wxxmTrClick(obj){
+		var index = $(obj).index();
+		if($(".wxxmcheckbox")[index].checked){
+			$(".wxxmcheckbox")[index].checked = false;
+		}else{
+			$(".wxxmcheckbox")[index].checked = true;
+		}
+	}
+	//number框的change事件
+	function numberchange(obj){
+		
+	}
+	</script>
+</html>
