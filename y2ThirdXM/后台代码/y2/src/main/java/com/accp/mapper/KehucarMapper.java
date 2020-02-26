@@ -40,4 +40,6 @@ public interface KehucarMapper {
     int updateByPrimaryKeySelective(Kehucar record);
 
     int updateByPrimaryKey(Kehucar record);
+    //李周加queryKeHuCar
+    List<Kehucar> queryKeHuCar(String chepai);
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.accp.domain.Kehucar;
 import com.accp.domain.Wxjiedan;
 import com.accp.domain.Wxxiangmu;
 import com.accp.service.WeiXiuJieCheService;
@@ -140,6 +141,12 @@ public class WeiXiuJieCheController {
 	@ResponseBody
 	public List<Wxxiangmu> queryXinagMuBybei3(String bei3){
 		return wxjc.queryXinagMuBybei3(bei3);
+	}
+	
+	@RequestMapping("queryKeHuCar")
+	@ResponseBody
+	public List<Kehucar> queryKeHuCar(String chepai){
+		return wxjc.queryKeHuCar(chepai);
 	}
 	
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.accp.domain.Huiyuan;
+import com.accp.domain.Kehucar;
 import com.accp.domain.Wxjiedan;
 import com.accp.domain.Wxxiangmu;
 
@@ -21,6 +22,9 @@ public class WeiXiuJieCheService {
 	
 	@Autowired
 	com.accp.mapper.HuiyuanMapper huiyuan;
+	
+	@Autowired
+	com.accp.mapper.KehucarMapper khcar;
 	
 	public List<Wxjiedan> queryZuoYeZhong(){
 		return wxjiedan.queryZuoYeZhong();
@@ -99,5 +103,9 @@ public class WeiXiuJieCheService {
 	
 	public Huiyuan xiaopiao(String chepai) {
 		return huiyuan.xiaopiao(chepai);
+	}
+	
+	public List<Kehucar> queryKeHuCar(String chepai){
+		return khcar.queryKeHuCar(chepai);
 	}
 }

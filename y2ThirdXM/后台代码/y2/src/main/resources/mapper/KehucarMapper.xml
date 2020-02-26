@@ -566,4 +566,15 @@
       bei4 = #{bei4,jdbcType=VARCHAR}
     where ChePai = #{chepai,jdbcType=VARCHAR}
   </update>
+  <!-- 李周加queryKeHuCar -->
+    <select id="queryKeHuCar" resultMap="BaseResultMap" parameterType="java.lang.String">
+  	SELECT * FROM kehucar 
+  	<where>
+     kehucar.`KeHuNo` IS NOT NULL AND kehucar.`KeHuNo` &lt;&gt; '' 
+     <if test='chepai != "" and chepai !=null'>
+     	and chepai like '%${chepai}%'
+     </if>
+  	</where>
+  	limit 0,12
+  </select>
 </mapper>
