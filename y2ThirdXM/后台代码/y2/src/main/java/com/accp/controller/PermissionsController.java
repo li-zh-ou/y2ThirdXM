@@ -48,8 +48,10 @@ public class PermissionsController {
 	}
 	@GetMapping("/findPerms")
 	public List<Permissions> findPermssions(HttpSession session){
-		System.out.println(session);
 		Yuangong yag=(Yuangong)session.getAttribute("yg");
+		if(yag==null) {
+			return null;
+		}
 		return permService.findByzhiwuid(yag.getZhiwuid());
 	}
 }

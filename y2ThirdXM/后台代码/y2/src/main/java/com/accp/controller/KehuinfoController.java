@@ -1,5 +1,7 @@
 package com.accp.controller;
 
+import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.domain.Huiyuan;
+import com.accp.domain.Jinritixin;
 import com.accp.domain.Kehu;
 import com.accp.domain.Kehucar;
 import com.accp.domain.Wxjiedan;
@@ -116,5 +119,13 @@ public class KehuinfoController {
 	@PostMapping("/duochacar")
 	public List<Kehucar> duotiaojianchacar(@RequestBody Kehucar kehucar){
 		return ser.duotiaojianchacar(kehucar);
+	}
+	@PostMapping("/queryByjindate")
+	public List<Jinritixin> queryByjindate(String ss){
+		return ser.queryByjindate(ss);
+	}
+	@GetMapping("/queryaddjin")
+	public int addjin(String da){
+		return ser.addjin(da);
 	}
 }
