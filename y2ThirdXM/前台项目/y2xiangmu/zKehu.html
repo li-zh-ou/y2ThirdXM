@@ -370,13 +370,13 @@
 				<div class="row ass">
 					<div class="col-lg-offset-7 col-sm-5">
 						<p class="dao"><a class="bian glyphicon glyphicon-eye-open">客户编辑</a><a class="zi glyphicon glyphicon-eye-open">车资料</a><a @click="chaxun" class="glyphicon glyphicon-eye-open" data-toggle="modal" data-target="#chaxun">查询</a><a class="fenlei glyphicon glyphicon-calendar" data-toggle="modal" data-target="#kehufenlei">客户分类</a>
-							<a @click="exportExcel" class="glyphicon glyphicon-share">导出</a></p>
+							<a @click="exportExcel" class="glyphicon glyphicon-share" v-perms="'findkehu'">导出</a></p>
 					</div>
 				</div>
 				<div class="keh row">
 					<div class="col-sm-6">
-						<a>客户编辑</a><a class="tianjia glyphicon glyphicon-align-right" data-toggle="modal" data-target="#zeng">增加客户和车</a><a class="tiankehu glyphicon glyphicon-align-right" data-toggle="modal" data-target="#kehu">增加客户</a>
-						<a class="xiukehu glyphicon glyphicon-pencil" data-toggle="modal" data-target="#updatekehu">修改客户</a><a class="glyphicon glyphicon-remove-sign" @click="deletekehu">删除客户</a>
+						<a>客户编辑</a><a class="tianjia glyphicon glyphicon-align-right" data-toggle="modal" data-target="#zeng" v-perms="'addkehu'">增加客户和车</a><a class="tiankehu glyphicon glyphicon-align-right" data-toggle="modal" data-target="#kehu" v-perms="'addkehu'">增加客户</a>
+						<a class="xiukehu glyphicon glyphicon-pencil" data-toggle="modal" data-target="#updatekehu" v-perms="'updatekehu'">修改客户</a><a class="glyphicon glyphicon-remove-sign" @click="deletekehu" v-perms="'deletekehu'">删除客户</a>
 					</div>
 					<div class="col-sm-offset-5 col-sm-1">
 						<span class="you right">收起</span>
@@ -385,16 +385,16 @@
 				<div class="che row">
 					<div class="col-sm-6">
 						<a>车资料</a>
-						<a class="znegjiache glyphicon glyphicon-align-right" data-toggle="modal" data-target="#chezliao">增加车资料</a>
-						<a class="updatequery glyphicon glyphicon-pencil" data-toggle="modal" data-target="#xiugaiche">修改车资料</a>
-						<a @click="deletecar" class="glyphicon glyphicon-remove-sign">删除车资料</a>
+						<a class="znegjiache glyphicon glyphicon-align-right" data-toggle="modal" data-target="#chezliao" v-perms="'addcar'">增加车资料</a>
+						<a class="updatequery glyphicon glyphicon-pencil" data-toggle="modal" data-target="#xiugaiche" v-perms="'updatecar'">修改车资料</a>
+						<a @click="deletecar" class="glyphicon glyphicon-remove-sign" v-perms="'deletecar'">删除车资料</a>
 					</div>
 					<div class="col-sm-offset-5 col-sm-1">
 						<span class="you1">收起</span>
 					</div>
 				</div>
 				<div class="yi" style=" overflow:auto;">
-					<table  class="table table-bordered table-hover" style="width: 2200px;">
+					<table  class="table table-bordered table-hover" style="width: 2200px;" v-if="$perms('findkehu')">
 						<tr class="asss">
 							<th>客户编码</th>
 							<th>客户名称</th>
@@ -448,6 +448,7 @@
 							<td>{{item.bei3}}</td>
 						</tr>
 					</table>
+					<div v-else class="alert alert-danger" role="alert">权限不足</div>
 				</div>
 			</div>
 			<div class="tiao">
@@ -458,7 +459,7 @@
 			</div>
 			<div class="row">
 				<div class="xinxi" style=" overflow:auto;">
-					<table class="table table-bordered table-hover" style="width: 2200px;">
+					<table class="table table-bordered table-hover" style="width: 2200px;" v-if="$perms('findcar')">
 						<tr>
 							<th>车牌号码</th>
 							<th>车牌品牌</th>
@@ -506,6 +507,7 @@
 							<td>{{item.nextbaoxiandate}}</td>
 						</tr>
 					</table>
+					<div v-else class="alert alert-danger" role="alert">权限不足</div>
 				</div>
 			</div>
 			<div class="modal fade" id="zeng" class="zeng"  role="dialog">
@@ -1298,7 +1300,7 @@
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" src="js/my.js"></script>
-	
+		<script type="text/javascript" src="js/perms.js" ></script>
 		<script class="resources library" src="js/area.js" type="text/javascript"></script>
 		<script type="text/javascript"></script>
 		<script type="text/javascript">
