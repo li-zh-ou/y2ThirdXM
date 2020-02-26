@@ -6,6 +6,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface JinritixinMapper {
+	List<Jinritixin> queryjinrdate(@Param("da")String da);
+	
     int countByExample(JinritixinExample example);
 
     int deleteByExample(JinritixinExample example);

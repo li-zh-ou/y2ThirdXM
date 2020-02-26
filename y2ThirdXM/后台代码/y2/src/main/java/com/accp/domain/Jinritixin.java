@@ -2,6 +2,10 @@ package com.accp.domain;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Jinritixin {
     private Integer id;
 
@@ -52,7 +56,8 @@ public class Jinritixin {
     private Double guazhang;
 
     private Double yinhangzhanghu;
-
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
     private Date dantianshijian;
 
     public Integer getId() {

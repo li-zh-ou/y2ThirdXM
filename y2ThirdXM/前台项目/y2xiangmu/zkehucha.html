@@ -274,12 +274,12 @@
 			<div class="row row1">
 				<div class="row ass">
 					<div class="col-lg-offset-7 col-sm-5">
-						<p class="dao"><a class="bian">客户编辑</a><a class="zi">车资料</a><a>客户资料</a><a>查询</a><a>导出</a><a>字段设置</a></p>
+						<p class="dao"><a class="bian">客户编辑</a><a class="zi">车资料</a><a>客户资料</a><a>查询</a><a v-perms="'findkehu'">导出</a><a>字段设置</a></p>
 					</div>
 				</div>
 				<div class="keh row">
 					<div class="col-sm-6">
-						<a>客户编辑</a><a class="tianjia">增加客户和车</a><a class="tiankehu">增加客户</a><a class="xiukehu">修改客户</a><a @click="deletekehu">删除客户</a><a>相关证件</a><a>设置密码</a>
+						<a>客户编辑</a><a class="tianjia">增加客户和车</a><a class="tiankehu" v-perms="'addkehu'">增加客户</a><a class="xiukehu" v-perms="'updatekehu'">修改客户</a><a @click="deletekehu" v-perms="'deletekehu'">删除客户</a><a>相关证件</a><a>设置密码</a>
 					</div>
 					<div class="col-sm-offset-5 col-sm-1">
 						<span class="you right">收起</span>
@@ -288,16 +288,16 @@
 				<div class="che row">
 					<div class="col-sm-6">
 						<a>车资料</a>
-						<a class="znegjiache">增加车资料</a>
-						<a>修改车资料</a>
-						<a>删除车资料</a>
+						<a class="znegjiache" v-perms="'addcar'">增加车资料</a>
+						<a v-perms="'updatecar'">修改车资料</a>
+						<a v-perms="'deletecar'">删除车资料</a>
 					</div>
 					<div class="col-sm-offset-5 col-sm-1">
 						<span class="you1">收起</span>
 					</div>
 				</div>
 				<div class="yi" style=" overflow:auto;">
-					<table  class="table table-bordered table-hover" style="width: 2200px;">
+					<table  class="table table-bordered table-hover" style="width: 2200px;" v-if="$perms('findkehu')">
 						<tr class="asss">
 							<th>客户编码</th>
 							<th>客户名称</th>
@@ -351,6 +351,7 @@
 							<td>{{item.bei3}}</td>
 						</tr>
 					</table>
+					<div v-else class="alert alert-danger" role="alert">权限不足</div>
 				</div>
 			</div>
 			<div class="tiao">
@@ -363,7 +364,7 @@
 			</div>
 			<div class="row">
 				<div class="xinxi" style=" overflow:auto;">
-					<table class="table table-bordered table-hover carx" style="width: 2200px;">
+					<table class="table table-bordered table-hover carx" style="width: 2200px;" v-if="$perms('findcar')">
 						<tr>
 							<th>车牌号码</th>
 							<th>车牌品牌</th>
@@ -411,6 +412,7 @@
 							<td>{{item.nextbaoxiandate}}</td>
 						</tr>
 					</table>
+					<div v-else class="alert alert-danger" role="alert">权限不足</div>
 				</div>
 				<div class="xiaofei">
 					<table class="table table-bordered table-hover">
