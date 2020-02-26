@@ -506,11 +506,11 @@
 			
 			<div>
 				<ol class="breadcrumb">
-				 	<li><span class="iconfont" style="vertical-align: middle">&#xe614;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#lzmtk">员工离职</a></li>
-				  	<li><span class="iconfont" style="vertical-align: middle">&#xe6b6;</span><a href="#" style="vertical-align: middle" @click="lzdjhg">员工回滚</a></li>
-				  	<li><span class="iconfont" style="vertical-align: middle">&#xe62c;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#lzdjdk">打开详情</a></li>
-				  	<li><span class="iconfont" style="vertical-align: middle">&#xe613;</span><a href="#" style="vertical-align: middle" @click="sclzygsj">删除记录</a></li>
-				  	<li><span class="iconfont" style="vertical-align: middle">&#xe78a;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#cxygmtk">员工查询</a></li>
+				 	<li v-perms="'addlizhi'"><span class="iconfont" style="vertical-align: middle">&#xe614;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#lzmtk">员工离职</a></li>
+				  	<li v-perms="'lizhihuiguen'"><span class="iconfont" style="vertical-align: middle">&#xe6b6;</span><a href="#" style="vertical-align: middle" @click="lzdjhg">员工回滚</a></li>
+				  	<li v-perms="'findlizhi'"><span class="iconfont" style="vertical-align: middle">&#xe62c;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#lzdjdk">打开详情</a></li>
+				  	<li v-perms="'deletelizhi'"><span class="iconfont" style="vertical-align: middle">&#xe613;</span><a href="#" style="vertical-align: middle" @click="sclzygsj">删除记录</a></li>
+				  	<li v-perms="'findlizhi'"><span class="iconfont" style="vertical-align: middle">&#xe78a;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#cxygmtk">员工查询</a></li>
 				  	<!--<li><span class="iconfont" style="vertical-align: middle">&#xe6a5;</span><a href="#" style="vertical-align: middle">导出</a></li>-->
 				</ol>
 			</div>
@@ -519,7 +519,7 @@
 				
 				<div class="row" id="tbss" style=" border: 1px solid #E6E6E6;height:500px;">
 					
-				<table class="table table-hover table-bordered" style="width:800px;">
+				<table class="table table-hover table-bordered" style="width:800px;" v-if="$perms('findlizhi')">
 					 
 						<tr>
 							<td>部门</td>
@@ -542,7 +542,7 @@
 						</tr>
 						
 				</table>
-
+				<div v-else class="alert alert-danger" role="alert">权限不足</div>
 			</div>
 			
 		</div>
@@ -554,6 +554,7 @@
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/vue.js"></script>
 <script type="text/javascript" src="js/my.js"></script>
+<script type="text/javascript" src="js/perms.js" ></script>
 <script type="text/javascript">
 
 	var vm = new Vue({

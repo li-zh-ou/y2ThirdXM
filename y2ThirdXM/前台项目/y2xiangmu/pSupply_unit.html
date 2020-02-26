@@ -43,9 +43,9 @@
 						  <div class="container-fluid">
 						    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						      <ul class="nav navbar-nav navbar-right" id="wxxm_tu_1">
-						        <li><a href="#"><span class="glyphicon glyphicon-tasks" aria-hidden="true" data-toggle="modal" data-target="#myModal1">增加</a></span></li>
-						        <li><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true" data-toggle="modal" data-target="#myModal5">修改</a></span></li>
-						        <li><a href="#"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true" @click="supply_sc1">删除</a></span></li>
+						        <li><a href="#"><span class="glyphicon glyphicon-tasks" aria-hidden="true" data-toggle="modal" data-target="#myModal1" v-perms="'addgonghuo'">增加</a></span></li>
+						        <li><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true" data-toggle="modal" data-target="#myModal5" v-perms="'updategonghuo'">修改</a></span></li>
+						        <li><a href="#"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true" @click="supply_sc1" v-perms="'deletegonghuo'">删除</a></span></li>
 						        <li><a href="#"><span class="glyphicon glyphicon-level-up" aria-hidden="true" data-toggle="modal" data-target="#myModal11">联系人</a></span></li>
 						        <li><a href="#"><span class="glyphicon glyphicon-level-up" aria-hidden="true" data-toggle="modal" data-target="#myModal12">字段设置</a></span></li>
 						      </ul>
@@ -533,9 +533,9 @@
 												  <div class="container-fluid">
 												    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 												      <ul class="nav navbar-nav navbar-right">
-												        <li><a href="#"><span class="glyphicon glyphicon-align-right" aria-hidden="true"></span>增加</a></li>
-												        <li><a href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>删除</a></li>
-												        <li><a href="#"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存</a></li>
+												        <li><a href="#" v-perms="'addlianxiren'"><span class="glyphicon glyphicon-align-right" aria-hidden="true" ></span>增加</a></li>
+												        <li><a href="#" v-perms="'deletelianxiren'"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true" ></span>删除</a></li>
+												        <li><a href="#" v-perms="'updatelianxiren'"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true" ></span>保存</a></li>
 												      </ul>
 												      <table class="table table-hover">
 												      	<tr>
@@ -552,7 +552,7 @@
 												  </div>
 												</nav>
 												<div class="" style="height: 200px; overflow-y: scroll;">
-													<table class="table table-hover">
+													<table class="table table-hover" v-if="$perms('findlianxiren')">
 														<tr style="background-color: #31B0D5;">
 															<th>&nbsp;</th>
 															<th>联系人</th>
@@ -570,6 +570,7 @@
 															<th>Emali</th>
 														</tr>
 													</table>
+													<div v-else class="alert alert-danger" role="alert">权限不足</div>
 												</div>
 								      		</div>
 								      		<div class="modal-footer">
@@ -635,7 +636,7 @@
 						</div>
 						<div class="col-md-10" style="height: 100%;">
 							<div class="" style="height: 300px; background-color: #FFFFFF; overflow-y: scroll;">
-								<table border="1" class="table">
+								<table border="1" class="table" v-if="$perms('findgonghuo')">
 									<tr style="background-color: #269ABC;">
 										<td width="4%">&nbsp;</td>
 										<td>供货商编码</td>
@@ -671,6 +672,7 @@
 										<td>{{item.shouji}}</td>
 									</tr>
 								</table>
+								<div v-else class="alert alert-danger" role="alert">权限不足</div>
 							</div>
 							<div class="">
 								<div class="panel panel-default">
@@ -678,7 +680,7 @@
 								  		联系人
 								  	</div>
 								  	<div class="" style="overflow-y: scroll; height: 120px;">
-								  		<table class="table" border="1">
+								  		<table class="table" border="1" v-if="$perms('findlianxiren')">
 										    <tr style="background-color: #269ABC;">
 										    	<td width="4%">&nbsp;</td>
 										    	<td>联系人</td>
@@ -694,6 +696,7 @@
 										    	<td>{{item.email}}</td>
 										    </tr>
 										</table>
+										<div v-else class="alert alert-danger" role="alert">权限不足</div>
 								  	</div>
 								</div>
 							</div>
@@ -710,6 +713,7 @@
 		<script type="text/javascript" src="js/jquery.ztree.excheck.js"></script>
 		<script type="text/javascript" src="js/jquery.ztree.exedit.js"></script>
 		<script type="text/javascript" src="js/vue.js"></script>
+		<script type="text/javascript" src="js/perms.js" ></script>
 		<script type="text/javascript" src="js/jquery.ztree.core.js"></script>
 		<script type="text/javascript">
 			var vm1=new Vue({

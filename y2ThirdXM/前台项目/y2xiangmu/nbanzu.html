@@ -433,20 +433,20 @@
 			
 			<div>
 				<ol class="breadcrumb">
-					<li><span class="iconfont" style="vertical-align: middle">&#xe62c;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#myModal" >技工新增</a></li>
-					<li><span class="iconfont" style="vertical-align: middle">&#xe612;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#myModalupdate">技工修改</a></li>
-					<li><span class="iconfont" style="vertical-align: middle">&#xe614;</span><a href="#" style="vertical-align: middle" @click="del">技工删除</a></li>
-					<li><span class="iconfont" style="vertical-align: middle">&#xe78a;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#cxygmtk">技工查询</a></li>
+					<li v-perms="'addjigong'"><span class="iconfont" style="vertical-align: middle">&#xe62c;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#myModal" >技工新增</a></li>
+					<li v-perms="'updatejigong'"><span class="iconfont" style="vertical-align: middle">&#xe612;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#myModalupdate">技工修改</a></li>
+					<li v-perms="'deletejigong'"><span class="iconfont" style="vertical-align: middle">&#xe614;</span><a href="#" style="vertical-align: middle" @click="del">技工删除</a></li>
+					<li v-perms="'findjigong'"><span class="iconfont" style="vertical-align: middle">&#xe78a;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#cxygmtk">技工查询</a></li>
 					<!--<li><span class="iconfont" style="vertical-align: middle">&#xe6b6;</span><a href="#" style="vertical-align: middle">班组权重</a></li>-->
 					<!--<li><span class="iconfont" style="vertical-align: middle">&#xe6a5;</span><a href="#" style="vertical-align: middle">导出</a></li>-->
-					<li><span class="iconfont" style="vertical-align: middle">&#xe613;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#xzbzmtk">新增班组</a></li>
+					<li v-perms="'addbanzu'"><span class="iconfont" style="vertical-align: middle">&#xe613;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#xzbzmtk">新增班组</a></li>
 				</ol>
 			</div>
 			<div class="col-md-2" style="border: 1px solid #E6E6E6; height:500px; overflow:scroll;">
 				<ul id="treeDemo" class="ztree"></ul>
 			</div>
 			<div  class="col-md-10" style="height:500px;overflow:scroll;">
-				<table class="table table-hover table-bordered" style="width: 2000px;">
+				<table class="table table-hover table-bordered" style="width: 2000px;" v-if="$perms('findjigong')">
 						<tr>
 							<td>班组编号</td>
 							<td>班组名称</td>
@@ -488,6 +488,7 @@
 							<td>{{item.weixiubank}}</td>
 						</tr>
 				</table>
+				<div v-else class="alert alert-danger" role="alert">权限不足</div>
 			</div>
 		</div>
 		
@@ -501,6 +502,7 @@
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/vue.js"></script>
 <script type="text/javascript" src="js/my.js"></script>
+<script type="text/javascript" src="js/perms.js" ></script>
 <script type="text/javascript">
 	
 	var vm = new Vue({
