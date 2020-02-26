@@ -243,11 +243,11 @@
 				</div>
 				<div class="row ass" style="margin-top:-15px ;">
 					<div class="col-lg-offset-7 col-sm-5">
-						<p class="dao"><a class="znegjiache glyphicon glyphicon-align-right">增加</a><a class="updatequery glyphicon glyphicon-pencil">修改</a><a @click="deletecar" class="glyphicon glyphicon-remove-sign">删除</a><a @click="chaxun" class="glyphicon glyphicon-align-right">查询</a><a @click="exportExcel" class="glyphicon glyphicon-share">导出</a></p>
+						<p class="dao"><a class="znegjiache glyphicon glyphicon-align-right" v-perms="'addcar'">增加</a><a class="updatequery glyphicon glyphicon-pencil" v-perms="'updatecar'">修改</a><a @click="deletecar" class="glyphicon glyphicon-remove-sign" v-perms="'deletecar'">删除</a><a @click="chaxun" class="glyphicon glyphicon-align-right">查询</a><a @click="exportExcel" class="glyphicon glyphicon-share" v-perms="'findcar'">导出</a></p>
 					</div>
 				</div>
 				<div class="yi" style=" overflow:auto;">
-					<table  class="table table-bordered table-hover" style="width: 2200px;">
+					<table  class="table table-bordered table-hover" style="width: 2200px;" v-if="$perms('findcar')">
 						<tr class="asss">
 							<th>车牌号码</th>
 							<th>车牌品牌</th>
@@ -295,6 +295,7 @@
 							<td>{{item.nextbaoxiandate}}</td>
 						</tr>
 					</table>
+					<div v-else class="alert alert-danger" role="alert">权限不足</div>
 				</div>
 			</div>
 			<div class="tiao">
@@ -304,7 +305,7 @@
 			</div>
 			<div class="row gao">
 				<div class="xinxi" style=" overflow:auto;">
-					<table class="table table-bordered table-hover" style="width: 2200px;">
+					<table class="table table-bordered table-hover" style="width: 2200px;" v-if="$perms('findkehu')">
 						<tr class="asss">
 							<th>客户编码</th>
 							<th>客户名称</th>
@@ -358,6 +359,7 @@
 							<td>{{item.bei3}}</td>
 						</tr>
 					</table>
+					<div v-else class="alert alert-danger" role="alert">权限不足</div>
 				</div>
 			</div>
 			<div class="modal fade" id="chezliao" class="chezliao"  role="dialog">
@@ -675,7 +677,7 @@
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 			<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" src="js/my.js"></script>
-	
+		<script type="text/javascript" src="js/perms.js" ></script>
 		<script class="resources library" src="js/area.js" type="text/javascript"></script>
 		<script type="text/javascript">
 			var kehunos=0;

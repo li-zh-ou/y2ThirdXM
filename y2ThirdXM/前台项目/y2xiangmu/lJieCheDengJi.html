@@ -249,7 +249,7 @@
 		//查询选中的车牌的维修历史。
 		function queryHistory(){
 			$.ajax({
-				"url":"http://localhost:8080/weixiujieche/queryWxlishi",
+				"url":data.ip +"weixiujieche/queryWxlishi",
 				"type":"post",
 				"data":"chepai="+vm.selectedchepai,
 				"dataType":"json",
@@ -265,7 +265,7 @@
 		function queryXinagMu(){
 			if(vm.selectedwxdanno!=""){
 				$.ajax({
-					"url":"http://localhost:8080/weixiujieche/queryXinagMu",
+					"url":data.ip +"weixiujieche/queryXinagMu",
 					"type":"post",
 					"data":"no="+vm.selectedwxdanno,
 					"dataType":"json",
@@ -289,7 +289,7 @@
 		
 		function queryWXKehuInfo(){
 				$.ajax({
-					"url":"http://localhost:8080/weixiujieche/queryWXKehuInfo",
+					"url":data.ip +"weixiujieche/queryWXKehuInfo",
 					"type":"post",
 					"data":"wxchepai="+vm.selectedchepai,
 					"success":function(result){
@@ -303,7 +303,7 @@
 		
 		function queryZuoYeZhong(){
 			$.ajax({
-				"url":"http://localhost:8080/weixiujieche/queryZuoYeZhong",
+				"url":data.ip +"weixiujieche/queryZuoYeZhong",
 				"type":"post",
 				"dataType":"json",
 				"success":function(result){
@@ -397,7 +397,7 @@
 		
 		function autoCreateNo(){
 			$.ajax({
-				"url":"http://localhost:8080/weixiujieche/autoCreateNo",
+				"url":data.ip +"weixiujieche/autoCreateNo",
 				"type":"post",
 				"success":function(result){
 					nowwxdanno = result;

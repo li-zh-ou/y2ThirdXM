@@ -43,14 +43,14 @@
 						  	<div class="container-fluid" style="height: 100%;">
 						    	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="margin-bottom: 1%;">
 						      		<ul class="nav nav-tabs">
-									  <li role="presentation" class=""><a href="#"><span class="glyphicon glyphicon-align-right" aria-hidden="true" data-toggle="modal" data-target="#myModal1">增加</span></a></li>
-									  <li role="presentation"><a href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true" data-toggle="modal" data-target="#myModal9">修改</span></a></li>
-									  <li role="presentation"><a href="#"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true" @click="commoditysc1">删除</span></a></li>
-									  <li role="presentation"><a href="#"><span class="glyphicon glyphicon-share" aria-hidden="true">导出</span></a></li>
+									  <li role="presentation" class=""><a href="#"><span class="glyphicon glyphicon-align-right" aria-hidden="true" data-toggle="modal" data-target="#myModal1" v-perms="'addshangp'">增加</span></a></li>
+									  <li role="presentation"><a href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true" data-toggle="modal" data-target="#myModal9" v-perms="'updateshangp'">修改</span></a></li>
+									  <li role="presentation"><a href="#"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true" @click="commoditysc1" v-perms="'deleteshangp'">删除</span></a></li>
+									  <li role="presentation"><a href="#"><span class="glyphicon glyphicon-share" aria-hidden="true" v-perms="'findshangp'">导出</span></a></li>
 									</ul>
 						    	</div>
 						    	<div class="" style="height: 90%; overflow-y: scroll;">
-						    		<table border="1" class="table table-bordered" style="overflow-y: scroll;">
+						    		<table border="1" class="table table-bordered" style="overflow-y: scroll;" v-if="$perms('findshangp')">
 						    			<tr style="background-color: #46B8DA;">
 						    				<th width="3%">&nbsp;</th>
 						    				<th>商品编码</th>
@@ -90,6 +90,7 @@
 						    				<th>{{item.jiajia}}</th>
 						    			</tr>
 						    		</table>
+						    		<div v-else class="alert alert-danger" role="alert">权限不足</div>
 						    	</div>
 						  	</div>
 						</nav>
@@ -1353,6 +1354,7 @@
 		<script type="text/javascript" src="js/vue.js"></script>
 		<script type="text/javascript" src="js/jquery.ztree.core.js"></script>
 		<script type="text/javascript" src="js/my.js"></script>
+		<script type="text/javascript" src="js/perms.js" ></script>
 		<script type="text/javascript">
 			var vm=new Vue({
 				el:"#ctx",

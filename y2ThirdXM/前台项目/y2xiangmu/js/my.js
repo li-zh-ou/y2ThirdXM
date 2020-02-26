@@ -1,5 +1,5 @@
 var data={
-	ip:"http://localhost:8080/",
+	ip:"http://localhost:8083/",
 	perms:[]
 }
 //加载权限内容.

@@ -42,41 +42,41 @@
 				<div class="col-sm-5 zuobian">
 					<h3>今日前台</h3>
 					<div>
-						<p>接车台次  <span>14</span></p>
-						<p>结算台次  <span>0</span></p>
-						<p>在修台次  <span>9</span></p>
-						<p>首保台次  <span>0</span></p>
-						<p>返修台次  <span>0</span></p>
-						<p>站内维修台次  <span>0</span></p>
-						<p>站外维修台次  <span>11</span></p>
+						<p>接车台次  <span class="jiechetaici"></span></p>
+						<p>结算台次  <span class="jiesuantaici"></span></p>
+						<p>在修台次  <span class="zaixiutaici"></span></p>
+						<p>首保台次  <span class="shobaotaici"></span></p>
+						<p>返修台次  <span class="fanxiutaici"></span></p>
+						<p>站内维修台次  <span class="znweixiutaici"></span></p>
+						<p>站外维修台次  <span class="zwweixiutaici"></span></p>
 						<p></p>
-						<p>自费维修产值：￥<span>0.00</span></p>
-						<p>保险理赔产值：￥<span>0.00</span></p>
+						<p>自费维修产值：￥<span class="zfeiweixiuzhi"></span></p>
+						<p>保险理赔产值：￥<span class="baoxianlipei"></span></p>
 					</div>
 					<h3>今日结算</h3>
 					<div class="shangs">
-						<p>现金 ：￥<span>0.00</span></p>
-						<p>微信 ：￥<span>0.00</span></p>
+						<p>现金 ：￥<span class="xianjin"></span></p>
+						<p>微信 ：￥<span class="weixin"></span></p>
 					</div>
 				</div>
 				<div class="col-sm-7">
 					<h3>今日库房</h3>
 					<div>
-						<p>现金入库数  <span>0</span></p>
-						<p>现金入库额：￥<span>0.00</span></p>
-						<p>挂账入库数  <span>9</span></p>
-						<p>挂账入库额：￥<span>0.00</span></p>
-						<p>销售数量  <span>0</span></p>
-						<p>自费出库数量   <span>0</span></p>
-						<p>自费出库金额：￥<span>0.00</span></p>
-						<p>三包出库数量  <span>11</span></p>
-						<p>三包出库金额：￥<span>0.00</span></p>
-						<p>当前库存数量  <span>0</span></p>
-						<p>当前库存今日：￥<span>0.00</span></p>
+						<p>现金入库数  <span class="xianjinrkucishu"></span></p>
+						<p>现金入库额：￥<span class="xianjinrkujine"></span></p>
+						<p>挂账入库数  <span class="guazhanrkushu"></span></p>
+						<p>挂账入库额：￥<span class="guazhanrkujine"></span></p>
+						<p>销售数量  <span class="xiaoshoushul"></span></p>
+						<p>自费出库数量   <span class="zfeichukushul"></span></p>
+						<p>自费出库金额：￥<span class="zfeichukujine"></span></p>
+						<p>三包出库数量  <span class="sanbaorkushul"></span></p>
+						<p>三包出库金额：￥<span class="sanbaorkujine"></span></p>
+						<p>当前库存数量  <span class="danqiankucshul"></span></p>
+						<p>当前库存今日：￥<span class="danqiankucjine"></span></p>
 					</div>
 					<div class="shangs">
-						<p>挂账 ：￥<span>0.00</span></p>
-						<p>银行账户 ：￥<span>0.00</span></p>
+						<p>挂账 ：￥<span class="guazhang"></span></p>
+						<p>银行账户 ：￥<span class="yinhangzhanghu"></span></p>
 					</div>
 				</div>
 			</div>
@@ -248,19 +248,83 @@
 						huiyuan:[],
 						kehucar:[],
 						yuangong:[],
-						jinrtixin:{}
+						jinrtixin:[]
 					}
 				}
 			})
-//			$.ajax({
-//				url:data.ip+"queryjinrtixin",
-//				type: "get",
-//				dataType: "json",
-//				success:function(response) {
-//					console.log(response);
-//					vm.jinrtixin=response;
-//				}
-//			});
+			querybyjin();
+			function querybyjin(){
+				var date = new Date();
+		        var seperator1 = "-";
+		        var year = date.getFullYear();
+		        var month = date.getMonth() + 1;
+		        var strDate = date.getDate();
+		        if (month >= 1 && month <= 9) {
+		            month = "0" + month;
+		        }
+		        if (strDate >= 0 && strDate <= 9) {
+		            strDate = "0" + strDate;
+		        }
+		        var ss = year + seperator1 + month + seperator1 + strDate;
+				$.ajax({
+					url:top.data.ip+"queryByjindate",
+					type: "post",
+					data:{
+						ss:ss
+					},
+					dataType: "json",
+					success:function(response) {
+						if(response.length>0){
+							vm.jinrtixin=response;
+							console.log(vm.jinrtixin[0].jiechetaici);
+							$(".jiechetaici").html(vm.jinrtixin[0].jiechetaici);
+							$(".jiesuantaici").html(vm.jinrtixin[0].jiesuantaici);
+							$(".zaixiutaici").html(vm.jinrtixin[0].zaixiutaici);
+							$(".shobaotaici").html(vm.jinrtixin[0].shobaotaici);
+							$(".fanxiutaici").html(vm.jinrtixin[0].fanxiutaici);
+							$(".znweixiutaici").html(vm.jinrtixin[0].znweixiutaici);
+							$(".zwweixiutaici").html(vm.jinrtixin[0].zwweixiutaici);
+							$(".zfeiweixiuzhi").html(vm.jinrtixin[0].zfeiweixiuzhi);
+							$(".baoxianlipei").html(vm.jinrtixin[0].baoxianlipei);
+							$(".xianjin").html(vm.jinrtixin[0].xianjin);
+							$(".weixin").html(vm.jinrtixin[0].weixin);
+							$(".xianjinrkucishu").html(vm.jinrtixin[0].xianjinrkucishu);
+							$(".xianjinrkujine").html(vm.jinrtixin[0].xianjinrkujine);
+							$(".guazhanrkushu").html(vm.jinrtixin[0].guazhanrkushu);
+							$(".guazhanrkujine").html(vm.jinrtixin[0].guazhanrkujine);
+							$(".xiaoshoushul").html(vm.jinrtixin[0].xiaoshoushul);
+							$(".zfeichukushul").html(vm.jinrtixin[0].zfeichukushul);
+							$(".zfeichukujine").html(vm.jinrtixin[0].zfeichukujine);
+							$(".sanbaorkushul").html(vm.jinrtixin[0].sanbaorkushul);
+							$(".sanbaorkujine").html(vm.jinrtixin[0].sanbaorkujine);
+							$(".danqiankucshul").html(vm.jinrtixin[0].danqiankucshul);
+							$(".danqiankucjine").html(vm.jinrtixin[0].danqiankucjine);
+							$(".guazhang").html(vm.jinrtixin[0].guazhang);
+							$(".yinhangzhanghu").html(vm.jinrtixin[0].yinhangzhanghu);
+							$(".row p").each(function(){
+								var s=$(this).find("span").html()
+								if(s!=0 || s>0){
+									$(this).css("background-color","#00FFFF")
+								}else{
+									$(this).css("background-color","#fff")
+								}
+							})
+						}else{
+							$.ajax({
+								url:top.data.ip+"queryaddjin",
+								type: "get",
+								data:{
+									da:ss
+								},
+								dataType: "json",
+								success:function(response) {
+									
+								}
+							});
+						}
+					}
+				});
+			}
 			function query(){
 				vm.kehu=[];
 				$.ajax({

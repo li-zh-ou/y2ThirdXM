@@ -1,12 +1,18 @@
 package com.accp.service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.accp.domain.Huiyuan;
+import com.accp.domain.Jinritixin;
+import com.accp.domain.JinritixinExample;
 import com.accp.domain.Kehu;
 import com.accp.domain.KehuExample;
 import com.accp.domain.Kehucar;
@@ -15,10 +21,12 @@ import com.accp.domain.Wxjiedan;
 import com.accp.domain.WxjiedanExample;
 import com.accp.domain.Yuangong;
 import com.accp.mapper.HuiyuanMapper;
+import com.accp.mapper.JinritixinMapper;
 import com.accp.mapper.KehuMapper;
 import com.accp.mapper.KehucarMapper;
 import com.accp.mapper.WxjiedanMapper;
 import com.accp.mapper.YuangongMapper;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Service
 @Transactional
@@ -34,6 +42,8 @@ public class KehuinfoService {
 	YuangongMapper yuangongmapper;
 	@Autowired
 	WxjiedanMapper wxmapper;
+	@Autowired
+	JinritixinMapper jinmapper;
 	public List<Wxjiedan> queryjieche(String chepai) {
 		WxjiedanExample example=new WxjiedanExample();
 		example.createCriteria().andChepaiEqualTo(chepai);
@@ -117,5 +127,23 @@ public class KehuinfoService {
 	public List<Kehucar> duotiaojianchacar(Kehucar car){
 		List<Kehucar> ca=carmapper.chacar(car);
 		return ca;
+	}
+	
+	public List<Jinritixin> queryByjindate(String ss){
+		 List<Jinritixin> sss=jinmapper.queryjinrdate(ss);
+		return jinmapper.queryjinrdate(ss);
+	}
+	public int addjin(String da) {
+		Jinritixin jin=new Jinritixin();
+		SimpleDateFormat d=new SimpleDateFormat("yyyy-MM-dd");
+		Date s=null;
+		try {
+			s = d.parse(da);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		jin.setDantianshijian(s);
+		return jinmapper.insert(jin);
 	}
 }

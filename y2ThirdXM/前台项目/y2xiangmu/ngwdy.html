@@ -28,9 +28,9 @@
 			<div class="row">
 				
 				<ol class="breadcrumb">
-				  <li><span class="iconfont" style="vertical-align: middle">&#xe62c;</span><a href="#" style="vertical-align: middle" @click="insert">增加岗位</a></li>
-				  <li><span class="iconfont" style="vertical-align: middle">&#xe614;</span><a href="#" style="vertical-align: middle" @click="del(gangwei.gangweid)">删除岗位</a></li>
-				  <li><span class="iconfont" style="vertical-align: middle">&#xe612;</span><a href="#" style="vertical-align: middle" @click="up">修改岗位</a></li>
+				  <li v-perms="'addgangwei'"><span class="iconfont" style="vertical-align: middle">&#xe62c;</span><a href="#" style="vertical-align: middle" @click="insert">增加岗位</a></li>
+				  <li v-perms="'deletegangwei'"><span class="iconfont" style="vertical-align: middle">&#xe614;</span><a href="#" style="vertical-align: middle" @click="del(gangwei.gangweid)">删除岗位</a></li>
+				  <li v-perms="'updategangwei'"><span class="iconfont" style="vertical-align: middle">&#xe612;</span><a href="#" style="vertical-align: middle" @click="up">修改岗位</a></li>
 				  <!--<li><span class="iconfont" style="vertical-align: middle">&#xe6a5;</span><a href="#" style="vertical-align: middle">导出</a></li>-->
 				</ol>
 				
@@ -65,7 +65,7 @@
 			
 			<div class="row" id="tbss" style=" border: 1px solid #E6E6E6;height:470px;">
 				
-				<table class="table table-hover table-bordered" style="width:600px;">
+				<table class="table table-hover table-bordered" style="width:600px;" v-if="$perms('findgangwei')">
 					 
 						<tr>
 							<td>岗位编码</td>
@@ -78,7 +78,7 @@
 						</tr>
 						
 				</table>
-
+				<div v-else class="alert alert-danger" role="alert">权限不足</div>
 			</div>
 			
 		</div>
@@ -89,6 +89,7 @@
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/vue.js"></script>
 <script type="text/javascript" src="js/my.js"></script>
+<script type="text/javascript" src="js/perms.js" ></script>
 <script type="text/javascript">
 	
 	var vm = new Vue({

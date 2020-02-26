@@ -29,6 +29,9 @@
     <result column="yinhangzhanghu" property="yinhangzhanghu" jdbcType="DOUBLE" />
     <result column="dantianshijian" property="dantianshijian" jdbcType="TIMESTAMP" />
   </resultMap>
+  <select id="queryjinrdate" resultMap="BaseResultMap">
+  	SELECT * FROM jinritixin WHERE dantianshijian = '${da}'
+  </select>
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
