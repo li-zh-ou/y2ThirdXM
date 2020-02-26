@@ -40,6 +40,18 @@
     <result column="bei2" property="bei2" jdbcType="VARCHAR" />
     <result column="bei3" property="bei3" jdbcType="VARCHAR" />
     <result column="bei4" property="bei4" jdbcType="VARCHAR" />
+    <result column="HuiYuanNo" property="huiyuanno" jdbcType="VARCHAR" />
+    <result column="huiyuanmoney" property="huiyuanmoney" jdbcType="DOUBLE" />
+    <result column="KeHuName" property="kehuname" jdbcType="VARCHAR" />
+    <result column="atfertime" property="atfertime" jdbcType="INTEGER"/>
+    <result column="carbankname" property="carbankname" jdbcType="VARCHAR" />
+    <result column="faname" property="faname" jdbcType="VARCHAR" />
+    <result column="jifen" property="jifen" jdbcType="DOUBLE"/>
+    <result column="GuaZhang" property="guazhang" jdbcType="DOUBLE" />
+    <result column="DinJin" property="dinjin" jdbcType="DOUBLE" />
+    <result column="KeHuNo" property="kehuno" jdbcType="VARCHAR"/>
+    <result column="CheJia" property="chejia" jdbcType="VARCHAR" />
+    <result column="XingHao" property="xinghao" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -729,4 +741,138 @@
       bei4 = #{bei4,jdbcType=VARCHAR}
     where wxDanNo = #{wxdanno,jdbcType=VARCHAR}
   </update>
+    <select id="queryZuoYeZhong"  parameterType="com.accp.domain.Wxjiedan" resultMap="BaseResultMap">
+   SELECT hy.HuiYuanNo,hy.huiyuanmoney,kh.`KeHuName`,wx.*,DATEDIFF(wx.YuJiTime,NOW()) AS atfertime FROM wxjiedan AS wx 
+   INNER JOIN kehu AS kh ON wx.`KeHunNo` = kh.`KeHuNo` 
+   INNER JOIN huiyuan AS hy ON kh.kehuno=hy.`KeHuNo`  
+   where wx.`DanJuStatu`= '作业中' or wx.`DanJuStatu`= '接车' 
+  </select>
+    <select id="queryWxlishi"  parameterType="com.accp.domain.Wxjiedan" resultMap="BaseResultMap">
+      SELECT chepai,wxDanNo,wxdantype,YeWuType,wangongtime,kaidantime,jiesuanmoney FROM wxjiedan WHERE chepai=#{chepai,jdbcType=VARCHAR} AND bei1 ='已结算'
+  </select>
+  <select id="queryWXKehuInfo"  parameterType="java.lang.String" resultMap="BaseResultMap">
+     SELECT kh.kehuname,khc.chepai,khc.sijiname,cb.carbankname,fb.faname,wx.prevtime,hy.jifen,hy.huiyuanmoney,kh.GuaZhang,kh.DinJin FROM kehucar AS khc 
+   LEFT JOIN wxjiedan AS wx ON wx.chepai = khc.chepai
+   LEFT JOIN carbrand AS cb ON khc.carbankid=cb.carbankid 
+   LEFT JOIN fadongbrand AS fb ON khc.fabankid = fb.fabankid
+   LEFT JOIN kehu AS kh ON khc.kehuno = kh.kehuid
+   LEFT JOIN huiyuan AS hy ON wx.kehunno = hy.`KeHuNo`
+   WHERE khc.`ChePai` = #{wxchepai,jdbcType=VARCHAR}
+   ORDER BY wx.prevtime DESC
+   LIMIT 0,1
+  </select>
+  <select id="getTodayMaxCount" resultType="java.lang.String">
+  	 SELECT COUNT(wxdanno)+1 FROM wxjiedan WHERE wxdanno LIKE '%${today}%'
+  </select>
+  <select id="oldwxJieDan"  parameterType="java.lang.String" resultMap="BaseResultMap">
+   SELECT wxjiedan.*,carbrand.`carbankname`,fadongbrand.`faname`,kehu.`KeHuNo`,kehu.`KeHuName` FROM wxjiedan
+ LEFT JOIN carbrand ON wxjiedan.`CarBankId` = carbrand.`CarBankId`
+ LEFT JOIN fadongbrand ON wxjiedan.`FaBankId` = fadongbrand.`FaBankId`
+ LEFT JOIN kehu ON wxjiedan.`KeHunNo` = kehu.`KeHuNo` 
+  WHERE wxjiedan.`wxDanNo` = #{wxdanno,jdbcType=VARCHAR}
+  </select>
+  <select id="newwxJieDan"  parameterType="java.lang.String" resultMap="BaseResultMap">
+    SELECT kehu.`KeHuNo`,kehu.`KeHuName`,carbrand.`carbankname`,fadongbrand.`FaBankId`,fadongbrand.`faname`,fadongbrand.`FaNumber`,kehucar.`CheJia` as CheJiaXingHao,kehucar.`XingHao` as CarXingHao
+ FROM kehucar
+ LEFT JOIN kehu ON kehucar.`KeHuNo` = kehu.`kehuid`
+ LEFT JOIN carbrand ON kehucar.`CarBankId` = carbrand.`CarBankId`
+ LEFT JOIN fadongbrand ON kehucar.`FaBankId` = fadongbrand.`FaBankId`
+WHERE kehucar.`ChePai` = #{chepai,jdbcType=VARCHAR} 
+  </select>
+  <insert id="insertwxdan" parameterType="com.accp.domain.Wxjiedan">
+  	   INSERT INTO wxjiedan (wxDanNo, wxDanType, wxType, 
+      DanJuStatu, Kaidantime, KeHunNo, 
+      ChePai, CarBankId, CarXingHao, 
+      CheJiaXingHao, FaNumber, FaBankId, 
+      GuWen, CheZhu, SiJiName, 
+      LianPhone, JinChanLi, JinChanYou, 
+      prevLi, prevTime, JinChanTime, 
+      YeWuType, ShiGong, JieChe, 
+      YuJiTime, WanGongTime, JieSuanType, 
+      jieSuantime, jieSuanmoney, PeiKuan, 
+      Money, saleNo, BaoXiu, 
+      remark, bei1, bei2, 
+      bei3, bei4)
+    VALUES (#{wxdanno,jdbcType=VARCHAR}, #{wxdantype,jdbcType=VARCHAR}, '喷漆', 
+      #{danjustatu,jdbcType=VARCHAR}, now(), #{kehunno,jdbcType=VARCHAR}, 
+      #{chepai,jdbcType=VARCHAR}, (SELECT CarBankId FROM carbrand WHERE CarBankName =#{carbankname,jdbcType=INTEGER}), #{carxinghao,jdbcType=VARCHAR}, 
+      #{chejiaxinghao,jdbcType=VARCHAR}, #{fanumber,jdbcType=VARCHAR}, #{fabankid,jdbcType=INTEGER}, 
+      #{guwen,jdbcType=VARCHAR}, #{chezhu,jdbcType=VARCHAR}, #{sijiname,jdbcType=VARCHAR}, 
+      #{lianphone,jdbcType=VARCHAR}, #{jinchanli,jdbcType=INTEGER}, #{jinchanyou,jdbcType=INTEGER}, 
+      #{prevli,jdbcType=INTEGER}, #{prevtime,jdbcType=TIMESTAMP}, #{jinchantime,jdbcType=TIMESTAMP}, 
+      #{yewutype,jdbcType=VARCHAR}, #{shigong,jdbcType=VARCHAR}, #{jieche,jdbcType=VARCHAR}, 
+  		#{yujitime,jdbcType=TIMESTAMP}
+      , #{wangongtime,jdbcType=TIMESTAMP}, #{jiesuantype,jdbcType=VARCHAR}, 
+      #{jiesuantime,jdbcType=TIMESTAMP}, #{jiesuanmoney,jdbcType=DOUBLE}, #{peikuan,jdbcType=VARCHAR}, 
+      #{money,jdbcType=DOUBLE}, #{saleno,jdbcType=VARCHAR}, #{baoxiu,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, '未结算', #{bei2,jdbcType=VARCHAR}, 
+      #{bei3,jdbcType=VARCHAR}, #{bei4,jdbcType=VARCHAR})
+  </insert>
+  
+  <select id="queryJunGong" parameterType="com.accp.domain.Wxjiedan" resultMap="BaseResultMap">
+  SELECT hy.HuiYuanNo,hy.huiyuanmoney,kh.`KeHuName`,wx.*,DATEDIFF(wx.YuJiTime,NOW()) AS atfertime FROM wxjiedan AS wx 
+   INNER JOIN kehu AS kh ON wx.`KeHunNo` = kh.`KeHuNo` 
+   INNER JOIN huiyuan AS hy ON kh.kehuno=hy.`KeHuNo`  
+   <where>
+   (wx.`DanJuStatu`= '已竣工' OR wx.`DanJuStatu`= '作业中')
+   <if test=' wxdanno !=""'>
+   AND wx.`wxDanNo` LIKE '%${wxdanno}%'
+   </if>
+   <if test=' chepai !=""'>
+   AND wx.`ChePai` LIKE '%${chepai}%'
+   </if>
+   <if test=' danjustatu !=""'>
+   AND wx.`DanJuStatu` = #{danjustatu,jdbcType=VARCHAR}
+   </if>
+   <if test=' pretime !=""'>
+   AND wx.`Kaidantime` &gt;= #{pretime,jdbcType=VARCHAR}
+   </if>
+	<if test=' nexttime !=""'>
+   AND wx.`Kaidantime` &lt;= #{nexttime,jdbcType=VARCHAR}
+   </if>
+   </where>
+  </select>
+  <select id="queryJieSuan"   resultMap="BaseResultMap">
+     SELECT wxDanNo,wxDanType,wxType,DanJuStatu,JieSuanType,wxjiedan.bei1,wxjiedan.bei2,JieSuanTime,jieSuanmoney,YeWuType,kehu.KeHuName,wxjiedan.`ChePai`,kehucar.xinghao FROM
+   wxjiedan 
+   LEFT JOIN kehucar ON wxjiedan.`ChePai` = kehucar.`ChePai`
+   INNER JOIN kehu ON kehucar.`KeHuNo` = kehu.`kehuid`
+   <where>
+   	( DanJuStatu IN ('已竣工')
+   	<if test='danjustatu !="" and danjustatu !=null'>
+   	or DanJuStatu = #{danjustatu,jdbcType=VARCHAR}
+   	</if>)
+   	<if test='starttime !="" and starttime !=null'>
+   	and Kaidantime &gt; #{starttime,jdbcType=VARCHAR}
+   	</if>
+   	<if test='endtime !="" and endtime !=null'>
+   	and Kaidantime &lt; #{endtime,jdbcType=VARCHAR}
+   	</if>
+   	<if test='wxdanno !="" and wxdanno !=null'>
+   	and wxDanNo like '%${wxdanno}%'
+   	</if>
+   	<if test='chepai !="" and chepai !=null'>
+   	and wxjiedan.chepai like '%${chepai}%'
+   	</if>
+   	<if test='kehuname !="" and kehuname !=null'>
+   	and kehuname like '%${kehuname}%'
+   	</if>
+   	<if test='guwen !="" and guwen !=null'>
+   	and wxjiedan.guwen = #{guwen,jdbcType=VARCHAR}
+   	</if>
+   	<if test='remark !="" and remark !=null'>
+   	and wxjiedan.remark like '%${remark}%'
+   	</if>
+   	<if test='yewutype !="" and yewutype !=null'>
+   	and wxjiedan.YeWuType = #{yewutype,jdbcType=VARCHAR}
+   	</if>
+   	<if test='jiesuanstatu !="" and jiesuanstatu !=null'>
+   	and wxjiedan.bei1 = #{jiesuanstatu,jdbcType=VARCHAR}
+   	</if>
+   </where>
+   order by JieSuanTime asc limit 0,20
+  </select>
+  <select id="queryByPrimaryKeyCount" parameterType="java.lang.String" resultType="java.lang.Integer">
+  	select count(wxdanno) from wxjiedan where wxdanno =#{wxdanno,jdbcType=VARCHAR}
+  </select>
 </mapper>

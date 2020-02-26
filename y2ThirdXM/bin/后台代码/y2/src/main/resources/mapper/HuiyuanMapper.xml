@@ -17,6 +17,9 @@
     <result column="bei3" property="bei3" jdbcType="VARCHAR" />
     <result column="bei4" property="bei4" jdbcType="VARCHAR" />
   </resultMap>
+   <select id="queryhuiyuan" resultMap="BaseResultMap">
+  	 SELECT * FROM huiyuan WHERE YEAR(DaoQiTime)=YEAR(NOW()) AND MONTH(DaoQiTime)=MONTH(NOW()) AND DAY(DaoQiTime)-5&lt;=DAY(NOW())
+  </select>
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
@@ -350,4 +353,64 @@
       bei4 = #{bei4,jdbcType=VARCHAR}
     where HuiYuanNo = #{huiyuanno,jdbcType=VARCHAR}
   </update>
+  
+    <update id="yanQi" >
+  UPDATE huiyuan SET daoqitime = (
+  CASE #{money,jdbcType=INTEGER} WHEN 50 THEN DATE_ADD(DaoQiTime,INTERVAL 1 YEAR)
+  WHEN 120 THEN DATE_ADD(DaoQiTime,INTERVAL 3 YEAR)
+  WHEN 180 THEN DATE_ADD(DaoQiTime,INTERVAL 5 YEAR)
+  ELSE daoqitime
+  END
+  ) WHERE huiyuanno=#{no,jdbcType=VARCHAR}
+  </update>
+  <update id="chongZhi" parameterType="com.accp.domain.Huiyuan">
+  update huiyuan set huiyuanmoney = #{huiyuanmoney,jdbcType=DOUBLE} where huiyuanno = #{huiyuanno,jdbcType=VARCHAR}
+  </update>
+  <insert id="insertHuiYuan" parameterType="com.accp.domain.Huiyuan">
+   INSERT INTO 
+   huiyuan (huiyuanno,kehuno,huiyuanName,huiyuanmoney,daoqitime,huiyuangraden,youhui)
+   VALUE
+   (#{huiyuanno,jdbcType=VARCHAR},#{kehuno,jdbcType=VARCHAR},#{huiyuanname,jdbcType=VARCHAR},#{huiyuanmoney,jdbcType=DOUBLE},
+   (
+   CASE #{shichang,jdbcType=INTEGER} WHEN 50 THEN DATE_ADD(now(),INTERVAL 1 YEAR)
+   WHEN 120 THEN DATE_ADD(now(),INTERVAL 3 YEAR)
+   WHEN 180 THEN DATE_ADD(now(),INTERVAL 5 YEAR)
+   ELSE daoqitime
+   END
+   )
+    ,'普通会员',8)
+  </insert>
+  <select id="queryAllHuiYuan" resultMap="BaseResultMap">
+  	 SELECT huiyuan.* FROM huiyuan 
+     INNER JOIN kehu ON huiyuan.`KeHuNo` = kehu.`KeHuNo`
+     <where>
+     true
+     	<if test="hy != null">
+     	and (huiyuanno LIKE '%${hy}%' OR huiyuanname LIKE '%${hy}%')
+     	</if>
+     	<if test=" phone != null">
+     	and kehu.kehuphone LIKE '%${phone}%'
+     	</if>
+     </where>
+     <if test='order == "1"'>
+     	order by ruhuitime desc
+     </if>
+     <if test='order == "2"'>
+     	order by daoqitime desc
+     </if>
+     <if test='order == "3"'>
+     	order by ruhuitime asc
+     </if>
+     <if test='order == "4"'>
+     	order by daoqitime asc
+     </if>
+  </select>
+   <select id="getTodayMaxCount" resultType="java.lang.Integer" parameterType="java.lang.String">
+  	 SELECT COUNT(huiyuanno)+1 FROM huiyuan WHERE huiyuanno LIKE '%${today}%'
+  </select>
+  <select id="xiaopiao" resultMap="BaseResultMap" parameterType="java.lang.String"> 
+  	SELECT kehuname AS HuiYuanName,huiyuan.`HuiYuanNo`,huiyuan.`YouHui` FROM kehucar INNER JOIN kehu ON kehucar.`KeHuNo` = kehu.`kehuid`
+LEFT JOIN huiyuan ON kehu.`KeHuNo` = huiyuan.`KeHuNo`
+ WHERE kehucar.`ChePai` = #{chepai,jdbcType=VARCHAR}
+  </select>
 </mapper>

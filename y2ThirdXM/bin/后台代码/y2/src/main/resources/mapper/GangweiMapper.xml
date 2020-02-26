@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.accp.mapper.GangweiMapper" >
   <resultMap id="BaseResultMap" type="com.accp.domain.Gangwei" >
-    <id column="gangweiId" property="gangweiid" jdbcType="INTEGER" />
+    <id column="gangweId" property="gangweid" jdbcType="INTEGER" />
     <result column="gangweiname" property="gangweiname" jdbcType="VARCHAR" />
     <result column="bei1" property="bei1" jdbcType="VARCHAR" />
     <result column="bei2" property="bei2" jdbcType="VARCHAR" />
@@ -11,7 +11,7 @@
   </resultMap>
 
 	<update id="update">
-		UPDATE `gangwei` SET`gangweiId` = #{gangweiid},`gangweiname` = #{gangweiname} WHERE `gangweiId` = #{ids}
+		UPDATE `gangwei` SET `gangweiname` = #{gangweiname} WHERE `gangweId` = #{gangweid}
 	</update>
   
   <sql id="Example_Where_Clause" >
@@ -73,7 +73,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    gangweiId, gangweiname, bei1, bei2, bei3, bei4
+    gangweId, gangweiname, bei1, bei2, bei3, bei4
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.GangweiExample" >
     select
@@ -93,11 +93,11 @@
     select 
     <include refid="Base_Column_List" />
     from gangwei
-    where gangweiId = #{gangweiid,jdbcType=INTEGER}
+    where gangweId = #{gangweid,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from gangwei
-    where gangweiId = #{gangweiid,jdbcType=INTEGER}
+    where gangweId = #{gangweid,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.accp.domain.GangweiExample" >
     delete from gangwei
@@ -106,16 +106,16 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.accp.domain.Gangwei" >
-    insert into gangwei (gangweiId, gangweiname, bei1, 
+    insert into gangwei (gangweId, gangweiname, bei1, 
       bei2, bei3, bei4)
-    values (#{gangweiid,jdbcType=INTEGER}, #{gangweiname,jdbcType=VARCHAR}, #{bei1,jdbcType=VARCHAR}, 
+    values (#{gangweid,jdbcType=INTEGER}, #{gangweiname,jdbcType=VARCHAR}, #{bei1,jdbcType=VARCHAR}, 
       #{bei2,jdbcType=VARCHAR}, #{bei3,jdbcType=VARCHAR}, #{bei4,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.accp.domain.Gangwei" >
     insert into gangwei
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="gangweiid != null" >
-        gangweiId,
+      <if test="gangweid != null" >
+        gangweId,
       </if>
       <if test="gangweiname != null" >
         gangweiname,
@@ -134,8 +134,8 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="gangweiid != null" >
-        #{gangweiid,jdbcType=INTEGER},
+      <if test="gangweid != null" >
+        #{gangweid,jdbcType=INTEGER},
       </if>
       <if test="gangweiname != null" >
         #{gangweiname,jdbcType=VARCHAR},
@@ -163,8 +163,8 @@
   <update id="updateByExampleSelective" parameterType="map" >
     update gangwei
     <set >
-      <if test="record.gangweiid != null" >
-        gangweiId = #{record.gangweiid,jdbcType=INTEGER},
+      <if test="record.gangweid != null" >
+        gangweId = #{record.gangweid,jdbcType=INTEGER},
       </if>
       <if test="record.gangweiname != null" >
         gangweiname = #{record.gangweiname,jdbcType=VARCHAR},
@@ -188,7 +188,7 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update gangwei
-    set gangweiId = #{record.gangweiid,jdbcType=INTEGER},
+    set gangweId = #{record.gangweid,jdbcType=INTEGER},
       gangweiname = #{record.gangweiname,jdbcType=VARCHAR},
       bei1 = #{record.bei1,jdbcType=VARCHAR},
       bei2 = #{record.bei2,jdbcType=VARCHAR},
@@ -217,7 +217,7 @@
         bei4 = #{bei4,jdbcType=VARCHAR},
       </if>
     </set>
-    where gangweiId = #{gangweiid,jdbcType=INTEGER}
+    where gangweId = #{gangweid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.accp.domain.Gangwei" >
     update gangwei
@@ -226,6 +226,6 @@
       bei2 = #{bei2,jdbcType=VARCHAR},
       bei3 = #{bei3,jdbcType=VARCHAR},
       bei4 = #{bei4,jdbcType=VARCHAR}
-    where gangweiId = #{gangweiid,jdbcType=INTEGER}
+    where gangweId = #{gangweid,jdbcType=INTEGER}
   </update>
 </mapper>

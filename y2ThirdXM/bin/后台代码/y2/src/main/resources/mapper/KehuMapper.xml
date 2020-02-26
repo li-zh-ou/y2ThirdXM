@@ -33,9 +33,30 @@
 		  	<result column="ruhuitime" property="ruhuitime" />
 		    <result column="daoqitime" property="daoqitime" />
   </resultMap>
+<select id="queryliushi" resultMap="BaseResultMapSales" >
+  	  SELECT * FROM kehu WHERE MONTH(bei1)+1=MONTH(NOW()) AND DAY(bei1)=DAY(NOW())
+  </select>
   
+  <select id="findshengr" resultMap="BaseResultMapSales" >
+  	SELECT * FROM kehu WHERE MONTH(kehu.kehubirthday)=MONTH(NOW()) AND DAY(kehu.kehubirthday)=DAY(NOW())
+  </select>
+  <select id="querychatiao" resultMap="BaseResultMapSales" parameterType="com.accp.domain.Kehu">
+  	SELECT * FROM kehu LEFT JOIN huiyuan ON kehu.`KeHuid` = huiyuan.`KeHuNo` 
+		WHERE kehu.`KeHuNo` LIKE '%${aaa.KeHuNo}%' AND kehu.kehuname LIKE '%${aaa.kehuname}%' AND kehu.kehutype LIKE '%${aaa.kehutype}%'
+		AND kehu.kehulianxi LIKE '%${aaa.kehulianxi}%' AND kehu.kehuphone LIKE '%${aaa.kehuphone}%' AND kehu.kehuaddress LIKE '%${aaa.kehuaddress}%'
+		AND kehu.remark LIKE '%${aaa.remark}%' AND kehu.kehubirthday LIKE '%${aaa.kehubirthday}%' AND kehu.`bei1` LIKE '%${aaa.bei1}%'
+		AND kehu.guwen LIKE '%${aaa.guwen}%' AND kehu.guwenphone LIKE '%${aaa.guwenphone}%'
+  </select>
   <select id="findkehu" resultMap="BaseResultMapSales">
 	  SELECT * FROM kehu LEFT JOIN huiyuan ON kehu.`KeHuNo` = huiyuan.`KeHuNo`
+  </select>
+  <select id="querymokehu" resultMap="BaseResultMapSales">
+	  SELECT * FROM kehu LEFT JOIN huiyuan ON kehu.`KeHuid` = huiyuan.`KeHuNo` 
+		WHERE kehu.`KeHuNo` LIKE '%${kehuno}%' OR kehuphone LIKE '%${kehuphone}%'
+  </select>
+   <select id="querybykehub" resultMap="BaseResultMapSales">
+	SELECT * FROM kehu LEFT JOIN huiyuan ON kehu.`KeHuid` = huiyuan.`KeHuNo` 
+		WHERE kehu.`KeHuNo`='${kehuno}'
   </select>
   <sql id="Example_Where_Clause" >
     <where >
@@ -130,7 +151,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.accp.domain.Kehu" >
+  <insert id="insert" useGeneratedKeys="true" keyProperty="kehuid" parameterType="com.accp.domain.Kehu" >
     insert into kehu (kehuid, KeHuNo, KeHuName, 
       KeHuAddress, ZhuAddress, KeHuBirthday, 
       KeHuType, KeHuLianXi, KeHuPhone, 
@@ -533,4 +554,11 @@
       bei4 = #{bei4,jdbcType=VARCHAR}
     where kehuid = #{kehuid,jdbcType=INTEGER}
   </update>
+    <select id="queryNoHuiYuan" resultMap="BaseResultMap">
+  	 SELECT kehuid,kehuno,kehuname FROM kehu WHERE kehuno NOT IN(SELECT kehuno FROM huiyuan) 
+  	 AND (kehuno LIKE #{where,jdbcType=VARCHAR}
+  	 OR kehuname LIKE #{where,jdbcType=VARCHAR}
+  	 OR `KeHuPhone` LIKE #{where,jdbcType=VARCHAR})
+  	 limit 0,15
+  </select>
 </mapper>

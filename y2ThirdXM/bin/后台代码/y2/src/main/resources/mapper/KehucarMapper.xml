@@ -34,12 +34,40 @@
 		    <result column="faname" property="faname" />
 		    <result column="fanumber" property="fanumber" />
   </resultMap>
+  <select id="querysijir"  resultMap="BaseResultMapSales">
+  	   SELECT * FROM kehucar WHERE MONTH(SiJiBirthday)=MONTH(NOW()) AND DAY(SiJiBirthday)=DAY(NOW())
+  </select>
+   <select id="querybaoxian"  resultMap="BaseResultMapSales">
+  	    SELECT * FROM kehucar WHERE MONTH(nextBaoXianDate)=MONTH(NOW()) AND DAY(nextBaoXianDate)=DAY(NOW())
+  </select>
+  <select id="queryjiazhao"  resultMap="BaseResultMapSales">
+  	  SELECT * FROM kehucar WHERE JiaZhao&lt;NOW()
+  </select>
+  <select id="chacar" resultMap="BaseResultMapSales">
+  	SELECT * FROM kehucar 
+				INNER JOIN carbrand ON kehucar.`CarBankId`=carbrand.`CarBankId`
+				INNER JOIN fadongbrand ON fadongbrand.`FaBankId`=kehucar.`FaBankId` 
+				WHERE kehucar.`ChePai` LIKE '%${aaa.ChePai}%' AND kehucar.xinghao LIKE '%${aaa.xinghao}%' 
+				AND kehucar.chejia LIKE '%${aaa.chejia}%' AND kehucar.sijiname LIKE '%${aaa.sijiname}%' AND kehucar.sijiphone LIKE '%${aaa.sijiphone}%' 
+				AND kehucar.sijibirthday LIKE '%${aaa.sijibirthday}%' 
+  </select>
   
   <select id="findkehucar" resultMap="BaseResultMapSales">
 	  SELECT * FROM kehucar 
 		INNER JOIN carbrand ON kehucar.`CarBankId`=carbrand.`CarBankId`
 		INNER JOIN fadongbrand ON fadongbrand.`FaBankId`=kehucar.`FaBankId` 
 		WHERE kehucar.`KeHuNo`=#{kehuno}
+  </select>
+  <select id="findqbukehucar" resultMap="BaseResultMapSales">
+	  SELECT * FROM kehucar 
+		INNER JOIN carbrand ON kehucar.`CarBankId`=carbrand.`CarBankId`
+		INNER JOIN fadongbrand ON fadongbrand.`FaBankId`=kehucar.`FaBankId` 
+  </select>
+  <select id="querymokehucar" resultMap="BaseResultMapSales">
+  	SELECT * FROM kehucar 
+	INNER JOIN carbrand ON kehucar.`CarBankId`=carbrand.`CarBankId`
+	INNER JOIN fadongbrand ON fadongbrand.`FaBankId`=kehucar.`FaBankId` 
+	WHERE kehucar.`ChePai` LIKE '%${chepai}%'
   </select>
   
   <sql id="Example_Where_Clause" >
