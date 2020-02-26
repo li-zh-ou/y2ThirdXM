@@ -356,7 +356,7 @@
 		$("#hycztext").bind('keypress',function(event){
 			if(event.keyCode=="13"){
 				$.ajax({
-					url:"http://localhost:8080/huiyuan/queryNoHuiYuan",
+					url:data.ip +"huiyuan/queryNoHuiYuan",
 					"data":"where="+$("#hycztext").val(),
 					"type":"post",
 					"success":function(result){
@@ -396,7 +396,7 @@
 					money=null;
 					shic=null;
 					$.ajax({
-						url:"http://localhost:8080/huiyuan/insertHuiYuan",
+						url:data.ip +"huiyuan/insertHuiYuan",
 						"data":JSON.stringify(record),
 						"type":"post",
 						"contentType":"application/json;charset=UTF-8",
@@ -432,7 +432,7 @@
 		//会员注销，确定注销button事件
 		function quedinzhuxiao(){
 			$.ajax({
-				"url":"http://localhost:8080/huiyuan/zhuXiao",
+				"url":data.ip +"huiyuan/zhuXiao",
 				"data":"huiyuanno="+vm.huiyuaninfo.huiyuanno,
 				"type":"post",
 				"success":function(result){
@@ -497,7 +497,7 @@
 					chongzhijine=null;
 					zhihouyue=null;
 					$.ajax({
-						"url":"http://localhost:8080/huiyuan/chongZhi",
+						"url":data.ip +"huiyuan/chongZhi",
 						"data":JSON.stringify(zc),
 						"type":"post",
 						"contentType":"application/json;charset=UTF-8",
@@ -533,7 +533,7 @@
 					document.getElementsByName("yanqishichang")[0].selectedIndex=0;
 					$("[name='yanqiyingfu']").val(null);
 					$.ajax({
-						"url":"http://localhost:8080/huiyuan/yanQi",
+						"url":data.ip +"huiyuan/yanQi",
 						"data":"money="+yanqishichang+"&no="+vm.huiyuaninfo.huiyuanno,
 						"type":"post",
 						"success":function(result){
@@ -552,7 +552,7 @@
 		
 		function pageQuery(pageNum,pageSize,hy,phone,order){
 			$.ajax({
-				"url":"http://localhost:8080/huiyuan/queryAllHuiYuan",
+				"url":data.ip +"huiyuan/queryAllHuiYuan",
 				"data":"pageNum="+pageNum+"&pageSize="+pageSize+"&hy="+hy+"&phone="+phone+"&order="+order,
 				"type":"post",
 				"dataType":"json",

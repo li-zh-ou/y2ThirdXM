@@ -91,7 +91,7 @@
 	load();
 		function load(){
 			$.ajax({
-				"url":"http://localhost:8080/weixiujieche/queryJunGong",
+				"url":data.ip +"weixiujieche/queryJunGong",
 				"data":"wxdanno="+$("#wxdanno").val()+"&chepai="+$("#chepai").val()+"&danjustatu="+$("#danjustatu").val()+"&pretime="+$("#pretime").val()+"&nexttime="+$("#nexttime").val(),
 				"success":function(result){
 					vm.zuoyezhong=result;

@@ -120,7 +120,7 @@
 		queryJieSuan();
 		function queryJieSuan(){
 			$.ajax({
-				"url":"http://localhost:8080/jiesuanzhongxin/queryJieSuan",
+				"url":data.ip +"jiesuanzhongxin/queryJieSuan",
 				"data":"wxdanno="+$("[name='wxdanno']").val()+"&starttime="+$("[name='starttime']").val()+"&endtime="+$("[name='endtime']").val()
 				+"&guwen="+$("[name='guwen']").val()+"&remark="+$("[name='remark']").val()+"&danjustatu="+$("[name='danjustatu']").val()+"&jiesuanstatu="+$("[name='jiesuanstatu']").val()
 				+"&chepai="+$("[name='chepai']").val()+"&kehuname="+$("[name='kehuname']").val()+"&yewutype="+$("[name='yewutype']").val(),

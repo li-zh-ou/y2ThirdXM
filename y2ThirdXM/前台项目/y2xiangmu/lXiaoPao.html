@@ -68,7 +68,7 @@
 			vm.danno = window.parent.vm.selectedwxdanno;
 			vm.chepai = window.parent.vm.selectedchepai;
 			$.ajax({
-				"url":"http://localhost:8080/jiesuanzhongxin/queryXiangMu",
+				"url":data.ip +"jiesuanzhongxin/queryXiangMu",
 				"data":"danno="+vm.danno,
 				"type":"post",
 				"success":function(result){
@@ -83,7 +83,7 @@
 				}
 			})
 			$.ajax({
-				"url":"http://localhost:8080/jiesuanzhongxin/xiaopiao",
+				"url":data.ip +"jiesuanzhongxin/xiaopiao",
 				"data":"chepai="+vm.chepai,
 				"type":"post",
 				"success":function(result){

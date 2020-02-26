@@ -398,7 +398,7 @@
 		vm.wxno = window.parent.vm.selectedwxdanno;
 		vm.wxChepai = window.parent.vm.selectedchepai;
 		$.ajax({
-			"url":"http://localhost:8080/weixiujieche/oldwxJieDan",
+			"url":data.ip +"weixiujieche/oldwxJieDan",
 			"data":"wxdanno="+vm.wxno,
 			"type":"post",
 			"success":function(result){
@@ -476,7 +476,7 @@
 		}
 		
 		$.ajax({
-			"url":"http://localhost:8080/jungongjianxiu/queryCiShu",
+			"url":data.ip +"jungongjianxiu/queryCiShu",
 			"data":"wxdanno="+vm.wxno,
 			"success":function(result){
 				if(result == "null"){
@@ -526,7 +526,7 @@
 			}
 		}
 		$.ajax({
-			"url":"http://localhost:8080/jungongjianxiu/insertJunGong",
+			"url":data.ip +"jungongjianxiu/insertJunGong",
 			data:JSON.stringify(vm.insert),
 			type:"post",
 			contentType:"application/json;charset=UTF-8",
@@ -548,7 +548,7 @@
 	function queryXinagMu(){
 		if(vm.selectedwxdanno!=""){
 			$.ajax({
-				"url":"http://localhost:8080/weixiujieche/queryXinagMuBybei3",
+				"url":data.ip +"weixiujieche/queryXinagMuBybei3",
 				"type":"post",
 				"data":"bei3="+vm.wxdan.bei3,
 				"success":function(result){

@@ -344,7 +344,7 @@
 		vm.wxChepai = window.parent.vm.selectedchepai;
 		if(window.parent.nowwxdanno.length <1){
 			$.ajax({
-				"url":"http://localhost:8080/weixiujieche/oldwxJieDan",
+				"url":data.ip +"weixiujieche/oldwxJieDan",
 				"data":"wxdanno="+vm.wxno,
 				"type":"post",
 				"success":function(result){
@@ -355,7 +355,7 @@
 					if(result.bei3!="" && result.bei3 !=null){
 						vm.xiangmus =result.bei3;
 						$.ajax({
-							"url":"http://localhost:8080/weixiujieche/queryXinagMuBybei3",
+							"url":data.ip +"weixiujieche/queryXinagMuBybei3",
 							"type":"post",
 							"data":"bei3="+vm.xiangmus,
 							"success":function(result){
@@ -374,7 +374,7 @@
 			})
 		}else{
 			$.ajax({
-				"url":"http://localhost:8080/weixiujieche/newwxJieDan",
+				"url":data.ip +"weixiujieche/newwxJieDan",
 				"data":"chepai="+vm.wxChepai,
 				"type":"post",
 				"success":function(result){
@@ -466,7 +466,7 @@
 					var obj = JSON.stringify(this.vm.wxdan);
 					alert(0);
 					$.ajax({
-						"url":"http://localhost:8080/weixiujieche/insertWXdan",
+						"url":data.ip +"weixiujieche/insertWXdan",
 						"data":obj,
 						type:"post",
 						dataType:"json",
@@ -526,7 +526,7 @@
 	//查询当前维修订单的维修项目，并渲染。
 	function queryWXxiangmu(){
 		$.ajax({
-			"url":"http://localhost:8080/weixiujieche/queryAllXiangMu",
+			"url":data.ip +"weixiujieche/queryAllXiangMu",
 			"data":"nos="+vm.xiangmus,
 			"type":"post",
 			"success":function(result){
