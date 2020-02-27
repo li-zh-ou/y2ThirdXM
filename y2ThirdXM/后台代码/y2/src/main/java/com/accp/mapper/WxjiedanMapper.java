@@ -54,4 +54,8 @@ public interface WxjiedanMapper {
     int jinrifanxiu();
     
     int jiesuantaici();
+    
+    int jinrishouru(@Param("money") Double money,@Param("jiesuantype") String jiesuantype);
+
+    int jiesuanUpdate(@Param("wxdanno") String wxdanno,@Param("money") Double money,@Param("jiesuantype") String jiesuantype);
 }

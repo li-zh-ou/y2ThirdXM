@@ -51,4 +51,9 @@ public class JieSuanZhongXinController {
 		return wxjc.xiaopiao(chepai);
 	}
 	
+	@RequestMapping("jiesuaninsert")
+	@ResponseBody
+	public String jiesuanInsert(Double money,String wxdanno,String huiyuanno,String jiesuantype) {
+		return wxjc.jiesuanInsert(money,wxdanno,huiyuanno,jiesuantype);
+	}
 }

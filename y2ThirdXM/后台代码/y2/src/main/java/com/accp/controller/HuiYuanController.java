@@ -102,4 +102,15 @@ public class HuiYuanController {
 		return huiyuan.insertHuiYuan(record);
 	}
 	
+	@RequestMapping("jiesuanQuery")
+	@ResponseBody
+	public Huiyuan jiesuanQuery(String wxdanno) {
+		return huiyuan.jiesuanQuery(wxdanno);
+	}
+	
+	@RequestMapping("jiesuanyanzheng")
+	@ResponseBody
+	public String  jiesuanyanzheng(String huiyuanno,String money){
+		return huiyuan.jiesuanyanzheng(huiyuanno,money);
+	}
 }

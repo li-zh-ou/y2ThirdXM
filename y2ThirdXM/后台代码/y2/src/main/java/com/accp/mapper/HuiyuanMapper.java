@@ -43,4 +43,16 @@ public interface HuiyuanMapper {
     Integer getTodayMaxCount(String today);
     
     Huiyuan xiaopiao(String chepai);
+    
+    int shenjihuangji();
+    
+    int shenjizuanshi();
+    
+	Huiyuan jiesuanQuery(String wxdanno);
+	
+	int jiesuanyzTime(String huiyuanno);
+
+	int jiesuanyzMoney(@Param("huiyuanno") String huiyuanno,@Param("money") String money);
+
+	int jiesuanUpdate(@Param("huiyuanno") String huiyuanno,@Param("money") Double money);
 }

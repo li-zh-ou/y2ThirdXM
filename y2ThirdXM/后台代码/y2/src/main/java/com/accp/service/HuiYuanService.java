@@ -59,4 +59,21 @@ public class HuiYuanService {
 	public Integer getTodayMaxCount(String today) {
 		return huiyuan.getTodayMaxCount(today);
 	}
+	
+	public Huiyuan jiesuanQuery(String wxdanno) {
+		huiyuan.shenjihuangji();
+		huiyuan.shenjizuanshi();
+		return huiyuan.jiesuanQuery(wxdanno);
+	}
+	
+	public String jiesuanyanzheng(String huiyuanno,String money) {
+		int num = 0;
+		if(huiyuan.jiesuanyzTime(huiyuanno)>0) {
+			num = num+1;
+		}
+		if(huiyuan.jiesuanyzMoney(huiyuanno, money)>0) {
+			num = num+2;
+		}
+		return ""+num;
+	}
 }

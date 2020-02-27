@@ -884,4 +884,22 @@ WHERE kehucar.`ChePai` = #{chepai,jdbcType=VARCHAR}
   <update id="jiesuantaici">
   	update jiesuantaici set jiesuantaici = fanxiutaici+1 WHERE dantianshijian = DATE_FORMAT(NOW(),'%Y-%m-%d')
   </update>
+  <update id="jinrishouru">
+  	update jinritixin
+  	<set>
+  		<if test='jiesuantype == "微信"'>
+  			weixin =weixin + #{money,jdbcType=DOUBLE}
+  		</if>
+  		<if test='jiesuantype == "现金"'>
+  			xianjin =xianjin + #{money,jdbcType=DOUBLE},xianjinrkucishu = xianjinrkucishu+1,xianjinrkujine=xianjinrkujine+#{money,jdbcType=DOUBLE}
+  		</if>
+  		<if test='jiesuantype == "会员卡"'>
+  			xianjin =xianjin + #{money,jdbcType=DOUBLE},xianjinrkucishu = xianjinrkucishu+1,xianjinrkujine=xianjinrkujine+#{money,jdbcType=DOUBLE}
+  		</if>
+  	</set>
+  	where dantianshijian = DATE_FORMAT(NOW(),'%Y-%m-%d')
+  </update>
+  <update id="jiesuanUpdate">
+	UPDATE wxjiedan SET bei1='已结算',jieSuanmoney=#{money,jdbcType=DOUBLE},JieSuanType=#{jiesuantype,jdbcType=VARCHAR},jieSuantime = NOW() WHERE wxdanno =#{wxdanno,jdbcType=VARCHAR}  
+  </update>
 </mapper>

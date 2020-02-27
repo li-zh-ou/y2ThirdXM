@@ -93,7 +93,40 @@
 						</tbody>
 				</table>
 			</div>
-		
+			<!-- 模态框部分 -->
+			<div class="modal" tabindex="-1" role="dialog" id="jiesuan">
+			  	<div class="modal-dialog" role="document">
+			    	<div class="modal-content">
+			      		<div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
+					        <div class="row">
+					        	<h3 class="modal-title col-xs-9">结算</h3>
+					        </div>
+			      		</div>
+				      	<div class="modal-body row" style="font-size: 17px;">
+				      		<p class="col-xs-12">会员姓名：{{jiesuanhuiyuan.huiyuanname}}<strong></strong></p>
+				      		<p class="col-xs-6">会员余额：{{jiesuanhuiyuan.huiyuanmoney}}￥<span style="font-weight: 700;font-size:15px;color:green;"></span></p>
+				      		<p class="col-xs-6">会员折扣：{{jiesuanhuiyuan.youhui}}折<span style="font-weight: 700;font-size:15px;color:red;"></span></p>
+							<p class="col-xs-12" style="height: 25px;border-bottom:1px solid;"></p>
+				      		<p class="col-xs-6" style="font-size:17px;font-weight: 700;">维修单号：{{jiesuandan}}</p>
+				      		<p class="col-xs-6" style="font-size:17px;font-weight: 700;">维修车牌：{{jiesuanchepai}}</p>
+				      		<p class="col-xs-6" style="font-size:17px;font-weight: 700;">单据金额：{{jiesuanzongjia}}</p>
+				      		<p class="col-xs-6" style="font-size:17px;font-weight: 700;">&nbsp;</p>
+				      		<div style="margin-left: 20px;margin-top: 20px;">
+								<div class="input-group">
+									<span class="input-group-addon">结算方式</span>
+									<select id="jiesuantype" style="vertical-align: middle ; width:160px; height:33px;">
+										<option>现金</option>
+										<option>微信</option>
+										<option id="hyoption" disabled="disabled">会员卡</option>
+									</select>
+								</div>
+				      		</div>
+				      		<button class="btn btn-default" style="margin-left: 20px;margin-top: 25px;" onclick="quedinjiesuan()">确定</button>
+				      	</div>
+			    	</div><!-- /.modal-content -->
+			  	</div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
 		</div>
 		
 	</body>
@@ -109,6 +142,11 @@
 					alljiesuan:[],
 					selectedwxdanno:"",
 				    selectedchepai:"",
+				    jiesuanhuiyuan:{},
+				    jiesuandan:"",
+				    jiesuanchepai:"",
+				    jiesuanmoney:null,
+				    jiesuanzongjia:0,
 				}
 			},
 			methods:{
@@ -175,16 +213,105 @@
 				mybody = null;
 				return;
 			}
-			vm.selectedwxdanno = vm.alljiesuan[vmindex].wxdanno;
-			vm.selectedchepai = vm.alljiesuan[vmindex].chepai;
-			
-			vmindex = null;
-			var Myiframe=document.createElement("iframe");
-			Myiframe.setAttribute("style","position:fixed;z-index:500;top:0px;left:0px;width:100%;height:100%;");
-			Myiframe.src="lXiaoPao.html";
-			Myiframe.id="otherHtml";
-			var mybody=document.getElementById("body");
-			mybody.append(Myiframe);
+			if(vm.alljiesuan[vmindex].bei1=="未结算"){
+				vm.selectedwxdanno = vm.alljiesuan[vmindex].wxdanno;
+				vm.selectedchepai = vm.alljiesuan[vmindex].chepai;
+				$.ajax({
+					"url":"[[@{/huiyuan/jiesuanQuery}]]",
+					"data":"wxdanno="+vm.selectedwxdanno,
+					"type":"post",
+					"success":function(result){
+						if(result != ""){
+							vm.jiesuanhuiyuan = result;
+							$("#jiesuantype")[0].selectedIndex = 2;
+							$("#hyoption")[0].disabled=false;
+						}else{
+							vm.jiesuanhuiyuan = {huiyuanname:"此客户不是会员",huiyuanmoney:0,youhui:10,huiyuanno:null};
+							$("#jiesuantype")[0].selectedIndex = 0;
+							$("#hyoption")[0].disabled=true;
+						}
+					},
+					"error":function(){
+						alert("出错了");
+					}
+				})
+				vm.jiesuandan = vm.selectedwxdanno;
+				vm.jiesuanchepai = vm.selectedchepai;
+				$.ajax({
+					"url":"[[@{/jiesuanzhongxin/queryXiangMu}]]",
+					"data":"danno="+vm.selectedwxdanno,
+					"type":"post",
+					"success":function(result){
+						for(var i = 0;i<result.length;i++){
+							vm.jiesuanzongjia=vm.jiesuanzongjia + parseFloat(result[i].shoujiaan);
+						}
+					},
+					"error":function(){
+						alert("加载出错了！");
+					}
+				})
+				$("#jiesuan").modal("show");
+			}else{
+				alert("此单已结算!");
+			}
+		}
+		
+		function quedinjiesuan(){
+				if($("#jiesuantype").val()=="会员卡"){
+					$.ajax({
+						"url":"[[@{/huiyuan/jiesuanyanzheng}]]",
+						"data":"huiyuanno="+vm.jiesuanhuiyuan.huiyuanno+"&money="+parseFloat(vm.jiesuanzongjia)*(parseInt(vm.jiesuanhuiyuan.youhui)/10),
+						"type":"post",
+						"success":function(result){
+							if(result == "1"){
+								alert("会员已过期，请先延期！");
+								return;
+							}
+							if(result == "2"){
+								alert("会员余额不足，请及时充值！");
+								return;
+							}
+							if(result == "3"){
+								alert("会员余额不足，并且已过期！");
+								return;
+							}
+							$.ajax({
+								"url":"[[@{/jiesuanzhongxin/jiesuaninsert}]]",
+								"data":"money="+parseFloat(vm.jiesuanzongjia)*(parseInt(vm.jiesuanhuiyuan.youhui)/10)+"&wxdanno="+vm.jiesuandan+"&huiyuanno="+vm.jiesuanhuiyuan.huiyuanno+"&jiesuantype="+$("#jiesuantype").val(),
+								"type":"post",
+								"success":function(result){
+									alert("结算成功！");
+									queryJieSuan();
+									$("#jiesuan").modal("hide");
+								},
+								"error":function(){
+									alert("结算失败！");
+									queryJieSuan();
+									$("#jiesuan").modal("hide");
+								}
+							})
+						},
+						"error":function(){
+							alert("出错了！");
+						}
+					})
+				}else{
+					$.ajax({
+						"url":"[[@{/jiesuanzhongxin/jiesuaninsert}]]",
+						"data":"money="+parseFloat(vm.jiesuanzongjia)*(parseInt(vm.jiesuanhuiyuan.youhui)/10)+"&wxdanno="+vm.jiesuandan+"&huiyuanno="+vm.jiesuanhuiyuan.huiyuanno+"&jiesuantype="+$("#jiesuantype").val(),
+						"type":"post",
+						"success":function(result){
+							alert("结算成功！");
+							queryJieSuan();
+							$("#jiesuan").modal("hide");
+						},
+						"error":function(){
+							alert("结算失败！");
+							queryJieSuan();
+							$("#jiesuan").modal("hide");
+						}
+					})
+				}
 		}
 	</script>
 </html>
