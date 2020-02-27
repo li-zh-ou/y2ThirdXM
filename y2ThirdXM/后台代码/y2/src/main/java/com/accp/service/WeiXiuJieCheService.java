@@ -54,6 +54,7 @@ public class WeiXiuJieCheService {
 		Integer num =0;
 		if(wxjiedan.queryByPrimaryKeyCount(dan.getWxdanno())<1) {
 			num = wxjiedan.insertwxdan(dan);
+			wxjiedan.jinrijieche();
 		}
 		else {
 			wxjiedan.updateByPrimaryKey(dan);
@@ -111,5 +112,13 @@ public class WeiXiuJieCheService {
 	
 	public List<Wxxiangmu> querywxXiangMu(){
 		return xiangmu.selectByExample(null);
+	}
+	
+	public String jiesuanInsert(Double money,String wxdanno,String huiyuanno,String jiesuantype) {
+		huiyuan.jiesuanUpdate(huiyuanno,money);
+		wxjiedan.jiesuanUpdate(wxdanno,money,jiesuantype);
+		wxjiedan.jinrishouru(money, jiesuantype);
+		wxjiedan.jiesuantaici();
+		return "";
 	}
 }
