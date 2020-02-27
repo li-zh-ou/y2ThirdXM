@@ -108,4 +108,8 @@ public class WeiXiuJieCheService {
 	public List<Kehucar> queryKeHuCar(String chepai){
 		return khcar.queryKeHuCar(chepai);
 	}
+	
+	public List<Wxxiangmu> querywxXiangMu(){
+		return xiangmu.selectByExample(null);
+	}
 }

@@ -48,4 +48,10 @@ public interface WxjiedanMapper {
     List<Wxjiedan> queryJieSuan(@Param("wxdanno") String wxdanno,@Param("starttime")String starttime,@Param("endtime")String endtime,@Param("jiesuanstatu")String jiesuanstatu,@Param("danjustatu")String danjustatu,@Param("chepai")String chepai,@Param("kehuname")String kehuname,@Param("guwen")String guwen,@Param("yewutype")String yewutype,@Param("remark")String remark);
     
     int queryByPrimaryKeyCount(String wxdanno);
+    
+    int jinrijieche();
+    
+    int jinrifanxiu();
+    
+    int jiesuantaici();
 }

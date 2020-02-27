@@ -875,4 +875,13 @@ WHERE kehucar.`ChePai` = #{chepai,jdbcType=VARCHAR}
   <select id="queryByPrimaryKeyCount" parameterType="java.lang.String" resultType="java.lang.Integer">
   	select count(wxdanno) from wxjiedan where wxdanno =#{wxdanno,jdbcType=VARCHAR}
   </select>
+  <update id="jinrijieche">
+  	update jinritixin set jiechetaici = jiechetaici+1 WHERE dantianshijian = DATE_FORMAT(NOW(),'%Y-%m-%d')
+  </update>
+  <update id="jinrifanxiu">
+  	update jinritixin set fanxiutaici = fanxiutaici+1 WHERE dantianshijian = DATE_FORMAT(NOW(),'%Y-%m-%d')
+  </update>
+  <update id="jiesuantaici">
+  	update jiesuantaici set jiesuantaici = fanxiutaici+1 WHERE dantianshijian = DATE_FORMAT(NOW(),'%Y-%m-%d')
+  </update>
 </mapper>

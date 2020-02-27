@@ -12,16 +12,35 @@
 								<thead>
 									<tr>
 									    <th></th>
-										<th>编码</th>
+										<th>项目名称</th>
+										<th>项目类型</th>
+										<th>售价按</th>
+										<th>原价</th>
+										<th>vip价</th>
+										<th>会员价</th>
+										<th>协议价</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr v-for="item in data" onclick="trclick(this)">
+									<tr v-for="item in data.list" onclick="trclick(this)">
 										<td><input class="xmcheckbox" type="checkbox" disabled="disabled"/></td>
-										<td>{{item.wxxiangmuno}}</td>
+										<td>{{item.xiangmuname}}</td>
+										<td>{{item.xingmutype}}</td>
+										<td>{{item.shoujiaan}}</td>
+										<td>{{item.price}}</td>
+										<td>{{item.vipprice}}</td>
+										<td>{{item.huiprice}}</td>
+										<td>{{item.xieprice}}</td>
 									</tr>
 								</tbody>
 						</table>
+						<div class="btn-group" role="group" style="margin-left: 40%;">
+							<button type="button" class="btn btn-default" @click="shoupage()">首页</button>
+						  	<button type="button" class="btn btn-default" @click="nextpage()">《</button>
+						  	<button type="button" class="btn btn-default">{{data.pageNum}}/{{data.lastPage}}</button>
+						  	<button type="button" class="btn btn-default" @click="prevpage()">》</button>
+						  	<button type="button" class="btn btn-default" @click="lastpage()">末页</button>
+						</div>
 			        </div>
 	</body>
 		<script type="text/javascript" src="js/jquery-3.4.1.min .js" ></script>
@@ -33,12 +52,23 @@
 			el:"#body",
 			data(){
 				return {
-					data:[{wxxiangmuno:"10"},{wxxiangmuno:"11"},{wxxiangmuno:"123"},{wxxiangmuno:"2"}],
+					data:[],
 					xiangmus:"",
 				};
 			},
 			methods:{
-				
+				shoupage:function(){
+					load(this.data.firstPage,14);
+				},
+				nextpage:function(){
+					load(this.data.nextPage,14);
+				},
+				prevpage:function(){
+					load(this.data.prePage,14);
+				},
+				lastpage:function(){
+					load(this.data.lastPage,14);
+				}
 			}
 		})
 		function colseIframe(){
@@ -65,5 +95,20 @@
 				$(".xmcheckbox")[index].checked = true;
 			}
 		}
+
+		function load(pageNum,pageSize){
+			$.ajax({
+				"url":data.ip+"weixiujieche/querywxXiangMu",
+				"type":"post",
+				"data":"pageNum="+pageNum+"&pageSize="+pageSize,
+				"success":function(result){
+					vm.data = result;
+				},
+				"error":function(){
+					alert("渲染出错了！");
+				}
+			})
+		}
+		load(1,14);
 	</script>
 </html>

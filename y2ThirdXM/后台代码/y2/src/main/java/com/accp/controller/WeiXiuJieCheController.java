@@ -14,6 +14,9 @@ import com.accp.domain.Kehucar;
 import com.accp.domain.Wxjiedan;
 import com.accp.domain.Wxxiangmu;
 import com.accp.service.WeiXiuJieCheService;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 
 @Controller
 @RequestMapping("weixiujieche")
@@ -147,6 +150,14 @@ public class WeiXiuJieCheController {
 	@ResponseBody
 	public List<Kehucar> queryKeHuCar(String chepai){
 		return wxjc.queryKeHuCar(chepai);
+	}
+	
+	@RequestMapping("querywxXiangMu")
+	@ResponseBody
+	public PageInfo<Wxxiangmu> querywxXiangMu(int pageNum,int pageSize){
+		Page<Wxxiangmu> page = PageHelper.startPage(pageNum, pageSize);
+		wxjc.querywxXiangMu();
+		return page.toPageInfo();
 	}
 	
 }
