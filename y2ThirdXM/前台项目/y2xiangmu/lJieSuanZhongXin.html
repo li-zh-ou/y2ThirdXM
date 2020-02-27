@@ -217,7 +217,7 @@
 				vm.selectedwxdanno = vm.alljiesuan[vmindex].wxdanno;
 				vm.selectedchepai = vm.alljiesuan[vmindex].chepai;
 				$.ajax({
-					"url":"[[@{/huiyuan/jiesuanQuery}]]",
+					"url":data.ip +"huiyuan/jiesuanQuery",
 					"data":"wxdanno="+vm.selectedwxdanno,
 					"type":"post",
 					"success":function(result){
@@ -238,7 +238,7 @@
 				vm.jiesuandan = vm.selectedwxdanno;
 				vm.jiesuanchepai = vm.selectedchepai;
 				$.ajax({
-					"url":"[[@{/jiesuanzhongxin/queryXiangMu}]]",
+					"url":data.ip +"jiesuanzhongxin/queryXiangMu",
 					"data":"danno="+vm.selectedwxdanno,
 					"type":"post",
 					"success":function(result){
@@ -259,7 +259,7 @@
 		function quedinjiesuan(){
 				if($("#jiesuantype").val()=="会员卡"){
 					$.ajax({
-						"url":"[[@{/huiyuan/jiesuanyanzheng}]]",
+						"url":data.ip +"huiyuan/jiesuanyanzheng",
 						"data":"huiyuanno="+vm.jiesuanhuiyuan.huiyuanno+"&money="+parseFloat(vm.jiesuanzongjia)*(parseInt(vm.jiesuanhuiyuan.youhui)/10),
 						"type":"post",
 						"success":function(result){
@@ -276,7 +276,7 @@
 								return;
 							}
 							$.ajax({
-								"url":"[[@{/jiesuanzhongxin/jiesuaninsert}]]",
+								"url":data.ip +"jiesuanzhongxin/jiesuaninsert",
 								"data":"money="+parseFloat(vm.jiesuanzongjia)*(parseInt(vm.jiesuanhuiyuan.youhui)/10)+"&wxdanno="+vm.jiesuandan+"&huiyuanno="+vm.jiesuanhuiyuan.huiyuanno+"&jiesuantype="+$("#jiesuantype").val(),
 								"type":"post",
 								"success":function(result){
@@ -297,7 +297,7 @@
 					})
 				}else{
 					$.ajax({
-						"url":"[[@{/jiesuanzhongxin/jiesuaninsert}]]",
+						"url":data.ip +"jiesuanzhongxin/jiesuaninsert",
 						"data":"money="+parseFloat(vm.jiesuanzongjia)*(parseInt(vm.jiesuanhuiyuan.youhui)/10)+"&wxdanno="+vm.jiesuandan+"&huiyuanno="+vm.jiesuanhuiyuan.huiyuanno+"&jiesuantype="+$("#jiesuantype").val(),
 						"type":"post",
 						"success":function(result){
