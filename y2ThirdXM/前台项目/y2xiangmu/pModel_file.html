@@ -126,7 +126,6 @@
 									<td><h4><a href="#"><span class="glyphicon glyphicon-align-right" data-toggle="modal" data-target="#myModal3">增加车型</span></a></h4></td>
 									<td><h4><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true" data-toggle="modal" data-target="#myModal5">修改</span></a></h4></td>
 									<td><h4><a href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true" @click="ybian_sc1">删除</span></a></h4></td>
-									<td><h4><a href="#"><span class="glyphicon glyphicon-picture" aria-hidden="true">照片</span></a></h4></td>
 								</tr>
 							</table>
 							<input type="text" name="" placeholder="匹配/车型编码/车型名称"/ style="width: 230px; height: 33px;"class="btn btn-default">
@@ -139,7 +138,7 @@
 									<td class="text-center">APP展示</td>
 									<td class="text-center">车型ID</td>
 									<td class="text-center" style="width: 90px;">车型名称</td>
-									<td class="text-center">发动机品牌</td>
+									<td class="text-center">发动机品牌号</td>
 									<td class="text-center">参考价格</td>
 									<td class="text-center">车辆年款</td>
 									<td class="text-center">功率</td>
@@ -179,30 +178,41 @@
 							      <div class="modal-body">
 							      	<table class="table table-hover">
 							      		<tr>
-							      			<th>车辆品牌<input type="password"  class="form-control" placeholder="P" style="width: 80%; border-radius: 3px 3px 3px 3px;"></th>
+							      			<th>车辆品牌
+							      				<select name="" v-model="page5.carbankid" class="form-control" style="width: 60%;">
+							      					<option value="1">丰田</option>
+							      					<option value="2">中国一气</option>
+							      					<option value="3">西重卡</option>
+							      				</select>
+							      			</th>
+							      			<th>
+							      				发动机品牌
+							      				<select name="" v-model="page5.fabankid" class="form-control" placeholder="Amount" style="width: 60%;">
+							      					<option value="1">奥迪</option>
+							      					<option value="2">奔驰</option>
+							      					<option value="3">雪佛兰</option>
+							      					<option value="4">保时捷</option>
+							      					<option value="5">本田</option>
+							      					<option value="6">别克</option>
+							      					<option value="7">宝骏</option>
+							      					<option value="8">标致</option>
+							      				</select>
+							      			</th>
 							      		</tr>
 							      		<tr>
-							      			<th>车型ID<input type="password"  class="form-control" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
-							      			<th>车型名称<input type="password"  class="form-control" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
+							      			<th>车型ID<input type="text" disabled class="form-control" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
+							      			<th>车型名称<input type="text" v-model="page5.bei1"  class="form-control" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
 							      		</tr>
 							      		<tr>
 							      			<th>
-							      				进口国产<form class="form-inline">
+							      				进口国产<form class="form-inline" style="width: 60%;">
 												  <div class="form-group">
-												    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
 												    <div class="input-group">
-												      <input type="text" class="form-control" placeholder="Amount">
-														 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
-														 	<div class="dropdown">
-															  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
-															    
-															    <span class="caret"></span>
-															  </button>
-															  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-															    <li><a href="#">Action</a></li>
-															  </ul>
-															</div>
-														 </div>
+												      <select class="form-control" v-model="page5.jinkou" style="width: 100%; border: 1px solid #009688;">
+														 	<option value="大众">大众</option>
+														 	<option value="宝马">宝马</option>
+														 	<option value="丰田">丰田</option>
+														 </select>
 												      <div class="input-group-addon">
 												      	<button data-toggle="modal" data-target="#myModal4">a</button>
 												      		
@@ -261,45 +271,21 @@
 												  </div>
 												</form>
 							      			</th>
-							      			<th>参考价格<input type="password"  class="form-control" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
+							      			<th>参考价格<input type="text" v-model="page5.cankaoprice"  class="form-control" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
 							      		</tr>
 							      		<tr>
-							      			<th>车辆年款<input type="password"  class="form-control" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
-							      			<th>功率<input type="password"  class="form-control" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
+							      			<th>车辆年款<input type="text" v-model="page5.caryearmoney"  class="form-control" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
+							      			<th>功率<input type="text" v-model="page5.gonglv"  class="form-control" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
 							      		</tr>
 							      		<tr>
-							      			<th>燃油标号<input type="password"  class="form-control" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
-							      			<th>载重<input type="password"  class="form-control" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
-							      		</tr>
-							      		<tr>
-							      			<th>
-							      				发动机品牌
-							      				<form class="form-inline">
-												  <div class="form-group">
-												    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
-												    <div class="input-group">
-												      <input type="text" class="form-control" placeholder="Amount">
-														 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
-														 	<div class="dropdown">
-															  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
-															    
-															    <span class="caret"></span>
-															  </button>
-															  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-															    <li><a href="#">Acd</a></li>
-															  </ul>
-															</div>
-														 </div>
-												    </div>
-												  </div>
-												</form>
-							      			</th>
+							      			<th>燃油标号<input type="text" v-model="page5.ranyou"  class="form-control" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
+							      			<th>载重<input type="text" v-model="page5.zaizhong"  class="form-control" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
 							      		</tr>
 							      	</table>
 							      </div>
 							      <div class="modal-footer">
 							        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-							        <button type="button" class="btn btn-primary">保存</button>
+							        <button type="button" class="btn btn-primary" @click="ybcxdan_Insert1">保存</button>
 							      </div>
 							    </div>
 							  </div>
@@ -316,30 +302,41 @@
 							      <div class="modal-body">
 							      	<table class="table table-hover">
 							      		<tr>
-							      			<th>车辆品牌<input type="password" class="form-control" placeholder="P" style="width: 80%; border-radius: 3px 3px 3px 3px;"></th>
+							      			<th>车辆品牌
+							      				<select name="" v-model="page6.carbankid" class="form-control" style="width: 60%;">
+							      					<option value="1">丰田</option>
+							      					<option value="2">中国一气</option>
+							      					<option value="3">西重卡</option>
+							      				</select>
+							      			</th>
+							      			<th>
+							      				发动机品牌
+							      				<select name="" v-model="page6.fabankid" class="form-control" placeholder="Amount" style="width: 60%;">
+							      					<option value="1">奥迪</option>
+							      					<option value="2">奔驰</option>
+							      					<option value="3">雪佛兰</option>
+							      					<option value="4">保时捷</option>
+							      					<option value="5">本田</option>
+							      					<option value="6">别克</option>
+							      					<option value="7">宝骏</option>
+							      					<option value="8">标致</option>
+							      				</select>
+							      			</th>
 							      		</tr>
 							      		<tr>
-							      			<th>车型ID<input type="password" class="form-control" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
-							      			<th>车型名称<input type="password" class="form-control" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
+							      			<th>车型ID<input type="text" disabled v-model="page6.xingid" class="form-control" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
+							      			<th>车型名称<input type="text" v-model="page6.bei1"  class="form-control" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
 							      		</tr>
 							      		<tr>
 							      			<th>
-							      				进口国产<form class="form-inline">
+							      				进口国产<form class="form-inline" style="width: 60%;">
 												  <div class="form-group">
-												    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
 												    <div class="input-group">
-												      <input type="text" class="form-control" placeholder="Amount">
-														 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
-														 	<div class="dropdown">
-															  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
-															    
-															    <span class="caret"></span>
-															  </button>
-															  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-															    <li><a href="#">Action</a></li>
-															  </ul>
-															</div>
-														 </div>
+												      <select class="form-control" v-model="page6.jinkou" style="width: 100%; border: 1px solid #009688;">
+														 	<option value="大众">大众</option>
+														 	<option value="宝马">宝马</option>
+														 	<option value="丰田">丰田</option>
+														 </select>
 												      <div class="input-group-addon">
 												      	<button data-toggle="modal" data-target="#myModal6">a</button>
 												      		
@@ -398,71 +395,26 @@
 												  </div>
 												</form>
 							      			</th>
-							      			<th>参考价格<input type="password" class="form-control" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
+							      			<th>参考价格<input type="text" v-model="page6.cankaoprice"  class="form-control" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
 							      		</tr>
 							      		<tr>
-							      			<th>车辆年款<input type="password" class="form-control" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
-							      			<th>功率<input type="password" class="form-control" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
+							      			<th>车辆年款<input type="text" v-model="page6.caryearmoney"  class="form-control" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
+							      			<th>功率<input type="text" v-model="page6.gonglv"  class="form-control" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
 							      		</tr>
 							      		<tr>
-							      			<th>燃油标号<input type="password" class="form-control" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
-							      			<th>载重<input type="password" class="form-control" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
-							      		</tr>
-							      		<tr>
-							      			<th>
-							      				发动机品牌
-							      				<form class="form-inline">
-												  <div class="form-group">
-												    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
-												    <div class="input-group">
-												      <input type="text" class="form-control" placeholder="Amount">
-														 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
-														 	<div class="dropdown">
-															  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
-															    
-															    <span class="caret"></span>
-															  </button>
-															  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-															    <li><a href="#">Acd</a></li>
-															  </ul>
-															</div>
-														 </div>
-												    </div>
-												  </div>
-												</form>
-							      			</th>
+							      			<th>燃油标号<input type="text" v-model="page6.ranyou"  class="form-control" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
+							      			<th>载重<input type="text" v-model="page6.zaizhong"  class="form-control" placeholder="P" style="width: 60%; border-radius: 3px 3px 3px 3px;"></th>
 							      		</tr>
 							      	</table>
 							      </div>
 							      <div class="modal-footer">
 							        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-							        <button type="button" class="btn btn-primary">保存</button>
+							        <button type="button" class="btn btn-primary" @click="ybxgbc_1">保存</button>
 							      </div>
 							    </div>
 							  </div>
 							</div>
 							
-							<!--照片-->
-							<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-							  <div class="modal-dialog" role="document">
-							    <div class="modal-content">
-							      <div class="modal-header">
-							        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							        <h4 class="modal-title" id="myModalLabel">车型照片</h4>
-							        <button type="button" class="btn btn-success">保存</button>
-							      </div>
-							      <div class="modal-body">
-							        	<p>车型照片</p>
-							        	<span>指定照片</span>
-							        	
-							      </div>
-							      <div class="modal-footer">
-							        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							        <button type="button" class="btn btn-primary">Save changes</button>
-							      </div>
-							    </div>
-							  </div>
-							</div>
 					</div>
 				</div>
 			</section>
@@ -479,16 +431,17 @@
 						page1:{},
 						page2:{},
 						page3:{},
-						page4:{}
+						page4:[],
+						page5:{},
+						page6:{}
 					};
 				},
 				created:function(){
-					this.pmodel_xs1();
+					pmodel_xs1();
 				},
 				methods:{
 					byid:function(item){
 //						item=JSON.stringify(item);
-						alert("选中项目编号:"+item.carbankid)
 						this.dianji(item);
 //						vm1.dataa1=item;
 						$.ajax({
@@ -508,6 +461,7 @@
 					byid1:function(item){
 						alert("选中:"+item.carbr_carbank);
 						vm.page4=item;
+						this.ybxgqc();
 					},
 					ybian_sc1:function(){
 						alert("删除"+vm.page4.carbr_carbank);
@@ -519,6 +473,7 @@
 							success:function(result){
 								if(result>=1){
 									alert("右删成功!");
+									pmodel_xs1();
 								}else{
 									alert("再来!")
 								}
@@ -536,6 +491,8 @@
 							success:function(result){
 								if(result>=1){
 									alert("修改成功!");
+									$("#myModal2").modal('hide');
+									pmodel_xs1();
 								}else{
 									alert("再来!")
 								}
@@ -552,27 +509,83 @@
 							success:function(result){
 								if(result>=1){
 									alert("成功!");
+									pmodel_xs1();
 								}else{
 									alert("再来!")
 								}
 							}
 						});
 					},
-					pmodel_xs1:function(){
+					//增加修改用的数据
+					
+					//右边修改前查
+					ybxgqc:function(){
 						$.ajax({
-							url:"http://localhost:8080/vehiclefil1",
+							url:"http://localhost:8080/vehicleDjizb8",
 							dataType:"json",
-							type:"get",
-							xhrFields:{
-				            withCredentials:true
-				           				},
+							type:"post",
+							data:{page4id:vm.page4.carbr_carbank},
 							success:function(result){
-								vm.page=result;
+								vm.page6=result;
+								result=JSON.stringify(result);
 								console.log(result);
+								
 							}
 						});
 					},
+					//右修改保存
+					ybxgbc_1:function(){
+						page6=JSON.stringify(vm.page6);
+						$.ajax({
+							url:"http://localhost:8080/vehicleDjizb9",
+							contentType:"application/json;charset=utf-8",
+							type:"post",
+							dataType:"json",
+							data:page6,
+							success:function(result){
+								if (result>=1) {
+									alert("修成功")
+									$("#myModal5").modal('hide');
+									pmodel_xs1();
+								} else{
+									alert("请再来")
+								}
+							}
+						});
+					},
+					zjiaysj:function(){
+						$.ajax({
+							url:"http://localhost:8080/vehiclefil6",
+							dataType:"json",
+							type:"get",
+							success:function(result){
+								vm.page5=result;
+							}
+						});
+					},
+					//右增加
+					ybcxdan_Insert1:function(){
+						page5=JSON.stringify(vm.page5);
+						$.ajax({
+							url:"http://localhost:8080/vehicleDjizb7",
+							contentType:"application/json;charset=utf-8",
+							dataType:"json",
+							type:"post",
+							data:page5,
+							success:function(result){
+								if (result>=1) {
+									alert("增成功")
+									$("#myModal3").modal('hide');
+									pmodel_xs1();
+								} else{
+									alert("再来")
+								}
+							}
+						});
+					},
+					
 				insert_baoc1:function(){
+					//左增加
 					page1=JSON.stringify(vm.page1);
 					alert("保存:"+page1);
 					$.ajax({
@@ -583,7 +596,13 @@
 						data:page1,
 						success:function(result){
 							vm.page1=result;
-							alert("成功"+result)
+							if (result>=1) {
+								alert("成")
+								$("#myModal1").modal('hide');
+								pmodel_xs1();
+							} else{
+								alert("失")
+							}
 							console.log(result);
 						}
 					});
@@ -604,7 +623,23 @@
 					});
 				}
 				}
+				
 			});
+			
+			function pmodel_xs1(){
+						$.ajax({
+							url:"http://localhost:8080/vehiclefil1",
+							dataType:"json",
+							type:"get",
+							xhrFields:{
+				            withCredentials:true
+				           				},
+							success:function(result){
+								vm.page=result;
+								console.log(result);
+							}
+						});
+					}
 		</script>
 	</body>
 </html>

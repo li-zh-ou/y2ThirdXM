@@ -70,47 +70,42 @@
 								        	<table class="table table-hover">
 								        		<tr>
 								        			<th>
-								        				广商代码<input type="text" class="form-control" disabled placeholder="询" style="width: 100%;">
+								        				广商代码<input type="text" v-model="andt1.huoshangno" class="form-control" placeholder="询" style="width: 100%;">
 								        			</th>
 								        			<th>
-								        				广商名称<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        				广商名称<input type="text" v-model="andt1.shangname" class="form-control" placeholder="询" style="width: 100%;">
 								        			</th>
 								        			<th>
-								        				地址<input type="text" class="form-control" placeholder="询" style="width: 160%;">
-								        			</th>
-								        		</tr>
-								        		<tr>
-								        			<th>
-								        				经营情况<input type="text" class="form-control" placeholder="询" style="width: 100%;">
-								        			</th>
-								        			<th>
-								        				网址<input type="text" class="form-control" placeholder="询" style="width: 100%;">
-								        			</th>
-								        			<th>
-								        				开户行<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        				地址<input type="text" v-model="andt1.address" class="form-control" placeholder="询" style="width: 160%;">
 								        			</th>
 								        		</tr>
 								        		<tr>
 								        			<th>
-								        				银行账号<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        				经营情况<input type="text" v-model="andt1.jingyin" class="form-control" placeholder="询" style="width: 100%;">
+								        			</th>
+								        			<th>
+								        				网址<input type="text" v-model="andt1.wangzhi" class="form-control" placeholder="询" style="width: 100%;">
+								        			</th>
+								        			<th>
+								        				开户行<input type="text" v-model="andt1.kaihu" class="form-control" placeholder="询" style="width: 100%;">
+								        			</th>
+								        		</tr>
+								        		<tr>
+								        			<th>
+								        				银行账号<input type="text" v-model="andt1.yinhangcard" class="form-control" placeholder="询" style="width: 100%;">
 								        			</th>
 								        			<th>
 								        				付款方式
 								        				<form class="form-inline" style="width: 130%;">
 															  <div class="form-group">
-															    <label class="sr-only" for="exampleInputAmount">Amount</label>
+															    <label class="sr-only" for="exampleInputAmount">Amountd</label>
 															    <div class="input-group">
-															      <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
-																	 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
-																	 	<div class="dropdown">
-																		  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
-																		    <span class="caret"></span>
-																		  </button>
-																		  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-																		    <li><a href="#">Acd</a></li>
-																		  </ul>
-																		</div>
-																	 </div>
+																      <select name="" v-model="andt1.fukuan" class="form-control">
+																      	<option value="微信">微信</option>
+																      	<option value="支付宝">支付宝</option>
+																      	<option value="刷卡">刷卡</option>
+																      	<option value="现金">现金</option>
+																      </select>
 															      <div class="input-group-addon">
 															      	<button data-toggle="modal" data-target="#myModal2">a</button>
 															      	
@@ -164,17 +159,11 @@
 															  <div class="form-group">
 															    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
 															    <div class="input-group">
-															      <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
-																	 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
-																	 	<div class="dropdown">
-																		  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
-																		    <span class="caret"></span>
-																		  </button>
-																		  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-																		    <li><a href="#">Acd</a></li>
-																		  </ul>
-																		</div>
-																	 </div>
+															      <select name="" v-model="andt1.shanggraden" class="form-control">
+																      	<option value="一级">一级</option>
+																      	<option value="二级">二级</option>
+																      	<option value="三级">三级</option>
+																      </select>
 															      <div class="input-group-addon">
 															      	<button data-toggle="modal" data-target="#myModal3">a</button>
 															      		<!--广商等级-->
@@ -223,7 +212,7 @@
 								        		</tr>
 								        		<tr>
 								        			<th>
-								        				经营品牌<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        				经营品牌<input type="text" v-model="andt1.jingyintype" class="form-control" placeholder="询" style="width: 100%;">
 								        			</th>
 								        			<th>
 								        				广商类别
@@ -231,7 +220,7 @@
 															  <div class="form-group">
 															    <label class="sr-only" for="exampleInputAmount">Amount</label>
 															    <div class="input-group">
-															      <input type="text" class="form-control" placeholder="Amount">
+															      <input type="text" v-model="andt1.shangtype" class="form-control" placeholder="Amount">
 																	<div class="input-group-addon">
 															      		<button data-toggle="modal" data-target="#myModal4">a</button>
 															      		<!--广告类别-->
@@ -259,31 +248,39 @@
 								        		</tr>
 								        		<tr>
 								        			<th>
-								        				联系人<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        				联系人<input type="text" v-model="andt1.lianxi" class="form-control" placeholder="询" style="width: 100%;">
 								        			</th>
 								        			<th>
-								        				电话<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        				电话<input type="text" v-model="andt1.dianhua" class="form-control" placeholder="询" style="width: 100%;">
 								        			</th>
 								        			<th>
-								        				手机<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        				手机<input type="text" v-model="andt1.shouji" class="form-control" placeholder="询" style="width: 100%;">
 								        			</th>
 								        			<th>
-								        				Email1<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        				Email1<input type="text" v-model="andt1.email" class="form-control" placeholder="询" style="width: 100%;">
 								        			</th>
 								        		</tr>
 								        		<tr>
 								        			<th>
-								        				账期(天)<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        				账期(天)<input type="text" v-model="andt1.zhangqi" class="form-control" placeholder="询" style="width: 100%;">
 								        			</th>
 								        			<th>
-								        				备注<input type="text" class="form-control" placeholder="询" style="width: 260%;">
+								        				地区
+								        				<select name="" v-model="andt1.bei1" class="form-control">
+								        					<option value="1">北京</option>
+								        					<option value="2">上海</option>
+								        					<option value="3">南昌</option>
+								        					<option value="4">先按</option>
+								        					<option value="5">我的</option>
+								        					<option value="6">企鹅</option>
+								        				</select>
 								        			</th>
 								        		</tr>
 								        	</table>
 								      </div>
 								      <div class="modal-footer">
 								        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-								        <button type="button" class="btn btn-primary">保存</button>
+								        <button type="button" class="btn btn-primary" @click="supplygfbc_1">保存</button>
 								      </div>
 								    </div>
 								  </div>
@@ -301,47 +298,42 @@
 								        	<table class="table table-hover">
 								        		<tr>
 								        			<th>
-								        				广商代码<input type="text" class="form-control" disabled placeholder="询" style="width: 100%;">
+								        				广商代码<input type="text" v-model="andt.huoshangno" class="form-control" placeholder="询" style="width: 100%;">
 								        			</th>
 								        			<th>
-								        				广商名称<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        				广商名称<input type="text" v-model="andt.shangname" class="form-control" placeholder="询" style="width: 100%;">
 								        			</th>
 								        			<th>
-								        				地址<input type="text" class="form-control" placeholder="询" style="width: 160%;">
-								        			</th>
-								        		</tr>
-								        		<tr>
-								        			<th>
-								        				经营情况<input type="text" class="form-control" placeholder="询" style="width: 100%;">
-								        			</th>
-								        			<th>
-								        				网址<input type="text" class="form-control" placeholder="询" style="width: 100%;">
-								        			</th>
-								        			<th>
-								        				开户行<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        				地址<input type="text" v-model="andt.address" class="form-control" placeholder="询" style="width: 160%;">
 								        			</th>
 								        		</tr>
 								        		<tr>
 								        			<th>
-								        				银行账号<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        				经营情况<input type="text" v-model="andt.jingyin" class="form-control" placeholder="询" style="width: 100%;">
+								        			</th>
+								        			<th>
+								        				网址<input type="text" v-model="andt.wangzhi" class="form-control" placeholder="询" style="width: 100%;">
+								        			</th>
+								        			<th>
+								        				开户行<input type="text" v-model="andt.kaihu" class="form-control" placeholder="询" style="width: 100%;">
+								        			</th>
+								        		</tr>
+								        		<tr>
+								        			<th>
+								        				银行账号<input type="text" v-model="andt.yinhangcard" class="form-control" placeholder="询" style="width: 100%;">
 								        			</th>
 								        			<th>
 								        				付款方式
 								        				<form class="form-inline" style="width: 130%;">
 															  <div class="form-group">
-															    <label class="sr-only" for="exampleInputAmount">Amount</label>
+															    <label class="sr-only" for="exampleInputAmount">Amountd</label>
 															    <div class="input-group">
-															      <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
-																	 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
-																	 	<div class="dropdown">
-																		  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
-																		    <span class="caret"></span>
-																		  </button>
-																		  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-																		    <li><a href="#">Acd</a></li>
-																		  </ul>
-																		</div>
-																	 </div>
+																      <select name="" v-model="andt.fukuan" class="form-control">
+																      	<option value="微信">微信</option>
+																      	<option value="支付宝">支付宝</option>
+																      	<option value="刷卡">刷卡</option>
+																      	<option value="现金">现金</option>
+																      </select>
 															      <div class="input-group-addon">
 															      	<button data-toggle="modal" data-target="#myModal6">a</button>
 															      	
@@ -395,17 +387,11 @@
 															  <div class="form-group">
 															    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
 															    <div class="input-group">
-															      <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
-																	 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
-																	 	<div class="dropdown">
-																		  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
-																		    <span class="caret"></span>
-																		  </button>
-																		  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-																		    <li><a href="#">Acd</a></li>
-																		  </ul>
-																		</div>
-																	 </div>
+															      <select name="" v-model="andt.shanggraden" class="form-control">
+																      	<option value="一级">一级</option>
+																      	<option value="二级">二级</option>
+																      	<option value="三级">三级</option>
+																      </select>
 															      <div class="input-group-addon">
 															      	<button data-toggle="modal" data-target="#myModal7">a</button>
 															      		<!--广商等级-->
@@ -454,7 +440,7 @@
 								        		</tr>
 								        		<tr>
 								        			<th>
-								        				经营品牌<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        				经营品牌<input type="text" v-model="andt.jingyintype" class="form-control" placeholder="询" style="width: 100%;">
 								        			</th>
 								        			<th>
 								        				广商类别
@@ -462,10 +448,9 @@
 															  <div class="form-group">
 															    <label class="sr-only" for="exampleInputAmount">Amount</label>
 															    <div class="input-group">
-															      <input type="text" class="form-control" placeholder="Amount">
+															      <input type="text" v-model="andt.shangtype" class="form-control" placeholder="Amount">
 																	<div class="input-group-addon">
 															      		<button data-toggle="modal" data-target="#myModal8">a</button>
-															      		
 															      		<!--广告类别-->
 															      			<div class="modal fade" id="myModal8" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 																			  	<div class="modal-dialog" role="document">
@@ -475,7 +460,7 @@
 																			        		<h4 class="modal-title" id="myModalLabel">广商分类选择</h4>
 																			      		</div>
 																			      		<div class="modal-body">
-																			        		<ul id="treeDemo2" class="ztree"></ul>
+																			        		<ul id="treeDemo1" class="ztree"></ul>
 																			      		</div>
 																			      		<div class="modal-footer">
 																			        		<button type="button" class="btn btn-primary">选择</button>
@@ -491,31 +476,39 @@
 								        		</tr>
 								        		<tr>
 								        			<th>
-								        				联系人<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        				联系人<input type="text" v-model="andt.lianxi" class="form-control" placeholder="询" style="width: 100%;">
 								        			</th>
 								        			<th>
-								        				电话<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        				电话<input type="text" v-model="andt.dianhua" class="form-control" placeholder="询" style="width: 100%;">
 								        			</th>
 								        			<th>
-								        				手机<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        				手机<input type="text" v-model="andt.shouji" class="form-control" placeholder="询" style="width: 100%;">
 								        			</th>
 								        			<th>
-								        				Email1<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        				Email1<input type="text" v-model="andt.email" class="form-control" placeholder="询" style="width: 100%;">
 								        			</th>
 								        		</tr>
 								        		<tr>
 								        			<th>
-								        				账期(天)<input type="text" class="form-control" placeholder="询" style="width: 100%;">
+								        				账期(天)<input type="text" v-model="andt.zhangqi" class="form-control" placeholder="询" style="width: 100%;">
 								        			</th>
 								        			<th>
-								        				备注<input type="text" class="form-control" placeholder="询" style="width: 260%;">
+								        				地区
+								        				<select name="" v-model="andt.bei1" class="form-control">
+								        					<option value="1">北京</option>
+								        					<option value="2">先按</option>
+								        					<option value="3">我的</option>
+								        					<option value="4">上海</option>
+								        					<option value="5">企鹅</option>
+								        					<option value="6">南昌</option>
+								        				</select>
 								        			</th>
 								        		</tr>
 								        	</table>
 								      </div>
 								      <div class="modal-footer">
 								        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-								        <button type="button" class="btn btn-primary">保存</button>
+								        <button type="button" class="btn btn-primary" @click="supply_ybxg1">保存</button>
 								      </div>
 								    </div>
 								  </div>
@@ -533,44 +526,22 @@
 												  <div class="container-fluid">
 												    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 												      <ul class="nav navbar-nav navbar-right">
-												        <li><a href="#"><span class="glyphicon glyphicon-align-right" aria-hidden="true"></span>增加</a></li>
 												        <li><a href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>删除</a></li>
 												        <li><a href="#"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存</a></li>
 												      </ul>
 												      <table class="table table-hover">
 												      	<tr>
-												      		<th>联系人<input type="text" class="form-control" placeholder="询" style="width: 100%;"></th>
-												      		<th>手机<input type="text" class="form-control" placeholder="询" style="width: 100%;"></th>
-												      		<th>职位<input type="text" class="form-control" placeholder="询" style="width: 100%;"></th>
+												      		<th>联系人<input type="text" v-model="andt.lianxi" class="form-control" placeholder="询" style="width: 100%;"></th>
+												      		<th>手机<input type="text" v-model="andt.shouji" class="form-control" placeholder="询" style="width: 100%;"></th>
 												      	</tr>
 												      	<tr>
-												      		<th>电话<input type="text" class="form-control" placeholder="询" style="width: 100%;"></th>
-												      		<th>Email<input type="text" class="form-control" placeholder="询" style="width: 100%;"></th>
+												      		<th>电话<input type="text" v-model="andt.dianhua" class="form-control" placeholder="询" style="width: 100%;"></th>
+												      		<th>Email<input type="text" v-model="andt.email" class="form-control" placeholder="询" style="width: 100%;"></th>
 												      	</tr>
 												      </table>
 												    </div>
 												  </div>
 												</nav>
-												<div class="" style="height: 200px; overflow-y: scroll;">
-													<table class="table table-hover">
-														<tr style="background-color: #31B0D5;">
-															<th>&nbsp;</th>
-															<th>联系人</th>
-															<th>职位</th>
-															<th>手机</th>
-															<th>电话</th>
-															<th>Emali</th>
-														</tr>
-														<tr>
-															<th>&nbsp;</th>
-															<th>联系人</th>
-															<th>职位</th>
-															<th>手机</th>
-															<th>电话</th>
-															<th>Emali</th>
-														</tr>
-													</table>
-												</div>
 								      		</div>
 								      		<div class="modal-footer">
 								        		<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
@@ -630,7 +601,7 @@
 								
 					</div>
 					<div class="row" style="height: 100%;" id="ctx">
-						<div class="col-md-2" style="border: 1px solid #080808;">
+						<div class="col-md-2" style="border: 1px solid #080808; height: 490px;">
 							<ul id="treeDemo" class="ztree" name="zhi"></ul>
 						</div>
 						<div class="col-md-10" style="height: 100%;">
@@ -716,7 +687,8 @@
 				el:"#ctx1",
 				data(){
 					return{
-						andt:[]
+						andt:[],
+						andt1:{}
 					};
 				},
 				methods:{
@@ -732,6 +704,44 @@
 									alert("删成功")
 								} else{
 									alert("再来")
+								}
+							}
+						});
+					},
+					//右修
+					supply_ybxg1:function(){
+						andt=JSON.stringify(vm1.andt);
+						$.ajax({
+							url:"http://localhost:8080/supplyunit7",
+							contentType:"application/json;charset=utf-8",
+							dataType:"json",
+							type:"post",
+							data:andt,
+							success:function(result){
+								if (result>=1) {
+									alert("成功")
+									$("#myModal5").modal('hide');
+								} else{
+									alert("问题")
+								}
+							}
+						});
+					},
+					//右边增加
+					supplygfbc_1:function(){
+						andt1=JSON.stringify(vm1.andt1);
+						$.ajax({
+							type:"post",
+							url:"http://localhost:8080/supplyunit5",
+							contentType:"application/json;charset=utf-8",
+							dataType:"json",
+							data:andt1,
+							success:function(result){
+								if (result>=1) {
+									alert("增加成功")
+									$("#myModal1").modal('hide');
+								} else{
+									alert("有问题")
 								}
 							}
 						});
@@ -770,7 +780,6 @@
 			});
 			
 			function chooseNode(event,treeid,treeNode){
-				alert("是:"+treeNode.hid)
 				$.ajax({
 					url:"http://localhost:8080/supplyunit2",
 					type:"get",

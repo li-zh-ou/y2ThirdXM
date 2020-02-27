@@ -111,26 +111,22 @@
 								      <div class="modal-body">
 								        <table class="table table-hover" style="background-color: #D4D4D4;">
 								        	<tr>
-								        		<th>商品编码<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
-								        		<th>商品名称<input type="text" class="form-control" placeholder="询" style="width: 100%;"></th>
+								        		<th>商品编码<input type="text" disabled class="form-control" placeholder="编码" style="width: 90%;"></th>
+								        		<th>商品名称<input type="text" v-model="page3.goodsname" class="form-control" placeholder="询" style="width: 100%;"></th>
 								        		<th>
 								        			商品品牌
 								        				<form class="form-inline">
 														  <div class="form-group">
 														    <label class="sr-only" for="exampleInputAmount">Amou</label>
 														    <div class="input-group">
-														      <input type="text" class="form-control" placeholder="Amoun">
-																 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
-																 	<div class="dropdown">
-																	  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
-																	    
-																	    <span class="caret"></span>
-																	  </button>
-																	  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-																	    <li><a href="#">Acd</a></li>
-																	  </ul>
-																	</div>
-																 </div>
+															      <select name="" v-model="page3.goodsbank" class="form-control">
+															      	<option value="格里">格里</option>
+															      	<option value="宝马">宝马</option>
+															      	<option value="奇葩">奇葩</option>
+															      	<option value="大撒大撒">大撒大撒</option>
+															      	<option value="斯格里拉">斯格里拉</option>
+															      	<option value="午号打商品商业">午号打商品商业</option>
+															      </select>
 														      <div class="input-group-addon">
 														      	<button data-toggle="modal" data-target="#myModal2">a</button>
 														      	
@@ -186,26 +182,24 @@
 														</form>
 														
 								        		</th>
+								        		<th>标准价<input type="text" v-model="page3.price" class="form-control" placeholder="询" style="width: 90%;"></th>
 								        	</tr>
 								        	<tr>
-								        		<th>适用车型<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        		<th>适用车型<input type="text" v-model="page3.shiyong" class="form-control" placeholder="询" style="width: 90%;"></th>
 								        		<th>
 								        			数量单位
 								        				<form class="form-inline">
 														  <div class="form-group">
 														    <label class="sr-only" for="exampleInputAmount">Amou</label>
 														    <div class="input-group">
-														      <input type="text" class="form-control" placeholder="Amoun">
-																 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
-																 	<div class="dropdown">
-																	  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
-																	    <span class="caret"></span>
-																	  </button>
-																	  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-																	    <li><a href="#">Acd</a></li>
-																	  </ul>
-																	</div>
-																 </div>
+															      	<select name="" v-model="page3.danwei" class="form-control">
+																      	<option value="个">个</option>
+																      	<option value="件">&nbsp;&nbsp;&nbsp;件&nbsp;&nbsp;&nbsp;</option>
+																      	<option value="套">套</option>
+																      	<option value="把">&nbsp;&nbsp;&nbsp;把&nbsp;&nbsp;&nbsp;</option>
+																      	<option value="捆">捆</option>
+																      	<option value="午号打商品商业">午号打商品商业</option>
+																    </select>
 														      <div class="input-group-addon">
 														      	<button data-toggle="modal" data-target="#myModal3">a</button>
 														      	
@@ -290,50 +284,8 @@
 														  </div>
 														</form>
 								        		</th>
-								        		<th>
-								        			商品大类
-								        				<form class="form-inline">
-														  <div class="form-group">
-														    <label class="sr-only" for="exampleInputAmount">Amou</label>
-														    <div class="input-group">
-														    	<div class="input-group-addon" style="padding:0px 0px 0px 0px">
-																 	<div class="dropdown">
-																	  <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
-																	  	&nbsp;
-																	  </button>
-																	</div>
-																 </div>
-														      <input type="text" class="form-control" placeholder="Amoun">
-																 
-														      <div class="input-group-addon">
-														      	<button data-toggle="modal" data-target="#myModal4">a</button>
-														      	<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-																			  	<div class="modal-dialog" role="document">
-																			    	<div class="modal-content">
-																			      		<div class="modal-header">
-																			        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-																			        		<h4 class="modal-title" id="myModalLabel">广商分类选择</h4>
-																			      		</div>
-																			      		<div class="modal-body">
-																			        		<ul id="treeDemo1" class="ztree"></ul>
-																			      		</div>
-																			      		<div class="modal-footer">
-																			      			<button type="button" class="btn btn-primary">选择</button>
-																			      			<div class="input-group">
-																							      <input type="text" class="form-control" placeholder="名称" style="width: 100%;">
-																							      <span class="input-group-btn">
-																							        <button class="btn btn-default" type="button">搜索</button>
-																							      </span>
-																							</div>
-																			      		</div>
-																			    	</div>
-																			  	</div>
-																			</div>
-														      </div>
-														    </div>
-														  </div>
-														</form>
-								        		</th>
+								        		<th>原厂编码<input type="text" v-model="page3.huoshangno" class="form-control" placeholder="询" style="width: 80%;"></th>
+								        		<th>会员价<input type="text" v-model="page3.huiprice" class="form-control" placeholder="询" style="width: 90%;"></th>
 								        	</tr>
 								        	<tr>
 								        		<th>
@@ -342,17 +294,10 @@
 														  <div class="form-group">
 														    <label class="sr-only" for="exampleInputAmount">Amou</label>
 														    <div class="input-group">
-														      <input type="text" class="form-control" placeholder="Amoun">
-																 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
-																 	<div class="dropdown">
-																	  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
-																	    <span class="caret"></span>
-																	  </button>
-																	  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-																	    <li><a href="#">Acd</a></li>
-																	  </ul>
-																	</div>
-																 </div>
+															      <select name="" v-model="page3.shouruid" class="form-control">
+															      	<option value="1">机修</option>
+															      	<option value="2">发动机</option>
+															      </select>
 														      <div class="input-group-addon">
 														      	<button  data-toggle="modal" data-target="#myModal5">a</button>
 														      	
@@ -414,17 +359,10 @@
 														  <div class="form-group">
 														    <label class="sr-only" for="exampleInputAmount">Amou</label>
 														    <div class="input-group">
-														      <input type="text" class="form-control" placeholder="Amoun">
-																 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
-																 	<div class="dropdown">
-																	  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
-																	    <span class="caret"></span>
-																	  </button>
-																	  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-																	    <li><a href="#">Acd</a></li>
-																	  </ul>
-																	</div>
-																 </div>
+															      <select name="" v-model="page3.yuanfuchang" class="form-control">
+															      	<option value="回收">回收</option>
+															      	<option value="司机带走">司机带走</option>
+															      </select>
 														      <div class="input-group-addon">
 														      	<button   data-toggle="modal" data-target="#myModal6">a</button>
 														      	
@@ -485,17 +423,10 @@
 														  <div class="form-group">
 														    <label class="sr-only" for="exampleInputAmount">Amou</label>
 														    <div class="input-group">
-														      <input type="text" class="form-control" placeholder="Amoun">
-																 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
-																 	<div class="dropdown">
-																	  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
-																	    <span class="caret"></span>
-																	  </button>
-																	  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-																	    <li><a href="#">Acd</a></li>
-																	  </ul>
-																	</div>
-																 </div>
+															      <select name="" v-model="page3.goodsgraden" class="form-control">
+															      	<option value="优">优</option>
+															      	<option value="良">良</option>
+															      </select>
 														      <div class="input-group-addon">
 														      	<button   data-toggle="modal" data-target="#myModal7">a</button>
 														      	
@@ -556,17 +487,13 @@
 														  <div class="form-group">
 														    <label class="sr-only" for="exampleInputAmount">Amou</label>
 														    <div class="input-group">
-														      <input type="text" class="form-control" placeholder="Amoun">
-																 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
-																 	<div class="dropdown">
-																	  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
-																	    <span class="caret"></span>
-																	  </button>
-																	  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-																	    <li><a href="#">Acd</a></li>
-																	  </ul>
-																	</div>
-																 </div>
+															      <select name="" v-model="page3.goodsaddress" class="form-control">
+															      	<option value="广州">广州</option>
+															      	<option value="北京">北京</option>
+															      	<option value="武汉">武汉</option>
+															      	<option value="湖南">湖南</option>
+															      	<option value="上海">上海</option>
+															      </select>
 														      <div class="input-group-addon">
 														      	<button   data-toggle="modal" data-target="#myModal8">a</button>
 														      	
@@ -623,41 +550,20 @@
 								        		</th>
 								        	</tr>
 								        	<tr>
-								        		<th>
-								        			厂商名称
-								        				<form class="form-inline">
-														  <div class="form-group">
-														    <label class="sr-only" for="exampleInputAmount">Amou</label>
-														    <div class="input-group">
-														      <input type="text" class="form-control" placeholder="Amoun">
-																 <div class="input-group-addon" style="padding:0px 0px 0px 0px;">
-																 	<div class="dropdown">
-																 		<input type="text" disabled style="width:90px;"/>
-																	</div>
-																 </div>
-														      <div class="input-group-addon"><button>a</button></div>
-														    </div>
-														  </div>
-														</form>
-								        		</th>
-								        		<th>原厂编码<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
-								        		<th>条形码<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        		<th>包装规格<input type="text" v-model="page3.baozhuan" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        		<th>体积<input type="text" v-model="page3.tiji" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        		<th>毛重<input type="text" v-model="page3.maozhong" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        		<th>净重<input type="text" v-model="page3.jingzhong" class="form-control" placeholder="询" style="width: 90%;"></th>
 								        	</tr>
 								        	<tr>
-								        		<th>包装规格<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
-								        		<th>体积A<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
-								        		<th>毛重<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
-								        		<th>净重<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
-								        	</tr>
-								        	<tr>
-								        		<th>进货价<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        		<th>进货价<input type="text" v-model="page3.jinhuo" class="form-control" placeholder="询" style="width: 90%;"></th>
 								        		<th>
 								        			售价按
 								        				<form class="form-inline">
 														  <div class="form-group">
 														    <label class="sr-only" for="exampleInputAmount">Amou</label>
 														    <div class="input-group">
-														      <input type="text" class="form-control" placeholder="Amoun">
+														      <input type="text" v-model="page3.shoujia" class="form-control" placeholder="Amoun">
 																 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
 																 	<div class="dropdown">
 																	  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
@@ -672,25 +578,13 @@
 														  </div>
 														</form>
 								        		</th>
-								        		<th>加价率<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
-								        	</tr>
-								        	<tr>
-								        		<th>互换码<input type="text" class="form-control" placeholder="询" style="width: 300%;"></th>
-								        	</tr>
-								        	<tr>
-								        		<th>标准价<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
-								        		<th>会员价<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
-								        		<th>VIP价<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
-								        		<th>协议价<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
-								        	</tr>
-								        	<tr>
-								        		<th>索赔价<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
-								        		<th>保险价<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        		<th>加价率<input type="text" v-model="page3.jiajia" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        		<th>VIP价<input type="text" v-model="page3.vipprice" class="form-control" placeholder="询" style="width: 90%;"></th>
 								        	</tr>
 								        </table>
 								      </div>
 								      <div class="modal-footer">
-								        <button type="button" class="btn btn-primary">保存</button>
+								        <button type="button" class="btn btn-primary" @click="commodityinbc1">保存</button>
 								      </div>
 								    </div>
 								  </div>
@@ -716,31 +610,27 @@
 								    <div class="modal-content">
 								      <div class="modal-header">
 								        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-								        <h4 class="modal-title">商品资料编辑<input type="checkbox" style="margin-left:30%;">停用<input type="checkbox" style="margin-left:10%;">更改历史单据</h4>
+								        <h4 class="modal-title">商品资料编辑<input type="checkbox" style="margin-left:30%;">停用</h4>
 								      </div>
 								      <div class="modal-body">
 								        <table class="table table-hover" style="background-color: #D4D4D4;">
 								        	<tr>
-								        		<th>商品编码<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
-								        		<th>商品名称<input type="text" class="form-control" placeholder="询" style="width: 100%;"></th>
+								        		<th>商品编码<input type="text" v-model="page2.goodsid" disabled class="form-control" placeholder="编码" style="width: 90%;"></th>
+								        		<th>商品名称<input type="text" v-model="page2.goodsname" class="form-control" placeholder="询" style="width: 100%;"></th>
 								        		<th>
 								        			商品品牌
 								        				<form class="form-inline">
 														  <div class="form-group">
 														    <label class="sr-only" for="exampleInputAmount">Amou</label>
 														    <div class="input-group">
-														      <input type="text" class="form-control" placeholder="Amoun">
-																 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
-																 	<div class="dropdown">
-																	  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
-																	    
-																	    <span class="caret"></span>
-																	  </button>
-																	  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-																	    <li><a href="#">Acd</a></li>
-																	  </ul>
-																	</div>
-																 </div>
+															      <select name="" v-model="page2.goodsbank" class="form-control">
+															      	<option value="格里">格里</option>
+															      	<option value="宝马">宝马</option>
+															      	<option value="奇葩">奇葩</option>
+															      	<option value="大撒大撒">大撒大撒</option>
+															      	<option value="斯格里拉">斯格里拉</option>
+															      	<option value="午号打商品商业">午号打商品商业</option>
+															      </select>
 														      <div class="input-group-addon">
 														      	<button data-toggle="modal" data-target="#myModal10">a</button>
 														      	
@@ -796,26 +686,24 @@
 														</form>
 														
 								        		</th>
+								        		<th>标准价<input type="text" v-model="page2.price" class="form-control" placeholder="询" style="width: 90%;"></th>
 								        	</tr>
 								        	<tr>
-								        		<th>适用车型<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        		<th>适用车型<input type="text" v-model="page2.shiyong" class="form-control" placeholder="询" style="width: 90%;"></th>
 								        		<th>
 								        			数量单位
 								        				<form class="form-inline">
 														  <div class="form-group">
 														    <label class="sr-only" for="exampleInputAmount">Amou</label>
 														    <div class="input-group">
-														      <input type="text" class="form-control" placeholder="Amoun">
-																 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
-																 	<div class="dropdown">
-																	  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
-																	    <span class="caret"></span>
-																	  </button>
-																	  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-																	    <li><a href="#">Acd</a></li>
-																	  </ul>
-																	</div>
-																 </div>
+															      	<select name="" v-model="page2.danwei" class="form-control">
+																      	<option value="个">个</option>
+																      	<option value="件">&nbsp;&nbsp;&nbsp;件&nbsp;&nbsp;&nbsp;</option>
+																      	<option value="套">套</option>
+																      	<option value="把">&nbsp;&nbsp;&nbsp;把&nbsp;&nbsp;&nbsp;</option>
+																      	<option value="捆">捆</option>
+																      	<option value="午号打商品商业">午号打商品商业</option>
+																    </select>
 														      <div class="input-group-addon">
 														      	<button data-toggle="modal" data-target="#myModal11">a</button>
 														      	
@@ -900,56 +788,8 @@
 														  </div>
 														</form>
 								        		</th>
-								        		<th>
-								        			商品大类
-								        				<form class="form-inline">
-														  <div class="form-group">
-														    <label class="sr-only" for="exampleInputAmount">Amou</label>
-														    <div class="input-group">
-														    	<div class="input-group-addon" style="padding:0px 0px 0px 0px">
-																 	<div class="dropdown">
-																	  <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
-																	  	&nbsp;
-																	  </button>
-																	</div>
-																 </div>
-														      <input type="text" class="form-control" placeholder="Amoun">
-																 
-														      <div class="input-group-addon">
-														      	<button data-toggle="modal" data-target="#myModal12">a</button>
-														      	
-														      	<!--
-                                                                  	作者：offline
-                                                                  	时间：2020-02-07
-                                                                  	描述：商品大类
-                                                                  -->
-														      	<div class="modal fade" id="myModal12" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-																			  	<div class="modal-dialog" role="document">
-																			    	<div class="modal-content">
-																			      		<div class="modal-header">
-																			        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-																			        		<h4 class="modal-title" id="myModalLabel">广商分类选择</h4>
-																			      		</div>
-																			      		<div class="modal-body">
-																			        		<ul id="treeDemo1" class="ztree"></ul>
-																			      		</div>
-																			      		<div class="modal-footer">
-																			      			<button type="button" class="btn btn-primary">选择</button>
-																			      			<div class="input-group">
-																							      <input type="text" class="form-control" placeholder="名称" style="width: 100%;">
-																							      <span class="input-group-btn">
-																							        <button class="btn btn-default" type="button">搜索</button>
-																							      </span>
-																							</div>
-																			      		</div>
-																			    	</div>
-																			  	</div>
-																			</div>
-														      </div>
-														    </div>
-														  </div>
-														</form>
-								        		</th>
+								        		<th>原厂编码<input type="text" v-model="page2.huoshangno" class="form-control" placeholder="询" style="width: 80%;"></th>
+								        		<th>会员价<input type="text" v-model="page2.huiprice" class="form-control" placeholder="询" style="width: 90%;"></th>
 								        	</tr>
 								        	<tr>
 								        		<th>
@@ -958,23 +798,16 @@
 														  <div class="form-group">
 														    <label class="sr-only" for="exampleInputAmount">Amou</label>
 														    <div class="input-group">
-														      <input type="text" class="form-control" placeholder="Amoun">
-																 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
-																 	<div class="dropdown">
-																	  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
-																	    <span class="caret"></span>
-																	  </button>
-																	  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-																	    <li><a href="#">Acd</a></li>
-																	  </ul>
-																	</div>
-																 </div>
+															      <select name="" v-model="page2.shouruid" class="form-control">
+															      	<option value="1">机修</option>
+															      	<option value="2">发动机</option>
+															      </select>
 														      <div class="input-group-addon">
-														      	<button  data-toggle="modal" data-target="#myModal13">a</button>
+														      	<button  data-toggle="modal" data-target="#myModal12">a</button>
 														      	
 														      		<!--模态框-->
 														      		<!--收入分类-->
-														      			<div class="modal fade" id="myModal13" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+														      			<div class="modal fade" id="myModal12" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 																		  <div class="modal-dialog" role="document">
 																		    <div class="modal-content">
 																		      <div class="modal-header">
@@ -1030,23 +863,16 @@
 														  <div class="form-group">
 														    <label class="sr-only" for="exampleInputAmount">Amou</label>
 														    <div class="input-group">
-														      <input type="text" class="form-control" placeholder="Amoun">
-																 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
-																 	<div class="dropdown">
-																	  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
-																	    <span class="caret"></span>
-																	  </button>
-																	  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-																	    <li><a href="#">Acd</a></li>
-																	  </ul>
-																	</div>
-																 </div>
+															      <select name="" v-model="page2.yuanfuchang" class="form-control">
+															      	<option value="回收">回收</option>
+															      	<option value="司机带走">司机带走</option>
+															      </select>
 														      <div class="input-group-addon">
-														      	<button   data-toggle="modal" data-target="#myModal14">a</button>
+														      	<button   data-toggle="modal" data-target="#myModal13">a</button>
 														      	
 														      		<!--模态框-->
 														      		<!--原厂副厂-->
-														      			<div class="modal fade" id="myModal14" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+														      			<div class="modal fade" id="myModal13" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 																		  <div class="modal-dialog" role="document">
 																		    <div class="modal-content">
 																		      <div class="modal-header">
@@ -1101,23 +927,16 @@
 														  <div class="form-group">
 														    <label class="sr-only" for="exampleInputAmount">Amou</label>
 														    <div class="input-group">
-														      <input type="text" class="form-control" placeholder="Amoun">
-																 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
-																 	<div class="dropdown">
-																	  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
-																	    <span class="caret"></span>
-																	  </button>
-																	  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-																	    <li><a href="#">Acd</a></li>
-																	  </ul>
-																	</div>
-																 </div>
+															      <select name="" v-model="page2.goodsgraden" class="form-control">
+															      	<option value="优">优</option>
+															      	<option value="良">良</option>
+															      </select>
 														      <div class="input-group-addon">
-														      	<button   data-toggle="modal" data-target="#myModal15">a</button>
+														      	<button   data-toggle="modal" data-target="#myModal14">a</button>
 														      	
 														      		<!--模态框-->
 														      		<!--商品等级-->
-														      			<div class="modal fade" id="myModal15" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+														      			<div class="modal fade" id="myModal14" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 																		  <div class="modal-dialog" role="document">
 																		    <div class="modal-content">
 																		      <div class="modal-header">
@@ -1172,23 +991,19 @@
 														  <div class="form-group">
 														    <label class="sr-only" for="exampleInputAmount">Amou</label>
 														    <div class="input-group">
-														      <input type="text" class="form-control" placeholder="Amoun">
-																 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
-																 	<div class="dropdown">
-																	  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
-																	    <span class="caret"></span>
-																	  </button>
-																	  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-																	    <li><a href="#">Acd</a></li>
-																	  </ul>
-																	</div>
-																 </div>
+															      <select name="" v-model="page2.goodsaddress" class="form-control">
+															      	<option value="广州">广州</option>
+															      	<option value="北京">北京</option>
+															      	<option value="武汉">武汉</option>
+															      	<option value="湖南">湖南</option>
+															      	<option value="上海">上海</option>
+															      </select>
 														      <div class="input-group-addon">
-														      	<button   data-toggle="modal" data-target="#myModal16">a</button>
+														      	<button   data-toggle="modal" data-target="#myModal15">a</button>
 														      	
 														      		<!--模态框-->
 														      		<!--商品产地-->
-														      			<div class="modal fade" id="myModal16" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+														      			<div class="modal fade" id="myModal15" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 																		  <div class="modal-dialog" role="document">
 																		    <div class="modal-content">
 																		      <div class="modal-header">
@@ -1239,41 +1054,20 @@
 								        		</th>
 								        	</tr>
 								        	<tr>
-								        		<th>
-								        			厂商名称
-								        				<form class="form-inline">
-														  <div class="form-group">
-														    <label class="sr-only" for="exampleInputAmount">Amou</label>
-														    <div class="input-group">
-														      <input type="text" class="form-control" placeholder="Amoun">
-																 <div class="input-group-addon" style="padding:0px 0px 0px 0px;">
-																 	<div class="dropdown">
-																 		<input type="text" disabled style="width:90px;"/>
-																	</div>
-																 </div>
-														      <div class="input-group-addon"><button>a</button></div>
-														    </div>
-														  </div>
-														</form>
-								        		</th>
-								        		<th>原厂编码<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
-								        		<th>条形码<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        		<th>包装规格<input type="text" v-model="page2.baozhuan" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        		<th>体积<input type="text" v-model="page2.tiji" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        		<th>毛重<input type="text" v-model="page2.maozhong" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        		<th>净重<input type="text" v-model="page3.jingzhong" class="form-control" placeholder="询" style="width: 90%;"></th>
 								        	</tr>
 								        	<tr>
-								        		<th>包装规格<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
-								        		<th>体积A<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
-								        		<th>毛重<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
-								        		<th>净重<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
-								        	</tr>
-								        	<tr>
-								        		<th>进货价<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        		<th>进货价<input type="text" v-model="page2.jinhuo" class="form-control" placeholder="询" style="width: 90%;"></th>
 								        		<th>
 								        			售价按
 								        				<form class="form-inline">
 														  <div class="form-group">
 														    <label class="sr-only" for="exampleInputAmount">Amou</label>
 														    <div class="input-group">
-														      <input type="text" class="form-control" placeholder="Amoun">
+														      <input type="text" v-model="page2.shoujia" class="form-control" placeholder="Amoun">
 																 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
 																 	<div class="dropdown">
 																	  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
@@ -1288,65 +1082,19 @@
 														  </div>
 														</form>
 								        		</th>
-								        		<th>加价率<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
-								        	</tr>
-								        	<tr>
-								        		<th>互换码<input type="text" class="form-control" placeholder="询" style="width: 300%;"></th>
-								        	</tr>
-								        	<tr>
-								        		<th>标准价<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
-								        		<th>会员价<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
-								        		<th>VIP价<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
-								        		<th>协议价<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
-								        	</tr>
-								        	<tr>
-								        		<th>索赔价<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
-								        		<th>保险价<input type="text" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        		<th>加价率<input type="text" v-model="page2.jiajia" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        		<th>VIP价<input type="text" v-model="page2.vipprice" class="form-control" placeholder="询" style="width: 90%;"></th>
 								        	</tr>
 								        </table>
 								      </div>
 								      <div class="modal-footer">
-								        <button type="button" class="btn btn-primary">保存</button>
+								        <button type="button" class="btn btn-primary" @click="commodityinxg1">保存</button>
 								      </div>
 								    </div>
 								  </div>
 								</div>
 					</div>
 				</section>
-				<!--
-	            	作者：offline
-	            	时间：2019-12-31
-	            	描述：导航
-	            -->
-				<nav>
-					
-					
-					
-				</nav>
-				<!--
-	            	作者：offline
-	            	时间：2019-12-31
-	            	描述：底部
-	            -->
-	            <foote>
-	            	
-	            </foote>
-	            <!--
-	            	作者：offline
-	            	时间：2019-12-31
-	            	描述：相关内容
-	            -->
-	            <aside>
-	            	
-	            </aside>
-	            <!--
-	            	作者：offline
-	            	时间：2019-12-31
-	            	描述：独立文章
-	            -->
-	            <article>
-	            	
-	            </article>
 			</div>
 		<script type="text/javascript" src="js/jquery-3.4.1.min .js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -1360,11 +1108,12 @@
 					return{
 						page:{},
 						page1:[],
-						page2:[]
+						page2:[],
+						page3:{}
 					}
 				},
 				created:function(){
-					this.spzlxs1();
+					spzlxs1();
 				},
 				methods:{
 					//点击
@@ -1379,9 +1128,49 @@
 							},
 							type:"post",
 							success:function(result){
-								alert("数据："+result)
 								console.log(result);
 								vm.page2=result;
+							}
+						});
+					},
+					//新增
+					commodityinbc1:function(){
+						page3=JSON.stringify(vm.page3);
+						$.ajax({
+							type:"post",
+							url:"http://localhost:8080/commodityxs5",
+							contentType:"application/json;charset=utf-8",
+							dataType:"json",
+							data:page3,
+							type:"post",
+							success:function(result){
+								if (result>=1) {
+									alert("增成功")
+									$("#myModal1").modal('hide');
+									spzlxs1();
+								} else{
+									alert("失败")
+								}
+							}
+						});
+					},
+					//保存修改
+					commodityinxg1:function(){
+						page2=JSON.stringify(vm.page2);
+						$.ajax({
+							type:"post",
+							url:"http://localhost:8080/commodityxs6",
+							contentType:"application/json;charset=utf-8",
+							dataType:"json",
+							data:page2,
+							success:function(result){
+								if (result>=1) {
+									alert("修功")
+									$("#myModal9").modal('hide');
+									spzlxs1();
+								} else{
+									alert("失败")
+								}
 							}
 						});
 					},
@@ -1397,20 +1186,10 @@
 							success:function(result){
 								if(result>=1){
 									alert("成功")
+									spzlxs1();
 								}else{
 									alert("再来")
 								}
-							}
-						});
-					},
-					spzlxs1:function(){
-						$.ajax({
-							type:"get",
-							url:"http://localhost:8080/commodityxs1",
-							dataType:"json",
-							success:function(result){
-								vm.page=result;
-								console.log(result);
 							}
 						});
 					},
@@ -1431,6 +1210,19 @@
 					}
 				}
 			});
+			
+			///显示全部数据
+			function spzlxs1(){
+						$.ajax({
+							type:"get",
+							url:"http://localhost:8080/commodityxs1",
+							dataType:"json",
+							success:function(result){
+								vm.page=result;
+								console.log(result);
+							}
+						});
+					}
 			
 			
 			//treeDemo是最前页面1是增加里的2是修改里的3是查询里的

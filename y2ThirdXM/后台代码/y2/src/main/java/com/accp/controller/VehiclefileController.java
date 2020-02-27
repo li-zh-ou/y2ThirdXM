@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.domain.Carbrand;
+import com.accp.domain.Carxing;
+import com.accp.domain.Fadongbrand;
 import com.accp.domain.Model_three_table_check1;
 import com.accp.service.VehiclefileService;
 
@@ -66,7 +68,33 @@ public class VehiclefileController {
 		return vehiclefileService.queryDelete1(CarBankId1);
 	}
 	
+	
+	
 	//右增加车型
+	//增加
+	@PostMapping("/vehicleDjizb7")
+	public int qyertvehicleInsert2(@RequestBody Carxing page5) {
+		return vehiclefileService.queryInsert2(page5);
+	}
+	
+	//里查询
+	@GetMapping("/vehicleDjizb6")
+	public List<Fadongbrand> queryvehicleSelect2(){
+		return vehiclefileService.querySelect4();
+	}
+	
+	//修前
+	@PostMapping("/vehicleDjizb8")
+	public Carxing queryehicleInsert3(Integer page4id) {
+		System.out.println("修改前去:"+page4id);
+		return vehiclefileService.qyeryInsert3(page4id);
+	}
+	
+	//右修改
+	@PostMapping("/vehicleDjizb9")
+	public int queryehicUpdate3(@RequestBody Carxing page6) {
+		return vehiclefileService.queryUpdate2(page6);
+	}
 	
 	//右删除
 	@PostMapping("/vehicleDjizb5")
