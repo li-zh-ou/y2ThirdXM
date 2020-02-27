@@ -48,6 +48,7 @@ public class JunGongJianXiuService {
 				wx.setBei1("未结算");
 				wx.setBei4(jun.getBei1());
 				wxjiedan.insert(wx);
+				wxjiedan.jinrifanxiu();
 			}
 		}
 		jun = null;
