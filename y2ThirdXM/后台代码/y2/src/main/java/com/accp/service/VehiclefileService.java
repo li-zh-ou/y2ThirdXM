@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.accp.domain.Carbrand;
 import com.accp.domain.CarbrandExample;
 import com.accp.domain.Carxing;
+import com.accp.domain.Fadongbrand;
 import com.accp.domain.Model_three_table_check1;
 import com.accp.mapper.CarbrandMapper;
 import com.accp.mapper.CarxingMapper;
+import com.accp.mapper.FadongbrandMapper;
 
 @Service
 @Transactional
@@ -26,6 +28,9 @@ public class VehiclefileService {
 		//车型表
 		@Autowired
 		CarxingMapper carxingMapper;
+		//发动机品牌表
+		@Autowired
+		FadongbrandMapper fadongbrandMapper;
 		
 //		品牌车型左边查询显示
 		public List<Carbrand> querySelect1(){
@@ -74,10 +79,29 @@ public class VehiclefileService {
 			return list;
 		}
 		
-		//右增加车型
 		
+//		新加的
+		
+		//右增加车型
+		public int queryInsert2(Carxing carxing) {
+			return carxingMapper.insert(carxing);
+		}
+		
+		//查询发动机品牌的数据
+		public List<Fadongbrand> querySelect4(){
+			return fadongbrandMapper.selectByExample(null);
+		}
 		
 		//右修改车型
+		//前查
+		public Carxing qyeryInsert3(Integer xingId) {
+			return carxingMapper.selectByPrimaryKey(xingId);
+		}
+		
+		//右修改
+		public int queryUpdate2(Carxing carxing) {
+			return carxingMapper.updateByPrimaryKey(carxing);
+		}
 		
 		//删除
 		public int queryDelete2(Integer xingid) {

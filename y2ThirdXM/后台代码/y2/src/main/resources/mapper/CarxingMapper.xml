@@ -26,8 +26,8 @@
 		fadongbrand.FaName AS fadong_faname,fadongbrand.FaNumber AS fadong_fanumb,carxing.CanKaoPrice AS carxing_cankaop,
 		carxing.CarYearMoney AS carxing_caryearm,carxing.GongLv AS carxing_gonglv,carxing.JinKou AS carxing_jinkou,
 		carxing.RanYou AS carxing_ranyou,carxing.ZaiZhong AS carxing_zaizhon FROM carxing,fadongbrand,
-		carbrand WHERE carbrand.CarBankId=carxing.xingId 
-		AND fadongbrand.FaBankId=carxing.FaBankId AND carxing.xingId=#{CarBankId_1}
+		carbrand WHERE carbrand.CarBankId=carxing.CarBankId 
+		AND fadongbrand.FaBankId=carxing.FaBankId AND carxing.CarBankId=#{CarBankId_1}
   	</select>
   
   <sql id="Example_Where_Clause" >

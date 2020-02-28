@@ -44,4 +44,19 @@ public class Supply_unitService1 {
 	public int querySupplyDelete1(String huoshangno) {
 		return huoshangMapper.deleteByPrimaryKey(huoshangno);
 	}
+	
+	//右增加
+	public int querySupplyInsert1(Huoshang huoshang) {
+		return huoshangMapper.insert(huoshang);
+	}
+	
+	//右修前
+	public Huoshang querySupplyUpSelect1(String hushangno) {
+		return huoshangMapper.selectByPrimaryKey(hushangno);
+	}
+	
+	//右修
+	public int querySupplyUpdate1(Huoshang huoshang) {
+		return huoshangMapper.updateByPrimaryKey(huoshang);
+	}
 }

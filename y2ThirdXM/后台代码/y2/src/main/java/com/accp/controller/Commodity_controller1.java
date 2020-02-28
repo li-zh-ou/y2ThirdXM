@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.domain.Goods;
@@ -41,5 +42,17 @@ public class Commodity_controller1 {
 	@PostMapping("/commodityxs4")
 	public int queryCommodity3(Integer goodsid) {
 		return commodity_service1.queryGooDelete1(goodsid);
+	}
+	
+	//增加
+	@PostMapping("/commodityxs5")
+	public int queryCommodity4(@RequestBody Goods page3) {
+		return commodity_service1.queryGooInsert1(page3);
+	}
+	
+	//修改
+	@PostMapping("/commodityxs6")
+	public int queryCommodity5(@RequestBody Goods goods) {
+		return commodity_service1.queryGooUpdate1(goods);
 	}
 }

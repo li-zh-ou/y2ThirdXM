@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.domain.Huoshang;
@@ -42,5 +43,23 @@ public class Supply_unitController1 {
 	public int queryDelete1(String huoshangno) {
 		System.out.println("删除:"+huoshangno);
 		return supply_unitService1.querySupplyDelete1(huoshangno);
+	}
+	
+	//右增
+	@PostMapping("/supplyunit5")
+	public int queryInsert1(@RequestBody Huoshang huoshang) {
+		return supply_unitService1.querySupplyInsert1(huoshang);
+	}
+	
+	//右修前
+	@PostMapping("/supplyunit6")
+	public Huoshang queryUpSelect1(String hushangno) {
+		return supply_unitService1.querySupplyUpSelect1(hushangno);
+	}
+	
+	//右修
+	@PostMapping("/supplyunit7")
+	public int queryUpdate1(@RequestBody Huoshang andt) {
+		return supply_unitService1.querySupplyUpdate1(andt);
 	}
 }
