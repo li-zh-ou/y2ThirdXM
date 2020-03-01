@@ -417,4 +417,22 @@ LEFT JOIN huiyuan ON kehu.`KeHuNo` = huiyuan.`KeHuNo`
   <update id="updateUhuXiao">
   	update huiyuan set bei1 ='注销',KeHuNo='' where huiyuanno = #{huiyuanno,jdbcType=VARCHAR}
   </update>
+    <update id="shenjihuangji">
+  UPDATE huiyuan SET HuiYuanGraden = '黄金会员',youhui = 7 WHERE xiaofei &gt;= 3000 AND xiaofei &lt; 6000 AND HuiYuanGraden = '普通会员'
+  </update>
+  <update id="shenjizuanshi">
+  UPDATE huiyuan SET HuiYuanGraden = '钻石会员',youhui = 6 WHERE xiaofei &gt;= 6000 AND (HuiYuanGraden = '普通会员' OR HuiYuanGraden = '黄金会员')
+  </update>
+   <select id="jiesuanQuery" resultMap="BaseResultMap" parameterType="java.lang.String">
+   select * from huiyuan where kehuno =(SELECT kehuno FROM kehucar WHERE chepai =( SELECT chepai FROM wxjiedan WHERE wxDanNo = #{wxdanno,jdbcType=VARCHAR}))
+  </select>
+  <select id="jiesuanyzTime" parameterType="java.lang.String" resultType="java.lang.Integer">
+  	SELECT COUNT(huiyuanno) FROM huiyuan WHERE huiyuanno =#{huiyuanno,jdbcType=VARCHAR} AND NOW() &gt; DaoQiTime
+  </select>
+  <select id="jiesuanyzMoney" parameterType="java.lang.String" resultType="java.lang.Integer">
+  SELECT COUNT(huiyuanno) FROM huiyuan WHERE huiyuanno =#{huiyuanno,jdbcType=VARCHAR} AND #{money,jdbcType=VARCHAR} &gt; HuiYuanMoney
+  </select>
+  <update id="jiesuanUpdate">
+  	UPDATE huiyuan SET HuiYuanMoney = HuiYuanMoney - #{money,jdbcType=DOUBLE} ,xiaofei = xiaofei + #{money,jdbcType=DOUBLE} WHERE huiyuanno = #{huiyuanno,jdbcType=VARCHAR}
+  </update>
 </mapper>
