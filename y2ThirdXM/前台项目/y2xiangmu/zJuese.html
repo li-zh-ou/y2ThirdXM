@@ -177,7 +177,7 @@
 									<span class="input-group-addon " id="basic-addon3">角色代码：</span>
 								  	<input type="text" style="width: 160px;height: 33px;" disabled="disabled" v-model="zhiwuyi.zhiwuid" class="form-control" id="basic-url" aria-describedby="basic-addon3">
 								  	<span class="input-group-addon " id="basic-addon3">角色名称：</span>
-								  	<input type="text" style="width: 160px;height: 33px;" v-model="zhiwuyi.zhiwuname" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="zhiwuyi.zhiwuname" class="form-control pan" id="basic-url" aria-describedby="basic-addon3">
 								</div>
 								<div class="ge" style="margin-left: 15px; width: 530px; overflow:auto;">
 									<table class="table table-bordered table-hover" v-if="$perms('findzhiwu')">
@@ -248,26 +248,30 @@
 						}
 					},
 					addzhiwu:function(){
-						for(i=0;i<vm.zhiwu.length;i++){
-							if(vm.zhiwuyi.zhiwuid==vm.zhiwu[i].zhiwuid){
-								alert("此职务已存在不可重复添加！");
-								return;
+						if($(".pan").val().length==0){
+							alert("请输入名称！");
+						}else{
+							for(i=0;i<vm.zhiwu.length;i++){
+								if(vm.zhiwuyi.zhiwuid==vm.zhiwu[i].zhiwuid){
+									alert("此职务已存在不可重复添加！");
+									return;
+								}
 							}
+							$.ajax({
+								url:top.data.ip+"addzhiwu",
+								data:JSON.stringify(vm.zhiwuyi),
+								contentType:"application/json;charset=utf-8",
+								type:"post",
+								dataType:"json",
+								success:function(response) {
+									if(response>0){
+										alert("添加成功！");
+										vm.zhiwuyi={};
+										queryzhiwu();
+									}		
+								}
+							});
 						}
-						$.ajax({
-							url:top.data.ip+"addzhiwu",
-							data:JSON.stringify(vm.zhiwuyi),
-							contentType:"application/json;charset=utf-8",
-							type:"post",
-							dataType:"json",
-							success:function(response) {
-								if(response>0){
-									alert("添加成功！");
-									vm.zhiwuyi={};
-									queryzhiwu();
-								}		
-							}
-						});
 					},updatezhiwu:function(){
 						$.ajax({
 							url:top.data.ip+"updatezhiwu",
