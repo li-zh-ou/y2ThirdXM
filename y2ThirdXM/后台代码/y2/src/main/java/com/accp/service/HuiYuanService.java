@@ -76,4 +76,9 @@ public class HuiYuanService {
 		}
 		return ""+num;
 	}
+	
+	public String updateUhuXiao(String huiyuanno) {
+		int zxstuta = huiyuan.updateUhuXiao(huiyuanno);
+		return ""+zxstuta;
+	}
 }

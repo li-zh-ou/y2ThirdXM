@@ -33,9 +33,9 @@
 				</div>
 				<div style="padding: 20px 0px 20px 15px;">
 					<p style="font-size: 16px;font-weight: 600;">
-						<a href="javascript:void(0)" onclick="jiaRuHuiYuan()">加入会员</a>
-						<a href="javascript:void(0)" onclick="hyChongZhi()">会员充值</a>
-						<a href="javascript:void(0)" onclick="zhuxiaoHY()">会员注销</a>
+						<a href="javascript:void(0)" onclick="jiaRuHuiYuan()"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>加入会员</a>
+						<a href="javascript:void(0)" onclick="hyChongZhi()"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>会员充值</a>
+						<a href="javascript:void(0)" onclick="zhuxiaoHY()"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>会员注销</a>
 					</p>
 				</div> 
 				<div class="row" style="margin-top: 30px;">
@@ -253,7 +253,7 @@
 			      		</div>
 				      	<div class="modal-body row" style="font-size: 17px;">
 				      		<div class="input-group" style="margin-left: 31px;">
-				      			<span class="input-group-addon">请搜索：</span>
+				      			<span class="input-group-addon" style="color: red;">请搜索：</span>
 				      			<input type="text" id="hycztext" placeholder="匹配客户编号/客户名称/联系电话"  style="vertical-align: middle ; width:270px; height:33px;">
 				      		</div>
 				      		<table class="table table-hover table-bordered text-center" style="width: 90%;margin-left:5%;margin-right:5%;">
@@ -288,17 +288,17 @@
 					        </div>
 			      		</div>
 				      	<div class="modal-body row" style="font-size: 17px;">
-				      		<p class="col-xs-6"><label><span>会员时长：</span><select name="huiyuanshichang" onchange="hyscChange()" style="vertical-align: middle ; width:220px; height:29px;">
+				      		<p class="col-xs-6"><label><span style="color: red;">会员时长：</span><select name="huiyuanshichang" onchange="hyscChange()" style="vertical-align: middle ; width:220px; height:29px;">
 				      				<option value="0">请选择会员时长</option>
 				      				<option value="50">一年</option>
 				      				<option value="120">三年</option>
 				      				<option value="180">五年</option>
 				      		</select></label></p>
 				      		<p class="col-xs-6">对应金额：<input type="number" name="duiyingjine" disabled="disabled"></p>
-				      		<p class="col-xs-6">会员名称：<input name="huiyuanname" type="text"></p>
-				      		<p class="col-xs-6">联系电话：<input name="huiyuanphone" type="text"></p>
+				      		<p class="col-xs-6" style="color: red;">会员名称：<input name="huiyuanname" type="text"></p>
+				      		<p class="col-xs-6" style="color: red;">联系电话：<input name="huiyuanphone" type="text"></p>
 				      		<p class="col-xs-12"></p>
-				      		<p class="col-xs-offset-6 col-xs-6">收到：<input name="shoudao" type="number"></p>
+				      		<p class="col-xs-offset-6 col-xs-6" style="color: red;">收到：<input name="shoudao" type="number"></p>
 				      		<button class="btn btn-success col-xs-offset-10" onclick="queRenJiaRu()">确认加入</button>
 				      		
 				      	</div>
@@ -451,7 +451,7 @@
 		//会员注销，确定注销button事件
 		function quedinzhuxiao(){
 			$.ajax({
-				"url":data.ip +"huiyuan/zhuXiao",
+				"url":data.ip +"huiyuan/updateUhuXiao",
 				"data":"huiyuanno="+vm.huiyuaninfo.huiyuanno,
 				"type":"post",
 				"success":function(result){

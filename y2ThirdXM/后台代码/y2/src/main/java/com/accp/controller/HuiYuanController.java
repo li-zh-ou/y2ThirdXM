@@ -113,4 +113,10 @@ public class HuiYuanController {
 	public String  jiesuanyanzheng(String huiyuanno,String money){
 		return huiyuan.jiesuanyanzheng(huiyuanno,money);
 	}
+	
+	@RequestMapping("updateUhuXiao")
+	@ResponseBody
+	public String  updateUhuXiao(String huiyuanno){
+		return huiyuan.updateUhuXiao(huiyuanno);
+	}
 }

@@ -55,4 +55,6 @@ public interface HuiyuanMapper {
 	int jiesuanyzMoney(@Param("huiyuanno") String huiyuanno,@Param("money") String money);
 
 	int jiesuanUpdate(@Param("huiyuanno") String huiyuanno,@Param("money") Double money);
+	
+	int updateUhuXiao(String huiyuanno);
 }

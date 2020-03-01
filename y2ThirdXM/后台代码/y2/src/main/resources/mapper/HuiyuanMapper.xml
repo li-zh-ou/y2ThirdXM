@@ -368,7 +368,7 @@
   </update>
   <insert id="insertHuiYuan" parameterType="com.accp.domain.Huiyuan">
    INSERT INTO 
-   huiyuan (huiyuanno,kehuno,huiyuanName,huiyuanmoney,daoqitime,huiyuangraden,youhui)
+   huiyuan (huiyuanno,kehuno,huiyuanName,huiyuanmoney,daoqitime,huiyuangraden,youhui,bei1,RuHuiTime)
    VALUE
    (#{huiyuanno,jdbcType=VARCHAR},#{kehuno,jdbcType=VARCHAR},#{huiyuanname,jdbcType=VARCHAR},#{huiyuanmoney,jdbcType=DOUBLE},
    (
@@ -378,7 +378,7 @@
    ELSE daoqitime
    END
    )
-    ,'普通会员',8)
+    ,'普通会员',8,'可用',now())
   </insert>
   <select id="queryAllHuiYuan" resultMap="BaseResultMap">
   	 SELECT huiyuan.* FROM huiyuan 
@@ -404,6 +404,7 @@
      <if test='order == "4"'>
      	order by daoqitime asc
      </if>
+     and huiyuan.bei1 = '可用'
   </select>
    <select id="getTodayMaxCount" resultType="java.lang.Integer" parameterType="java.lang.String">
   	 SELECT COUNT(huiyuanno)+1 FROM huiyuan WHERE huiyuanno LIKE '%${today}%'
@@ -413,4 +414,7 @@
 LEFT JOIN huiyuan ON kehu.`KeHuNo` = huiyuan.`KeHuNo`
  WHERE kehucar.`ChePai` = #{chepai,jdbcType=VARCHAR}
   </select>
+  <update id="updateUhuXiao">
+  	update huiyuan set bei1 ='注销',KeHuNo='' where huiyuanno = #{huiyuanno,jdbcType=VARCHAR}
+  </update>
 </mapper>
