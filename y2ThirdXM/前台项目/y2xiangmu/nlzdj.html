@@ -23,6 +23,26 @@
 			    font-size: 35px;
 			}
 			
+			#a{
+				 color:#EA0000;
+			}
+			
+			#bt{
+				background:#4b6cb7;
+			}
+			
+			#c{
+				background:#bdc3c7;
+			}
+			
+			#ctx{
+				background:#f5f5f5;
+			}
+			
+			#ctx1{
+				background:#ffffff;
+			}
+			
 		</style>
 	</head>
 	<body>
@@ -34,11 +54,11 @@
 			<div class="modal-dialog" role="document" style="width:800px;">
 				<div class="modal-content">
 					<div class="modal-header" style="height: 60px;" >
-	           			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="guan">&times;</span></button>
+	           			<button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="lzdkmtkgb"><span aria-hidden="true" class="guan" >&times;</span></button>
 	           			<h4 class="modal-title" style="margin-top:5px;">员工详情</h4>
 	          			<div class="col-md-9"></div>
 			           	<div >
-			             	<button type="button" class="btn btn-success" data-dismiss="modal" style="margin-top: -50px;margin-left: 100px; vertical-align: middle; width: 60px;">关闭</button>
+			             	<button type="button" class="btn btn-success" data-dismiss="modal" style="margin-top: -50px;margin-left: 100px; vertical-align: middle; width: 60px;" @click="lzdkmtkgb">关闭</button>
 			          	</div>
      				</div>
 					<div class="row modal-body"  style="margin-top: -30px; ">
@@ -404,11 +424,11 @@
 								<div class="input-group" style="margin-top: 20px;">
 									
 									<span class="input-group-addon" >员工姓名:</span>
-									<input type="text" v-model="lzbydkyg.yuanname" class="form-control" aria-describedby="basic-addon3" disabled="true" style="vertical-align: middle ; width:160px; height:33px; ">
+									<input type="text" v-model="lzxqxz.yuanname" class="form-control" aria-describedby="basic-addon3" disabled="true" style="vertical-align: middle ; width:160px; height:33px; ">
 									
 
 									
-									<span class="input-group-addon" >离职日期:</span>
+									<span id="a" class="input-group-addon" >离职日期:</span>
 									<input type="date" v-model="lzxqxz.lizhitime" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
 									
 								</div>
@@ -430,9 +450,9 @@
 						<table class="table table-hover table-bordered" style="overflow:scroll;">
 					 
 							<tr>
-								<td>领用日期</td>
-								<td>员工编号</td>
-								<td>员工姓名</td>
+								<th>领用日期</th>
+								<th>员工编号</th>
+								<th>员工姓名</th>
 							</tr>
 							
 							<tr>
@@ -494,7 +514,7 @@
 
 		
 		<div>
-			<div class="row" style="border: 1px solid #E6E6E6;">
+			<div id="bt" class="row" style="border: 1px solid #E6E6E6;">
 				<h3 class="col-md-2">离职登记</h3>
 				<div class="col-md-7"></div>
 				<div class="col-md-3" id="tbss">
@@ -504,31 +524,31 @@
 				</div>
 			</div>
 			
-			<div>
+			<div style="height:51px;">
 				<ol class="breadcrumb">
-				 	<li v-perms="'addlizhi'"><span class="iconfont" style="vertical-align: middle">&#xe614;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#lzmtk">员工离职</a></li>
-				  	<li v-perms="'lizhihuiguen'"><span class="iconfont" style="vertical-align: middle">&#xe6b6;</span><a href="#" style="vertical-align: middle" @click="lzdjhg">员工回滚</a></li>
-				  	<li v-perms="'findlizhi'"><span class="iconfont" style="vertical-align: middle">&#xe62c;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#lzdjdk">打开详情</a></li>
-				  	<li v-perms="'deletelizhi'"><span class="iconfont" style="vertical-align: middle">&#xe613;</span><a href="#" style="vertical-align: middle" @click="sclzygsj">删除记录</a></li>
+				 	<li v-perms="'addlizhi'"><span class="iconfont" style="vertical-align: middle; color:#0071E7; font-size:16px;">&#xe614;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#lzmtk">员工离职</a></li>
+				  	<li v-perms="'lizhihuiguen'"><span class="iconfont" style="vertical-align: middle; color:#0071E7; font-size:16px;">&#xe6b6;</span><a href="#" style="vertical-align: middle" @click="lzdjhg">员工回滚</a></li>
+				  	<li v-perms="'findlizhi'"><span class="iconfont" style="vertical-align: middle; color:#0071E7; font-size:22px;">&#xe62c;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#lzdjdk" @click="dkxq">打开详情</a></li>
+				  	<li v-perms="'deletelizhi'"><span class="iconfont" style="vertical-align: middle; color:#0071E7; font-size:18px;">&#xe613;</span><a href="#" style="vertical-align: middle" @click="sclzygsj">删除记录</a></li>
 				  	<!--<li v-perms="'findlizhi'"><span class="iconfont" style="vertical-align: middle">&#xe78a;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#cxygmtk">员工查询</a></li>-->
 				  	<!--<li><span class="iconfont" style="vertical-align: middle">&#xe6a5;</span><a href="#" style="vertical-align: middle">导出</a></li>-->
 				</ol>
 			</div>
-			
-			<div class="">
 				
-				<div class="row" id="tbss" style=" border: 1px solid #E6E6E6;height:500px;">
+			<div class="row">
+				
+				<div class="row" id="tbss" style=" border: 1px solid #E6E6E6;height:430px;">
 					
-				<table class="table table-hover table-bordered" style="width:800px;" v-if="$perms('findlizhi')">
+				<table id="ctx1" class="table table-hover table-bordered" style="margin-left: 15px;width:800px;" v-if="$perms('findlizhi')">
 					 
-						<tr>
-							<td>部门</td>
-							<td>员工编号</td>
-							<td>姓名</td>
-							<td>性别</td>
-							<td>职位</td>
-							<td>离职日期</td>
-							<td>离职原因</td>
+						<tr id="c">
+							<th>部门</th>
+							<th>员工编号</th>
+							<th>姓名</th>
+							<th>性别</th>
+							<th>职位</th>
+							<th>离职日期</th>
+							<th>离职原因</th>
 						</tr>
 						
 						<tr v-for="item in cssj" @click="tableDblclick(item)">
@@ -544,9 +564,8 @@
 				</table>
 				<div v-else class="alert alert-danger" role="alert">权限不足</div>
 			</div>
-			
-		</div>
-	</div>	
+			</div>
+		</div>	
 	</div>	
 <script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
 <script type="text/javascript" src="js/jquery.min.js"></script>
@@ -610,7 +629,6 @@
 					success: function(result) {
 						console.log(result);
 						vm.bydkyg = result;
-						
 					},
 					error: function(result) {
 						console.log(result);
@@ -646,24 +664,38 @@
 				});
 			},
 			lzdjhg:function(){//回滚员工
-				$.ajax({
-					url:data.ip +"ncq/lzdjhg",
-					type:"post",
-					data:{yuanno:vm.djhqyg.yuanno},
-					dataType:"text",
-					success:function(result){
-						console.log(result);
-						if(result>0){
-							alert("回滚成功");
-						}else{
-							alert("回滚失败");
+				if(vm.djhqyg.yuanno==null){
+					alert("请先选择一个已离职员工");
+					return;
+				}else if(vm.djhqyg.yuanno==""){	
+					alert("请先选择一个已离职员工");
+					return;
+				}else{
+					$.ajax({
+						url:data.ip +"ncq/lzdjhg",
+						type:"post",
+						data:{yuanno:vm.djhqyg.yuanno},
+						dataType:"text",
+						success:function(result){
+							console.log(result);
+							if(result>0){
+								alert("回滚成功");
+								for (var i in vm.djhqyg) {
+						        	vm.djhqyg[i] = "";
+						        }
+							}else{
+								alert("回滚失败");
+								for (var i in vm.djhqyg) {
+						        	vm.djhqyg[i] = "";
+						        }
+							}
+							vm.loading();
+							vm.cxygcx();
+						},error:function(result){
+							console.log(result);
 						}
-						vm.loading();
-						vm.cxygcx();
-					},error:function(result){
-						console.log(result);
-					}
-				});
+					});
+				}
 			},
 			cxygcx:function(){//获取初始员工详情数据
 				$.ajax({
@@ -681,6 +713,7 @@
 			},
 			lztableDblclick:function(item){//获得点击的员工id
 				vm.lzdjhqyg.yuanno=item.yuanno;
+				vm.lzxqxz.yuanname=item.yuanname;
 				console.log(vm.lzdjhqyg.yuanno);
 				$.ajax({//离职员工查询
 					url: data.ip +"ncq/byupygff",
@@ -699,28 +732,61 @@
 			lz:function(){//离职登记员工离职
 				vm.lzxqxz.yuanno=vm.lzbydkyg.yuanno;
 				console.log(vm.lzxqxz.yuanno);
-				console.log(vm.lzxqxz.lizhitime);
-				console.log(vm.lzxqxz.remark);
-				$.ajax({
-					url:data.ip +"ncq/insertlzxq",
-					type:"post",
-					contentType:"application/json;charset=utf-8",
-					data:JSON.stringify(vm.lzxqxz),
-					dataType:"text",
-					success:function(result){
-						console.log(result);
-						if(result>0){
-							alert("离职成功");
-						}else{
-							alert("离职失败");
+				if(vm.lzxqxz.yuanno==null){
+					alert("请先选择一个员工");
+					return;
+				}else if(vm.lzxqxz.yuanno==""){	
+					alert("请先选择一个员工");
+					return;
+				}else if(vm.lzxqxz.lizhitime==null){	
+					alert("未输入离职时间");
+					return;
+				}else if(vm.lzxqxz.lizhitime==""){	
+					alert("未输入离职时间");
+					return;
+				}else{
+					console.log(vm.lzxqxz.lizhitime);
+					console.log(vm.lzxqxz.remark);
+					$.ajax({
+						url:data.ip +"ncq/insertlzxq",
+						type:"post",
+						contentType:"application/json;charset=utf-8",
+						data:JSON.stringify(vm.lzxqxz),
+						dataType:"text",
+						success:function(result){
+							console.log(result);
+							if(result>0){
+								alert("离职成功");
+								for (var i in vm.lzxqxz) {
+						        	vm.lzxqxz[i] = "";
+						        }
+								for (var i in vm.lzbydkyg) {
+						        	vm.lzbydkyg[i] = "";
+						        }
+							}else{
+								alert("离职失败");
+								for (var i in vm.lzxqxz) {
+						        	vm.lzxqxz[i] = "";
+						        }
+								for (var i in vm.lzbydkyg) {
+						        	vm.lzbydkyg[i] = "";
+						       	}
+							}
+							vm.loading();
+						},error:function(result){
+							console.log(result);
 						}
-						vm.loading();
-					},error:function(result){
-						console.log(result);
-					}
-				});
+					});
+				}
 			},
 			sclzygsj:function(){//删除离职员工数据
+				if(vm.djhqyg.yuanno==null){
+					alert("请先选择一个已离职员工");
+					return;
+				}else if(vm.djhqyg.yuanno==""){	
+					alert("请先选择一个已离职员工");
+					return;
+				}else{
 					console.log(vm.djhqyg.yuanno);
 					$.ajax({
 					url:data.ip +"ncq/sclzygsj",
@@ -731,14 +797,21 @@
 						console.log(result);
 						if(result>0){
 							alert("删除成功");
+							for (var i in vm.djhqyg) {
+						        	vm.djhqyg[i] = "";
+						    }
 						}else{
 							alert("删除失败");
+							for (var i in vm.djhqyg) {
+						        	vm.djhqyg[i] = "";
+						    }
 						}
-						vm.loading();
-					},error:function(result){
-						console.log(result);
-					}
-				});
+							vm.loading();
+						},error:function(result){
+							console.log(result);
+						}
+					});
+				}
 			},
 			loadingto:function(){//获取初始树状图数据
 				$.ajax({
@@ -754,6 +827,20 @@
 						console.log(result);
 					}	
 				});
+			},
+			dkxq:function(){//打开详情
+				if(vm.bydkyg.yuanno==null){
+					alert("请先选择一个已离职员工");
+					return;
+				}else if(vm.bydkyg.yuanno==""){	
+					alert("请先选择一个已离职员工");
+					return;
+				}
+			},
+			lzdkmtkgb:function(){//打开详情关闭
+				for (var i in vm.bydkyg) {
+					vm.bydkyg[i] = "";
+				}
 			}
 		}
 	});

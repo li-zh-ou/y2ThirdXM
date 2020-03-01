@@ -13,11 +13,31 @@
 				display: flex;
 			}
 			
+			#a{
+				 color:#EA0000;
+			}
+			
+			#bt{
+				background:#4b6cb7;
+			}
+			
+			#c{
+				background:#bdc3c7;
+			}
+			
+			#ctx{
+				background:#f5f5f5;
+			}
+			
+			#ctx1{
+				background:#ffffff;
+			}
+			
 		</style>
 	</head>
 	<body>
 		<div id="ctx">
-			<div class="row" style="border: 1px solid #E6E6E6;">
+			<div id="bt" class="row" style="border: 1px solid #E6E6E6;">
 				<h3 class="col-md-2">岗位定义</h3>
 				<div class="col-md-9"></div>
 				<div class="col-md-1" id="tbss">
@@ -25,12 +45,12 @@
 				</div>
 			</div>
 			
-			<div class="row">
+			<div class="row" style="height:51px;">
 				
-				<ol class="breadcrumb">
-				  <li v-perms="'addgangwei'"><span class="iconfont" style="vertical-align: middle">&#xe62c;</span><a href="#" style="vertical-align: middle" @click="insert">增加岗位</a></li>
-				  <li v-perms="'deletegangwei'"><span class="iconfont" style="vertical-align: middle">&#xe614;</span><a href="#" style="vertical-align: middle" @click="del(gangwei.gangweid)">删除岗位</a></li>
-				  <li v-perms="'updategangwei'"><span class="iconfont" style="vertical-align: middle">&#xe612;</span><a href="#" style="vertical-align: middle" @click="up">修改岗位</a></li>
+				<ol class="breadcrumb" style="margin-left: 15px;">
+				  <li v-perms="'addgangwei'"><span class="iconfont" style="vertical-align: middle; color:#0071E7; font-size:22px;">&#xe62c;</span><a href="#" style="vertical-align: middle" @click="insert">增加岗位</a></li>
+				  <li v-perms="'deletegangwei'"><span class="iconfont" style="vertical-align: middle; color:#0071E7; font-size:16px;">&#xe614;</span><a href="#" style="vertical-align: middle" @click="del(gangwei.gangweid)">删除岗位</a></li>
+				  <li v-perms="'updategangwei'"><span class="iconfont" style="vertical-align: middle; color:#0071E7; font-size:25px;">&#xe612;</span><a href="#" style="vertical-align: middle" @click="up">修改岗位</a></li>
 				  <!--<li><span class="iconfont" style="vertical-align: middle">&#xe6a5;</span><a href="#" style="vertical-align: middle">导出</a></li>-->
 				</ol>
 				
@@ -43,14 +63,14 @@
 							<div class="input-group">
 											
 								<span class="input-group-addon" >岗位编码:</span>
-								<input v-model="gangwei.gangweid" type="text" class="form-control" aria-describedby="basic-addon3" disabled="true" style="vertical-align: middle ; width:160px; height:33px;">
+								<input v-model="gangwei.gangweid" placeholder="无需设置" type="text" class="form-control" aria-describedby="basic-addon3" disabled="true" style="vertical-align: middle ; width:160px; height:33px;">
 									
 							</div>
 						</td>	
 						<td class="col-md-2">
 							<div class="input-group">
 									
-								<span class="input-group-addon" >岗位名称:</span>
+								<span id="a" class="input-group-addon" >岗位名称:</span>
 								<input v-model="gangwei.gangweiname" type="text" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
 								
 							</div>
@@ -63,13 +83,13 @@
 				</table>
 			</div>
 			
-			<div class="row" id="tbss" style=" border: 1px solid #E6E6E6;height:470px;">
+			<div class="row" id="tbss" style=" border: 1px solid #E6E6E6;height:390px;">
 				
-				<table class="table table-hover table-bordered" style="width:600px;" v-if="$perms('findgangwei')">
+				<table id="ctx1" class="table table-hover table-bordered" style="width:600px;" v-if="$perms('findgangwei')">
 					 
-						<tr>
-							<td>岗位编码</td>
-							<td>岗位名称</td>
+						<tr id="c" >
+							<th>岗位编码</th>
+							<th>岗位名称</th>
 						</tr>
 						
 						<tr v-for="item,index in gwdy" @click="tableDblclick(item)">
@@ -119,23 +139,37 @@
 				});
 			},
 			insert:function(){//新增岗位
-				$.ajax({
-					url:data.ip +"ncq/insertgw",
-					type:"post",
-					data:vm.gangwei,
-					dataType:"text",
-					success:function(result){
-						console.log(result);
-						if(result>0){
-							alert("新增成功");
-						}else{
-							alert("新增失败");
+				if(vm.gangwei.gangweiname==null){
+					alert("未输入岗位名称");
+					return;
+				}else if(vm.gangwei.gangweiname==""){	
+					alert("未输入岗位名称");
+					return;
+				}else{
+					$.ajax({
+						url:data.ip +"ncq/insertgw",
+						type:"post",
+						data:vm.gangwei,
+						dataType:"text",
+						success:function(result){
+							console.log(result);
+							if(result>0){
+								alert("新增成功");
+								for (var i in vm.gangwei) {
+						        	vm.gangwei[i] = "";
+						        }
+							}else{
+								alert("新增失败");
+								for (var i in vm.gangwei) {
+						        	vm.gangwei[i] = "";
+						        }
+							}
+							vm.loading();
+						},error:function(result){
+							console.log(result);
 						}
-						vm.loading();
-					},error:function(result){
-						console.log(result);
-					}
-				});
+					});
+				}
 			},
 			tableDblclick:function(item){//查询岗位放入上方text框
 				vm.gangwei.gangweid=item.gangweid;
@@ -144,45 +178,73 @@
 				console.log(vm.gangwei.gangweiname);
 			},
 			up:function(){
-				console.log(vm.gangwei.gangweid);
-				console.log(vm.gangwei.gangweiname);
-				$.ajax({//修改岗位
-					url:data.ip +"ncq/upgw",
-					type:"post",
-					data:{gangweid:vm.gangwei.gangweid,gangweiname:vm.gangwei.gangweiname},
-					dataType:"text",
-					success:function(result){
-						console.log(result);
-						if(result>0){
-							alert("修改成功");
-						}else{
-							alert("修改失败");
+				if(vm.gangwei.gangweid==null){
+					alert("请先选择一个岗位");
+					return;
+				}else if(vm.gangwei.gangweid==""){	
+					alert("请先选择一个岗位");
+					return;
+				}else{
+					console.log(vm.gangwei.gangweid);
+					console.log(vm.gangwei.gangweiname);
+					$.ajax({//修改岗位
+						url:data.ip +"ncq/upgw",
+						type:"post",
+						data:{gangweid:vm.gangwei.gangweid,gangweiname:vm.gangwei.gangweiname},
+						dataType:"text",
+						success:function(result){
+							console.log(result);
+							if(result>0){
+								alert("修改成功");
+								for (var i in vm.gangwei) {
+						        	vm.gangwei[i] = "";
+						        }
+							}else{
+								alert("修改失败");
+								for (var i in vm.gangwei) {
+						        	vm.gangwei[i] = "";
+						        }
+							}
+							vm.loading();
+						},error:function(result){
+							console.log(result);
 						}
-						vm.loading();
-					},error:function(result){
-						console.log(result);
-					}
-				});
+					});
+				}
 			},
 			del:function(gangweid){//删除岗位
-				$.ajax({
-					url:data.ip +"ncq/delByIdgw",
-					type:"get",
-					data:{gangweid:gangweid},
-					dataType:"text",
-					success:function(result){
-						console.log(result);
-						console.log(result);
-						if(result>0){
-							alert("删除成功");
-						}else{
-							alert("删除失败");
+				if(vm.gangwei.gangweid==null){
+					alert("请先选择一个岗位");
+					return;
+				}else if(vm.gangwei.gangweid==""){	
+					alert("请先选择一个岗位");
+					return;
+				}else{
+					$.ajax({
+						url:data.ip +"ncq/delByIdgw",
+						type:"get",
+						data:{gangweid:gangweid},
+						dataType:"text",
+						success:function(result){
+							console.log(result);
+							console.log(result);
+							if(result>0){
+								alert("删除成功");
+								for (var i in vm.gangwei) {
+						        	vm.gangwei[i] = "";
+						        }
+							}else{
+								alert("删除失败");
+								for (var i in vm.gangwei) {
+						        	vm.gangwei[i] = "";
+						        }
+							}
+							vm.loading();
+						},error:function(result){
+							console.log(result);
 						}
-						vm.loading();
-					},error:function(result){
-						console.log(result);
-					}
-				});
+					});
+				}
 			}
 		}
 	});

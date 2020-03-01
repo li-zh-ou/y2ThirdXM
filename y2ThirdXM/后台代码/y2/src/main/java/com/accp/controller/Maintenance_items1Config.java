@@ -48,9 +48,9 @@ public class Maintenance_items1Config {
 	
 	//新增
 	@PostMapping("/maintenance3")
-	public int queryInsert1(Wxxiangmu dataa) {
-		System.out.println("新增:"+dataa.getXiangmuname());
-		return maintenance_items1.queryWxxiaInsele(dataa);
+	public int queryInsert1(@RequestBody Wxxiangmu dataa1) {
+		System.out.println("新增:"+dataa1.getXieprice());
+		return maintenance_items1.queryWxxiaInsele(dataa1);
 	}
 	
 	//修前查
@@ -58,7 +58,7 @@ public class Maintenance_items1Config {
 	public wxxia_wxshou1 querySelect3(String xiangmuno) {
 		System.out.println("修改前面:"+xiangmuno);
 		wxxia_wxshou1 list=maintenance_items1.queryWxxiaSelect3(xiangmuno);
-		System.out.println();
+		System.out.println("xgsj:"+list);
 		return list;
 	}
 	

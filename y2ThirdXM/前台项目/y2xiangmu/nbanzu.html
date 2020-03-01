@@ -21,6 +21,26 @@
 			    font-size: 35px;
 			}
 			
+			#a{
+				 color:#EA0000;
+			}
+			
+			#bt{
+				background:#4b6cb7;
+			}
+			
+			#c{
+				background:#bdc3c7;
+			}
+			
+			#ctx{
+				background:#f5f5f5;
+			}
+			
+			#ctx1{
+				background:#ffffff;
+			}
+			
 		</style>
 	</head>
 	<body>
@@ -45,13 +65,13 @@
 							<p>
 								<div class="input-group" style="margin-top: 20px;">
 									
-									<span class="input-group-addon">技工编号:</span>
+									<span id="a" class="input-group-addon">技工编号:</span>
 									<input type="text" v-model="bzjg.jigongno" class="form-control" aria-describedby="basic-addon3" disabled="true" style="vertical-align: middle ; width:160px; height:33px;">
 									
-									<span class="input-group-addon">技工姓名:</span>
+									<span id="a" class="input-group-addon">技工姓名:</span>
 									<input type="text" v-model="bzjg.jigongname" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
 									
-									<span class="input-group-addon">性别选择:</span>
+									<span id="a" class="input-group-addon">性别选择:</span>
 									<select v-model="bzjg.sex" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle; width:160px; height:33px;">
 										<option value="男">男</option>
 										<option value="女">女</option>
@@ -63,18 +83,18 @@
 							<p>
 								<div class="input-group" style="margin-top: 20px;">
 									
-									<span class="input-group-addon">是否组长:</span>
+									<span id="a" class="input-group-addon">是否组长:</span>
 									<select v-model="bzjg.iszuzhang" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle; width:160px; height:33px;">
 										<option value="0">否</option>
 										<option value="1">是</option>
 									</select>
 									
-									<span class="input-group-addon">所在班组:</span>
+									<span id="a" class="input-group-addon">所在班组:</span>
 									<select v-model="bzjg.banid" class="form-control" aria-describedby="basic-addon3" disabled="true" style="vertical-align: middle; width:160px; height:33px;">
 										<option :value="hqbz.banid">{{hqbz.banname}}</option>
 									</select>
 									
-									<span class="input-group-addon">手机号码:</span>
+									<span id="a" class="input-group-addon">手机号码:</span>
 									<input type="text" v-model="bzjg.phone" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
 									
 								</div>
@@ -102,7 +122,7 @@
 									<span class="input-group-addon">银行账号:</span>
 									<input type="text" v-model="bzjg.bankcard" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
 									
-									<span class="input-group-addon">身份证号:</span>
+									<span id="a" class="input-group-addon">身份证号:</span>
 									<input type="text" v-model="bzjg.idcard" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
 									
 									<span class="input-group-addon">开户银行:</span>
@@ -119,7 +139,7 @@
 							<p>
 								<div class="input-group" style="margin-top: 20px;">
 									
-									<span class="input-group-addon">员工星级:</span>
+									<span id="a" class="input-group-addon">技工星级:</span>
 									<select v-model="bzjg.jigongxing" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle; width:160px; height:33px;">
 										<option v-for="item in jgxj" :value="item.jistarid">{{item.starname}}</option>
 									</select>
@@ -181,7 +201,7 @@
 							<p>
 								<div class="input-group" style="margin-top: 20px;">
 									
-									<span class="input-group-addon">技工编号:</span>
+									<span id="a" class="input-group-addon">技工编号:</span>
 									<input type="text" v-model="bzjgxg.jigongno" class="form-control" aria-describedby="basic-addon3" disabled="true" style="vertical-align: middle ; width:160px; height:33px;">
 									
 									<span class="input-group-addon">技工姓名:</span>
@@ -205,7 +225,7 @@
 										<option value="1">是</option>
 									</select>
 									
-									<span class="input-group-addon">所在班组:</span>
+									<span id="a" class="input-group-addon">所在班组:</span>
 									<select v-model="bzjgxg.banid" class="form-control" aria-describedby="basic-addon3" disabled="true" style="vertical-align: middle; width:160px; height:33px;">
 										<option :value="djjg.banid">{{djjg.banname}}</option>
 									</select>
@@ -255,7 +275,7 @@
 							<p>
 								<div class="input-group" style="margin-top: 20px;">
 									
-									<span class="input-group-addon">员工星级:</span>
+									<span class="input-group-addon">技工星级:</span>
 									<select v-model="bzjgxg.jigongxing" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle; width:160px; height:33px;">
 										<option v-for="item in jgxj" :value="item.jistarid">{{item.starname}}</option>
 									</select>
@@ -316,7 +336,7 @@
 								<div class="input-group" style="margin-top: 20px;">
 									
 									<span class="input-group-addon" >班组编号:</span>
-									<input type="text" value="无需设置"  class="form-control" aria-describedby="basic-addon3" disabled="true" style="vertical-align: middle ; width:160px; height:33px;">
+									<input type="text" placeholder="无需设置"  class="form-control" aria-describedby="basic-addon3" disabled="true" style="vertical-align: middle ; width:160px; height:33px;">
 									
 								</div>
 							</p>
@@ -324,7 +344,7 @@
 							<p>
 								<div class="input-group" style="margin-top: 20px;">
 									
-									<span class="input-group-addon" >班组名称:</span>
+									<span id="a" class="input-group-addon" >班组名称:</span>
 									<input type="text" v-model="xzbz.banname"  class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
 									
 								</div>
@@ -421,7 +441,7 @@
 
 			<div id="ctx" >
 				
-				<div class="row" style="border: 1px solid #E6E6E6;">
+				<div id="bt" class="row" style="border: 1px solid #E6E6E6;">
 					<h3 class="col-md-2">班组技工</h3>
 						<div class="col-md-7"></div>
 						<div class="col-md-3" id="tbss">
@@ -431,41 +451,41 @@
 						</div>
 				</div>
 			
-			<div>
+			<div style="height:51px;">
 				<ol class="breadcrumb">
-					<li v-perms="'addjigong'"><span class="iconfont" style="vertical-align: middle">&#xe62c;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#myModal" >技工新增</a></li>
-					<li v-perms="'updatejigong'"><span class="iconfont" style="vertical-align: middle">&#xe612;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#myModalupdate">技工修改</a></li>
-					<li v-perms="'deletejigong'"><span class="iconfont" style="vertical-align: middle">&#xe614;</span><a href="#" style="vertical-align: middle" @click="del">技工删除</a></li>
+					<li v-perms="'addjigong'"><span class="iconfont" style="vertical-align: middle; color:#0071E7; font-size:22px;">&#xe62c;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#myModal" >技工新增</a></li>
+					<li v-perms="'updatejigong'"><span class="iconfont" style="vertical-align: middle; color:#0071E7; font-size:25px;">&#xe612;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#myModalupdate">技工修改</a></li>
+					<li v-perms="'deletejigong'"><span class="iconfont" style="vertical-align: middle; color:#0071E7; font-size:16px;">&#xe614;</span><a href="#" style="vertical-align: middle" @click="del">技工删除</a></li>
 					<!--<li v-perms="'findjigong'"><span class="iconfont" style="vertical-align: middle">&#xe78a;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#cxygmtk">技工查询</a></li>-->
 					<!--<li><span class="iconfont" style="vertical-align: middle">&#xe6b6;</span><a href="#" style="vertical-align: middle">班组权重</a></li>-->
 					<!--<li><span class="iconfont" style="vertical-align: middle">&#xe6a5;</span><a href="#" style="vertical-align: middle">导出</a></li>-->
-					<li v-perms="'addbanzu'"><span class="iconfont" style="vertical-align: middle">&#xe613;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#xzbzmtk">新增班组</a></li>
+					<li v-perms="'addbanzu'"><span class="iconfont" style="vertical-align: middle; color:#0071E7; font-size:18px;">&#xe613;</span><a href="#" style="vertical-align: middle" data-toggle="modal" data-target="#xzbzmtk">新增班组</a></li>
 				</ol>
 			</div>
-			<div class="col-md-2" style="border: 1px solid #E6E6E6; height:500px; overflow:scroll;">
+			<div class="col-md-2" style="border: 1px solid #E6E6E6; height:430px; overflow:scroll;">
 				<ul id="treeDemo" class="ztree"></ul>
 			</div>
-			<div  class="col-md-10" style="height:500px;overflow:scroll;">
-				<table class="table table-hover table-bordered" style="width: 2000px;" v-if="$perms('findjigong')">
-						<tr>
-							<td>班组编号</td>
-							<td>班组名称</td>
-							<td>技工编号</td>
-							<td>技工姓名</td>
-							<td>性别</td>
-							<td>手机</td>
-							<td>地址</td>
-							<td>出生日期</td>
-							<td>组长</td>
-							<td>登陆名</td>
-							<td>身份证号</td>
-							<td>户口地址</td>
-							<td>开户银行</td>
-							<td>户口地址</td>
-							<td>银行账号</td>
-							<td>星级</td>
-							<td>维修工种</td>
-							<td>维修品牌</td>
+			<div  class="col-md-10" style="height:430px;overflow:scroll;">
+				<table id="ctx1" class="table table-hover table-bordered" style="width: 2000px;" v-if="$perms('findjigong')">
+						<tr id="c">
+							<th>班组编号</th>
+							<th>班组名称</th>
+							<th>技工编号</th>
+							<th>技工姓名</th>
+							<th>性别</th>
+							<th>手机</th>
+							<th>地址</th>
+							<th>出生日期</th>
+							<th>组长</th>
+							<th>登陆名</th>
+							<th>身份证号</th>
+							<th>户口地址</th>
+							<th>开户银行</th>
+							<th>户口地址</th>
+							<th>银行账号</th>
+							<th>星级</th>
+							<th>维修工种</th>
+							<th>维修品牌</th>
 						</tr>
 						<tr v-for="item in bzjgxq" @click="tableDblclick(item)">	
 							<td>{{item.banid}}</td>
@@ -584,25 +604,81 @@
 				});
 			},
 			xxzjg:function(){
-				console.log(vm.bzjg);
-				$.ajax({//新增技工
-					url: data.ip +"ncq/xzjg",
-					type: "post",
-					data:vm.bzjg,
-					dataType: "json",
-					success:function(result) {
-						console.log(result);
-						if(result>0){
-							alert("新增成功");
-						}else{
-							alert("新增失败");
-						}
-						vm.cxbzjgxq();
-					},
-					error: function(result) {
-						console.log(result);
-					}	
-				});
+				if(vm.bzjg.jigongno==null){
+					alert("请先到班组树状图选择班组");
+					return;
+				}else if(vm.bzjg.jigongno==""){
+					alert("请先到班组树状图选择班组");
+					return;
+				}else if(vm.bzjg.jigongname==null){
+					alert("未输入技工名称");
+					return;
+				}else if(vm.bzjg.jigongname==""){
+					alert("未输入技工名称");
+					return;
+				}else if(vm.bzjg.sex==null){
+					alert("未选择性别");
+					return;
+				}else if(vm.bzjg.sex==""){
+					alert("未选择性别");
+					return;
+				}else if(vm.bzjg.iszuzhang==null){
+					alert("未选择是否组长");
+					return;
+				}else if(vm.bzjg.iszuzhang==""){
+					alert("未选择是否组长");
+					return;
+				}else if(vm.bzjg.banid==null){
+					alert("请先到班组树状图选择班组");
+					return;
+				}else if(vm.bzjg.banid==""){
+					alert("请先到班组树状图选择班组");
+					return;
+				}else if(vm.bzjg.phone==null){
+					alert("未输入手机号码");
+					return;
+				}else if(vm.bzjg.phone==""){
+					alert("未输入手机号码");
+					return;
+				}else if(vm.bzjg.idcard==null){
+					alert("未输入身份证号码");
+					return;
+				}else if(vm.bzjg.idcard==""){
+					alert("未输入身份证号码");
+					return;
+				}else if(vm.bzjg.jigongxing==null){
+					alert("未选择技工星级");
+					return;
+				}else if(vm.bzjg.jigongxing==""){
+					alert("未选择技工星级");
+					return;
+				}else{
+					console.log(vm.bzjg);
+					$.ajax({//新增技工
+						url: data.ip +"ncq/xzjg",
+						type: "post",
+						data:vm.bzjg,
+						dataType: "json",
+						success:function(result) {
+							console.log(result);
+							if(result>0){
+								alert("新增成功");
+								for (var i in vm.bzjg) {
+						        	vm.bzjg[i] = "";
+						    	}
+							}else{
+								alert("新增失败");
+								for (var i in vm.bzjg) {
+						        	vm.bzjg[i] = "";
+						    	}
+							}
+							vm.cxbzjgxq();
+						},
+						error: function(result) {
+							console.log(result);
+						}	
+					});
+				}
 			},
 			tableDblclick:function(item){//获得点击的技工id
 				vm.djjg.jigongno=item.jigongno;
@@ -627,62 +703,104 @@
 				});
 			},
 			upjg:function(){//修改技工
-				$.ajax({
+				if(vm.bzjgxg.jigongno==null){
+					alert("请先到技工列表选择一名技工");
+					return;
+				}else if(vm.bzjgxg.jigongno==""){	
+					alert("请先到技工列表选择一名技工");
+					return;
+				}else{
+					$.ajax({
 					url:data.ip +"ncq/upjgxg",
 					type:"post",
 					data:vm.bzjgxg,
 					dataType:"text",
 					success:function(result){
-						console.log(result);
-						if(result>0){
-							alert("修改成功");
-						}else{
-							alert("修改失败");
-						}
+					console.log(result);
+					if(result>0){
+						alert("修改成功");
+						for (var i in vm.bzjgxg) {
+					        	vm.bzjgxg[i] = "";
+					    }
+					}else{
+						alert("修改失败");
+						for (var i in vm.bzjgxg) {
+					        	vm.bzjgxg[i] = "";
+					    }
+					}
 						vm.cxbzjgxq();
 					},error:function(result){
 						console.log(result);
 					}
-				});
+					});
+				}
 			},
 			del:function(){//删除技工
-				$.ajax({
-					url:data.ip +"ncq/deljg",
-					type:"post",
-					data:{jigongno:vm.djjg.jigongno},
-					dataType:"text",
-					success:function(result){
-						console.log(result);
-						if(result>0){
-							alert("删除成功");
-						}else{
-							alert("删除失败");
+				if(vm.djjg.jigongno==null){
+					alert("请先到技工列表选择一名技工");
+					return;
+				}else if(vm.djjg.jigongno==""){
+					alert("请先到技工列表选择一名技工");
+					return;
+				}else{
+					$.ajax({
+						url:data.ip +"ncq/deljg",
+						type:"post",
+						data:{jigongno:vm.djjg.jigongno},
+						dataType:"text",
+						success:function(result){
+							console.log(result);
+							if(result>0){
+								alert("删除成功");
+								for (var i in vm.djjg) {
+					        	vm.djjg[i] = "";
+					    		}
+							}else{
+								alert("删除失败");
+								for (var i in vm.djjg) {
+					        	vm.djjg[i] = "";
+					    		}
+							}
+							vm.cxbzjgxq();
+						},error:function(result){
+							console.log(result);
 						}
-						vm.cxbzjgxq();
-					},error:function(result){
-						console.log(result);
-					}
-				});
+					});
+				}
 			},
 			xzbzdw:function(){//新增班组
-				$.ajax({
-					url: data.ip +"ncq/xzbz",
-					type: "post",
-					data:{banname:vm.xzbz.banname,parentid:vm.xzbz.parentid},
-					dataType: "json",
-					success:function(result) {
-						console.log(result);
-						if(result>0){
-							alert("新增成功");
-						}else{
-							alert("新增失败");
-						}
-						vm.loading();
-					},
-					error: function(result) {
-						console.log(result);
-					}	
-				});
+				if(vm.xzbz.banname==null){
+					alert("未输入班组名称");
+					return;
+				}else if(vm.xzbz.banname==""){
+					alert("未输入班组名称");
+					return;
+				}else{
+					$.ajax({
+						url: data.ip +"ncq/xzbz",
+						type: "post",
+						data:{banname:vm.xzbz.banname,parentid:vm.xzbz.parentid},
+						dataType: "json",
+						success:function(result) {
+							console.log(result);
+							if(result>0){
+								alert("新增成功");
+								for (var i in vm.xzbz) {
+					        	vm.xzbz[i] = "";
+					        	}
+							}else{
+								alert("新增失败");
+								for (var i in vm.xzbz) {
+					        	vm.xzbz[i] = "";
+					        	}
+							}
+							vm.loading();
+						},
+						error: function(result) {
+							console.log(result);
+						}	
+					});
+				}
 			}
 		}
 	});

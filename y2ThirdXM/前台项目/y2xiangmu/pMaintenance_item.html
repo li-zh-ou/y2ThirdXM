@@ -48,7 +48,7 @@
             	作者：offline
             	时间：2019-12-31
             	描述：独立区域中间
-            -->
+           -->
 				<div style="width: 100%;>	
 					<div>
 					  <div class="container-fluid">
@@ -108,6 +108,8 @@
 												    <select name="" class="form-control" v-model="dataa.bei1">
 												    	<option value="1">大车</option>
 												    	<option value="2">大啊</option>
+												    	<option value="3">车型</option>
+												    	<option value="4">车</option>
 												    </select>
 												</div>
 						        			</th>
@@ -184,9 +186,11 @@
 						        			<th>
 						        				<div class="form-group">
 												    <label for="exampleInputEmail2">项目类别</label>
-												    <select name="" class="form-control" v-model="dataa1.pname">
+												    <select name="" class="form-control" v-model="dataa1.bei1">
 												    	<option value="1">大车</option>
 												    	<option value="2">大啊</option>
+												    	<option value="3">车型</option>
+												    	<option value="4">车</option>
 												    </select>
 												</div>
 						        			</th>
@@ -267,7 +271,7 @@
 					<div class="col-md-2" style="border: 1px solid #255625; height: 100%;">
 						<ul id="treeDemo" class="ztree" name="zhi"></ul>
 					</div>
-					<div class="col-md-10" id="ctx" style="border: 1px solid #262626; overflow-y: scroll; height: 80%;">
+					<div class="col-md-10" id="ctx" style="border: none; overflow-y: scroll; height: 80%;">
 						<table class="table table-bordered">
 							<tr style="background-color: #31B0D5;">
 								<th style="width: 4%;">&nbsp;</th>
@@ -341,28 +345,29 @@
 					}
 				},
 				methods:{
+					//zjia
 					inse_baoc1:function(){
-						dataa=JSON.stringify(vm1.dataa);
-						alert("asddas"+dataa);
+						dataa1=JSON.stringify(vm1.dataa);
 						$.ajax({
 							url:"http://localhost:8080/maintenance3",
 							contentType:"application/json;charset=utf-8",
 							dataType:"json",
-							data:dataa,
+							data:dataa1,
 							type:"post",
 							success:function(result){
-								queryTree();
 								if(result>0){
 									alert("恭喜！成功");
+									queryTree();
+									$("#myModal1").modal('hide');
 								}else{
 									alert("主人！出问题了")
 								}
 							}
 						});
 					},
+					//修改
 					xgbaoc1:function(){
 						dataa12=JSON.stringify(vm1.dataa1);
-							alert("asddas"+dataa12);
 							$.ajax({
 								url:"http://localhost:8080/maintenance5",
 								contentType:"application/json;charset=utf-8",
@@ -373,6 +378,8 @@
 									queryTree();
 									if(result>0){
 										alert("恭喜！成功");
+										queryTree();
+										$("#myModal2").modal('hide');
 									}else{
 										alert("主人！出问题了")
 									}
@@ -405,7 +412,8 @@
 							},
 							type:"post",
 							success:function(result){
-								console.log(result);
+								//result=JSON.stringify(result);
+								//alert(result);
 								vm1.dataa1=result;
 								vm2.sc=result;
 							}

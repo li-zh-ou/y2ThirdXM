@@ -13,24 +13,44 @@
 				display: flex;
 			}
 			
+			#a{
+				color:#EA0000;
+			}
+			
+			#bt{
+				background:#4b6cb7;
+			}
+			
+			#c{
+				background:#bdc3c7;
+			}
+			
+			#ctx{
+				background:#f5f5f5;
+			}
+			
+			#ctx1{
+				background:#ffffff;
+			}
+			
 		</style>
 	</head>
 	<body>
 		<div id="ctx">
 			
-				<div class="row" style="border: 1px solid #E6E6E6;">
+				<div id="bt" class="row" style="border: 1px solid #E6E6E6;">
 						<h3 class="col-md-11">技工星级</h3>
 					<div class="col-md-1" id="tbss">
 						<button type="button" class="btn btn-default">关闭</button>
 					</div>
 				</div>
 				
-			<div class="row"> 
+			<div class="row" style="height:51px;"> 
 				
-				<ol class="breadcrumb">
-					<li v-perms="'addxingji'"><span class="iconfont" style="vertical-align: middle">&#xe62c;</span><a href="#" style="vertical-align: middle" @click="insert">新增星级</a></li>
-				  	<li v-perms="'deletexingji'"><span class="iconfont" style="vertical-align: middle">&#xe614;</span><a href="#" style="vertical-align: middle" @click="del(jgxjxz.jistarid)">删除星级</a></li>
-				  	<li v-perms="'updatexingji'"><span class="iconfont" style="vertical-align: middle">&#xe612;</span><a href="#" style="vertical-align: middle" @click="up">修改星级</a></li>
+				<ol class="breadcrumb" style="width: 1199px;margin-left: 15px;">
+					<li v-perms="'addxingji'"><span class="iconfont" style="vertical-align: middle; color:#0071E7; font-size:22px;">&#xe62c;</span><a href="#" style="vertical-align: middle" @click="insert">新增星级</a></li>
+				  	<li v-perms="'deletexingji'"><span class="iconfont" style="vertical-align: middle; color:#0071E7; font-size:16px;">&#xe614;</span><a href="#" style="vertical-align: middle" @click="del(jgxjxz.jistarid)">删除星级</a></li>
+				  	<li v-perms="'updatexingji'"><span class="iconfont" style="vertical-align: middle; color:#0071E7; font-size:25px;">&#xe612;</span><a href="#" style="vertical-align: middle" @click="up">修改星级</a></li>
 				</ol>
 				
 			</div>
@@ -42,14 +62,14 @@
 							<div class="input-group">
 												
 								<span class="input-group-addon" >等级编号:</span>
-								<input v-model="jgxjxz.jistarid" type="text" class="form-control" aria-describedby="basic-addon3" disabled="true" style="vertical-align: middle ; width:160px; height:33px;">
+								<input v-model="jgxjxz.jistarid" placeholder="无需设置" type="text" class="form-control" aria-describedby="basic-addon3" disabled="true" style="vertical-align: middle ; width:160px; height:33px;">
 										
 							</div>
 						</td>					
 						<td class="col-md-2">
 							<div class="input-group">
 										
-								<span class="input-group-addon" >等级名称:</span>
+								<span id="a" class="input-group-addon" >等级名称:</span>
 								<input v-model="jgxjxz.starname" type="text" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
 									
 							</div>
@@ -57,7 +77,7 @@
 						<td class="col-md-2">
 							<div class="input-group">
 										
-								<span class="input-group-addon" >提成权重:</span>
+								<span id="a" class="input-group-addon" >提成权重:</span>
 								<input v-model="jgxjxz.ticheng" type="text" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
 									
 							</div>
@@ -71,11 +91,11 @@
 
 			
 			
-			<div class="row" id="tbss" style=" border: 1px solid #E6E6E6;height:470px;">
+			<div class="row" id="tbss" style=" border: 1px solid #E6E6E6;height:390px;">
 				
-				<table class="table table-hover table-bordered" style="width: 830px;" v-if="$perms('findxingji')">
+				<table id="ctx1" class="table table-hover table-bordered" style="width: 830px;" v-if="$perms('findxingji')">
 					
-					<tr>
+					<tr id="c" >
 						<td>等级编码</td>
 						<td>等级名称</td>
 						<td>提成权重</td>
@@ -126,23 +146,43 @@
 				});
 			},
 			insert:function(){//新增技工星级
-				$.ajax({
-					url:data.ip +"ncq/insertjgxj",
-					type:"post",
-					data:vm.jgxjxz,
-					dataType:"text",
-					success:function(result){
-						console.log(result);
-						if(result>0){
-							alert("新增成功");
-						}else{
-							alert("新增失败");
+				if(vm.jgxjxz.starname==null){
+					alert("未输入星级名称");
+					return;
+				}else if(vm.jgxjxz.starname==""){	
+					alert("未输入星级名称");
+					return;
+				}else if(vm.jgxjxz.ticheng==null){
+					alert("未输入提成权重");
+					return;
+				}else if(vm.jgxjxz.ticheng==""){	
+					alert("未输入提成权重");
+					return;
+				}else{
+					$.ajax({
+						url:data.ip +"ncq/insertjgxj",
+						type:"post",
+						data:vm.jgxjxz,
+						dataType:"text",
+						success:function(result){
+							console.log(result);
+							if(result>0){
+								alert("新增成功");
+								for (var i in vm.jgxjxz) {
+						        	vm.jgxjxz[i] = "";
+						        }
+							}else{
+								alert("新增失败");
+								for (var i in vm.jgxjxz) {
+						        	vm.jgxjxz[i] = "";
+						        }
+							}
+							vm.loading();
+						},error:function(result){
+							console.log(result);
 						}
-						vm.loading();
-					},error:function(result){
-						console.log(result);
-					}
-				});
+					});
+				}
 			},
 			tableDblclick:function(item){//查询星级放入上方text框
 				vm.jgxjxz.jistarid=item.jistarid;
@@ -153,45 +193,73 @@
 				console.log(vm.jgxjxz.ticheng);
 			},
 			up:function(){
+				if(vm.jgxjxz.jistarid==null){
+					alert("请先选择一个星级");
+					return;
+				}else if(vm.jgxjxz.jistarid==""){	
+					alert("请先选择一个星级");
+					return;
+				}else{
 				console.log(vm.jgxjxz.jistarid);
 				console.log(vm.jgxjxz.starname);
-				$.ajax({//修改技工星级
-					url:data.ip +"ncq/upjgxj",
-					type:"post",
-					data:{jistarid:vm.jgxjxz.jistarid,starname:vm.jgxjxz.starname,ticheng:vm.jgxjxz.ticheng},
-					dataType:"text",
-					success:function(result){
-						console.log(result);
-						if(result>0){
-							alert("修改成功");
-						}else{
-							alert("修改失败");
+					$.ajax({//修改技工星级
+						url:data.ip +"ncq/upjgxj",
+						type:"post",
+						data:{jistarid:vm.jgxjxz.jistarid,starname:vm.jgxjxz.starname,ticheng:vm.jgxjxz.ticheng},
+						dataType:"text",
+						success:function(result){
+							console.log(result);
+							if(result>0){
+								alert("修改成功");
+								for (var i in vm.jgxjxz) {
+						        	vm.jgxjxz[i] = "";
+						        }
+							}else{
+								alert("修改失败");
+								for (var i in vm.jgxjxz) {
+						        	vm.jgxjxz[i] = "";
+						        }
+							}
+							vm.loading();
+						},error:function(result){
+							console.log(result);
 						}
-						vm.loading();
-					},error:function(result){
-						console.log(result);
-					}
-				});
+					});
+				}
 			},
 			del:function(jistarid){//删除技工星级
-				$.ajax({
-					url:data.ip +"ncq/deljgxj",
-					type:"post",
-					data:{jistarid:jistarid},
-					dataType:"text",
-					success:function(result){
-						console.log(result);
-						console.log(result);
-						if(result>0){
-							alert("删除成功");
-						}else{
-							alert("删除失败");
+					if(vm.jgxjxz.jistarid==null){
+					alert("请先选择一个星级");
+					return;
+				}else if(vm.jgxjxz.jistarid==""){	
+					alert("请先选择一个星级");
+					return;
+				}else{
+					$.ajax({
+						url:data.ip +"ncq/deljgxj",
+						type:"post",
+						data:{jistarid:jistarid},
+						dataType:"text",
+						success:function(result){
+							console.log(result);
+							console.log(result);
+							if(result>0){
+								alert("删除成功");
+								for (var i in vm.jgxjxz) {
+						        	vm.jgxjxz[i] = "";
+						        }
+							}else{
+								alert("删除失败");
+								for (var i in vm.jgxjxz) {
+						        	vm.jgxjxz[i] = "";
+						        }
+							}
+							vm.loading();
+						},error:function(result){
+							console.log(result);
 						}
-						vm.loading();
-					},error:function(result){
-						console.log(result);
-					}
-				});
+					});
+				}
 			}
 		}
 	});

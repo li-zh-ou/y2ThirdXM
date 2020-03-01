@@ -137,7 +137,7 @@
 					};
 				},
 				created:function(){
-					this.engine_brandSelect();
+					engine_brandSelect();
 				},
 				methods:{
 					byid:function(item){
@@ -150,22 +150,12 @@
 							},
 							type:"post",
 							success:function(result){
-								alert("数据："+result)
 								console.log(result);
 								vm.inse=result;
 							}
 						});
 					},
-					engine_brandSelect:function(){
-						$.ajax({
-							url:"http://localhost:8080/student_Engine1/enginSe1",
-							dataType:"json",
-							type:"get",
-							success:function(result){
-								vm.page=result;
-							}
-						});
-					},
+					
 					engDelecte1:function(){
 						if(confirm("你确定要删除"+vm.jihe.fabankid+"么?"))
 						$.ajax({
@@ -176,8 +166,8 @@
 							url:"http://localhost:8080/student_Engine1/enginDe1",
 							success:function(result){
 								if(result>0){
-									vm.page();
 									alert("恭喜！删除成功");
+									engine_brandSelect();
 								}else{
 									alert("主人！出问题了")
 								}
@@ -187,9 +177,7 @@
 						});
 					},
 					engInsert1:function(){
-						alert("新增:"+vm.inse.faname);
 						inse=JSON.stringify(vm.inse);
-						alert(inse+":asd");
 						$.ajax({
 							url:"http://localhost:8080/student_Engine1/enginIn1",
 							contentType:"application/json;charset=utf-8",
@@ -197,9 +185,9 @@
 							data:inse,
 							type:"post",
 							success:function(result){
-								alert("asdasd");
 								if(result>0){
 									alert("恭喜！成功");
+									engine_brandSelect();
 								}else{
 									alert("主人！出问题了")
 								}
@@ -208,7 +196,6 @@
 					},
 					engUpdate1:function(){
 						inse=JSON.stringify(vm.inse);
-						alert(":"+inse);
 						$.ajax({
 							url:"http://localhost:8080/student_Engine1/enginUp1",
 							contentType:"application/json;charset=utf-8",
@@ -218,6 +205,7 @@
 							success:function(result){
 								if (result>0) {
 									alert("恭喜")
+									engine_brandSelect();
 								} else{
 									alert("再来")
 								}
@@ -226,6 +214,17 @@
 					}
 				}
 			});
+			
+			function engine_brandSelect(){
+						$.ajax({
+							url:"http://localhost:8080/student_Engine1/enginSe1",
+							dataType:"json",
+							type:"get",
+							success:function(result){
+								vm.page=result;
+							}
+						});
+					}
 		</script>
 	</body>
 </html>

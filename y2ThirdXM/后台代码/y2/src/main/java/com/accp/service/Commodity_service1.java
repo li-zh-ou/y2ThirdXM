@@ -42,4 +42,15 @@ public class Commodity_service1 {
 	public int queryGooDelete1(Integer Goodsid) {
 		return goodsMapper.deleteByPrimaryKey(Goodsid);
 	}
+	
+	//增加
+	public int queryGooInsert1(Goods goods) {
+		return goodsMapper.insert(goods);
+	}
+	
+	//修改
+	public int queryGooUpdate1(Goods goods) {
+		return goodsMapper.updateByPrimaryKey(goods);
+	}
+	
 }

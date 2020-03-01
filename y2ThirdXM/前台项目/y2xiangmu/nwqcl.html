@@ -22,6 +22,26 @@
 		   	.guan{
 			    font-size: 35px;
 			}
+			
+			#a{
+				 color:#EA0000;
+			}
+			
+			#bt{
+				background:#4b6cb7;
+			}
+			
+			#c{
+				background:#bdc3c7;
+			}
+			
+			#ctx{
+				background:#f5f5f5;
+			}
+			
+			#ctx1{
+				background:#ffffff;
+			}
 		
 		</style>
 	</head>
@@ -57,19 +77,19 @@
 		
 
 		<div>
-			<div  class="row" style="border: 1px solid #E6E6E6;" >
+			<div id="bt" class="row" style="border: 1px solid #E6E6E6;" >
 					<h3 class="col-md-11">外勤车辆</h3>
 					<div class="col-md-1" id="tbss">
 						<button type="button" class="btn btn-default" >关闭</button>
 					</div>
 			</div>
 			
-			<div>
+			<div style="height:51px;">
 
 				<ol class="breadcrumb">
-					<li v-perms="'addwaiqin'"><span class="iconfont" style="vertical-align: middle">&#xe62c;</span><a href="#" style="vertical-align: middle" @click="insert">增加车辆</a></li>
-				  	<li v-perms="'deletewaiqin'"><span class="iconfont" style="vertical-align: middle">&#xe614;</span><a href="#" style="vertical-align: middle" @click="del(hqbmxz.chepai)">删除车辆</a></li>
-				  	<li v-perms="'updatewaiqin'"><span class="iconfont" style="vertical-align: middle">&#xe612;</span><a href="#" style="vertical-align: middle" @click="up">修改车辆</a></li>
+					<li v-perms="'addwaiqin'"><span class="iconfont" style="vertical-align: middle; color:#0071E7; font-size:22px;">&#xe62c;</span><a href="#" style="vertical-align: middle" @click="insert">增加车辆</a></li>
+				  	<li v-perms="'deletewaiqin'"><span class="iconfont" style="vertical-align: middle; color:#0071E7; font-size:16px;">&#xe614;</span><a href="#" style="vertical-align: middle" @click="del(hqbmxz.chepai)">删除车辆</a></li>
+				  	<li v-perms="'updatewaiqin'"><span class="iconfont" style="vertical-align: middle; color:#0071E7; font-size:25px;">&#xe612;</span><a href="#" style="vertical-align: middle" @click="up">修改车辆</a></li>
 				</ol>
 				
 			</div>
@@ -81,7 +101,7 @@
 						<td class="col-md-2">
 							<div class="input-group">
 												
-								<span class="input-group-addon" >车牌号码:</span>
+								<span id="a" class="input-group-addon" >车牌号码:</span>
 								<input v-model="hqbmxz.chepai" type="text" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
 										
 							</div>
@@ -89,7 +109,7 @@
 						<td class="col-md-2">
 							<div class="input-group">
 										
-								<span class="input-group-addon" >车辆品牌:</span>
+								<span id="a" class="input-group-addon" >车辆品牌:</span>
 								<input v-model="hqbmxz.carbank" type="text" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
 									
 							</div>
@@ -97,7 +117,7 @@
 						<td class="col-md-2">
 							<div class="input-group">
 										
-								<span class="input-group-addon" >车辆类型:</span>
+								<span id="a" class="input-group-addon" >车辆类型:</span>
 								<input v-model="hqbmxz.chexing" type="text" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
 									
 							</div>
@@ -112,7 +132,7 @@
 						<td class="col-md-2">
 							<div class="input-group">
 							
-								<span class="input-group-addon" >当前里程:</span>
+								<span id="a" class="input-group-addon" >当前里程:</span>
 								<input v-model="hqbmxz.nowli" type="text" class="form-control" aria-describedby="basic-addon3" style="vertical-align: middle ; width:160px; height:33px;">
 							
 							</div>
@@ -120,7 +140,7 @@
 						<td class="col-md-2">
 							<div class="input-group">
 							
-								<span class="input-group-addon" >选择班组:</span>
+								<span id="a" class="input-group-addon" >选择班组:</span>
 								<input v-model="hqbmxz.banid" type="text" class="form-control" aria-describedby="basic-addon3" disabled="true" style="vertical-align: middle ; width:160px; height:33px;">
 							
 							</div>
@@ -138,15 +158,15 @@
 				
 			</div>
 			
-			<div class="row" id="tbss" style=" border: 1px solid #E6E6E6;height:470px;">
-				<table class="table table-hover table-bordered" style="width: 800px;" v-if="$perms('findwaiqin')">
+			<div class="row" id="tbss" style=" border: 1px solid #E6E6E6;height:360px;">
+				<table id="ctx1" class="table table-hover table-bordered" style="width: 800px;" v-if="$perms('findwaiqin')">
 					
-					<tr>
-						<td>车牌号码</td>
-						<td>车辆品牌</td>
-						<td>车辆类型</td>
-						<td>当前里程</td>
-						<td>归属班组</td>
+					<tr id="c">
+						<th>车牌号码</th>
+						<th>车辆品牌</th>
+						<th>车辆类型</th>
+						<th>当前里程</th>
+						<th>归属班组</th>
 							
 					</tr>			
 					
@@ -216,23 +236,61 @@
 				});
 			},
 			insert:function(){//新增外勤车辆
-				$.ajax({
-					url:data.ip +"ncq/insertwcql",
-					type:"post",
-					data:vm.hqbmxz,
-					dataType:"text",
-					success:function(result){
-						console.log(result);
-						if(result>0){
-							alert("新增成功");
-						}else{
-							alert("新增失败");
+				if(vm.hqbmxz.chepai==null){
+					alert("未输入车牌号码");
+					return;
+				}else if(vm.hqbmxz.chepai==""){	
+					alert("未输入车牌号码");
+					return;
+				}else if(vm.hqbmxz.carbank==null){
+					alert("未输入车辆品牌");
+					return;
+				}else if(vm.hqbmxz.carbank==""){	
+					alert("未输入车辆品牌");
+					return;
+				}else if(vm.hqbmxz.chexing==null){
+					alert("未输入车辆类型");
+					return;
+				}else if(vm.hqbmxz.chexing==""){	
+					alert("未输入车辆类型");
+					return;
+				}else if(vm.hqbmxz.nowli==null){
+					alert("未输入当前里程");
+					return;
+				}else if(vm.hqbmxz.nowli==""){	
+					alert("未输入当前里程");
+					return;
+				}else if(vm.hqbmxz.banid==null){
+					alert("未选择班组");
+					return;
+				}else if(vm.hqbmxz.banid==""){	
+					alert("未选择班组");
+					return;
+				}else{
+					$.ajax({
+						url:data.ip +"ncq/insertwcql",
+						type:"post",
+						data:vm.hqbmxz,
+						dataType:"text",
+						success:function(result){
+							console.log(result);
+							if(result>0){
+								alert("新增成功");
+								for (var i in vm.hqbmxz) {
+						        	vm.hqbmxz[i] = "";
+						        }
+							}else{
+								alert("新增失败或着有重复车辆");
+								for (var i in vm.hqbmxz) {
+						        	vm.hqbmxz[i] = "";
+						        }
+							}
+							vm.loading();
+						},error:function(result){
+							console.log(result);
 						}
-						vm.loading();
-					},error:function(result){
-						console.log(result);
-					}
-				});
+					});
+				}
 			},
 			tableDblclick:function(item){//外勤车辆放入上方text框
 				vm.hqbmxz.chepai=item.chepai;
@@ -257,49 +315,78 @@
 				console.log(vm.hqbmxz2.banid);
 			},
 			up:function(){//修改外勤车辆
-				console.log(vm.hqbmxz.chepai);
-				console.log(vm.hqbmxz.carbank);
-				console.log(vm.hqbmxz.chexing);
-				console.log(vm.hqbmxz.nowli);
-				console.log(vm.hqbmxz.banid);
-				console.log(vm.hqbmxz2.chepai);
-				$.ajax({
-					url:data.ip +"ncq/upwqcl",
-					type:"post",
-					data:{chepai:vm.hqbmxz.chepai,carbank:vm.hqbmxz.carbank,chexing:vm.hqbmxz.chexing,nowli:vm.hqbmxz.nowli,banid:vm.hqbmxz.banid,ids:vm.hqbmxz2.chepai},
-					dataType:"text",
-					success:function(result){
-						console.log(result);
-						if(result>0){
-							alert("修改成功");
-						}else{
-							alert("修改失败");
+				if(vm.hqbmxz2.chepai==null){
+					alert("请先选择一部车辆");
+					return;
+				}else if(vm.hqbmxz2.chepai==""){	
+					alert("请先选择一部车辆");
+					return;
+				}else{
+					console.log(vm.hqbmxz.chepai);
+					console.log(vm.hqbmxz.carbank);
+					console.log(vm.hqbmxz.chexing);
+					console.log(vm.hqbmxz.nowli);
+					console.log(vm.hqbmxz.banid);
+					console.log(vm.hqbmxz2.chepai);
+					$.ajax({
+						url:data.ip +"ncq/upwqcl",
+						type:"post",
+						data:{chepai:vm.hqbmxz.chepai,carbank:vm.hqbmxz.carbank,chexing:vm.hqbmxz.chexing,nowli:vm.hqbmxz.nowli,banid:vm.hqbmxz.banid,ids:vm.hqbmxz2.chepai},
+						dataType:"text",
+						success:function(result){
+							console.log(result);
+							if(result>0){
+								alert("修改成功");
+								vm.hqbmxz2.chepai=vm.hqbmxz.chepai;
+								for (var i in vm.hqbmxz) {
+						        	vm.hqbmxz[i] = "";
+						        }
+							}else{
+								alert("修改失败");
+								for (var i in vm.hqbmxz) {
+						        	vm.hqbmxz[i] = "";
+						        }
+							}
+							vm.loading();
+						},error:function(result){
+							console.log(result);
 						}
-						vm.loading();
-					},error:function(result){
-						console.log(result);
-					}
-				});
+					});
+				}
 			},
 			del:function(chepai){//删除外勤车辆
-				$.ajax({
-					url:data.ip +"ncq/delwqcl",
-					type:"post",
-					data:{chepai:chepai},
-					dataType:"text",
-					success:function(result){
-						console.log(result);
-						console.log(result);
-						if(result>0){
-							alert("删除成功");
-						}else{
-							alert("删除失败");
+				if(vm.hqbmxz.chepai==null){
+					alert("请先选择一部车辆");
+					return;
+				}else if(vm.hqbmxz.chepai==""){	
+					alert("请先选择一部车辆");
+					return;
+				}else{
+					$.ajax({
+						url:data.ip +"ncq/delwqcl",
+						type:"post",
+						data:{chepai:chepai},
+						dataType:"text",
+						success:function(result){
+							console.log(result);
+							console.log(result);
+							if(result>0){
+								alert("删除成功");
+								for (var i in vm.hqbmxz) {
+						        	vm.hqbmxz[i] = "";
+						        }
+							}else{
+								alert("删除失败");
+								for (var i in vm.hqbmxz) {
+						        	vm.hqbmxz[i] = "";
+						        }
+							}
+							vm.loading();
+						},error:function(result){
+							console.log(result);
 						}
-						vm.loading();
-					},error:function(result){
-						console.log(result);
-					}
-				});
+					});
+				}
 			}
 		}
 	});

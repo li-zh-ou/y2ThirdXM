@@ -13,11 +13,27 @@
 				display: flex;
 			}
 			
+			#bt{
+				background:#4b6cb7;
+			}
+			
+			#c{
+				background:#bdc3c7;
+			}
+			
+			#ctx{
+				background:#f5f5f5;
+			}
+			
+			#ctx1{
+				background:#ffffff;
+			}
 		</style>
 	</head>
 	<body>
+		
 		<div id="ctx">
-			<div class="row" style="border: 1px solid #E6E6E6;">
+			<div id="bt" class="row" style="border: 1px solid #E6E6E6;">
 				<h3 class="col-md-2">通讯名录</h3>
 				<div class="col-md-7"></div>
 				<div class="col-md-3" id="tbss">
@@ -27,26 +43,28 @@
 				</div>
 			</div>
 			
-			<div>
-				<ol class="breadcrumb">
-				  <li v-perms="'addtongxun'"><span class="iconfont" style="vertical-align: middle">&#xe6b6;</span><a href="#" style="vertical-align: middle" @click="uptxml">保存</a></li>
+			<div style="height:51px;">
+				
+				<ol class="breadcrumb" style="height:51px;">
+				 	 <li v-perms="'addtongxun'"><span class="iconfont" style="vertical-align: middle; color:#0071E7; font-size:16px;">&#xe6b6;</span><a href="#" style="vertical-align: middle" @click="uptxml">保存</a></li>
 				</ol>
+			
 			</div>
 			
 			<div class="row">
 				
-				<div class="row" id="tbss" style=" border: 1px solid #E6E6E6;height:500px;">
+				<div class="row" id="tbss" style=" border: 1px solid #E6E6E6;height:430px;">
 					 
-				<table class="table table-hover table-bordered" style="width:1000px;" v-if="$perms('findtongxun')">
+				<table id="ctx1" class="table table-hover table-bordered" style="width:1000px;margin-left: 15px;" v-if="$perms('findtongxun')">
 					 
-						<tr>
-							<td>部门</td>
-							<td>员工编号</td>
-							<td>姓名</td>
-							<td>分机/短号</td>
-							<td>直播</td>
-							<td>手机</td>
-							<td>邮箱</td>
+						<tr id="c">
+							<th>部门</th>
+							<th>员工编号</th>
+							<th>姓名</th>
+							<th>分机/短号</th>
+							<th>直播<th>
+							<th>手机</th>
+							<th>邮箱</th>
 						</tr>
 						
 						<tr v-for="item in txmlxq">
@@ -107,9 +125,9 @@
 					success:function(result){
 						console.log(result);
 						if(result>0){
-							alert("修改成功");
+							alert("保存成功");
 						}else{
-							alert("修改失败");
+							alert("保存失败");
 						}
 					},error:function(result){
 						console.log(result);
