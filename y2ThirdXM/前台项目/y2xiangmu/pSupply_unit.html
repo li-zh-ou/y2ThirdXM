@@ -47,7 +47,6 @@
 						        <li><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true" data-toggle="modal" data-target="#myModal5" v-perms="'updategonghuo'">修改</a></span></li>
 						        <li><a href="#"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true" @click="supply_sc1" v-perms="'deletegonghuo'">删除</a></span></li>
 						        <li><a href="#"><span class="glyphicon glyphicon-level-up" aria-hidden="true" data-toggle="modal" data-target="#myModal11">联系人</a></span></li>
-						        <li><a href="#"><span class="glyphicon glyphicon-level-up" aria-hidden="true" data-toggle="modal" data-target="#myModal12">字段设置</a></span></li>
 						      </ul>
 						    </div>
 						  </div>
@@ -70,7 +69,7 @@
 								        	<table class="table table-hover">
 								        		<tr>
 								        			<th>
-								        				广商代码<input type="text" v-model="andt1.huoshangno" class="form-control" placeholder="询" style="width: 100%;">
+								        				广商代码<input type="text" v-model="andt1.huoshangno" style="color: #AC2925;" class="form-control" placeholder="询" style="width: 100%;">
 								        			</th>
 								        			<th>
 								        				广商名称<input type="text" v-model="andt1.shangname" class="form-control" placeholder="询" style="width: 100%;">
@@ -519,111 +518,34 @@
 								    	<div class="modal-content">
 								      		<div class="modal-header">
 								        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-								        		<h4 class="modal-title" id="myModalLabel">默默联系人</h4>
+								        		<h4 class="modal-title" id="myModalLabel">联系人</h4>
 								      		</div>
 								      		<div class="modal-body">
 								        		<nav class="navbar navbar-default">
 												  <div class="container-fluid">
 												    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 												      <ul class="nav navbar-nav navbar-right">
-<<<<<<< HEAD
-												        <li><a href="#" v-perms="'addlianxiren'"><span class="glyphicon glyphicon-align-right" aria-hidden="true" ></span>增加</a></li>
-												        <li><a href="#" v-perms="'deletelianxiren'"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true" ></span>删除</a></li>
-												        <li><a href="#" v-perms="'updatelianxiren'"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true" ></span>保存</a></li>
-=======
-												        <li><a href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>删除</a></li>
-												        <li><a href="#"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存</a></li>
->>>>>>> refs/heads/pansipeng
+												        <li><a href="#" @click="lxrxgbc1"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存</a></li>
 												      </ul>
 												      <table class="table table-hover">
 												      	<tr>
-												      		<th>联系人<input type="text" v-model="andt.lianxi" class="form-control" placeholder="询" style="width: 100%;"></th>
-												      		<th>手机<input type="text" v-model="andt.shouji" class="form-control" placeholder="询" style="width: 100%;"></th>
+												      		<th style="margin-left: 300px;">编号<input type="text" disabled v-model="andt2.huoshangno" class="form-control" placeholder="询" style="width: 100%;"></th>
 												      	</tr>
 												      	<tr>
-												      		<th>电话<input type="text" v-model="andt.dianhua" class="form-control" placeholder="询" style="width: 100%;"></th>
-												      		<th>Email<input type="text" v-model="andt.email" class="form-control" placeholder="询" style="width: 100%;"></th>
+												      		<th>联系人<input type="text" v-model="andt2.lianxi" class="form-control" placeholder="询" style="width: 100%;"></th>
+												      		<th>手机<input type="text" v-model="andt2.shouji" class="form-control" placeholder="询" style="width: 100%;"></th>
+												      	</tr>
+												      	<tr>
+												      		<th>电话<input type="text" v-model="andt2.dianhua" class="form-control" placeholder="询" style="width: 100%;"></th>
+												      		<th>Email<input type="text" v-model="andt2.email" class="form-control" placeholder="询" style="width: 100%;"></th>
 												      	</tr>
 												      </table>
 												    </div>
 												  </div>
 												</nav>
-<<<<<<< HEAD
-												<div class="" style="height: 200px; overflow-y: scroll;">
-													<table class="table table-hover" v-if="$perms('findlianxiren')">
-														<tr style="background-color: #31B0D5;">
-															<th>&nbsp;</th>
-															<th>联系人</th>
-															<th>职位</th>
-															<th>手机</th>
-															<th>电话</th>
-															<th>Emali</th>
-														</tr>
-														<tr>
-															<th>&nbsp;</th>
-															<th>联系人</th>
-															<th>职位</th>
-															<th>手机</th>
-															<th>电话</th>
-															<th>Emali</th>
-														</tr>
-													</table>
-													<div v-else class="alert alert-danger" role="alert">权限不足</div>
-												</div>
-=======
->>>>>>> refs/heads/pansipeng
 								      		</div>
 								      		<div class="modal-footer">
 								        		<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-								      		</div>
-								    	</div>
-								  	</div>
-								</div>
-								
-								<!--字段设置-->
-								<div class="modal fade" id="myModal12" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-								  	<div class="modal-dialog" role="document">
-								    	<div class="modal-content">
-								      		<div class="modal-header">
-								        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-								        		<h4 class="modal-title">字段设置</h4>
-								      		</div>
-								      		<div class="modal-body">
-								       			<nav class="navbar navbar-default">
-												  	<div class="container-fluid">
-												    	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-												      		<ul class="nav navbar-nav navbar-right">
-												        		<li><a href="#">全部选择</a></li>
-												        		<li><a href="#">全部取消</a></li>
-												      		</ul>
-												    	</div>
-												    	<div class="" style="height: 200px; overflow-y: scroll;">
-															<table class="table table-hover">
-																<tr style="background-color: #31B0D5;">
-																	<th>&nbsp;</th>
-																	<th><input type="checkbox"></th>
-																	<th>联系人</th>
-																	<th>职位</th>
-																	<th>手机</th>
-																	<th>电话</th>
-																	<th>Emali</th>
-																</tr>
-																<tr>
-																	<th>&nbsp;</th>
-																	<th><input type="checkbox"></th>
-																	<th>联系人</th>
-																	<th>职位</th>
-																	<th>手机</th>
-																	<th>电话</th>
-																	<th>Emali</th>
-																</tr>
-															</table>
-														</div>
-												  	</div>
-												</nav>
-								      		</div>
-								      		<div class="modal-footer">
-								        		<button type="button" class="btn btn-primary">确定</button>
 								      		</div>
 								    	</div>
 								  	</div>
@@ -721,7 +643,8 @@
 				data(){
 					return{
 						andt:[],
-						andt1:{}
+						andt1:{},
+						andt2:{}
 					};
 				},
 				methods:{
@@ -740,6 +663,25 @@
 								}
 							}
 						});
+					},
+					lxrxgbc1:function(){
+						andt=JSON.stringify(vm1.andt2);
+						$.ajax({
+							url:"http://localhost:8080/supplyunit7",
+							contentType:"application/json;charset=utf-8",
+							dataType:"json",
+							type:"post",
+							data:andt,
+							success:function(result){
+								if (result>=1) {
+									alert("成功")
+									$("#myModal5").modal('hide');
+								} else{
+									alert("问题")
+								}
+							}
+						});
+						$("#myModal11").modal('hide');
 					},
 					//右修
 					supply_ybxg1:function(){
@@ -806,6 +748,7 @@
 							success:function(result){
 								console.log(result);
 								vm1.andt=result;
+								vm1.andt2=result;
 							}
 						});
 					}

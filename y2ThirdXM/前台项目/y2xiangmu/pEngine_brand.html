@@ -44,22 +44,16 @@
 							</div>
 						</div>
 						<div class="col-md-3">
-							<button @click="engInsert1">
-								<span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
-								增加
-							</button>
-							<button @click="engDelecte1">
-								<span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
-								刪除
-							</button>
-							<button @click="engUpdate1">
-								<span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
-								保存
-							</button>
-							<button>
-								<span class="glyphicon glyphicon-share" aria-hidden="true"></span>
-								导出
-							</button>
+							<div class="container-fluid">
+							    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="background-color:beige">
+							      <ul class="nav navbar-nav navbar-right" id="wxxm_tu_1">
+							        <li><a href="#"><span class="glyphicon glyphicon-tasks" aria-hidden="true"data-toggle="modal" @click="engInsert1">增加</a></span></li>
+							        <li><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"data-toggle="modal" data-target="#myModal2">修改</a></span></li>
+							        <li><a href="#" @click="engDelecte1"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true">删除</a></span></li>
+							        <li><a href="#" @click="engUpdate1"><span class="glyphicon glyphicon-folder-open " aria-hidden="true">保存</a></span></li>
+							      </ul>
+							    </div>
+							</div>
 						</div>
 					</div>
 					<div id="" class="row nav-tabs bg-success" style="background-color: #F7F7F7; border: none; margin-left: 0px; margin-right: 0px;">

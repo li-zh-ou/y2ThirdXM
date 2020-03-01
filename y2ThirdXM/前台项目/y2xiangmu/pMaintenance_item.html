@@ -57,7 +57,6 @@
 					        <li><a href="#"><span class="glyphicon glyphicon-tasks" aria-hidden="true"data-toggle="modal" data-target="#myModal1">增加</a></span></li>
 					        <li><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"data-toggle="modal" data-target="#myModal2">修改</a></span></li>
 					        <li><a href="#" @click="sc1"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true">删除</a></span></li>
-					        <li><a href="#"><span class="glyphicon glyphicon-th" aria-hidden="true"data-toggle="modal" data-target="#myModal3">调价</a></span></li>
 					        <li><a href="#"><span class="glyphicon glyphicon-folder-open " aria-hidden="true">保存</a></span></li>
 					        <li><a href="#"><span class="glyphicon glyphicon-level-up" aria-hidden="true">导出</a></span></li>
 					      </ul>
@@ -84,7 +83,7 @@
 						        		<tr>
 						        			<th>
 						        				<div class="form-group">
-												    <label for="exampleInputName2">项目编码</label>
+												    <label for="exampleInputName2"  style="color: #AC2925;">项目编码</label>
 												    <input type="text" v-model="dataa.xiangmuno" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
 												</div>
 						        			</th>
@@ -137,6 +136,12 @@
 						        				<div class="form-group">
 												    <label for="exampleInputName2">协议价</label>
 												    <input type="text" v-model="dataa.xieprice" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+												</div>
+						        			</th>
+						        			<th>
+						        				<div class="form-group">
+												    <label for="exampleInputName2">售价按</label>
+												    <input type="text" v-model="dataa.shoujiaan" class="form-control" id="exampleInputName2" placeholder="数字价格">
 												</div>
 						        			</th>
 						        		</tr>
@@ -220,6 +225,12 @@
 												    <input type="text" v-model="dataa1.xieprice" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
 												</div>
 						        			</th>
+						        			<th>
+						        				<div class="form-group">
+												    <label for="exampleInputName2">售价按</label>
+												    <input type="text" v-model="dataa1.shoujiaan" class="form-control" id="exampleInputName2" placeholder="数字价格">
+												</div>
+						        			</th>
 						        	</table>
 								</form>
 						      </div>
@@ -231,41 +242,6 @@
 						  </div>
 						</div>
 						
-						<!--调价-->
-						<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-						  <div class="modal-dialog" role="document">
-						    <div class="modal-content">
-						      <div class="modal-header">
-						        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						        <h4 class="modal-title" id="myModalLabel">调价</h4>
-						      </div>
-						      <div class="modal-body">
-							      	<div class="btn-group">
-							      		<div class="row text-center" style="margin-left: 10%;">
-							      			<div class="col-md-3">
-							      				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											    	自费<span class="caret"></span>
-											  	</button>
-											  	<ul class="dropdown-menu">
-											    		<li><a href="#">促销</a></li>
-											  		</ul>
-							      			</div>
-								      		<div class="col-md-3" style="margin-top: 2%;">
-								      				=标准价*
-								      		</div>
-											<div class="col-md-6">
-												<input type="text" class="form-control">
-											</div>  
-							      		</div>
-									</div>
-						      </div>
-						      <div class="modal-footer">
-						        <button type="button" class="btn btn-primary">保存</button>
-						      </div>
-						    </div>
-						  </div>
-						</div>
-					
 				</div>
 				<div class="row" style=" height: 100%; width: 101%; border: 1px solid #269ABC;">
 					<div class="col-md-2" style="border: 1px solid #255625; height: 100%;">
