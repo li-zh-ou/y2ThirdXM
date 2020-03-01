@@ -744,7 +744,7 @@
     <select id="queryZuoYeZhong"  parameterType="com.accp.domain.Wxjiedan" resultMap="BaseResultMap">
    SELECT hy.HuiYuanNo,hy.huiyuanmoney,kh.`KeHuName`,wx.*,DATEDIFF(wx.YuJiTime,NOW()) AS atfertime FROM wxjiedan AS wx 
    INNER JOIN kehu AS kh ON wx.`KeHunNo` = kh.`KeHuNo` 
-   INNER JOIN huiyuan AS hy ON kh.kehuno=hy.`KeHuNo`  
+   LEFT JOIN huiyuan AS hy ON kh.kehuno=hy.`KeHuNo`  
    where wx.`DanJuStatu`= '作业中' or wx.`DanJuStatu`= '接车' 
   </select>
     <select id="queryWxlishi"  parameterType="com.accp.domain.Wxjiedan" resultMap="BaseResultMap">
