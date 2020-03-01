@@ -41,7 +41,7 @@ public class JunGongJianXiuService {
 				no = autoCreateNo();
 				wx.setWxdanno(no);
 				wx.setDanjustatu("作业中");
-				wx.setYujitime(null);
+				wx.setYujitime(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date().getTime()+ 3 * 24 * 60 * 60 * 1000));
 				wx.setKaidantime(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date()));
 				wx.setWangongtime(null);
 				wx.setWangongtime(null);
