@@ -445,7 +445,7 @@
 						this.dianji(item);
 //						vm1.dataa1=item;
 						$.ajax({
-							url:"http://localhost:8080/vehicleDjizb2",
+							url:data.ip+"vehicleDjizb2",
 							dataType:"json",
 							data:{
 								CarBankId1:item.carbankid
@@ -466,7 +466,7 @@
 					ybian_sc1:function(){
 						alert("删除"+vm.page4.carbr_carbank);
 						$.ajax({
-							url:"http://localhost:8080/vehicleDjizb5",
+							url:data.ip+"vehicleDjizb5",
 							dataType:"json",
 							type:"post",
 							data:{xingid:vm.page4.carbr_carbank},
@@ -483,7 +483,7 @@
 					model_xg1:function(){
 						page1=JSON.stringify(vm.page1);
 						$.ajax({
-							url:"http://localhost:8080/vehicleDjizb3",
+							url:data.ip+"vehicleDjizb3",
 							contentType:"application/json;charset=utf-8",
 							dataType:"json",
 							type:"post",
@@ -502,7 +502,7 @@
 					model_sc1:function(){
 						alert("删除"+vm.page1.carbankid);
 						$.ajax({
-							url:"http://localhost:8080/vehicleDjizb4",
+							url:data.ip+"vehicleDjizb4",
 							dataType:"json",
 							type:"post",
 							data:{CarBankId1:vm.page1.carbankid},
@@ -521,7 +521,7 @@
 					//右边修改前查
 					ybxgqc:function(){
 						$.ajax({
-							url:"http://localhost:8080/vehicleDjizb8",
+							url:data.ip+"vehicleDjizb8",
 							dataType:"json",
 							type:"post",
 							data:{page4id:vm.page4.carbr_carbank},
@@ -537,7 +537,7 @@
 					ybxgbc_1:function(){
 						page6=JSON.stringify(vm.page6);
 						$.ajax({
-							url:"http://localhost:8080/vehicleDjizb9",
+							url:data.ip+"vehicleDjizb9",
 							contentType:"application/json;charset=utf-8",
 							type:"post",
 							dataType:"json",
@@ -555,7 +555,7 @@
 					},
 					zjiaysj:function(){
 						$.ajax({
-							url:"http://localhost:8080/vehiclefil6",
+							url:data.ip+"vehiclefil6",
 							dataType:"json",
 							type:"get",
 							success:function(result){
@@ -567,7 +567,7 @@
 					ybcxdan_Insert1:function(){
 						page5=JSON.stringify(vm.page5);
 						$.ajax({
-							url:"http://localhost:8080/vehicleDjizb7",
+							url:data.ip+"vehicleDjizb7",
 							contentType:"application/json;charset=utf-8",
 							dataType:"json",
 							type:"post",
@@ -589,7 +589,7 @@
 					page1=JSON.stringify(vm.page1);
 					alert("保存:"+page1);
 					$.ajax({
-						url:"http://localhost:8080/vehiclefil2",
+						url:data.ip+"vehiclefil2",
 						contentType:"application/json;charset=utf-8",
 						type:"post",
 						dataType:"json",
@@ -609,7 +609,7 @@
 				},
 				dianji:function(item){
 					$.ajax({
-						url:"http://localhost:8080/vehicleDjizb1",
+						url:data.ip+"vehicleDjizb1",
 						type:"post",
 						dataType:"json",
 						data:{
@@ -628,7 +628,7 @@
 			
 			function pmodel_xs1(){
 						$.ajax({
-							url:"http://localhost:8080/vehiclefil1",
+							url:data.ip+"vehiclefil1",
 							dataType:"json",
 							type:"get",
 							xhrFields:{

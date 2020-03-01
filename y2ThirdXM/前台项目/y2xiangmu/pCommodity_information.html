@@ -1123,7 +1123,7 @@
 						alert("选中:"+item.goodsid)
 						vm.page2=item;
 						$.ajax({
-							url:"http://localhost:8080/commodityxs3",
+							url:data.ip+"commodityxs3",
 							dataType:"json",
 							data:{
 								goodsid:vm.page2.goodsid
@@ -1140,7 +1140,7 @@
 						page3=JSON.stringify(vm.page3);
 						$.ajax({
 							type:"post",
-							url:"http://localhost:8080/commodityxs5",
+							url:data.ip+"commodityxs5",
 							contentType:"application/json;charset=utf-8",
 							dataType:"json",
 							data:page3,
@@ -1161,7 +1161,7 @@
 						page2=JSON.stringify(vm.page2);
 						$.ajax({
 							type:"post",
-							url:"http://localhost:8080/commodityxs6",
+							url:data.ip+"commodityxs6",
 							contentType:"application/json;charset=utf-8",
 							dataType:"json",
 							data:page2,
@@ -1179,7 +1179,7 @@
 					commoditysc1:function(){
 						if(confirm("你确定要删除"+vm.page2.goodsid+"么?"))
 						$.ajax({
-							url:"http://localhost:8080/commodityxs4",
+							url:data.ip+"commodityxs4",
 							dataType:"json",
 							data:{
 								goodsid:vm.page2.goodsid
@@ -1200,7 +1200,7 @@
 						alert(":"+vm.page1.goodsname)
 						$.ajax({
 							type:"get",
-							url:"http://localhost:8080/commodityxs2",
+							url:data.ip+"commodityxs2",
 							dataType:"json",
 							data:{GoodsName:vm.page1.goodsname},
 							success:function(result){
@@ -1217,7 +1217,7 @@
 			function spzlxs1(){
 						$.ajax({
 							type:"get",
-							url:"http://localhost:8080/commodityxs1",
+							url:data.ip+"commodityxs1",
 							dataType:"json",
 							success:function(result){
 								vm.page=result;

@@ -653,7 +653,7 @@
 						$.ajax({
 							dataType:"json",
 							type:"post",
-							url:"http://localhost:8080/supplyunit4",
+							url:data.ip+"supplyunit4",
 							data:{huoshangno:vm1.andt.huoshangno},
 							success:function(result){
 								if (result>=1) {
@@ -667,7 +667,7 @@
 					lxrxgbc1:function(){
 						andt=JSON.stringify(vm1.andt2);
 						$.ajax({
-							url:"http://localhost:8080/supplyunit7",
+							url:data.ip+"supplyunit7",
 							contentType:"application/json;charset=utf-8",
 							dataType:"json",
 							type:"post",
@@ -687,7 +687,7 @@
 					supply_ybxg1:function(){
 						andt=JSON.stringify(vm1.andt);
 						$.ajax({
-							url:"http://localhost:8080/supplyunit7",
+							url:data.ip+"supplyunit7",
 							contentType:"application/json;charset=utf-8",
 							dataType:"json",
 							type:"post",
@@ -707,7 +707,7 @@
 						andt1=JSON.stringify(vm1.andt1);
 						$.ajax({
 							type:"post",
-							url:"http://localhost:8080/supplyunit5",
+							url:data.ip+"supplyunit5",
 							contentType:"application/json;charset=utf-8",
 							dataType:"json",
 							data:andt1,
@@ -739,7 +739,7 @@
 						alert("选中项目编号:"+item.huoshangno)
 //						vm1.dataa1=item;
 						$.ajax({
-							url:"http://localhost:8080/supplyunit3",
+							url:data.ip+"supplyunit3",
 							dataType:"json",
 							data:{
 								huoshangno:item.huoshangno
@@ -757,7 +757,7 @@
 			
 			function chooseNode(event,treeid,treeNode){
 				$.ajax({
-					url:"http://localhost:8080/supplyunit2",
+					url:data.ip+"supplyunit2",
 					type:"get",
 					data:{bei1:treeNode.hid},
 					xhrFields:{
@@ -776,7 +776,7 @@
     	 //树状结构
          $.ajax({
            type:"get",
-           url:"http://localhost:8080/supplyunit1",
+           url:data.ip+"supplyunit1",
            dateType:"json",
            xhrFields:{
             withCredentials:true

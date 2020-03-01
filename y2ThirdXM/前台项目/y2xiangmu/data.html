@@ -193,7 +193,7 @@
 			methods: {
 				getData:function(){
 						$.ajax({
-						url: "http://localhost:8080/CommodityInfoRest",					
+						url: data.ip+"CommodityInfoRest",					
 						type: "get",
 						xhrFields: {
 							withCredentials: true
@@ -208,7 +208,7 @@
 				},	
 				FindQuery:function(){
 						$.ajax({
-						url: "http://localhost:8080/CommodityInfoRest/FindQuery",					
+						url: data.ip+"CommodityInfoRest/FindQuery",					
 						type: "get",
 						data:{
 							cbno:vm.cbno
@@ -254,7 +254,7 @@
 						return false;
 					}else{
 						$.ajax({
-							url:"http://localhost:8080/CommodityInfoRest/addCommd",
+							url:data.ip+"CommodityInfoRest/addCommd",
 							data:JSON.stringify(vm.comc),						
 							type:"post",
 							xhrFields: {
@@ -276,7 +276,7 @@
 				 */	
 				Query:function(){
 						$.ajax({
-						url: "http://localhost:8080/CommodityInfoRest/query",					
+						url: data.ip+"CommodityInfoRest/query",					
 						type: "get",
 						xhrFields: {
 							withCredentials: true
@@ -295,7 +295,7 @@
 				 */
 				Querya:function(){
 						$.ajax({
-						url: "http://localhost:8080/CommodityInfoRest/querya",					
+						url: data.ip+"CommodityInfoRest/querya",					
 						type: "get",
 						xhrFields: {
 							withCredentials: true
@@ -314,7 +314,7 @@
 				 */
 				Queryab:function(){
 						$.ajax({
-						url: "http://localhost:8080/CommodityInfoRest/queryab",					
+						url: data.ip+"CommodityInfoRest/queryab",					
 						type: "get",
 						xhrFields: {
 							withCredentials: true
@@ -333,7 +333,7 @@
 				 */
 				Queryac:function(){
 						$.ajax({
-						url: "http://localhost:8080/CommodityInfoRest/queryac",					
+						url: data.ip+"CommodityInfoRest/queryac",					
 						type: "get",
 						xhrFields: {
 							withCredentials: true
@@ -352,7 +352,7 @@
 				 */
 				Queryad:function(){
 						$.ajax({
-						url: "http://localhost:8080/CommodityInfoRest/queryad",					
+						url: data.ip+"CommodityInfoRest/queryad",					
 						type: "get",
 						xhrFields: {
 							withCredentials: true
@@ -371,7 +371,7 @@
 				 */
 				Querye:function(){
 						$.ajax({
-						url: "http://localhost:8080/CommodityInfoRest/querye",					
+						url: data.ip+"CommodityInfoRest/querye",					
 						type: "get",
 						xhrFields: {
 							withCredentials: true
@@ -390,7 +390,7 @@
 				 */
 				Queryef:function(){
 						$.ajax({
-						url: "http://localhost:8080/CommodityInfoRest/queryef",					
+						url: data.ip+"CommodityInfoRest/queryef",					
 						type: "get",
 						xhrFields: {
 							withCredentials: true
@@ -409,7 +409,7 @@
 				 */
 				Queryeg:function(){
 						$.ajax({
-						url: "http://localhost:8080/CommodityInfoRest/queryeg",					
+						url: data.ip+"CommodityInfoRest/queryeg",					
 						type: "get",
 						xhrFields: {
 							withCredentials: true
@@ -432,7 +432,7 @@
 				DeleteByid:function(){
 					if (confirm("你确定要删除"+vm.CommodityInfo.cno+"么?")) {
 						$.ajax({
-								url:"http://localhost:8080/CommodityInfoRest/deleteid",
+								url:data.ip+"CommodityInfoRest/deleteid",
 								data:{
 									cno:vm.CommodityInfo.cno
 								},
@@ -454,7 +454,7 @@
 						$("#myModal").modal("show");
 					
 						$.ajax({
-							url:"http://localhost:8080/CommodityInfoRest/QueryByid",
+							url:data.ip+"CommodityInfoRest/QueryByid",
 							type:"get",
 							xhrFields: {
 								withCredentials: true
@@ -481,7 +481,7 @@
 							return false;
 						}else{
 							$.ajax({
-								url:"http://localhost:8080/CommodityInfoRest/updaCommd",
+								url:data.ip+"CommodityInfoRest/updaCommd",
 								data:JSON.stringify(vm.comc),						
 								type:"put",
 								xhrFields: {
@@ -498,7 +498,7 @@
 					}
 				},
 				exportExcel:function(){
-					window.location.href="http://localhost:8080/ZFileAndExport/exportExcel"
+					window.location.href=data.ip+"ZFileAndExport/exportExcel"
 				},
 			}
 		})

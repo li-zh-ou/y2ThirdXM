@@ -297,8 +297,8 @@
 					sc1:function(){
 						alert("删除"+vm2.sc.xiangmuno);
 						$.ajax({
+							url:data.ip+"maintenance6",
 							type:"post",
-							url:"http://localhost:8080/maintenance6",
 							data:{xiangmuno:vm2.sc.xiangmuno},
 							success:function(result){
 								queryTree();
@@ -325,7 +325,7 @@
 					inse_baoc1:function(){
 						dataa1=JSON.stringify(vm1.dataa);
 						$.ajax({
-							url:"http://localhost:8080/maintenance3",
+							url:data.ip+"maintenance3",
 							contentType:"application/json;charset=utf-8",
 							dataType:"json",
 							data:dataa1,
@@ -345,7 +345,7 @@
 					xgbaoc1:function(){
 						dataa12=JSON.stringify(vm1.dataa1);
 							$.ajax({
-								url:"http://localhost:8080/maintenance5",
+								url:data.ip+"maintenance5",
 								contentType:"application/json;charset=utf-8",
 								dataType:"json",
 								data:dataa12,
@@ -373,7 +373,7 @@
 					};
 				},
 				created:function(){
-					queryTree();
+					//queryTree();
 				},
 				methods:{
 					byid:function(item){
@@ -381,7 +381,7 @@
 						alert("选中项目编号:"+item.xiangmuno)
 //						vm1.dataa1=item;
 						$.ajax({
-							url:"http://localhost:8080/maintenance4",
+							url:data.ip+"maintenance4",
 							dataType:"json",
 							data:{
 								xiangmuno:item.xiangmuno
@@ -403,7 +403,7 @@
 			
 			function chooseNode(event,treeid,treeNode){
 				$.ajax({
-					url:"http://localhost:8080/maintenance2",
+					url:data.ip+"maintenance2",
 					type:"get",
 					data:{pname:treeNode.pname},
 					xhrFields:{
@@ -420,8 +420,8 @@
 		function queryTree(){
      //树状结构
          $.ajax({
+           url:data.ip+"maintenance1",
            type:"get",
-           url:"http://localhost:8080/maintenance1",
            dateType:"json",
            xhrFields:{
             withCredentials:true

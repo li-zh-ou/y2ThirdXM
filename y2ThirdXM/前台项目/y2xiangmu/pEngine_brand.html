@@ -137,7 +137,7 @@
 					byid:function(item){
 						vm.jihe=item;
 						$.ajax({
-							url:"http://localhost:8080/student_Engine1/enginSe2",
+							url:data.ip+"student_Engine1/enginSe2",
 							dataType:"json",
 							data:{
 								fabankid:vm.jihe.fabankid
@@ -157,7 +157,7 @@
 								fabankid:vm.jihe.fabankid
 							},
 							type:"post",
-							url:"http://localhost:8080/student_Engine1/enginDe1",
+							url:data.ip+"student_Engine1/enginDe1",
 							success:function(result){
 								if(result>0){
 									alert("恭喜！删除成功");
@@ -173,7 +173,7 @@
 					engInsert1:function(){
 						inse=JSON.stringify(vm.inse);
 						$.ajax({
-							url:"http://localhost:8080/student_Engine1/enginIn1",
+							url:data.ip+"student_Engine1/enginIn1",
 							contentType:"application/json;charset=utf-8",
 							dataType:"json",
 							data:inse,
@@ -191,7 +191,7 @@
 					engUpdate1:function(){
 						inse=JSON.stringify(vm.inse);
 						$.ajax({
-							url:"http://localhost:8080/student_Engine1/enginUp1",
+							url:data.ip+"student_Engine1/enginUp1",
 							contentType:"application/json;charset=utf-8",
 							dataType:"json",
 							data:inse,
@@ -211,7 +211,7 @@
 			
 			function engine_brandSelect(){
 						$.ajax({
-							url:"http://localhost:8080/student_Engine1/enginSe1",
+							url:data.ip+"student_Engine1/enginSe1",
 							dataType:"json",
 							type:"get",
 							success:function(result){

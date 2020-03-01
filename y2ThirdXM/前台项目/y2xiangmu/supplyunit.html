@@ -223,7 +223,7 @@
 					//树状结构
 				     $.ajax({
 				       type:"get",
-				       url:"http://localhost:8080/PlaceOriginRest",
+				       url:data.ip+"PlaceOriginRest",
 				       dateType:"json",
 				       xhrFields:{
 				        withCredentials:true
@@ -262,7 +262,7 @@
 				     function chooseNode(event, treeId, treeNode) {
 				     			vm.queryFindmfid=[];
 				     			$.ajax({
-								url: "http://localhost:8080/PlaceOriginRest/queryFindTwo",					
+								url: data.ip+"PlaceOriginRest/queryFindTwo",					
 								type: "get",
 								data:{pid:treeNode.pid},
 								xhrFields: {
