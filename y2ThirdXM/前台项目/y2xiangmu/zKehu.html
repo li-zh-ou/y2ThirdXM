@@ -352,6 +352,9 @@
 				width: 900px;
 				height: 270px;
 			}
+			.hose{
+				color:red;
+			}
 		</style>
 	</head>
 	<body>
@@ -525,10 +528,10 @@
 			       		<div class="shang">
 							<p>
 								<div class="input-group">
-								  	<span class="input-group-addon " id="basic-addon3">客户编码：</span>
+								  	<span class="input-group-addon hose" id="basic-addon3">客户编码：</span>
 								  	<input type="text" style="width: 160px;height: 33px;" disabled="disabled" v-model="xinke.kehuno" class="form-control bianhao" id="basic-url" aria-describedby="basic-addon3">
-								  	<span class="input-group-addon" id="basic-addon3">客户名称：</span>
-								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinke.kehuname" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon hose"  id="basic-addon3">客户名称：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinke.kehuname" class="form-control panduan1" id="basic-url" aria-describedby="basic-addon3">
 								 	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;&nbsp;&nbsp;联系人：</span>
 								  <input type="text" style="width: 160px;height: 33px;" v-model="xinke.kehulianxi" class="form-control" id="basic-url" aria-describedby="basic-addon3"> 
 								</div>
@@ -537,7 +540,7 @@
 								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinke.kehuphone" class="form-control" id="basic-url" aria-describedby="basic-addon3">
 								  	<span class="input-group-addon" id="basic-addon3">客户地址：</span>
 								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinke.kehuaddress" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-								 	<span class="input-group-addon" id="basic-addon3">客户生日：</span>
+								 	<span class="input-group-addon"  id="basic-addon3">客户生日：</span>
 								  <input type="date" style="width: 160px;height: 33px;" v-model="xinke.kehubirthday" class="form-control" id="basic-url" aria-describedby="basic-addon3"> 
 								</div>
 								<div class="input-group" style="margin-top: 20px;">
@@ -561,16 +564,16 @@
 								  	<select v-model="xinke.bei4" class="form-control" aria-describedby="basic-addon3" id="sss_county" name="sss_county" style="width: 160px;height: 33px;"></select>
 								  	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;备注：</span>
 								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinke.remark" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-								 	<span class="input-group-addon" id="basic-addon3">&nbsp;车牌号码：<button style="width: 35;" class="haoma" data-toggle="modal" data-target="#chepai">选择</button></span>
-								  <input type="text" style="width: 120px;height: 33px;"  class="form-control paipai" id="basic-url" aria-describedby="basic-addon3">
+								 	<span class="input-group-addon hose"  id="basic-addon3">&nbsp;车牌号码：<button style="width: 35;" class="haoma" data-toggle="modal" data-target="#chepai">选择</button></span>
+								  <input type="text" style="width: 120px;height: 33px;"  class="form-control paipai panduan3" id="basic-url" aria-describedby="basic-addon3">
 								</div>
 								<div class="input-group" style="margin-top: 20px;">
-								  	<span class="input-group-addon " id="basic-addon3">车辆品牌：<button class="pin" data-toggle="modal" data-target="#pinpai" >选择</button></span>
-								  	<input type="text" style="width: 130px;height: 33px;" disabled="disabled" class="form-control carbankname" id="basic-url" aria-describedby="basic-addon3">
-								  	<span class="input-group-addon" id="basic-addon3">车辆型号：</span>
-								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinke.car.xinghao" class="form-control jinkous" id="basic-url" aria-describedby="basic-addon3">
-								 	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;驾驶员：</span>
-								  <input type="text" style="width: 160px;height: 33px;" v-model="xinke.car.sijiname" class="form-control" id="basic-url" aria-describedby="basic-addon3"> 
+								  	<span class="input-group-addon hose" id="basic-addon3">车辆品牌：<button class="pin" data-toggle="modal" data-target="#pinpai" >选择</button></span>
+								  	<input type="text" style="width: 130px;height: 33px;" disabled="disabled" class="form-control panduan4 carbankname" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon hose" id="basic-addon3">车辆型号：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinke.car.xinghao" class="form-control panduan5 jinkous" id="basic-url" aria-describedby="basic-addon3">
+								 	<span class="input-group-addon hose"  id="basic-addon3">&nbsp;&nbsp;驾驶员：</span>
+								  <input type="text" style="width: 160px;height: 33px;" v-model="xinke.car.sijiname" class="form-control panduan6" id="basic-url" aria-describedby="basic-addon3"> 
 								</div>
 								<div class="input-group" style="margin-top: 20px;">
 								  	<span class="input-group-addon " id="basic-addon3">司机电话：</span>
@@ -648,10 +651,10 @@
 			       		<div class="shang">
 							<p>
 								<div class="input-group">
-								  	<span class="input-group-addon " id="basic-addon3">客户编码：</span>
+								  	<span class="input-group-addon hose" id="basic-addon3">客户编码：</span>
 								  	<input type="text" style="width: 160px;height: 33px;" disabled="disabled" v-model="xinkehu.kehuno" class="form-control bianhao" id="basic-url" aria-describedby="basic-addon3">
-								  	<span class="input-group-addon" id="basic-addon3">客户名称：</span>
-								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinkehu.kehuname" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon hose" id="basic-addon3">客户名称：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="xinkehu.kehuname" class="form-control kehupan" id="basic-url" aria-describedby="basic-addon3">
 								 	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;&nbsp;&nbsp;联系人：</span>
 								  <input type="text" style="width: 160px;height: 33px;" v-model="xinkehu.kehulianxi" class="form-control" id="basic-url" aria-describedby="basic-addon3"> 
 								</div>
@@ -784,16 +787,16 @@
 			       		<div class="shang">
 							<p>
 								<div class="input-group" style="margin-top: 20px;">
-								 	<span class="input-group-addon" id="basic-addon3">&nbsp;车牌号码：<button style="width: 35;" class="haoma" data-toggle="modal" data-target="#chepai">选择</button></span>
-								  <input type="text" style="width: 120px;height: 33px;" v-model="cheliang.chepai"  class="form-control paipai" id="basic-url" aria-describedby="basic-addon3">
-									<span class="input-group-addon " id="basic-addon3">车辆品牌：<button class="pin" data-toggle="modal" data-target="#pinpai" >选择</button></span>
-								  	<input type="text" style="width: 130px;height: 33px;" disabled="disabled" class="form-control carbankname" id="basic-url" aria-describedby="basic-addon3">
-								  	<span class="input-group-addon" id="basic-addon3">车辆型号：</span>
-								  	<input type="text" style="width: 160px;height: 33px;" v-model="cheliang.xinghao" class="form-control jinkous" id="basic-url" aria-describedby="basic-addon3">
+								 	<span class="input-group-addon hose" id="basic-addon3">&nbsp;车牌号码：<button style="width: 35;" class="haoma" data-toggle="modal" data-target="#chepai">选择</button></span>
+								  <input type="text" style="width: 120px;height: 33px;" v-model="cheliang.chepai"  class="form-control paipai pan1" id="basic-url" aria-describedby="basic-addon3">
+									<span class="input-group-addon hose" id="basic-addon3">车辆品牌：<button class="pin" data-toggle="modal" data-target="#pinpai" >选择</button></span>
+								  	<input type="text" style="width: 130px;height: 33px;" disabled="disabled" class="form-control carbankname pan2" id="basic-url" aria-describedby="basic-addon3">
+								  	<span class="input-group-addon hose" id="basic-addon3">车辆型号：</span>
+								  	<input type="text" style="width: 160px;height: 33px;" v-model="cheliang.xinghao" class="form-control jinkous pan3" id="basic-url" aria-describedby="basic-addon3">
 								</div>
 								<div class="input-group" style="margin-top: 20px;">
-								  	<span class="input-group-addon" id="basic-addon3">&nbsp;&nbsp;驾驶员：</span>
-								  <input type="text" style="width: 160px;height: 33px;" v-model="cheliang.sijiname" class="form-control" id="basic-url" aria-describedby="basic-addon3"> 
+								  	<span class="input-group-addon hose" id="basic-addon3">&nbsp;&nbsp;驾驶员：</span>
+								  <input type="text" style="width: 160px;height: 33px;" v-model="cheliang.sijiname" class="form-control pan4" id="basic-url" aria-describedby="basic-addon3"> 
 									<span class="input-group-addon " id="basic-addon3">司机电话：</span>
 								  	<input type="text" style="width: 160px;height: 33px;" v-model="cheliang.sijiphone" class="form-control" id="basic-url" aria-describedby="basic-addon3">
 								  	<span class="input-group-addon" id="basic-addon3">出生日期：</span>
@@ -1408,6 +1411,11 @@
 //							}
 //						});
 				},addkehu:function(){
+					if($(".kehupan").val().length==0){
+						alert("请输入必填项！");
+					}else{
+						
+					
 						if($("#s_province").val()=="省份" || $("#s_city").val()=="地级市" || $("#s_county").val()=="市、县级市" || $("#s_province").val()==undefined || $("#s_city").val()==undefined || $("#s_county").val()==undefined){
 							alert("请把省市区填写完整！");
 						}else{
@@ -1428,6 +1436,7 @@
 							});
 						}
 						console.log(vm.xinkehu);
+					}
 					},updatekehu:function(){
 						$.ajax({
 							url:data.ip+"UpdateKehu",
@@ -1511,49 +1520,54 @@
 							$('#zeng').css("overflow-y","scroll");
 						}
 					},addkehuandcar:function(){
-						var c=0;
-						vm.xinke.car.chepai=$(".paipai").val();
-						for(b=0;b<vm.chepai.length;b++){
-			   				if(vm.xinke.car.chepai==vm.chepai[b].chepai){
-				   				alert("请输入完整的车牌！");
-				   				return;
-				   			}else if(vm.chepai.length-1==b && vm.cheliang.chepai!=vm.chepai[b].chepai){
-				   				c=1;
+						if($(".panduan1").val().length==0 && $(".panduan3").val().length==0 && $(".panduan4").val().length==0 && $(".panduan5").val().length==0 && $(".panduan6").val().length==0){
+							alert("请输入必填项！");
+						}else{
+							var c=0;
+							vm.xinke.car.chepai=$(".paipai").val();
+							for(b=0;b<vm.chepai.length;b++){
+				   				if(vm.xinke.car.chepai==vm.chepai[b].chepai){
+					   				alert("请输入完整的车牌！");
+					   				return;
+					   			}else if(vm.chepai.length-1==b && vm.cheliang.chepai!=vm.chepai[b].chepai){
+					   				c=1;
+					   			}
 				   			}
-			   			}
-						console.log(vm.xinke)
-						if(c==1){
-								$.ajax({
-									url:data.ip+"addkehuandche",
-									data:JSON.stringify(vm.xinke),
-									contentType:"application/json;charset=utf-8",
-									type:"post",
-									dataType:"json",
-									success:function(response) {
-										if(response>0){
-											alert("添加成功！");
-											$('#zeng').modal('hide');
-											vm.xinke.car={};
-											vm.xinke.kehuno="";
-											vm.xinke.kehuname="";
-											vm.xinke.kehulianxi="";
-											vm.xinke.kehuphone="";
-											vm.xinke.kehuaddress="";
-											vm.xinke.kehubirthday="";
-											vm.xinke.zhangqi="";
-											vm.xinke.edu="";
-											vm.xinke.guwen="";
-											vm.xinke.guwenphone="";
-											vm.xinke.bei2="";
-											vm.xinke.bei3="";
-											vm.xinke.bei4="";
-											vm.xinke.remark="";
-											query();
-											
-										}		
-									}
-								});
-							}
+							console.log(vm.xinke)
+							if(c==1){
+									$.ajax({
+										url:data.ip+"addkehuandche",
+										data:JSON.stringify(vm.xinke),
+										contentType:"application/json;charset=utf-8",
+										type:"post",
+										dataType:"json",
+										success:function(response) {
+											if(response>0){
+												alert("添加成功！");
+												$('#zeng').modal('hide');
+												vm.xinke.car={};
+												vm.xinke.kehuno="";
+												vm.xinke.kehuname="";
+												vm.xinke.kehulianxi="";
+												vm.xinke.kehuphone="";
+												vm.xinke.kehuaddress="";
+												vm.xinke.kehubirthday="";
+												vm.xinke.zhangqi="";
+												vm.xinke.edu="";
+												vm.xinke.guwen="";
+												vm.xinke.guwenphone="";
+												vm.xinke.bei2="";
+												vm.xinke.bei3="";
+												vm.xinke.bei4="";
+												vm.xinke.remark="";
+												query();
+												
+											}		
+										}
+									});
+								}
+						}
+						
 					},xuanchepai:function(event){
 						vm.chepaizi=$(event.srcElement)[0].innerText;
 						vm.xinke.car.chepai=vm.chepaizi;
@@ -1564,44 +1578,50 @@
 					},kai:function(){
 						window.open('zkehucha.html','big','fullscreen=yes');
 					},addcar:function(){
-						var check=$("[name=checks]")[0].checked;
-						if(check==true){
-							vm.cheliang.bei1="是";
+						if($(".pan1").val().length==0 && $(".pan2").val().length==0 && $(".pan3").val().length==0 && $(".pan4").val().length==0){
+							alert("请填写必填项！");
 						}else{
-							vm.cheliang.bei1="否";
-						}
-						var c=0;
-						for(b=0;b<vm.chepai.length;b++){
-			   				if(vm.cheliang.chepai==vm.chepai[b].chepai){
-				   				alert("请输入完整的车牌！");
-				   				return;
-				   			}else if(vm.chepai.length-1==b && vm.cheliang.chepai!=vm.chepai[b].chepai){
-				   				c=1;
-				   			}
-			   			}
+							
 						
-						vm.cheliang.kehuno=$("#cheliangno").val();
-						console.log(vm.cheliang);
-						if(c==1){
-								$.ajax({
-									url:data.ip+"addcar",
-									data:JSON.stringify(vm.cheliang),
-									contentType:"application/json;charset=utf-8",
-									type:"post",
-									dataType:"json",
-									success:function(response) {
-										if(response>0){
-											alert("添加成功！");
-											
-											vm.cheliang={};
-											query();
-											$('#chezliao').modal('hide');
-											$(".chezliao").hide();
-										}		
-									}
-								});
+							var check=$("[name=checks]")[0].checked;
+							if(check==true){
+								vm.cheliang.bei1="是";
+							}else{
+								vm.cheliang.bei1="否";
 							}
-						console.log(vm.cheliang);
+							var c=0;
+							for(b=0;b<vm.chepai.length;b++){
+				   				if(vm.cheliang.chepai==vm.chepai[b].chepai){
+					   				alert("请输入完整的车牌！");
+					   				return;
+					   			}else if(vm.chepai.length-1==b && vm.cheliang.chepai!=vm.chepai[b].chepai){
+					   				c=1;
+					   			}
+				   			}
+							
+							vm.cheliang.kehuno=$("#cheliangno").val();
+							console.log(vm.cheliang);
+							if(c==1){
+									$.ajax({
+										url:data.ip+"addcar",
+										data:JSON.stringify(vm.cheliang),
+										contentType:"application/json;charset=utf-8",
+										type:"post",
+										dataType:"json",
+										success:function(response) {
+											if(response>0){
+												alert("添加成功！");
+												
+												vm.cheliang={};
+												query();
+												$('#chezliao').modal('hide');
+												$(".chezliao").hide();
+											}		
+										}
+									});
+								}
+							console.log(vm.cheliang);
+						}
 					},updatecar:function(){
 						var checars=vm.cheliang;
 			   			delete vm.cheliang.carbankname;
