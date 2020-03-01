@@ -34,7 +34,7 @@
 				text-decoration: none;
 			}
 			th{
-				background-color: #0D94FF;
+				background-color: #bdc3c7;
 			}
 			.yi{
 				height: 300px;
@@ -220,12 +220,29 @@
 				margin-left: 16px;
 				margin-top: -10px;
 			}
+			
+			#bt{
+				background:#4b6cb7;
+			}
+			
+			#c{
+				background:#bdc3c7;
+			}
+			
+			#ctx{
+				background:#f5f5f5;
+			}
+			
+			#ctx1{
+				background:#ffffff;
+			}
+			
 		</style>
 	</head>
 	<body>
 		<div id="ctx">
 		<div id="ctx" class="container-fluid">
-			<div class="row to" style="background-color: rgb(247, 255, 255);">
+			<div id="bt" class="row to">
 				<div class="col-sm-2">
 					<h3>车资料</h3>
 				</div>
@@ -733,12 +750,12 @@
 						if(se!=""){
 							se.css("background-color","transparent");
 						}	
-						$(event.srcElement).parent().css("background-color","yellow").siblings().css("background-color","transparent");
+						$(event.srcElement).parent().css("background-color","#bdc3c7").siblings().css("background-color","transparent");
 						kehunos=$(event.srcElement).parent()[0].cells[0].innerHTML;
 						
 					},
 					car:function(event){
-						$(event.srcElement).parent().css("background-color","yellow").siblings().css("background-color","transparent");
+						$(event.srcElement).parent().css("background-color","#bdc3c7").siblings().css("background-color","transparent");
 						var kehuno=$(event.srcElement).parent()[0].cells[0].innerHTML;
 						se=$(event.srcElement).parent();
 						var kehunocar;
@@ -772,13 +789,13 @@
 //							}
 //						});
 				},carpindian:function(event){
-						$(event.srcElement).parent().css("background-color","yellow").siblings().css("background-color","transparent");
+						$(event.srcElement).parent().css("background-color","#bdc3c7").siblings().css("background-color","transparent");
 						carbrandid=$(event.srcElement).parent()[0].cells[0].innerHTML;
 						carbrandname=$(event.srcElement).parent()[0].cells[1].innerHTML;
 						querycarbrand("");
 						console.log(vm.carxing);
 					},carxingdian:function(event){
-						$(event.srcElement).parent().css("background-color","yellow").siblings().css("background-color","transparent");
+						$(event.srcElement).parent().css("background-color","#bdc3c7").siblings().css("background-color","transparent");
 						xingid=$(event.srcElement).parent()[0].cells[0].innerHTML;
 						vm.jinkou=$(event.srcElement).parent()[0].cells[1].innerHTML;
 						for(i=0;i<vm.carxing.length;i++){

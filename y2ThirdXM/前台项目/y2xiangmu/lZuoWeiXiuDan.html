@@ -15,11 +15,28 @@
 			#tab_c{border:1px solid #ccc;height: 300px;overflow: scroll; border-top:none; padding:20px;}
 			.modal-lg { width: 100%;margin: 0px auto; }
 			.afterdate { background-color: red;}
+			
+			#bt{
+				background:#4b6cb7;
+			}
+			
+			#c{
+				background:#bdc3c7;
+			}
+			
+			#body{
+				background:#f5f5f5;
+			}
+			
+			#ctx1{
+				background:#ffffff;
+			}
+			
 		</style>
 	</head>
 	<body>
 		<div id="body">
-			<div class="row" style="border-bottom: solid 1px silver;">
+			<div id="bt" class="row" style="border-bottom: solid 1px silver;">
 				<h3 class="col-xs-offset-1 col-xs-4">维修单</h3>
 				<p class="col-xs-3" style="height: 50px; line-height: 50px;" id="danjustatu">{{danjustatu}}</p>
 				<p class="col-xs-4" style="text-align: right; padding-right: 40px;"><button type="button" class="btn btn-default" style="margin: 14px 0 0 10px;" onclick="closeParent()">关闭</button></p>
@@ -233,9 +250,9 @@
 				<div id="tab_c" >
 					<div>
 							<p><button onclick="addxiangmu()">增加项目</button><button onclick="deleteXMByno()">删除</button></p>
-							<table class="table table-hover table-bordered text-center" style="overflow: scroll; width: 1250px;">
+							<table id="ctx1" class="table table-hover table-bordered text-center" style="overflow: scroll; width: 1250px;">
 									<thead>
-										<tr>
+										<tr id="c">
 											<th class="text-center">选择</th>
 											<th class="text-center">项目编码</th>
 											<th class="text-center">项目名称</th>

@@ -34,6 +34,18 @@
 			td{
 				height: 40px;
 			}
+			
+			#bt{
+				background:#4b6cb7;
+			}
+			
+			th{
+				background:#bdc3c7;
+			}
+			
+			#ctx1{
+				background:#ffffff;
+			}
 		</style>
 	</head>
 	<body>
@@ -216,11 +228,11 @@
 							
 					<table class="table yuan table-bordered table-hover" style="width: 1000px;">
 						<tr>
-							<td>部门</td>
-							<td>员工编号</td>
-							<td>姓名</td>
-							<td>性别</td>
-							<td>职位</td>
+							<th>部门</th>
+							<th>员工编号</th>
+							<th>姓名</th>
+							<th>性别</th>
+							<th>职位</th>
 						</tr>
 						<tr v-for="item in yuangong">
 							<td>{{item.bumenname}}</td>
@@ -304,7 +316,7 @@
 							$(".row p").each(function(){
 								var s=$(this).find("span").html()
 								if(s!=0 || s>0){
-									$(this).css("background-color","#00FFFF")
+									$(this).css("background-color","#bdc3c7")
 								}else{
 									$(this).css("background-color","#fff")
 								}
@@ -515,7 +527,7 @@
 				$(".row p").each(function(){
 					var s=$(this).find("span").html()
 					if(s!=0 || s>0){
-						$(this).css("background-color","#00FFFF")
+						$(this).css("background-color","#bdc3c7")
 					}else{
 						$(this).css("background-color","#fff")
 					}

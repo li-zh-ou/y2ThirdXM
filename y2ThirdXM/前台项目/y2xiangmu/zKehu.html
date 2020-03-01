@@ -34,7 +34,7 @@
 				text-decoration: none;
 			}
 			th{
-				background-color: #0D94FF;
+				background-color: #bdc3c7;
 			}
 			.yi{
 				height: 300px;
@@ -352,11 +352,28 @@
 				width: 900px;
 				height: 270px;
 			}
+			
+			#bt{
+				background:#4b6cb7;
+			}
+			
+			#c{
+				background:#bdc3c7;
+			}
+			
+			#ctx{
+				background:#f5f5f5;
+			}
+			
+			#ctx1{
+				background:#ffffff;
+			}
+			
 		</style>
 	</head>
 	<body>
 		<div id="ctx" class="container-fluid">
-			<div class="row to" style="background-color: rgb(247, 255, 255);">
+			<div id="bt" class="row to">
 				<div class="col-sm-2">
 					<h3>客户资料</h3>
 				</div>
@@ -394,7 +411,7 @@
 					</div>
 				</div>
 				<div class="yi" style=" overflow:auto;">
-					<table  class="table table-bordered table-hover" style="width: 2200px;" v-if="$perms('findkehu')">
+					<table class="table table-bordered table-hover" style="width: 2200px;" v-if="$perms('findkehu')">
 						<tr class="asss">
 							<th>客户编码</th>
 							<th>客户名称</th>
@@ -1357,7 +1374,7 @@
 					}
 				},methods:{
 					fenleidian:function(event){
-						$(event.srcElement).parent().css("background-color","yellow").siblings().css("background-color","transparent");
+						$(event.srcElement).parent().css("background-color","#bdc3c7").siblings().css("background-color","transparent");
 						kehutypeid=$(event.srcElement).parent()[0].cells[0].innerHTML;
 						for(i=0;i<this.type.length;i++){
 							if(kehutypeid==this.type[i].typeid){
@@ -1370,7 +1387,7 @@
 						if(se!=""){
 							se.css("background-color","transparent");
 						}
-						$(event.srcElement).parent().css("background-color","yellow").siblings().css("background-color","transparent");
+						$(event.srcElement).parent().css("background-color","#bdc3c7").siblings().css("background-color","transparent");
 						kehunos=$(event.srcElement).parent()[0].cells[0].innerHTML;
 						se1=$(event.srcElement).parent();
 						$.ajax({
@@ -1387,7 +1404,7 @@
 						});
 					},
 					car:function(event){
-						$(event.srcElement).parent().css("background-color","yellow").siblings().css("background-color","transparent");
+						$(event.srcElement).parent().css("background-color","#bdc3c7").siblings().css("background-color","transparent");
 						var kehuno=$(event.srcElement).parent()[0].cells[0].innerHTML;
 						se=$(event.srcElement).parent();
 						for(i=0;i<vm.kehucar.length;i++){
@@ -1483,13 +1500,13 @@
 							alert("请先选择要删除客户的编码！");
 						}
 					},carpindian:function(event){
-						$(event.srcElement).parent().css("background-color","yellow").siblings().css("background-color","transparent");
+						$(event.srcElement).parent().css("background-color","#bdc3c7").siblings().css("background-color","transparent");
 						carbrandid=$(event.srcElement).parent()[0].cells[0].innerHTML;
 						carbrandname=$(event.srcElement).parent()[0].cells[1].innerHTML;
 						querycarbrand("");
 						console.log(vm.carxing);
 					},carxingdian:function(event){
-						$(event.srcElement).parent().css("background-color","yellow").siblings().css("background-color","transparent");
+						$(event.srcElement).parent().css("background-color","#bdc3c7").siblings().css("background-color","transparent");
 						xingid=$(event.srcElement).parent()[0].cells[0].innerHTML;
 						vm.jinkou=$(event.srcElement).parent()[0].cells[1].innerHTML;
 						for(i=0;i<vm.carxing.length;i++){

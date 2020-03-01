@@ -87,7 +87,7 @@
 				background-color: #fff;
 			}
 			th{
-				background-color: #0D94FF;
+				background-color: #bdc3c7;
 			}
 			.di{
 				margin-top: 10px;
@@ -100,11 +100,27 @@
 			.diyi{
 				margin-left: 35px;
 			}
+			
+			#bt{
+				background:#4b6cb7;
+			}
+			
+			#c{
+				background:#bdc3c7;
+			}
+			
+			#ctx{
+				background:#f5f5f5;
+			}
+			
+			#ctx1{
+				background:#ffffff;
+			}
 		</style>
 	</head>
 	<body>
 		<div id="ctx" class="container-fluid">
-			<div class="row to" style="background-color: rgb(247, 255, 255);">
+			<div id="bt" class="row to">
 				<div class="col-sm-2">
 					<h3>角色权限控制</h3>
 				</div>
@@ -223,7 +239,7 @@
 				methods:{
 					updatezhiwuxuan:function(event){
 						vm.zhiwuyi={};
-						$(event.srcElement).parent().css("background-color","yellow").siblings().css("background-color","transparent");
+						$(event.srcElement).parent().css("background-color","#bdc3c7").siblings().css("background-color","transparent");
 						var zhiwud=$(event.srcElement).parent()[0].cells[0].innerHTML;
 						for(i=0;i<vm.zhiwu.length;i++){
 							if(zhiwud==vm.zhiwu[i].zhiwuid){

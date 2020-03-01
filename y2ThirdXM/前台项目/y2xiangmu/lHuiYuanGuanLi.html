@@ -4,11 +4,30 @@
 <meta charset="UTF-8">
 <title>会员管理</title>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+	<style>
+		
+			#bt{
+				background:#4b6cb7;
+			}
+			
+			#c{
+				background:#bdc3c7;
+			}
+			
+			#huiyuanapp{
+				background:#f5f5f5;
+			}
+			
+			#ctx1{
+				background:#ffffff;
+			}
+			
+	</style>
 </head>
 <body>
 		<div id="huiyuanapp">
-			<div>
-				<div class="row" style="border-bottom: solid 1px;">
+			<div style="">
+				<div id="bt" class="row" style="border-bottom: solid 1px;">
 					<h3 class="col-xs-11">会员管理</h3>
 					<p class="col-xs-1"><button class="btn btn-default" style="margin-top: 15px;">关闭</button></p>
 				</div>
@@ -47,9 +66,9 @@
 				</div>
 				<!-- 会员信息列表 -->
 				<div>
-					<table class="table table-hover table-bordered text-center " style="width: 90%;margin-left:5%;margin-right:5%;">
+					<table id="ctx1" class="table table-hover table-bordered text-center " style="width: 90%;margin-left:5%;margin-right:5%;">
 						<thead>
-							<tr>
+							<tr id="c">
 								<td></td>
 								<th class="text-center">客户编号</th>
 								<th class="text-center">客户名称</th>
