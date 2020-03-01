@@ -392,6 +392,10 @@
 			jrkehuno=vm.nohyKeHu[index].kehuno;
 			index=null;
 			$("#kehuchazhao").modal("hide");
+			$("[name='huiyuanname']").val("");
+			$("[name='huiyuanshichang']")[0].selectedIndex=0;
+			$("[name='huiyuanphone']").val("");
+			$("[name='shoudao']").val("");
 			$("#jiaruhuiyuan").modal("show");
 		}
 		//加入会员  会员时长下拉框Change事件函数
