@@ -742,10 +742,10 @@
     where wxDanNo = #{wxdanno,jdbcType=VARCHAR}
   </update>
     <select id="queryZuoYeZhong"  parameterType="com.accp.domain.Wxjiedan" resultMap="BaseResultMap">
-   SELECT hy.HuiYuanNo,hy.huiyuanmoney,kh.`KeHuName`,wx.*,DATEDIFF(wx.YuJiTime,NOW()) AS atfertime FROM wxjiedan AS wx 
-   INNER JOIN kehu AS kh ON wx.`KeHunNo` = kh.`KeHuNo` 
+SELECT hy.HuiYuanNo,hy.huiyuanmoney,kh.`KeHuName`,wx.*,DATEDIFF(wx.YuJiTime,NOW()) AS atfertime FROM wxjiedan AS wx 
+   LEFT JOIN kehu AS kh ON wx.`KeHunNo` = kh.`KeHuNo` 
    LEFT JOIN huiyuan AS hy ON kh.kehuno=hy.`KeHuNo`  
-   where wx.`DanJuStatu`= '作业中' or wx.`DanJuStatu`= '接车' 
+   WHERE wx.`DanJuStatu`= '作业中' OR wx.`DanJuStatu`= '接车' 
   </select>
     <select id="queryWxlishi"  parameterType="com.accp.domain.Wxjiedan" resultMap="BaseResultMap">
       SELECT chepai,wxDanNo,wxdantype,YeWuType,wangongtime,kaidantime,jiesuanmoney FROM wxjiedan WHERE chepai=#{chepai,jdbcType=VARCHAR} AND bei1 ='已结算'
@@ -836,7 +836,7 @@ WHERE kehucar.`ChePai` = #{chepai,jdbcType=VARCHAR}
      SELECT wxDanNo,wxDanType,wxType,DanJuStatu,JieSuanType,wxjiedan.bei1,wxjiedan.bei2,JieSuanTime,jieSuanmoney,YeWuType,kehu.KeHuName,wxjiedan.`ChePai`,kehucar.xinghao FROM
    wxjiedan 
    LEFT JOIN kehucar ON wxjiedan.`ChePai` = kehucar.`ChePai`
-   INNER JOIN kehu ON kehucar.`KeHuNo` = kehu.`kehuid`
+   LEFT JOIN kehu ON kehucar.`KeHuNo` = kehu.`kehuid`
    <where>
    	( DanJuStatu IN ('已竣工')
    	<if test='danjustatu !="" and danjustatu !=null'>

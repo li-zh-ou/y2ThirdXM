@@ -47,38 +47,38 @@
 			</div>
 			<div class="row" style="margin-top: 20px;">
 				<div class="row col-xs-10">
-					<div class="col-xs-4">
+					<div class="col-xs-4" style="margin-bottom: 20px;">
 						<div class="input-group">
 							<span class="input-group-addon">车牌号码</span>
 							<input type="text" v-model="wxChepai" disabled="disabled" style="vertical-align: middle ; width:160px; height:33px;"/>
 						</div>
 					</div>
-					<div class="col-xs-4">
+					<div class="col-xs-4" style="margin-bottom: 20px;">
 						<div class="input-group">
 							<span class="input-group-addon">车架编号</span>
 							<input type="text" v-model="wxdan.chejiaxinghao" disabled="disabled" style="vertical-align: middle ; width:160px; height:33px;"/>
 						</div>
 					</div>
-					<div class="col-xs-4">
+					<div class="col-xs-4" style="margin-bottom: 20px;">
 						<div class="input-group">
 							<span class="input-group-addon">车辆型号</span>
 							<input type="text" v-model="wxdan.carxinghao" disabled="disabled" style="vertical-align: middle ; width:160px; height:33px;"/>
 						</div>
 					</div>
 					<!--    *******************华丽分割线********************   -->
-					<div class="col-xs-4">
+					<div class="col-xs-4" style="margin-bottom: 20px;">
 						<div class="input-group">
 							<span class="input-group-addon">车辆品牌</span>
 							<input type="text" v-model="wxdan.carbankname" disabled="disabled" style="vertical-align: middle ; width:160px; height:33px;"/>
 						</div>
 					</div>
-					<div class="col-xs-4">
+					<div class="col-xs-4" style="margin-bottom: 20px;">
 						<div class="input-group">
 							<span class="input-group-addon">发动机号</span>
 							<input type="text" v-model="wxdan.fanumber" disabled="disabled" style="vertical-align: middle ; width:160px; height:33px;"/>
 						</div>
 					</div>
-					<div class="col-xs-4">
+					<div class="col-xs-4" style="margin-bottom: 20px;">
 						<div class="input-group">
 							<span class="input-group-addon">发动机品牌</span>
 							<input type="hidden" size="8px" v-model="wxdan.fabankid" disabled="disabled"/>
@@ -86,7 +86,7 @@
 						</div>
 					</div>
 					<!--    *******************华丽分割线********************   -->
-					<div class="col-xs-12">
+					<div class="col-xs-12" style="margin-bottom: 20px;">
 						<div class="input-group">
 							<span class="input-group-addon">车主姓名</span>
 							<input type="hidden" disabled="disabled" v-model="wxdan.kehuno"/>
@@ -95,7 +95,7 @@
 					</div>
 					
 					<!--    *******************华丽分割线********************   -->
-					<div class="col-xs-4">
+					<div class="col-xs-4" style="margin-bottom: 20px;">
 						<div class="input-group">
 							<span class="input-group-addon">服务顾问</span>
 							<select v-model="wxdan.guwen" style="vertical-align: middle ; width:160px; height:33px;" id="guwen">
@@ -105,64 +105,64 @@
 							</select>
 						</div>
 					</div>
-					<div class="col-xs-4">
+					<div class="col-xs-4" style="margin-bottom: 20px;">
 						<div class="input-group">
-							<span class="input-group-addon">&nbsp;&nbsp;*驾驶员</span>
-							<input type="text" v-model="wxdan.sijiname" style="vertical-align: middle ; width:160px; height:33px;"/>
+							<span class="input-group-addon" style="color: red;">&nbsp;&nbsp;驾驶员</span>
+							<input type="text" v-model="wxdan.sijiname" style="vertical-align: middle ; width:166px; height:33px;"/>
 						</div>
 					</div>
-					<div class="col-xs-4">
+					<div class="col-xs-4" style="margin-bottom: 20px;">
 						<div class="input-group">
-							<span class="input-group-addon">*联系电话</span>
-							<input type="text" v-model="wxdan.lianphone" style="vertical-align: middle ; width:154px; height:33px;"/>
+							<span class="input-group-addon" style="color: red;">联系电话</span>
+							<input type="text" v-model="wxdan.lianphone" style="vertical-align: middle ; width:160px; height:33px;"/>
 						</div>
 					</div>
 					<!--    *******************华丽分割线********************   -->
-					<div class="col-xs-4">
+					<div class="col-xs-4" style="margin-bottom: 20px;">
 						<div class="input-group">
 							<span class="input-group-addon">进厂里程</span>
 							<input type="number" onchange="numberchange(this)" min="0" v-model="wxdan.jinchanli" style="vertical-align: middle ; width:160px; height:33px;"/>
 						</div>
 					</div>
-					<div class="col-xs-4">
+					<div class="col-xs-4" style="margin-bottom: 20px;">
 						<div class="input-group">
 							<span class="input-group-addon">进厂油量</span>
 							<input type="number" onchange="numberchange(this)"  min="0" v-model="wxdan.jinchanyou" style="vertical-align: middle ; width:160px; height:33px;">
 						</div>
 					</div>
-					<div class="col-xs-4">
+					<div class="col-xs-4" style="margin-bottom: 20px;">
 						<div class="input-group">
 							<span class="input-group-addon">上次里程</span>
 							<input type="number" onchange="numberchange(this)"  min="0" v-model="wxdan.prevli" style="vertical-align: middle ; width:160px; height:33px;"/>
 						</div>
 					</div>
 					<!--    *******************华丽分割线********************   -->
-					<div class="col-xs-4">
+					<div class="col-xs-4" style="margin-bottom: 20px;">
 						<div class="input-group">
 							<span class="input-group-addon">进厂时间</span>
 							<input type="datetime-local" v-model="wxdan.jinchantime" style="vertical-align: middle ; width:160px; height:33px;"/>
 						</div>
 					</div>
-					<div class="col-xs-4">
+					<div class="col-xs-4" style="margin-bottom: 20px;">
 						<div class="input-group">
 							<span class="input-group-addon">上次进厂</span>
 							<input type="datetime-local" v-model="wxdan.prevtime" style="vertical-align: middle ; width:160px; height:33px;"/>
 						</div>
 					</div>
-					<div class="col-xs-4">
+					<div class="col-xs-4" style="margin-bottom: 20px;">
 						<div class="input-group">
-							<span class="input-group-addon">*预计完工</span>
-							<input type="datetime-local" v-model="wxdan.yujitime" style="vertical-align: middle ; width:154px; height:33px;">
+							<span class="input-group-addon" style="color: red;">预计完工</span>
+							<input type="datetime-local" v-model="wxdan.yujitime" style="vertical-align: middle ; width:160px; height:33px;">
 						</div>
 					</div>
 					<!--    *******************华丽分割线********************   -->
-					<div class="col-xs-4">
+					<div class="col-xs-4" style="margin-bottom: 20px;">
 						<div class="input-group">
-							<span class="input-group-addon">*业务类别</span>
-							<input type="text" id="yewutype" v-model="wxdan.yewutype" ondblclick="yewutypDbl()" style="vertical-align: middle ; width:154px; height:33px;">
+							<span class="input-group-addon" style="color: red;">业务类别</span>
+							<input type="text" id="yewutype" v-model="wxdan.yewutype" ondblclick="" style="vertical-align: middle ; width:160px; height:33px;">
 						</div>
 					</div>
-					<div class="col-xs-4">
+					<div class="col-xs-4" style="margin-bottom: 20px;">
 						<div class="input-group">
 							<span class="input-group-addon">施工班次</span>
 							<select v-model="wxdan.shigong" style="vertical-align: middle ; width:160px; height:33px;">
@@ -172,7 +172,7 @@
 							</select>
 						</div>
 					</div>
-					<div class="col-xs-4">
+					<div class="col-xs-4" style="margin-bottom: 20px;">
 						<div class="input-group">
 							<span class="input-group-addon">&nbsp;&nbsp;&nbsp;接车人</span>
 							<select v-model="wxdan.jieche" style="vertical-align: middle ; width:162px; height:33px;">
@@ -183,7 +183,7 @@
 						</div>
 					</div>
 					<!--    *******************华丽分割线********************   -->
-					<div class="col-xs-4">
+					<div class="col-xs-4" style="margin-bottom: 20px;">
 						<div class="input-group">
 							<span class="input-group-addon">结算方式</span>
 							<select v-model="wxdan.jiesuantype" style="vertical-align: middle ; width:160px; height:33px;">
@@ -193,7 +193,7 @@
 							</select>
 						</div>
 					</div>
-					<div class="col-xs-4">
+					<div class="col-xs-4" style="margin-bottom: 20px;">
 						<div class="input-group">
 							<span class="input-group-addon">赔款公司</span>
 							<select id="peikuan" style="vertical-align: middle ; width:160px; height:33px;">
@@ -202,14 +202,14 @@
 							</select>
 						</div>
 					</div>
-					<div class="col-xs-4">
+					<div class="col-xs-4" style="margin-bottom: 20px;">
 						<div class="input-group">
 							<span class="input-group-addon">完工时间</span>
 							<input type="text" v-model="wxdan.wangongtime" disabled="disabled" disabled="disabled" style="vertical-align: middle ; width:160px; height:33px;"/>
 						</div>
 					</div>
 					<!--    *******************华丽分割线********************   -->
-					<div class="col-xs-4">
+					<div class="col-xs-4" style="margin-bottom: 20px;">
 						<div class="input-group">
 							<span class="input-group-addon">预估金额</span>
 							<input type="number" v-model="wxdan.money" style="vertical-align: middle ; width:160px; height:33px;"/>
@@ -217,21 +217,21 @@
 					</div>
 					<div class="col-xs-4">
 					</div>
-					<div class="col-xs-4">
+					<div class="col-xs-4" style="margin-bottom: 20px;">
 						<div class="input-group">
 							<span class="input-group-addon">结算金额</span>
 							<input type="number" v-model="wxdan.jiesuanmoney" style="vertical-align: middle ; width:160px; height:33px;"/>
 						</div>
 					</div>
 					<!--    *******************华丽分割线********************   -->
-					<div class="col-xs-12">
+					<div class="col-xs-12" style="margin-bottom: 20px;">
 						<div class="input-group">
 							<span class="input-group-addon">接待备注</span>
 							<input type="text" size="50px" v-model="wxdan.remark" style="vertical-align: middle ; width:400px; height:33px;"/>
 						</div>
 					</div>
 					<!--    *******************华丽分割线********************   -->
-					<div class="col-xs-12">
+					<div class="col-xs-12" style="margin-bottom: 20px;">
 						<div class="input-group">
 							<span class="input-group-addon">保修陈述</span>
 							<input type="text" v-model="wxdan.baoxiu" disabled="disabled" style="vertical-align: middle ; width:400px; height:33px;"/>
@@ -481,20 +481,19 @@
 					vm.wxdan.yujitime = vm.wxdan.yujitime == null?null:vm.wxdan.yujitime.replace("T"," ");
 					vm.wxdan.prevtime = vm.wxdan.prevtime == null?null:vm.wxdan.prevtime.replace("T"," ");
 					var obj = JSON.stringify(this.vm.wxdan);
-					alert(0);
 					$.ajax({
 						"url":data.ip +"weixiujieche/insertWXdan",
 						"data":obj,
-						type:"post",
-						dataType:"json",
-						contentType:"application/json;charset=UTF-8",
-						success:function(result){
-							alert("新增成功！");
+						"type":"post",
+						"contentType":"application/json;charset=UTF-8",
+						"success":function(){
+							
 						},
-						error:function(){
+						"error":function(){
 							alert("保存失败555！");
 						}
 					})
+					alert("保存成功！");
 				}
 			}
 			var childIframe=window.parent.document.getElementById("zuoweixiudan");
@@ -548,6 +547,7 @@
 			"type":"post",
 			"success":function(result){
 				vm.xiangmudata = result;
+				console.log(result);
 			},
 			"error":function(){
 				

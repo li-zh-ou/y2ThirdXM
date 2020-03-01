@@ -79,7 +79,7 @@
 			//此处应回传车牌和维修单号，最为方便。
 			var index = $(trObj).index();
 			var childIframe=window.parent.document.getElementById("otherHtml");
-			window.parent.vm.selectedchepai=childIframe.contentWindow.vm.data[index].no;
+			window.parent.vm.selectedchepai=childIframe.contentWindow.vm.data[index].chepai;
 			window.parent.queryHistory();
 			window.parent.queryWXKehuInfo();
 			index = null;
