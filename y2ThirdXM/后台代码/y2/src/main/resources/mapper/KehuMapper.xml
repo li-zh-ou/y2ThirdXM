@@ -42,10 +42,42 @@
   </select>
   <select id="querychatiao" resultMap="BaseResultMapSales" parameterType="com.accp.domain.Kehu">
   	SELECT * FROM kehu LEFT JOIN huiyuan ON kehu.`KeHuid` = huiyuan.`KeHuNo` 
-		WHERE kehu.`KeHuNo` LIKE '%${aaa.KeHuNo}%' AND kehu.kehuname LIKE '%${aaa.kehuname}%' AND kehu.kehutype LIKE '%${aaa.kehutype}%'
-		AND kehu.kehulianxi LIKE '%${aaa.kehulianxi}%' AND kehu.kehuphone LIKE '%${aaa.kehuphone}%' AND kehu.kehuaddress LIKE '%${aaa.kehuaddress}%'
-		AND kehu.remark LIKE '%${aaa.remark}%' AND kehu.kehubirthday LIKE '%${aaa.kehubirthday}%' AND kehu.`bei1` LIKE '%${aaa.bei1}%'
-		AND kehu.guwen LIKE '%${aaa.guwen}%' AND kehu.guwenphone LIKE '%${aaa.guwenphone}%'
+  		<where>
+  			true
+  			<if test='aaa.KeHuNo!="" and aaa.KeHuNo!=null'>
+  			and kehu.`KeHuNo` LIKE '%${aaa.kehuno}%' 
+  			</if>
+  			<if test='aaa.kehuname!="" and aaa.kehuname!=null'>
+  			AND kehu.kehuname LIKE '%${aaa.kehuname}%'
+  			</if>
+  			<if test='aaa.kehutype!="" and aaa.kehutype!=null'>
+  			AND kehu.kehutype LIKE '%${aaa.kehutype}%'
+  			</if>
+  			<if test='aaa.kehulianxi!="" and aaa.kehulianxi !=null'>
+  			AND kehu.kehulianxi LIKE '%${aaa.kehulianxi}%'
+  			</if>
+  			<if test='aaa.kehuphone!="" and aaa.kehuphone!=null'>
+  			 AND kehu.kehuphone LIKE '%${aaa.kehuphone}%'
+  			</if>
+  			<if test='aaa.kehuaddress!="" and aaa.kehuaddress!=null'>
+  			 AND kehu.kehuaddress LIKE '%${aaa.kehuaddress}%'
+  			</if>
+  			<if test='aaa.remark!="" and aaa.remark!=null'>
+  			 AND kehu.remark LIKE '%${aaa.remark}%'
+  			</if>
+  			<if test='aaa.kehubirthday!="" and aaa.kehubirthday!=null'>
+  			 AND kehu.kehubirthday LIKE '%${aaa.kehubirthday}%'
+  			</if>
+  			<if test='aaa.bei1!="" and aaa.bei1!=null'>
+  			 AND kehu.`bei1` LIKE '%${aaa.bei1}%'
+  			</if>
+  			<if test='aaa.guwen!="" and aaa.guwen!=null'>
+  			 AND kehu.guwen LIKE '%${aaa.guwen}%'
+  			</if>
+  			<if test='aaa.guwenphone!="" and aaa.guwenphone!=null'>
+  			AND kehu.guwenphone LIKE '%${aaa.guwenphone}%'
+  			</if>
+  		</where>
   </select>
   <select id="findkehu" resultMap="BaseResultMapSales">
 	  SELECT * FROM kehu LEFT JOIN huiyuan ON kehu.`KeHuNo` = huiyuan.`KeHuNo`

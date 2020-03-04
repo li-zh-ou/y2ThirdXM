@@ -391,6 +391,7 @@
      	<if test=" phone != null">
      	and kehu.kehuphone LIKE '%${phone}%'
      	</if>
+     	and huiyuan.bei1 = '可用'
      </where>
      <if test='order == "1"'>
      	order by ruhuitime desc
@@ -404,7 +405,6 @@
      <if test='order == "4"'>
      	order by daoqitime asc
      </if>
-     and huiyuan.bei1 = '可用'
   </select>
    <select id="getTodayMaxCount" resultType="java.lang.Integer" parameterType="java.lang.String">
   	 SELECT COUNT(huiyuanno)+1 FROM huiyuan WHERE huiyuanno LIKE '%${today}%'

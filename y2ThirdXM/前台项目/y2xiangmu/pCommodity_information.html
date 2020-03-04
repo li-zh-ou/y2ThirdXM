@@ -110,11 +110,11 @@
 								        <h4 class="modal-title">商品资料编辑<input type="checkbox" style="margin-left:30%;">停用</h4>
 								      </div>
 								      <div class="modal-body">
-								        <table class="table table-hover" style="background-color: #D4D4D4;">
+								        <table class="table" style="background-color: #D4D4D4;">
 								        	<tr>
-								        		<th>商品编码<input type="text" disabled class="form-control" placeholder="编码" style="width: 90%;"></th>
-								        		<th>商品名称<input type="text" v-model="page3.goodsname" class="form-control" placeholder="询" style="width: 100%;"></th>
-								        		<th>
+								        		<th style="color: red;">商品编码<input type="text" disabled class="form-control" placeholder="编码" style="width: 90%;"></th>
+								        		<th style="color: red;">商品名称<input type="text" v-model="page3.goodsname" class="form-control" style="width: 100%;"></th>
+								        		<th style="color: red;">
 								        			商品品牌
 								        				<form class="form-inline">
 														  <div class="form-group">
@@ -153,7 +153,7 @@
 																				</nav>
 																		      </div>
 																		      <div class="" style="overflow-y: scroll; height: 200px;">
-																		      		<table class="table table-hover">
+																		      		<table class="table">
 																				    	<tr>
 																				    		<th class="text-center">&nbsp;</th>
 																				    		<th class="text-center">序号</th>
@@ -183,10 +183,10 @@
 														</form>
 														
 								        		</th>
-								        		<th>标准价<input type="text" v-model="page3.price" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        		<th>标准价<input type="text" v-model="page3.price" class="form-control" style="width: 90%;"></th>
 								        	</tr>
 								        	<tr>
-								        		<th>适用车型<input type="text" v-model="page3.shiyong" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        		<th>适用车型<input type="text" v-model="page3.shiyong" class="form-control" style="width: 90%;"></th>
 								        		<th>
 								        			数量单位
 								        				<form class="form-inline">
@@ -226,7 +226,7 @@
 																				</nav>
 																		      </div>
 																		      <div class="" style="overflow-y: scroll; height: 200px;">
-																		      		<table class="table table-hover">
+																		      		<table class="table">
 																				    	<tr>
 																				    		<th class="text-center">&nbsp;</th>
 																				    		<th class="text-center">序号</th>
@@ -285,8 +285,8 @@
 														  </div>
 														</form>
 								        		</th>
-								        		<th>原厂编码<input type="text" v-model="page3.huoshangno" class="form-control" placeholder="询" style="width: 80%;"></th>
-								        		<th>会员价<input type="text" v-model="page3.huiprice" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        		<th>原厂编码<input type="text" v-model="page3.huoshangno" class="form-control" style="width: 80%;"></th>
+								        		<th>会员价<input type="text" v-model="page3.huiprice" class="form-control" style="width: 90%;"></th>
 								        	</tr>
 								        	<tr>
 								        		<th>
@@ -324,7 +324,7 @@
 																				</nav>
 																		      </div>
 																		      <div class="" style="overflow-y: scroll; height: 200px;">
-																		      		<table class="table table-hover">
+																		      		<table class="table">
 																				    	<tr>
 																				    		<th class="text-center">&nbsp;</th>
 																				    		<th class="text-center">序号</th>
@@ -389,7 +389,7 @@
 																				</nav>
 																		      </div>
 																		      <div class="" style="overflow-y: scroll; height: 200px;">
-																		      		<table class="table table-hover">
+																		      		<table class="table">
 																				    	<tr>
 																				    		<th class="text-center">&nbsp;</th>
 																				    		<th class="text-center">序号</th>
@@ -453,7 +453,7 @@
 																				</nav>
 																		      </div>
 																		      <div class="" style="overflow-y: scroll; height: 200px;">
-																		      		<table class="table table-hover">
+																		      		<table class="table">
 																				    	<tr>
 																				    		<th class="text-center">&nbsp;</th>
 																				    		<th class="text-center">序号</th>
@@ -520,7 +520,7 @@
 																				</nav>
 																		      </div>
 																		      <div class="" style="overflow-y: scroll; height: 200px;">
-																		      		<table class="table table-hover">
+																		      		<table class="table">
 																				    	<tr>
 																				    		<th class="text-center">&nbsp;</th>
 																				    		<th class="text-center">序号</th>
@@ -551,20 +551,20 @@
 								        		</th>
 								        	</tr>
 								        	<tr>
-								        		<th>包装规格<input type="text" v-model="page3.baozhuan" class="form-control" placeholder="询" style="width: 90%;"></th>
-								        		<th>体积<input type="text" v-model="page3.tiji" class="form-control" placeholder="询" style="width: 90%;"></th>
-								        		<th>毛重<input type="text" v-model="page3.maozhong" class="form-control" placeholder="询" style="width: 90%;"></th>
-								        		<th>净重<input type="text" v-model="page3.jingzhong" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        		<th>包装规格<input type="text" v-model="page3.baozhuan" class="form-control" style="width: 90%;"></th>
+								        		<th>体积<input type="number" v-model="page3.tiji" class="form-control" style="width: 90%;"></th>
+								        		<th>毛重<input type="number" v-model="page3.maozhong" class="form-control" style="width: 90%;"></th>
+								        		<th>净重<input type="number" v-model="page3.jingzhong" class="form-control" style="width: 90%;"></th>
 								        	</tr>
 								        	<tr>
-								        		<th>进货价<input type="text" v-model="page3.jinhuo" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        		<th>进货价<input type="number" v-model="page3.jinhuo" class="form-control" style="width: 90%;"></th>
 								        		<th>
 								        			售价按
 								        				<form class="form-inline">
 														  <div class="form-group">
 														    <label class="sr-only" for="exampleInputAmount">Amou</label>
 														    <div class="input-group">
-														      <input type="text" v-model="page3.shoujia" class="form-control" placeholder="Amoun">
+														      <input type="number" v-model="page3.shoujia" class="form-control">
 																 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
 																 	<div class="dropdown">
 																	  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
@@ -579,8 +579,8 @@
 														  </div>
 														</form>
 								        		</th>
-								        		<th>加价率<input type="text" v-model="page3.jiajia" class="form-control" placeholder="询" style="width: 90%;"></th>
-								        		<th>VIP价<input type="text" v-model="page3.vipprice" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        		<th>加价率<input type="text" v-model="page3.jiajia" class="form-control" style="width: 90%;"></th>
+								        		<th>VIP价<input type="number" v-model="page3.vipprice" class="form-control" style="width: 90%;"></th>
 								        	</tr>
 								        </table>
 								      </div>
@@ -614,10 +614,10 @@
 								        <h4 class="modal-title">商品资料编辑<input type="checkbox" style="margin-left:30%;">停用</h4>
 								      </div>
 								      <div class="modal-body">
-								        <table class="table table-hover" style="background-color: #D4D4D4;">
+								        <table class="table" style="background-color: #D4D4D4;">
 								        	<tr>
 								        		<th>商品编码<input type="text" v-model="page2.goodsid" disabled class="form-control" placeholder="编码" style="width: 90%;"></th>
-								        		<th>商品名称<input type="text" v-model="page2.goodsname" class="form-control" placeholder="询" style="width: 100%;"></th>
+								        		<th>商品名称<input type="text" v-model="page2.goodsname" class="form-control" style="width: 100%;"></th>
 								        		<th>
 								        			商品品牌
 								        				<form class="form-inline">
@@ -657,7 +657,7 @@
 																				</nav>
 																		      </div>
 																		      <div class="" style="overflow-y: scroll; height: 200px;">
-																		      		<table class="table table-hover">
+																		      		<table class="table">
 																				    	<tr>
 																				    		<th class="text-center">&nbsp;</th>
 																				    		<th class="text-center">序号</th>
@@ -687,10 +687,10 @@
 														</form>
 														
 								        		</th>
-								        		<th>标准价<input type="text" v-model="page2.price" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        		<th>标准价<input type="number" v-model="page2.price" class="form-control" style="width: 90%;"></th>
 								        	</tr>
 								        	<tr>
-								        		<th>适用车型<input type="text" v-model="page2.shiyong" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        		<th>适用车型<input type="text" v-model="page2.shiyong" class="form-control" style="width: 90%;"></th>
 								        		<th>
 								        			数量单位
 								        				<form class="form-inline">
@@ -730,7 +730,7 @@
 																				</nav>
 																		      </div>
 																		      <div class="" style="overflow-y: scroll; height: 200px;">
-																		      		<table class="table table-hover">
+																		      		<table class="table">
 																				    	<tr>
 																				    		<th class="text-center">&nbsp;</th>
 																				    		<th class="text-center">序号</th>
@@ -789,8 +789,8 @@
 														  </div>
 														</form>
 								        		</th>
-								        		<th>原厂编码<input type="text" v-model="page2.huoshangno" class="form-control" placeholder="询" style="width: 80%;"></th>
-								        		<th>会员价<input type="text" v-model="page2.huiprice" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        		<th>原厂编码<input type="text" v-model="page2.huoshangno" class="form-control" style="width: 80%;"></th>
+								        		<th>会员价<input type="number" v-model="page2.huiprice" class="form-control" style="width: 90%;"></th>
 								        	</tr>
 								        	<tr>
 								        		<th>
@@ -828,7 +828,7 @@
 																				</nav>
 																		      </div>
 																		      <div class="" style="overflow-y: scroll; height: 200px;">
-																		      		<table class="table table-hover">
+																		      		<table class="table">
 																				    	<tr>
 																				    		<th class="text-center">&nbsp;</th>
 																				    		<th class="text-center">序号</th>
@@ -893,7 +893,7 @@
 																				</nav>
 																		      </div>
 																		      <div class="" style="overflow-y: scroll; height: 200px;">
-																		      		<table class="table table-hover">
+																		      		<table class="table">
 																				    	<tr>
 																				    		<th class="text-center">&nbsp;</th>
 																				    		<th class="text-center">序号</th>
@@ -957,7 +957,7 @@
 																				</nav>
 																		      </div>
 																		      <div class="" style="overflow-y: scroll; height: 200px;">
-																		      		<table class="table table-hover">
+																		      		<table class="table">
 																				    	<tr>
 																				    		<th class="text-center">&nbsp;</th>
 																				    		<th class="text-center">序号</th>
@@ -1024,7 +1024,7 @@
 																				</nav>
 																		      </div>
 																		      <div class="" style="overflow-y: scroll; height: 200px;">
-																		      		<table class="table table-hover">
+																		      		<table class="table">
 																				    	<tr>
 																				    		<th class="text-center">&nbsp;</th>
 																				    		<th class="text-center">序号</th>
@@ -1055,20 +1055,20 @@
 								        		</th>
 								        	</tr>
 								        	<tr>
-								        		<th>包装规格<input type="text" v-model="page2.baozhuan" class="form-control" placeholder="询" style="width: 90%;"></th>
-								        		<th>体积<input type="text" v-model="page2.tiji" class="form-control" placeholder="询" style="width: 90%;"></th>
-								        		<th>毛重<input type="text" v-model="page2.maozhong" class="form-control" placeholder="询" style="width: 90%;"></th>
-								        		<th>净重<input type="text" v-model="page3.jingzhong" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        		<th>包装规格<input type="text" v-model="page2.baozhuan" class="form-control" style="width: 90%;"></th>
+								        		<th>体积<input type="text" v-model="page2.tiji" class="form-control" style="width: 90%;"></th>
+								        		<th>毛重<input type="text" v-model="page2.maozhong" class="form-control" style="width: 90%;"></th>
+								        		<th>净重<input type="text" v-model="page3.jingzhong" class="form-control" style="width: 90%;"></th>
 								        	</tr>
 								        	<tr>
-								        		<th>进货价<input type="text" v-model="page2.jinhuo" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        		<th>进货价<input type="text" v-model="page2.jinhuo" class="form-control" style="width: 90%;"></th>
 								        		<th>
 								        			售价按
 								        				<form class="form-inline">
 														  <div class="form-group">
 														    <label class="sr-only" for="exampleInputAmount">Amou</label>
 														    <div class="input-group">
-														      <input type="text" v-model="page2.shoujia" class="form-control" placeholder="Amoun">
+														      <input type="text" v-model="page2.shoujia" class="form-control">
 																 <div class="input-group-addon" style="padding:0px 0px 0px 0px">
 																 	<div class="dropdown">
 																	  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding:1px 6px">
@@ -1083,8 +1083,8 @@
 														  </div>
 														</form>
 								        		</th>
-								        		<th>加价率<input type="text" v-model="page2.jiajia" class="form-control" placeholder="询" style="width: 90%;"></th>
-								        		<th>VIP价<input type="text" v-model="page2.vipprice" class="form-control" placeholder="询" style="width: 90%;"></th>
+								        		<th>加价率<input type="text" v-model="page2.jiajia" class="form-control" style="width: 90%;"></th>
+								        		<th>VIP价<input type="text" v-model="page2.vipprice" class="form-control" style="width: 90%;"></th>
 								        	</tr>
 								        </table>
 								      </div>

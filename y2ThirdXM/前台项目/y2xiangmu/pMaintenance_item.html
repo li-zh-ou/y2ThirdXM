@@ -83,27 +83,27 @@
 						        		<tr>
 						        			<th>
 						        				<div class="form-group">
-												    <label for="exampleInputName2"  style="color: #AC2925;">项目编码</label>
-												    <input type="text" v-model="dataa.xiangmuno" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+												    <label for="exampleInputName2"  style="color: red;">项目编码</label>
+												    <input type="text" v-model="dataa.xiangmuno" class="form-control" id="exampleInputName2">
 												</div>
 						        			</th>
 						        			<th>
 						        				<div class="form-group">
-												    <label for="exampleInputEmail2">项目名称</label>
-												    <input type="email" v-model="dataa.xiangmuname" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+												    <label for="exampleInputEmail2" style="color: red;">项目名称</label>
+												    <input type="email" v-model="dataa.xiangmuname" class="form-control" id="exampleInputEmail2">
 												</div>
 						        			</th>
 						        			<th>
 						        				<div class="form-group">
-												    <label for="exampleInputName2">收入种类</label>
-												    <input type="text" v-model="dataa.shouruid" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+												    <label for="exampleInputName2" style="color: red;">收入种类</label>
+												    <input type="text" v-model="dataa.shouruid" class="form-control" id="exampleInputName2">
 												</div>
 						        			</th>
 						        		</tr>
 						        		<tr>
 						        			<th>
 						        				<div class="form-group">
-												    <label for="exampleInputEmail2">项目类别</label>
+												    <label for="exampleInputEmail2" style="color: red;">项目类别</label>
 												    <select name="" class="form-control" v-model="dataa.bei1">
 												    	<option value="1">大车</option>
 												    	<option value="2">大啊</option>
@@ -115,13 +115,13 @@
 						        			<th>
 						        				<div class="form-group">
 												    <label for="exampleInputEmail2">标准价</label>
-												    <input type="email" v-model="dataa.price" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+												    <input type="number" min="0" v-model="dataa.price" class="form-control" id="exampleInputEmail2">
 												</div>
 						        			</th>
 						        			<th>
 						        				<div class="form-group">
 												    <label for="exampleInputName2">会员价</label>
-												    <input type="text" v-model="dataa.huiprice" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+												    <input type="number" min="0" v-model="dataa.huiprice" class="form-control" id="exampleInputName2">
 												</div>
 						        			</th>
 						        		</tr>
@@ -129,19 +129,19 @@
 						        			<th>
 						        				<div class="form-group">
 												    <label for="exampleInputEmail2">VIP价</label>
-												    <input type="email" v-model="dataa.vipprice" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+												    <input type="number" min="0" v-model="dataa.vipprice" class="form-control" id="exampleInputEmail2">
 												</div>
 						        			</th>
 						        			<th>
 						        				<div class="form-group">
 												    <label for="exampleInputName2">协议价</label>
-												    <input type="text" v-model="dataa.xieprice" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+												    <input type="number" min="0" v-model="dataa.xieprice" class="form-control" id="exampleInputName2">
 												</div>
 						        			</th>
 						        			<th>
 						        				<div class="form-group">
-												    <label for="exampleInputName2">售价按</label>
-												    <input type="text" v-model="dataa.shoujiaan" class="form-control" id="exampleInputName2" placeholder="数字价格">
+												    <label for="exampleInputName2" style="color: red;">售价按</label>
+												    <input type="number" min="0" v-model="dataa.shoujiaan" class="form-control" id="exampleInputName2">
 												</div>
 						        			</th>
 						        		</tr>
@@ -170,27 +170,27 @@
 						        		<tr>
 						        			<th>
 						        				<div class="form-group">
-												    <label for="exampleInputName2">项目编码</label>
-												    <input type="text" v-model="dataa1.xiangmuno" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+												    <label for="exampleInputName2" style="color: red;">项目编码</label>
+												    <input type="text" v-model="dataa1.xiangmuno" class="form-control" id="exampleInputName2">
 												</div>
 						        			</th>
 						        			<th>
 						        				<div class="form-group">
-												    <label for="exampleInputEmail2">项目名称</label>
-												    <input type="email" v-model="dataa1.xiangmuname" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+												    <label for="exampleInputEmail2" style="color: red;">项目名称</label>
+												    <input type="email" v-model="dataa1.xiangmuname" class="form-control" id="exampleInputEmail2">
 												</div>
 						        			</th>
 						        			<th>
 						        				<div class="form-group">
-												    <label for="exampleInputName2">收入种类</label>
-												    <input type="text" v-model="dataa1.shourutype" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+												    <label for="exampleInputName2" style="color: red;">收入种类</label>
+												    <input type="text" v-model="dataa1.shourutype" class="form-control" id="exampleInputName2">
 												</div>
 						        			</th>
 						        		</tr>
 						        		<tr>
 						        			<th>
 						        				<div class="form-group">
-												    <label for="exampleInputEmail2">项目类别</label>
+												    <label for="exampleInputEmail2" style="color: red;">项目类别</label>
 												    <select name="" class="form-control" v-model="dataa1.bei1">
 												    	<option value="1">大车</option>
 												    	<option value="2">大啊</option>
@@ -202,13 +202,13 @@
 						        			<th>
 						        				<div class="form-group">
 												    <label for="exampleInputEmail2">标准价</label>
-												    <input type="email" v-model="dataa1.price" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+												    <input type="email" v-model="dataa1.price" class="form-control" id="exampleInputEmail2">
 												</div>
 						        			</th>
 						        			<th>
 						        				<div class="form-group">
 												    <label for="exampleInputName2">会员价</label>
-												    <input type="text" v-model="dataa1.huiprice" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+												    <input type="text" v-model="dataa1.huiprice" class="form-control" id="exampleInputName2">
 												</div>
 						        			</th>
 						        		</tr>
@@ -216,19 +216,19 @@
 						        			<th>
 						        				<div class="form-group">
 												    <label for="exampleInputEmail2">VIP价</label>
-												    <input type="email" v-model="dataa1.vipprice" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+												    <input type="email" v-model="dataa1.vipprice" class="form-control" id="exampleInputEmail2">
 												</div>
 						        			</th>
 						        			<th>
 						        				<div class="form-group">
 												    <label for="exampleInputName2">协议价</label>
-												    <input type="text" v-model="dataa1.xieprice" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+												    <input type="number" min="0" v-model="dataa1.xieprice" class="form-control" id="exampleInputName2">
 												</div>
 						        			</th>
 						        			<th>
 						        				<div class="form-group">
-												    <label for="exampleInputName2">售价按</label>
-												    <input type="text" v-model="dataa1.shoujiaan" class="form-control" id="exampleInputName2" placeholder="数字价格">
+												    <label for="exampleInputName2" style="color: red;">售价按</label>
+												    <input type="number" min="0" v-model="dataa1.shoujiaan" class="form-control" id="exampleInputName2">
 												</div>
 						        			</th>
 						        	</table>
