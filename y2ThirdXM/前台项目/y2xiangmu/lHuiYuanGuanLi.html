@@ -95,7 +95,7 @@
 						</tbody>
 					</table>
 					<div class="btn-group" role="group" style="margin-left: 40%;">
-						<button type="button" class="btn btn-default" onclick="shoupage()">首页</button>
+						<button type="button" class="btn btn-default" @click="shoupage()">首页</button>
 					  	<button type="button" class="btn btn-default" @click="nextpage()">《</button>
 					  	<button type="button" class="btn btn-default">{{allhy.pageNum}}/{{allhy.lastPage}}</button>
 					  	<button type="button" class="btn btn-default" @click="prevpage()">》</button>
