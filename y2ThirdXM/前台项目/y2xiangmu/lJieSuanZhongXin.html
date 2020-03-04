@@ -41,40 +41,69 @@
 			</div><!--1-->
 			<div class="row" style="padding: 0 15px;">
 				<div class="col-xs-11">
-					<label>开单日期</label><input type="date" name="starttime" style="vertical-align: middle ; width:154px; height:33px;"/>至<input type="date" name="endtime" style="vertical-align: middle ; width:154px; height:33px;"/>&nbsp;&nbsp;&nbsp;
-					<label style="margin-left: 69px;">销售单号</label><input type="text" name="wxdanno" style="vertical-align: middle ; width:154px; height:33px;"/>&nbsp;&nbsp;&nbsp;
-					<label>结算状态</label>
-					<select style="vertical-align: middle ; width:154px; height:33px;" name="jiesuanstatu">
-						<option value="">请选择</option>
-						<option value="已结算">已结算</option>
-						<option value="未结算">未结算</option>
-					</select>
-					<label style="float: left;">车牌号&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="chepai" style="vertical-align: middle ; width:154px; height:33px;"/>&nbsp;</label>
-					<label style="float: left;">客户名
-					<input type="text" name="kehuname" style="vertical-align: middle ; width:154px; height:33px;">&nbsp;&nbsp;&nbsp;
-					</label>
-					<label style="float: left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务顾问
-					<select name="guwen" style="vertical-align: middle ; width:154px; height:33px;">
-						<option value="">请选择</option>
-						<option value="李">李</option>
-						<option value="王">王</option>
-						<option value="刘">刘</option>
-					</select>&nbsp;&nbsp;&nbsp;
-					</label>
-					<label style="float: left;">业务类型
-					<select name="yewutype" style="vertical-align: middle ; width:154px; height:33px;">
-						<option value="">请选择</option>
-					</select>&nbsp;&nbsp;&nbsp;
-					</label>
-					<label style="float: left;">单据状态
-					<select name="danjustatu" style="vertical-align: middle ; width:154px; height:33px;">
-						<option value="">全部</option>
-						<option value="已竣工">已完工</option>
-						<option value="作业中">未完工</option>
-					</select>
-					</label>
-					<label style="float: left;">备注&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="remark" style="vertical-align: middle ; width:154px; height:33px;"/>
-					</label>
+					<div class="col-xs-8">
+						<div class="input-group">
+							<span class="input-group-addon">开单日期</span>
+							<input type="date" name="starttime" style="vertical-align: middle ; width:154px; height:33px;"/>
+							<input type="date" name="endtime" style="vertical-align: middle ; width:154px; height:33px;"/>
+						</div>
+					</div>
+					<div class="col-xs-4">
+						<div class="input-group">
+							<span class="input-group-addon">销售单号</span>
+							<input type="text" name="wxdanno" style="vertical-align: middle ; width:154px; height:33px;"/>
+						</div>
+					</div>
+					<div class="col-xs-4">
+						<div class="input-group">
+							<span class="input-group-addon">结算状态</span>
+							<select style="vertical-align: middle ; width:154px; height:33px;" name="jiesuanstatu">
+								<option value="">请选择</option>
+								<option value="已结算">已结算</option>
+								<option value="未结算">未结算</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-xs-4">
+						<div class="input-group">
+							<span class="input-group-addon">车牌号</span>
+							<input type="text" name="chepai" style="vertical-align: middle ; width:168px; height:33px;"/>
+						</div>
+					</div>
+					<div class="col-xs-4">
+						<div class="input-group">
+							<span class="input-group-addon">客户名</span>
+							<input type="text" name="kehuname" style="vertical-align: middle ; width:168px; height:33px;">
+						</div>
+					</div>
+					<div class="col-xs-4">
+						<div class="input-group">
+							<span class="input-group-addon">服务顾问</span>
+							<select name="guwen" style="vertical-align: middle ; width:154px; height:33px;">
+								<option value="">请选择</option>
+								<option value="李">李</option>
+								<option value="王">王</option>
+								<option value="刘">刘</option>
+							</select>&nbsp;&nbsp;&nbsp;
+						</div>
+					</div>
+					<div class="col-xs-4">
+						<div class="input-group">
+							<span class="input-group-addon">单据状态</span>
+							<select name="danjustatu" style="vertical-align: middle ; width:154px; height:33px;">
+								<option value="">全部</option>
+								<option value="已竣工">已完工</option>
+								<option value="作业中">未完工</option>
+							</select>
+						</div>
+					</div>
+						<input type="hidden" name="yewutype" value=""/>
+					<div class="col-xs-4">
+						<div class="input-group">
+							<span class="input-group-addon">备注</span>
+							<input type="text" name="remark" style="vertical-align: middle ; width:182px; height:33px;"/>
+						</div>
+					</div>
 				</div>
 			</div>
 			

@@ -288,17 +288,42 @@
 					        </div>
 			      		</div>
 				      	<div class="modal-body row" style="font-size: 17px;">
-				      		<p class="col-xs-6"><label><span style="color: red;">会员时长：</span><select name="huiyuanshichang" onchange="hyscChange()" style="vertical-align: middle ; width:220px; height:29px;">
-				      				<option value="0">请选择会员时长</option>
-				      				<option value="50">一年</option>
-				      				<option value="120">三年</option>
-				      				<option value="180">五年</option>
-				      		</select></label></p>
-				      		<p class="col-xs-6">对应金额：<input type="number" name="duiyingjine" disabled="disabled"></p>
-				      		<p class="col-xs-6" style="color: red;">会员名称：<input name="huiyuanname" type="text"></p>
-				      		<p class="col-xs-6" style="color: red;">联系电话：<input name="huiyuanphone" type="text"></p>
+				      		<div class="col-xs-6" style="margin-bottom: 25px;">
+				      			<div class="input-group">
+					      			<span class="input-group-addon" style="color: red;">会员时长：</span>
+					      			<select name="huiyuanshichang" onchange="hyscChange()" style="vertical-align: middle ; width:180px; height:29px;">
+					      				<option value="0">请选择会员时长</option>
+					      				<option value="50">一年</option>
+					      				<option value="120">三年</option>
+					      				<option value="180">五年</option>
+					      			</select>
+					      		</div>
+				      		</div>
+				      		<div class="col-xs-6" style="margin-bottom: 25px;">
+				      			<div class="input-group">
+				      				<span class="input-group-addon" style="color: red;">对应金额：</span>
+				      				<input type="number" name="duiyingjine" disabled="disabled" style="vertical-align: middle ; width:180px; height:29px;">
+				      			</div>
+				      		</div>
+				      		<div class="col-xs-6" style="margin-bottom: 25px;">
+				      			<div class="input-group">
+				      				<span class="input-group-addon" style="color: red;">会员名称：</span>
+				      				<input name="huiyuanname" type="text" style="vertical-align: middle ; width:180px; height:29px;">
+				      			</div>
+				      		</div>
+				      		<div class="col-xs-6" style="margin-bottom: 25px;">
+				      			<div class="input-group">
+				      				<span class="input-group-addon" style="color: red;">联系电话：</span>
+				      				<input name="huiyuanphone" type="text" style="vertical-align: middle ; width:180px; height:29px;">
+				      			</div>
+				      		</div>
 				      		<p class="col-xs-12"></p>
-				      		<p class="col-xs-offset-6 col-xs-6" style="color: red;">收到：<input name="shoudao" type="number"></p>
+				      		<div class="col-xs-offset-6 col-xs-6" style="margin-bottom: 25px;">
+				      			<div class="input-group">
+				      				<span class="input-group-addon" style="color: red;">收到：</span>
+				      				<input name="shoudao" type="number" style="vertical-align: middle ; width:209px; height:29px;">
+				      			</div>
+				      		</div>
 				      		<button class="btn btn-success col-xs-offset-10" onclick="queRenJiaRu()">确认加入</button>
 				      		
 				      	</div>

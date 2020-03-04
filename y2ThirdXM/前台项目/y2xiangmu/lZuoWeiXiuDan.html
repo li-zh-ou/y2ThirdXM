@@ -256,15 +256,14 @@
 											<th class="text-center">选择</th>
 											<th class="text-center">项目编码</th>
 											<th class="text-center">项目名称</th>
-											<th class="text-center">数量</th>
-											<th class="text-center">价类</th>
-											<th class="text-center">优惠前价</th>
-											<th class="text-center">优惠后价</th>
-											<th class="text-center">优惠后金额</th>
-											<th class="text-center">故障描述</th>
-											<th class="text-center">故障原因</th>
-											<th class="text-center">机修班组</th>
-											<th class="text-center">作业人员</th>
+											<th class="text-center">项目类型</th>
+											<th class="text-center">售价按</th>
+											<th class="text-center">原价</th>
+											<th class="text-center">vip价</th>
+											<th class="text-center">协议价</th>
+											<th class="text-center">会员价</th>
+											<th class="text-center">说明</th>
+											<th class="text-center">备注</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -272,15 +271,14 @@
 											<td class="text-center"><input class="wxxmcheckbox" type="checkbox" disabled="disabled"></td>
 											<td class="text-center">{{item.xiangmuno}}</td>
 											<td class="text-center">{{item.xiangmuname}}</td>
-											<td class="text-center"></td>
-											<td class="text-center"></td>
-											<td class="text-center"></td>
-											<td class="text-center"></td>
-											<td class="text-center"></td>
-											<td class="text-center"></td>
-											<td class="text-center"></td>
-											<td class="text-center"></td>
-											<td class="text-center"></td>
+											<td class="text-center">{{item.xingmutype}}</td>
+											<td class="text-center">{{item.shoujiaan}}</td>
+											<td class="text-center">{{item.price}}</td>
+											<td class="text-center">{{item.vipprice}}</td>
+											<td class="text-center">{{item.xieprice}}</td>
+											<td class="text-center">{{item.huiprice}}</td>
+											<td class="text-center">{{item.bei1}}</td>
+											<td class="text-center">{{item.bei2}}</td>
 										</tr>
 									</tbody>
 								</table>
