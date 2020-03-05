@@ -32,6 +32,7 @@ public class JunGongJianXiuService {
 			}else {
 				jun.setBei1(wx.getBei4());
 			}
+			jungong.updatefangong(jun.getShijitime(),jun.getWxdanno());
 		}
 		num = jungong.insertJunGong(jun);
 		String no = null;

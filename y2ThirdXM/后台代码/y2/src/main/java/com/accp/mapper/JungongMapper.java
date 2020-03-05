@@ -27,4 +27,6 @@ public interface JungongMapper {
     Integer insertJunGong(Jungong record);
     
     Integer updatestatu(@Param("shijitime") String shijitime,@Param("wxdanno") String wxdanno);
+    
+    Integer updatefangong(@Param("shijitime") String shijitime,@Param("wxdanno") String wxdanno);
 }

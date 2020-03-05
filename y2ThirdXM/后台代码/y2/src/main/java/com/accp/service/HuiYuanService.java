@@ -26,7 +26,12 @@ public class HuiYuanService {
 	@Autowired
 	com.accp.mapper.KehuMapper kehu;
 	
+	@Autowired
+	com.accp.mapper.HuiyuanMapper hymapper;
+	
 	public PageInfo<Huiyuan> queryAllHuiYuan(int pageNum,int pageSize,String hy,String phone,String order){
+		hymapper.shenjihuangji();
+		hymapper.shenjizuanshi();
 		Page<Huiyuan> page=PageHelper.startPage(pageNum, pageSize);
 		huiyuan.queryAllHuiYuan(hy, phone, order);
 		return page.toPageInfo();

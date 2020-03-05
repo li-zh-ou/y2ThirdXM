@@ -333,4 +333,7 @@
   <select id="updatestatu" parameterType="java.lang.String" resultType="java.lang.Integer" >
   UPDATE wxjiedan SET danjustatu ="已竣工",WanGongTime = #{shijitime,jdbcType=VARCHAR} WHERE wxdanno =#{wxdanno,jdbcType=VARCHAR}
   </select>
+  <select id="updatefangong" parameterType="java.lang.String" resultType="java.lang.Integer" >
+  UPDATE wxjiedan SET danjustatu ="已返工",WanGongTime = #{shijitime,jdbcType=VARCHAR} WHERE wxdanno =#{wxdanno,jdbcType=VARCHAR}
+  </select>
 </mapper>
